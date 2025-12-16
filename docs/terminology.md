@@ -1,9 +1,9 @@
-# Characters
+# Terminology
 
-Pick a character to view their cards. Use the filter to narrow by name, version, or tags. Replace the placeholders as you add more heroes.
+This page is the reference glossary for game terms. Use the filter to quickly locate an entry.
 
-<input type="text" id="character-filter" placeholder="Filter by name, version, or tags" />
-<div class="az-index" data-target="character-filter">
+<input type="text" id="term-filter" placeholder="Filter terms..." />
+<div class="az-index" data-target="term-filter">
   <button type="button" data-letter="">All</button>
   <button type="button" data-letter="0-9">0-9</button>
   <button type="button" data-letter="A">A</button>
@@ -35,17 +35,27 @@ Pick a character to view their cards. Use the filter to narrow by name, version,
   <button type="button" data-letter="#">#</button>
 </div>
 
-<div class="character-grid">
-  <a class="character-card" href="rover/" data-name="Rover" data-version="Spectro" data-tags="spectro,ultimate,meter">
-    <div class="character-card__title">Rover</div>
-    <div class="character-card__meta">Version: Spectro</div>
-    <div class="character-card__tags">Tags: Spectro, Ultimate Meter</div>
-    <p class="character-card__summary">Starter-friendly; builds meter quickly.</p>
-  </a>
-  <a class="character-card" href="template/" data-name="Template Character" data-version="TODO" data-tags="placeholder">
-    <div class="character-card__title">Template Character</div>
-    <div class="character-card__meta">Version: [[REPLACE WITH VERSION]]</div>
-    <div class="character-card__tags">Tags: [[REPLACE WITH TAGS]]</div>
-    <p class="character-card__summary">[[REPLACE WITH A ONE-LINE SUMMARY]]</p>
-  </a>
-</div>
+<div class="callout">Add new rows or columns here as rules evolve.</div>
+
+<table id="terminology-table">
+  <thead>
+    <tr>
+      <th>Term</th>
+      <th>Definition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Initiative</td>
+      <td>Who takes the first action each round.</td>
+    </tr>
+    <tr>
+      <td>Ultimate Meter</td>
+      <td>Resource that powers the strongest abilities.</td>
+    </tr>
+    <tr>
+      <td>Shield</td>
+      <td>Temporary protection that soaks damage before HP.</td>
+    </tr>
+  </tbody>
+</table>

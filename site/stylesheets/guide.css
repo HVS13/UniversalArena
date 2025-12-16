@@ -155,28 +155,6 @@
   background: var(--md-default-bg-color);
 }
 
-.az-index {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem;
-  margin: -0.25rem 0 0.75rem;
-}
-
-.az-index button {
-  border: 1px solid var(--md-default-fg-color--lighter);
-  background: var(--md-default-bg-color--light);
-  color: var(--md-default-fg-color);
-  border-radius: 6px;
-  padding: 0.25rem 0.55rem;
-  cursor: pointer;
-  font-size: 0.9rem;
-}
-
-.az-index button:hover {
-  border-color: var(--md-accent-fg-color);
-  background: var(--md-default-bg-color);
-}
-
 .keyword-entry {
   border: 1px solid var(--md-default-fg-color--lighter);
   border-radius: 6px;

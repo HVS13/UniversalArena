@@ -3,13 +3,13 @@
 <div class="character-header">
   <div class="character-image">
     <img src="../assets/characters/placeholder.svg" alt="Template character portrait placeholder" />
-    <p class="image-note">TODO: Replace with character artwork (update the image path).</p>
+    <p class="image-note">Character artwork placeholder.</p>
   </div>
   <div class="character-details">
     <div class="character-meta">
-      <p><strong>Name:</strong> [[REPLACE WITH NAME]]</p>
-      <p><strong>Version:</strong> [[REPLACE WITH VERSION]]</p>
-      <p><strong>Innate:</strong> TODO: Describe the innate effect.</p>
+      <p><strong>Name:</strong> Character Name</p>
+      <p><strong>Version:</strong> Version Label</p>
+      <p><strong>Innate:</strong> Concise innate effect description.</p>
     </div>
   </div>
 </div>
@@ -17,67 +17,67 @@
 ### Keywords
 <div class="card-block keyword-card">
   <ul>
-    <li><strong>[[KEYWORD 1]]:</strong> [[DEFINE THE KEYWORD]]</li>
-    <li><strong>[[KEYWORD 2]]:</strong> [[DEFINE THE KEYWORD]]</li>
+    <li><strong>Keyword 1:</strong> Short definition.</li>
+    <li><strong>Keyword 2:</strong> Short definition.</li>
   </ul>
 </div>
 
-### Card 1: [[CARD NAME]]
+### Card 1: Card Name
 <div class="card-block">
   <div class="card-block__meta">
-    <span><strong>Cost:</strong> [[COST]]</span>
-    <span><strong>Type:</strong> [[TYPE OR REMOVE]]</span>
+    <span><strong>Cost:</strong> Value</span>
+    <span><strong>Type:</strong> Tags</span>
   </div>
-  <p><strong>Effect:</strong> [[DESCRIBE EFFECT]]</p>
-  <p><strong>Conditional:</strong> [[IF ANY]]</p>
+  <p><strong>Effect:</strong> Effect description.</p>
+  <p><strong>Conditional:</strong> Conditional text (if any).</p>
 </div>
 
-### Card 2: [[CARD NAME]]
+### Card 2: Card Name
 <div class="card-block">
   <div class="card-block__meta">
-    <span><strong>Cost:</strong> [[COST]]</span>
-    <span><strong>Type:</strong> [[TYPE OR REMOVE]]</span>
+    <span><strong>Cost:</strong> Value</span>
+    <span><strong>Type:</strong> Tags</span>
   </div>
-  <p><strong>Effect:</strong> [[DESCRIBE EFFECT]]</p>
-  <p><strong>Conditional:</strong> [[IF ANY]]</p>
+  <p><strong>Effect:</strong> Effect description.</p>
+  <p><strong>Conditional:</strong> Conditional text (if any).</p>
 </div>
 
-### Card 3: [[CARD NAME]]
+### Card 3: Card Name
 <div class="card-block">
   <div class="card-block__meta">
-    <span><strong>Cost:</strong> [[COST]]</span>
-    <span><strong>Type:</strong> [[TYPE OR REMOVE]]</span>
+    <span><strong>Cost:</strong> Value</span>
+    <span><strong>Type:</strong> Tags</span>
   </div>
-  <p><strong>Effect:</strong> [[DESCRIBE EFFECT]]</p>
-  <p><strong>Conditional:</strong> [[IF ANY]]</p>
+  <p><strong>Effect:</strong> Effect description.</p>
+  <p><strong>Conditional:</strong> Conditional text (if any).</p>
 </div>
 
-### Card 4: [[CARD NAME]]
+### Card 4: Card Name
 <div class="card-block">
   <div class="card-block__meta">
-    <span><strong>Cost:</strong> [[COST]]</span>
-    <span><strong>Type:</strong> [[TYPE OR REMOVE]]</span>
+    <span><strong>Cost:</strong> Value</span>
+    <span><strong>Type:</strong> Tags</span>
   </div>
-  <p><strong>Effect:</strong> [[DESCRIBE EFFECT]]</p>
-  <p><strong>Conditional:</strong> [[IF ANY]]</p>
+  <p><strong>Effect:</strong> Effect description.</p>
+  <p><strong>Conditional:</strong> Conditional text (if any).</p>
 </div>
 
-### Card 5: [[CARD NAME]]
+### Card 5: Card Name
 <div class="card-block">
   <div class="card-block__meta">
-    <span><strong>Cost:</strong> [[COST]]</span>
-    <span><strong>Type:</strong> [[TYPE OR REMOVE]]</span>
+    <span><strong>Cost:</strong> Value</span>
+    <span><strong>Type:</strong> Tags</span>
   </div>
-  <p><strong>Effect:</strong> [[DESCRIBE EFFECT]]</p>
-  <p><strong>Conditional:</strong> [[IF ANY]]</p>
+  <p><strong>Effect:</strong> Effect description.</p>
+  <p><strong>Conditional:</strong> Conditional text (if any).</p>
 </div>
 
-### Ultimate: [[ULTIMATE NAME]]
+### Ultimate: Ultimate Name
 <div class="card-block">
   <div class="card-block__meta">
-    <span><strong>Cost:</strong> [[COST]]</span>
-    <span><strong>Type:</strong> [[TYPE OR REMOVE]]</span>
+    <span><strong>Cost:</strong> Value</span>
+    <span><strong>Type:</strong> Tags</span>
   </div>
-  <p><strong>Effect:</strong> [[DESCRIBE EFFECT]]</p>
-  <p><strong>Conditional:</strong> [[IF ANY]]</p>
+  <p><strong>Effect:</strong> Effect description.</p>
+  <p><strong>Conditional:</strong> Conditional text (if any).</p>
 </div>

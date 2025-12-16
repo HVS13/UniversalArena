@@ -16,6 +16,8 @@ theme:
         name: Switch to light mode
 nav:
   - Home: index.md
+  - Terminology: terminology.md
+  - Keywords: keywords.md
   - Characters:
       - Overview: characters/index.md
       - Rover: characters/rover.md
