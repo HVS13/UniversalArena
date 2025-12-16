@@ -1,4 +1,29 @@
-site_name: My Docs
+site_name: Universal Arena
 site_url: https://HVS13.github.io/UniversalArena
 theme:
   name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+nav:
+  - Home: index.md
+  - Characters:
+      - Overview: characters/index.md
+      - Rover: characters/rover.md
+      - Template: characters/template.md
+markdown_extensions:
+  - toc
+  - tables
+extra_css:
+  - stylesheets/guide.css
+extra_javascript:
+  - javascripts/guide.js
