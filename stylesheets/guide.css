@@ -1,0 +1,205 @@
+.md-typeset input[type="text"],
+.md-typeset input[type="search"] {
+  width: 100%;
+  max-width: 420px;
+  padding: 0.5rem;
+  margin: 0.5rem 0 1rem;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: 4px;
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+}
+
+.md-typeset input[type="text"]::placeholder,
+.md-typeset input[type="search"]::placeholder {
+  color: var(--md-default-fg-color--light);
+}
+
+.callout {
+  border-left: 4px solid var(--md-primary-fg-color);
+  background: var(--md-default-bg-color--light);
+  padding: 0.65rem 0.75rem;
+  margin: 0.75rem 0;
+  border-radius: 4px;
+}
+
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin: 0.5rem 0 1.5rem;
+}
+
+.character-card {
+  display: block;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: 8px;
+  padding: 0.75rem;
+  background: var(--md-default-bg-color);
+  color: inherit;
+  text-decoration: none;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.character-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.character-card__title {
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.character-card__meta,
+.character-card__tags,
+.character-card__summary {
+  margin: 0.2rem 0;
+  color: var(--md-default-fg-color);
+}
+
+.character-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1rem;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: 8px;
+  background: var(--md-default-bg-color);
+  max-width: 960px;
+  margin: 0 auto 1.25rem;
+}
+
+.character-image {
+  flex: 0 0 220px;
+  text-align: center;
+}
+
+.character-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  background: transparent;
+  border: none;
+}
+
+.image-note {
+  font-size: 0.85rem;
+  color: var(--md-default-fg-color--light);
+  margin-top: 0.25rem;
+}
+
+.character-details {
+  flex: 1;
+  min-width: 240px;
+  line-height: 1.5;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.character-meta p {
+  margin: 0.2rem 0;
+}
+
+.keyword-list ul {
+  padding-left: 1.2rem;
+  margin: 0.35rem 0 0;
+}
+
+.card-block {
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  background: var(--md-default-bg-color);
+  margin: 0.35rem 0 1rem;
+}
+
+.card-block__meta {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.25rem;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
+
+.card-block p {
+  margin: 0.2rem 0;
+}
+
+.keyword-card ul {
+  padding-left: 1.1rem;
+  margin: 0;
+}
+
+.keyword-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.keyword-chip {
+  border: 1px solid var(--md-default-fg-color--lighter);
+  background: var(--md-default-bg-color--light);
+  border-radius: 16px;
+  padding: 0.35rem 0.75rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: var(--md-default-fg-color);
+}
+
+.keyword-chip:hover {
+  border-color: var(--md-accent-fg-color);
+  background: var(--md-default-bg-color);
+}
+
+.keyword-entry {
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: 6px;
+  padding: 0.75rem;
+  background: var(--md-default-bg-color);
+  margin-bottom: 0.75rem;
+}
+
+.keyword-highlight {
+  background: var(--md-accent-fg-color--transparent);
+  transition: background 0.6s ease;
+}
+
+@media (max-width: 720px) {
+  .character-header {
+    flex-direction: column;
+  }
+
+  .character-image img {
+    max-width: 100%;
+  }
+}
+
+/* Header search polish (Material) */
+.md-header .md-search__form {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: none;
+}
+
+.md-header .md-search__input {
+  width: 13rem;
+  max-width: 100%;
+  padding: 0.4rem 0.6rem 0.4rem 2.2rem;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  color: #fff;
+}
+
+.md-header .md-search__input::placeholder {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.md-header .md-search__icon {
+  color: #fff;
+}
