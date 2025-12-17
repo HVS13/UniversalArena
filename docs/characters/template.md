@@ -9,40 +9,38 @@
     <div class="character-meta">
       <p><strong>Name:</strong> Character Name</p>
       <p><strong>Version:</strong> Version Label</p>
+      <p><strong>Difficulty:</strong> Low / Medium / High</p>
+      <p><strong>Gameplan:</strong> One paragraph describing how the character plays.</p>
     </div>
   </div>
 </div>
 
-### Innates
+## Innates
 <div class="card-block">
   <p class="card-block__title">Innate Name</p>
   <p>Concise innate effect description.</p>
 </div>
 
-### Keywords
-<div class="card-block keyword-card keyword-entry" id="keyword-<slug-1>">
-  <ul class="keyword-card__list">
-    <li class="keyword-card__item">
-      <a class="keyword-card__name ua-keyword-link" data-keyword="keyword-<slug-1>" href="#">Keyword 1</a>
-      <span class="keyword-card__meta">Keyword 1 details or limits.</span>
-    </li>
-  </ul>
+## Keywords
+
+<div class="ua-entry ua-entry--compact keyword-entry">
+  <p class="ua-entry__title"><a class="ua-keyword-link" data-keyword="keyword-<slug-1>" href="#">Keyword 1</a></p>
+  <p class="ua-entry__meta">Keyword 1 details or limits.</p>
 </div>
 
-<div class="card-block keyword-card keyword-entry" id="keyword-<slug-2>">
-  <ul class="keyword-card__list">
-    <li class="keyword-card__item">
-      <a class="keyword-card__name ua-keyword-link" data-keyword="keyword-<slug-2>" href="#">Keyword 2</a>
-      <span class="keyword-card__meta">Keyword 2 details or limits.</span>
-    </li>
-  </ul>
+<div class="ua-entry ua-entry--compact keyword-entry">
+  <p class="ua-entry__title"><a class="ua-keyword-link" data-keyword="keyword-<slug-2>" href="#">Keyword 2</a></p>
+  <p class="ua-entry__meta">Keyword 2 details or limits.</p>
 </div>
+
+## Cards
 
 ### Card 1: Card Name
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> Value</span>
     <span><strong>Type:</strong> Tags</span>
+    <span><strong>Target:</strong> Self / Allies / Enemies</span>
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Effect description.</p>
@@ -54,6 +52,7 @@
   <div class="card-block__meta">
     <span><strong>Cost:</strong> Value</span>
     <span><strong>Type:</strong> Tags</span>
+    <span><strong>Target:</strong> Self / Allies / Enemies</span>
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Effect description.</p>
@@ -65,6 +64,7 @@
   <div class="card-block__meta">
     <span><strong>Cost:</strong> Value</span>
     <span><strong>Type:</strong> Tags</span>
+    <span><strong>Target:</strong> Self / Allies / Enemies</span>
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Effect description.</p>
@@ -76,6 +76,7 @@
   <div class="card-block__meta">
     <span><strong>Cost:</strong> Value</span>
     <span><strong>Type:</strong> Tags</span>
+    <span><strong>Target:</strong> Self / Allies / Enemies</span>
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Effect description.</p>
@@ -87,6 +88,7 @@
   <div class="card-block__meta">
     <span><strong>Cost:</strong> Value</span>
     <span><strong>Type:</strong> Tags</span>
+    <span><strong>Target:</strong> Self / Allies / Enemies</span>
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Effect description.</p>
@@ -98,6 +100,7 @@
   <div class="card-block__meta">
     <span><strong>Cost:</strong> Value</span>
     <span><strong>Type:</strong> Tags</span>
+    <span><strong>Target:</strong> Self / Allies / Enemies</span>
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Effect description.</p>

@@ -14,31 +14,26 @@
   </div>
 </div>
 
-### Innates
+## Innates
 <div class="card-block">
   <p class="card-block__title">World in a Grain of Sand</p>
   <p>Gain 1 Ultimate Meter each time this character card is played.</p>
 </div>
 
-### Keywords
-<div class="card-block keyword-card keyword-entry" id="keyword-forte">
-  <ul class="keyword-card__list">
-    <li class="keyword-card__item">
-      <a class="keyword-card__name ua-keyword-link" data-keyword="keyword-forte" href="#">Forte</a>
-      <span class="keyword-card__meta"><span class="ua-pill">Max</span> 2 Stacks.</span>
-    </li>
-  </ul>
+## Keywords
+
+<div class="ua-entry ua-entry--compact keyword-entry">
+  <p class="ua-entry__title"><a class="ua-keyword-link" data-keyword="keyword-forte" href="#">Forte</a></p>
+  <p class="ua-entry__meta"><span class="ua-pill">Max</span> 2 stacks.</p>
 </div>
 
-<div class="card-block keyword-card keyword-entry" id="keyword-spectro-frazzle">
-  <ul class="keyword-card__list">
-    <li class="keyword-card__item">
-      <a class="keyword-card__name ua-keyword-link" data-keyword="keyword-spectro-frazzle" href="#">Spectro Frazzle</a>
-      <span class="keyword-card__meta"><span class="ua-pill">Max</span> 10 Stacks.</span>
-      <span class="keyword-card__meta"><span class="ua-pill">Turn End</span> Inflict damage equal to <strong>5 × Stack</strong>. Then reduce Stack by 1.</span>
-    </li>
-  </ul>
+<div class="ua-entry ua-entry--compact keyword-entry">
+  <p class="ua-entry__title"><a class="ua-keyword-link" data-keyword="keyword-spectro-frazzle" href="#">Spectro Frazzle</a></p>
+  <p class="ua-entry__meta"><span class="ua-pill">Max</span> 10 stacks.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Inflict damage equal to <strong>5 × Stack</strong>. Then reduce Stack by 1.</p>
 </div>
+
+## Cards
 
 ### Card 1: Strike
 <div class="card-block">
@@ -56,7 +51,7 @@
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
     <span><strong>Type:</strong> Physical, Defense</span>
-    <span><strong>Target:</strong> Enemies</span>
+    <span><strong>Target:</strong> Self</span>
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Gain 10 Shield. Gain 1 Ultimate Meter.</p>

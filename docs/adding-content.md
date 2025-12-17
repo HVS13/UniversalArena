@@ -25,17 +25,21 @@ Use these patterns to keep pages consistent, responsive, and easy to extend.
 
 ## Keywords
 
-- Add another list item to `docs/keywords.md` (same markup can be copied into character keyword lists):
+- Add another entry to `docs/keywords.md`:
 
 ```html
-<div class="card-block keyword-card keyword-entry" id="keyword-<slug>">
-  <ul class="keyword-card__list">
-    <li class="keyword-card__item">
-      <a class="keyword-card__name ua-keyword-link" data-keyword="keyword-<slug>" href="#">Keyword Name</a>
-      <span class="keyword-card__meta">Definition.</span>
-    </li>
-  </ul>
+<div class="ua-entry keyword-entry" id="keyword-<slug>">
+  <p class="ua-entry__title">Keyword Name</p>
+  <p class="ua-entry__desc">Definition.</p>
 </div>
+```
+
+### Linking keywords from other pages
+
+Use the shared keyword link markup anywhere (character pages, rules pages, etc.). The `guide.js` script will rewrite it to the correct URL, even with instant navigation and a `site_url` base path.
+
+```html
+<a class="ua-keyword-link" data-keyword="keyword-<slug>" href="#">Keyword Name</a>
 ```
 
 ## Status effects
@@ -43,9 +47,9 @@ Use these patterns to keep pages consistent, responsive, and easy to extend.
 - Add another block to `docs/status-effects.md`:
 
 ```html
-<div class="status-entry" id="status-<slug>">
-  <h3>Status name</h3>
-  <p>Description.</p>
+<div class="ua-entry status-entry" id="status-<slug>">
+  <p class="ua-entry__title">Status name</p>
+  <p class="ua-entry__desc">Description.</p>
 </div>
 ```
 
