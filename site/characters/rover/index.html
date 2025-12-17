@@ -256,6 +256,28 @@
   
   
     <li class="md-nav__item">
+      <a href="../../adding-content/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Adding Content
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../terminology/" class="md-nav__link">
         
   
@@ -332,10 +354,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   
@@ -348,8 +370,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             Characters
           </label>
@@ -662,7 +684,7 @@
 <h1 id="rover">Rover</h1>
 <div class="character-header">
   <div class="character-image">
-        <img src="https://vignette.wikia.nocookie.net/wutheringwaves/images/7/70/Rover_1.png/revision/latest?cb=20240420140302" alt="Rover portrait" />
+    <img src="https://vignette.wikia.nocookie.net/wutheringwaves/images/7/70/Rover_1.png/revision/latest?cb=20240420140302" alt="Rover portrait" loading="lazy" decoding="async" />
   </div>
   <div class="character-details">
     <div class="character-meta">
@@ -675,19 +697,27 @@
 </div>
 
 <h3 id="innates">Innates</h3>
-<div class="card-block keyword-card">
-  <p><strong>World in a Grain of Sand</strong></p>
+<div class="card-block">
+  <p class="card-block__title">World in a Grain of Sand</p>
   <p>Gain 1 Ultimate Meter each time this character card is played.</p>
 </div>
 
 <h3 id="keywords">Keywords</h3>
 <div class="card-block keyword-card">
-  <p><strong>Forte</strong></p>
-  <p>Max Stacks: 2.</p>
-  <p><strong>Spectro Frazzle</strong></p>
-  <p>Max Stacks: 10.</p>
-  <p>Turn End: Deal 3 damage per Stack.</p>
-  <p>Reduced by 1 at Turn End.</p>
+  <ul class="keyword-card__list">
+    <li class="keyword-card__item">
+      <a class="keyword-card__name" href="../../keywords/#keyword-forte">Forte</a>
+      <span class="keyword-card__meta"><span class="ua-pill">Max</span> 2 Count</span>
+    </li>
+    <li class="keyword-card__item">
+      <a class="keyword-card__name" href="../../keywords/#keyword-spectro-frazzle">Spectro Frazzle</a>
+      <span class="keyword-card__meta"><span class="ua-pill">Max</span> 10 Count</span>
+      <ul class="keyword-card__sublist">
+        <li>Turn End: Inflict damage equal to <strong>5 × Count</strong>.</li>
+        <li>Then reduce Count by 1.</li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <h3 id="card-1-strike">Card 1: Strike</h3>
@@ -697,7 +727,7 @@
     <span><strong>Type:</strong> Physical, Attack</span>
     <span><strong>Target:</strong> Enemies</span>
   </div>
-  <p><strong>Effect</strong></p>
+  <p class="card-block__heading">Effect</p>
   <p>Deal 10 damage. Gain 1 Ultimate Meter.</p>
 </div>
 
@@ -708,7 +738,7 @@
     <span><strong>Type:</strong> Physical, Defense</span>
     <span><strong>Target:</strong> Enemies</span>
   </div>
-  <p><strong>Effect</strong></p>
+  <p class="card-block__heading">Effect</p>
   <p>Gain 10 Shield. Gain 1 Ultimate Meter.</p>
 </div>
 
@@ -719,7 +749,7 @@
     <span><strong>Type:</strong> Physical, Attack, Slash, Debuff</span>
     <span><strong>Target:</strong> Enemies</span>
   </div>
-  <p><strong>Effect</strong></p>
+  <p class="card-block__heading">Effect</p>
   <p>Deal 12 damage. Spend 1 Forte Count to inflict 2 Spectro Frazzle.</p>
 </div>
 
@@ -730,7 +760,7 @@
     <span><strong>Type:</strong> Physical, Attack, Blunt</span>
     <span><strong>Target:</strong> Enemies</span>
   </div>
-  <p><strong>Effect</strong></p>
+  <p class="card-block__heading">Effect</p>
   <p>Deal 10 damage. Gain 1 Forte.</p>
 </div>
 
@@ -741,7 +771,7 @@
     <span><strong>Type:</strong> Magical, Debuff</span>
     <span><strong>Target:</strong> Enemies</span>
   </div>
-  <p><strong>Effect</strong></p>
+  <p class="card-block__heading">Effect</p>
   <p>Inflict 1 Stagnant and +2 Stagnant Count.</p>
 </div>
 
@@ -752,7 +782,7 @@
     <span><strong>Type:</strong> Magical, Attack, Blunt, Recovery, Debuff</span>
     <span><strong>Target:</strong> Enemies</span>
   </div>
-  <p><strong>Effect</strong></p>
+  <p class="card-block__heading">Effect</p>
   <p>Deal 15 damage. Heal 15 HP. Inflict 6 Spectro Frazzle.</p>
 </div>
 

@@ -14,17 +14,23 @@
 </div>
 
 ### Innates
-<div class="card-block keyword-card">
-  <p><strong>Innate Name</strong></p>
+<div class="card-block">
+  <p class="card-block__title">Innate Name</p>
   <p>Concise innate effect description.</p>
 </div>
 
 ### Keywords
 <div class="card-block keyword-card">
-  <p><strong>Keyword 1</strong></p>
-  <p>Keyword 1 details or limits.</p>
-  <p><strong>Keyword 2</strong></p>
-  <p>Keyword 2 details or limits.</p>
+  <ul class="keyword-card__list">
+    <li class="keyword-card__item">
+      <a class="keyword-card__name" href="../../keywords/">Keyword 1</a>
+      <span class="keyword-card__meta">Keyword 1 details or limits.</span>
+    </li>
+    <li class="keyword-card__item">
+      <a class="keyword-card__name" href="../../keywords/">Keyword 2</a>
+      <span class="keyword-card__meta">Keyword 2 details or limits.</span>
+    </li>
+  </ul>
 </div>
 
 ### Card 1: Card Name
@@ -33,7 +39,7 @@
     <span><strong>Cost:</strong> Value</span>
     <span><strong>Type:</strong> Tags</span>
   </div>
-  <p><strong>Effect</strong></p>
+  <p class="card-block__heading">Effect</p>
   <p>Effect description.</p>
   <p><strong>Conditional:</strong> Conditional text (if any).</p>
 </div>
@@ -44,7 +50,7 @@
     <span><strong>Cost:</strong> Value</span>
     <span><strong>Type:</strong> Tags</span>
   </div>
-  <p><strong>Effect</strong></p>
+  <p class="card-block__heading">Effect</p>
   <p>Effect description.</p>
   <p><strong>Conditional:</strong> Conditional text (if any).</p>
 </div>
@@ -55,7 +61,7 @@
     <span><strong>Cost:</strong> Value</span>
     <span><strong>Type:</strong> Tags</span>
   </div>
-  <p><strong>Effect</strong></p>
+  <p class="card-block__heading">Effect</p>
   <p>Effect description.</p>
   <p><strong>Conditional:</strong> Conditional text (if any).</p>
 </div>
@@ -66,7 +72,7 @@
     <span><strong>Cost:</strong> Value</span>
     <span><strong>Type:</strong> Tags</span>
   </div>
-  <p><strong>Effect</strong></p>
+  <p class="card-block__heading">Effect</p>
   <p>Effect description.</p>
   <p><strong>Conditional:</strong> Conditional text (if any).</p>
 </div>
@@ -77,7 +83,7 @@
     <span><strong>Cost:</strong> Value</span>
     <span><strong>Type:</strong> Tags</span>
   </div>
-  <p><strong>Effect</strong></p>
+  <p class="card-block__heading">Effect</p>
   <p>Effect description.</p>
   <p><strong>Conditional:</strong> Conditional text (if any).</p>
 </div>
@@ -88,7 +94,7 @@
     <span><strong>Cost:</strong> Value</span>
     <span><strong>Type:</strong> Tags</span>
   </div>
-  <p><strong>Effect</strong></p>
+  <p class="card-block__heading">Effect</p>
   <p>Effect description.</p>
   <p><strong>Conditional:</strong> Conditional text (if any).</p>
 </div>

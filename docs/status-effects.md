@@ -38,30 +38,30 @@ Use the filter to quickly locate a mode, rule, or attribute.
 
 <div class="status-entry" id="status-zero-value-mode">
   <h3>Zero-value mode</h3>
-  <p>Fixed at 1. The value exists for consistency, not scaling.</p>
+  <p class="status-entry__desc">Fixed at 1. The value exists for consistency, not scaling.</p>
 </div>
 
 <div class="status-entry" id="status-single-value-mode">
   <h3>Single-value mode</h3>
-  <p>One value (often Count, Stack, or Value) defines the effect and/or duration.</p>
+  <p class="status-entry__desc">One value (often Count, Stack, or Value) defines the effect and/or duration.</p>
 </div>
 
 <div class="status-entry" id="status-double-value-mode">
   <h3>Double-value mode</h3>
-  <p>Two values: Potency (strength) and Count (duration).</p>
+  <p class="status-entry__desc">Two values: Potency (strength) and Count (duration).</p>
 </div>
 
 <div class="status-entry" id="status-removal-at-zero">
   <h3>Removal at 0</h3>
-  <p>In single- and double-value modes, reaching 0 on any value removes the status effect.</p>
+  <p class="status-entry__desc">In single- and double-value modes, reaching 0 on any value removes the status effect.</p>
 </div>
 
 <div class="status-entry" id="status-consumption-order">
   <h3>Consumption order</h3>
-  <p>Status effect values are always consumed before they are gained or inflicted.</p>
+  <p class="status-entry__desc">Status effect values are always consumed before they are gained or inflicted.</p>
 </div>
 
 <div class="status-entry" id="status-base-and-max">
   <h3>Base Value and Max Value</h3>
-  <p>Base Value is the default on infliction; Max Value caps growth (default 99).</p>
+  <p class="status-entry__desc">Base Value is the default on infliction; Max Value caps growth (default 99).</p>
 </div>
