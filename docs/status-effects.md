@@ -31,7 +31,10 @@ This page explains what status effects are and how their values work.
 
 Use the filter to quickly locate a mode, rule, or attribute.
 
-<input type="text" id="status-filter" placeholder="Filter status effects..." />
+<div class="ua-filter">
+  <label class="ua-filter__label" for="status-filter">Filter status effects</label>
+  <input class="ua-filter__input" type="search" id="status-filter" placeholder="Type to filter..." autocomplete="off" spellcheck="false" />
+</div>
 
 <div class="status-entry" id="status-zero-value-mode">
   <h3>Zero-value mode</h3>

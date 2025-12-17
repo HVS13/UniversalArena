@@ -2,7 +2,10 @@
 
 Pick a character to view their cards. Use the filter to narrow by name, version, or tags. Replace the placeholders as you add more heroes.
 
-<input type="text" id="character-filter" placeholder="Filter by name, version, or tags" />
+<div class="ua-filter">
+  <label class="ua-filter__label" for="character-filter">Filter characters</label>
+  <input class="ua-filter__input" type="search" id="character-filter" placeholder="Type a name, version, or tag..." autocomplete="off" spellcheck="false" />
+</div>
 
 <div class="character-grid">
   <a class="character-card" href="rover/" data-name="Rover" data-version="Spectro" data-tags="spectro,ultimate,meter">

@@ -2,7 +2,7 @@
 
 <div class="character-header">
   <div class="character-image">
-        <img src="https://vignette.wikia.nocookie.net/wutheringwaves/images/7/70/Rover_1.png/revision/latest?cb=20240420140302" alt="Rover portrait" />
+    <img src="https://vignette.wikia.nocookie.net/wutheringwaves/images/7/70/Rover_1.png/revision/latest?cb=20240420140302" alt="Rover portrait" loading="lazy" decoding="async" />
   </div>
   <div class="character-details">
     <div class="character-meta">

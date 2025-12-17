@@ -2,7 +2,10 @@
 
 This page holds the full keyword reference. Use the filter to navigate large lists efficiently.
 
-<input type="text" id="keyword-filter" placeholder="Filter keywords..." />
+<div class="ua-filter">
+  <label class="ua-filter__label" for="keyword-filter">Filter keywords</label>
+  <input class="ua-filter__input" type="search" id="keyword-filter" placeholder="Type to filter..." autocomplete="off" spellcheck="false" />
+</div>
 
 <div class="keyword-entry" id="keyword-forte">
   <h3>Forte</h3>

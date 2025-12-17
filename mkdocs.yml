@@ -16,6 +16,7 @@ theme:
         name: Switch to light mode
 nav:
   - Home: index.md
+  - Adding Content: adding-content.md
   - Terminology: terminology.md
   - Keywords: keywords.md
   - Status Effects: status-effects.md
