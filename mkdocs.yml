@@ -26,7 +26,7 @@ plugins:
   - search
 nav:
   - Home: index.md
-  - Adding Content: adding-content.md
+  # - Adding Content: adding-content.md
   - Terminology: terminology.md
   - Keywords: keywords.md
   - Status Effects: status-effects.md

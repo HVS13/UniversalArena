@@ -18,7 +18,7 @@ This page holds the full keyword reference. Use the filter to navigate large lis
 <div class="ua-entry keyword-entry" id="keyword-spectro-frazzle">
   <p class="ua-entry__title">Spectro Frazzle</p>
   <p class="ua-entry__meta"><span class="ua-pill">Max</span> 10 stacks.</p>
-  <p class="ua-entry__desc"><span class="ua-pill">Turn End</span> Inflict damage equal to <strong>5 × Stack</strong>. Then reduce Stack by 1.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Inflict damage equal to <strong>5 × Stack</strong>. Then reduce Stack by 1.</p>
 </div>
 
 <div class="ua-entry keyword-entry" id="keyword-stagnant-potency">
