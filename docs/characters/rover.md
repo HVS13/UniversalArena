@@ -15,13 +15,18 @@
 
 ### Innates
 <div class="card-block keyword-card">
-  <p><strong>World in a Grain of Sand:</strong> Gain 1 Ultimate Meter each time this character card is played.</p>
+  <p><strong>World in a Grain of Sand</strong></p>
+  <p>Gain 1 Ultimate Meter each time this character card is played.</p>
 </div>
 
 ### Keywords
 <div class="card-block keyword-card">
-  <p><strong>Forte:</strong> Max Stacks: 2.</p>
-  <p><strong>Spectro Frazzle:</strong> Max Stacks: 10. Turn End: Deal 5 damage per Count. Reduced by 1 at Turn End.</p>
+  <p><strong>Forte</strong></p>
+  <p>Max Stacks: 2.</p>
+  <p><strong>Spectro Frazzle</strong></p>
+  <p>Max Stacks: 10.</p>
+  <p>Turn End: Deal 5 damage per Stack.</p>
+  <p>Reduced by 1 at Turn End.</p>
 </div>
 
 ### Card 1: Strike
@@ -31,7 +36,8 @@
     <span><strong>Type:</strong> Physical, Attack</span>
     <span><strong>Target:</strong> Enemies</span>
   </div>
-  <p><strong>Effect:</strong> Deal 10 damage. Gain 1 Ultimate Meter.</p>
+  <p><strong>Effect</strong></p>
+  <p>Deal 10 damage. Gain 1 Ultimate Meter.</p>
 </div>
 
 ### Card 2: Defend
@@ -41,7 +47,8 @@
     <span><strong>Type:</strong> Physical, Defense</span>
     <span><strong>Target:</strong> Enemies</span>
   </div>
-  <p><strong>Effect:</strong> Gain 10 Shield. Gain 1 Ultimate Meter.</p>
+  <p><strong>Effect</strong></p>
+  <p>Gain 10 Shield. Gain 1 Ultimate Meter.</p>
 </div>
 
 ### Card 3: Resonating Slashes
@@ -51,7 +58,8 @@
     <span><strong>Type:</strong> Physical, Attack, Slash, Debuff</span>
     <span><strong>Target:</strong> Enemies</span>
   </div>
-  <p><strong>Effect:</strong> Deal 12 damage. Spend 1 Forte Count to inflict 2 Spectro Frazzle.</p>
+  <p><strong>Effect</strong></p>
+  <p>Deal 12 damage. Spend 1 Forte Count to inflict 2 Spectro Frazzle.</p>
 </div>
 
 ### Card 4: Aftertune
@@ -61,7 +69,8 @@
     <span><strong>Type:</strong> Physical, Attack, Blunt</span>
     <span><strong>Target:</strong> Enemies</span>
   </div>
-  <p><strong>Effect:</strong> Deal 10 Damage. Gain 1 Forte.</p>
+  <p><strong>Effect</strong></p>
+  <p>Deal 10 damage. Gain 1 Forte.</p>
 </div>
 
 ### Card 5: Instant
@@ -71,7 +80,8 @@
     <span><strong>Type:</strong> Magical, Debuff</span>
     <span><strong>Target:</strong> Enemies</span>
   </div>
-  <p><strong>Effect:</strong> Inflict 1 Stagnant and +2 Stagnant Count.</p>
+  <p><strong>Effect</strong></p>
+  <p>Inflict 1 Stagnant and +2 Stagnant Count.</p>
 </div>
 
 ### Ultimate: Echoing Orchestra
@@ -81,5 +91,6 @@
     <span><strong>Type:</strong> Magical, Attack, Blunt, Recovery, Debuff</span>
     <span><strong>Target:</strong> Enemies</span>
   </div>
-  <p><strong>Effect:</strong> Deal 15 damage and heal 15 HP. Inflict 6 Spectro Frazzle.</p>
+  <p><strong>Effect</strong></p>
+  <p>Deal 15 damage. Heal 15 HP. Inflict 6 Spectro Frazzle.</p>
 </div>
