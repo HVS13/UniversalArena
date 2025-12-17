@@ -33,6 +33,18 @@ This page is the reference glossary for game terms. Use the filter to quickly lo
       <td>Shield</td>
       <td>Temporary protection that soaks damage before HP.</td>
     </tr>
+    <tr>
+      <td>Self</td>
+      <td>Character that use the Card.</td>
+    </tr>
+    <tr>
+      <td>Allies</td>
+      <td>All Characters on the same team.</td>
+    </tr>
+    <tr>
+      <td>Enemies</td>
+      <td>All Characters on the opposite team.</td>
+    </tr>
   </tbody>
 </table>
 </div>
