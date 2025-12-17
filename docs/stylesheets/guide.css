@@ -134,6 +134,10 @@
   margin: 0;
 }
 
+.keyword-card p {
+  margin: 0.2rem 0;
+}
+
 .keyword-chips {
   display: flex;
   flex-wrap: wrap;

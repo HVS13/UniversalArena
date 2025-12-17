@@ -72,12 +72,13 @@
 }
 
 .character-image {
-  flex: 0 0 220px;
+  flex: 0 0 268px;
+  max-width: 100%;
   text-align: center;
 }
 
 .character-image img {
-  width: 100%;
+  width: min(268px, 100%);
   height: auto;
   border-radius: 6px;
   background: transparent;
@@ -133,6 +134,10 @@
   margin: 0;
 }
 
+.keyword-card p {
+  margin: 0.2rem 0;
+}
+
 .keyword-chips {
   display: flex;
   flex-wrap: wrap;
@@ -174,7 +179,7 @@
   }
 
   .character-image img {
-    max-width: 100%;
+    width: 100%;
   }
 }
 

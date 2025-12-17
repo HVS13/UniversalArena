@@ -8,17 +8,20 @@
     <div class="character-meta">
       <p><strong>Name:</strong> Rover</p>
       <p><strong>Version:</strong> Spectro</p>
-      <p><strong>Innate:</strong> Gain +1 Ultimate Meter each time this character card is played.</p>
+      <p><strong>Difficulty:</strong> Easy</p>
     </div>
   </div>
 </div>
 
+### Innates
+<div class="card-block keyword-card">
+  <p><strong>World in a Grain of Sand:</strong> Gain +1 Ultimate Meter each time this character card is played.</p>
+</div>
+
 ### Keywords
 <div class="card-block keyword-card">
-  <ul>
-    <li><strong>Forte:</strong> Max 2 Count.</li>
-    <li><strong>Spectro Frazzle:</strong> Max 10 Count. At the end of the opponent's turn, deal 5 damage per Count, then reduce Count by 1.</li>
-  </ul>
+  <p><strong>Forte:</strong> Max 2 Count.</p>
+  <p><strong>Spectro Frazzle:</strong> Max 10 Count. At the end of the opponent's turn, deal 5 damage per Count, then reduce Count by 1.</p>
 </div>
 
 ### Card 1: Strike
