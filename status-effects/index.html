@@ -614,6 +614,48 @@
   <input class="ua-filter__input" type="search" id="status-filter" placeholder="Type to filter..." autocomplete="off" spellcheck="false" />
 </div>
 
+<div class="ua-entry status-entry" id="status-burn">
+  <p class="ua-entry__title">Burn</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 999.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Allies Card Played</span> Take <strong>Potency</strong> damage. Then reduce <strong>Count</strong> by <strong>Energy</strong> spent.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Take <strong>Potency</strong> damage. Then reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
+</div>
+
+<div class="ua-entry status-entry" id="status-poison">
+  <p class="ua-entry__title">Poison</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 999.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Allies Card Played</span> Increase <strong>Count</strong> by <strong>1</strong>.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Take <strong>Potency</strong> damage. Then reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
+</div>
+
+<div class="ua-entry status-entry" id="status-haste">
+  <p class="ua-entry__title">Haste</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Positive.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 10.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn Start</span> Increase number of cards drawn by <strong>Stack</strong>.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Stack</strong> by <strong>Halve</strong>.</p>
+</div>
+
+<div class="ua-entry status-entry" id="status-slowed">
+  <p class="ua-entry__title">Slowed</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 10.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn Start</span> Reduce number of cards drawn by <strong>Stack</strong>.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Stack</strong> by <strong>Halve</strong>.</p>
+</div>
+
+<div class="ua-entry status-entry" id="status-stunned">
+  <p class="ua-entry__title">Stunned</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 1.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn Start</span> Skip the turn.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Stack</strong> by <strong>1</strong>.</p>
+</div>
+
 <div class="ua-entry status-entry" id="status-zero-value-mode">
   <p class="ua-entry__title">Zero-value mode</p>
   <p class="ua-entry__desc">Fixed at 1. The value exists for consistency, not scaling.</p>
