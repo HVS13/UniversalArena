@@ -23,3 +23,15 @@ See the full glossary on the Terminology page.
 Keyword definitions live on a dedicated page with filtering to keep long lists readable.
 
 - [Keywords](keywords.md)
+
+## Status Effects
+
+Status effect rules and reference entries live on a dedicated page.
+
+- [Status Effects](status-effects.md)
+
+## Characters
+
+Browse character cards and their keyword callouts.
+
+- [Characters](characters/index.md)

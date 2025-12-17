@@ -2,41 +2,17 @@
 
 This page is the reference glossary for game terms. Use the filter to quickly locate an entry.
 
-<input type="text" id="term-filter" placeholder="Filter terms..." />
-<div class="az-index" data-target="term-filter">
-  <button type="button" data-letter="">All</button>
-  <button type="button" data-letter="0-9">0-9</button>
-  <button type="button" data-letter="A">A</button>
-  <button type="button" data-letter="B">B</button>
-  <button type="button" data-letter="C">C</button>
-  <button type="button" data-letter="D">D</button>
-  <button type="button" data-letter="E">E</button>
-  <button type="button" data-letter="F">F</button>
-  <button type="button" data-letter="G">G</button>
-  <button type="button" data-letter="H">H</button>
-  <button type="button" data-letter="I">I</button>
-  <button type="button" data-letter="J">J</button>
-  <button type="button" data-letter="K">K</button>
-  <button type="button" data-letter="L">L</button>
-  <button type="button" data-letter="M">M</button>
-  <button type="button" data-letter="N">N</button>
-  <button type="button" data-letter="O">O</button>
-  <button type="button" data-letter="P">P</button>
-  <button type="button" data-letter="Q">Q</button>
-  <button type="button" data-letter="R">R</button>
-  <button type="button" data-letter="S">S</button>
-  <button type="button" data-letter="T">T</button>
-  <button type="button" data-letter="U">U</button>
-  <button type="button" data-letter="V">V</button>
-  <button type="button" data-letter="W">W</button>
-  <button type="button" data-letter="X">X</button>
-  <button type="button" data-letter="Y">Y</button>
-  <button type="button" data-letter="Z">Z</button>
-  <button type="button" data-letter="#">#</button>
+## Reference
+
+<div class="ua-filter">
+  <label class="ua-filter__label" for="term-filter">Filter terms</label>
+  <input class="ua-filter__input" type="search" id="term-filter" placeholder="Type to filter..." autocomplete="off" spellcheck="false" />
 </div>
 
-<div class="callout">Add new rows or columns here as rules evolve.</div>
+!!! tip
+    Add new rows or columns here as rules evolve.
 
+<div class="ua-table">
 <table id="terminology-table">
   <thead>
     <tr>
@@ -59,3 +35,4 @@ This page is the reference glossary for game terms. Use the filter to quickly lo
     </tr>
   </tbody>
 </table>
+</div>

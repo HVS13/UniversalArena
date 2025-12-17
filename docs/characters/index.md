@@ -2,47 +2,19 @@
 
 Pick a character to view their cards. Use the filter to narrow by name, version, or tags. Replace the placeholders as you add more heroes.
 
-<input type="text" id="character-filter" placeholder="Filter by name, version, or tags" />
-<div class="az-index" data-target="character-filter">
-  <button type="button" data-letter="">All</button>
-  <button type="button" data-letter="0-9">0-9</button>
-  <button type="button" data-letter="A">A</button>
-  <button type="button" data-letter="B">B</button>
-  <button type="button" data-letter="C">C</button>
-  <button type="button" data-letter="D">D</button>
-  <button type="button" data-letter="E">E</button>
-  <button type="button" data-letter="F">F</button>
-  <button type="button" data-letter="G">G</button>
-  <button type="button" data-letter="H">H</button>
-  <button type="button" data-letter="I">I</button>
-  <button type="button" data-letter="J">J</button>
-  <button type="button" data-letter="K">K</button>
-  <button type="button" data-letter="L">L</button>
-  <button type="button" data-letter="M">M</button>
-  <button type="button" data-letter="N">N</button>
-  <button type="button" data-letter="O">O</button>
-  <button type="button" data-letter="P">P</button>
-  <button type="button" data-letter="Q">Q</button>
-  <button type="button" data-letter="R">R</button>
-  <button type="button" data-letter="S">S</button>
-  <button type="button" data-letter="T">T</button>
-  <button type="button" data-letter="U">U</button>
-  <button type="button" data-letter="V">V</button>
-  <button type="button" data-letter="W">W</button>
-  <button type="button" data-letter="X">X</button>
-  <button type="button" data-letter="Y">Y</button>
-  <button type="button" data-letter="Z">Z</button>
-  <button type="button" data-letter="#">#</button>
+<div class="ua-filter">
+  <label class="ua-filter__label" for="character-filter">Filter characters</label>
+  <input class="ua-filter__input" type="search" id="character-filter" placeholder="Type a name, version, or tag..." autocomplete="off" spellcheck="false" />
 </div>
 
 <div class="character-grid">
-  <a class="character-card" href="rover/" data-name="Rover" data-version="Spectro" data-tags="spectro,ultimate,meter">
+  <a class="character-card" href="rover/" data-name="Rover" data-version="Spectro" data-tags="Spectro, Ultimate Meter">
     <div class="character-card__title">Rover</div>
     <div class="character-card__meta">Version: Spectro</div>
     <div class="character-card__tags">Tags: Spectro, Ultimate Meter</div>
     <p class="character-card__summary">Starter-friendly; builds meter quickly.</p>
   </a>
-  <a class="character-card" href="template/" data-name="Template Character" data-version="TODO" data-tags="placeholder">
+  <a class="character-card" href="template/" data-name="Template Character" data-version="[[REPLACE WITH VERSION]]" data-tags="[[REPLACE WITH TAGS]]">
     <div class="character-card__title">Template Character</div>
     <div class="character-card__meta">Version: [[REPLACE WITH VERSION]]</div>
     <div class="character-card__tags">Tags: [[REPLACE WITH TAGS]]</div>

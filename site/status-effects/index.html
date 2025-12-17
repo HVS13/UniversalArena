@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://HVS13.github.io/UniversalArena/terminology/">
+        <link rel="canonical" href="https://HVS13.github.io/UniversalArena/status-effects/">
       
       
-        <link rel="prev" href="../adding-content/">
+        <link rel="prev" href="../keywords/">
       
       
-        <link rel="next" href="../keywords/">
+        <link rel="next" href="../characters/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Terminology - Universal Arena</title>
+        <title>Status Effects - Universal Arena</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#terminology" class="md-skip">
+        <a href="#status-effects" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Terminology
+              Status Effects
             
           </span>
         </div>
@@ -277,6 +277,50 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../terminology/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Terminology
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../keywords/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Keywords
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -294,7 +338,7 @@
   
   
   <span class="md-ellipsis">
-    Terminology
+    Status Effects
     
   </span>
   
@@ -307,7 +351,7 @@
   
   
   <span class="md-ellipsis">
-    Terminology
+    Status Effects
     
   </span>
   
@@ -342,50 +386,6 @@
   
 </nav>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../keywords/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Keywords
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../status-effects/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Status Effects
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -555,41 +555,59 @@
 
 
 
-<h1 id="terminology">Terminology<a class="headerlink" href="#terminology" title="Permanent link">&para;</a></h1>
-<p>This page is the reference glossary for game terms. Use the filter to quickly locate an entry.</p>
+<h1 id="status-effects">Status Effects<a class="headerlink" href="#status-effects" title="Permanent link">&para;</a></h1>
+<p>This page explains what status effects are and how their values work.</p>
+<details class="info">
+<summary>Explanation</summary>
+<p>Status Effects are conditions that can be applied to units on either side of a battle through the use of passives, skills, ultimates, and even other status effects.</p>
+<p>A status effect can use up to two values to function, which will be called "modes" here for clarity:</p>
+<ul>
+<li><strong>Zero-value mode:</strong> the value is always fixed at 1 and has no inherent effect on the status effect's strength.</li>
+<li><strong>Single-value mode:</strong> one value is typically called Count, Stack, or Value.</li>
+<li><strong>Double-value mode:</strong> two values (Potency + Count). Generally, Potency determines strength, while Count determines duration.</li>
+</ul>
+<p>In single-value or double-value modes, if one or more of the values reach 0, the status effect is removed from the unit. Values are always consumed before they are gained or inflicted.</p>
+<p>Status effects also come with a few attributes:</p>
+<ul>
+<li><strong>Base Value:</strong> the initial value on infliction if none is specified.</li>
+<li><strong>Max Value:</strong> the maximum value (default 99).</li>
+</ul>
+</details>
 <h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
+<p>Use the filter to quickly locate a mode, rule, or attribute.</p>
 <div class="ua-filter">
-  <label class="ua-filter__label" for="term-filter">Filter terms</label>
-  <input class="ua-filter__input" type="search" id="term-filter" placeholder="Type to filter..." autocomplete="off" spellcheck="false" />
+  <label class="ua-filter__label" for="status-filter">Filter status effects</label>
+  <input class="ua-filter__input" type="search" id="status-filter" placeholder="Type to filter..." autocomplete="off" spellcheck="false" />
 </div>
 
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Add new rows or columns here as rules evolve.</p>
+<div class="ua-entry status-entry" id="status-zero-value-mode">
+  <p class="ua-entry__title">Zero-value mode</p>
+  <p class="ua-entry__desc">Fixed at 1. The value exists for consistency, not scaling.</p>
 </div>
-<div class="ua-table">
-<table id="terminology-table">
-  <thead>
-    <tr>
-      <th>Term</th>
-      <th>Definition</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Initiative</td>
-      <td>Who takes the first action each round.</td>
-    </tr>
-    <tr>
-      <td>Ultimate Meter</td>
-      <td>Resource that powers the strongest abilities.</td>
-    </tr>
-    <tr>
-      <td>Shield</td>
-      <td>Temporary protection that soaks damage before HP.</td>
-    </tr>
-  </tbody>
-</table>
+
+<div class="ua-entry status-entry" id="status-single-value-mode">
+  <p class="ua-entry__title">Single-value mode</p>
+  <p class="ua-entry__desc">One value (often Count, Stack, or Value) defines the effect and/or duration.</p>
+</div>
+
+<div class="ua-entry status-entry" id="status-double-value-mode">
+  <p class="ua-entry__title">Double-value mode</p>
+  <p class="ua-entry__desc">Two values: Potency (strength) and Count (duration).</p>
+</div>
+
+<div class="ua-entry status-entry" id="status-removal-at-zero">
+  <p class="ua-entry__title">Removal at 0</p>
+  <p class="ua-entry__desc">In single- and double-value modes, reaching 0 on any value removes the status effect.</p>
+</div>
+
+<div class="ua-entry status-entry" id="status-consumption-order">
+  <p class="ua-entry__title">Consumption order</p>
+  <p class="ua-entry__desc">Status effect values are always consumed before they are gained or inflicted.</p>
+</div>
+
+<div class="ua-entry status-entry" id="status-base-and-max">
+  <p class="ua-entry__title">Base Value and Max Value</p>
+  <p class="ua-entry__desc">Base Value is the default on infliction; Max Value caps growth (default 99).</p>
 </div>
 
 

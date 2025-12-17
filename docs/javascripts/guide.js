@@ -1,104 +1,81 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const sanitize = (value) => (value || '').toString().toLowerCase();
+(() => {
+  const normalize = (value) => (value ?? '').toString().toLowerCase();
 
-  const matchesLetter = (label, letter) => {
-    if (!letter) return true;
-    const first = (label || '').trim().charAt(0).toLowerCase();
-    if (!first) return false;
-    if (letter === '0-9') return first >= '0' && first <= '9';
-    if (letter === '#') return !(/[a-z0-9]/i).test(first);
-    return first === letter;
+  const getMaterialBase = () => {
+    const config = document.getElementById('__config');
+    if (!config) return '';
+
+    try {
+      return JSON.parse(config.textContent ?? '{}')?.base ?? '';
+    } catch {
+      return '';
+    }
   };
 
-  document.querySelectorAll('.az-index').forEach((bar) => {
-    const inputId = bar.dataset.target;
-    const input = inputId ? document.getElementById(inputId) : null;
-    if (!input) return;
-    bar.querySelectorAll('button[data-letter]').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        input.dataset.letterFilter = btn.dataset.letter || '';
-        input.dispatchEvent(new Event('input', { bubbles: true }));
+  const setupFilter = ({ input, items, getIndexText }) => {
+    if (!input || !items.length) return;
+
+    const indexed = items.map((item) => ({
+      item,
+      text: normalize(getIndexText(item)),
+    }));
+
+    const apply = () => {
+      const term = normalize(input.value).trim();
+      indexed.forEach(({ item, text }) => {
+        const matches = !term || text.includes(term);
+        item.toggleAttribute('hidden', !matches);
       });
+    };
+
+    input.addEventListener('input', apply, { passive: true });
+    input.addEventListener('search', apply, { passive: true });
+    apply();
+  };
+
+  const init = () => {
+    // Characters list filtering
+    setupFilter({
+      input: document.getElementById('character-filter'),
+      items: Array.from(document.querySelectorAll('.character-card')),
+      getIndexText: (card) =>
+        `${card.dataset.name ?? ''} ${card.dataset.version ?? ''} ${card.dataset.tags ?? ''}`,
     });
-  });
 
-  // Characters list filtering
-  const characterInput = document.getElementById('character-filter');
-  const characterCards = Array.from(document.querySelectorAll('.character-card'));
-  if (characterInput && characterCards.length) {
-    const filterCharacters = () => {
-      const term = sanitize(characterInput.value);
-      const letter = sanitize(characterInput.dataset.letterFilter || '');
-      characterCards.forEach((card) => {
-        const combined = sanitize(
-          `${card.dataset.name} ${card.dataset.version} ${card.dataset.tags}`
-        );
-        const nameLabel = sanitize(card.dataset.name || '');
-        const matchesTerm = combined.includes(term);
-        const matchesInitial = matchesLetter(nameLabel, letter);
-        card.style.display = matchesTerm && matchesInitial ? '' : 'none';
-      });
-    };
-    characterInput.addEventListener('input', filterCharacters);
-    filterCharacters();
-  }
-
-  // Terminology filtering
-  const termInput = document.getElementById('term-filter');
-  const termRows = Array.from(document.querySelectorAll('#terminology-table tbody tr'));
-  if (termInput && termRows.length) {
-    const filterTerms = () => {
-      const term = sanitize(termInput.value);
-      const letter = sanitize(termInput.dataset.letterFilter || '');
-      termRows.forEach((row) => {
-        const cells = row.querySelectorAll('td');
-        const label = cells.length ? sanitize(cells[0].textContent) : sanitize(row.textContent);
-        const matchesTerm = row.textContent.toLowerCase().includes(term);
-        const matchesInitial = matchesLetter(label, letter);
-        row.style.display = matchesTerm && matchesInitial ? '' : 'none';
-      });
-    };
-    termInput.addEventListener('input', filterTerms);
-    filterTerms();
-  }
-
-  // Keyword filtering
-  const keywordInput = document.getElementById('keyword-filter');
-  const keywordEntries = Array.from(document.querySelectorAll('.keyword-entry'));
-  if (keywordInput && keywordEntries.length) {
-    const filterKeywords = () => {
-      const term = sanitize(keywordInput.value);
-      const letter = sanitize(keywordInput.dataset.letterFilter || '');
-      keywordEntries.forEach((entry) => {
-        const heading = entry.querySelector('h3');
-        const label = heading ? sanitize(heading.textContent) : sanitize(entry.textContent);
-        const matchesTerm = entry.textContent.toLowerCase().includes(term);
-        const matchesInitial = matchesLetter(label, letter);
-        entry.style.display = matchesTerm && matchesInitial ? '' : 'none';
-      });
-    };
-    keywordInput.addEventListener('input', filterKeywords);
-    filterKeywords();
-  }
-
-  // Keyword chip click-to-scroll and highlight
-  const chips = Array.from(document.querySelectorAll('.keyword-chip'));
-  chips.forEach((chip) => {
-    chip.addEventListener('click', () => {
-      const targetId = chip.dataset.target;
-      const target = targetId ? document.getElementById(targetId) : null;
-      if (!target) return;
-
-      target.classList.remove('keyword-highlight');
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-      window.setTimeout(() => {
-        target.classList.add('keyword-highlight');
-      }, 50);
-
-      window.setTimeout(() => {
-        target.classList.remove('keyword-highlight');
-      }, 1500);
+    // Terminology filtering
+    setupFilter({
+      input: document.getElementById('term-filter'),
+      items: Array.from(document.querySelectorAll('#terminology-table tbody tr')),
+      getIndexText: (row) => row.textContent,
     });
-  });
-});
+
+    // Keyword filtering
+    setupFilter({
+      input: document.getElementById('keyword-filter'),
+      items: Array.from(document.querySelectorAll('.keyword-entry')),
+      getIndexText: (entry) => entry.textContent,
+    });
+
+    // Keyword links (same markup can be copied between pages)
+    const base = getMaterialBase();
+    const onKeywordsPage = /\/keywords\/($|index\.html$)/.test(window.location.pathname);
+    Array.from(document.querySelectorAll('a.ua-keyword-link[data-keyword]')).forEach((link) => {
+      const keywordId = link.dataset.keyword;
+      if (!keywordId) return;
+      link.href = onKeywordsPage ? `#${keywordId}` : `${base}/keywords/#${keywordId}`;
+    });
+
+    // Status effects filtering
+    setupFilter({
+      input: document.getElementById('status-filter'),
+      items: Array.from(document.querySelectorAll('.status-entry')),
+      getIndexText: (entry) => entry.textContent,
+    });
+  };
+
+  if (window.document$ && typeof window.document$.subscribe === 'function') {
+    window.document$.subscribe(init);
+  } else {
+    document.addEventListener('DOMContentLoaded', init);
+  }
+})();
