@@ -49,6 +49,21 @@ document.addEventListener('DOMContentLoaded', () => {
     filterKeywords();
   }
 
+  // Status effects filtering
+  const statusInput = document.getElementById('status-filter');
+  const statusEntries = Array.from(document.querySelectorAll('.status-entry'));
+  if (statusInput && statusEntries.length) {
+    const filterStatuses = () => {
+      const term = sanitize(statusInput.value);
+      statusEntries.forEach((entry) => {
+        const matchesTerm = entry.textContent.toLowerCase().includes(term);
+        entry.style.display = matchesTerm ? '' : 'none';
+      });
+    };
+    statusInput.addEventListener('input', filterStatuses);
+    filterStatuses();
+  }
+
   // Keyword chip click-to-scroll and highlight
   const chips = Array.from(document.querySelectorAll('.keyword-chip'));
   chips.forEach((chip) => {

@@ -160,12 +160,160 @@
   background: var(--md-default-bg-color);
 }
 
-.keyword-entry {
+.keyword-entry,
+.status-entry {
   border: 1px solid var(--md-default-fg-color--lighter);
   border-radius: 6px;
   padding: 0.75rem;
   background: var(--md-default-bg-color);
   margin-bottom: 0.75rem;
+}
+
+.status-entry h3 {
+  margin: 0 0 0.35rem;
+}
+
+.status-explainer {
+  margin: 1rem 0 1.25rem;
+}
+
+.status-explanation {
+  border: 1px solid #4b8cff;
+  border-radius: 10px;
+  background: #1f2736;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.24);
+  overflow: hidden;
+}
+
+.status-explanation summary {
+  cursor: pointer;
+  padding: 0.95rem 1.1rem;
+  font-weight: 700;
+  list-style: none;
+  margin: 0;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  box-sizing: border-box;
+  background: transparent;
+  color: #d6def0;
+  position: relative;
+}
+
+.status-explanation summary::-webkit-details-marker {
+  display: none;
+}
+
+.status-explanation summary::before {
+  content: "i";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #3f7bfa;
+  color: #fff;
+  font-weight: 800;
+  box-shadow: 0 0 0 3px rgba(63, 123, 250, 0.25);
+}
+
+.status-explanation summary::after {
+  content: "›";
+  font-size: 1.25rem;
+  color: #cfd8f3;
+  transition: transform 0.2s ease;
+}
+
+.status-explanation[open] summary::after {
+  transform: rotate(90deg);
+}
+
+.status-explanation__body {
+  padding: 0.6rem 1.1rem 1.1rem 3.6rem;
+  color: #e8edf8;
+  background: #191f2c;
+  border-top: 1px solid rgba(63, 123, 250, 0.35);
+}
+
+.status-explanation summary:focus-visible {
+  outline: 2px solid var(--md-accent-fg-color);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.status-explanation__body p,
+.status-explanation__body ul {
+  margin: 0.45rem 0;
+}
+
+.status-explanation__body ul {
+  padding-left: 1.25rem;
+}
+
+/* Status explainer card polish (match mockup) */
+.status-explanation {
+  border-width: 2px;
+}
+
+.status-explanation summary {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.status-explanation summary::before {
+  content: "";
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #3f7bfa;
+  box-shadow: none;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2024%2024%27%3E%3Cpath%20fill%3D%27%230b1220%27%20d%3D%27M3%2017.25V21h3.75L17.81%209.94l-3.75-3.75L3%2017.25zm2.92%202.83H5v-.92l9.06-9.06.92.92L5.92%2020.08zM20.71%207.04c.39-.39.39-1.02%200-1.41l-2.34-2.34a.996.996%200%200%200-1.41%200l-1.83%201.83%203.75%203.75%201.83-1.83z%27/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px 16px;
+}
+
+.status-explanation summary::after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background: #cfd8f3;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2024%2024%27%3E%3Cpath%20fill%3D%27%23000%27%20d%3D%27M9.29%206.71a1%201%200%200%200%200%201.41L13.17%2012l-3.88%203.88a1%201%200%201%200%201.41%201.41l4.59-4.59a1%201%200%200%200%200-1.41l-4.59-4.59a1%201%200%200%200-1.41%200z%27/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2024%2024%27%3E%3Cpath%20fill%3D%27%23000%27%20d%3D%27M9.29%206.71a1%201%200%200%200%200%201.41L13.17%2012l-3.88%203.88a1%201%200%201%200%201.41%201.41l4.59-4.59a1%201%200%200%200%200-1.41l-4.59-4.59a1%201%200%200%200-1.41%200z%27/%3E%3C/svg%3E");
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: 20px 20px;
+  mask-size: 20px 20px;
+  transform-origin: center;
+}
+
+.status-explanation[open] summary::after {
+  transform: rotate(90deg);
+}
+
+[data-md-color-scheme="default"] .status-explanation {
+  background: #f4f7ff;
+  box-shadow: 0 6px 14px rgba(2, 12, 35, 0.08);
+}
+
+[data-md-color-scheme="default"] .status-explanation summary {
+  color: #24324d;
+  background: rgba(75, 140, 255, 0.06);
+}
+
+[data-md-color-scheme="default"] .status-explanation summary::after {
+  background: #24324d;
+}
+
+[data-md-color-scheme="default"] .status-explanation__body {
+  color: #2a3754;
+  background: #ffffff;
+  border-top-color: rgba(75, 140, 255, 0.25);
 }
 
 .keyword-highlight {
@@ -207,4 +355,137 @@
 
 .md-header .md-search__icon {
   color: #fff;
+}
+
+/* Status explainer overrides (Material-like) */
+
+.status-explanation {
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-left: 4px solid var(--md-primary-fg-color);
+  border-radius: 8px;
+  background: var(--md-default-bg-color);
+  box-shadow: none;
+}
+
+[data-md-color-scheme="default"] .status-explanation {
+  background: var(--md-default-bg-color);
+  box-shadow: none;
+}
+
+.status-explanation > summary {
+  cursor: pointer;
+  padding: 0.75rem 0.9rem;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  column-gap: 0.75rem;
+  row-gap: 0.15rem;
+  align-items: center;
+  font-weight: 600;
+  background: var(--md-default-bg-color--light);
+  color: var(--md-default-fg-color);
+}
+
+[data-md-color-scheme="default"] .status-explanation > summary {
+  background: var(--md-default-bg-color--light);
+  color: var(--md-default-fg-color);
+}
+
+.status-explanation > summary::-webkit-details-marker {
+  display: none;
+}
+
+.status-explanation > summary::before {
+  content: none;
+  display: none;
+}
+
+.status-explanation > summary::after {
+  content: "";
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  width: 20px;
+  height: 20px;
+  background: currentColor;
+  opacity: 0.9;
+  transform-origin: center;
+  transition: transform 0.2s ease;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2024%2024%27%3E%3Cpath%20fill%3D%27%23000%27%20d%3D%27M9.29%206.71a1%201%200%200%200%200%201.41L13.17%2012l-3.88%203.88a1%201%200%201%200%201.41%201.41l4.59-4.59a1%201%200%200%200%200-1.41l-4.59-4.59a1%201%200%200%200-1.41%200z%27/%3E%3C/svg%3E")
+    no-repeat center / 20px 20px;
+  mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2024%2024%27%3E%3Cpath%20fill%3D%27%23000%27%20d%3D%27M9.29%206.71a1%201%200%200%200%200%201.41L13.17%2012l-3.88%203.88a1%201%200%201%200%201.41%201.41l4.59-4.59a1%201%200%200%200%200-1.41l-4.59-4.59a1%201%200%200%200-1.41%200z%27/%3E%3C/svg%3E")
+    no-repeat center / 20px 20px;
+}
+
+[data-md-color-scheme="default"] .status-explanation > summary::after {
+  background: currentColor;
+}
+
+.status-explanation[open] > summary::after {
+  transform: rotate(90deg);
+}
+
+.status-explanation > summary:focus-visible {
+  outline: 2px solid var(--md-accent-fg-color);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.status-explanation__title {
+  grid-column: 1;
+  grid-row: 1;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.status-explanation__title--open {
+  display: none;
+}
+
+.status-explanation[open] .status-explanation__title--closed {
+  display: none;
+}
+
+.status-explanation[open] .status-explanation__title--open {
+  display: inline;
+}
+
+.status-explanation__subtitle {
+  grid-column: 1;
+  grid-row: 2;
+  color: var(--md-default-fg-color--light);
+  font-size: 0.9em;
+  line-height: 1.2;
+}
+
+.status-explanation__body {
+  padding: 0.75rem 0.9rem;
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+  border-top: 1px solid var(--md-default-fg-color--lighter);
+}
+
+[data-md-color-scheme="default"] .status-explanation__body {
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+  border-top-color: var(--md-default-fg-color--lighter);
+}
+
+.status-explanation__body p,
+.status-explanation__body ul {
+  margin: 0.5rem 0;
+}
+
+.status-explanation__body ul {
+  padding-left: 1.25rem;
+}
+
+@media (max-width: 480px) {
+  .status-explanation > summary {
+    padding: 0.65rem 0.75rem;
+  }
+
+  .status-explanation__body {
+    padding: 0.65rem 0.75rem;
+  }
 }

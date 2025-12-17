@@ -18,6 +18,7 @@ nav:
   - Home: index.md
   - Terminology: terminology.md
   - Keywords: keywords.md
+  - Status Effects: status-effects.md
   - Characters:
       - Overview: characters/index.md
       - Rover: characters/rover.md

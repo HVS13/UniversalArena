@@ -9,6 +9,7 @@
       <p><strong>Name:</strong> Rover</p>
       <p><strong>Version:</strong> Spectro</p>
       <p><strong>Difficulty:</strong> Low</p>
+      <p><strong>Gameplan:</strong> Play as many cards as possible to fill Ultimate Meter faster. Gain Forte to inflict Spectro Frazzle stacks. Heal using ultimate.</p>
     </div>
   </div>
 </div>
@@ -25,7 +26,7 @@
   <p>Max Stacks: 2.</p>
   <p><strong>Spectro Frazzle</strong></p>
   <p>Max Stacks: 10.</p>
-  <p>Turn End: Deal 5 damage per Stack.</p>
+  <p>Turn End: Deal 3 damage per Stack.</p>
   <p>Reduced by 1 at Turn End.</p>
 </div>
 
