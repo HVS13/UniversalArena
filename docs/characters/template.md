@@ -20,14 +20,19 @@
 </div>
 
 ### Keywords
-<div class="card-block keyword-card">
+<div class="card-block keyword-card keyword-entry" id="keyword-<slug-1>">
   <ul class="keyword-card__list">
     <li class="keyword-card__item">
-      <a class="keyword-card__name" href="../../keywords/">Keyword 1</a>
+      <a class="keyword-card__name ua-keyword-link" data-keyword="keyword-<slug-1>" href="#">Keyword 1</a>
       <span class="keyword-card__meta">Keyword 1 details or limits.</span>
     </li>
+  </ul>
+</div>
+
+<div class="card-block keyword-card keyword-entry" id="keyword-<slug-2>">
+  <ul class="keyword-card__list">
     <li class="keyword-card__item">
-      <a class="keyword-card__name" href="../../keywords/">Keyword 2</a>
+      <a class="keyword-card__name ua-keyword-link" data-keyword="keyword-<slug-2>" href="#">Keyword 2</a>
       <span class="keyword-card__meta">Keyword 2 details or limits.</span>
     </li>
   </ul>

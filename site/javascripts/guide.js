@@ -1,6 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
   const normalize = (value) => (value ?? '').toString().toLowerCase();
 
+  const getMaterialBase = () => {
+    const config = document.getElementById('__config');
+    if (!config) return '';
+
+    try {
+      return JSON.parse(config.textContent ?? '{}')?.base ?? '';
+    } catch {
+      return '';
+    }
+  };
+
   const setupFilter = ({ input, items, getIndexText }) => {
     if (!input || !items.length) return;
 
@@ -43,6 +54,15 @@ document.addEventListener('DOMContentLoaded', () => {
     input: document.getElementById('keyword-filter'),
     items: keywordEntries,
     getIndexText: (entry) => entry.textContent,
+  });
+
+  // Keyword links (same markup can be copied between pages)
+  const base = getMaterialBase();
+  const onKeywordsPage = /\/keywords\/($|index\.html$)/.test(window.location.pathname);
+  Array.from(document.querySelectorAll('a.ua-keyword-link[data-keyword]')).forEach((link) => {
+    const keywordId = link.dataset.keyword;
+    if (!keywordId) return;
+    link.href = onKeywordsPage ? `#${keywordId}` : `${base}/keywords/#${keywordId}`;
   });
 
   // Status effects filtering

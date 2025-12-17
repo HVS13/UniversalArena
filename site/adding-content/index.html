@@ -666,11 +666,15 @@
 </code></pre>
 <h2 id="keywords">Keywords</h2>
 <ul>
-<li>Add another block to <code>docs/keywords.md</code>:</li>
+<li>Add another list item to <code>docs/keywords.md</code> (same markup can be copied into character keyword lists):</li>
 </ul>
-<pre><code class="language-html">&lt;div class=&quot;keyword-entry&quot; id=&quot;keyword-&lt;slug&gt;&quot;&gt;
-  &lt;h3&gt;Keyword Name&lt;/h3&gt;
-  &lt;p&gt;Definition.&lt;/p&gt;
+<pre><code class="language-html">&lt;div class=&quot;card-block keyword-card keyword-entry&quot; id=&quot;keyword-&lt;slug&gt;&quot;&gt;
+  &lt;ul class=&quot;keyword-card__list&quot;&gt;
+    &lt;li class=&quot;keyword-card__item&quot;&gt;
+      &lt;a class=&quot;keyword-card__name ua-keyword-link&quot; data-keyword=&quot;keyword-&lt;slug&gt;&quot; href=&quot;#&quot;&gt;Keyword Name&lt;/a&gt;
+      &lt;span class=&quot;keyword-card__meta&quot;&gt;Definition.&lt;/span&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
 &lt;/div&gt;
 </code></pre>
 <h2 id="status-effects">Status effects</h2>

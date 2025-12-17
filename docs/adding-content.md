@@ -25,12 +25,16 @@ Use these patterns to keep pages consistent, responsive, and easy to extend.
 
 ## Keywords
 
-- Add another block to `docs/keywords.md`:
+- Add another list item to `docs/keywords.md` (same markup can be copied into character keyword lists):
 
 ```html
-<div class="keyword-entry" id="keyword-<slug>">
-  <h3>Keyword Name</h3>
-  <p>Definition.</p>
+<div class="card-block keyword-card keyword-entry" id="keyword-<slug>">
+  <ul class="keyword-card__list">
+    <li class="keyword-card__item">
+      <a class="keyword-card__name ua-keyword-link" data-keyword="keyword-<slug>" href="#">Keyword Name</a>
+      <span class="keyword-card__meta">Definition.</span>
+    </li>
+  </ul>
 </div>
 ```
 

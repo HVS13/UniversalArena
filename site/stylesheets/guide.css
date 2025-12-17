@@ -301,7 +301,6 @@
   margin: 0.2rem 0;
 }
 
-.keyword-entry,
 .status-entry {
   border: 1px solid var(--md-default-fg-color--lighter);
   border-left: 4px solid var(--md-primary-fg-color);
@@ -316,30 +315,18 @@
   scroll-margin-top: 5rem;
 }
 
-.keyword-entry h3,
 .status-entry h3 {
   margin: 0 0 0.4rem;
   font-size: 1.05em;
   line-height: 1.25;
 }
 
-.keyword-entry__meta {
-  margin: 0.15rem 0 0.35rem;
-  color: var(--md-default-fg-color--light);
-}
-
-.keyword-entry__desc,
 .status-entry__desc {
   margin: 0.25rem 0 0;
 }
 
-.keyword-entry__list {
-  margin: 0.35rem 0 0;
-  padding-left: 1.25rem;
-}
-
-.keyword-entry__list li {
-  margin: 0.2rem 0;
+.keyword-entry {
+  scroll-margin-top: 5rem;
 }
 
 .status-explainer {

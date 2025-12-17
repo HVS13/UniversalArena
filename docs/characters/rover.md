@@ -21,14 +21,19 @@
 </div>
 
 ### Keywords
-<div class="card-block keyword-card">
+<div class="card-block keyword-card keyword-entry" id="keyword-forte">
   <ul class="keyword-card__list">
     <li class="keyword-card__item">
-      <a class="keyword-card__name" href="../../keywords/#keyword-forte">Forte</a>
+      <a class="keyword-card__name ua-keyword-link" data-keyword="keyword-forte" href="#">Forte</a>
       <span class="keyword-card__meta"><span class="ua-pill">Max</span> 2 Stacks.</span>
     </li>
+  </ul>
+</div>
+
+<div class="card-block keyword-card keyword-entry" id="keyword-spectro-frazzle">
+  <ul class="keyword-card__list">
     <li class="keyword-card__item">
-      <a class="keyword-card__name" href="../../keywords/#keyword-spectro-frazzle">Spectro Frazzle</a>
+      <a class="keyword-card__name ua-keyword-link" data-keyword="keyword-spectro-frazzle" href="#">Spectro Frazzle</a>
       <span class="keyword-card__meta"><span class="ua-pill">Max</span> 10 Stacks.</span>
       <span class="keyword-card__meta"><span class="ua-pill">Turn End</span> Inflict damage equal to <strong>5 × Stack</strong>. Then reduce Stack by 1.</span>
     </li>
