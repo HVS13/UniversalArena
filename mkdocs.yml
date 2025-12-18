@@ -32,7 +32,7 @@ nav:
   - Status Effects: status-effects.md
   - Characters:
       - Overview: characters/index.md
-      - Rover: characters/rover.md
+      - Rover (Spectro): characters/rover-spectro.md
       - Template: characters/template.md
 markdown_extensions:
   - toc:

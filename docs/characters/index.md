@@ -8,8 +8,8 @@ Pick a character to view their cards. Use the filter to narrow by name, version,
 </div>
 
 <div class="character-grid">
-  <a class="character-card" href="rover/" data-name="Rover" data-version="Spectro" data-tags="Spectro, Ultimate Meter">
-    <div class="character-card__title">Rover</div>
+  <a class="character-card" href="rover-spectro/" data-name="Rover" data-version="Spectro" data-tags="Spectro, Ultimate Meter">
+    <div class="character-card__title">Rover (Spectro)</div>
     <div class="character-card__meta">Version: Spectro</div>
     <div class="character-card__tags">Tags: Spectro, Ultimate Meter</div>
     <p class="character-card__summary">Starter-friendly; builds meter quickly.</p>

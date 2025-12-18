@@ -1,13 +1,14 @@
-# Rover
+# Rover (Spectro)
 
 <div class="character-header">
   <div class="character-image">
-    <img src="https://vignette.wikia.nocookie.net/wutheringwaves/images/7/70/Rover_1.png/revision/latest?cb=20240420140302" alt="Rover portrait" loading="lazy" decoding="async" />
+    <img src="https://vignette.wikia.nocookie.net/wutheringwaves/images/7/70/Rover_1.png/revision/latest?cb=20240420140302" alt="Rover (Spectro) portrait" loading="lazy" decoding="async" />
   </div>
   <div class="character-details">
     <div class="character-meta">
       <p><strong>Name:</strong> Rover</p>
       <p><strong>Version:</strong> Spectro</p>
+      <p><strong>Origin:</strong> Wuthering Waves</p>
       <p><strong>Difficulty:</strong> Low</p>
       <p><strong>Gameplan:</strong> Play as many cards as possible to fill Ultimate Meter faster. Gain Forte to inflict Spectro Frazzle stacks. Heal using ultimate.</p>
     </div>
