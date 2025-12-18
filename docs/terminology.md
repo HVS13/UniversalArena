@@ -22,6 +22,18 @@ This page is the reference glossary for game terms. Use the filter to quickly lo
   </thead>
   <tbody>
     <tr>
+      <td>Energy</td>
+      <td>The resource used to play cards. By default, you gain energy at the start of your turn until you have 5 energy.</td>
+    </tr>
+    <tr>
+      <td>Draw</td>
+      <td>The act of taking cards from your Draw Pile and adding them to your hand. By default, you draw at the start of your turn until you have 5 cards.</td>
+    </tr>
+    <tr>
+      <td>Draw</td>
+      <td>The act of moving a card from your hand to the Discard Pile. Unplayed cards are typically discarded at the end of each turn. Some card effects also cause you to discard cards during your turn.</td>
+    </tr>
+    <tr>
       <td>Initiative</td>
       <td>Who takes the first action each round.</td>
     </tr>

@@ -9,6 +9,11 @@ This page holds the full keyword reference. Use the filter to navigate large lis
   <input class="ua-filter__input" type="search" id="keyword-filter" placeholder="Type to filter..." autocomplete="off" spellcheck="false" />
 </div>
 
+<div class="ua-entry keyword-entry" id="keyword-exhaust">
+  <p class="ua-entry__title">Exhaust</p>
+  <p class="ua-entry__desc">When the card is played, it is removed from play.</p>
+</div>
+
 <div class="ua-entry keyword-entry" id="keyword-forte">
   <p class="ua-entry__title">Forte</p>
   <p class="ua-entry__meta"><span class="ua-pill">Max</span> 2 stacks.</p>

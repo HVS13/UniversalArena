@@ -41,10 +41,11 @@
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
     <span><strong>Type:</strong> Physical, Attack</span>
-    <span><strong>Target:</strong> Enemies</span>
+    <span><strong>Target:</strong> 1 Enemy</span>
+    <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal 10 damage. Gain 1 Ultimate Meter.</p>
+  <p>Deal 10 damage. Gain 1 Forte. Gain 1 Ultimate Meter.</p>
 </div>
 
 ### Card 2: Defend
@@ -52,10 +53,11 @@
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
     <span><strong>Type:</strong> Physical, Defense</span>
-    <span><strong>Target:</strong> Self</span>
+    <span><strong>Target:</strong> 1 Ally</span>
+    <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Gain 10 Shield. Gain 1 Ultimate Meter.</p>
+  <p>Gain 10 Shield. Gain 1 Ultimate Meter. If this card completely block opponent's attack, that attack will not considered hit.</p>
 </div>
 
 ### Card 3: Resonating Slashes
@@ -63,7 +65,8 @@
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
     <span><strong>Type:</strong> Physical, Attack, Slash, Debuff</span>
-    <span><strong>Target:</strong> Enemies</span>
+    <span><strong>Target:</strong> 1 Enemy</span>
+    <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Deal 12 damage. Spend 1 Forte Count to inflict 2 Spectro Frazzle.</p>
@@ -74,7 +77,8 @@
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
     <span><strong>Type:</strong> Physical, Attack, Blunt</span>
-    <span><strong>Target:</strong> Enemies</span>
+    <span><strong>Target:</strong> 1 Enemy</span>
+    <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Deal 10 damage. Gain 1 Forte.</p>
@@ -84,11 +88,12 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
-    <span><strong>Type:</strong> Magical, Debuff</span>
-    <span><strong>Target:</strong> Enemies</span>
+    <span><strong>Type:</strong> Special, Magical, Debuff</span>
+    <span><strong>Target:</strong> All Enemies/AoE</span>
+    <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Inflict 1 Stagnant and +2 Stagnant Count.</p>
+  <p>Inflict Stagnant 2.</p>
 </div>
 
 ### Ultimate: Echoing Orchestra
@@ -99,5 +104,5 @@
     <span><strong>Target:</strong> Enemies</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal 15 damage. Heal 15 HP. Inflict 6 Spectro Frazzle.</p>
+  <p>Deal 15 damage. Heal 15 HP. On Hit: Inflict 6 Spectro Frazzle.</p>
 </div>
