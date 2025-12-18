@@ -11,7 +11,22 @@ This page holds the full keyword reference. Use the filter to navigate large lis
 
 <div class="ua-entry keyword-entry" id="keyword-exhaust">
   <p class="ua-entry__title">Exhaust</p>
-  <p class="ua-entry__desc">When the card is played, it is removed from play.</p>
+  <p class="ua-entry__desc">When this card is played, remove this card from play for the rest of the game.</p>
+</div>
+
+<div class="ua-entry keyword-entry" id="keyword-ethereal">
+  <p class="ua-entry__title">Ethereal</p>
+  <p class="ua-entry__desc">If this card in hand at the end of the turn, it is Exhausted.</p>
+</div>
+
+<div class="ua-entry keyword-entry" id="keyword-innate">
+  <p class="ua-entry__title">Innate</p>
+  <p class="ua-entry__desc">Start the game with this card in the opening hand.</p>
+</div>
+
+<div class="ua-entry keyword-entry" id="keyword-retain">
+  <p class="ua-entry__title">Retain</p>
+  <p class="ua-entry__desc">Keep the card in hand at the end of the turn instead of discarding it.</p>
 </div>
 
 <div class="ua-entry keyword-entry" id="keyword-forte">

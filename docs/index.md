@@ -7,55 +7,70 @@ This site outlines the structure and references for Universal Arena. Add your ow
 This guide summarizes core systems and links to the detailed reference pages for terms, keywords, and characters.
 
 ## Board
-1. Deck Zone: This is where you place your deck. The pile named Draw Pile.
-2. Discard Zone: This is where you place your discarded cards. The pile named Discard Pile.
-3. Combat Zone: This is where you place your card when you play it. The zone divided into 3:
-    1. Fast Zone: This is where you play your fast card.
-    2. Normal Zone: This is where you play your fast/normal card.
-    3. Slow Zone: This is where you play your fast/normal/slow card.
+
+1. Deck Zone: This is where you place your deck. The pile is named **Draw Pile**.
+2. Discard Zone: This is where you place your discarded cards. The pile is named **Discard Pile**.
+3. Combat Zone: This is where you place your cards when you play them. The zone is divided into 3:
+   1. Fast Zone: This is where you play your fast cards.
+   2. Normal Zone: This is where you play your fast/normal cards.
+   3. Slow Zone: This is where you play your fast/normal/slow cards.
+
+> In each zone, cards are placed from **left to right** as they are played.
 
 ## How To Play
 
-1. Each player choose their characters. There cannot be the same character with the same Name and Version on one team.
-2. Play divided into 3 phase. Turn Start, Combat, Turn End.
-3. At Turn Start, each player draw until they have 5 cards in hand and 5 energy.
-4. At Combat Start, when the player with initiative play a card to initiate the Combat Round.
-5. At Combat Round, each player play and clashes.
-6. At Combat End, when there are no cards on any zone after any Combat Round.
-7. At Turn End, all player discard all remaining cards and then pass the initiative to the next player.
+1. Each player chooses their characters. There cannot be the same character with the same Name and Version on one team.
+2. Play is divided into 3 phases: Turn Start, Combat, Turn End.
+3. At Turn Start, each player draws until they have 5 cards in hand and 5 energy.
+4. At Combat Start, the player with initiative plays a card to initiate a Combat Round.
+5. During Combat, players play cards and clash. Combat Rounds can repeat.
+6. A Combat Round ends when there are no cards on any zone. The player with initiative may start another Combat Round or end their turn.
+7. At Turn End, all players discard all remaining cards, then initiative passes to the next player.
 
 ## Playing Cards
-1. To play any cards, pay the energy cost, select the legal target, then place them on the Combat as stack each according to their speed (normal/slow).
-2. If the said cards have fast speed, the card will instantly be resolved without waiting to be resolved on the stack.
-3. For each card played, you gain ultimate meter equivalent to the energy spent using the card +1.
+
+1. To play any card, pay the energy cost, select a legal target, then place it on a legal zone.
+2. Any card played in any zone stays in that zone until it is resolved, then it is discarded.
+3. For each card played, you gain ultimate meter equal to the energy spent using the card.
 
 ## How To Combat
-1. You can only play 1 card on one zone per round, except when you playing Special Card. Special Card do not count towards this limit.
-    - Fast card can be placed at any zone.
-    - Normal card can be placed at Normal/Slow Zone.
-    - Slow card can only be placed at Slow Zone.
-2. When you're done, you can declare to end your Round. Your Combat Round is over and then passed to the opponent.
-3. On your opponent's round, your opponent can play any card to counter the card that you've played. That is called Clashing.
-4. After your opponent play a card to counter your card, you can also play any card to counter it.
-5. Clashing will end when the Round passed to the player that have the last card played.
-6. When Clashing end, the Clashing will resolve from the last card played to the very first card played.
-7. Resolve the Clash in Pair against opponent's card. If when paired both card are from the same player or there are no card left to paired, the remaining card will be resolved.
-7. If at any point you or your opponent play on faster zone, that card must be resolved first before continuing to the next zone.
-    - Example:
-        1. You play a card on Normal Zone.
-        2. Your opponent play a card to counter your card and start Clashing.
-        3. You play another card on that Clash.
-        4. Instead of countering your card, your opponent play another card at Fast Zone.
-        5. The Combat now will focus and resolved on the Fast Zone. If you declare not to counter it, then the Card on the Fast Zone will be resolved first before continuing the Clashing on the Normal Zone.
-8. When all the Clash has been resolved and no cards on any zone, the player with initiative can play any card again and start over the Combat Round, or end their turn.
 
-## How to Clash
-1. Attack VS Attack: The card with the most damage dealt won. The card that is lost will omit any damage part and nullified any on hit effect. The other effect will still be resolved and then discarded. The winning card will not be resolved yet, but goes through the stack.
-    - If draw, both card will considered loses.
-    - If against multihit, use the total damage dealt to compare.
-2. Attack VS Defense: The defense card will activate and give shield. Then the attack will be resolved and considered hit. Both card then discarded.
-3. Defense VS Defense: Both defense card will activate and give shield. Both card then discarded.
-4. Any VS Special: Both card will be activated. Both card then discarded.
+1. When you have priority, you may play **1 card** (any type) on a legal zone, or you may **Pass**.
+    - Fast cards can be placed in any zone.
+    - Normal cards can be placed in the Normal/Slow Zone.
+    - Slow cards can only be placed in the Slow Zone.
+2. At the start of a Combat Round, the player with initiative plays a card and may choose any legal zone. That zone becomes the **Active Zone**.
+3. After any card is played, priority passes to the next player in turn order.
+4. After the first card of a Combat Round has been played, players may only play cards in the **Active Zone** or in a **faster zone** than the Active Zone (if legal).
+5. **Faster zone interrupt:** If any player plays a card in a faster zone than the current Active Zone, the faster zone immediately becomes the Active Zone. The previous Active Zone is paused.
+6. The Active Zone resolves when priority returns to the player who most recently played a card in the Active Zone, and that player chooses to Pass.
+7. When the Active Zone resolves, resolve cards in that zone from **right to left** (last played to first played).
+8. Resolve clashes in pairs. While resolving a zone from **right to left**, take the next card to resolve and pair it with the **nearest card immediately to its left** (the next card in the resolve order), if any:
+    - If there is no card to its left, it resolves unopposed.
+    - If the left card is from a **different player**, the two cards clash.
+    - If the left card is from the **same player**, the right card resolves unopposed and is then discarded. The left card remains and can be paired later.
+9. After the Active Zone resolves and becomes empty:
+    - If there are any paused zones, return to the **fastest paused zone** and continue.
+    - Otherwise, resolve the next slower zone that has cards.
+10. When all clashes have been resolved and there are no cards on any zone, the Combat Round ends. The player with initiative may start another Combat Round (choosing any legal zone again), or end their turn.
+
+Example:
+1. You play a card in the Normal Zone (Normal Zone becomes the Active Zone).
+2. Your opponent plays a card in the Normal Zone to counter it and start clashing.
+3. You play another card in that clash.
+4. Instead of countering again in the Normal Zone, your opponent plays a card in the Fast Zone.
+5. The Fast Zone immediately becomes the Active Zone and resolves first. After it resolves, continue the clashing in the Normal Zone.
+
+## How To Clash
+
+1. Attack VS Attack: The card with the most total damage wins (against multi-hit, use total damage to compare).
+    - The losing card does not resolve any damage and does not resolve any **On Hit** effects. Its other effects still resolve, then it is discarded.
+    - The winning card is not resolved yet; it remains in the zone and continues through the stack. After the losing card is removed, the winning card may be paired again with the new nearest card immediately to its left as zone resolution continues.
+    - If it is a draw, both cards are considered losses.
+        - Resolve the “other effects” (non-damage, non-On Hit effects) of the rightmost card first, then the left card, then discard both.
+2. Attack VS Defense: The defense card resolves and gives shield. Then the attack resolves and is considered a hit. Both cards are then discarded.
+3. Defense VS Defense: Both defense cards resolve and give shield. Both cards are then discarded.
+4. Any VS Special: Both cards resolve. Both cards are then discarded.
 
 ## Terminology
 
