@@ -12,6 +12,23 @@
     }
   };
 
+  const isKeywordsPage = () => /\/keywords(\/|\.html$)/.test(window.location.pathname);
+
+  const getKeywordsPageUrl = () => {
+    const navLinks = Array.from(document.querySelectorAll('a.md-nav__link[href]'));
+    const byLabel = navLinks.find((link) => normalize(link.textContent).trim() === 'keywords');
+    const byHref = navLinks.find((link) =>
+      /(^|\/)keywords(\/|index\.html$|\.html$)/.test(link.getAttribute('href') ?? ''),
+    );
+    const href = (byLabel ?? byHref)?.getAttribute('href');
+    if (href) return new URL(href, window.location.href);
+
+    const base = getMaterialBase();
+    if (base) return new URL(`${base.replace(/\/$/, '')}/keywords/`, window.location.href);
+
+    return new URL('keywords/', window.location.href);
+  };
+
   const setupFilter = ({ input, items, getIndexText }) => {
     if (!input || !items.length) return;
 
@@ -57,12 +74,19 @@
     });
 
     // Keyword links (same markup can be copied between pages)
-    const base = getMaterialBase();
-    const onKeywordsPage = /\/keywords\/($|index\.html$)/.test(window.location.pathname);
+    const keywordsPageUrl = getKeywordsPageUrl();
+    const onKeywordsPage = isKeywordsPage();
     Array.from(document.querySelectorAll('a.ua-keyword-link[data-keyword]')).forEach((link) => {
       const keywordId = link.dataset.keyword;
       if (!keywordId) return;
-      link.href = onKeywordsPage ? `#${keywordId}` : `${base}/keywords/#${keywordId}`;
+      if (onKeywordsPage) {
+        link.href = `#${keywordId}`;
+        return;
+      }
+
+      const targetUrl = new URL(keywordsPageUrl.toString());
+      targetUrl.hash = keywordId;
+      link.href = targetUrl.toString();
     });
 
     // Status effects filtering
