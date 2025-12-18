@@ -21,17 +21,31 @@
   <p>Gain 1 Ultimate Meter each time this character card is played.</p>
 </div>
 
-## Keywords
+## Status Effects
 
-<div class="ua-entry ua-entry--compact keyword-entry">
-  <p class="ua-entry__title"><a class="ua-keyword-link" data-keyword="keyword-forte" href="#">Forte</a></p>
+<div class="ua-entry ua-entry--compact status-entry">
+  <p class="ua-entry__title"><a class="ua-status-link" data-status="status-forte" href="#">Forte</a></p>
   <p class="ua-entry__meta"><span class="ua-pill">Max</span> 2 stacks.</p>
 </div>
 
-<div class="ua-entry ua-entry--compact keyword-entry">
-  <p class="ua-entry__title"><a class="ua-keyword-link" data-keyword="keyword-spectro-frazzle" href="#">Spectro Frazzle</a></p>
+<div class="ua-entry ua-entry--compact status-entry">
+  <p class="ua-entry__title"><a class="ua-status-link" data-status="status-spectro-frazzle" href="#">Spectro Frazzle</a></p>
   <p class="ua-entry__meta"><span class="ua-pill">Max</span> 10 stacks.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Inflict damage equal to <strong>5 × Stack</strong>. Then reduce Stack by 1.</p>
+</div>
+
+## Terminology
+
+<div class="ua-entry ua-entry--compact">
+  <p class="ua-entry__title"><a class="ua-term-link" data-term="term-energy" href="#">Energy</a></p>
+</div>
+
+<div class="ua-entry ua-entry--compact">
+  <p class="ua-entry__title"><a class="ua-term-link" data-term="term-ultimate-meter" href="#">Ultimate Meter</a></p>
+</div>
+
+<div class="ua-entry ua-entry--compact">
+  <p class="ua-entry__title"><a class="ua-term-link" data-term="term-shield" href="#">Shield</a></p>
 </div>
 
 ## Cards

@@ -21,39 +21,39 @@ This page is the reference glossary for game terms. Use the filter to quickly lo
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <tr id="term-energy">
       <td>Energy</td>
       <td>The resource used to play cards. By default, you gain energy at the start of your turn until you have 5 energy.</td>
     </tr>
-    <tr>
+    <tr id="term-draw">
       <td>Draw</td>
       <td>The act of taking cards from your Draw Pile and adding them to your hand. By default, you draw at the start of your turn until you have 5 cards.</td>
     </tr>
-    <tr>
-      <td>Draw</td>
+    <tr id="term-discard">
+      <td>Discard</td>
       <td>The act of moving a card from your hand to the Discard Pile. Unplayed cards are typically discarded at the end of each turn. Some card effects also cause you to discard cards during your turn.</td>
     </tr>
-    <tr>
+    <tr id="term-initiative">
       <td>Initiative</td>
-      <td>Who takes the first action each round.</td>
+      <td>Who takes the first action at Combat Start each turn.</td>
     </tr>
-    <tr>
+    <tr id="term-ultimate-meter">
       <td>Ultimate Meter</td>
       <td>Resource that powers the strongest abilities.</td>
     </tr>
-    <tr>
+    <tr id="term-shield">
       <td>Shield</td>
       <td>Temporary protection that soaks damage before HP.</td>
     </tr>
-    <tr>
+    <tr id="term-self">
       <td>Self</td>
       <td>Character that use the Card.</td>
     </tr>
-    <tr>
+    <tr id="term-allies">
       <td>Allies</td>
       <td>All Characters on the same team.</td>
     </tr>
-    <tr>
+    <tr id="term-enemies">
       <td>Enemies</td>
       <td>All Characters on the opposite team.</td>
     </tr>

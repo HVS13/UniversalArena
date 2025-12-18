@@ -33,6 +33,19 @@
   <p class="ua-entry__meta">Keyword 2 details or limits.</p>
 </div>
 
+## Status Effects
+
+<div class="ua-entry ua-entry--compact status-entry">
+  <p class="ua-entry__title"><a class="ua-status-link" data-status="status-<slug>" href="#">Status name</a></p>
+  <p class="ua-entry__meta">Optional per-character notes (limits, triggers, etc.).</p>
+</div>
+
+## Terminology
+
+<div class="ua-entry ua-entry--compact">
+  <p class="ua-entry__title"><a class="ua-term-link" data-term="term-<slug>" href="#">Term</a></p>
+</div>
+
 ## Cards
 
 ### Card 1: Card Name

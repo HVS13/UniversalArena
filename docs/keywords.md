@@ -29,17 +29,7 @@ This page holds the full keyword reference. Use the filter to navigate large lis
   <p class="ua-entry__desc">Keep the card in hand at the end of the turn instead of discarding it.</p>
 </div>
 
-<div class="ua-entry keyword-entry" id="keyword-forte">
-  <p class="ua-entry__title">Forte</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Max</span> 2 stacks.</p>
-  <p class="ua-entry__desc">Primary resource for Forte-based abilities.</p>
-</div>
 
-<div class="ua-entry keyword-entry" id="keyword-spectro-frazzle">
-  <p class="ua-entry__title">Spectro Frazzle</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Max</span> 10 stacks.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Inflict damage equal to <strong>5 × Stack</strong>. Then reduce Stack by 1.</p>
-</div>
 
 <div class="ua-entry keyword-entry" id="keyword-stagnant-potency">
   <p class="ua-entry__title">Stagnant Potency</p>

@@ -53,6 +53,14 @@ Use the shared keyword link markup anywhere (character pages, rules pages, etc.)
 </div>
 ```
 
+### Linking status effects from other pages
+
+Use the shared status effect link markup anywhere. The `guide.js` script will rewrite it to the correct URL (similar to keywords).
+
+```html
+<a class="ua-status-link" data-status="status-<slug>" href="#">Status name</a>
+```
+
 ## Card Types
 
 - Add another block to `docs/card-types.md`:
@@ -62,6 +70,12 @@ Use the shared keyword link markup anywhere (character pages, rules pages, etc.)
   <p class="ua-entry__title">Card type name</p>
   <p class="ua-entry__desc">Explanation of what this card type is and the rules it follows.</p>
 </div>
+```
+
+### Linking card types from other pages
+
+```html
+<a class="ua-card-type-link" data-card-type="card-type-<slug>" href="#">Card type name</a>
 ```
 
 ## FAQ
@@ -75,13 +89,19 @@ Use the shared keyword link markup anywhere (character pages, rules pages, etc.)
 
 ## Terminology
 
-- Add a row to `docs/terminology.md` inside `#terminology-table`:
+- Add a row to `docs/terminology.md` inside `#terminology-table` (include an `id` so terms can be linked):
 
 ```html
-<tr>
+<tr id="term-<slug>">
   <td>Term</td>
   <td>Definition</td>
 </tr>
+```
+
+### Linking terms from other pages
+
+```html
+<a class="ua-term-link" data-term="term-<slug>" href="#">Term</a>
 ```
 
 ## Adding a new filterable page
