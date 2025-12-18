@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://HVS13.github.io/UniversalArena/keywords/">
+        <link rel="canonical" href="https://HVS13.github.io/UniversalArena/card-types/">
       
       
-        <link rel="prev" href="../terminology/">
+        <link rel="prev" href="../keywords/">
       
       
-        <link rel="next" href="../card-types/">
+        <link rel="next" href="../status-effects/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Keywords - Universal Arena</title>
+        <title>Card Types - Universal Arena</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#keywords" class="md-skip">
+        <a href="#card-types" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Keywords
+              Card Types
             
           </span>
         </div>
@@ -277,6 +277,28 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../keywords/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Keywords
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -294,7 +316,7 @@
   
   
   <span class="md-ellipsis">
-    Keywords
+    Card Types
     
   </span>
   
@@ -307,7 +329,7 @@
   
   
   <span class="md-ellipsis">
-    Keywords
+    Card Types
     
   </span>
   
@@ -338,32 +360,19 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#examples-from-rover-spectro" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples (from Rover (Spectro))
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../card-types/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Card Types
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -561,6 +570,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#examples-from-rover-spectro" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples (from Rover (Spectro))
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -577,44 +595,76 @@
 
 
 
-<h1 id="keywords">Keywords<a class="headerlink" href="#keywords" title="Permanent link">&para;</a></h1>
-<p>This page holds the full keyword reference. Use the filter to navigate large lists efficiently.</p>
+<h1 id="card-types">Card Types<a class="headerlink" href="#card-types" title="Permanent link">&para;</a></h1>
+<p>This page lists card types and what they mean in play.</p>
+<details class="info">
+<summary>Explanation</summary>
+<p>Card Types describe what a card <em>is</em> (and usually what rules it follows), such as when it can be played, how it resolves, and what effects or synergies refer to it.</p>
+<p>In character pages (example: Rover (Spectro)), card types appear in the card block as a comma-separated list like <code>Physical, Attack, Slash, Debuff</code>.</p>
+<p>Use this page as a reference list: add each card type as its own entry, and keep the description short and rules-focused.</p>
+</details>
 <h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
+<p>Use the filter to quickly locate a card type.</p>
 <div class="ua-filter">
-  <label class="ua-filter__label" for="keyword-filter">Filter keywords</label>
-  <input class="ua-filter__input" type="search" id="keyword-filter" placeholder="Type to filter..." autocomplete="off" spellcheck="false" />
+  <label class="ua-filter__label" for="card-type-filter">Filter card types</label>
+  <input class="ua-filter__input" type="search" id="card-type-filter" placeholder="Type to filter..." autocomplete="off" spellcheck="false" />
 </div>
 
-<div class="ua-entry keyword-entry" id="keyword-forte">
-  <p class="ua-entry__title">Forte</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Max</span> 2 stacks.</p>
-  <p class="ua-entry__desc">Primary resource for Forte-based abilities.</p>
+<!-- Copy/paste template:
+<div class="ua-entry card-type-entry" id="card-type-<slug>">
+  <p class="ua-entry__title">Card Type Name</p>
+  <p class="ua-entry__desc">Explanation of what this card type is and the rules it follows.</p>
+</div>
+-->
+
+<h2 id="examples-from-rover-spectro">Examples (from Rover (Spectro))<a class="headerlink" href="#examples-from-rover-spectro" title="Permanent link">&para;</a></h2>
+<p>These are starter examples you can edit/replace as you define your rules.</p>
+<div class="ua-entry card-type-entry" id="card-type-attack">
+  <p class="ua-entry__title">Attack</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Category</span> Action.</p>
+  <p class="ua-entry__desc">A card that deals damage or directly contributes to dealing damage.</p>
 </div>
 
-<div class="ua-entry keyword-entry" id="keyword-spectro-frazzle">
-  <p class="ua-entry__title">Spectro Frazzle</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Max</span> 10 stacks.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Inflict damage equal to <strong>5 × Stack</strong>. Then reduce Stack by 1.</p>
+<div class="ua-entry card-type-entry" id="card-type-defense">
+  <p class="ua-entry__title">Defense</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Category</span> Action.</p>
+  <p class="ua-entry__desc">A card focused on protection or mitigation (example: granting Shield).</p>
 </div>
 
-<div class="ua-entry keyword-entry" id="keyword-stagnant-potency">
-  <p class="ua-entry__title">Stagnant Potency</p>
-  <p class="ua-entry__desc">Applies lingering damage that persists for several turns.</p>
+<div class="ua-entry card-type-entry" id="card-type-debuff">
+  <p class="ua-entry__title">Debuff</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Category</span> Effect.</p>
+  <p class="ua-entry__desc">A card that applies negative effects, status effects, or other hindrances to enemies.</p>
 </div>
 
-<div class="ua-entry keyword-entry" id="keyword-combo">
-  <p class="ua-entry__title">Combo</p>
-  <p class="ua-entry__desc">Grants bonus damage when triggered after another card of the same type this turn.</p>
+<div class="ua-entry card-type-entry" id="card-type-recovery">
+  <p class="ua-entry__title">Recovery</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Category</span> Effect.</p>
+  <p class="ua-entry__desc">A card that restores resources (example: healing HP).</p>
 </div>
 
-<div class="ua-entry keyword-entry" id="keyword-break">
-  <p class="ua-entry__title">Break</p>
-  <p class="ua-entry__desc">Temporarily lowers an enemy's defenses, increasing damage taken.</p>
+<div class="ua-entry card-type-entry" id="card-type-physical">
+  <p class="ua-entry__title">Physical</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Category</span> Damage Type.</p>
+  <p class="ua-entry__desc">Indicates the card’s damage is physical (and can be referenced by rules that care about physical damage).</p>
 </div>
 
-<div class="ua-entry keyword-entry" id="keyword-channel">
-  <p class="ua-entry__title">Channel</p>
-  <p class="ua-entry__desc">Spend the current turn to prepare a stronger effect on the next round.</p>
+<div class="ua-entry card-type-entry" id="card-type-magical">
+  <p class="ua-entry__title">Magical</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Category</span> Damage Type.</p>
+  <p class="ua-entry__desc">Indicates the card’s damage is magical (and can be referenced by rules that care about magical damage).</p>
+</div>
+
+<div class="ua-entry card-type-entry" id="card-type-slash">
+  <p class="ua-entry__title">Slash</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Category</span> Attack Tag.</p>
+  <p class="ua-entry__desc">An attack subtype used for rules and synergies that care about “slash” attacks.</p>
+</div>
+
+<div class="ua-entry card-type-entry" id="card-type-blunt">
+  <p class="ua-entry__title">Blunt</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Category</span> Attack Tag.</p>
+  <p class="ua-entry__desc">An attack subtype used for rules and synergies that care about “blunt” attacks.</p>
 </div>
 
 

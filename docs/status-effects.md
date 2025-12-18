@@ -36,12 +36,21 @@ Use the filter to quickly locate a mode, rule, or attribute.
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Take <strong>Potency</strong> damage. Then reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
 </div>
 
+<div class="ua-entry status-entry" id="status-bleed">
+  <p class="ua-entry__title">Bleed</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 999.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Allies Card Played</span> Take <strong>Potency</strong> damage. Then increase <strong>Potency</strong> by <strong>Energy</strong> spent.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
+</div>
+
 <div class="ua-entry status-entry" id="status-poison">
   <p class="ua-entry__title">Poison</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 999.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Allies Card Played</span> Increase <strong>Count</strong> by <strong>1</strong>.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Allies Card Played</span> Increase <strong>Potency</strong> by <strong>Energy</strong> spent.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Take <strong>Potency</strong> damage. Then reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
 </div>
 
@@ -53,20 +62,47 @@ Use the filter to quickly locate a mode, rule, or attribute.
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Stack</strong> by <strong>Halve</strong>.</p>
 </div>
 
-<div class="ua-entry status-entry" id="status-slowed">
-  <p class="ua-entry__title">Slowed</p>
+<div class="ua-entry status-entry" id="status-slow">
+  <p class="ua-entry__title">Slow</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 10.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn Start</span> Reduce number of cards drawn by <strong>Stack</strong>.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Stack</strong> by <strong>Halve</strong>.</p>
 </div>
 
-<div class="ua-entry status-entry" id="status-stunned">
-  <p class="ua-entry__title">Stunned</p>
+<div class="ua-entry status-entry" id="status-stun">
+  <p class="ua-entry__title">Stun</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 1.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn Start</span> Skip the turn.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Stack</strong> by <strong>1</strong>.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Expires.</p>
+</div>
+
+<div class="ua-entry status-entry" id="status-strength">
+  <p class="ua-entry__title">Strength</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Positive.</p>
+    <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 10.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Increase damage dealt by 10% x Potency.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
+</div>
+
+<div class="ua-entry status-entry" id="status-weak">
+  <p class="ua-entry__title">Weak</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
+    <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 10.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Reduce damage dealt by 10% x Potency.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
+</div>
+
+<div class="ua-entry status-entry" id="status-vulnerable">
+  <p class="ua-entry__title">Vulnerable</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
+    <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 10.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Increase damage received by 10% x Potency.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
 </div>
 
 <div class="ua-entry status-entry" id="status-zero-value-mode">

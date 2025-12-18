@@ -41,6 +41,18 @@ Status effect rules and reference entries live on a dedicated page.
 
 - [Status Effects](status-effects.md)
 
+## Card Types
+
+Card type definitions and rules live on a dedicated page.
+
+- [Card Types](card-types.md)
+
+## FAQ
+
+Frequently asked questions about the game.
+
+- [FAQ](faq.md)
+
 ## Characters
 
 Browse character cards and their keyword callouts.

@@ -53,6 +53,26 @@ Use the shared keyword link markup anywhere (character pages, rules pages, etc.)
 </div>
 ```
 
+## Card Types
+
+- Add another block to `docs/card-types.md`:
+
+```html
+<div class="ua-entry card-type-entry" id="card-type-<slug>">
+  <p class="ua-entry__title">Card type name</p>
+  <p class="ua-entry__desc">Explanation of what this card type is and the rules it follows.</p>
+</div>
+```
+
+## FAQ
+
+- Add another question to `docs/faq.md`:
+
+```md
+??? question "Question goes here?"
+    Answer goes here.
+```
+
 ## Terminology
 
 - Add a row to `docs/terminology.md` inside `#terminology-table`:

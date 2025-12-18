@@ -29,7 +29,9 @@ nav:
   # - Adding Content: adding-content.md
   - Terminology: terminology.md
   - Keywords: keywords.md
+  - Card Types: card-types.md
   - Status Effects: status-effects.md
+  - FAQ: faq.md
   - Characters:
       - Overview: characters/index.md
       - Rover (Spectro): characters/rover-spectro.md

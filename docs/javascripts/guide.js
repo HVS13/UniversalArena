@@ -95,6 +95,13 @@
       items: Array.from(document.querySelectorAll('.status-entry')),
       getIndexText: (entry) => entry.textContent,
     });
+
+    // Card type filtering
+    setupFilter({
+      input: document.getElementById('card-type-filter'),
+      items: Array.from(document.querySelectorAll('.card-type-entry')),
+      getIndexText: (entry) => entry.textContent,
+    });
   };
 
   if (window.document$ && typeof window.document$.subscribe === 'function') {
