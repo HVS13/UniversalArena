@@ -16,7 +16,7 @@ This page holds the full keyword reference. Use the filter to navigate large lis
 
 <div class="ua-entry keyword-entry" id="keyword-ethereal">
   <p class="ua-entry__title">Ethereal</p>
-  <p class="ua-entry__desc">If this card in hand at the end of the turn, it is Exhausted.</p>
+  <p class="ua-entry__desc">If this card is in hand at the end of the turn, it is Exhausted.</p>
 </div>
 
 <div class="ua-entry keyword-entry" id="keyword-innate">
@@ -29,24 +29,12 @@ This page holds the full keyword reference. Use the filter to navigate large lis
   <p class="ua-entry__desc">Keep the card in hand at the end of the turn instead of discarding it.</p>
 </div>
 
-
-
-<div class="ua-entry keyword-entry" id="keyword-stagnant-potency">
-  <p class="ua-entry__title">Stagnant Potency</p>
-  <p class="ua-entry__desc">Applies lingering damage that persists for several turns.</p>
+<div class="ua-entry keyword-entry" id="keyword-prepare">
+  <p class="ua-entry__title">Prepare X</p>
+  <p class="ua-entry__desc">Each turn, increase or reduce the energy cost of this card by X.</p>
 </div>
 
-<div class="ua-entry keyword-entry" id="keyword-combo">
-  <p class="ua-entry__title">Combo</p>
-  <p class="ua-entry__desc">Grants bonus damage when triggered after another card of the same type this turn.</p>
-</div>
-
-<div class="ua-entry keyword-entry" id="keyword-break">
-  <p class="ua-entry__title">Break</p>
-  <p class="ua-entry__desc">Temporarily lowers an enemy's defenses, increasing damage taken.</p>
-</div>
-
-<div class="ua-entry keyword-entry" id="keyword-channel">
-  <p class="ua-entry__title">Channel</p>
-  <p class="ua-entry__desc">Spend the current turn to prepare a stronger effect on the next round.</p>
+<div class="ua-entry keyword-entry" id="keyword-bounce">
+  <p class="ua-entry__title">Bounce X</p>
+  <p class="ua-entry__desc">A random adjacent character to the main target will also take the effect. Repeat X times.</p>
 </div>

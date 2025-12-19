@@ -2,7 +2,7 @@
 
 <div class="character-header">
   <div class="character-image">
-    <img src="https://vignette.wikia.nocookie.net/wutheringwaves/images/7/70/Rover_1.png/revision/latest?cb=20240420140302" alt="Rover (Spectro) portrait" loading="lazy" decoding="async" />
+    <img src="https://vignette.wikia.nocookie.net/vsbattles/images/0/07/Male_%26_Female_Rover_Sprite.webp/revision/latest?cb=20251019174456" alt="Rover (Spectro) portrait" loading="lazy" decoding="async" />
   </div>
   <div class="character-details">
     <div class="character-meta">
@@ -24,28 +24,23 @@
 ## Status Effects
 
 <div class="ua-entry ua-entry--compact status-entry">
-  <p class="ua-entry__title"><a class="ua-status-link" data-status="status-forte" href="#">Forte</a></p>
-  <p class="ua-entry__meta"><span class="ua-pill">Max</span> 2 stacks.</p>
+  <p class="ua-entry__title">Forte: Rover Spectro</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Neutral.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 2.</p>
 </div>
 
 <div class="ua-entry ua-entry--compact status-entry">
   <p class="ua-entry__title"><a class="ua-status-link" data-status="status-spectro-frazzle" href="#">Spectro Frazzle</a></p>
-  <p class="ua-entry__meta"><span class="ua-pill">Max</span> 10 stacks.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 10.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Inflict damage equal to <strong>5 × Stack</strong>. Then reduce Stack by 1.</p>
 </div>
 
-## Terminology
-
-<div class="ua-entry ua-entry--compact">
-  <p class="ua-entry__title"><a class="ua-term-link" data-term="term-energy" href="#">Energy</a></p>
-</div>
-
-<div class="ua-entry ua-entry--compact">
-  <p class="ua-entry__title"><a class="ua-term-link" data-term="term-ultimate-meter" href="#">Ultimate Meter</a></p>
-</div>
-
-<div class="ua-entry ua-entry--compact">
-  <p class="ua-entry__title"><a class="ua-term-link" data-term="term-shield" href="#">Shield</a></p>
+<div class="ua-entry status-entry" id="status-stagnant">
+  <p class="ua-entry__title"><a class="ua-status-link" data-status="status-stagnant" href="#">Stagnant</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Max Value</span> 10.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Increase Energy cost of a random card on hand by 1. Repeat <strong>Value</strong> times. Expires.</p>
 </div>
 
 ## Cards
@@ -54,7 +49,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
-    <span><strong>Type:</strong> Physical, Attack</span>
+    <span><strong>Type:</strong> Basic, Attack, Physical, Melee, Slash</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Normal</span>
   </div>
@@ -66,7 +61,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
-    <span><strong>Type:</strong> Physical, Defense</span>
+    <span><strong>Type:</strong> Basic, Defense, Melee, Physical</span>
     <span><strong>Target:</strong> 1 Ally</span>
     <span><strong>Speed:</strong> Normal</span>
   </div>
@@ -78,19 +73,19 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
-    <span><strong>Type:</strong> Physical, Attack, Slash, Debuff</span>
+    <span><strong>Type:</strong> Attack, Physical, Melee, Slash, Multihit, Debuff</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal 12 damage. Spend 1 Forte Count to inflict 2 Spectro Frazzle.</p>
+  <p>Deal 6 x 2 damage. Spend 1 Forte Count to inflict 2 Spectro Frazzle.</p>
 </div>
 
 ### Card 4: Aftertune
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
-    <span><strong>Type:</strong> Physical, Attack, Blunt</span>
+    <span><strong>Type:</strong> Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Normal</span>
   </div>
@@ -102,7 +97,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
-    <span><strong>Type:</strong> Special, Magical, Debuff</span>
+    <span><strong>Type:</strong> Special, Magical, Ranged, AoE, Debuff</span>
     <span><strong>Target:</strong> All Enemies/AoE</span>
     <span><strong>Speed:</strong> Normal</span>
   </div>
@@ -114,9 +109,10 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 20 Ultimate Meter</span>
-    <span><strong>Type:</strong> Magical, Attack, Blunt, Recovery, Debuff</span>
-    <span><strong>Target:</strong> Enemies</span>
+    <span><strong>Type:</strong> Ultimate, Attack, Magical, Ranged, AoE, Blunt, Recovery, Debuff</span>
+    <span><strong>Target:</strong> All Enemies/AoE</span>
+    <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal 15 damage. Heal 15 HP. On Hit: Inflict 6 Spectro Frazzle.</p>
+  <p>Deal 20 damage. Heal 15 HP. On Hit: Inflict 6 Spectro Frazzle.</p>
 </div>

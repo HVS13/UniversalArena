@@ -3,7 +3,7 @@
 This page explains what status effects are and how their values work.
 
 ??? info "Explanation"
-    Status Effects are conditions that can be applied to units on either side of a battle through the use of passives, skills, ultimates, and even other status effects.
+    Status effects are conditions that can be applied to units on either side of a battle through the use of passives, skills, ultimates, and even other status effects.
 
     A status effect can use up to two values to function, which will be called "modes" here for clarity:
 
@@ -32,7 +32,7 @@ Use the filter to quickly locate a mode, rule, or attribute.
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 999.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Allies Card Played</span> Take <strong>Potency</strong> damage. Then reduce <strong>Count</strong> by <strong>Energy</strong> spent.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Allies' Card Played</span> Take <strong>Potency</strong> damage. Then reduce <strong>Count</strong> by <strong>Energy</strong> spent.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Take <strong>Potency</strong> damage. Then reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
 </div>
 
@@ -41,7 +41,7 @@ Use the filter to quickly locate a mode, rule, or attribute.
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 999.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Allies Card Played</span> Take <strong>Potency</strong> damage. Then increase <strong>Potency</strong> by <strong>Energy</strong> spent.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Allies' Card Played</span> Take <strong>Potency</strong> damage. Then increase <strong>Potency</strong> by <strong>Energy</strong> spent.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
 </div>
 
@@ -50,7 +50,7 @@ Use the filter to quickly locate a mode, rule, or attribute.
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 999.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Allies Card Played</span> Increase <strong>Potency</strong> by <strong>Energy</strong> spent.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Allies' Card Played</span> Increase <strong>Potency</strong> by <strong>Energy</strong> spent.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Take <strong>Potency</strong> damage. Then reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
 </div>
 
@@ -58,7 +58,7 @@ Use the filter to quickly locate a mode, rule, or attribute.
   <p class="ua-entry__title">Haste</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Positive.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 10.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Turn Start</span> Increase number of cards drawn by <strong>Stack</strong>.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn Start</span> Increase the number of cards drawn by <strong>Stack</strong>.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Stack</strong> by <strong>Halve</strong>.</p>
 </div>
 
@@ -66,7 +66,7 @@ Use the filter to quickly locate a mode, rule, or attribute.
   <p class="ua-entry__title">Slow</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 10.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Turn Start</span> Reduce number of cards drawn by <strong>Stack</strong>.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn Start</span> Reduce the number of cards drawn by <strong>Stack</strong>.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Stack</strong> by <strong>Halve</strong>.</p>
 </div>
 
@@ -81,44 +81,56 @@ Use the filter to quickly locate a mode, rule, or attribute.
 <div class="ua-entry status-entry" id="status-strength">
   <p class="ua-entry__title">Strength</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Positive.</p>
-    <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 10.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 10.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Increase amount of damage dealt by 10% x Potency.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Increase the amount of damage dealt by 10% x Potency.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
 </div>
 
 <div class="ua-entry status-entry" id="status-weak">
   <p class="ua-entry__title">Weak</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
-    <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 10.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 10.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Reduce amount of damage dealt by 10% x Potency.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Reduce the amount of damage dealt by 10% x Potency.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
+</div>
+
+<div class="ua-entry status-entry" id="status-dexterity">
+  <p class="ua-entry__title">Dexterity</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Positive.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 10.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Increase the amount of shield gained by 10% x Potency.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
 </div>
 
 <div class="ua-entry status-entry" id="status-frail">
   <p class="ua-entry__title">Frail</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
-    <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 10.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 10.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Reduce amount of shield gained by 10% x Potency.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Reduce the amount of shield gained by 10% x Potency.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
 </div>
 
-<div class="ua-entry status-entry" id="status-forte">
-  <p class="ua-entry__title">Forte</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Max</span> 2 stacks.</p>
+<div class="ua-entry status-entry" id="status-forte-rover-spectro">
+  <p class="ua-entry__title">Forte: Rover (Spectro)</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Neutral.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 2.</p>
   <p class="ua-entry__desc">Primary resource for Forte-based abilities.</p>
 </div>
 
 <div class="ua-entry status-entry" id="status-spectro-frazzle">
   <p class="ua-entry__title">Spectro Frazzle</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Max</span> 10 stacks.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Inflict damage equal to <strong>5 × Stack</strong>. Then reduce Stack by 1.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 10.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Inflict damage equal to <strong>5 x Stack</strong>. Then reduce Stack by 1.</p>
 </div>
 
 <div class="ua-entry status-entry" id="status-stagnant">
   <p class="ua-entry__title">Stagnant</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Max Value</span> 10.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Increase Energy cost of a random card on hand by 1. Repeat <strong>Value</strong> times. Expires.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Increase the Energy cost of a random card in hand by 1. Repeat <strong>Value</strong> times. Expires.</p>
 </div>
