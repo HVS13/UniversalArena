@@ -45,111 +45,120 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
+    <span><strong>Power Range:</strong> 10-14</span>
     <span><strong>Type:</strong> Basic, Attack, Physical, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal 12 damage.</p>
-  <p>If this character has Gear 2nd: Instead, Deal 15 damage. Speed became Fast.</p>
+  <p>Deal Power damage.</p>
+  <p>If this character has Gear 2nd: Use Power Range 12-18 instead. Speed becomes Fast.</p>
 </div>
 
 ### Card 2: Defend
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
+    <span><strong>Power Range:</strong> 10-14</span>
     <span><strong>Type:</strong> Basic, Defense, Physical</span>
     <span><strong>Target:</strong> 1 Ally</span>
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Gain 12 Shield.</p>
-  <p>If this character has Gear 2nd: Instead, Gain 15 Shield. Speed became Fast.</p>
+  <p>Gain Power Shield.</p>
+  <p>If this character has Gear 2nd: Use Power Range 12-18 instead. Speed becomes Fast.</p>
 </div>
 
 ### Card 3-1: Gomu Gomu no Pistol
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
+    <span><strong>Power Range:</strong> 12-18</span>
     <span><strong>Type:</strong> Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal 15 damage.</p>
-  <p>If this character has Gear 2nd: This card became Gomu Gomu no Jet Pistol.</p>
+  <p>Deal Power damage.</p>
+  <p>If this character has Gear 2nd: This card becomes Gomu Gomu no Jet Pistol.</p>
 </div>
 
 ### Card 3-2: Gomu Gomu no Jet Pistol
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
+    <span><strong>Power Range:</strong> 16-24</span>
     <span><strong>Type:</strong> Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Fast</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal 20 damage.</p>
+  <p>Deal Power damage.</p>
 </div>
 
 ### Card 4-1: Gomu Gomu no Bazooka
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 2 Energy</span>
+    <span><strong>Power Range:</strong> 20-30</span>
     <span><strong>Type:</strong> Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal 25 damage.</p>
-  <p>If this character has Gear 2nd: This card became Gomu Gomu no Jet Bazooka.</p>
+  <p>Deal Power damage.</p>
+  <p>If this character has Gear 2nd: This card becomes Gomu Gomu no Jet Bazooka.</p>
 </div>
 
 ### Card 4-2: Gomu Gomu no Jet Bazooka
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 2 Energy</span>
+    <span><strong>Power Range:</strong> 24-36</span>
     <span><strong>Type:</strong> Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Fast</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal 30 damage.</p>
+  <p>Deal Power damage.</p>
 </div>
 
 ### Card 5: Gear Transformation
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
+    <span><strong>Power Range:</strong> 1-1</span>
     <span><strong>Type:</strong> Special, Physical, Melee, Transformation, Buff</span>
     <span><strong>Target:</strong> Self</span>
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Gain 1 Gear 2nd.</p>
+  <p>Gain Power Gear 2nd.</p>
 </div>
 
 ### Ultimate-1: Gomu Gomu no Gigant Bazooka
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 30 Ultimate Meter</span>
+    <span><strong>Power Range:</strong> 56-84</span>
     <span><strong>Type:</strong> Ultimate, Attack, Physical, Melee, Splash, Blunt, Debuff</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal 70 damage. Gain Deflate.</p>
-  <p>If this character has Gear 2nd: This Ultimate became Gomu Gomu no Jet Gatling.</p>
+  <p>Deal Power damage. Gain Deflate.</p>
+  <p>If this character has Gear 2nd: This Ultimate becomes Gomu Gomu no Jet Gatling.</p>
 </div>
 
 ### Ultimate-2: Gomu Gomu no Jet Gatling
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 30 Ultimate Meter + X Energy</span>
+    <span><strong>Power Range:</strong> 16-24</span>
     <span><strong>Type:</strong> Ultimate, Attack, Physical, Melee, Splash, Blunt, Multihit, Debuff</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Fast</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal 20 x X+1 damage. Inflict X Frail.</p>
+  <p>Deal Power damage X+1 times. Inflict X Frail.</p>
 </div>

@@ -52,6 +52,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> Value</span>
+    <span><strong>Power Range:</strong> Value</span>
     <span><strong>Type:</strong> Tags</span>
     <span><strong>Target:</strong> Self / Allies / Enemies</span>
   </div>
@@ -64,6 +65,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> Value</span>
+    <span><strong>Power Range:</strong> Value</span>
     <span><strong>Type:</strong> Tags</span>
     <span><strong>Target:</strong> Self / Allies / Enemies</span>
   </div>
@@ -76,6 +78,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> Value</span>
+    <span><strong>Power Range:</strong> Value</span>
     <span><strong>Type:</strong> Tags</span>
     <span><strong>Target:</strong> Self / Allies / Enemies</span>
   </div>
@@ -88,6 +91,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> Value</span>
+    <span><strong>Power Range:</strong> Value</span>
     <span><strong>Type:</strong> Tags</span>
     <span><strong>Target:</strong> Self / Allies / Enemies</span>
   </div>
@@ -100,6 +104,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> Value</span>
+    <span><strong>Power Range:</strong> Value</span>
     <span><strong>Type:</strong> Tags</span>
     <span><strong>Target:</strong> Self / Allies / Enemies</span>
   </div>
@@ -112,6 +117,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> Value</span>
+    <span><strong>Power Range:</strong> Value</span>
     <span><strong>Type:</strong> Tags</span>
     <span><strong>Target:</strong> Self / Allies / Enemies</span>
   </div>

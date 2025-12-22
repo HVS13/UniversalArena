@@ -50,70 +50,76 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
+    <span><strong>Power Range:</strong> 8-12</span>
     <span><strong>Type:</strong> Basic, Attack, Physical, Melee, Slash</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal 10 damage. Gain 1 Forte. Gain 1 Ultimate Meter.</p>
+  <p>Deal Power damage. Gain Power Forte. Gain Power Ultimate Meter.</p>
 </div>
 
 ### Card 2: Defend
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
+    <span><strong>Power Range:</strong> 8-12</span>
     <span><strong>Type:</strong> Basic, Defense, Melee, Physical</span>
     <span><strong>Target:</strong> 1 Ally</span>
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Gain 10 Shield. Gain 1 Ultimate Meter. Evade.</p>
+  <p>Gain Power Shield. Gain Power Ultimate Meter. Evade.</p>
 </div>
 
 ### Card 3: Resonating Slashes
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
+    <span><strong>Power Range:</strong> 5-7</span>
     <span><strong>Type:</strong> Attack, Physical, Melee, Slash, Multihit, Debuff</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal 6 x 2 damage. Spend 1 Forte: Rover Spectro to inflict 2 Spectro Frazzle.</p>
+  <p>Deal Power damage twice. Spend 1 Forte: Rover Spectro to inflict Power Spectro Frazzle.</p>
 </div>
 
 ### Card 4: Aftertune
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
+    <span><strong>Power Range:</strong> 8-12</span>
     <span><strong>Type:</strong> Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal 10 damage. Gain 1 Forte: Rover Spectro.</p>
+  <p>Deal Power damage. Gain Power Forte: Rover Spectro.</p>
 </div>
 
 ### Card 5: Instant
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
+    <span><strong>Power Range:</strong> 2-2</span>
     <span><strong>Type:</strong> Special, Magical, Ranged, AoE, Debuff</span>
     <span><strong>Target:</strong> All Enemies</span>
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Inflict Stagnant 2.</p>
+  <p>Inflict Power Stagnant.</p>
 </div>
 
 ### Ultimate: Echoing Orchestra
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 20 Ultimate Meter</span>
+    <span><strong>Power Range:</strong> 16-24</span>
     <span><strong>Type:</strong> Ultimate, Attack, Magical, Ranged, AoE, Blunt, Recovery, Debuff</span>
     <span><strong>Target:</strong> All Enemies</span>
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal 20 damage. Heal 15 HP. On Hit: Inflict 6 Spectro Frazzle.</p>
+  <p>Deal Power damage. Heal Power HP. On Hit: Inflict Power Spectro Frazzle.</p>
 </div>

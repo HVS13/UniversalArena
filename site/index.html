@@ -373,6 +373,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#power" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Power
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#how-to-clash" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -862,6 +873,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#power" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Power
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#how-to-clash" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1029,10 +1051,19 @@ Characters are arranged left to right in a single row; adjacent means the immedi
 3. You play another card in that clash.
 4. Instead of countering again in the Normal Zone, your opponent plays a card in the Fast Zone.
 5. The Fast Zone immediately becomes the Active Zone and resolves first. After it resolves, continue the clashing in the Normal Zone.</p>
+<h2 id="power">Power<a class="headerlink" href="#power" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Each card has a Power Range shown in its card block.</li>
+<li>Base Power is designer-only. Power Range = Base Power +/- floor(Base Power x 0.20).</li>
+<li>When a card resolves (clash or unopposed), roll Power within its range.</li>
+<li>Use the Power result for all numeric effect values on the card unless the effect uses another value (example: X). Costs and requirements stay as written.</li>
+<li>Roll Power each time a card resolves. Multihit and Reuse roll again for each hit or reuse.</li>
+<li>All Power calculations round down and do not clamp the minimum.</li>
+</ol>
 <h2 id="how-to-clash">How To Clash<a class="headerlink" href="#how-to-clash" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Attack VS Attack: The card with the most total damage wins (against multi-hit, use total damage to compare).<ul>
-<li>The losing card does not resolve any damage and does not resolve any <strong>On Hit</strong> effects. Its other effects still resolve, then it is discarded.</li>
+<li>Attack VS Attack: The card with the highest total Power wins (for multihit, sum the Power rolls for that clash).<ul>
+<li>The losing card does not resolve any Power damage and does not resolve any <strong>On Hit</strong> effects. Its other effects still resolve, then it is discarded.</li>
 <li>The winning card is not resolved yet; it remains in the zone and continues through the stack. After the losing card is removed, the winning card may be paired again with the new nearest card immediately to its left as zone resolution continues.</li>
 <li>If it is a draw, both cards are considered losses.<ul>
 <li>Resolve the other effects (non-damage, non-On Hit effects) of the rightmost card first, then the left card, then discard both.</li>
@@ -1040,8 +1071,8 @@ Characters are arranged left to right in a single row; adjacent means the immedi
 </li>
 </ul>
 </li>
-<li>Attack VS Defense: The defense card resolves and gives shield. Then the attack resolves and is considered a hit. Both cards are then discarded.</li>
-<li>Defense VS Defense: Both defense cards resolve and give shield. Both cards are then discarded.</li>
+<li>Attack VS Defense: The defense card resolves and gives Power Shield. Then the attack resolves and is considered a hit. Both cards are then discarded.</li>
+<li>Defense VS Defense: Both defense cards resolve and give Power Shield. Both cards are then discarded.</li>
 <li>Any VS Special: Both cards resolve. Both cards are then discarded.</li>
 <li>A hit occurs when an Attack resolves unless it is prevented (example: Evade). If a card is instructed to Reuse, it is not discarded after its clash and remains in the current zone to be paired again.</li>
 </ol>

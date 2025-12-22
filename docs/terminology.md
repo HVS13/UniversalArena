@@ -61,6 +61,14 @@ This page is the reference glossary for game terms. Use the filter to quickly lo
       <td>Hit</td>
       <td>An Attack that resolves is a hit unless a rule or effect prevents it (example: Evade).</td>
     </tr>
+    <tr id="term-power" class="term-entry">
+      <td>Power</td>
+      <td>A rolled value from a card's Power Range used for clash comparisons and numeric effect values. Roll Power each time a card resolves.</td>
+    </tr>
+    <tr id="term-power-range" class="term-entry">
+      <td>Power Range</td>
+      <td>The min-max shown on a card. It is derived from designer-only Base Power using +/- floor(Base Power x 0.20).</td>
+    </tr>
     <tr id="term-reuse" class="term-entry">
       <td>Reuse</td>
       <td>If a card is instructed to Reuse, do not discard it after its clash; keep it in the current zone so it can be paired again during the same resolution.</td>

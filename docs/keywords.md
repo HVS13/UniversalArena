@@ -42,7 +42,7 @@ This page holds the full keyword reference. Use the filter to navigate large lis
 
 <div class="ua-entry keyword-entry" id="keyword-evade">
   <p class="ua-entry__title">Evade</p>
-  <p class="ua-entry__desc">On Clash: If this card takes no damage from an Attack, that Attack is not considered a hit. Reuse this card.</p>
+  <p class="ua-entry__desc">On Clash: If this card takes no Power damage from an Attack, that Attack is not considered a hit. Reuse this card.</p>
 </div>
 
 <div class="ua-entry keyword-entry" id="keyword-reuse">

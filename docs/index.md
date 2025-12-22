@@ -72,15 +72,24 @@ Example:
 4. Instead of countering again in the Normal Zone, your opponent plays a card in the Fast Zone.
 5. The Fast Zone immediately becomes the Active Zone and resolves first. After it resolves, continue the clashing in the Normal Zone.
 
+## Power
+
+1. Each card has a Power Range shown in its card block.
+2. Base Power is designer-only. Power Range = Base Power +/- floor(Base Power x 0.20).
+3. When a card resolves (clash or unopposed), roll Power within its range.
+4. Use the Power result for all numeric effect values on the card unless the effect uses another value (example: X). Costs and requirements stay as written.
+5. Roll Power each time a card resolves. Multihit and Reuse roll again for each hit or reuse.
+6. All Power calculations round down and do not clamp the minimum.
+
 ## How To Clash
 
-1. Attack VS Attack: The card with the most total damage wins (against multi-hit, use total damage to compare).
-    - The losing card does not resolve any damage and does not resolve any **On Hit** effects. Its other effects still resolve, then it is discarded.
+1. Attack VS Attack: The card with the highest total Power wins (for multihit, sum the Power rolls for that clash).
+    - The losing card does not resolve any Power damage and does not resolve any **On Hit** effects. Its other effects still resolve, then it is discarded.
     - The winning card is not resolved yet; it remains in the zone and continues through the stack. After the losing card is removed, the winning card may be paired again with the new nearest card immediately to its left as zone resolution continues.
     - If it is a draw, both cards are considered losses.
         - Resolve the other effects (non-damage, non-On Hit effects) of the rightmost card first, then the left card, then discard both.
-2. Attack VS Defense: The defense card resolves and gives shield. Then the attack resolves and is considered a hit. Both cards are then discarded.
-3. Defense VS Defense: Both defense cards resolve and give shield. Both cards are then discarded.
+2. Attack VS Defense: The defense card resolves and gives Power Shield. Then the attack resolves and is considered a hit. Both cards are then discarded.
+3. Defense VS Defense: Both defense cards resolve and give Power Shield. Both cards are then discarded.
 4. Any VS Special: Both cards resolve. Both cards are then discarded.
 5. A hit occurs when an Attack resolves unless it is prevented (example: Evade). If a card is instructed to Reuse, it is not discarded after its clash and remains in the current zone to be paired again.
 

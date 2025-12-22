@@ -18,6 +18,13 @@ This page explains what status effects are and how their values work.
     - **Base Value:** the initial value on infliction if none is specified.
     - **Max Value:** the maximum value (default 99).
 
+??? info "Power range modifiers"
+    Strength and Weakened modify Attack Power Range. Dexterity and Frail modify Defense Power Range.
+
+    When both a positive and negative modifier apply, use net Potency (positive - negative).
+    Multiply the card's Power Range min and max by (1 + 0.10 x net Potency), then round down.
+    Power range has no minimum clamp.
+
 ## Reference
 
 Use the filter to quickly locate a mode, rule, or attribute.
@@ -52,7 +59,7 @@ Use the filter to quickly locate a mode, rule, or attribute.
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 10.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Reduce the amount of shield gained by 10% x Potency.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Reduce Defense Power Range by 10% x Potency.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
 </div>
 
@@ -103,12 +110,12 @@ Use the filter to quickly locate a mode, rule, or attribute.
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Expires.</p>
 </div>
 
-<div class="ua-entry status-entry" id="status-weak">
-  <p class="ua-entry__title">Weak</p>
+<div class="ua-entry status-entry" id="status-weakened">
+  <p class="ua-entry__title">Weakened</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 10.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Reduce the amount of damage dealt by 10% x Potency.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Reduce Attack Power Range by 10% x Potency.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
 </div>
 
@@ -135,7 +142,7 @@ Use the filter to quickly locate a mode, rule, or attribute.
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Positive.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 10.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Increase the amount of shield gained by 10% x Potency.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Increase Defense Power Range by 10% x Potency.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
 </div>
 
@@ -152,6 +159,6 @@ Use the filter to quickly locate a mode, rule, or attribute.
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Positive.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 10.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Increase the amount of damage dealt by 10% x Potency.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Increase Attack Power Range by 10% x Potency.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
 </div>
