@@ -108,7 +108,7 @@
     // Terminology filtering
     setupFilter({
       input: document.getElementById('term-filter'),
-      items: Array.from(document.querySelectorAll('#terminology-table tbody tr')),
+      items: Array.from(document.querySelectorAll('#terminology-table tbody tr.term-entry')),
       getIndexText: (row) => row.textContent,
     });
 
