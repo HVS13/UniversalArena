@@ -24,7 +24,7 @@
 ## Status Effects
 
 <div class="ua-entry ua-entry--compact status-entry">
-  <p class="ua-entry__title">Forte: Rover Spectro</p>
+  <p class="ua-entry__title"><a class="ua-status-link" data-status="status-forte-rover-spectro" href="#">Forte: Rover Spectro</a></p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Neutral.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Max Value</span> 2.</p>
   <p class="ua-entry__desc">Used to enhance some cards.</p>

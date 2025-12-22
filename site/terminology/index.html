@@ -697,11 +697,15 @@
     </tr>
     <tr id="term-energy" class="term-entry">
       <td>Energy</td>
-      <td>The resource used to play cards. By default, you gain energy at the start of your turn until you have 5 energy.</td>
+      <td>The resource used to play cards. By default, at Turn Start each player refreshes to 5 energy; effects can modify this and there is no energy cap.</td>
     </tr>
     <tr id="term-ultimate-meter" class="term-entry">
       <td>Ultimate Meter</td>
       <td>The resource that powers the strongest abilities.</td>
+    </tr>
+    <tr id="term-ultimate-card" class="term-entry">
+      <td>Ultimate Card</td>
+      <td>A card that starts outside the draw pile and is always available to play. It follows normal card rules and counts as Ultimate type for effects.</td>
     </tr>
     <tr class="term-section">
       <th colspan="2">Turn Structure</th>
@@ -719,7 +723,18 @@
     </tr>
     <tr id="term-draw" class="term-entry">
       <td>Draw</td>
-      <td>The act of taking cards from your Draw Pile and adding them to your hand. By default, you draw at the start of your turn until you have 5 cards.</td>
+      <td>The act of taking cards from your Draw Pile and adding them to your hand. By default, at Turn Start you draw until you reach a hand size of 5, modified by draw effects (example: Haste adds, Slow subtracts).</td>
+    </tr>
+    <tr class="term-section">
+      <th colspan="2">Combat</th>
+    </tr>
+    <tr id="term-hit" class="term-entry">
+      <td>Hit</td>
+      <td>An Attack that resolves is a hit unless a rule or effect prevents it (example: Evade).</td>
+    </tr>
+    <tr id="term-reuse" class="term-entry">
+      <td>Reuse</td>
+      <td>If a card is instructed to Reuse, do not discard it after its clash; keep it in the current zone so it can be paired again during the same resolution.</td>
     </tr>
     <tr class="term-section">
       <th colspan="2">Defense</th>
@@ -750,6 +765,10 @@
     <tr id="term-self" class="term-entry">
       <td>Self</td>
       <td>The character that uses the card.</td>
+    </tr>
+    <tr id="term-adjacent" class="term-entry">
+      <td>Adjacent</td>
+      <td>Characters are arranged left to right in a single row. Adjacent means the immediate left or right neighbor of the target.</td>
     </tr>
     <tr class="term-section">
       <th colspan="2">Area</th>

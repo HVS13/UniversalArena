@@ -42,7 +42,12 @@ This page holds the full keyword reference. Use the filter to navigate large lis
 
 <div class="ua-entry keyword-entry" id="keyword-evade">
   <p class="ua-entry__title">Evade</p>
-  <p class="ua-entry__desc">On Clash: If no damage has taken from attack, that attack will not considered hit. Reuse this card.</p>
+  <p class="ua-entry__desc">On Clash: If this card takes no damage from an Attack, that Attack is not considered a hit. Reuse this card.</p>
+</div>
+
+<div class="ua-entry keyword-entry" id="keyword-reuse">
+  <p class="ua-entry__title">Reuse</p>
+  <p class="ua-entry__desc">After this card finishes a clash, do not discard it. Keep it in the current zone so it can be paired again during the same resolution.</p>
 </div>
 
 ### Targeting

@@ -17,7 +17,7 @@ A: Reduce the opposing team's HP to 0 (or meet the scenario's win condition, if 
 
 ## Q: How does Ultimate Meter work?
 
-A: You gain Ultimate Meter as you play cards; once you have enough, you can pay the Ultimate Meter cost to use your Ultimate card.
+A: You gain Ultimate Meter as you play cards; once you have enough, you can pay the Ultimate Meter cost to use your Ultimate card. Ultimate cards sit outside the draw pile and are always available to play.
 
 ## Q: Can I bring two of the same character?
 

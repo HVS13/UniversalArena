@@ -25,6 +25,18 @@ Use these patterns to keep pages consistent, responsive, and easy to extend.
 </a>
 ```
 
+### Card type order
+
+When listing `Type:` tags on character cards, use this order:
+
+1. Basic / Ultimate
+2. Attack / Defense / Special
+3. Physical / Magical / Mental / Electric
+4. Melee / Ranged
+5. AoE / Splash / Bounce (area or targeting tags)
+6. Slash / Pierce / Blunt / Multihit
+7. Transformation / Recovery / Buff / Debuff
+
 ## Keywords
 
 - Add another entry to `docs/keywords.md`:

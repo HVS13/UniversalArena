@@ -87,6 +87,14 @@ Use the filter to quickly locate a mode, rule, or attribute.
   <p class="ua-entry__meta"><span class="ua-pill">Instant</span> Increase the Energy cost of a random card in hand by 1 until that card is used. Repeat <strong>Value</strong> times. Expires.</p>
 </div>
 
+<div class="ua-entry status-entry" id="status-deflate">
+  <p class="ua-entry__title">Deflate</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 1.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Cannot play any card from this character.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Stack</strong> by 1.</p>
+</div>
+
 <div class="ua-entry status-entry" id="status-stun">
   <p class="ua-entry__title">Stun</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
@@ -102,6 +110,22 @@ Use the filter to quickly locate a mode, rule, or attribute.
   <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Reduce the amount of damage dealt by 10% x Potency.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
+</div>
+
+### Neutral
+
+<div class="ua-entry status-entry" id="status-gear-2nd">
+  <p class="ua-entry__title">Gear 2nd</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Neutral.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 1.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Stack</strong> by 1.</p>
+</div>
+
+<div class="ua-entry status-entry" id="status-forte-rover-spectro">
+  <p class="ua-entry__title">Forte: Rover Spectro</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Neutral.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Max Value</span> 2.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Used to enhance some cards.</p>
 </div>
 
 ### Positive
