@@ -27,6 +27,14 @@ A: Not if they have the same Name and Version on the same team.
 
 A: Yes. If a card or character effect contradicts the core rules, resolve that effect as written.
 
+## Q: Can status effects stack when they are inflicted again?
+
+A: Yes. Reapplying a status effect increases its potency, count, value, stacks, and so on, up to its cap.
+
+## Q: If a status effect has potency and count, and a skill says "Inflict X A", what happens to the count?
+
+A: If the target already has A, only potency increases by X; count stays the same. If the target has no A, it gains A with potency X and count 1.
+
 ## Q: What does "Halve" mean?
 
 A: "Halve" means set the current value to half of its current value, rounding down (floor). Examples:

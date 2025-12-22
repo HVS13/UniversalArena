@@ -8,6 +8,12 @@ Pick a character to view their cards. Use the filter to narrow by name, version,
 </div>
 
 <div class="character-grid">
+  <a class="character-card" href="monkey-d-luffy-pre-timeskip/" data-name="Monkey D. Luffy" data-version="Pre-Timeskip" data-tags="Gear 2nd, Transformation">
+    <div class="character-card__title">Monkey D. Luffy (Pre-Timeskip)</div>
+    <div class="character-card__meta">Version: Pre-Timeskip</div>
+    <div class="character-card__tags">Tags: Gear 2nd, Transformation</div>
+    <p class="character-card__summary">Tempo bruiser who spikes with Gear 2nd.</p>
+  </a>
   <a class="character-card" href="rover-spectro/" data-name="Rover" data-version="Spectro" data-tags="Spectro, Ultimate Meter">
     <div class="character-card__title">Rover (Spectro)</div>
     <div class="character-card__meta">Version: Spectro</div>

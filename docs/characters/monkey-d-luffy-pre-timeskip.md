@@ -1,4 +1,4 @@
-# Rover (Spectro)
+# Monkey D. Luffy (Pre-Timeskip)
 
 <div class="character-header">
   <div class="character-image">
@@ -10,7 +10,7 @@
       <p><strong>Version:</strong> Pre-Timeskip</p>
       <p><strong>Origin:</strong> One Piece</p>
       <p><strong>Difficulty:</strong> Low</p>
-      <p><strong>Gameplan:</strong> Play as many cards as possible to fill Ultimate Meter faster. Gain Forte to inflict Spectro Frazzle stacks. Heal using ultimate.</p>
+      <p><strong>Gameplan:</strong> Use Gear Transformation at the right time to seize the moment. Gear 2nd to make more interruption and control the flow of the battle, and Gear 3rd to deal massive damage. Beware the after effect of Gear 3rd!</p>
     </div>
   </div>
 </div>
@@ -117,7 +117,7 @@
   <p>Deal 30 damage.</p>
 </div>
 
-### Card 5: Gear 2nd
+### Card 5: Gear Transformation
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
@@ -133,7 +133,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 30 Ultimate Meter</span>
-    <span><strong>Type:</strong> Ultimate, Attack, Physical, Blunt, Debuff</span>
+    <span><strong>Type:</strong> Ultimate, Attack, Physical, Melee, Splash, Blunt, Debuff</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Normal</span>
   </div>
@@ -146,10 +146,10 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 30 Ultimate Meter + X Energy</span>
-    <span><strong>Type:</strong> Ultimate, Attack, Physical, Blunt, Debuff</span>
-    <span><strong>Target:</strong> 1 Enemy/Splash</span>
+    <span><strong>Type:</strong> Ultimate, Attack, Physical, Melee, Splash, Blunt, Debuff</span>
+    <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Fast</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal 20 x X+1 damage. Inflict X frail.</p>
+  <p>Deal 20 x X+1 damage. Inflict X Frail.</p>
 </div>

@@ -6,6 +6,10 @@ This site outlines the structure and references for Universal Arena. Add your ow
 
 This guide summarizes core systems and links to the detailed reference pages for terms, keywords, and characters.
 
+## Win Conditions
+
+Reduce the opposing team's HP to 0 (or meet the scenario's win condition, if you're playing a special mode).
+
 ## Board
 
 1. Deck Zone: This is where you place your deck. The pile is named **Draw Pile**.
@@ -17,15 +21,20 @@ This guide summarizes core systems and links to the detailed reference pages for
 
 > In each zone, cards are placed from **left to right** as they are played.
 
-## How To Play
+## Preparation
 
 1. Each player chooses their characters. There cannot be the same character with the same Name and Version on one team.
-2. Play is divided into 3 phases: Turn Start, Combat, Turn End.
-3. At Turn Start, each player draws until they have 5 cards in hand and 5 energy.
-4. At Combat Start, the player with initiative plays a card to initiate a Combat Round.
-5. During Combat, players play cards and clash. Combat Rounds can repeat.
-6. A Combat Round ends when there are no cards on any zone. The player with initiative may start another Combat Round or end their turn.
-7. At Turn End, all players discard all remaining cards, then initiative passes to the next player.
+2. For each character chosen, take their 5 cards and shuffle them into one draw pile and place them into the Deck Zone.
+3. Determine which player who goes first.
+
+## How To Play
+
+1. Play is divided into 3 phases: Turn Start, Combat, Turn End.
+2. At Turn Start, each player draws until they have 5 cards in hand and 5 energy.
+3. At Combat Start, the player with initiative plays a card to initiate a Combat Round.
+4. During Combat, players play cards and clash. Combat Rounds can repeat.
+5. A Combat Round ends when there are no cards on any zone. The player with initiative may start another Combat Round or end their turn.
+6. At Turn End, all players discard all remaining cards, then initiative passes to the next player.
 
 ## Playing Cards
 
@@ -84,17 +93,17 @@ Keyword definitions live on a dedicated page with filtering to keep long lists r
 
 - [Keywords](keywords.md)
 
-## Status Effects
-
-Status effect rules and reference entries live on a dedicated page.
-
-- [Status Effects](status-effects.md)
-
 ## Card Types
 
 Card type definitions and rules live on a dedicated page.
 
 - [Card Types](card-types.md)
+
+## Status Effects
+
+Status effect rules and reference entries live on a dedicated page.
+
+- [Status Effects](status-effects.md)
 
 ## FAQ
 

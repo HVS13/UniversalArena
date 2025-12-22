@@ -26,21 +26,22 @@
 <div class="ua-entry ua-entry--compact status-entry">
   <p class="ua-entry__title">Forte: Rover Spectro</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Neutral.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 2.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Max Value</span> 2.</p>
+  <p class="ua-entry__desc">Used to enhance some cards.</p>
 </div>
 
 <div class="ua-entry ua-entry--compact status-entry">
   <p class="ua-entry__title"><a class="ua-status-link" data-status="status-spectro-frazzle" href="#">Spectro Frazzle</a></p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 10.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Inflict damage equal to <strong>5 × Stack</strong>. Then reduce Stack by 1.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Inflict damage equal to <strong>5 x Stack</strong>. Then reduce Stack by 1.</p>
 </div>
 
-<div class="ua-entry status-entry" id="status-stagnant">
-  <p class="ua-entry__title"><a class="ua-status-link" data-status="status-stagnant" href="#">Stagnant</p>
+<div class="ua-entry ua-entry--compact status-entry">
+  <p class="ua-entry__title"><a class="ua-status-link" data-status="status-stagnant" href="#">Stagnant</a></p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Max Value</span> 10.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Increase Energy cost of a random card on hand by 1. Repeat <strong>Value</strong> times. Expires.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Instant</span> Increase the Energy cost of a random card in hand by 1 until that card is used. Repeat <strong>Value</strong> times. Expires.</p>
 </div>
 
 ## Cards
@@ -66,7 +67,7 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Gain 10 Shield. Gain 1 Ultimate Meter. If this card completely block opponent's attack, that attack will not considered hit.</p>
+  <p>Gain 10 Shield. Gain 1 Ultimate Meter. Evade.</p>
 </div>
 
 ### Card 3: Resonating Slashes
@@ -78,7 +79,7 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal 6 x 2 damage. Spend 1 Forte Count to inflict 2 Spectro Frazzle.</p>
+  <p>Deal 6 x 2 damage. Spend 1 Forte: Rover Spectro to inflict 2 Spectro Frazzle.</p>
 </div>
 
 ### Card 4: Aftertune
@@ -90,7 +91,7 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal 10 damage. Gain 1 Forte.</p>
+  <p>Deal 10 damage. Gain 1 Forte: Rover Spectro.</p>
 </div>
 
 ### Card 5: Instant
@@ -98,7 +99,7 @@
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
     <span><strong>Type:</strong> Special, Magical, Ranged, AoE, Debuff</span>
-    <span><strong>Target:</strong> All Enemies/AoE</span>
+    <span><strong>Target:</strong> All Enemies</span>
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
@@ -110,7 +111,7 @@
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 20 Ultimate Meter</span>
     <span><strong>Type:</strong> Ultimate, Attack, Magical, Ranged, AoE, Blunt, Recovery, Debuff</span>
-    <span><strong>Target:</strong> All Enemies/AoE</span>
+    <span><strong>Target:</strong> All Enemies</span>
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>

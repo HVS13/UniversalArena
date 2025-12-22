@@ -26,7 +26,7 @@ plugins:
   - search
 nav:
   - Home: index.md
-  # - Adding Content: adding-content.md
+  # - Adding Content (internal only): adding-content.md
   - Terminology: terminology.md
   - Keywords: keywords.md
   - Card Types: card-types.md
@@ -34,6 +34,7 @@ nav:
   - FAQ: faq.md
   - Characters:
       - Overview: characters/index.md
+      - Monkey D. Luffy (Pre-Timeskip): characters/monkey-d-luffy-pre-timeskip.md
       - Rover (Spectro): characters/rover-spectro.md
       - Template: characters/template.md
 markdown_extensions:

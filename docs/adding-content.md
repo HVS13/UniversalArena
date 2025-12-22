@@ -1,5 +1,7 @@
 # Adding content
 
+Internal documentation for contributors only. This page is intentionally excluded from site navigation.
+
 Use these patterns to keep pages consistent, responsive, and easy to extend.
 
 ## Preview locally

@@ -9,14 +9,16 @@ This page holds the full keyword reference. Use the filter to navigate large lis
   <input class="ua-filter__input" type="search" id="keyword-filter" placeholder="Type to filter..." autocomplete="off" spellcheck="false" />
 </div>
 
-<div class="ua-entry keyword-entry" id="keyword-exhaust">
-  <p class="ua-entry__title">Exhaust</p>
-  <p class="ua-entry__desc">When this card is played, remove this card from play for the rest of the game.</p>
-</div>
+### Card Lifecycle
 
 <div class="ua-entry keyword-entry" id="keyword-ethereal">
   <p class="ua-entry__title">Ethereal</p>
   <p class="ua-entry__desc">If this card is in hand at the end of the turn, it is Exhausted.</p>
+</div>
+
+<div class="ua-entry keyword-entry" id="keyword-exhaust">
+  <p class="ua-entry__title">Exhaust</p>
+  <p class="ua-entry__desc">When this card is played, remove this card from play for the rest of the game.</p>
 </div>
 
 <div class="ua-entry keyword-entry" id="keyword-innate">
@@ -29,10 +31,21 @@ This page holds the full keyword reference. Use the filter to navigate large lis
   <p class="ua-entry__desc">Keep the card in hand at the end of the turn instead of discarding it.</p>
 </div>
 
+### Cost Modifiers
+
 <div class="ua-entry keyword-entry" id="keyword-prepare">
   <p class="ua-entry__title">Prepare X</p>
-  <p class="ua-entry__desc">Each turn, increase or reduce the energy cost of this card by X.</p>
+  <p class="ua-entry__desc">Each turn, increase or reduce the energy cost of this card by X until the card is used.</p>
 </div>
+
+### Combat
+
+<div class="ua-entry keyword-entry" id="keyword-evade">
+  <p class="ua-entry__title">Evade</p>
+  <p class="ua-entry__desc">On Clash: If no damage has taken from attack, that attack will not considered hit. Reuse this card.</p>
+</div>
+
+### Targeting
 
 <div class="ua-entry keyword-entry" id="keyword-bounce">
   <p class="ua-entry__title">Bounce X</p>
