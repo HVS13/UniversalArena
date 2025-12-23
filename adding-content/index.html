@@ -757,6 +757,7 @@
 <h2 id="status-effects">Status effects<a class="headerlink" href="#status-effects" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Add another block to <code>docs/status-effects.md</code>:</li>
+<li>If a status effect is unique to a single character, keep it on that character page only and do not add it to the status effects reference.</li>
 </ul>
 <div class="language-html highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;ua-entry status-entry&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;status-&lt;slug&gt;&quot;</span><span class="p">&gt;</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>  <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;ua-entry__title&quot;</span><span class="p">&gt;</span>Status name<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
@@ -764,7 +765,7 @@
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></code></pre></div>
 <h3 id="linking-status-effects-from-other-pages">Linking status effects from other pages<a class="headerlink" href="#linking-status-effects-from-other-pages" title="Permanent link">&para;</a></h3>
-<p>Use the shared status effect link markup anywhere. The <code>guide.js</code> script will rewrite it to the correct URL (similar to keywords).</p>
+<p>Use the shared status effect link markup only for status effects that live in <code>docs/status-effects.md</code>. For unique per-character status effects, use plain text instead of a link.</p>
 <div class="language-html highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;ua-status-link&quot;</span> <span class="na">data-status</span><span class="o">=</span><span class="s">&quot;status-&lt;slug&gt;&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Status name<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 </span></code></pre></div>
 <h2 id="card-types">Card Types<a class="headerlink" href="#card-types" title="Permanent link">&para;</a></h2>
