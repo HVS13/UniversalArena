@@ -24,7 +24,7 @@
 ## Status Effects
 
 <div class="ua-entry ua-entry--compact status-entry">
-  <p class="ua-entry__title">Forte: Rover Spectro</p>
+  <p class="ua-entry__title">Diminutive Sound</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Neutral.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Max Value</span> 2.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Used to enhance some cards.</p>
@@ -56,7 +56,7 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal Power damage. Gain 1 Forte. Gain 1 Ultimate Meter.</p>
+  <p>Deal Power damage. Gain 1 Diminutive Sound. Gain 1 Ultimate Meter.</p>
 </div>
 
 ### Card 2: Defend
@@ -82,7 +82,7 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal Power damage 2 times. On Hit: Spend 1 Forte: Rover Spectro to inflict 2 Spectro Frazzle.</p>
+  <p>Deal Power damage 2 times. On Hit: Spend 1 Diminutive Sound to inflict 2 Spectro Frazzle.</p>
 </div>
 
 ### Card 4: Aftertune
@@ -95,7 +95,7 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal Power damage. Gain 1 Forte: Rover Spectro.</p>
+  <p>Deal Power damage. Gain 1 Diminutive Sound.</p>
 </div>
 
 ### Card 5: Instant
