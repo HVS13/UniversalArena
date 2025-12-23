@@ -102,13 +102,13 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
-    <span><strong>Power Range:</strong> 2-2</span>
+    <span><strong>Power Range:</strong> -</span>
     <span><strong>Type:</strong> Special, Magical, Ranged, AoE, Debuff</span>
     <span><strong>Target:</strong> All Enemies</span>
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Inflict Power Stagnant.</p>
+  <p>Inflict 2 Stagnate.</p>
 </div>
 
 ### Ultimate: Echoing Orchestra

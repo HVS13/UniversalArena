@@ -76,6 +76,7 @@
     let isHost = false;
     let playerName = "";
     let charactersPromise = null;
+    let relayOnline = false;
   
     const clientId = (() => {
       const stored = storage.getItem("ua-game-client-id");
@@ -100,11 +101,38 @@
         stage.toggleAttribute("hidden", stage.dataset.uaStage !== name);
       });
     };
-  
+
+    const setOnlineState = (online) => {
+      relayOnline = Boolean(online);
+      if (ui.createLobby) ui.createLobby.disabled = !relayOnline;
+      if (ui.joinLobby) ui.joinLobby.disabled = !relayOnline;
+      if (ui.joinCode) ui.joinCode.disabled = !relayOnline;
+      if (relayOnline) {
+        if (ui.startMatch && lobby) {
+          ui.startMatch.disabled = !isHost || lobby.players.length < maxPlayers;
+        }
+        if (ui.lockChoice && selectedCharacterId) {
+          ui.lockChoice.disabled = false;
+        }
+      } else {
+        if (ui.startMatch) ui.startMatch.disabled = true;
+        if (ui.lockChoice) ui.lockChoice.disabled = true;
+        if (ui.pass) ui.pass.disabled = true;
+        if (ui.end) ui.end.disabled = true;
+        if (ui.clearLog) ui.clearLog.disabled = true;
+        if (ui.cardList) {
+          ui.cardList.querySelectorAll(".ua-game__card-button").forEach((button) => {
+            button.disabled = true;
+          });
+        }
+      }
+    };
+
     const setStatus = (text, note, online) => {
       if (ui.connectionStatus) ui.connectionStatus.textContent = text;
       if (ui.connectionNote && note !== undefined) ui.connectionNote.textContent = note;
       if (ui.statusDot) ui.statusDot.classList.toggle("is-online", Boolean(online));
+      setOnlineState(online);
     };
   
     const setError = (message) => {
@@ -262,7 +290,7 @@
       isHost = lobby.hostId === clientId;
   
       ui.lobbyCode.textContent = lobby.code;
-      ui.startMatch.disabled = !isHost || lobby.players.length < maxPlayers;
+      ui.startMatch.disabled = !relayOnline || !isHost || lobby.players.length < maxPlayers;
   
       ui.lobbyPlayers.innerHTML = "";
       lobby.players.forEach((player) => {
@@ -442,6 +470,8 @@
           playedBy: playerId,
           target: card.target,
           cost: card.costText,
+          powerValue: card.powerValue,
+          powerText: card.powerText,
         });
   
         addLog(matchState, `${player.name} plays ${card.name}.`);
@@ -511,42 +541,81 @@
       addLog(state, `Turn ${state.turn} begins. ${initiator ? initiator.name : "Host"} has initiative.`);
       state.phase = "combat_start";
     };
-  
+
+    const getHitCount = (text) => {
+      if (!text) return 1;
+      if (/twice/i.test(text)) return 2;
+      const timesMatch = text.match(/(\d+)\s+times/i);
+      if (timesMatch) return Number(timesMatch[1]);
+      if (/x\+1\s+times/i.test(text)) return 2;
+      return 1;
+    };
+
     const applyCardEffect = (state, entry, source, target) => {
       if (!source || !target) return;
-  
+
       const effectText = (entry.effect || "").toString();
+      const hitCount = getHitCount(effectText);
+      const powerValue = Number(entry.powerValue) || 0;
       const damageMatch = effectText.match(/deal\s+(\d+)\s+damage/i);
+      const powerDamageMatch = /deal\s+power\s+damage/i.test(effectText);
       const shieldMatch = effectText.match(/gain\s+(\d+)\s+shield/i);
+      const powerShieldMatch = /gain\s+power\s+shield/i.test(effectText);
       const healMatch = effectText.match(/heal\s+(\d+)\s+hp/i);
+      const powerHealMatch = /heal\s+power\s+hp/i.test(effectText);
       const ultimateMatch = effectText.match(/gain\s+(\d+)\s+ultimate\s+meter/i);
-  
+      const powerUltimateMatch = /gain\s+power\s+ultimate\s+meter/i.test(effectText);
+
       const damageTarget =
-        entry.target && /self|allies/i.test(entry.target) ? source : target;
-  
-      if (damageMatch) {
-        const damage = Number(damageMatch[1]);
+        entry.target && /self|ally|allies/i.test(entry.target) ? source : target;
+
+      const damageValue = damageMatch
+        ? Number(damageMatch[1]) * hitCount
+        : powerDamageMatch
+          ? powerValue * hitCount
+          : 0;
+
+      if (damageValue > 0) {
+        const damage = damageValue;
         const absorbed = Math.min(damageTarget.shield, damage);
         damageTarget.shield -= absorbed;
         const hpLoss = damage - absorbed;
         damageTarget.hp = Math.max(damageTarget.hp - hpLoss, 0);
         addLog(state, `${source.name} deals ${damage} damage to ${damageTarget.name}.`);
       }
-  
-      if (shieldMatch) {
-        const shield = Number(shieldMatch[1]);
+
+      const shieldValue = shieldMatch
+        ? Number(shieldMatch[1])
+        : powerShieldMatch
+          ? powerValue
+          : 0;
+
+      if (shieldValue > 0) {
+        const shield = shieldValue;
         source.shield += shield;
         addLog(state, `${source.name} gains ${shield} shield.`);
       }
-  
-      if (healMatch) {
-        const heal = Number(healMatch[1]);
+
+      const healValue = healMatch
+        ? Number(healMatch[1])
+        : powerHealMatch
+          ? powerValue
+          : 0;
+
+      if (healValue > 0) {
+        const heal = healValue;
         source.hp = Math.min(source.hp + heal, 100);
         addLog(state, `${source.name} heals ${heal} HP.`);
       }
-  
-      if (ultimateMatch) {
-        const gain = Number(ultimateMatch[1]);
+
+      const ultimateValue = ultimateMatch
+        ? Number(ultimateMatch[1])
+        : powerUltimateMatch
+          ? powerValue
+          : 0;
+
+      if (ultimateValue > 0) {
+        const gain = ultimateValue;
         source.ultimate += gain;
         addLog(state, `${source.name} gains ${gain} ultimate meter.`);
       }
@@ -597,7 +666,7 @@
       showLog(matchState.log || []);
       renderCardList();
   
-      const canAct = isActive && matchState.phase === "combat_start" && !matchState.winnerId;
+      const canAct = relayOnline && isActive && matchState.phase === "combat_start" && !matchState.winnerId;
       ui.pass.disabled = !canAct || (you && you.ended);
       ui.end.disabled = !canAct || (you && you.ended);
     };
@@ -647,7 +716,11 @@
           const meta = document.createElement("div");
           meta.className = "ua-game__card-meta";
           meta.textContent = `Cost: ${card.costText} | Target: ${card.target}`;
-  
+
+          const power = document.createElement("div");
+          power.className = "ua-game__card-meta";
+          power.textContent = `Power: ${card.powerText || "-"}`;
+
           const types = document.createElement("div");
           types.className = "ua-game__card-meta";
           types.textContent = card.types.join(", ");
@@ -658,6 +731,7 @@
   
           button.appendChild(title);
           button.appendChild(meta);
+          button.appendChild(power);
           button.appendChild(types);
           button.appendChild(effect);
           button.addEventListener("click", () => {
@@ -668,7 +742,7 @@
         ui.cardList.dataset.built = "true";
       }
   
-      const canAct = matchState.activePlayerId === clientId && matchState.phase === "combat_start" && !matchState.winnerId;
+      const canAct = relayOnline && matchState.activePlayerId === clientId && matchState.phase === "combat_start" && !matchState.winnerId;
       ui.cardList.querySelectorAll(".ua-game__card-button").forEach((button) => {
         const card = character.cards.find((item) => item.id === button.dataset.cardId);
         const canPay = card ? canAffordCard(you, card) : false;
@@ -685,6 +759,10 @@
   
     const sendAction = (action) => {
       if (!matchState) return;
+      if (!relayOnline) {
+        setError("Relay not connected.");
+        return;
+      }
       if (isHost) {
         applyAction(clientId, action);
         broadcastState();
@@ -789,11 +867,13 @@
         const name = title.replace(/^Card\s+\d+\s*:\s*/i, "").replace(/^Ultimate\s*:\s*/i, "");
         const metaEntries = Array.from(block.querySelectorAll(".card-block__meta span"));
         let costText = "";
+        let powerText = "";
         let target = "";
         let types = [];
         metaEntries.forEach((span) => {
           const text = span.textContent.trim();
           if (/^Cost:/i.test(text)) costText = text.replace(/^Cost:/i, "").trim();
+          if (/^Power Range:/i.test(text)) powerText = text.replace(/^Power Range:/i, "").trim();
           if (/^Target:/i.test(text)) target = text.replace(/^Target:/i, "").trim();
           if (/^Type:/i.test(text)) {
             const raw = text.replace(/^Type:/i, "").trim();
@@ -807,13 +887,18 @@
           .filter(Boolean);
   
         const { costValue, costType } = parseCost(costText);
-  
+        const powerRange = parsePowerRange(powerText);
+
         cards.push({
           id: slugify(`${name}-${costText}`),
           name,
           costText,
           costValue,
           costType,
+          powerText,
+          powerMin: powerRange.min,
+          powerMax: powerRange.max,
+          powerValue: powerRange.value,
           target,
           types,
           effectText: effectLines.join(" "),
@@ -839,7 +924,24 @@
       const type = match[2].toLowerCase().includes("ultimate") ? "ultimate" : "energy";
       return { costValue: value, costType: type };
     };
-  
+
+    const parsePowerRange = (powerText) => {
+      const cleaned = (powerText || "").trim();
+      if (!cleaned || cleaned === "-") return { min: 0, max: 0, value: 0 };
+      const rangeMatch = cleaned.match(/(\d+)\s*-\s*(\d+)/);
+      if (rangeMatch) {
+        const min = Number(rangeMatch[1]);
+        const max = Number(rangeMatch[2]);
+        return { min, max, value: Math.round((min + max) / 2) };
+      }
+      const valueMatch = cleaned.match(/(\d+)/);
+      if (valueMatch) {
+        const value = Number(valueMatch[1]);
+        return { min: value, max: value, value };
+      }
+      return { min: 0, max: 0, value: 0 };
+    };
+
     const slugify = (value) => {
       return value
         .toLowerCase()
@@ -888,7 +990,7 @@
         card.appendChild(tags);
         card.addEventListener("click", () => {
           selectedCharacterId = character.id;
-          ui.lockChoice.disabled = false;
+          ui.lockChoice.disabled = !relayOnline;
           ui.yourChoice.textContent = `${character.name} (${character.version})`;
           renderCharacterGrid();
         });
@@ -925,10 +1027,18 @@
     });
   
     ui.createLobby.addEventListener("click", () => {
+      if (!relayOnline) {
+        addLocalLog("Relay not connected.");
+        return;
+      }
       sendMessage("create_lobby", { clientId });
     });
-  
+
     ui.joinLobby.addEventListener("click", () => {
+      if (!relayOnline) {
+        addLocalLog("Relay not connected.");
+        return;
+      }
       const code = ui.joinCode.value.trim().toUpperCase();
       if (!code) return;
       sendMessage("join_lobby", { clientId, code });
@@ -945,22 +1055,38 @@
   
     ui.startMatch.addEventListener("click", () => {
       if (!isHost) return;
+      if (!relayOnline) {
+        addLocalLog("Relay not connected.");
+        return;
+      }
       sendMessage("lobby_event", { event: "start_match" });
     });
-  
+
     ui.leaveLobby.addEventListener("click", () => {
+      if (!relayOnline) {
+        resetState();
+        return;
+      }
       sendMessage("leave_lobby", {});
       resetState();
     });
-  
+
     ui.backLobby.addEventListener("click", () => {
       if (!isHost) return;
+      if (!relayOnline) {
+        addLocalLog("Relay not connected.");
+        return;
+      }
       sendMessage("lobby_event", { event: "return_to_lobby" });
       setStage("lobby");
     });
-  
+
     ui.lockChoice.addEventListener("click", () => {
       if (!selectedCharacterId) return;
+      if (!relayOnline) {
+        addLocalLog("Relay not connected.");
+        return;
+      }
       sendMessage("game_event", { event: "select_character", data: { characterId: selectedCharacterId } });
       ui.lockChoice.disabled = true;
     });

@@ -127,13 +127,15 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
-    <span><strong>Power Range:</strong> 1-1</span>
+    <span><strong>Power Range:</strong> -</span>
     <span><strong>Type:</strong> Special, Physical, Melee, Transformation, Buff</span>
     <span><strong>Target:</strong> Self</span>
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Gain Power Gear 2nd.</p>
+  <p>Choose 1:</p>
+  <p>Gain 1 Gear 2nd.</p>
+  <p>Gain 1 Gear 3rd.</p>
 </div>
 
 ### Ultimate-1: Gomu Gomu no Gigant Bazooka
