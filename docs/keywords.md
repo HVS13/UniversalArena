@@ -9,34 +9,50 @@ This page holds the full keyword reference. Use the filter to navigate large lis
   <input class="ua-filter__input" type="search" id="keyword-filter" placeholder="Type to filter..." autocomplete="off" spellcheck="false" />
 </div>
 
-<div class="ua-entry keyword-entry" id="keyword-forte">
-  <p class="ua-entry__title">Forte</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Max</span> 2 stacks.</p>
-  <p class="ua-entry__desc">Primary resource for Forte-based abilities.</p>
+### Card Lifecycle
+
+<div class="ua-entry keyword-entry" id="keyword-ethereal">
+  <p class="ua-entry__title">Ethereal</p>
+  <p class="ua-entry__desc">If this card is in hand at the end of the turn, it is Exhausted.</p>
 </div>
 
-<div class="ua-entry keyword-entry" id="keyword-spectro-frazzle">
-  <p class="ua-entry__title">Spectro Frazzle</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Max</span> 10 stacks.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Inflict damage equal to <strong>5 × Stack</strong>. Then reduce Stack by 1.</p>
+<div class="ua-entry keyword-entry" id="keyword-exhaust">
+  <p class="ua-entry__title">Exhaust</p>
+  <p class="ua-entry__desc">When this card is played, remove this card from play for the rest of the game.</p>
 </div>
 
-<div class="ua-entry keyword-entry" id="keyword-stagnant-potency">
-  <p class="ua-entry__title">Stagnant Potency</p>
-  <p class="ua-entry__desc">Applies lingering damage that persists for several turns.</p>
+<div class="ua-entry keyword-entry" id="keyword-innate">
+  <p class="ua-entry__title">Innate</p>
+  <p class="ua-entry__desc">Start the game with this card in the opening hand.</p>
 </div>
 
-<div class="ua-entry keyword-entry" id="keyword-combo">
-  <p class="ua-entry__title">Combo</p>
-  <p class="ua-entry__desc">Grants bonus damage when triggered after another card of the same type this turn.</p>
+<div class="ua-entry keyword-entry" id="keyword-retain">
+  <p class="ua-entry__title">Retain</p>
+  <p class="ua-entry__desc">Keep the card in hand at the end of the turn instead of discarding it.</p>
 </div>
 
-<div class="ua-entry keyword-entry" id="keyword-break">
-  <p class="ua-entry__title">Break</p>
-  <p class="ua-entry__desc">Temporarily lowers an enemy's defenses, increasing damage taken.</p>
+### Cost Modifiers
+
+<div class="ua-entry keyword-entry" id="keyword-prepare">
+  <p class="ua-entry__title">Prepare X</p>
+  <p class="ua-entry__desc">Each turn, increase or reduce the energy cost of this card by X until the card is used.</p>
 </div>
 
-<div class="ua-entry keyword-entry" id="keyword-channel">
-  <p class="ua-entry__title">Channel</p>
-  <p class="ua-entry__desc">Spend the current turn to prepare a stronger effect on the next round.</p>
+### Combat
+
+<div class="ua-entry keyword-entry" id="keyword-evade">
+  <p class="ua-entry__title">Evade</p>
+  <p class="ua-entry__desc">On Clash: If this card takes no Power damage from an Attack, that Attack is not considered a hit. Reuse this card.</p>
+</div>
+
+<div class="ua-entry keyword-entry" id="keyword-reuse">
+  <p class="ua-entry__title">Reuse</p>
+  <p class="ua-entry__desc">After this card finishes a clash, do not discard it. Keep it in the current zone so it can be paired again during the same resolution.</p>
+</div>
+
+### Targeting
+
+<div class="ua-entry keyword-entry" id="keyword-bounce">
+  <p class="ua-entry__title">Bounce X</p>
+  <p class="ua-entry__desc">A random adjacent character to the main target will also take the effect. Repeat X times.</p>
 </div>

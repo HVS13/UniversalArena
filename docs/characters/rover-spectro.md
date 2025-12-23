@@ -2,7 +2,7 @@
 
 <div class="character-header">
   <div class="character-image">
-    <img src="https://vignette.wikia.nocookie.net/wutheringwaves/images/7/70/Rover_1.png/revision/latest?cb=20240420140302" alt="Rover (Spectro) portrait" loading="lazy" decoding="async" />
+    <img src="https://vignette.wikia.nocookie.net/vsbattles/images/0/07/Male_%26_Female_Rover_Sprite.webp/revision/latest?cb=20251019174456" alt="Rover (Spectro) portrait" loading="lazy" decoding="async" />
   </div>
   <div class="character-details">
     <div class="character-meta">
@@ -21,17 +21,27 @@
   <p>Gain 1 Ultimate Meter each time this character card is played.</p>
 </div>
 
-## Keywords
+## Status Effects
 
-<div class="ua-entry ua-entry--compact keyword-entry">
-  <p class="ua-entry__title"><a class="ua-keyword-link" data-keyword="keyword-forte" href="#">Forte</a></p>
-  <p class="ua-entry__meta"><span class="ua-pill">Max</span> 2 stacks.</p>
+<div class="ua-entry ua-entry--compact status-entry">
+  <p class="ua-entry__title"><a class="ua-status-link" data-status="status-forte-rover-spectro" href="#">Forte: Rover Spectro</a></p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Neutral.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Max Value</span> 2.</p>
+  <p class="ua-entry__desc">Used to enhance some cards.</p>
 </div>
 
-<div class="ua-entry ua-entry--compact keyword-entry">
-  <p class="ua-entry__title"><a class="ua-keyword-link" data-keyword="keyword-spectro-frazzle" href="#">Spectro Frazzle</a></p>
-  <p class="ua-entry__meta"><span class="ua-pill">Max</span> 10 stacks.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Inflict damage equal to <strong>5 × Stack</strong>. Then reduce Stack by 1.</p>
+<div class="ua-entry ua-entry--compact status-entry">
+  <p class="ua-entry__title"><a class="ua-status-link" data-status="status-spectro-frazzle" href="#">Spectro Frazzle</a></p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 10.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Inflict damage equal to <strong>5 x Stack</strong>. Then reduce Stack by 1.</p>
+</div>
+
+<div class="ua-entry ua-entry--compact status-entry">
+  <p class="ua-entry__title"><a class="ua-status-link" data-status="status-stagnant" href="#">Stagnant</a></p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Max Value</span> 10.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Instant</span> Increase the Energy cost of a random card in hand by 1 until that card is used. Repeat <strong>Value</strong> times. Expires.</p>
 </div>
 
 ## Cards
@@ -40,64 +50,76 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
-    <span><strong>Type:</strong> Physical, Attack</span>
-    <span><strong>Target:</strong> Enemies</span>
+    <span><strong>Power Range:</strong> 8-12</span>
+    <span><strong>Type:</strong> Basic, Attack, Physical, Melee, Slash</span>
+    <span><strong>Target:</strong> 1 Enemy</span>
+    <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal 10 damage. Gain 1 Ultimate Meter.</p>
+  <p>Deal Power damage. Gain Power Forte. Gain Power Ultimate Meter.</p>
 </div>
 
 ### Card 2: Defend
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
-    <span><strong>Type:</strong> Physical, Defense</span>
-    <span><strong>Target:</strong> Self</span>
+    <span><strong>Power Range:</strong> 8-12</span>
+    <span><strong>Type:</strong> Basic, Defense, Melee, Physical</span>
+    <span><strong>Target:</strong> 1 Ally</span>
+    <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Gain 10 Shield. Gain 1 Ultimate Meter.</p>
+  <p>Gain Power Shield. Gain Power Ultimate Meter. Evade.</p>
 </div>
 
 ### Card 3: Resonating Slashes
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
-    <span><strong>Type:</strong> Physical, Attack, Slash, Debuff</span>
-    <span><strong>Target:</strong> Enemies</span>
+    <span><strong>Power Range:</strong> 5-7</span>
+    <span><strong>Type:</strong> Attack, Physical, Melee, Slash, Multihit, Debuff</span>
+    <span><strong>Target:</strong> 1 Enemy</span>
+    <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal 12 damage. Spend 1 Forte Count to inflict 2 Spectro Frazzle.</p>
+  <p>Deal Power damage twice. Spend 1 Forte: Rover Spectro to inflict Power Spectro Frazzle.</p>
 </div>
 
 ### Card 4: Aftertune
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
-    <span><strong>Type:</strong> Physical, Attack, Blunt</span>
-    <span><strong>Target:</strong> Enemies</span>
+    <span><strong>Power Range:</strong> 8-12</span>
+    <span><strong>Type:</strong> Attack, Physical, Melee, Blunt</span>
+    <span><strong>Target:</strong> 1 Enemy</span>
+    <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal 10 damage. Gain 1 Forte.</p>
+  <p>Deal Power damage. Gain Power Forte: Rover Spectro.</p>
 </div>
 
 ### Card 5: Instant
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
-    <span><strong>Type:</strong> Magical, Debuff</span>
-    <span><strong>Target:</strong> Enemies</span>
+    <span><strong>Power Range:</strong> 2-2</span>
+    <span><strong>Type:</strong> Special, Magical, Ranged, AoE, Debuff</span>
+    <span><strong>Target:</strong> All Enemies</span>
+    <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Inflict 1 Stagnant and +2 Stagnant Count.</p>
+  <p>Inflict Power Stagnant.</p>
 </div>
 
 ### Ultimate: Echoing Orchestra
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 20 Ultimate Meter</span>
-    <span><strong>Type:</strong> Magical, Attack, Blunt, Recovery, Debuff</span>
-    <span><strong>Target:</strong> Enemies</span>
+    <span><strong>Power Range:</strong> 16-24</span>
+    <span><strong>Type:</strong> Ultimate, Attack, Magical, Ranged, AoE, Blunt, Recovery, Debuff</span>
+    <span><strong>Target:</strong> All Enemies</span>
+    <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal 15 damage. Heal 15 HP. Inflict 6 Spectro Frazzle.</p>
+  <p>Deal Power damage. Heal Power HP. On Hit: Inflict Power Spectro Frazzle.</p>
 </div>

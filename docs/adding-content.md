@@ -1,5 +1,7 @@
 # Adding content
 
+Internal documentation for contributors only. This page is intentionally excluded from site navigation.
+
 Use these patterns to keep pages consistent, responsive, and easy to extend.
 
 ## Preview locally
@@ -22,6 +24,20 @@ Use these patterns to keep pages consistent, responsive, and easy to extend.
   <p class="character-card__summary">One-line summary.</p>
 </a>
 ```
+
+When adding card blocks, include a Power Range line in the meta (example: `<span><strong>Power Range:</strong> 8-12</span>`).
+
+### Card type order
+
+When listing `Type:` tags on character cards, use this order:
+
+1. Basic / Ultimate
+2. Attack / Defense / Special
+3. Physical / Magical / Mental / Electric
+4. Melee / Ranged
+5. AoE / Splash / Bounce (area or targeting tags)
+6. Slash / Pierce / Blunt / Multihit
+7. Transformation / Recovery / Buff / Debuff
 
 ## Keywords
 
@@ -53,6 +69,14 @@ Use the shared keyword link markup anywhere (character pages, rules pages, etc.)
 </div>
 ```
 
+### Linking status effects from other pages
+
+Use the shared status effect link markup anywhere. The `guide.js` script will rewrite it to the correct URL (similar to keywords).
+
+```html
+<a class="ua-status-link" data-status="status-<slug>" href="#">Status name</a>
+```
+
 ## Card Types
 
 - Add another block to `docs/card-types.md`:
@@ -62,6 +86,12 @@ Use the shared keyword link markup anywhere (character pages, rules pages, etc.)
   <p class="ua-entry__title">Card type name</p>
   <p class="ua-entry__desc">Explanation of what this card type is and the rules it follows.</p>
 </div>
+```
+
+### Linking card types from other pages
+
+```html
+<a class="ua-card-type-link" data-card-type="card-type-<slug>" href="#">Card type name</a>
 ```
 
 ## FAQ
@@ -75,13 +105,19 @@ Use the shared keyword link markup anywhere (character pages, rules pages, etc.)
 
 ## Terminology
 
-- Add a row to `docs/terminology.md` inside `#terminology-table`:
+- Add a row to `docs/terminology.md` inside `#terminology-table` (include an `id` so terms can be linked):
 
 ```html
-<tr>
+<tr id="term-<slug>">
   <td>Term</td>
   <td>Definition</td>
 </tr>
+```
+
+### Linking terms from other pages
+
+```html
+<a class="ua-term-link" data-term="term-<slug>" href="#">Term</a>
 ```
 
 ## Adding a new filterable page

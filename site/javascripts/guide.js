@@ -12,22 +12,68 @@
     }
   };
 
-  const isKeywordsPage = () => /\/keywords(\/|\.html$)/.test(window.location.pathname);
-
-  const getKeywordsPageUrl = () => {
+  const getPageUrlFromNav = ({ label, hrefPattern, fallbackPath }) => {
     const navLinks = Array.from(document.querySelectorAll('a.md-nav__link[href]'));
-    const byLabel = navLinks.find((link) => normalize(link.textContent).trim() === 'keywords');
-    const byHref = navLinks.find((link) =>
-      /(^|\/)keywords(\/|index\.html$|\.html$)/.test(link.getAttribute('href') ?? ''),
-    );
+    const byLabel = navLinks.find((link) => normalize(link.textContent).trim() === normalize(label).trim());
+    const byHref = navLinks.find((link) => hrefPattern.test(link.getAttribute('href') ?? ''));
     const href = (byLabel ?? byHref)?.getAttribute('href');
     if (href) return new URL(href, window.location.href);
 
     const base = getMaterialBase();
-    if (base) return new URL(`${base.replace(/\/$/, '')}/keywords/`, window.location.href);
+    if (base) return new URL(`${base.replace(/\/$/, '')}/${fallbackPath.replace(/^\//, '')}`, window.location.href);
 
-    return new URL('keywords/', window.location.href);
+    return new URL(fallbackPath, window.location.href);
   };
+
+  const setupReferenceLinks = ({ selector, getId, pageUrl, onPage }) => {
+    Array.from(document.querySelectorAll(selector)).forEach((link) => {
+      const id = getId(link);
+      if (!id) return;
+
+      if (onPage) {
+        link.href = `#${id}`;
+        return;
+      }
+
+      const targetUrl = new URL(pageUrl.toString());
+      targetUrl.hash = id;
+      link.href = targetUrl.toString();
+    });
+  };
+
+  const isKeywordsPage = () => /\/keywords(\/|\.html$)/.test(window.location.pathname);
+  const isStatusEffectsPage = () => /\/status-effects(\/|\.html$)/.test(window.location.pathname);
+  const isCardTypesPage = () => /\/card-types(\/|\.html$)/.test(window.location.pathname);
+  const isTerminologyPage = () => /\/terminology(\/|\.html$)/.test(window.location.pathname);
+
+  const getKeywordsPageUrl = () => {
+    return getPageUrlFromNav({
+      label: 'keywords',
+      hrefPattern: /(^|\/)keywords(\/|index\.html$|\.html$)/,
+      fallbackPath: 'keywords/',
+    });
+  };
+
+  const getStatusEffectsPageUrl = () =>
+    getPageUrlFromNav({
+      label: 'status effects',
+      hrefPattern: /(^|\/)status-effects(\/|index\.html$|\.html$)/,
+      fallbackPath: 'status-effects/',
+    });
+
+  const getCardTypesPageUrl = () =>
+    getPageUrlFromNav({
+      label: 'card types',
+      hrefPattern: /(^|\/)card-types(\/|index\.html$|\.html$)/,
+      fallbackPath: 'card-types/',
+    });
+
+  const getTerminologyPageUrl = () =>
+    getPageUrlFromNav({
+      label: 'terminology',
+      hrefPattern: /(^|\/)terminology(\/|index\.html$|\.html$)/,
+      fallbackPath: 'terminology/',
+    });
 
   const setupFilter = ({ input, items, getIndexText }) => {
     if (!input || !items.length) return;
@@ -62,7 +108,7 @@
     // Terminology filtering
     setupFilter({
       input: document.getElementById('term-filter'),
-      items: Array.from(document.querySelectorAll('#terminology-table tbody tr')),
+      items: Array.from(document.querySelectorAll('#terminology-table tbody tr.term-entry')),
       getIndexText: (row) => row.textContent,
     });
 
@@ -74,19 +120,32 @@
     });
 
     // Keyword links (same markup can be copied between pages)
-    const keywordsPageUrl = getKeywordsPageUrl();
-    const onKeywordsPage = isKeywordsPage();
-    Array.from(document.querySelectorAll('a.ua-keyword-link[data-keyword]')).forEach((link) => {
-      const keywordId = link.dataset.keyword;
-      if (!keywordId) return;
-      if (onKeywordsPage) {
-        link.href = `#${keywordId}`;
-        return;
-      }
+    setupReferenceLinks({
+      selector: 'a.ua-keyword-link[data-keyword]',
+      getId: (link) => link.dataset.keyword,
+      pageUrl: getKeywordsPageUrl(),
+      onPage: isKeywordsPage(),
+    });
 
-      const targetUrl = new URL(keywordsPageUrl.toString());
-      targetUrl.hash = keywordId;
-      link.href = targetUrl.toString();
+    setupReferenceLinks({
+      selector: 'a.ua-status-link[data-status]',
+      getId: (link) => link.dataset.status,
+      pageUrl: getStatusEffectsPageUrl(),
+      onPage: isStatusEffectsPage(),
+    });
+
+    setupReferenceLinks({
+      selector: 'a.ua-card-type-link[data-card-type]',
+      getId: (link) => link.dataset.cardType,
+      pageUrl: getCardTypesPageUrl(),
+      onPage: isCardTypesPage(),
+    });
+
+    setupReferenceLinks({
+      selector: 'a.ua-term-link[data-term]',
+      getId: (link) => link.dataset.term,
+      pageUrl: getTerminologyPageUrl(),
+      onPage: isTerminologyPage(),
     });
 
     // Status effects filtering

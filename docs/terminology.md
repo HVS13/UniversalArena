@@ -21,29 +21,106 @@ This page is the reference glossary for game terms. Use the filter to quickly lo
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>Initiative</td>
-      <td>Who takes the first action each round.</td>
+    <tr class="term-section">
+      <th colspan="2">Resources</th>
     </tr>
-    <tr>
+    <tr id="term-energy" class="term-entry">
+      <td>Energy</td>
+      <td>The resource used to play cards. By default, at Turn Start each player refreshes to 5 energy; effects can modify this and there is no energy cap.</td>
+    </tr>
+    <tr id="term-ultimate-meter" class="term-entry">
       <td>Ultimate Meter</td>
-      <td>Resource that powers the strongest abilities.</td>
+      <td>The resource that powers the strongest abilities.</td>
     </tr>
-    <tr>
+    <tr id="term-ultimate-card" class="term-entry">
+      <td>Ultimate Card</td>
+      <td>A card that starts outside the draw pile and is always available to play. It follows normal card rules and counts as Ultimate type for effects.</td>
+    </tr>
+    <tr class="term-section">
+      <th colspan="2">Turn Structure</th>
+    </tr>
+    <tr id="term-initiative" class="term-entry">
+      <td>Initiative</td>
+      <td>Determines who takes the first action at Combat Start each turn.</td>
+    </tr>
+    <tr class="term-section">
+      <th colspan="2">Card Flow</th>
+    </tr>
+    <tr id="term-discard" class="term-entry">
+      <td>Discard</td>
+      <td>The act of moving a card from your hand to the Discard Pile. Unplayed cards are typically discarded at the end of each turn. Some card effects also cause you to discard cards during your turn.</td>
+    </tr>
+    <tr id="term-draw" class="term-entry">
+      <td>Draw</td>
+      <td>The act of taking cards from your Draw Pile and adding them to your hand. By default, at Turn Start you draw until you reach a hand size of 5, modified by draw effects (example: Haste adds, Slow subtracts).</td>
+    </tr>
+    <tr class="term-section">
+      <th colspan="2">Combat</th>
+    </tr>
+    <tr id="term-hit" class="term-entry">
+      <td>Hit</td>
+      <td>An Attack that resolves is a hit unless a rule or effect prevents it (example: Evade).</td>
+    </tr>
+    <tr id="term-power" class="term-entry">
+      <td>Power</td>
+      <td>A rolled value from a card's Power Range used for clash comparisons and numeric effect values. Roll Power each time a card resolves.</td>
+    </tr>
+    <tr id="term-power-range" class="term-entry">
+      <td>Power Range</td>
+      <td>The min-max shown on a card. It is derived from designer-only Base Power using +/- floor(Base Power x 0.20).</td>
+    </tr>
+    <tr id="term-reuse" class="term-entry">
+      <td>Reuse</td>
+      <td>If a card is instructed to Reuse, do not discard it after its clash; keep it in the current zone so it can be paired again during the same resolution.</td>
+    </tr>
+    <tr class="term-section">
+      <th colspan="2">Defense</th>
+    </tr>
+    <tr id="term-shield" class="term-entry">
       <td>Shield</td>
-      <td>Temporary protection that soaks damage before HP.</td>
+      <td>Temporary protection that soaks damage before HP. At Turn End, remove all shield.</td>
     </tr>
-    <tr>
-      <td>Self</td>
-      <td>Character that use the Card.</td>
+    <tr class="term-section">
+      <th colspan="2">Targeting</th>
     </tr>
-    <tr>
+    <tr id="term-ally" class="term-entry">
+      <td>Ally</td>
+      <td>A character on the same team.</td>
+    </tr>
+    <tr id="term-allies" class="term-entry">
       <td>Allies</td>
-      <td>All Characters on the same team.</td>
+      <td>All characters on the same team.</td>
     </tr>
-    <tr>
+    <tr id="term-enemy" class="term-entry">
+      <td>Enemy</td>
+      <td>A character on the opposite team.</td>
+    </tr>
+    <tr id="term-enemies" class="term-entry">
       <td>Enemies</td>
-      <td>All Characters on the opposite team.</td>
+      <td>All characters on the opposite team.</td>
+    </tr>
+    <tr id="term-self" class="term-entry">
+      <td>Self</td>
+      <td>The character that uses the card.</td>
+    </tr>
+    <tr id="term-adjacent" class="term-entry">
+      <td>Adjacent</td>
+      <td>Characters are arranged left to right in a single row. Adjacent means the immediate left or right neighbor of the target.</td>
+    </tr>
+    <tr class="term-section">
+      <th colspan="2">Area</th>
+    </tr>
+    <tr id="term-aoe" class="term-entry">
+      <td>AoE</td>
+      <td>Area of Effect. All characters will take the effect.</td>
+    </tr>
+    <tr id="term-bounce" class="term-entry">
+      <td>Bounce</td>
+      <td>A random adjacent character to the main target will also take the effect.</td>
+    </tr>
+    <tr id="term-splash" class="term-entry">
+      <td>Splash</td>
+      <td>An adjacent character to the main target will also take the effect.</td>
     </tr>
   </tbody>
 </table>
