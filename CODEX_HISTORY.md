@@ -38,3 +38,6 @@ This file preserves the historical intent and decisions for CodexGPT. Append a n
 - 2025-12-23: Clarified Ultimate Meter as a shared team resource; codified step-shift speed modifiers with cancellation rules; updated play/FAQ wording to reflect current speed legality and shared meter.
 - 2025-12-23: Polished rules and character wording across docs, clarified status timing language, aligned card type ordering, and refined damage mitigation keyword definitions.
 - 2025-12-23: Reviewed docs for consistency; refined damage mitigation keywords to support flat/percentage formats and clarified absorb floor behavior.
+- 2025-12-23: Standardized card taxonomy by introducing Technique and Created cards in terminology and card types, updated character type tags accordingly, and clarified multi-type damage matching for mitigation keywords to avoid stacking ambiguity.
+- 2025-12-23: Added FAQ entries that explain card categories and multi-type mitigation interactions to improve new-player onboarding and reduce rules ambiguity at first read.
+- 2025-12-23: Added a Quick Start section, expanded FAQ onboarding (combat flow, speed placement, created cards, mitigation example), and clarified core glossary terms and status triggers so new players can learn the rules without jumping between pages.

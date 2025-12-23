@@ -18,7 +18,7 @@
 ## Innates
 <div class="card-block">
   <p class="card-block__title">Gomu Gomu no Mi</p>
-  <p>Resist 5 (Pierce, Blunt).</p>
+  <p>Resist 5 (non-Haki Pierce, non-Haki Blunt).</p>
   <p>Immune (Electric).</p>
 </div>
 
@@ -82,7 +82,7 @@
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
     <span><strong>Power:</strong> 12-18</span>
-    <span><strong>Type:</strong> Attack, Physical, Melee, Blunt</span>
+    <span><strong>Type:</strong> Technique, Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Normal</span>
   </div>
@@ -97,7 +97,7 @@
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
     <span><strong>Power:</strong> 12-18</span>
-    <span><strong>Type:</strong> Attack, Physical, Melee, Blunt</span>
+    <span><strong>Type:</strong> Technique, Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Fast</span>
   </div>
@@ -110,7 +110,7 @@
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
     <span><strong>Power:</strong> 12-18</span>
-    <span><strong>Type:</strong> Attack, Physical, Melee, Blunt</span>
+    <span><strong>Type:</strong> Technique, Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Slow</span>
   </div>
@@ -123,7 +123,7 @@
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 2 Energy</span>
     <span><strong>Power:</strong> 20-30</span>
-    <span><strong>Type:</strong> Attack, Physical, Melee, Blunt</span>
+    <span><strong>Type:</strong> Technique, Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Normal</span>
   </div>
@@ -138,7 +138,7 @@
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 2 Energy</span>
     <span><strong>Power:</strong> 20-30</span>
-    <span><strong>Type:</strong> Attack, Physical, Melee, Blunt</span>
+    <span><strong>Type:</strong> Technique, Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Fast</span>
   </div>
@@ -151,7 +151,7 @@
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 2 Energy</span>
     <span><strong>Power:</strong> 20-30</span>
-    <span><strong>Type:</strong> Attack, Physical, Melee, Blunt</span>
+    <span><strong>Type:</strong> Technique, Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Slow</span>
   </div>
@@ -164,7 +164,7 @@
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
     <span><strong>Power:</strong> -</span>
-    <span><strong>Type:</strong> Special, Physical, Melee, Transformation, Buff</span>
+    <span><strong>Type:</strong> Technique, Special, Physical, Melee, Transformation, Buff</span>
     <span><strong>Target:</strong> Self</span>
     <span><strong>Speed:</strong> Normal</span>
   </div>

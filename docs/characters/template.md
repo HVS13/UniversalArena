@@ -54,7 +54,7 @@
   <div class="card-block__meta">
     <span><strong>Cost:</strong> Value</span>
     <span><strong>Power:</strong> Value</span>
-    <span><strong>Type:</strong> Tags</span>
+    <span><strong>Type:</strong> Basic, Tags</span>
     <span><strong>Target:</strong> Self / Allies / Enemies</span>
     <span><strong>Speed:</strong> Value</span>
   </div>
@@ -68,7 +68,7 @@
   <div class="card-block__meta">
     <span><strong>Cost:</strong> Value</span>
     <span><strong>Power:</strong> Value</span>
-    <span><strong>Type:</strong> Tags</span>
+    <span><strong>Type:</strong> Basic, Tags</span>
     <span><strong>Target:</strong> Self / Allies / Enemies</span>
     <span><strong>Speed:</strong> Value</span>
   </div>
@@ -82,7 +82,7 @@
   <div class="card-block__meta">
     <span><strong>Cost:</strong> Value</span>
     <span><strong>Power:</strong> Value</span>
-    <span><strong>Type:</strong> Tags</span>
+    <span><strong>Type:</strong> Technique, Tags</span>
     <span><strong>Target:</strong> Self / Allies / Enemies</span>
     <span><strong>Speed:</strong> Value</span>
   </div>
@@ -96,7 +96,7 @@
   <div class="card-block__meta">
     <span><strong>Cost:</strong> Value</span>
     <span><strong>Power:</strong> Value</span>
-    <span><strong>Type:</strong> Tags</span>
+    <span><strong>Type:</strong> Technique, Tags</span>
     <span><strong>Target:</strong> Self / Allies / Enemies</span>
     <span><strong>Speed:</strong> Value</span>
   </div>
@@ -110,7 +110,7 @@
   <div class="card-block__meta">
     <span><strong>Cost:</strong> Value</span>
     <span><strong>Power:</strong> Value</span>
-    <span><strong>Type:</strong> Tags</span>
+    <span><strong>Type:</strong> Technique, Tags</span>
     <span><strong>Target:</strong> Self / Allies / Enemies</span>
     <span><strong>Speed:</strong> Value</span>
   </div>
@@ -124,7 +124,7 @@
   <div class="card-block__meta">
     <span><strong>Cost:</strong> Value</span>
     <span><strong>Power:</strong> Value</span>
-    <span><strong>Type:</strong> Tags</span>
+    <span><strong>Type:</strong> Ultimate, Tags</span>
     <span><strong>Target:</strong> Self / Allies / Enemies</span>
     <span><strong>Speed:</strong> Value</span>
   </div>

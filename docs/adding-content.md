@@ -31,7 +31,7 @@ When adding card blocks, include a Power line in the meta (example: `<span><stro
 
 When listing `Type:` tags on character cards, use this order:
 
-1. Basic / Ultimate
+1. Basic / Technique / Ultimate
 2. Attack / Defense / Special
 3. Physical / Magical / Mental / Electric
 4. Melee / Ranged

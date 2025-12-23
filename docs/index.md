@@ -6,6 +6,16 @@ This site outlines the structure and references for Universal Arena. Add your ow
 
 This guide summarizes core systems and links to the detailed reference pages for terms, keywords, and characters.
 
+## Quick Start
+
+1. Each player chooses 3 characters (no duplicate Name + Version on the same team).
+2. Take each character's 5 cards (2 Basic + 3 Technique), shuffle them into one draw pile, and keep each Ultimate card outside the draw pile.
+3. Turn Start: draw to 5 cards, then set Energy to 5.
+4. The player with initiative starts a Combat Round by playing a card into a legal zone (Fast/Normal/Slow).
+5. Players alternate playing or passing; faster cards can interrupt slower zones.
+6. When both players pass, resolve the Active Zone right to left, then continue until all zones are empty.
+7. The initiative player may start another Combat Round or end the turn; at Turn End, discard all remaining cards.
+
 ## Win Conditions
 
 Reduce all opposing characters' HP to 0 (or meet the scenario's win condition, if you're playing a special mode).
@@ -25,7 +35,7 @@ Reduce all opposing characters' HP to 0 (or meet the scenario's win condition, i
 ## Preparation
 
 1. Each player chooses 3 characters. You cannot include two characters with the same Name and Version on one team.
-2. For each character chosen, take their 5 cards and shuffle them into one draw pile, then place it in the Deck Zone.
+2. For each character chosen, take their 5 cards (2 Basic + 3 Technique) and shuffle them into one draw pile, then place it in the Deck Zone.
 3. Each character's Ultimate card starts outside the draw pile and remains available even after it is used.
 4. Determine which player goes first.
 

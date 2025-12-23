@@ -31,7 +31,7 @@ These are starter examples you can edit/replace as you define your rules.
 
 Use this ordering when listing Type tags on cards:
 
-1. Basic / Ultimate
+1. Basic / Technique / Ultimate
 2. Attack / Defense / Special
 3. Physical / Magical / Mental / Electric
 4. Melee / Ranged
@@ -45,6 +45,12 @@ Use this ordering when listing Type tags on cards:
   <p class="ua-entry__title">Basic</p>
   <p class="ua-entry__meta"><span class="ua-pill">Category</span> Action.</p>
   <p class="ua-entry__desc">A card tagged as Basic for rules and synergies that reference Basic cards.</p>
+</div>
+
+<div class="ua-entry card-type-entry" id="card-type-technique">
+  <p class="ua-entry__title">Technique</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Category</span> Action.</p>
+  <p class="ua-entry__desc">A non-basic, non-ultimate card from a character's kit (the three non-basic cards in the starting five).</p>
 </div>
 
 <div class="ua-entry card-type-entry" id="card-type-ultimate">

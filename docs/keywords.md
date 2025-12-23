@@ -54,7 +54,7 @@ This page holds the full keyword reference. Use the filter to navigate large lis
 
 <div class="ua-entry keyword-entry" id="keyword-resist">
   <p class="ua-entry__title">Resist X</p>
-  <p class="ua-entry__desc">When damage would be dealt to HP, reduce that damage by X after Shield is applied. X can be a flat value (example: Resist 5), a percentage (example: Resist 20%), or both (example: Resist 5/20%). If both are listed, calculate both and use the higher reduction. If a damage type is listed, Resist applies only to that type. Damage cannot go below 0.</p>
+  <p class="ua-entry__desc">When damage would be dealt to HP, reduce that damage by X after Shield is applied. X can be a flat value (example: Resist 5), a percentage (example: Resist 20%), or both (example: Resist 5/20%). If both are listed, calculate both and use the higher reduction. If damage types or attack tags are listed, Resist applies only to those; if multiple are listed, apply once when any match. Damage cannot go below 0.</p>
 </div>
 
 <div class="ua-entry keyword-entry" id="keyword-immune">
@@ -64,12 +64,12 @@ This page holds the full keyword reference. Use the filter to navigate large lis
 
 <div class="ua-entry keyword-entry" id="keyword-weakness">
   <p class="ua-entry__title">Weakness X</p>
-  <p class="ua-entry__desc">When damage would be dealt to HP, increase that damage by X after Shield is applied. X can be a flat value (example: Weakness 5), a percentage (example: Weakness 20%), or both (example: Weakness 5/20%). If both are listed, calculate both and use the higher increase. If a damage type is listed, Weakness applies only to that type.</p>
+  <p class="ua-entry__desc">When damage would be dealt to HP, increase that damage by X after Shield is applied. X can be a flat value (example: Weakness 5), a percentage (example: Weakness 20%), or both (example: Weakness 5/20%). If both are listed, calculate both and use the higher increase. If damage types or attack tags are listed, Weakness applies only to those; if multiple are listed, apply once when any match.</p>
 </div>
 
 <div class="ua-entry keyword-entry" id="keyword-absorb">
   <p class="ua-entry__title">Absorb X</p>
-  <p class="ua-entry__desc">When damage would be dealt to HP, reduce that damage by X after Shield is applied, then heal for the amount reduced. X can be a flat value (example: Absorb 5), a percentage (example: Absorb 20%), or both (example: Absorb 5/20%). If both are listed, calculate both and use the higher reduction. If a damage type is listed, Absorb applies only to that type. Damage cannot go below 0.</p>
+  <p class="ua-entry__desc">When damage would be dealt to HP, reduce that damage by X after Shield is applied, then heal for the amount reduced. X can be a flat value (example: Absorb 5), a percentage (example: Absorb 20%), or both (example: Absorb 5/20%). If both are listed, calculate both and use the higher reduction. If damage types or attack tags are listed, Absorb applies only to those; if multiple are listed, apply once when any match. Damage cannot go below 0.</p>
 </div>
 
 ### Targeting

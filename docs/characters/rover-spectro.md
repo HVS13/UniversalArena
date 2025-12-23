@@ -77,7 +77,7 @@
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
     <span><strong>Power:</strong> 5-7</span>
-    <span><strong>Type:</strong> Attack, Physical, Melee, Slash, Multihit, Debuff</span>
+    <span><strong>Type:</strong> Technique, Attack, Physical, Melee, Slash, Multihit, Debuff</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Normal</span>
   </div>
@@ -90,7 +90,7 @@
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
     <span><strong>Power:</strong> 8-12</span>
-    <span><strong>Type:</strong> Attack, Physical, Melee, Blunt</span>
+    <span><strong>Type:</strong> Technique, Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Normal</span>
   </div>
@@ -103,7 +103,7 @@
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
     <span><strong>Power:</strong> -</span>
-    <span><strong>Type:</strong> Special, Magical, Ranged, AoE, Debuff</span>
+    <span><strong>Type:</strong> Technique, Special, Magical, Ranged, AoE, Debuff</span>
     <span><strong>Target:</strong> All Enemies</span>
     <span><strong>Speed:</strong> Normal</span>
   </div>
