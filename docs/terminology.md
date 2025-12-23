@@ -63,11 +63,11 @@ This page is the reference glossary for game terms. Use the filter to quickly lo
     </tr>
     <tr id="term-power" class="term-entry">
       <td>Power</td>
-      <td>A rolled value from a card's Power Range used for clash comparisons and numeric effect values. Roll Power each time a card resolves.</td>
+      <td>The min-max value shown on a card. It is derived from designer-only Base Power using +/- floor(Base Power x 0.20).</td>
     </tr>
-    <tr id="term-power-range" class="term-entry">
-      <td>Power Range</td>
-      <td>The min-max shown on a card. It is derived from designer-only Base Power using +/- floor(Base Power x 0.20).</td>
+    <tr id="term-power-roll" class="term-entry">
+      <td>Power Roll</td>
+      <td>The rolled value from a card's Power used for clash comparisons and numeric effect values. Roll Power each time a card resolves; card effects that reference Power use the Power Roll.</td>
     </tr>
     <tr id="term-reuse" class="term-entry">
       <td>Reuse</td>

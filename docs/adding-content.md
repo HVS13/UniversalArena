@@ -25,7 +25,7 @@ Use these patterns to keep pages consistent, responsive, and easy to extend.
 </a>
 ```
 
-When adding card blocks, include a Power Range line in the meta (example: `<span><strong>Power Range:</strong> 8-12</span>`).
+When adding card blocks, include a Power line in the meta (example: `<span><strong>Power:</strong> 8-12</span>`).
 
 ### Card type order
 

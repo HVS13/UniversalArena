@@ -50,7 +50,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
-    <span><strong>Power Range:</strong> 8-12</span>
+    <span><strong>Power:</strong> 8-12</span>
     <span><strong>Type:</strong> Basic, Attack, Physical, Melee, Slash</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Normal</span>
@@ -63,7 +63,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
-    <span><strong>Power Range:</strong> 8-12</span>
+    <span><strong>Power:</strong> 8-12</span>
     <span><strong>Type:</strong> Basic, Defense, Melee, Physical</span>
     <span><strong>Target:</strong> 1 Ally</span>
     <span><strong>Speed:</strong> Normal</span>
@@ -76,7 +76,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
-    <span><strong>Power Range:</strong> 5-7</span>
+    <span><strong>Power:</strong> 5-7</span>
     <span><strong>Type:</strong> Attack, Physical, Melee, Slash, Multihit, Debuff</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Normal</span>
@@ -89,7 +89,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
-    <span><strong>Power Range:</strong> 8-12</span>
+    <span><strong>Power:</strong> 8-12</span>
     <span><strong>Type:</strong> Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Normal</span>
@@ -102,7 +102,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
-    <span><strong>Power Range:</strong> -</span>
+    <span><strong>Power:</strong> -</span>
     <span><strong>Type:</strong> Special, Magical, Ranged, AoE, Debuff</span>
     <span><strong>Target:</strong> All Enemies</span>
     <span><strong>Speed:</strong> Normal</span>
@@ -115,7 +115,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 20 Ultimate Meter</span>
-    <span><strong>Power Range:</strong> 16-24</span>
+    <span><strong>Power:</strong> 16-24</span>
     <span><strong>Type:</strong> Ultimate, Attack, Magical, Ranged, AoE, Blunt, Recovery, Debuff</span>
     <span><strong>Target:</strong> All Enemies</span>
     <span><strong>Speed:</strong> Normal</span>

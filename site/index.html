@@ -950,16 +950,17 @@ Characters are arranged left to right in a single row; adjacent means the immedi
 5. The Fast Zone immediately becomes the Active Zone and resolves first. After it resolves, continue the clashing in the Normal Zone.</p>
 <h2 id="power">Power<a class="headerlink" href="#power" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Each card has a Power Range shown in its card block.</li>
-<li>Base Power is designer-only. Power Range = Base Power +/- floor(Base Power x 0.20).</li>
-<li>When a card resolves (clash or unopposed), roll Power within its range.</li>
-<li>Use the Power result for all numeric effect values on the card unless the effect uses another value (example: X). Costs and requirements stay as written.</li>
+<li>Each card has a Power value shown in its card block as a min-max range (example: 8-12).</li>
+<li>Base Power is designer-only. Power = Base Power +/- floor(Base Power x 0.20).</li>
+<li>When a card resolves (clash or unopposed), roll Power within its printed min-max; that roll is the Power Roll.</li>
+<li>Use the Power Roll for all numeric effect values on the card unless the effect uses another value (example: X). Costs and requirements stay as written.</li>
+<li>Special cards have Power: - and do not roll Power.</li>
 <li>Roll Power each time a card resolves. Multihit and Reuse roll again for each hit or reuse.</li>
 <li>All Power calculations round down and do not clamp the minimum.</li>
 </ol>
 <h2 id="how-to-clash">How To Clash<a class="headerlink" href="#how-to-clash" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Attack VS Attack: The card with the highest total Power wins (for multihit, sum the Power rolls for that clash).<ul>
+<li>Attack VS Attack: The card with the highest total Power wins (for multihit, sum the Power Rolls for that clash).<ul>
 <li>The losing card does not resolve any Power damage and does not resolve any <strong>On Hit</strong> effects. Its other effects still resolve, then it is discarded.</li>
 <li>The winning card is not resolved yet; it remains in the zone and continues through the stack. After the losing card is removed, the winning card may be paired again with the new nearest card immediately to its left as zone resolution continues.</li>
 <li>If it is a draw, both cards are considered losses.<ul>

@@ -873,6 +873,7 @@
         metaEntries.forEach((span) => {
           const text = span.textContent.trim();
           if (/^Cost:/i.test(text)) costText = text.replace(/^Cost:/i, "").trim();
+          if (/^Power:/i.test(text)) powerText = text.replace(/^Power:/i, "").trim();
           if (/^Power Range:/i.test(text)) powerText = text.replace(/^Power Range:/i, "").trim();
           if (/^Target:/i.test(text)) target = text.replace(/^Target:/i, "").trim();
           if (/^Type:/i.test(text)) {
@@ -887,7 +888,7 @@
           .filter(Boolean);
   
         const { costValue, costType } = parseCost(costText);
-        const powerRange = parsePowerRange(powerText);
+        const powerValues = parsePower(powerText);
 
         cards.push({
           id: slugify(`${name}-${costText}`),
@@ -896,9 +897,9 @@
           costValue,
           costType,
           powerText,
-          powerMin: powerRange.min,
-          powerMax: powerRange.max,
-          powerValue: powerRange.value,
+          powerMin: powerValues.min,
+          powerMax: powerValues.max,
+          powerValue: powerValues.value,
           target,
           types,
           effectText: effectLines.join(" "),
@@ -925,7 +926,7 @@
       return { costValue: value, costType: type };
     };
 
-    const parsePowerRange = (powerText) => {
+    const parsePower = (powerText) => {
       const cleaned = (powerText || "").trim();
       if (!cleaned || cleaned === "-") return { min: 0, max: 0, value: 0 };
       const rangeMatch = cleaned.match(/(\d+)\s*-\s*(\d+)/);

@@ -68,7 +68,7 @@ Use this ordering when listing Type tags on cards:
 <div class="ua-entry card-type-entry" id="card-type-special">
   <p class="ua-entry__title">Special</p>
   <p class="ua-entry__meta"><span class="ua-pill">Category</span> Action.</p>
-  <p class="ua-entry__desc">A card other than an attack or defense (example: granting a buff or debuff).</p>
+  <p class="ua-entry__desc">A card other than an attack or defense (example: granting a buff or debuff). Special cards have Power: - and never roll Power unless stated otherwise.</p>
 </div>
 
 ### Damage Type
