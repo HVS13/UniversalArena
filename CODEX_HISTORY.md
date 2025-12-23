@@ -42,3 +42,5 @@ This file preserves the historical intent and decisions for CodexGPT. Append a n
 - 2025-12-23: Added FAQ entries that explain card categories and multi-type mitigation interactions to improve new-player onboarding and reduce rules ambiguity at first read.
 - 2025-12-23: Added a Quick Start section, expanded FAQ onboarding (combat flow, speed placement, created cards, mitigation example), and clarified core glossary terms and status triggers so new players can learn the rules without jumping between pages.
 - 2025-12-24: Stacked character header images above details for consistent layout and added a subtle last-updated timestamp on the front page.
+- 2025-12-24: Added AGENTS.md with repo rules and response style; created and validated skills for content authoring, character kit design, game client edits, and relay server maintenance; packaged the skills for distribution.
+- 2025-12-24: Added root .gitignore for skill build artifacts and clarified that game pages are off-limits unless explicitly requested.
