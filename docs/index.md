@@ -14,25 +14,25 @@ Reduce all opposing characters' HP to 0 (or meet the scenario's win condition, i
 
 1. Deck Zone: This is where you place your deck. The pile is named **Draw Pile**.
 2. Discard Zone: This is where you place your discarded cards. The pile is named **Discard Pile**.
-3. Combat Zone: This is where you place your cards when you play them. The zone is divided into 3:
+3. Combat Zone: This is where you place your cards when you play them. The zone is divided into three:
    1. Fast Zone: This is where you play your fast cards.
-   2. Normal Zone: This is where you play your fast/normal cards.
-   3. Slow Zone: This is where you play your fast/normal/slow cards.
+   2. Normal Zone: This is where you play your fast or normal cards.
+   3. Slow Zone: This is where you play your fast, normal, or slow cards.
 
 > In each zone, cards are placed from **left to right** as they are played.
 > Characters are arranged left to right in a single row; adjacent means the immediate left or right neighbor.
 
 ## Preparation
 
-1. Each player chooses 3 characters. There cannot be the same character with the same Name and Version on one team.
-2. For each character chosen, take their 5 cards and shuffle them into one draw pile and place them into the Deck Zone.
+1. Each player chooses 3 characters. You cannot include two characters with the same Name and Version on one team.
+2. For each character chosen, take their 5 cards and shuffle them into one draw pile, then place it in the Deck Zone.
 3. Each character's Ultimate card starts outside the draw pile and remains available even after it is used.
-4. Determine which player who goes first.
+4. Determine which player goes first.
 
 ## How To Play
 
 1. Play is divided into 3 phases: Turn Start, Combat, Turn End.
-2. At Turn Start, both players simultaneously draw until they have a hand size of 5, modified by draw effects (if any), then set energy to 5 unless modified.
+2. At Turn Start, both players simultaneously draw until they have a hand size of 5, modified by draw effects (if any), then set Energy to 5 unless modified.
 3. At Combat Start, the player with initiative plays a card to initiate a Combat Round.
 4. During Combat, players play cards and clash. Combat Rounds can repeat.
 5. A Combat Round ends when there are no cards on any zone. The player with initiative may start another Combat Round or end their turn.
@@ -40,16 +40,16 @@ Reduce all opposing characters' HP to 0 (or meet the scenario's win condition, i
 
 ## Playing Cards
 
-1. To play any card, pay the energy cost, select a legal target, then place it on a legal zone.
+1. To play any card, pay the Energy cost, select a legal target, then place it on a legal zone.
 2. Any card played in any zone stays in that zone until it is resolved, then it is discarded.
-3. For each card played, your team gains ultimate meter equal to the energy spent using the card.
+3. For each card played, your team gains Ultimate Meter equal to the Energy spent to play the card.
 4. If a card's speed is modified, treat it as its current speed for where it can be played.
 
 ## How To Combat
 
 1. When you have priority, you may play **1 card** (any type) on a legal zone, or you may **Pass**.
     - Fast cards can be placed in any zone.
-    - Normal cards can be placed in the Normal/Slow Zone.
+    - Normal cards can be placed in the Normal or Slow Zone.
     - Slow cards can only be placed in the Slow Zone.
 2. At the start of a Combat Round, the player with initiative plays a card and may choose any legal zone. That zone becomes the **Active Zone**.
 3. After any card is played, priority passes to the next player in turn order.
@@ -99,8 +99,8 @@ This is a single annotated combat round from initiative through resolution.
 
 ## How To Clash
 
-1. Attack VS Attack: The card with the highest total Power wins (for multihit, sum the Power Rolls for that clash).
-    - The losing card does not resolve any Power damage and does not resolve any **On Hit** effects. Its other effects still resolve, then it is discarded.
+1. Attack VS Attack: The card with the highest total Power wins (for Multihit, sum the Power Rolls for that clash).
+    - The losing card does not resolve any Power damage and does not resolve any **On Hit** effects. Its other effects still resolve, then it is discarded. If the losing card has Multihit, reduce its multihit count by 1 and Reuse it instead of discarding it (see Card Types).
     - The winning card is not resolved yet; it remains in the zone and continues through the stack. After the losing card is removed, the winning card may be paired again with the new nearest card immediately to its left as zone resolution continues.
     - If it is a draw, both cards are considered losses.
         - Resolve the other effects (non-damage, non-On Hit effects) of the rightmost card first, then the left card, then discard both.

@@ -740,11 +740,21 @@
 <li><strong>Single-value mode:</strong> one value is typically called Count, Stack, or Value.</li>
 <li><strong>Double-value mode:</strong> two values (Potency + Count). Generally, Potency determines strength, while Count determines duration.</li>
 </ul>
-<p>In single-value or double-value modes, if one or more of the values reach 0, the status effect is removed from the unit. Values are always consumed before they are gained or inflicted.</p>
+<p>In single-value or double-value modes, if one or more values reach 0, the status effect is removed from the unit. When multiple effects at the same timing point would consume and gain status values, apply all reductions or consumptions first, then apply gains or inflictions. If a single effect specifies its own order (example: "Take damage, then reduce Count"), follow that text.</p>
 <p>Status effects also come with a few attributes:</p>
 <ul>
 <li><strong>Base Value:</strong> the initial value on infliction if none is specified.</li>
 <li><strong>Max Value:</strong> the maximum value (default 99).</li>
+</ul>
+</details>
+<details class="info">
+<summary>Timing order</summary>
+<p>When multiple status effects trigger at the same timing point (Turn Start, Turn End, etc.):</p>
+<ul>
+<li>Follow any explicit "then" order written on the effect itself.</li>
+<li>If there is no explicit order between effects, resolve them in any order, but apply all reductions or consumptions before any gains or inflictions to the same status effect.</li>
+<li>After all effects resolve, remove any status effect whose value reaches 0.</li>
+<li>If a specific effect contradicts this order, resolve it as written.</li>
 </ul>
 </details>
 <details class="info">

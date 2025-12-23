@@ -11,12 +11,20 @@ This page explains what status effects are and how their values work.
     - **Single-value mode:** one value is typically called Count, Stack, or Value.
     - **Double-value mode:** two values (Potency + Count). Generally, Potency determines strength, while Count determines duration.
 
-    In single-value or double-value modes, if one or more of the values reach 0, the status effect is removed from the unit. Values are always consumed before they are gained or inflicted.
+    In single-value or double-value modes, if one or more values reach 0, the status effect is removed from the unit. When multiple effects at the same timing point would consume and gain status values, apply all reductions or consumptions first, then apply gains or inflictions. If a single effect specifies its own order (example: "Take damage, then reduce Count"), follow that text.
 
     Status effects also come with a few attributes:
 
     - **Base Value:** the initial value on infliction if none is specified.
     - **Max Value:** the maximum value (default 99).
+
+??? info "Timing order"
+    When multiple status effects trigger at the same timing point (Turn Start, Turn End, etc.):
+
+    - Follow any explicit "then" order written on the effect itself.
+    - If there is no explicit order between effects, resolve them in any order, but apply all reductions or consumptions before any gains or inflictions to the same status effect.
+    - After all effects resolve, remove any status effect whose value reaches 0.
+    - If a specific effect contradicts this order, resolve it as written.
 
 ??? info "Power modifiers"
     Strength and Weakened modify Attack Power. Dexterity and Frail modify Defense Power.

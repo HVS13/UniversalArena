@@ -36,3 +36,5 @@ This file preserves the historical intent and decisions for CodexGPT. Append a n
 - 2025-12-23: Parsed Power Range for card effects, applied power-based combat resolution, gated relay-only actions when offline, and aligned game background theming across light/dark modes.
 - 2025-12-23: Hid the Play page from navigation and excluded the game docs page from the MkDocs build until the prototype is ready.
 - 2025-12-23: Clarified Ultimate Meter as a shared team resource; codified step-shift speed modifiers with cancellation rules; updated play/FAQ wording to reflect current speed legality and shared meter.
+- 2025-12-23: Polished rules and character wording across docs, clarified status timing language, aligned card type ordering, and refined damage mitigation keyword definitions.
+- 2025-12-23: Reviewed docs for consistency; refined damage mitigation keywords to support flat/percentage formats and clarified absorb floor behavior.

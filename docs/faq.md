@@ -25,8 +25,8 @@ This page collects frequently asked questions about Universal Arena.
 ??? question "Can status effects stack when they are inflicted again?"
     Yes. Reapplying a status effect increases its potency, count, value, stacks, and so on, up to its cap.
 
-??? question "If a status effect has potency and count, and a skill says \"Inflict X A\", what happens to the count?"
-    If the target already has A, only potency increases by X; count stays the same. If the target has no A, it gains A with potency X and count 1.
+??? question "If a status effect has potency and count, and an effect says \"Inflict X A\", what happens to the count?"
+    If the target already has A, only potency increases by X; count stays the same. If the target has no A, it gains A with potency X and count 1. The same rule applies to Gain on allies.
 
 ??? question "What does \"Halve\" mean?"
     "Halve" means set the current value to half of its current value, rounding down (floor). Examples:

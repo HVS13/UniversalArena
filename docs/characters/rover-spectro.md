@@ -10,7 +10,7 @@
       <p><strong>Version:</strong> Spectro</p>
       <p><strong>Origin:</strong> Wuthering Waves</p>
       <p><strong>Difficulty:</strong> Low</p>
-      <p><strong>Gameplan:</strong> Play as many cards as possible to fill Ultimate Meter faster. Gain Forte to inflict Spectro Frazzle stacks. Heal using ultimate.</p>
+      <p><strong>Gameplan:</strong> Play as many cards as possible to build Ultimate Meter quickly. Gain Forte to inflict Spectro Frazzle stacks. Heal with the ultimate.</p>
     </div>
   </div>
 </div>
@@ -18,7 +18,7 @@
 ## Innates
 <div class="card-block">
   <p class="card-block__title">World in a Grain of Sand</p>
-  <p>Gain 1 Ultimate Meter each time this character card is played.</p>
+  <p>Gain 1 Ultimate Meter each time a card from this character is played.</p>
 </div>
 
 ## Status Effects
@@ -115,11 +115,11 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 20 Ultimate Meter</span>
-    <span><strong>Power:</strong> 16-24</span>
+    <span><strong>Power:</strong> 15-25</span>
     <span><strong>Type:</strong> Ultimate, Attack, Magical, Ranged, AoE, Blunt, Recovery, Debuff</span>
     <span><strong>Target:</strong> All Enemies</span>
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal Power damage. Heal Power / 2 HP. On Hit: Inflict 6 Spectro Frazzle.</p>
+  <p>Deal Power damage. Heal for Power / 2 HP. On Hit: Inflict 6 Spectro Frazzle.</p>
 </div>
