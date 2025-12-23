@@ -41,3 +41,4 @@ This file preserves the historical intent and decisions for CodexGPT. Append a n
 - 2025-12-23: Standardized card taxonomy by introducing Technique and Created cards in terminology and card types, updated character type tags accordingly, and clarified multi-type damage matching for mitigation keywords to avoid stacking ambiguity.
 - 2025-12-23: Added FAQ entries that explain card categories and multi-type mitigation interactions to improve new-player onboarding and reduce rules ambiguity at first read.
 - 2025-12-23: Added a Quick Start section, expanded FAQ onboarding (combat flow, speed placement, created cards, mitigation example), and clarified core glossary terms and status triggers so new players can learn the rules without jumping between pages.
+- 2025-12-24: Stacked character header images above details for consistent layout and added a subtle last-updated timestamp on the front page.

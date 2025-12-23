@@ -2,6 +2,8 @@
 
 This site outlines the structure and references for Universal Arena. Add your own content as you grow the guide.
 
+<p class="ua-last-updated">Last updated: <time datetime="2025-12-24T00:42">2025-12-24 00:42</time></p>
+
 ## Introduction
 
 This guide summarizes core systems and links to the detailed reference pages for terms, keywords, and characters.
