@@ -417,15 +417,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#neutral" class="md-nav__link">
-    <span class="md-ellipsis">
-      Neutral
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#positive" class="md-nav__link">
     <span class="md-ellipsis">
       Positive
@@ -652,15 +643,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#neutral" class="md-nav__link">
-    <span class="md-ellipsis">
-      Neutral
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#positive" class="md-nav__link">
     <span class="md-ellipsis">
       Positive
@@ -709,11 +691,11 @@
 </ul>
 </details>
 <details class="info">
-<summary>Power range modifiers</summary>
-<p>Strength and Weakened modify Attack Power Range. Dexterity and Frail modify Defense Power Range.</p>
+<summary>Power modifiers</summary>
+<p>Strength and Weakened modify Attack Power. Dexterity and Frail modify Defense Power.</p>
 <p>When both a positive and negative modifier apply, use net Potency (positive - negative).
-Multiply the card's Power Range min and max by (1 + 0.10 x net Potency), then round down.
-Power range has no minimum clamp.</p>
+Multiply the card's Power min and max by (1 + 0.10 x net Potency), then round down.
+Power has no minimum clamp.</p>
 </details>
 <h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
 <p>Use the filter to quickly locate a mode, rule, or attribute.</p>
@@ -746,7 +728,7 @@ Power range has no minimum clamp.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 10.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Reduce Defense Power Range by 10% x Potency.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Reduce Defense Power by 10% x Potency.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
 </div>
 
@@ -762,8 +744,9 @@ Power range has no minimum clamp.</p>
 <div class="ua-entry status-entry" id="status-slow">
   <p class="ua-entry__title">Slow</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 10.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Turn Start</span> Reduce the number of cards drawn by <strong>Stack</strong>.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 2.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Reduce the Speed of the Card by <strong>Stack</strong>.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Stack</strong> by <strong>Halve</strong>.</p>
 </div>
 
@@ -774,19 +757,11 @@ Power range has no minimum clamp.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Inflict damage equal to <strong>5 x Stack</strong>. Then reduce Stack by 1.</p>
 </div>
 
-<div class="ua-entry status-entry" id="status-stagnant">
-  <p class="ua-entry__title">Stagnant</p>
+<div class="ua-entry status-entry" id="status-stagnate">
+  <p class="ua-entry__title">Stagnate</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Max Value</span> 10.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Instant</span> Increase the Energy cost of a random card in hand by 1 until that card is used. Repeat <strong>Value</strong> times. Expires.</p>
-</div>
-
-<div class="ua-entry status-entry" id="status-deflate">
-  <p class="ua-entry__title">Deflate</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 1.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Cannot play any card from this character.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Stack</strong> by 1.</p>
 </div>
 
 <div class="ua-entry status-entry" id="status-stun">
@@ -802,23 +777,8 @@ Power range has no minimum clamp.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 10.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Reduce Attack Power Range by 10% x Potency.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Reduce Attack Power by 10% x Potency.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
-</div>
-
-<h3 id="neutral">Neutral<a class="headerlink" href="#neutral" title="Permanent link">&para;</a></h3>
-<div class="ua-entry status-entry" id="status-gear-2nd">
-  <p class="ua-entry__title">Gear 2nd</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Neutral.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 1.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Stack</strong> by 1.</p>
-</div>
-
-<div class="ua-entry status-entry" id="status-forte-rover-spectro">
-  <p class="ua-entry__title">Forte: Rover Spectro</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Neutral.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Max Value</span> 2.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Used to enhance some cards.</p>
 </div>
 
 <h3 id="positive">Positive<a class="headerlink" href="#positive" title="Permanent link">&para;</a></h3>
@@ -827,15 +787,16 @@ Power range has no minimum clamp.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Positive.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 10.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Increase Defense Power Range by 10% x Potency.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Increase Defense Power by 10% x Potency.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
 </div>
 
 <div class="ua-entry status-entry" id="status-haste">
   <p class="ua-entry__title">Haste</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Positive.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 10.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Turn Start</span> Increase the number of cards drawn by <strong>Stack</strong>.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 2.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Increase the Speed of the Card by <strong>Stack</strong>.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Stack</strong> by <strong>Halve</strong>.</p>
 </div>
 
@@ -844,7 +805,7 @@ Power range has no minimum clamp.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Positive.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 10.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Increase Attack Power Range by 10% x Potency.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Increase Attack Power by 10% x Potency.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
 </div>
 
