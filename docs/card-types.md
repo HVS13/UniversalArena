@@ -35,7 +35,7 @@ Use this ordering when listing Type tags on cards:
 2. Attack / Defense / Special
 3. Physical / Magical / Mental / Electric
 4. Melee / Ranged
-5. AoE / Splash (area or targeting tags)
+5. AoE / Splash
 6. Slash / Pierce / Blunt / Multihit
 7. Transformation / Recovery / Buff / Debuff
 

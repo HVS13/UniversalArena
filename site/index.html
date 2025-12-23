@@ -375,6 +375,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#golden-example-turn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Golden Example Turn
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#power" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -875,6 +886,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#golden-example-turn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Golden Example Turn
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#power" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -984,7 +1006,7 @@
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
 <p>This guide summarizes core systems and links to the detailed reference pages for terms, keywords, and characters.</p>
 <h2 id="win-conditions">Win Conditions<a class="headerlink" href="#win-conditions" title="Permanent link">&para;</a></h2>
-<p>Reduce the opposing team's HP to 0 (or meet the scenario's win condition, if you're playing a special mode).</p>
+<p>Reduce all opposing characters' HP to 0 (or meet the scenario's win condition, if you're playing a special mode).</p>
 <h2 id="board">Board<a class="headerlink" href="#board" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Deck Zone: This is where you place your deck. The pile is named <strong>Draw Pile</strong>.</li>
@@ -1000,7 +1022,7 @@ Characters are arranged left to right in a single row; adjacent means the immedi
 </blockquote>
 <h2 id="preparation">Preparation<a class="headerlink" href="#preparation" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Each player chooses their characters. There cannot be the same character with the same Name and Version on one team.</li>
+<li>Each player chooses 3 characters. There cannot be the same character with the same Name and Version on one team.</li>
 <li>For each character chosen, take their 5 cards and shuffle them into one draw pile and place them into the Deck Zone.</li>
 <li>Each character's Ultimate card starts outside the draw pile and remains available even after it is used.</li>
 <li>Determine which player who goes first.</li>
@@ -1008,7 +1030,7 @@ Characters are arranged left to right in a single row; adjacent means the immedi
 <h2 id="how-to-play">How To Play<a class="headerlink" href="#how-to-play" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Play is divided into 3 phases: Turn Start, Combat, Turn End.</li>
-<li>At Turn Start, both players simultaneously draw until they have a hand size of 5, modified by draw effects (example: Haste +3 means draw to 8; Slow +3 means draw to 2), then refresh energy to 5 unless modified.</li>
+<li>At Turn Start, both players simultaneously draw until they have a hand size of 5, modified by draw effects (if any), then set energy to 5 unless modified.</li>
 <li>At Combat Start, the player with initiative plays a card to initiate a Combat Round.</li>
 <li>During Combat, players play cards and clash. Combat Rounds can repeat.</li>
 <li>A Combat Round ends when there are no cards on any zone. The player with initiative may start another Combat Round or end their turn.</li>
@@ -1018,7 +1040,8 @@ Characters are arranged left to right in a single row; adjacent means the immedi
 <ol>
 <li>To play any card, pay the energy cost, select a legal target, then place it on a legal zone.</li>
 <li>Any card played in any zone stays in that zone until it is resolved, then it is discarded.</li>
-<li>For each card played, you gain ultimate meter equal to the energy spent using the card.</li>
+<li>For each card played, your team gains ultimate meter equal to the energy spent using the card.</li>
+<li>If a card's speed is modified, treat it as its current speed for where it can be played.</li>
 </ol>
 <h2 id="how-to-combat">How To Combat<a class="headerlink" href="#how-to-combat" title="Permanent link">&para;</a></h2>
 <ol>
@@ -1053,12 +1076,25 @@ Characters are arranged left to right in a single row; adjacent means the immedi
 3. You play another card in that clash.
 4. Instead of countering again in the Normal Zone, your opponent plays a card in the Fast Zone.
 5. The Fast Zone immediately becomes the Active Zone and resolves first. After it resolves, continue the clashing in the Normal Zone.</p>
+<h2 id="golden-example-turn">Golden Example Turn<a class="headerlink" href="#golden-example-turn" title="Permanent link">&para;</a></h2>
+<p>This is a single annotated combat round from initiative through resolution.</p>
+<ol>
+<li>Initiative: Player A has initiative and starts a Combat Round by playing a Normal attack targeting Player B in the Normal Zone. The Normal Zone becomes the Active Zone.</li>
+<li>Player B responds by playing a Normal defense in the Normal Zone.</li>
+<li>Player A adds another Normal attack to the same zone.</li>
+<li>Player B interrupts by playing a Fast attack in the Fast Zone. The Fast Zone becomes the Active Zone and the Normal Zone pauses.</li>
+<li>Player A plays a Fast defense in the Fast Zone.</li>
+<li>Player B passes. Priority returns to Player A, who passes. The Fast Zone resolves.</li>
+<li>Fast Zone resolution (right to left): Player A's defense and Player B's attack clash (Attack vs Defense). Resolve the defense (gain shield), then resolve the attack (it is a hit). Discard both cards.</li>
+<li>Return to the paused Normal Zone. Priority is with Player B, who passes. Player A passes, so the Normal Zone resolves.</li>
+<li>Normal Zone resolution (right to left): Player A's most recent attack clashes with Player B's defense (Attack vs Defense). Resolve the defense, then the attack. The earlier attack has no card to its left, so it resolves unopposed.</li>
+<li>All zones are empty, so the Combat Round ends. Player A may start another Combat Round or end their turn.</li>
+</ol>
 <h2 id="power">Power<a class="headerlink" href="#power" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Each card has a Power value shown in its card block as a min-max range (example: 8-12).</li>
-<li>Base Power is designer-only. Power = Base Power +/- floor(Base Power x 0.20).</li>
 <li>When a card resolves (clash or unopposed), roll Power within its printed min-max; that roll is the Power Roll.</li>
-<li>Use the Power Roll for all numeric effect values on the card unless the effect uses another value (example: X). Costs and requirements stay as written.</li>
+<li>Use the Power Roll only for damage dealt, shield gained, and HP recovered. Other numeric effects use their written values unless the effect uses another value (example: X). Costs and requirements stay as written.</li>
 <li>Special cards have Power: - and do not roll Power.</li>
 <li>Roll Power each time a card resolves. Multihit and Reuse roll again for each hit or reuse.</li>
 <li>All Power calculations round down and do not clamp the minimum.</li>

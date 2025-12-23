@@ -699,11 +699,11 @@
     </tr>
     <tr id="term-energy" class="term-entry">
       <td>Energy</td>
-      <td>The resource used to play cards. By default, at Turn Start each player refreshes to 5 energy; effects can modify this and there is no energy cap.</td>
+      <td>The resource used to play cards. By default, at Turn Start each player sets energy to 5; effects can modify this and there is no energy cap.</td>
     </tr>
     <tr id="term-ultimate-meter" class="term-entry">
       <td>Ultimate Meter</td>
-      <td>The resource that powers the strongest abilities.</td>
+      <td>The shared team resource that powers the strongest abilities. Design target: in a standard 3v3 match, a normal team gains about 5 Ultimate Meter per turn on average; some characters gain faster or slower.</td>
     </tr>
     <tr id="term-ultimate-card" class="term-entry">
       <td>Ultimate Card</td>
@@ -725,7 +725,7 @@
     </tr>
     <tr id="term-draw" class="term-entry">
       <td>Draw</td>
-      <td>The act of taking cards from your Draw Pile and adding them to your hand. By default, at Turn Start you draw until you reach a hand size of 5, modified by draw effects (example: Haste adds, Slow subtracts).</td>
+      <td>The act of taking cards from your Draw Pile and adding them to your hand. By default, at Turn Start you draw until you reach a hand size of 5, modified by draw effects (if any).</td>
     </tr>
     <tr class="term-section">
       <th colspan="2">Combat</th>
@@ -740,7 +740,7 @@
     </tr>
     <tr id="term-power-roll" class="term-entry">
       <td>Power Roll</td>
-      <td>The rolled value from a card's Power used for clash comparisons and numeric effect values. Roll Power each time a card resolves; card effects that reference Power use the Power Roll.</td>
+      <td>The rolled value from a card's Power used for clash comparisons and for damage dealt, shield gained, and HP recovered. Roll Power each time a card resolves.</td>
     </tr>
     <tr id="term-reuse" class="term-entry">
       <td>Reuse</td>

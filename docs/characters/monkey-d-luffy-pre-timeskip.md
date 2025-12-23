@@ -9,7 +9,7 @@
       <p><strong>Name:</strong> Monkey D. Luffy</p>
       <p><strong>Version:</strong> Pre-Timeskip</p>
       <p><strong>Origin:</strong> One Piece</p>
-      <p><strong>Difficulty:</strong> Low</p>
+      <p><strong>Difficulty:</strong> Medium</p>
       <p><strong>Gameplan:</strong> Use Gear Transformation at the right time to seize the moment. Gear 2nd to make more interruption and control the flow of the battle, and Gear 3rd to deal massive damage. Beware the after effect of Gear 3rd!</p>
     </div>
   </div>
@@ -28,6 +28,7 @@
   <p class="ua-entry__title">Gear 2nd</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Neutral.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 1.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn Start</span> Gain 1 Strength. Gain 1 Haste.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce Stack by 1.</p>
 </div>
 
@@ -35,7 +36,9 @@
   <p class="ua-entry__title">Gear 3rd</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Neutral.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 1.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce Stack by 1.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn Start</span> Gain 3 Strength. Gain 1 Slow.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce Stack by 1. Gain Deflate.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Next Turn Start</span> Gain Deflate.</p>
 </div>
 
 <div class="ua-entry ua-entry--compact status-entry">
@@ -59,8 +62,6 @@
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Deal Power damage.</p>
-  <p>If this character has Gear 2nd: Use Power 12-18 instead. Speed becomes Fast.</p>
-  <p>If this character has Gear 3rd: Use Power 16-24 instead. Speed becomes Slow.</p>
 </div>
 
 ### Card 2: Defend
@@ -74,8 +75,6 @@
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Gain Power Shield.</p>
-  <p>If this character has Gear 2nd: Use Power 12-18 instead. Speed becomes Fast.</p>
-  <p>If this character has Gear 2nd: Use Power 16-24 instead. Speed becomes Slow.</p>
 </div>
 
 ### Card 3-1: Gomu Gomu no Pistol
@@ -97,7 +96,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
-    <span><strong>Power:</strong> 16-24</span>
+    <span><strong>Power:</strong> 12-18</span>
     <span><strong>Type:</strong> Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Fast</span>
@@ -110,7 +109,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
-    <span><strong>Power:</strong> 20-30</span>
+    <span><strong>Power:</strong> 12-18</span>
     <span><strong>Type:</strong> Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Slow</span>
@@ -138,7 +137,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 2 Energy</span>
-    <span><strong>Power:</strong> 24-36</span>
+    <span><strong>Power:</strong> 20-30</span>
     <span><strong>Type:</strong> Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Fast</span>
@@ -151,7 +150,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 2 Energy</span>
-    <span><strong>Power:</strong> 28-42</span>
+    <span><strong>Power:</strong> 20-30</span>
     <span><strong>Type:</strong> Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Slow</span>
@@ -180,14 +179,14 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 30 Ultimate Meter + X Energy</span>
-    <span><strong>Power:</strong> 16-24</span>
+    <span><strong>Power:</strong> 24-30</span>
     <span><strong>Type:</strong> Ultimate, Attack, Physical, Melee, Splash, Blunt, Multihit, Debuff</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Fast</span>
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Can only be used if this character has Gear 2nd.</p>
-  <p>Deal Power damage X+1 times. Inflict X Frail.</p>
+  <p>Deal Power damage X+1 times. Inflict X Frail. Gain 1 Weak and +2 Weak Count. Gain 1 Vulnerable and +2 Vulnerable Count.</p>
   <p>If this character has Gear 3rd: This Ultimate becomes Gomu Gomu no Gigant Rifle.</p>
 </div>
 
@@ -195,7 +194,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 30 Ultimate Meter</span>
-    <span><strong>Power:</strong> 56-84</span>
+    <span><strong>Power:</strong> 36-54</span>
     <span><strong>Type:</strong> Ultimate, Attack, Physical, Melee, Splash, Blunt, Debuff</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Slow</span>

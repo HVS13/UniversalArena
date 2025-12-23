@@ -11,10 +11,10 @@ This page collects frequently asked questions about Universal Arena.
 -->
 
 ??? question "How do I win a match?"
-    Reduce the opposing team's HP to 0 (or meet the scenario's win condition, if you're playing a special mode).
+    Reduce all opposing characters' HP to 0 (or meet the scenario's win condition, if you're playing a special mode).
 
 ??? question "How does Ultimate Meter work?"
-    You gain Ultimate Meter as you play cards; once you have enough, you can pay the Ultimate Meter cost to use your Ultimate card. Ultimate cards sit outside the draw pile and are always available to play.
+    Your team gains Ultimate Meter as you play cards; it is a shared resource. Once you have enough, any character can pay the Ultimate Meter cost to use its Ultimate card. Ultimate cards sit outside the draw pile and are always available to play.
 
 ??? question "Can I bring two of the same character?"
     Not if they have the same Name and Version on the same team.

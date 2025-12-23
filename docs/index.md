@@ -8,7 +8,7 @@ This guide summarizes core systems and links to the detailed reference pages for
 
 ## Win Conditions
 
-Reduce the opposing team's HP to 0 (or meet the scenario's win condition, if you're playing a special mode).
+Reduce all opposing characters' HP to 0 (or meet the scenario's win condition, if you're playing a special mode).
 
 ## Board
 
@@ -24,7 +24,7 @@ Reduce the opposing team's HP to 0 (or meet the scenario's win condition, if you
 
 ## Preparation
 
-1. Each player chooses their characters. There cannot be the same character with the same Name and Version on one team.
+1. Each player chooses 3 characters. There cannot be the same character with the same Name and Version on one team.
 2. For each character chosen, take their 5 cards and shuffle them into one draw pile and place them into the Deck Zone.
 3. Each character's Ultimate card starts outside the draw pile and remains available even after it is used.
 4. Determine which player who goes first.
@@ -32,7 +32,7 @@ Reduce the opposing team's HP to 0 (or meet the scenario's win condition, if you
 ## How To Play
 
 1. Play is divided into 3 phases: Turn Start, Combat, Turn End.
-2. At Turn Start, both players simultaneously draw until they have a hand size of 5, modified by draw effects (example: Haste +3 means draw to 8; Slow +3 means draw to 2), then refresh energy to 5 unless modified.
+2. At Turn Start, both players simultaneously draw until they have a hand size of 5, modified by draw effects (if any), then set energy to 5 unless modified.
 3. At Combat Start, the player with initiative plays a card to initiate a Combat Round.
 4. During Combat, players play cards and clash. Combat Rounds can repeat.
 5. A Combat Round ends when there are no cards on any zone. The player with initiative may start another Combat Round or end their turn.
@@ -42,7 +42,8 @@ Reduce the opposing team's HP to 0 (or meet the scenario's win condition, if you
 
 1. To play any card, pay the energy cost, select a legal target, then place it on a legal zone.
 2. Any card played in any zone stays in that zone until it is resolved, then it is discarded.
-3. For each card played, you gain ultimate meter equal to the energy spent using the card.
+3. For each card played, your team gains ultimate meter equal to the energy spent using the card.
+4. If a card's speed is modified, treat it as its current speed for where it can be played.
 
 ## How To Combat
 
@@ -72,15 +73,29 @@ Example:
 4. Instead of countering again in the Normal Zone, your opponent plays a card in the Fast Zone.
 5. The Fast Zone immediately becomes the Active Zone and resolves first. After it resolves, continue the clashing in the Normal Zone.
 
+## Golden Example Turn
+
+This is a single annotated combat round from initiative through resolution.
+
+1. Initiative: Player A has initiative and starts a Combat Round by playing a Normal attack targeting Player B in the Normal Zone. The Normal Zone becomes the Active Zone.
+2. Player B responds by playing a Normal defense in the Normal Zone.
+3. Player A adds another Normal attack to the same zone.
+4. Player B interrupts by playing a Fast attack in the Fast Zone. The Fast Zone becomes the Active Zone and the Normal Zone pauses.
+5. Player A plays a Fast defense in the Fast Zone.
+6. Player B passes. Priority returns to Player A, who passes. The Fast Zone resolves.
+7. Fast Zone resolution (right to left): Player A's defense and Player B's attack clash (Attack vs Defense). Resolve the defense (gain shield), then resolve the attack (it is a hit). Discard both cards.
+8. Return to the paused Normal Zone. Priority is with Player B, who passes. Player A passes, so the Normal Zone resolves.
+9. Normal Zone resolution (right to left): Player A's most recent attack clashes with Player B's defense (Attack vs Defense). Resolve the defense, then the attack. The earlier attack has no card to its left, so it resolves unopposed.
+10. All zones are empty, so the Combat Round ends. Player A may start another Combat Round or end their turn.
+
 ## Power
 
 1. Each card has a Power value shown in its card block as a min-max range (example: 8-12).
-2. Base Power is designer-only. Power = Base Power +/- floor(Base Power x 0.20).
-3. When a card resolves (clash or unopposed), roll Power within its printed min-max; that roll is the Power Roll.
-4. Use the Power Roll for all numeric effect values on the card unless the effect uses another value (example: X). Costs and requirements stay as written.
-5. Special cards have Power: - and do not roll Power.
-6. Roll Power each time a card resolves. Multihit and Reuse roll again for each hit or reuse.
-7. All Power calculations round down and do not clamp the minimum.
+2. When a card resolves (clash or unopposed), roll Power within its printed min-max; that roll is the Power Roll.
+3. Use the Power Roll only for damage dealt, shield gained, and HP recovered. Other numeric effects use their written values unless the effect uses another value (example: X). Costs and requirements stay as written.
+4. Special cards have Power: - and do not roll Power.
+5. Roll Power each time a card resolves. Multihit and Reuse roll again for each hit or reuse.
+6. All Power calculations round down and do not clamp the minimum.
 
 ## How To Clash
 

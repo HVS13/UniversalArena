@@ -25,6 +25,11 @@ This page explains what status effects are and how their values work.
     Multiply the card's Power min and max by (1 + 0.10 x net Potency), then round down.
     Power has no minimum clamp.
 
+??? info "Speed shift"
+    Speed modifiers use a step-shift system. Each Potency shifts Speed by 1 step.
+    Haste and Slow cancel step-for-step (example: Haste 2 and Slow 1 results in a net +1 step).
+    Net shift is capped at 2 steps total. Haste shifts Slow -> Normal -> Fast. Slow shifts Fast -> Normal -> Slow.
+
 ## Reference
 
 Use the filter to quickly locate a mode, rule, or attribute.
@@ -57,7 +62,7 @@ Use the filter to quickly locate a mode, rule, or attribute.
 <div class="ua-entry status-entry" id="status-frail">
   <p class="ua-entry__title">Frail</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 10.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 999.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Reduce Defense Power by 10% x Potency.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
@@ -75,10 +80,10 @@ Use the filter to quickly locate a mode, rule, or attribute.
 <div class="ua-entry status-entry" id="status-slow">
   <p class="ua-entry__title">Slow</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 2.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 999.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Reduce the Speed of the Card by <strong>Stack</strong>.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Stack</strong> by <strong>Halve</strong>.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Reduce the card's Speed by <strong>Potency</strong> steps (Fast -> Normal -> Slow), capped at 2 steps.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
 </div>
 
 <div class="ua-entry status-entry" id="status-stagnate">
@@ -99,7 +104,7 @@ Use the filter to quickly locate a mode, rule, or attribute.
 <div class="ua-entry status-entry" id="status-weakened">
   <p class="ua-entry__title">Weakened</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 10.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 999.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Reduce Attack Power by 10% x Potency.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
@@ -110,7 +115,7 @@ Use the filter to quickly locate a mode, rule, or attribute.
 <div class="ua-entry status-entry" id="status-dexterity">
   <p class="ua-entry__title">Dexterity</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Positive.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 10.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 999.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Increase Defense Power by 10% x Potency.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
@@ -119,16 +124,16 @@ Use the filter to quickly locate a mode, rule, or attribute.
 <div class="ua-entry status-entry" id="status-haste">
   <p class="ua-entry__title">Haste</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Positive.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 2.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 999.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Increase the Speed of the Card by <strong>Stack</strong>.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Stack</strong> by <strong>Halve</strong>.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Increase the card's Speed by <strong>Potency</strong> steps (Slow -> Normal -> Fast), capped at 2 steps.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
 </div>
 
 <div class="ua-entry status-entry" id="status-strength">
   <p class="ua-entry__title">Strength</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Positive.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 10.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 999.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Increase Attack Power by 10% x Potency.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
