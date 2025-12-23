@@ -25,14 +25,21 @@
 ## Status Effects
 
 <div class="ua-entry ua-entry--compact status-entry">
-  <p class="ua-entry__title"><a class="ua-status-link" data-status="status-gear-2nd" href="#">Gear 2nd</a></p>
+  <p class="ua-entry__title">Gear 2nd</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Neutral.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 1.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce Stack by 1.</p>
 </div>
 
 <div class="ua-entry ua-entry--compact status-entry">
-  <p class="ua-entry__title"><a class="ua-status-link" data-status="status-deflate" href="#">Deflate</a></p>
+  <p class="ua-entry__title">Gear 3rd</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Neutral.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 1.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce Stack by 1.</p>
+</div>
+
+<div class="ua-entry ua-entry--compact status-entry">
+  <p class="ua-entry__title">Deflate</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 1.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Cannot play any card from this character.</p>
@@ -53,6 +60,7 @@
   <p class="card-block__heading">Effect</p>
   <p>Deal Power damage.</p>
   <p>If this character has Gear 2nd: Use Power 12-18 instead. Speed becomes Fast.</p>
+  <p>If this character has Gear 3rd: Use Power 16-24 instead. Speed becomes Slow.</p>
 </div>
 
 ### Card 2: Defend
@@ -67,6 +75,7 @@
   <p class="card-block__heading">Effect</p>
   <p>Gain Power Shield.</p>
   <p>If this character has Gear 2nd: Use Power 12-18 instead. Speed becomes Fast.</p>
+  <p>If this character has Gear 2nd: Use Power 16-24 instead. Speed becomes Slow.</p>
 </div>
 
 ### Card 3-1: Gomu Gomu no Pistol
@@ -81,6 +90,7 @@
   <p class="card-block__heading">Effect</p>
   <p>Deal Power damage.</p>
   <p>If this character has Gear 2nd: This card becomes Gomu Gomu no Jet Pistol.</p>
+  <p>If this character has Gear 3rd: This card becomes Gomu Gomu no Gigant Pistol.</p>
 </div>
 
 ### Card 3-2: Gomu Gomu no Jet Pistol
@@ -91,6 +101,19 @@
     <span><strong>Type:</strong> Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Fast</span>
+  </div>
+  <p class="card-block__heading">Effect</p>
+  <p>Deal Power damage.</p>
+</div>
+
+### Card 3-3: Gomu Gomu no Gigant Pistol
+<div class="card-block">
+  <div class="card-block__meta">
+    <span><strong>Cost:</strong> 1 Energy</span>
+    <span><strong>Power:</strong> 20-30</span>
+    <span><strong>Type:</strong> Attack, Physical, Melee, Blunt</span>
+    <span><strong>Target:</strong> 1 Enemy</span>
+    <span><strong>Speed:</strong> Slow</span>
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Deal Power damage.</p>
@@ -108,6 +131,7 @@
   <p class="card-block__heading">Effect</p>
   <p>Deal Power damage.</p>
   <p>If this character has Gear 2nd: This card becomes Gomu Gomu no Jet Bazooka.</p>
+  <p>If this character has Gear 3rd: This card becomes Gomu Gomu no Gigant Bazooka.</p>
 </div>
 
 ### Card 4-2: Gomu Gomu no Jet Bazooka
@@ -123,6 +147,19 @@
   <p>Deal Power damage.</p>
 </div>
 
+### Card 4-3: Gomu Gomu no Gigant Bazooka
+<div class="card-block">
+  <div class="card-block__meta">
+    <span><strong>Cost:</strong> 2 Energy</span>
+    <span><strong>Power:</strong> 28-42</span>
+    <span><strong>Type:</strong> Attack, Physical, Melee, Blunt</span>
+    <span><strong>Target:</strong> 1 Enemy</span>
+    <span><strong>Speed:</strong> Slow</span>
+  </div>
+  <p class="card-block__heading">Effect</p>
+  <p>Deal Power damage.</p>
+</div>
+
 ### Card 5: Gear Transformation
 <div class="card-block">
   <div class="card-block__meta">
@@ -133,26 +170,13 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
+  <p>Cannot be used if this character has Gear 2nd or Gear 3rd.</p>
   <p>Choose 1:</p>
   <p>Gain 1 Gear 2nd.</p>
   <p>Gain 1 Gear 3rd.</p>
 </div>
 
-### Ultimate-1: Gomu Gomu no Gigant Bazooka
-<div class="card-block">
-  <div class="card-block__meta">
-    <span><strong>Cost:</strong> 30 Ultimate Meter</span>
-    <span><strong>Power:</strong> 56-84</span>
-    <span><strong>Type:</strong> Ultimate, Attack, Physical, Melee, Splash, Blunt, Debuff</span>
-    <span><strong>Target:</strong> 1 Enemy</span>
-    <span><strong>Speed:</strong> Normal</span>
-  </div>
-  <p class="card-block__heading">Effect</p>
-  <p>Deal Power damage. Gain Deflate.</p>
-  <p>If this character has Gear 2nd: This Ultimate becomes Gomu Gomu no Jet Gatling.</p>
-</div>
-
-### Ultimate-2: Gomu Gomu no Jet Gatling
+### Ultimate-1: Gomu Gomu no Jet Gatling
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 30 Ultimate Meter + X Energy</span>
@@ -162,5 +186,22 @@
     <span><strong>Speed:</strong> Fast</span>
   </div>
   <p class="card-block__heading">Effect</p>
+  <p>Can only be used if this character has Gear 2nd.</p>
   <p>Deal Power damage X+1 times. Inflict X Frail.</p>
+  <p>If this character has Gear 3rd: This Ultimate becomes Gomu Gomu no Gigant Rifle.</p>
+</div>
+
+### Ultimate-2: Gomu Gomu no Gigant Rifle
+<div class="card-block">
+  <div class="card-block__meta">
+    <span><strong>Cost:</strong> 30 Ultimate Meter</span>
+    <span><strong>Power:</strong> 56-84</span>
+    <span><strong>Type:</strong> Ultimate, Attack, Physical, Melee, Splash, Blunt, Debuff</span>
+    <span><strong>Target:</strong> 1 Enemy</span>
+    <span><strong>Speed:</strong> Slow</span>
+  </div>
+  <p class="card-block__heading">Effect</p>
+  <p>Can only be used if this character has Gear 3rd.</p>
+  <p>Deal Power damage.</p>
+  <p>If this character has Gear 2nd: This Ultimate becomes Gomu Gomu no Jet Gatling.</p>
 </div>

@@ -24,21 +24,21 @@
 ## Status Effects
 
 <div class="ua-entry ua-entry--compact status-entry">
-  <p class="ua-entry__title"><a class="ua-status-link" data-status="status-forte-rover-spectro" href="#">Forte: Rover Spectro</a></p>
+  <p class="ua-entry__title">Forte: Rover Spectro</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Neutral.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Max Value</span> 2.</p>
-  <p class="ua-entry__desc">Used to enhance some cards.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Used to enhance some cards.</p>
 </div>
 
 <div class="ua-entry ua-entry--compact status-entry">
-  <p class="ua-entry__title"><a class="ua-status-link" data-status="status-spectro-frazzle" href="#">Spectro Frazzle</a></p>
+  <p class="ua-entry__title">Spectro Frazzle</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 10.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Inflict damage equal to <strong>5 x Stack</strong>. Then reduce Stack by 1.</p>
 </div>
 
 <div class="ua-entry ua-entry--compact status-entry">
-  <p class="ua-entry__title"><a class="ua-status-link" data-status="status-stagnant" href="#">Stagnant</a></p>
+  <p class="ua-entry__title"><a class="ua-status-link" data-status="status-stagnate" href="#">Stagnate</a></p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Max Value</span> 10.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Instant</span> Increase the Energy cost of a random card in hand by 1 until that card is used. Repeat <strong>Value</strong> times. Expires.</p>
@@ -64,7 +64,7 @@
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
     <span><strong>Power:</strong> 8-12</span>
-    <span><strong>Type:</strong> Basic, Defense, Melee, Physical</span>
+    <span><strong>Type:</strong> Basic, Defense, Physical, Melee</span>
     <span><strong>Target:</strong> 1 Ally</span>
     <span><strong>Speed:</strong> Normal</span>
   </div>

@@ -6,46 +6,37 @@ This page collects frequently asked questions about Universal Arena.
     Add each FAQ as its own Q/A block. Keep answers short and link to deeper pages when needed.
 
 <!-- Copy/paste template:
-## Q: Question goes here?
-
-A: Answer goes here.
+??? question "Question goes here?"
+    Answer goes here.
 -->
 
-## Q: How do I win a match?
+??? question "How do I win a match?"
+    Reduce the opposing team's HP to 0 (or meet the scenario's win condition, if you're playing a special mode).
 
-A: Reduce the opposing team's HP to 0 (or meet the scenario's win condition, if you're playing a special mode).
+??? question "How does Ultimate Meter work?"
+    You gain Ultimate Meter as you play cards; once you have enough, you can pay the Ultimate Meter cost to use your Ultimate card. Ultimate cards sit outside the draw pile and are always available to play.
 
-## Q: How does Ultimate Meter work?
+??? question "Can I bring two of the same character?"
+    Not if they have the same Name and Version on the same team.
 
-A: You gain Ultimate Meter as you play cards; once you have enough, you can pay the Ultimate Meter cost to use your Ultimate card. Ultimate cards sit outside the draw pile and are always available to play.
+??? question "Do card or character effects override the core rules?"
+    Yes. If a card or character effect contradicts the core rules, resolve that effect as written.
 
-## Q: Can I bring two of the same character?
+??? question "Can status effects stack when they are inflicted again?"
+    Yes. Reapplying a status effect increases its potency, count, value, stacks, and so on, up to its cap.
 
-A: Not if they have the same Name and Version on the same team.
+??? question "If a status effect has potency and count, and a skill says \"Inflict X A\", what happens to the count?"
+    If the target already has A, only potency increases by X; count stays the same. If the target has no A, it gains A with potency X and count 1.
 
-## Q: Do card or character effects override the core rules?
+??? question "What does \"Halve\" mean?"
+    "Halve" means set the current value to half of its current value, rounding down (floor). Examples:
+    - 5 -> 2
+    - 3 -> 1
+    - 2 -> 1
+    - 1 -> 0
 
-A: Yes. If a card or character effect contradicts the core rules, resolve that effect as written.
-
-## Q: Can status effects stack when they are inflicted again?
-
-A: Yes. Reapplying a status effect increases its potency, count, value, stacks, and so on, up to its cap.
-
-## Q: If a status effect has potency and count, and a skill says "Inflict X A", what happens to the count?
-
-A: If the target already has A, only potency increases by X; count stays the same. If the target has no A, it gains A with potency X and count 1.
-
-## Q: What does "Halve" mean?
-
-A: "Halve" means set the current value to half of its current value, rounding down (floor). Examples:
-- 5 -> 2
-- 3 -> 1
-- 2 -> 1
-- 1 -> 0
-
-## Q: How do I handle decimals?
-
-A: Any time a calculation results in a decimal, round down (floor). Examples:
-- 2.9 -> 2
-- 1.5 -> 1
-- 0.1 -> 0
+??? question "How do I handle decimals?"
+    Any time a calculation results in a decimal, round down (floor). Examples:
+    - 2.9 -> 2
+    - 1.5 -> 1
+    - 0.1 -> 0

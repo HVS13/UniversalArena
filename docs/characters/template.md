@@ -9,6 +9,7 @@
     <div class="character-meta">
       <p><strong>Name:</strong> Character Name</p>
       <p><strong>Version:</strong> Version Label</p>
+      <p><strong>Origin:</strong> Origin Source</p>
       <p><strong>Difficulty:</strong> Low / Medium / High</p>
       <p><strong>Gameplan:</strong> One paragraph describing how the character plays.</p>
     </div>
@@ -55,6 +56,7 @@
     <span><strong>Power:</strong> Value</span>
     <span><strong>Type:</strong> Tags</span>
     <span><strong>Target:</strong> Self / Allies / Enemies</span>
+    <span><strong>Speed:</strong> Value</span>
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Effect description.</p>
@@ -68,6 +70,7 @@
     <span><strong>Power:</strong> Value</span>
     <span><strong>Type:</strong> Tags</span>
     <span><strong>Target:</strong> Self / Allies / Enemies</span>
+    <span><strong>Speed:</strong> Value</span>
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Effect description.</p>
@@ -81,6 +84,7 @@
     <span><strong>Power:</strong> Value</span>
     <span><strong>Type:</strong> Tags</span>
     <span><strong>Target:</strong> Self / Allies / Enemies</span>
+    <span><strong>Speed:</strong> Value</span>
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Effect description.</p>
@@ -94,6 +98,7 @@
     <span><strong>Power:</strong> Value</span>
     <span><strong>Type:</strong> Tags</span>
     <span><strong>Target:</strong> Self / Allies / Enemies</span>
+    <span><strong>Speed:</strong> Value</span>
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Effect description.</p>
@@ -107,6 +112,7 @@
     <span><strong>Power:</strong> Value</span>
     <span><strong>Type:</strong> Tags</span>
     <span><strong>Target:</strong> Self / Allies / Enemies</span>
+    <span><strong>Speed:</strong> Value</span>
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Effect description.</p>
@@ -120,6 +126,7 @@
     <span><strong>Power:</strong> Value</span>
     <span><strong>Type:</strong> Tags</span>
     <span><strong>Target:</strong> Self / Allies / Enemies</span>
+    <span><strong>Speed:</strong> Value</span>
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Effect description.</p>

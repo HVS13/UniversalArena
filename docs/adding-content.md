@@ -61,6 +61,7 @@ Use the shared keyword link markup anywhere (character pages, rules pages, etc.)
 ## Status effects
 
 - Add another block to `docs/status-effects.md`:
+  - If a status effect is unique to a single character, keep it on that character page only and do not add it to the status effects reference.
 
 ```html
 <div class="ua-entry status-entry" id="status-<slug>">
@@ -71,7 +72,7 @@ Use the shared keyword link markup anywhere (character pages, rules pages, etc.)
 
 ### Linking status effects from other pages
 
-Use the shared status effect link markup anywhere. The `guide.js` script will rewrite it to the correct URL (similar to keywords).
+Use the shared status effect link markup only for status effects that live in `docs/status-effects.md`. For unique per-character status effects, use plain text instead of a link.
 
 ```html
 <a class="ua-status-link" data-status="status-<slug>" href="#">Status name</a>

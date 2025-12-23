@@ -81,13 +81,6 @@ Use the filter to quickly locate a mode, rule, or attribute.
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Stack</strong> by <strong>Halve</strong>.</p>
 </div>
 
-<div class="ua-entry status-entry" id="status-spectro-frazzle">
-  <p class="ua-entry__title">Spectro Frazzle</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 10.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Inflict damage equal to <strong>5 x Stack</strong>. Then reduce Stack by 1.</p>
-</div>
-
 <div class="ua-entry status-entry" id="status-stagnate">
   <p class="ua-entry__title">Stagnate</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
