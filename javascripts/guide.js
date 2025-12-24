@@ -45,6 +45,7 @@
   const isStatusEffectsPage = () => /\/status-effects(\/|\.html$)/.test(window.location.pathname);
   const isCardTypesPage = () => /\/card-types(\/|\.html$)/.test(window.location.pathname);
   const isTerminologyPage = () => /\/terminology(\/|\.html$)/.test(window.location.pathname);
+  const isRolesPage = () => /\/roles(\/|\.html$)/.test(window.location.pathname);
 
   const getKeywordsPageUrl = () => {
     return getPageUrlFromNav({
@@ -73,6 +74,13 @@
       label: 'terminology',
       hrefPattern: /(^|\/)terminology(\/|index\.html$|\.html$)/,
       fallbackPath: 'terminology/',
+    });
+
+  const getRolesPageUrl = () =>
+    getPageUrlFromNav({
+      label: 'roles',
+      hrefPattern: /(^|\/)roles(\/|index\.html$|\.html$)/,
+      fallbackPath: 'roles/',
     });
 
   const setupFilter = ({ input, items, getIndexText }) => {
@@ -148,10 +156,24 @@
       onPage: isTerminologyPage(),
     });
 
+    setupReferenceLinks({
+      selector: 'a.ua-role-link[data-role]',
+      getId: (link) => link.dataset.role,
+      pageUrl: getRolesPageUrl(),
+      onPage: isRolesPage(),
+    });
+
     // Status effects filtering
     setupFilter({
       input: document.getElementById('status-filter'),
       items: Array.from(document.querySelectorAll('.status-entry')),
+      getIndexText: (entry) => entry.textContent,
+    });
+
+    // Roles filtering
+    setupFilter({
+      input: document.getElementById('role-filter'),
+      items: Array.from(document.querySelectorAll('.role-entry')),
       getIndexText: (entry) => entry.textContent,
     });
 
