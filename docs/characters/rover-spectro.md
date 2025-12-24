@@ -10,7 +10,7 @@
       <p><strong>Version:</strong> Spectro</p>
       <p><strong>Origin:</strong> Wuthering Waves</p>
       <p><strong>Difficulty:</strong> Low</p>
-      <p><strong>Gameplan:</strong> Play as many cards as possible to build Ultimate Meter quickly. Gain Forte to inflict Spectro Frazzle stacks. Heal with the ultimate.</p>
+      <p><strong>Gameplan:</strong> Build Diminutive Sound with Strike/Aftertune, spend it on Resonating Slashes to stack Spectro Frazzle, and tax hands with Stagnate. Meter comes quickly, so lean on Echoing Orchestra for sustain.</p>
     </div>
   </div>
 </div>
@@ -18,20 +18,20 @@
 ## Innates
 <div class="card-block">
   <p class="card-block__title">World in a Grain of Sand</p>
-  <p>Gain 1 Ultimate Meter each time a card from this character is played.</p>
+  <p>Each time any character inflicts Spectro Frazzle, inflict 1 additional Spectro Frazzle.</p>
 </div>
 
 ## Status Effects
 
 <div class="ua-entry ua-entry--compact status-entry">
   <p class="ua-entry__title">Diminutive Sound</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Neutral.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Unique.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Max Value</span> 2.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Used to enhance some cards.</p>
 </div>
 
 <div class="ua-entry ua-entry--compact status-entry">
-  <p class="ua-entry__title">Spectro Frazzle</p>
+  <p class="ua-entry__title"><a class="ua-status-link" data-status="status-spectro-frazzle" href="#">Spectro Frazzle</a></p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 10.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Inflict damage equal to <strong>5 x Stack</strong>. Then reduce Stack by 1.</p>
@@ -69,7 +69,8 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Gain Power Shield. Gain 1 Ultimate Meter. Evade.</p>
+  <p>Gain Power Shield. Gain 1 Ultimate Meter.</p>
+  <p>Evade.</p>
 </div>
 
 ### Card 3: Resonating Slashes

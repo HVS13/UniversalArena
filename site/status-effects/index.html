@@ -563,6 +563,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../characters/goku-saiyan-saga/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Goku (Saiyan Saga)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../characters/monkey-d-luffy-pre-timeskip/" class="md-nav__link">
         
   
@@ -599,34 +627,6 @@
     
   
     Rover (Spectro)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../characters/template/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Template
   
 
     
@@ -747,6 +747,10 @@
 <li><strong>Base Value:</strong> the initial value on infliction if none is specified.</li>
 <li><strong>Max Value:</strong> the maximum value (default 99).</li>
 </ul>
+<p>Status effects also have a type: Positive, Negative, or Unique. Unique status effects are character-specific and are documented on the character page only, not in this reference.</p>
+<p>Reapplying a status effect increases its Potency, Count, Stack, or Value up to its cap.</p>
+<p>For Potency + Count effects, "Inflict/Gain X" increases Potency by X; if the target has none, set Potency to X and Count to 1.</p>
+<p>"Halve" means set the current value to half its current value, rounding down.</p>
 </details>
 <details class="info">
 <summary>Timing order</summary>
@@ -802,7 +806,7 @@ Net shift is capped at 2 steps total. Haste shifts Slow -&gt; Normal -&gt; Fast.
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 999.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Reduce Defense Power by 10% x Potency.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Reduce Defense Power by 10% times Potency.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
 </div>
 
@@ -824,6 +828,13 @@ Net shift is capped at 2 steps total. Haste shifts Slow -&gt; Normal -&gt; Fast.
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
 </div>
 
+<div class="ua-entry status-entry" id="status-spectro-frazzle">
+  <p class="ua-entry__title">Spectro Frazzle</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 10.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Inflict damage equal to <strong>5 times Stack</strong>. Then reduce Stack by 1.</p>
+</div>
+
 <div class="ua-entry status-entry" id="status-stagnate">
   <p class="ua-entry__title">Stagnate</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
@@ -839,12 +850,21 @@ Net shift is capped at 2 steps total. Haste shifts Slow -&gt; Normal -&gt; Fast.
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Expires.</p>
 </div>
 
-<div class="ua-entry status-entry" id="status-weakened">
-  <p class="ua-entry__title">Weakened</p>
+<div class="ua-entry status-entry" id="status-weak">
+  <p class="ua-entry__title">Weak</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 999.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Reduce Attack Power by 10% x Potency.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Reduce Attack Power by 10% times Potency.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
+</div>
+
+<div class="ua-entry status-entry" id="status-vulnerable">
+  <p class="ua-entry__title">Vulnerable</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 999.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Increase damage taken by 10% times Potency.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
 </div>
 
@@ -854,7 +874,7 @@ Net shift is capped at 2 steps total. Haste shifts Slow -&gt; Normal -&gt; Fast.
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Positive.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 999.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Increase Defense Power by 10% x Potency.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Increase Defense Power by 10% times Potency.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
 </div>
 
@@ -872,7 +892,7 @@ Net shift is capped at 2 steps total. Haste shifts Slow -&gt; Normal -&gt; Fast.
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Positive.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 999.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Increase Attack Power by 10% x Potency.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Increase Attack Power by 10% times Potency.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
 </div>
 

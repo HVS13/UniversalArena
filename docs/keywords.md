@@ -50,6 +50,11 @@ This page holds the full keyword reference. Use the filter to navigate large lis
   <p class="ua-entry__desc">After this card finishes a clash, do not discard it. Keep it in the current zone so it can be paired again during the same zone resolution.</p>
 </div>
 
+<div class="ua-entry keyword-entry" id="keyword-follow-up">
+  <p class="ua-entry__title">Follow-Up</p>
+  <p class="ua-entry__desc">After Use: This card can be played after any other card from the same character.</p>
+</div>
+
 ### Damage Mitigation
 
 <div class="ua-entry keyword-entry" id="keyword-resist">

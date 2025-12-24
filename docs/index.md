@@ -2,7 +2,7 @@
 
 This site outlines the structure and references for Universal Arena. Add your own content as you grow the guide.
 
-<p class="ua-last-updated">Last updated: <time datetime="2025-12-24T20:11">2025-12-24 20:11</time></p>
+<p class="ua-last-updated">Last updated: <time datetime="2025-12-24T22:09">2025-12-24 22:09</time></p>
 
 ## Introduction
 

@@ -20,6 +20,14 @@ This page explains what status effects are and how their values work.
     - **Base Value:** the initial value on infliction if none is specified.
     - **Max Value:** the maximum value (default 99).
 
+    Status effects also have a type: Positive, Negative, or Unique. Unique status effects are character-specific and are documented on the character page only, not in this reference.
+
+    Reapplying a status effect increases its Potency, Count, Stack, or Value up to its cap.
+
+    For Potency + Count effects, "Inflict/Gain X" increases Potency by X; if the target has none, set Potency to X and Count to 1.
+
+    "Halve" means set the current value to half its current value, rounding down.
+
 ??? info "Timing order"
     When multiple status effects trigger at the same timing point (Turn Start, Turn End, etc.):
 
@@ -74,7 +82,7 @@ Use the filter to quickly locate a mode, rule, or attribute.
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 999.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Reduce Defense Power by 10% x Potency.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Reduce Defense Power by 10% times Potency.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
 </div>
 
@@ -96,6 +104,13 @@ Use the filter to quickly locate a mode, rule, or attribute.
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
 </div>
 
+<div class="ua-entry status-entry" id="status-spectro-frazzle">
+  <p class="ua-entry__title">Spectro Frazzle</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 10.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Inflict damage equal to <strong>5 times Stack</strong>. Then reduce Stack by 1.</p>
+</div>
+
 <div class="ua-entry status-entry" id="status-stagnate">
   <p class="ua-entry__title">Stagnate</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
@@ -111,12 +126,21 @@ Use the filter to quickly locate a mode, rule, or attribute.
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Expires.</p>
 </div>
 
-<div class="ua-entry status-entry" id="status-weakened">
-  <p class="ua-entry__title">Weakened</p>
+<div class="ua-entry status-entry" id="status-weak">
+  <p class="ua-entry__title">Weak</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 999.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Reduce Attack Power by 10% x Potency.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Reduce Attack Power by 10% times Potency.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
+</div>
+
+<div class="ua-entry status-entry" id="status-vulnerable">
+  <p class="ua-entry__title">Vulnerable</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 999.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Increase damage taken by 10% times Potency.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
 </div>
 
@@ -127,7 +151,7 @@ Use the filter to quickly locate a mode, rule, or attribute.
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Positive.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 999.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Increase Defense Power by 10% x Potency.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Increase Defense Power by 10% times Potency.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
 </div>
 
@@ -145,6 +169,6 @@ Use the filter to quickly locate a mode, rule, or attribute.
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Positive.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 999.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Increase Attack Power by 10% x Potency.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Increase Attack Power by 10% times Potency.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
 </div>

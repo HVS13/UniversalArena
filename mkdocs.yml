@@ -37,9 +37,9 @@ nav:
   - FAQ: faq.md
   - Characters:
       - Overview: characters/index.md
+      - Goku (Saiyan Saga): characters/goku-saiyan-saga.md
       - Monkey D. Luffy (Pre-Timeskip): characters/monkey-d-luffy-pre-timeskip.md
       - Rover (Spectro): characters/rover-spectro.md
-      - Template: characters/template.md
 markdown_extensions:
   - toc:
       permalink: true

@@ -10,7 +10,7 @@
       <p><strong>Version:</strong> Pre-Timeskip</p>
       <p><strong>Origin:</strong> One Piece</p>
       <p><strong>Difficulty:</strong> Medium</p>
-      <p><strong>Gameplan:</strong> Use Gear Transformation at the right time to seize momentum. Gear 2nd creates more interrupts and controls the flow of battle, while Gear 3rd deals massive damage. Beware the aftereffect of Gear 3rd!</p>
+      <p><strong>Gameplan:</strong> Lead with Gear Transformation: Gear 2nd for tempo and fast clashes, Gear 3rd for heavy hits. Plan around Deflate after Gear 3rd and use Jet Gatling as your high-pressure finisher when you are ahead.</p>
     </div>
   </div>
 </div>
@@ -26,7 +26,7 @@
 
 <div class="ua-entry ua-entry--compact status-entry">
   <p class="ua-entry__title">Gear 2nd</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Neutral.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Unique.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 1.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn Start</span> Gain 1 Strength. Gain 1 Haste.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce Stack by 1.</p>
@@ -34,7 +34,7 @@
 
 <div class="ua-entry ua-entry--compact status-entry">
   <p class="ua-entry__title">Gear 3rd</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Neutral.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Unique.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 1.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn Start</span> Gain 3 Strength. Gain 1 Slow.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce Stack by 1.</p>
@@ -43,7 +43,7 @@
 
 <div class="ua-entry ua-entry--compact status-entry">
   <p class="ua-entry__title">Deflate</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Unique.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 1.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Cannot play any card from this character.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce Stack by 1.</p>
@@ -164,7 +164,7 @@
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
     <span><strong>Power:</strong> -</span>
-    <span><strong>Type:</strong> Technique, Special, Physical, Melee, Transformation, Buff</span>
+    <span><strong>Type:</strong> Technique, Special, Physical, Melee, Transformation</span>
     <span><strong>Target:</strong> Self</span>
     <span><strong>Speed:</strong> Normal</span>
   </div>
@@ -173,6 +173,7 @@
   <p>Choose 1:</p>
   <p>Gain 1 Gear 2nd.</p>
   <p>Gain 1 Gear 3rd.</p>
+  <p>Retain.</p>
 </div>
 
 ### Ultimate-1: Gomu Gomu no Jet Gatling
@@ -186,7 +187,7 @@
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Can only be used if this character has Gear 2nd.</p>
-  <p>Deal Power damage X+1 times. Inflict X Frail. Gain 1 Weak and +2 Weak Count. Gain 1 Vulnerable and +2 Vulnerable Count.</p>
+  <p>Deal Power / X+1 damage X+1 times. Inflict X Frail. Gain X Weak and +X Weak Count. Gain X Vulnerable and +X Vulnerable Count.</p>
   <p>If this character has Gear 3rd: This Ultimate becomes Gomu Gomu no Gigant Rifle.</p>
 </div>
 
