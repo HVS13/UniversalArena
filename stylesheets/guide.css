@@ -76,6 +76,47 @@
   border: 0 !important;
 }
 
+/* Print action */
+.ua-print-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0.35rem 0 0.85rem;
+}
+
+.ua-print-button.md-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border-radius: 999px;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+  box-shadow: var(--md-shadow-z1);
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease,
+    box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.ua-print-button.md-button:hover {
+  background: var(--md-default-bg-color--light);
+  border-color: var(--md-accent-fg-color);
+  color: var(--md-accent-fg-color);
+  box-shadow: var(--md-shadow-z2);
+  transform: translateY(-1px);
+}
+
+.ua-print-button.md-button:focus-visible {
+  outline: 2px solid var(--md-accent-fg-color);
+  outline-offset: 2px;
+}
+
+.ua-print-button .md-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
 /* Responsive table wrapper */
 .ua-table {
   overflow-x: auto;
@@ -357,5 +398,11 @@
 
   .character-image img {
     transition: none;
+  }
+}
+
+@media print {
+  .ua-print-actions {
+    display: none;
   }
 }
