@@ -4,6 +4,7 @@ This repo is a MkDocs Material rules reference with a static site, a small JS ga
 
 Project rules
 - Work in `docs/` and `server/`; treat `site/` as generated output and do not edit it.
+- MkDocs theme overrides live in `docs/overrides/`; use them for site-wide UI tweaks.
 - Follow patterns in `docs/adding-content.md` for content types; use templates and shared link markup.
 - When evaluating rules or potential ambiguity, check `docs/faq.md` and ensure durable rules are reflected in the relevant reference pages.
 - Character workflow: copy `docs/characters/template.md`, add art in `docs/assets/characters/`, set Roles in the header, add a card to `docs/characters/index.md` (include a Power line and role tags), and add the page to `mkdocs.yml`.
