@@ -9,6 +9,7 @@
       <p><strong>Name:</strong> Rover</p>
       <p><strong>Version:</strong> Spectro</p>
       <p><strong>Origin:</strong> Wuthering Waves</p>
+      <p><strong>Roles:</strong> <a class="ua-role-link" data-role="role-controller" href="#">Controller</a>, <a class="ua-role-link" data-role="role-support" href="#">Support</a></p>
       <p><strong>Difficulty:</strong> Low</p>
       <p><strong>Gameplan:</strong> Build Diminutive Sound with Strike/Aftertune, spend it on Resonating Slashes to stack Spectro Frazzle, and tax hands with Stagnate. Meter comes quickly, so lean on Echoing Orchestra for sustain.</p>
     </div>

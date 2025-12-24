@@ -2,7 +2,7 @@
 
 This site outlines the structure and references for Universal Arena. Add your own content as you grow the guide.
 
-<p class="ua-last-updated">Last updated: <time datetime="2025-12-24T22:09">2025-12-24 22:09</time></p>
+<p class="ua-last-updated">Last updated: <time datetime="2025-12-24T22:44">2025-12-24 22:44</time></p>
 
 ## Introduction
 
@@ -163,6 +163,12 @@ Card type definitions and rules live on a dedicated page.
 Status effect rules and reference entries live on a dedicated page.
 
 - [Status Effects](status-effects.md)
+
+## Roles
+
+Role definitions live on a dedicated page.
+
+- [Roles](roles.md)
 
 ## FAQ
 

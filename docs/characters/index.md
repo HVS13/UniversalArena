@@ -8,25 +8,25 @@ Pick a character to view their cards. Use the filter to narrow by name, version,
 </div>
 
 <div class="character-grid">
-  <a class="character-card" href="goku-saiyan-saga/" data-name="Goku" data-version="Saiyan Saga" data-tags="Kaioken, Follow-Up, Burst">
+  <a class="character-card" href="goku-saiyan-saga/" data-name="Goku" data-version="Saiyan Saga" data-tags="Kaioken, Follow-Up, Burst, Striker, Bruiser">
     <div class="character-card__title">Goku (Saiyan Saga)</div>
     <div class="character-card__meta">Version: Saiyan Saga</div>
     <div class="character-card__meta"><span><strong>Power:</strong> 8-14</span></div>
-    <div class="character-card__tags">Tags: Kaioken, Follow-Up, Burst</div>
+    <div class="character-card__tags">Tags: Kaioken, Follow-Up, Burst, Striker, Bruiser</div>
     <p class="character-card__summary">Risk-reward brawler who chains Follow-Ups into a Spirit Bomb finisher.</p>
   </a>
-  <a class="character-card" href="monkey-d-luffy-pre-timeskip/" data-name="Monkey D. Luffy" data-version="Pre-Timeskip" data-tags="Gear 2nd, Gear 3rd, Transformation">
+  <a class="character-card" href="monkey-d-luffy-pre-timeskip/" data-name="Monkey D. Luffy" data-version="Pre-Timeskip" data-tags="Gear 2nd, Gear 3rd, Transformation, Bruiser, Striker">
     <div class="character-card__title">Monkey D. Luffy (Pre-Timeskip)</div>
     <div class="character-card__meta">Version: Pre-Timeskip</div>
     <div class="character-card__meta"><span><strong>Power:</strong> 10-30</span></div>
-    <div class="character-card__tags">Tags: Gear 2nd, Gear 3rd, Transformation</div>
+    <div class="character-card__tags">Tags: Gear 2nd, Gear 3rd, Transformation, Bruiser, Striker</div>
     <p class="character-card__summary">Gear-shifting bruiser: Gear 2nd tempo or Gear 3rd burst with a Deflate tax.</p>
   </a>
-  <a class="character-card" href="rover-spectro/" data-name="Rover" data-version="Spectro" data-tags="Spectro Frazzle, Diminutive Sound, Meter">
+  <a class="character-card" href="rover-spectro/" data-name="Rover" data-version="Spectro" data-tags="Spectro Frazzle, Diminutive Sound, Meter, Controller, Support">
     <div class="character-card__title">Rover (Spectro)</div>
     <div class="character-card__meta">Version: Spectro</div>
     <div class="character-card__meta"><span><strong>Power:</strong> 8-12</span></div>
-    <div class="character-card__tags">Tags: Spectro Frazzle, Diminutive Sound, Meter</div>
+    <div class="character-card__tags">Tags: Spectro Frazzle, Diminutive Sound, Meter, Controller, Support</div>
     <p class="character-card__summary">DOT/meter engine that stacks Spectro Frazzle and sustains with Echoing Orchestra.</p>
   </a>
 </div>

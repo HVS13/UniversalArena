@@ -46,3 +46,5 @@ This file preserves the historical intent and decisions for CodexGPT. Append a n
 - 2025-12-24: Added root .gitignore for skill build artifacts and clarified that game pages are off-limits unless explicitly requested.
 - 2025-12-24: Standardized card lifecycle terminology (played/used/cancelled/negated), added explicit timing order rules, and aligned glossary/keyword wording with the new use-based language.
 - 2025-12-24: Ported FAQ-only rules into reference pages (status stacking, Potency/Count inflict logic, rule priority, rounding/halve), expanded Ultimate Meter/Created Card glossary entries, and updated last-updated timestamp plus AGENTS/skill guidance to enforce FAQ cross-checks.
+- 2025-12-24: Added Focus/Strain/Fortified status effects, defined roles as non-mechanical tags, and assigned roles to the current character roster with updated front-page timestamp.
+- 2025-12-24: Updated AGENTS rules and the content-authoring/character-kit skills to reflect roles as a first-class, non-mechanical tag in character workflows.

@@ -9,6 +9,7 @@
       <p><strong>Name:</strong> Monkey D. Luffy</p>
       <p><strong>Version:</strong> Pre-Timeskip</p>
       <p><strong>Origin:</strong> One Piece</p>
+      <p><strong>Roles:</strong> <a class="ua-role-link" data-role="role-bruiser" href="#">Bruiser</a>, <a class="ua-role-link" data-role="role-striker" href="#">Striker</a></p>
       <p><strong>Difficulty:</strong> Medium</p>
       <p><strong>Gameplan:</strong> Lead with Gear Transformation: Gear 2nd for tempo and fast clashes, Gear 3rd for heavy hits. Plan around Deflate after Gear 3rd and use Jet Gatling as your high-pressure finisher when you are ahead.</p>
     </div>

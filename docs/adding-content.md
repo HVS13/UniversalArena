@@ -78,6 +78,24 @@ Use the shared status effect link markup only for status effects that live in `d
 <a class="ua-status-link" data-status="status-<slug>" href="#">Status name</a>
 ```
 
+## Roles
+
+- Add another block to `docs/roles.md`:
+- Keep role text descriptive only; roles do not grant mechanics.
+
+```html
+<div class="ua-entry role-entry" id="role-<slug>">
+  <p class="ua-entry__title">Role name</p>
+  <p class="ua-entry__desc">Role description text.</p>
+</div>
+```
+
+### Linking roles from other pages
+
+```html
+<a class="ua-role-link" data-role="role-<slug>" href="#">Role name</a>
+```
+
 ## Card Types
 
 - Add another block to `docs/card-types.md`:

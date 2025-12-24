@@ -111,6 +111,15 @@ Use the filter to quickly locate a mode, rule, or attribute.
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Inflict damage equal to <strong>5 times Stack</strong>. Then reduce Stack by 1.</p>
 </div>
 
+<div class="ua-entry status-entry" id="status-strain">
+  <p class="ua-entry__title">Strain</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 999.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Increase the Energy cost of this character's cards by <strong>Potency</strong>.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
+</div>
+
 <div class="ua-entry status-entry" id="status-stagnate">
   <p class="ua-entry__title">Stagnate</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
@@ -152,6 +161,24 @@ Use the filter to quickly locate a mode, rule, or attribute.
   <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 999.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Increase Defense Power by 10% times Potency.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
+</div>
+
+<div class="ua-entry status-entry" id="status-focus">
+  <p class="ua-entry__title">Focus</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Positive.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 999.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Reduce the Energy cost of this character's cards by <strong>Potency</strong> (minimum 0).</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
+</div>
+
+<div class="ua-entry status-entry" id="status-fortified">
+  <p class="ua-entry__title">Fortified</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Positive.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 999.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Reduce damage taken by 10% times Potency.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
 </div>
 

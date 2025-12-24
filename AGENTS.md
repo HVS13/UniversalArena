@@ -6,8 +6,8 @@ Project rules
 - Work in `docs/` and `server/`; treat `site/` as generated output and do not edit it.
 - Follow patterns in `docs/adding-content.md` for content types; use templates and shared link markup.
 - When evaluating rules or potential ambiguity, check `docs/faq.md` and ensure durable rules are reflected in the relevant reference pages.
-- Character workflow: copy `docs/characters/template.md`, add art in `docs/assets/characters/`, add a card to `docs/characters/index.md` (include a Power line), and add the page to `mkdocs.yml`.
-- Keyword/status/card type/term link markup uses the shared `ua-*-link` classes so `docs/javascripts/guide.js` can rewrite links.
+- Character workflow: copy `docs/characters/template.md`, add art in `docs/assets/characters/`, set Roles in the header, add a card to `docs/characters/index.md` (include a Power line and role tags), and add the page to `mkdocs.yml`.
+- Keyword/status/card type/term/role link markup uses the shared `ua-*-link` classes so `docs/javascripts/guide.js` can rewrite links.
 - Do not edit game pages or assets unless explicitly requested.
 - Game client changes live in `docs/javascripts/game/game.js` and `docs/stylesheets/game.css`; relay server changes live in `server/index.js`.
 

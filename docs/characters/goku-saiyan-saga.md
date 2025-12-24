@@ -9,6 +9,7 @@
       <p><strong>Name:</strong> Goku</p>
       <p><strong>Version:</strong> Saiyan Saga</p>
       <p><strong>Origin:</strong> Dragon Ball Z</p>
+      <p><strong>Roles:</strong> <a class="ua-role-link" data-role="role-striker" href="#">Striker</a>, <a class="ua-role-link" data-role="role-bruiser" href="#">Bruiser</a></p>
       <p><strong>Difficulty:</strong> Medium</p>
       <p><strong>Gameplan:</strong> Chain low-cost attacks to build meter, use Kaioken to ramp Strength/Dexterity while managing the HP drain, then close with Spirit Bomb. Zenkai rewards playing at low HP, so plan a late spike.</p>
     </div>
@@ -18,7 +19,7 @@
 ## Innates
 <div class="card-block">
   <p class="card-block__title">Zenkai Boost</p>
-  <p>Each time this character reaches 25% HP, gain 1 Strength and 1 Dexterity.</p>
+  <p>Each time this character reaches 25% HP, gain 1 Zenkai.</p>
 </div>
 
 ## Status Effects
@@ -30,6 +31,13 @@
   <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn Start</span> Gain X Strength. Gain X Dexterity. Gain X-1 Haste. X equal to Potency.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce Count by 1. Reduce current HP by X times 10%.</p>
+</div>
+
+<div class="ua-entry ua-entry--compact status-entry">
+  <p class="ua-entry__title">Zenkai</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Unique.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Max Value</span> 999.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Increase Attack and Defense Power by 5% times Value.</p>
 </div>
 
 ## Cards

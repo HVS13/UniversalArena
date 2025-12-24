@@ -12,6 +12,7 @@ Design a cohesive kit, then output a complete character page that fits the proje
 ## Inputs to confirm
 
 - Theme/origin, version label, difficulty, and intended role.
+- Roles are descriptive only (non-mechanical); confirm 1-2 roles that communicate playstyle.
 - Power band and gameplay goals (burst, control, support, tempo).
 - Required keywords or status effects, if any.
 
@@ -19,15 +20,15 @@ Design a cohesive kit, then output a complete character page that fits the proje
 
 1. Review 2-3 existing character pages to anchor power, speed, and cost ranges.
 2. Define the gameplan paragraph and 1-2 innates that drive the kit.
-3. Choose keywords/status effects; add new ones only if absolutely necessary.
+3. Choose keywords/status effects and roles; add new ones only if absolutely necessary.
 4. Create five cards plus an Ultimate; keep effect text concise and tag order consistent with `docs/adding-content.md`.
 5. Sanity-check for infinite loops, auto-win combos, or uncounterable turns.
 
 ## Output format
 
-1. Use `docs/characters/template.md` structure verbatim.
+1. Use `docs/characters/template.md` structure verbatim (include Roles line).
 2. Add artwork in `docs/assets/characters/`.
-3. Update `docs/characters/index.md` and `mkdocs.yml` when adding a new character.
+3. Update `docs/characters/index.md` (include role tags) and `mkdocs.yml` when adding a new character.
 
 ## References
 
@@ -36,5 +37,6 @@ Design a cohesive kit, then output a complete character page that fits the proje
 - `docs/adding-content.md`
 - `docs/keywords.md`
 - `docs/status-effects.md`
+- `docs/roles.md`
 - `docs/card-types.md`
 - `mkdocs.yml`

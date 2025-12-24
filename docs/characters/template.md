@@ -10,6 +10,7 @@
       <p><strong>Name:</strong> Character Name</p>
       <p><strong>Version:</strong> Version Label</p>
       <p><strong>Origin:</strong> Origin Source</p>
+      <p><strong>Roles:</strong> <a class="ua-role-link" data-role="role-<slug>" href="#">Role Name</a>, <a class="ua-role-link" data-role="role-<slug>" href="#">Role Name</a></p>
       <p><strong>Difficulty:</strong> Low / Medium / High</p>
       <p><strong>Gameplan:</strong> One paragraph describing how the character plays.</p>
     </div>
