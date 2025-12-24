@@ -397,6 +397,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#card-use-and-timing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Card Use and Timing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#power" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -919,6 +930,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#card-use-and-timing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Card Use and Timing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#power" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1025,7 +1047,7 @@
 
 <h1 id="welcome-to-universal-arena">Welcome to Universal Arena<a class="headerlink" href="#welcome-to-universal-arena" title="Permanent link">&para;</a></h1>
 <p>This site outlines the structure and references for Universal Arena. Add your own content as you grow the guide.</p>
-<p class="ua-last-updated">Last updated: <time datetime="2025-12-24T00:42">2025-12-24 00:42</time></p>
+<p class="ua-last-updated">Last updated: <time datetime="2025-12-24T20:11">2025-12-24 20:11</time></p>
 
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
 <p>This guide summarizes core systems and links to the detailed reference pages for terms, keywords, and characters.</p>
@@ -1073,7 +1095,7 @@ Characters are arranged left to right in a single row; adjacent means the immedi
 <h2 id="playing-cards">Playing Cards<a class="headerlink" href="#playing-cards" title="Permanent link">&para;</a></h2>
 <ol>
 <li>To play any card, pay the Energy cost, select a legal target, then place it on a legal zone.</li>
-<li>Any card played in any zone stays in that zone until it is resolved, then it is discarded.</li>
+<li>Any card played in any zone stays in that zone until it is used, then it is discarded.</li>
 <li>For each card played, your team gains Ultimate Meter equal to the Energy spent to play the card.</li>
 <li>If a card's speed is modified, treat it as its current speed for where it can be played.</li>
 </ol>
@@ -1090,11 +1112,11 @@ Characters are arranged left to right in a single row; adjacent means the immedi
 <li>After the first card of a Combat Round has been played, players may only play cards in the <strong>Active Zone</strong> or in a <strong>faster zone</strong> than the Active Zone (if legal).</li>
 <li><strong>Faster zone interrupt:</strong> If any player plays a card in a faster zone than the current Active Zone, the faster zone immediately becomes the Active Zone. The previous Active Zone is paused.</li>
 <li>The Active Zone resolves when priority returns to the player who most recently played a card in the Active Zone, and that player chooses to Pass.</li>
-<li>When the Active Zone resolves, resolve cards in that zone from <strong>right to left</strong> (last played to first played).</li>
-<li>Resolve clashes in pairs. While resolving a zone from <strong>right to left</strong>, take the next card to resolve and pair it with the <strong>nearest card immediately to its left</strong> (the next card in the resolve order), if any:<ul>
-<li>If there is no card to its left, it resolves unopposed.</li>
+<li>When the Active Zone resolves, use cards in that zone from <strong>right to left</strong> (last played to first played).</li>
+<li>Resolve clashes in pairs. While resolving a zone from <strong>right to left</strong>, take the next card to use and pair it with the <strong>nearest card immediately to its left</strong> (the next card in the resolve order), if any:<ul>
+<li>If there is no card to its left, it is used unopposed.</li>
 <li>If the left card is from a <strong>different player</strong>, the two cards clash.</li>
-<li>If the left card is from the <strong>same player</strong>, the right card resolves unopposed and is then discarded. The left card remains and can be paired later.</li>
+<li>If the left card is from the <strong>same player</strong>, the right card is used unopposed and is then discarded. The left card remains and can be paired later.</li>
 </ul>
 </li>
 <li>After the Active Zone resolves and becomes empty:<ul>
@@ -1102,7 +1124,7 @@ Characters are arranged left to right in a single row; adjacent means the immedi
 <li>Otherwise, resolve the next slower zone that has cards.</li>
 </ul>
 </li>
-<li>When all clashes have been resolved and there are no cards on any zone, the Combat Round ends. The player with initiative may start another Combat Round (choosing any legal zone again), or end their turn.</li>
+<li>When all clashes have finished and there are no cards on any zone, the Combat Round ends. The player with initiative may start another Combat Round (choosing any legal zone again), or end their turn.</li>
 </ol>
 <p>Example:
 1. You play a card in the Normal Zone (Normal Zone becomes the Active Zone).
@@ -1119,35 +1141,51 @@ Characters are arranged left to right in a single row; adjacent means the immedi
 <li>Player B interrupts by playing a Fast attack in the Fast Zone. The Fast Zone becomes the Active Zone and the Normal Zone pauses.</li>
 <li>Player A plays a Fast defense in the Fast Zone.</li>
 <li>Player B passes. Priority returns to Player A, who passes. The Fast Zone resolves.</li>
-<li>Fast Zone resolution (right to left): Player A's defense and Player B's attack clash (Attack vs Defense). Resolve the defense (gain shield), then resolve the attack (it is a hit). Discard both cards.</li>
+<li>Fast Zone resolution (right to left): Player A's defense and Player B's attack clash (Attack vs Defense). Use the defense (gain shield), then use the attack (it is a hit). Discard both cards.</li>
 <li>Return to the paused Normal Zone. Priority is with Player B, who passes. Player A passes, so the Normal Zone resolves.</li>
-<li>Normal Zone resolution (right to left): Player A's most recent attack clashes with Player B's defense (Attack vs Defense). Resolve the defense, then the attack. The earlier attack has no card to its left, so it resolves unopposed.</li>
+<li>Normal Zone resolution (right to left): Player A's most recent attack clashes with Player B's defense (Attack vs Defense). Use the defense, then the attack. The earlier attack has no card to its left, so it is used unopposed.</li>
 <li>All zones are empty, so the Combat Round ends. Player A may start another Combat Round or end their turn.</li>
 </ol>
+<h2 id="card-use-and-timing">Card Use and Timing<a class="headerlink" href="#card-use-and-timing" title="Permanent link">&para;</a></h2>
+<ol>
+<li>A card is <strong>played</strong> when it is placed in a legal zone after paying its cost and selecting legal targets.</li>
+<li>A card is <strong>used</strong> when its effects apply. Unless a timing is explicitly stated, a card's text is <strong>On Use</strong>.</li>
+<li>A card that is <strong>Cancelled</strong> skips its effects from <strong>Before Use</strong> onward (Before Use, On Use, On Hit, After Use). <strong>Always</strong> still applies.</li>
+<li>A card that is <strong>Negated</strong> skips all effects, including <strong>Always</strong>.</li>
+</ol>
+<p>Card effect timing order:</p>
+<ol>
+<li>On Play</li>
+<li>Before Clash</li>
+<li>After Clash</li>
+<li>Before Use</li>
+<li>On Use (default)</li>
+<li>On Hit</li>
+<li>After Use</li>
+<li>Always</li>
+</ol>
+<p>If multiple effects trigger at the same timing, apply them in the order they are written on the card.</p>
 <h2 id="power">Power<a class="headerlink" href="#power" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Each card has a Power value shown in its card block as a min-max range (example: 8-12).</li>
-<li>When a card resolves (clash or unopposed), roll Power within its printed min-max; that roll is the Power Roll.</li>
+<li>When a card is used (after any clash, or when unopposed), roll Power within its printed min-max; that roll is the Power Roll.</li>
 <li>Use the Power Roll only for damage dealt, shield gained, and HP recovered. Other numeric effects use their written values unless the effect uses another value (example: X). Costs and requirements stay as written.</li>
 <li>Special cards have Power: - and do not roll Power.</li>
-<li>Roll Power each time a card resolves. Multihit and Reuse roll again for each hit or reuse.</li>
+<li>Roll Power each time a card is used. Multihit and Reuse roll again for each hit or reuse.</li>
 <li>All Power calculations round down and do not clamp the minimum.</li>
 </ol>
 <h2 id="how-to-clash">How To Clash<a class="headerlink" href="#how-to-clash" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Attack VS Attack: The card with the highest total Power wins (for Multihit, sum the Power Rolls for that clash).<ul>
-<li>The losing card does not resolve any Power damage and does not resolve any <strong>On Hit</strong> effects. Its other effects still resolve, then it is discarded. If the losing card has Multihit, reduce its multihit count by 1 and Reuse it instead of discarding it (see Card Types).</li>
-<li>The winning card is not resolved yet; it remains in the zone and continues through the stack. After the losing card is removed, the winning card may be paired again with the new nearest card immediately to its left as zone resolution continues.</li>
-<li>If it is a draw, both cards are considered losses.<ul>
-<li>Resolve the other effects (non-damage, non-On Hit effects) of the rightmost card first, then the left card, then discard both.</li>
+<li>The losing card is <strong>Cancelled</strong> (skip Before Use onward; <strong>Always</strong> still applies), then it is discarded. If the losing card has Multihit, reduce its multihit count by 1 and Reuse it instead of discarding it (see Card Types).</li>
+<li>The winning card is not used yet; it remains in the zone and continues through the stack. After the losing card is removed, the winning card may be paired again with the new nearest card immediately to its left as zone resolution continues.</li>
+<li>If it is a draw, both cards are considered losses and are <strong>Cancelled</strong>.</li>
 </ul>
 </li>
-</ul>
-</li>
-<li>Attack VS Defense: The defense card resolves and gives Power Shield. Then the attack resolves and is considered a hit. Both cards are then discarded.</li>
-<li>Defense VS Defense: Both defense cards resolve and give Power Shield. Both cards are then discarded.</li>
-<li>Any VS Special: Both cards resolve. Both cards are then discarded.</li>
-<li>A hit occurs when an Attack resolves unless it is prevented (example: Evade). If a card is instructed to Reuse, it is not discarded after its clash and remains in the current zone to be paired again.</li>
+<li>Attack VS Defense: The defense card is used and gives Power Shield. Then the attack is used and is considered a hit. Both cards are then discarded.</li>
+<li>Defense VS Defense: Both defense cards are used and give Power Shield. Both cards are then discarded.</li>
+<li>Any VS Special: Both cards are used. Both cards are then discarded.</li>
+<li>A hit occurs when an Attack is used unless it is prevented (example: Evade). If a card is instructed to Reuse, it is not discarded after its clash and remains in the current zone to be paired again.</li>
 </ol>
 <h2 id="terminology">Terminology<a class="headerlink" href="#terminology" title="Permanent link">&para;</a></h2>
 <p>See the full glossary on the Terminology page.</p>
