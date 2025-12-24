@@ -3,7 +3,7 @@
 This page lists card types and what they mean in play.
 
 ??? info "Explanation"
-    Card Types describe what a card *is* (and usually what rules it follows), such as when it can be played, how it resolves, and what effects or synergies refer to it.
+    Card Types describe what a card *is* (and usually what rules it follows), such as when it can be played, how it is used, and what effects or synergies refer to it.
 
     In character pages (example: Rover (Spectro)), card types appear in the card block as a comma-separated list like `Physical, Attack, Slash, Debuff`.
 
@@ -154,7 +154,7 @@ Use this ordering when listing Type tags on cards:
 <div class="ua-entry card-type-entry" id="card-type-multihit">
   <p class="ua-entry__title">Multihit</p>
   <p class="ua-entry__meta"><span class="ua-pill">Category</span> Attack Tag.</p>
-  <p class="ua-entry__desc">An attack that hits multiple times. Each hit rolls Power separately and activates any On-Hit effects. If it loses a clash with another Attack, reduce the multihit count by 1 and Reuse it instead of discarding it. If there are no multihit counts left, treat it as a normal Attack card.</p>
+  <p class="ua-entry__desc">An attack that hits multiple times. If it loses a clash with another Attack, reduce the multihit count by 1 and Reuse it instead of discarding it. If there are no multihit counts left, treat it as a normal Attack card.</p>
 </div>
 
 ### Effect

@@ -24,9 +24,9 @@ This page explains what status effects are and how their values work.
     When multiple status effects trigger at the same timing point (Turn Start, Turn End, etc.):
 
     - Follow any explicit "then" order written on the effect itself.
-    - If there is no explicit order between effects, resolve them in any order, but apply all reductions or consumptions before any gains or inflictions to the same status effect.
-    - After all effects resolve, remove any status effect whose value reaches 0.
-    - If a specific effect contradicts this order, resolve it as written.
+    - If there is no explicit order between effects, apply them in any order, but apply all reductions or consumptions before any gains or inflictions to the same status effect.
+    - After all effects apply, remove any status effect whose value reaches 0.
+    - If a specific effect contradicts this order, apply it as written.
 
 ??? info "Power modifiers"
     Strength and Weakened modify Attack Power. Dexterity and Frail modify Defense Power.

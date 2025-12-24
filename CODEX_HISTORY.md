@@ -44,3 +44,4 @@ This file preserves the historical intent and decisions for CodexGPT. Append a n
 - 2025-12-24: Stacked character header images above details for consistent layout and added a subtle last-updated timestamp on the front page.
 - 2025-12-24: Added AGENTS.md with repo rules and response style; created and validated skills for content authoring, character kit design, game client edits, and relay server maintenance; packaged the skills for distribution.
 - 2025-12-24: Added root .gitignore for skill build artifacts and clarified that game pages are off-limits unless explicitly requested.
+- 2025-12-24: Standardized card lifecycle terminology (played/used/cancelled/negated), added explicit timing order rules, and aligned glossary/keyword wording with the new use-based language.

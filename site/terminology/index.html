@@ -727,6 +727,22 @@
       <td>Draw</td>
       <td>The act of taking cards from your Draw Pile and adding them to your hand. By default, at Turn Start you draw until you reach a hand size of 5, modified by draw effects (if any).</td>
     </tr>
+    <tr id="term-played" class="term-entry">
+      <td>Played</td>
+      <td>A card is played when it is placed in a legal zone after paying its cost and selecting legal targets.</td>
+    </tr>
+    <tr id="term-used" class="term-entry">
+      <td>Used</td>
+      <td>A card is used when its effects apply. Unless a timing is explicitly stated, a card's text is On Use.</td>
+    </tr>
+    <tr id="term-cancelled" class="term-entry">
+      <td>Cancelled</td>
+      <td>A cancelled card skips its effects from Before Use onward (Before Use, On Use, On Hit, After Use). Always still applies.</td>
+    </tr>
+    <tr id="term-negated" class="term-entry">
+      <td>Negated</td>
+      <td>A negated card skips all effects, including Always.</td>
+    </tr>
     <tr class="term-section">
       <th colspan="2">Card Categories</th>
     </tr>
@@ -751,7 +767,7 @@
     </tr>
     <tr id="term-active-zone" class="term-entry">
       <td>Active Zone</td>
-      <td>The current zone being played in and resolved during a Combat Round.</td>
+      <td>The current zone being played in; cards in it are used during a Combat Round.</td>
     </tr>
     <tr id="term-priority" class="term-entry">
       <td>Priority</td>
@@ -759,7 +775,7 @@
     </tr>
     <tr id="term-hit" class="term-entry">
       <td>Hit</td>
-      <td>An Attack that resolves is a hit unless a rule or effect prevents it (example: Evade).</td>
+      <td>An Attack that is used is a hit unless a rule or effect prevents it (example: Evade).</td>
     </tr>
     <tr id="term-damage-types" class="term-entry">
       <td>Damage Types &amp; Attack Tags</td>
@@ -771,11 +787,11 @@
     </tr>
     <tr id="term-power-roll" class="term-entry">
       <td>Power Roll</td>
-      <td>The rolled value from a card's Power used for clash comparisons, damage dealt, Shield gained, and HP recovered. Roll Power each time a card resolves.</td>
+      <td>The rolled value from a card's Power used for clash comparisons, damage dealt, Shield gained, and HP recovered. Roll Power each time a card is used.</td>
     </tr>
     <tr id="term-reuse" class="term-entry">
       <td>Reuse</td>
-      <td>If a card is instructed to Reuse, do not discard it after its clash; keep it in the current zone so it can be paired again during the same resolution.</td>
+      <td>If a card is instructed to Reuse, do not discard it after its clash; keep it in the current zone so it can be paired again during the same zone resolution.</td>
     </tr>
     <tr class="term-section">
       <th colspan="2">Defense</th>
