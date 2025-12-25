@@ -631,11 +631,35 @@
               
               <article class="md-content__inner md-typeset">
                 
-  <div class="ua-print-actions">
-    <button class="ua-print-button md-button" type="button" aria-label="Print or save this page as a PDF" title="Print / Save PDF">
+  <div class="ua-print-actions" role="group" aria-label="Page export actions">
+    <button
+      class="ua-action-button ua-print-button md-button"
+      type="button"
+      data-action="print"
+      aria-label="Print or save this page as a PDF"
+      title="Print / Save PDF"
+    >
       <span class="md-icon" aria-hidden="true">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 3H6v4h12m1 5a1 1 0 0 1-1-1 1 1 0 0 1 1-1 1 1 0 0 1 1 1 1 1 0 0 1-1 1m-3 7H8v-5h8m3-6H5a3 3 0 0 0-3 3v6h4v4h12v-4h4v-6a3 3 0 0 0-3-3"/></svg>
       </span>
+    </button>
+    <button
+      class="ua-action-button ua-export-button md-button"
+      type="button"
+      data-action="md"
+      aria-label="Download this page as Markdown"
+      title="Download Markdown"
+    >
+      <span class="ua-action-label" aria-hidden="true">MD</span>
+    </button>
+    <button
+      class="ua-action-button ua-export-button md-button"
+      type="button"
+      data-action="txt"
+      aria-label="Download this page as plain text"
+      title="Download Text"
+    >
+      <span class="ua-action-label" aria-hidden="true">TXT</span>
     </button>
   </div>
   
