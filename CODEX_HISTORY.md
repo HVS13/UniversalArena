@@ -49,3 +49,4 @@ This file preserves the historical intent and decisions for CodexGPT. Append a n
 - 2025-12-24: Added Focus/Strain/Fortified status effects, defined roles as non-mechanical tags, and assigned roles to the current character roster with updated front-page timestamp.
 - 2025-12-24: Updated AGENTS rules and the content-authoring/character-kit skills to reflect roles as a first-class, non-mechanical tag in character workflows.
 - 2025-12-24: Added a site-wide print button via MkDocs theme overrides, wired print JS, and styled a Material icon action for consistent UI.
+- 2025-12-25: Added MD/TXT export actions alongside print, with client-side export cleanup to drop permalinks, URLs, and images for cleaner downloads.
