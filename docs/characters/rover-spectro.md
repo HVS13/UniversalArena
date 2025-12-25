@@ -2,7 +2,7 @@
 
 <div class="character-header">
   <div class="character-image">
-    <img src="https://vignette.wikia.nocookie.net/vsbattles/images/0/07/Male_%26_Female_Rover_Sprite.webp/revision/latest?cb=20251019174456" alt="Rover (Spectro) portrait" loading="lazy" decoding="async" />
+    <img src="../assets/characters/rover-spectro.webp" alt="Rover (Spectro) portrait" loading="lazy" decoding="async" />
   </div>
   <div class="character-details">
     <div class="character-meta">

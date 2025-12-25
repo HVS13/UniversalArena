@@ -2,7 +2,7 @@
 
 <div class="character-header">
   <div class="character-image">
-    <img src="https://vignette.wikia.nocookie.net/vsbattles/images/f/fa/Leon_%28Resident_Evil_4%29.png/revision/latest?cb=20250624111020" alt="Leon S. Kennedy (Resident Evil 4) portrait" loading="lazy" decoding="async" />
+    <img src="../assets/characters/leon-s-kennedy-re4.png" alt="Leon S. Kennedy (Resident Evil 4) portrait" loading="lazy" decoding="async" />
   </div>
   <div class="character-details">
     <div class="character-meta">
@@ -49,7 +49,7 @@
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
     <span><strong>Power:</strong> 8-12</span>
-    <span><strong>Type:</strong> Basic, Attack, Physical, Melee, Slash</span>
+    <span><strong>Type:</strong> Basic, Attack, Physical, Melee, Slash, Debuff</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Normal</span>
   </div>

@@ -2,7 +2,7 @@
 
 <div class="character-header">
   <div class="character-image">
-    <img src="https://vignette.wikia.nocookie.net/vsbattles/images/4/41/Luffy_%28Pre-Timeskip%29_%28Original%29.png/revision/latest?cb=20240324154648" alt="Monkey D. Luffy (Pre-Timeskip) portrait" loading="lazy" decoding="async" />
+    <img src="../assets/characters/monkey-d-luffy-pre-timeskip.png" alt="Monkey D. Luffy (Pre-Timeskip) portrait" loading="lazy" decoding="async" />
   </div>
   <div class="character-details">
     <div class="character-meta">

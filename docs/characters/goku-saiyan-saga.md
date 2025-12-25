@@ -2,7 +2,7 @@
 
 <div class="character-header">
   <div class="character-image">
-    <img src="https://vignette.wikia.nocookie.net/vsbattles/images/a/a0/Toei_Goku_Vegeta_Saga.png/revision/latest?cb=20231025013822" alt="Goku (Saiyan Saga) portrait" loading="lazy" decoding="async" />
+    <img src="../assets/characters/goku-saiyan-saga.png" alt="Goku (Saiyan Saga) portrait" loading="lazy" decoding="async" />
   </div>
   <div class="character-details">
     <div class="character-meta">
