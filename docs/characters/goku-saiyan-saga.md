@@ -10,7 +10,7 @@
       <p><strong>Version:</strong> Saiyan Saga</p>
       <p><strong>Origin:</strong> Dragon Ball Z</p>
       <p><strong>Roles:</strong> <a class="ua-role-link" data-role="role-striker" href="#">Striker</a>, <a class="ua-role-link" data-role="role-bruiser" href="#">Bruiser</a></p>
-      <p><strong>Difficulty:</strong> Medium</p>
+      <p><strong>Difficulty:</strong> High</p>
       <p><strong>Gameplan:</strong> Chain low-cost attacks to build meter, use Kaioken to ramp Strength/Dexterity while managing the HP drain, then close with Spirit Bomb. Zenkai rewards playing at low HP, so plan a late spike.</p>
     </div>
   </div>
@@ -29,7 +29,7 @@
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Unique.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 4.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Turn Start</span> Gain X Strength. Gain X Dexterity. Gain X-1 Haste. X equal to Potency.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn Start</span> Gain X <a class="ua-status-link" data-status="status-strength" href="#">Strength</a>. Gain X <a class="ua-status-link" data-status="status-dexterity" href="#">Dexterity</a>. Gain X-1 <a class="ua-status-link" data-status="status-haste" href="#">Haste</a>. X equal to Potency.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce Count by 1. Reduce current HP by X times 10%.</p>
 </div>
 
@@ -66,7 +66,7 @@
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Gain Power Shield.</p>
-  <p>Evade.</p>
+  <p><a class="ua-keyword-link" data-keyword="keyword-evade" href="#">Evade</a>.</p>
 </div>
 
 ### Card 3-1: Meteor Combination
@@ -99,8 +99,8 @@
 ### Card 4: Kamehameha
 <div class="card-block">
   <div class="card-block__meta">
-    <span><strong>Cost:</strong> 1 Energy</span>
-    <span><strong>Power:</strong> 8-12</span>
+    <span><strong>Cost:</strong> 2 Energy</span>
+    <span><strong>Power:</strong> 16-24</span>
     <span><strong>Type:</strong> Technique, Attack, Magical, Ranged, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Normal</span>

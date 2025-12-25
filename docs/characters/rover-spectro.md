@@ -31,20 +31,6 @@
   <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Used to enhance some cards.</p>
 </div>
 
-<div class="ua-entry ua-entry--compact status-entry">
-  <p class="ua-entry__title"><a class="ua-status-link" data-status="status-spectro-frazzle" href="#">Spectro Frazzle</a></p>
-  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 10.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Inflict damage equal to <strong>5 x Stack</strong>. Then reduce Stack by 1.</p>
-</div>
-
-<div class="ua-entry ua-entry--compact status-entry">
-  <p class="ua-entry__title"><a class="ua-status-link" data-status="status-stagnate" href="#">Stagnate</a></p>
-  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Max Value</span> 10.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Instant</span> Increase the Energy cost of a random card in hand by 1 until that card is used. Repeat <strong>Value</strong> times. Expires.</p>
-</div>
-
 ## Cards
 
 ### Card 1: Strike
@@ -71,7 +57,7 @@
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Gain Power Shield. Gain 1 Ultimate Meter.</p>
-  <p>Evade.</p>
+  <p><a class="ua-keyword-link" data-keyword="keyword-evade" href="#">Evade</a>.</p>
 </div>
 
 ### Card 3: Resonating Slashes
@@ -84,7 +70,7 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal Power / 2 damage 2 times. On Hit: Spend 1 Diminutive Sound to inflict 2 Spectro Frazzle.</p>
+  <p>Deal Power / 2 damage 2 times. On Hit: Spend 1 Diminutive Sound to inflict 2 <a class="ua-status-link" data-status="status-spectro-frazzle" href="#">Spectro Frazzle</a>.</p>
 </div>
 
 ### Card 4: Aftertune
@@ -110,7 +96,7 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Inflict 2 Stagnate.</p>
+  <p>Inflict 2 <a class="ua-status-link" data-status="status-stagnate" href="#">Stagnate</a>.</p>
 </div>
 
 ### Ultimate: Echoing Orchestra
@@ -123,5 +109,5 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal Power damage. Heal for Power / 2 HP. On Hit: Inflict 6 Spectro Frazzle.</p>
+  <p>Deal Power damage. Heal for Power / 2 HP. On Hit: Inflict 6 <a class="ua-status-link" data-status="status-spectro-frazzle" href="#">Spectro Frazzle</a>.</p>
 </div>

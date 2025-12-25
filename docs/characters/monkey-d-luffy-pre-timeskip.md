@@ -19,8 +19,8 @@
 ## Innates
 <div class="card-block">
   <p class="card-block__title">Gomu Gomu no Mi</p>
-  <p>Resist 5 (non-Haki Pierce, non-Haki Blunt).</p>
-  <p>Immune (Electric).</p>
+  <p><a class="ua-keyword-link" data-keyword="keyword-resist" href="#">Resist</a> 5 (non-Haki Pierce, non-Haki Blunt).</p>
+  <p><a class="ua-keyword-link" data-keyword="keyword-immune" href="#">Immune</a> (Electric).</p>
 </div>
 
 ## Status Effects
@@ -29,7 +29,7 @@
   <p class="ua-entry__title">Gear 2nd</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Unique.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 1.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Turn Start</span> Gain 1 Strength. Gain 1 Haste.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn Start</span> Gain 1 <a class="ua-status-link" data-status="status-strength" href="#">Strength</a>. Gain 1 <a class="ua-status-link" data-status="status-haste" href="#">Haste</a>.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce Stack by 1.</p>
 </div>
 
@@ -37,7 +37,7 @@
   <p class="ua-entry__title">Gear 3rd</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Unique.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 1.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Turn Start</span> Gain 3 Strength. Gain 1 Slow.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn Start</span> Gain 3 <a class="ua-status-link" data-status="status-strength" href="#">Strength</a>. Gain 1 <a class="ua-status-link" data-status="status-slow" href="#">Slow</a>.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce Stack by 1.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Next Turn Start</span> Gain Deflate.</p>
 </div>
@@ -57,7 +57,7 @@
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
     <span><strong>Power:</strong> 10-14</span>
-    <span><strong>Type:</strong> Basic, Attack, Physical, Blunt</span>
+    <span><strong>Type:</strong> Basic, Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Normal</span>
   </div>
@@ -70,7 +70,7 @@
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
     <span><strong>Power:</strong> 10-14</span>
-    <span><strong>Type:</strong> Basic, Defense, Physical</span>
+    <span><strong>Type:</strong> Basic, Defense, Physical, Melee</span>
     <span><strong>Target:</strong> 1 Ally</span>
     <span><strong>Speed:</strong> Normal</span>
   </div>
@@ -174,21 +174,21 @@
   <p>Choose 1:</p>
   <p>Gain 1 Gear 2nd.</p>
   <p>Gain 1 Gear 3rd.</p>
-  <p>Retain.</p>
+  <p><a class="ua-keyword-link" data-keyword="keyword-retain" href="#">Retain</a>.</p>
 </div>
 
 ### Ultimate-1: Gomu Gomu no Jet Gatling
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 30 Ultimate Meter + X Energy</span>
-    <span><strong>Power:</strong> 24-36</span>
+    <span><strong>Power:</strong> 24-36 + 8-12 times X</span>
     <span><strong>Type:</strong> Ultimate, Attack, Physical, Melee, Splash, Blunt, Multihit, Debuff</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Fast</span>
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Can only be used if this character has Gear 2nd.</p>
-  <p>Deal Power / X+1 damage X+1 times. Inflict X Frail. Gain X Weak and +X Weak Count. Gain X Vulnerable and +X Vulnerable Count.</p>
+  <p>Deal Power / (X + 1) damage (X + 1) times. Inflict X <a class="ua-status-link" data-status="status-frail" href="#">Frail</a>. Gain X <a class="ua-status-link" data-status="status-weak" href="#">Weak</a> and +X Weak Count. Gain X <a class="ua-status-link" data-status="status-vulnerable" href="#">Vulnerable</a> and +X Vulnerable Count.</p>
   <p>If this character has Gear 3rd: This Ultimate becomes Gomu Gomu no Gigant Rifle.</p>
 </div>
 

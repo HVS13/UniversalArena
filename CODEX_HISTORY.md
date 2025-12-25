@@ -50,3 +50,6 @@ This file preserves the historical intent and decisions for CodexGPT. Append a n
 - 2025-12-24: Updated AGENTS rules and the content-authoring/character-kit skills to reflect roles as a first-class, non-mechanical tag in character workflows.
 - 2025-12-24: Added a site-wide print button via MkDocs theme overrides, wired print JS, and styled a Material icon action for consistent UI.
 - 2025-12-25: Added MD/TXT export actions alongside print, with client-side export cleanup to drop permalinks, URLs, and images for cleaner downloads.
+- 2025-12-26: Reviewed character pages; corrected Leon's roles/innate/gameplan and clarified ammo scaling, fixed a Rocket Launcher target/formatting issue, linked keywords/statuses consistently, adjusted Goku difficulty to High, and aligned Luffy/Rover markup with shared link conventions.
+- 2025-12-26: Defined Reload in terminology to formalize the ammo reset behavior referenced by character cards and refreshed the front-page last-updated timestamp.
+- 2025-12-26: Added an Ammo glossary entry to define per-weapon ammo tracking and activation requirements; refreshed the front-page last-updated timestamp.
