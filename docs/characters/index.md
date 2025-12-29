@@ -36,9 +36,9 @@ Pick a character to view their cards. Use the filter to narrow by name, version,
     <div class="character-card__tags">Tags: Spectro Frazzle, Diminutive Sound, Meter, Controller, Support</div>
     <p class="character-card__summary">DOT/meter engine that stacks Spectro Frazzle and sustains with Echoing Orchestra.</p>
   </a>
-  <a class="character-card" href="saitama/" data-name="Saitama" data-version="Hero for Fun" data-tags="State, Serious, Ramp, Striker, Bruiser">
-    <div class="character-card__title">Saitama (Hero for Fun)</div>
-    <div class="character-card__meta">Version: Hero for Fun</div>
+  <a class="character-card" href="saitama/" data-name="Saitama" data-version="Base" data-tags="State, Serious, Ramp, Striker, Bruiser">
+    <div class="character-card__title">Saitama (Base)</div>
+    <div class="character-card__meta">Version: Base</div>
     <div class="character-card__meta"><span><strong>Power:</strong> 8-36</span></div>
     <div class="character-card__tags">Tags: State, Serious, Ramp, Striker, Bruiser</div>
     <p class="character-card__summary">Slow-start bruiser that ramps State into Serious finishers and stun windows.</p>

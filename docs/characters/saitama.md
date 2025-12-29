@@ -1,13 +1,13 @@
-# Saitama (Hero for Fun)
+# Saitama (Base)
 
 <div class="character-header">
   <div class="character-image">
-    <img src="../assets/characters/saitama-hero-for-fun.png" alt="Saitama (Hero for Fun) portrait" loading="lazy" decoding="async" />
+    <img src="../assets/characters/saitama-hero-for-fun.png" alt="Saitama (Base) portrait" loading="lazy" decoding="async" />
   </div>
   <div class="character-details">
     <div class="character-meta">
       <p><strong>Name:</strong> Saitama</p>
-      <p><strong>Version:</strong> Hero for Fun</p>
+      <p><strong>Version:</strong> Base</p>
       <p><strong>Origin:</strong> One Punch Man</p>
       <p><strong>Roles:</strong> <a class="ua-role-link" data-role="role-striker" href="#">Striker</a>, <a class="ua-role-link" data-role="role-bruiser" href="#">Bruiser</a></p>
       <p><strong>Difficulty:</strong> Medium</p>
@@ -235,7 +235,7 @@
   <p><a class="ua-keyword-link" data-keyword="keyword-evade" href="#">Evade</a>.</p>
 </div>
 
-### Ultimate-1: Hero for Fun
+### Ultimate-1: Base
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 10 Ultimate Meter</span>

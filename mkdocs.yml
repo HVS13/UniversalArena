@@ -43,7 +43,7 @@ nav:
       - Leon S. Kennedy (Resident Evil 4): characters/leon-s-kennedy-re4.md
       - Monkey D. Luffy (Pre-Timeskip): characters/monkey-d-luffy-pre-timeskip.md
       - Rover (Spectro): characters/rover-spectro.md
-      - Saitama (Hero for Fun): characters/saitama.md
+      - Saitama (Base): characters/saitama.md
 markdown_extensions:
   - toc:
       permalink: true
