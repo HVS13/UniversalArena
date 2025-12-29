@@ -2,7 +2,7 @@
 
 <div class="character-header">
   <div class="character-image">
-    <img src="../assets/characters/placeholder.svg" alt="Template character portrait placeholder" loading="lazy" decoding="async" />
+    <img src="../../assets/characters/placeholder.svg" alt="Template character portrait placeholder" loading="lazy" decoding="async" />
     <p class="image-note">Character artwork placeholder.</p>
   </div>
   <div class="character-details">

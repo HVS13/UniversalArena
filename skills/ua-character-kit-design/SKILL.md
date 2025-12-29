@@ -30,7 +30,7 @@ Design a cohesive kit, then output a complete character page that fits the proje
 ## Output format
 
 1. Use `docs/characters/template.md` structure verbatim (include Roles line).
-2. Add artwork in `docs/assets/characters/`.
+2. Add artwork in `docs/assets/characters/` and set portrait `src` to `../../assets/characters/<file>` in the page.
 3. Update `docs/characters/index.md` (include role tags) and `mkdocs.yml` when adding a new character.
 
 ## References

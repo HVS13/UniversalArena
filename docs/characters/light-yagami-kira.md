@@ -2,8 +2,7 @@
 
 <div class="character-header">
   <div class="character-image">
-    <img src="../assets/characters/light-yagami-kira-placeholder.svg" alt="Light Yagami (Kira) portrait placeholder" loading="lazy" decoding="async" />
-    <p class="image-note">Character artwork placeholder.</p>
+    <img src="../../assets/characters/light-yagami-kira.png" alt="Light Yagami (Kira) portrait" loading="lazy" decoding="async" />
   </div>
   <div class="character-details">
     <div class="character-meta">
@@ -28,8 +27,8 @@
 <div class="ua-entry ua-entry--compact status-entry">
   <p class="ua-entry__title">Stolen Information</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Unique.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Max Value</span> 6.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce Value by 1 while Value is 5 or less.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 6.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce Stack by 1 while Stack is 5 or less.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Used by Kira's Death Note effects.</p>
 </div>
 
@@ -54,8 +53,8 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Inflict 1 Stolen Information.</p>
-  <p>If the target already has Stolen Information, inflict 1 <a class="ua-status-link" data-status="status-slow" href="#">Slow</a> and +1 Slow Count.</p>
+  <p>Deal Power damage. On Hit: Inflict 1 Stolen Information.</p>
+  <p>On Hit: If the target has 3+ Stolen Information, inflict 1 <a class="ua-status-link" data-status="status-slow" href="#">Slow</a> and +1 Slow Count.</p>
 </div>
 
 ### Card 2: Defend

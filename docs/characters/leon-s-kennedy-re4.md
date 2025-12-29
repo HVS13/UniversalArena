@@ -2,7 +2,7 @@
 
 <div class="character-header">
   <div class="character-image">
-    <img src="../assets/characters/leon-s-kennedy-re4.png" alt="Leon S. Kennedy (Resident Evil 4) portrait" loading="lazy" decoding="async" />
+    <img src="../../assets/characters/leon-s-kennedy-re4.png" alt="Leon S. Kennedy (Resident Evil 4) portrait" loading="lazy" decoding="async" />
   </div>
   <div class="character-details">
     <div class="character-meta">

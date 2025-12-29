@@ -57,3 +57,5 @@ This file preserves the historical intent and decisions for CodexGPT. Append a n
 - 2025-12-26: Swapped remaining character portraits to local assets, added Leon to the character index and nav, and refreshed the front-page last-updated timestamp.
 - 2025-12-29: Renamed Saitama (Hero for Fun) to Saitama (Base) across nav/index/character page and refreshed the front-page last-updated timestamp.
 - 2025-12-29: Added Light Yagami (Kira) with unique Stolen Information/Death Note statuses, a single-target meter-accelerated execution, roster/nav updates, and a new Basic card naming rule; refreshed the front-page last-updated timestamp.
+- 2025-12-29: Fixed character portrait paths for directory URLs, clarified contributor/skill guidance on `../../assets/characters/<file>`, and refreshed the front-page last-updated timestamp.
+- 2025-12-29: Downloaded local Light Yagami portrait asset, swapped the character page to the local image path, and refreshed the front-page last-updated timestamp.

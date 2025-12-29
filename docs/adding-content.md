@@ -12,7 +12,7 @@ Use these patterns to keep pages consistent, responsive, and easy to extend.
 ## Characters
 
 1. Copy `docs/characters/template.md` to `docs/characters/<slug>.md`.
-2. Prefer character artwork in `docs/assets/characters/` and reference it with a relative URL (avoids broken external images).
+2. Prefer character artwork in `docs/assets/characters/` and reference it from character pages as `../../assets/characters/<file>` (avoids broken external images with directory URLs).
 3. Add the page to `mkdocs.yml` under the `Characters` nav section.
 4. Add a card to `docs/characters/index.md`:
 

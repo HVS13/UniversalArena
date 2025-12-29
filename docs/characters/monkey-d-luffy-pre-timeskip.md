@@ -2,7 +2,7 @@
 
 <div class="character-header">
   <div class="character-image">
-    <img src="../assets/characters/monkey-d-luffy-pre-timeskip.png" alt="Monkey D. Luffy (Pre-Timeskip) portrait" loading="lazy" decoding="async" />
+    <img src="../../assets/characters/monkey-d-luffy-pre-timeskip.png" alt="Monkey D. Luffy (Pre-Timeskip) portrait" loading="lazy" decoding="async" />
   </div>
   <div class="character-details">
     <div class="character-meta">
