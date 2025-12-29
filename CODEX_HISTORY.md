@@ -55,3 +55,4 @@ This file preserves the historical intent and decisions for CodexGPT. Append a n
 - 2025-12-26: Added an Ammo glossary entry to define per-weapon ammo tracking and activation requirements; refreshed the front-page last-updated timestamp.
 - 2025-12-26: Added Saitama (Hero for Fun) with State-based tiers, local character art, and roster/index/nav updates; refreshed the front-page last-updated timestamp.
 - 2025-12-26: Swapped remaining character portraits to local assets, added Leon to the character index and nav, and refreshed the front-page last-updated timestamp.
+- 2025-12-29: Renamed Saitama (Hero for Fun) to Saitama (Base) across nav/index/character page and refreshed the front-page last-updated timestamp.
