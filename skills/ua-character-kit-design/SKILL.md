@@ -24,7 +24,8 @@ Design a cohesive kit, then output a complete character page that fits the proje
 4. Use `ua-*-link` markup for keywords/status effects/roles in card and innate text; only link status effects that live in `docs/status-effects.md` (unique ones stay plain text).
 5. Avoid undefined mechanics; if a global keyword/status/term appears in content, ensure it exists in the reference pages.
 6. Create five cards plus an Ultimate; keep effect text concise and tag order consistent with `docs/adding-content.md`.
-7. Sanity-check for infinite loops, auto-win combos, or uncounterable turns.
+7. Apply basic naming: Basic + Attack cards must be named Strike; Basic + Defense cards must be named Defend; Basic + Special cards can use any name.
+8. Sanity-check for infinite loops, auto-win combos, or uncounterable turns.
 
 ## Output format
 

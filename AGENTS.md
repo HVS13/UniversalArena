@@ -8,6 +8,7 @@ Project rules
 - Follow patterns in `docs/adding-content.md` for content types; use templates and shared link markup.
 - When evaluating rules or potential ambiguity, check `docs/faq.md` and ensure durable rules are reflected in the relevant reference pages.
 - Character workflow: copy `docs/characters/template.md`, add art in `docs/assets/characters/`, set Roles in the header, add a card to `docs/characters/index.md` (include a Power line and role tags), and add the page to `mkdocs.yml`.
+- Basic naming rule: Basic + Attack cards must be named Strike; Basic + Defense cards must be named Defend; Basic + Special cards can use any name.
 - Keyword/status/card type/term/role link markup uses the shared `ua-*-link` classes so `docs/javascripts/guide.js` can rewrite links.
 - Use the shared link markup in character pages and card text; only link status effects that live in `docs/status-effects.md` (unique ones stay plain text).
 - Avoid undefined mechanics; if a global keyword/status/term appears in content, ensure it exists in the reference pages.

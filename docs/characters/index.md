@@ -43,4 +43,11 @@ Pick a character to view their cards. Use the filter to narrow by name, version,
     <div class="character-card__tags">Tags: State, Serious, Ramp, Striker, Bruiser</div>
     <p class="character-card__summary">Slow-start bruiser that ramps State into Serious finishers and stun windows.</p>
   </a>
+  <a class="character-card" href="light-yagami-kira/" data-name="Light Yagami" data-version="Kira" data-tags="Stolen Information, Death Note, Stall, Controller, Assassin">
+    <div class="character-card__title">Light Yagami (Kira)</div>
+    <div class="character-card__meta">Version: Kira</div>
+    <div class="character-card__meta"><span><strong>Power:</strong> 8-12</span></div>
+    <div class="character-card__tags">Tags: Stolen Information, Death Note, Stall, Controller, Assassin</div>
+    <p class="character-card__summary">Intel-stacking controller who stalls until the Death Note countdown resolves.</p>
+  </a>
 </div>

@@ -44,6 +44,7 @@ nav:
       - Monkey D. Luffy (Pre-Timeskip): characters/monkey-d-luffy-pre-timeskip.md
       - Rover (Spectro): characters/rover-spectro.md
       - Saitama (Base): characters/saitama.md
+      - Light Yagami (Kira): characters/light-yagami-kira.md
 markdown_extensions:
   - toc:
       permalink: true
