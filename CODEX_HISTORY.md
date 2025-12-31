@@ -59,3 +59,4 @@ This file preserves the historical intent and decisions for CodexGPT. Append a n
 - 2025-12-29: Added Light Yagami (Kira) with unique Stolen Information/Death Note statuses, a single-target meter-accelerated execution, roster/nav updates, and a new Basic card naming rule; refreshed the front-page last-updated timestamp.
 - 2025-12-29: Fixed character portrait paths for directory URLs, clarified contributor/skill guidance on `../../assets/characters/<file>`, and refreshed the front-page last-updated timestamp.
 - 2025-12-29: Downloaded local Light Yagami portrait asset, swapped the character page to the local image path, and refreshed the front-page last-updated timestamp.
+- 2025-12-31: Replaced the export actions with an icon-only dropdown, added all-pages ZIP exports (HTML/MD/TXT in `html/`, `md/`, `txt/`), and refreshed the front-page last-updated timestamp and agent guidance.

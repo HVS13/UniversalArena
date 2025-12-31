@@ -2,35 +2,79 @@
 
 {% block content %}
   <div class="ua-print-actions" role="group" aria-label="Page export actions">
-    <button
-      class="ua-action-button ua-print-button md-button"
-      type="button"
-      data-action="print"
-      aria-label="Print or save this page as a PDF"
-      title="Print / Save PDF"
-    >
-      <span class="md-icon" aria-hidden="true">
-        {% include ".icons/material/printer.svg" %}
-      </span>
-    </button>
-    <button
-      class="ua-action-button ua-export-button md-button"
-      type="button"
-      data-action="md"
-      aria-label="Download this page as Markdown"
-      title="Download Markdown"
-    >
-      <span class="ua-action-label" aria-hidden="true">MD</span>
-    </button>
-    <button
-      class="ua-action-button ua-export-button md-button"
-      type="button"
-      data-action="txt"
-      aria-label="Download this page as plain text"
-      title="Download Text"
-    >
-      <span class="ua-action-label" aria-hidden="true">TXT</span>
-    </button>
+    <div class="ua-export-menu" data-ua-export-menu>
+      <button
+        class="ua-action-button ua-export-toggle md-button"
+        type="button"
+        data-ua-export-toggle
+        aria-haspopup="true"
+        aria-expanded="false"
+        aria-controls="ua-export-dropdown"
+        aria-label="Export options"
+        title="Export options"
+      >
+        <span class="md-icon" aria-hidden="true">
+          {% include ".icons/material/download.svg" %}
+        </span>
+        <span class="md-icon ua-export-caret" aria-hidden="true">
+          {% include ".icons/material/chevron-down.svg" %}
+        </span>
+      </button>
+      <div
+        class="ua-export-dropdown"
+        id="ua-export-dropdown"
+        role="menu"
+        aria-label="Export options"
+        aria-hidden="true"
+      >
+        <div class="ua-export-section" role="presentation">
+          <div class="ua-export-section__title">This page</div>
+          <button
+            class="ua-export-item"
+            type="button"
+            role="menuitem"
+            data-action="print"
+            data-scope="page"
+            aria-label="Export this page as PDF"
+          >
+            PDF
+          </button>
+          <button
+            class="ua-export-item"
+            type="button"
+            role="menuitem"
+            data-action="md"
+            data-scope="page"
+            aria-label="Export this page as Markdown"
+          >
+            Markdown
+          </button>
+          <button
+            class="ua-export-item"
+            type="button"
+            role="menuitem"
+            data-action="txt"
+            data-scope="page"
+            aria-label="Export this page as plain text"
+          >
+            Text
+          </button>
+        </div>
+        <div class="ua-export-section" role="presentation">
+          <div class="ua-export-section__title">All pages</div>
+          <button
+            class="ua-export-item"
+            type="button"
+            role="menuitem"
+            data-action="zip"
+            data-scope="site"
+            aria-label="Download all pages as a ZIP archive (HTML, Markdown, Text)"
+          >
+            ZIP (HTML/MD/TXT)
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
   {{ super() }}
 {% endblock %}

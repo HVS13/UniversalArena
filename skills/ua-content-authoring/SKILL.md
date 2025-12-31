@@ -19,7 +19,8 @@ Use the repo's documented markup patterns to keep content consistent, linkable, 
 6. When referencing keywords/status effects/roles/terms in content, use `ua-*-link` markup; only link status effects that live in `docs/status-effects.md` (unique ones stay plain text).
 7. Avoid undefined mechanics; if a global keyword/status/term appears in content, ensure it exists in the reference pages.
 8. Keep `site/` untouched; it is build output.
-9. Run `mkdocs build --strict` or `mkdocs serve` when asked to validate.
+9. Export actions (page PDF/MD/TXT + all-pages ZIP with `html/`, `md/`, `txt/`) live in `docs/overrides/main.html` and `docs/javascripts/print.js`; keep exports free of permalinks, URLs, and images when editing them.
+10. Run `mkdocs build --strict` or `mkdocs serve` when asked to validate.
 
 ## References
 
