@@ -1,13 +1,13 @@
 ---
 name: ua-character-kit-design
-description: Design balanced character kits and output full character pages; use when creating new characters, rebalancing existing kits, or writing card/innate text for UniversalArena.
+description: Design lore-accurate, synergistic, and fun character kits and output full character pages; use when creating new characters, rebalancing existing kits, or writing card/innate text for UniversalArena.
 ---
 
 # UA Character Kit Design
 
 ## Overview
 
-Design a cohesive kit, then output a complete character page that fits the project's structure and balance conventions.
+Design a cohesive kit, then output a complete character page that fits the project's structure and rules conventions.
 
 ## Inputs to confirm
 
@@ -25,7 +25,11 @@ Design a cohesive kit, then output a complete character page that fits the proje
 5. Avoid undefined mechanics; if a global keyword/status/term appears in content, ensure it exists in the reference pages.
 6. Create five cards plus an Ultimate; keep effect text concise and tag order consistent with `docs/adding-content.md`.
 7. Apply basic naming: Basic + Attack cards must be named Strike; Basic + Defense cards must be named Defend; Basic + Special cards can use any name.
-8. Sanity-check for infinite loops, auto-win combos, or uncounterable turns.
+8. Conditional "this card becomes X" effects are automatic in any zone; do not make them optional.
+9. "Spend X" is mandatory; if optional, it must say "may." If the Spend cannot be paid, that part of the effect does not happen.
+10. Ensure Potency/Count/Value/Stack caps align with what the kit can reach, including edge cases.
+11. Prioritize lore-accurate, synergistic, and fun play feel over balance; avoid purely balance-driven nerfs that break fantasy.
+12. Sanity-check for infinite loops, auto-win combos, or uncounterable turns.
 
 ## Output format
 

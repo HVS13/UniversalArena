@@ -22,6 +22,13 @@ Pick a character to view their cards. Use the filter to narrow by name, version,
     <div class="character-card__tags">Tags: Gear 2nd, Gear 3rd, Transformation, Bruiser, Striker</div>
     <p class="character-card__summary">Gear-shifting bruiser: Gear 2nd tempo or Gear 3rd burst with a Deflate tax.</p>
   </a>
+  <a class="character-card" href="naruto-uzumaki-pre-timeskip/" data-name="Naruto Uzumaki" data-version="Pre-Timeskip" data-tags="Shadow Clones, Kyuubi Chakra, Multihit, Summoner, Striker">
+    <div class="character-card__title">Naruto Uzumaki (Pre-Timeskip)</div>
+    <div class="character-card__meta">Version: Pre-Timeskip</div>
+    <div class="character-card__meta"><span><strong>Power:</strong> 7-36</span></div>
+    <div class="character-card__tags">Tags: Shadow Clones, Kyuubi Chakra, Multihit, Summoner, Striker</div>
+    <p class="character-card__summary">Clone-swarming striker who banks Shadow Clones into Barrage pressure and clone-assisted Rasengan bursts.</p>
+  </a>
   <a class="character-card" href="leon-s-kennedy-re4/" data-name="Leon S. Kennedy" data-version="Resident Evil 4" data-tags="Ammo, Reload, Follow-Up, Striker, Artillery">
     <div class="character-card__title">Leon S. Kennedy (Resident Evil 4)</div>
     <div class="character-card__meta">Version: Resident Evil 4</div>

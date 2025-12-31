@@ -81,8 +81,8 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Spend up to 3 Handgun Ammo to deal damage.</p>
-  <p>Deal Power / 3 damage once per Ammo spent.</p>
+  <p>Spend Handgun Ammo up to X, where X is this card's remaining Multihit Count (before resolving this card). Spend as many as possible.</p>
+  <p>Deal Power / X damage once per Ammo spent.</p>
 </div>
 
 ### Card 3-2: Shoot: Riot Gun
@@ -162,7 +162,7 @@
   <p>If this character doesn't have Rocket Launcher, this Ultimate becomes Purchase Rocket Launcher.</p>
 </div>
 
-### Ultimate-2: Purchase Rocket Launcher
+### Ultimate-2: Purchase: Rocket Launcher
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 10 Ultimate Meter</span>

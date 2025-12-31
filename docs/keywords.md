@@ -55,6 +55,11 @@ This page holds the full keyword reference. Use the filter to navigate large lis
   <p class="ua-entry__desc">After Use: This card can be played after any other card from the same character.</p>
 </div>
 
+<div class="ua-entry keyword-entry" id="keyword-assist-attack">
+  <p class="ua-entry__title">Assist Attack</p>
+  <p class="ua-entry__desc">After Use: This card can be played after any other card used by a different character.</p>
+</div>
+
 ### Damage Mitigation
 
 <div class="ua-entry keyword-entry" id="keyword-resist">

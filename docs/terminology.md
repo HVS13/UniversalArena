@@ -32,6 +32,10 @@ This page is the reference glossary for game terms. Use the filter to quickly lo
       <td>Ultimate Meter</td>
       <td>The shared team resource that powers the strongest abilities; any character can spend it. Your team gains Ultimate Meter when you play cards. Design target: in a standard 3v3 match, a normal team gains about 5 Ultimate Meter per turn on average; some characters gain faster or slower.</td>
     </tr>
+    <tr id="term-spend" class="term-entry">
+      <td>Spend</td>
+      <td>When an effect says to Spend X (Energy, Ammo, a status value, etc.), you must reduce that resource by X to resolve that part of the effect. If you cannot spend the full amount, that part of the effect does not happen. Optional Spend must say "may."</td>
+    </tr>
     <tr id="term-ultimate-card" class="term-entry">
       <td>Ultimate Card</td>
       <td>A card that starts outside the draw pile and is always available to play. It follows normal card rules and counts as an Ultimate type for effects.</td>
@@ -76,6 +80,10 @@ This page is the reference glossary for game terms. Use the filter to quickly lo
     <tr id="term-used" class="term-entry">
       <td>Used</td>
       <td>A card is used when its effects apply. Unless a timing is explicitly stated, a card's text is On Use.</td>
+    </tr>
+    <tr id="term-becomes" class="term-entry">
+      <td>Becomes</td>
+      <td>If a card becomes another card due to a condition, treat it as that other card in any zone (deck, hand, play) as long as the condition is true. This replacement is automatic, not optional.</td>
     </tr>
     <tr id="term-cancelled" class="term-entry">
       <td>Cancelled</td>
@@ -154,11 +162,11 @@ This page is the reference glossary for game terms. Use the filter to quickly lo
     </tr>
     <tr id="term-ally" class="term-entry">
       <td>Ally</td>
-      <td>A character on the same team.</td>
+      <td>A character on the same team, including self unless an effect says another ally.</td>
     </tr>
     <tr id="term-allies" class="term-entry">
       <td>Allies</td>
-      <td>All characters on the same team.</td>
+      <td>All characters on the same team, including self.</td>
     </tr>
     <tr id="term-enemy" class="term-entry">
       <td>Enemy</td>

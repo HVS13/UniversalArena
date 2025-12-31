@@ -39,9 +39,12 @@ nav:
   - FAQ: faq.md
   - Characters:
       - Overview: characters/index.md
+      - Character Creation Guide: characters/character-creation-guide.md
+      - Character Template: characters/template.md
       - Goku (Saiyan Saga): characters/goku-saiyan-saga.md
       - Leon S. Kennedy (Resident Evil 4): characters/leon-s-kennedy-re4.md
       - Monkey D. Luffy (Pre-Timeskip): characters/monkey-d-luffy-pre-timeskip.md
+      - Naruto Uzumaki (Pre-Timeskip): characters/naruto-uzumaki-pre-timeskip.md
       - Rover (Spectro): characters/rover-spectro.md
       - Saitama (Base): characters/saitama.md
       - Light Yagami (Kira): characters/light-yagami-kira.md

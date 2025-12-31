@@ -11,7 +11,7 @@ This page explains what status effects are and how their values work.
     - **Single-value mode:** one value is typically called Count, Stack, or Value.
     - **Double-value mode:** two values (Potency + Count). Generally, Potency determines strength, while Count determines duration.
 
-    Trigger labels like "Turn Start," "Turn End," and "Allies' Card Played" describe when the effect happens. "Allies' Card Played" triggers whenever any ally plays a card.
+    Trigger labels like "Turn Start," "Turn End," and "Allies' Card Played" describe when the effect happens. "Allies' Card Played" triggers whenever any ally (including the user) plays a card.
 
     In single-value or double-value modes, if one or more values reach 0, the status effect is removed from the unit. When multiple effects at the same timing point would consume and gain status values, apply all reductions or consumptions first, then apply gains or inflictions. If a single effect specifies its own order (example: "Take damage, then reduce Count"), follow that text.
 
@@ -22,7 +22,7 @@ This page explains what status effects are and how their values work.
 
     Status effects also have a type: Positive, Negative, or Unique. Unique status effects are character-specific and are documented on the character page only, not in this reference.
 
-    Reapplying a status effect increases its Potency, Count, Stack, or Value up to its cap.
+    Reapplying a status effect increases its Potency, Count, Stack, or Value up to its cap, following any mode-specific rules below.
 
     For Potency + Count effects, "Inflict/Gain X" increases Potency by X; if the target has none, set Potency to X and Count to 1.
 
