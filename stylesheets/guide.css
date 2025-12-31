@@ -258,6 +258,10 @@
   transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
+.character-card[hidden] {
+  display: none;
+}
+
 .character-card:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   transform: translateY(-2px);
