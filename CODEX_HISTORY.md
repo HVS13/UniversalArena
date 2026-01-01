@@ -64,3 +64,4 @@ This file preserves the historical intent and decisions for CodexGPT. Append a n
 - 2026-01-01: Clarified Leon's Handgun spend wording to match the mandatory/optional Spend rule, aligned Naruto's difficulty and gameplan with the One-Tail Cloak/Gamabunta kit updates, fixed a Summoned: Gamabunta Stack reference, corrected Naruto's index power line, and refreshed the front-page timestamp.
 - 2026-01-01: Reworded Leon's Handgun multihit ammo spend to allow partial ammo use while keeping damage split tied to remaining multihit count, and refreshed the front-page timestamp.
 - 2026-01-01: Made Leon's Handgun ammo spend mandatory while still forcing maximum possible spend, and refreshed the front-page timestamp.
+- 2026-01-01: Fixed character index filtering by honoring the `hidden` attribute on character cards, updated AGENTS and the content-authoring skill with the filter rule, and refreshed the front-page timestamp.
