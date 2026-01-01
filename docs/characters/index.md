@@ -29,6 +29,13 @@ Pick a character to view their cards. Use the filter to narrow by name, version,
     <div class="character-card__tags">Tags: Shadow Clones, Kyuubi Chakra, Multihit, Summoner, Striker</div>
     <p class="character-card__summary">Clone-swarming striker who banks Shadow Clones into Barrage pressure and clone-assisted Rasengan bursts.</p>
   </a>
+  <a class="character-card" href="kurosaki-ichigo-soul-society/" data-name="Kurosaki Ichigo" data-version="Soul Society" data-tags="Reiatsu, Bankai, Hollow Interference, Follow-Up, Striker, Skirmisher">
+    <div class="character-card__title">Kurosaki Ichigo (Soul Society)</div>
+    <div class="character-card__meta">Version: Soul Society</div>
+    <div class="character-card__meta"><span><strong>Power:</strong> 8-24</span></div>
+    <div class="character-card__tags">Tags: Reiatsu, Bankai, Hollow Interference, Follow-Up, Striker, Skirmisher</div>
+    <p class="character-card__summary">Tempo duelist who banks Reiatsu through exchanges, then cashes out in fast Getsuga bursts.</p>
+  </a>
   <a class="character-card" href="leon-s-kennedy-re4/" data-name="Leon S. Kennedy" data-version="Resident Evil 4" data-tags="Ammo, Reload, Follow-Up, Striker, Artillery">
     <div class="character-card__title">Leon S. Kennedy (Resident Evil 4)</div>
     <div class="character-card__meta">Version: Resident Evil 4</div>
