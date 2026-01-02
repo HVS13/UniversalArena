@@ -39,6 +39,10 @@ This page collects frequently asked questions about Universal Arena.
 ??? question "Where can I play a card based on Speed?"
     Fast cards can be played in any zone, Normal cards in the Normal or Slow Zone, and Slow cards only in the Slow Zone. A faster zone can interrupt a slower Active Zone.
 
+<a id="faq-cannot-play-cards"></a>
+??? question "What happens when a player cannot play cards?"
+    While an effect says a player cannot play cards, they cannot add cards to any zone; they still pass priority and resolve cards already played. Example: If a Time Stop effect is used mid-round, the opponent can only pass until the round ends, and all already played cards still resolve.
+
 <a id="faq-evade-shield"></a>
 ??? question "How does Evade work against Shield in an Attack vs Defense clash?"
     In an Attack vs Defense clash, resolve Defense first to gain <a class="ua-term-link" data-term="term-shield" href="#">Shield</a>, then resolve the Attack. <a class="ua-keyword-link" data-keyword="keyword-evade" href="#">Evade</a> checks after Shield: if the Attack would deal 0 Power damage after Shield, it is not a hit and you <a class="ua-keyword-link" data-keyword="keyword-reuse" href="#">Reuse</a> the Defense card. If any Power damage gets through Shield, the Attack is a hit and Evade does not apply. Example: Defense rolls 10 Shield and the Attack rolls 10 or less, Evade triggers; if the Attack rolls 11+, Evade does not.

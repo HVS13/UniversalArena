@@ -49,6 +49,7 @@ nav:
       - Rover (Spectro): characters/rover-spectro.md
       - Saitama (Base): characters/saitama.md
       - Light Yagami (Kira): characters/light-yagami-kira.md
+      - DIO (Part 3): characters/dio-brando-part-3.md
 markdown_extensions:
   - toc:
       permalink: true

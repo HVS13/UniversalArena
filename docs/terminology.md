@@ -81,6 +81,10 @@ This page is the reference glossary for game terms. Use the filter to quickly lo
       <td>Played</td>
       <td>A card is played when it is placed in a legal zone after paying its cost and selecting legal targets.</td>
     </tr>
+    <tr id="term-cannot-play-cards" class="term-entry">
+      <td>Cannot Play Cards</td>
+      <td>If an effect says a player cannot play cards, they cannot add cards to any zone until the restriction ends; they may still pass priority and resolve cards already played. See <a href="faq.md#faq-cannot-play-cards">FAQ</a>.</td>
+    </tr>
     <tr id="term-used" class="term-entry">
       <td>Used</td>
       <td>A card is used when its effects apply. Unless a timing is explicitly stated, a card's text is On Use.</td>

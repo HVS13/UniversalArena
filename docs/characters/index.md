@@ -64,4 +64,11 @@ Pick a character to view their cards. Use the filter to narrow by name, version,
     <div class="character-card__tags">Tags: Stolen Information, Death Note, Stall, Controller, Assassin</div>
     <p class="character-card__summary">Intel-stacking controller who stalls until the Death Note countdown resolves.</p>
   </a>
+  <a class="character-card" href="dio-brando-part-3/" data-name="DIO" data-version="Part 3" data-tags="Time Stop, Stolen Blood, Blood Focus, Assassin, Controller">
+    <div class="character-card__title">DIO (Part 3)</div>
+    <div class="character-card__meta">Version: Part 3</div>
+    <div class="character-card__meta"><span><strong>Power:</strong> 18-28</span></div>
+    <div class="character-card__tags">Tags: Time Stop, Stolen Blood, Blood Focus, Assassin, Controller</div>
+    <p class="character-card__summary">Vampire assassin who stocks Stolen Blood into Time Stop lockouts and a ROAD ROLLER finisher.</p>
+  </a>
 </div>
