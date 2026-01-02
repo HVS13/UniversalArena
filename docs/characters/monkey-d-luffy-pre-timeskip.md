@@ -82,7 +82,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
-    <span><strong>Power:</strong> 12-18</span>
+    <span><strong>Power:</strong> 10-14</span>
     <span><strong>Type:</strong> Technique, Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Normal</span>
@@ -97,7 +97,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
-    <span><strong>Power:</strong> 12-18</span>
+    <span><strong>Power:</strong> 10-14</span>
     <span><strong>Type:</strong> Technique, Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Fast</span>
@@ -110,7 +110,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
-    <span><strong>Power:</strong> 12-18</span>
+    <span><strong>Power:</strong> 10-14</span>
     <span><strong>Type:</strong> Technique, Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Slow</span>
@@ -123,7 +123,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 2 Energy</span>
-    <span><strong>Power:</strong> 20-30</span>
+    <span><strong>Power:</strong> 20-28</span>
     <span><strong>Type:</strong> Technique, Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Normal</span>
