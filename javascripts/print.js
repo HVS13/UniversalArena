@@ -323,7 +323,7 @@
       const root = cloneContentRoot(doc, options);
       if (!root) continue;
       const title = getExportTitle(root, doc);
-      pages.push({ title, root });
+      pages.push({ title, root, url });
     }
 
     return pages;
@@ -683,6 +683,82 @@
     return candidate;
   };
 
+  const normalizeExportFormats = (options = {}) => {
+    const allowed = new Set(['html', 'md', 'txt']);
+    const rawFormats = Array.isArray(options.formats)
+      ? options.formats
+      : options.format
+        ? [options.format]
+        : ['html', 'md', 'txt'];
+    const unique = new Set();
+
+    rawFormats.forEach((value) => {
+      const normalized = (value ?? '').toString().trim().toLowerCase();
+      if (allowed.has(normalized)) unique.add(normalized);
+    });
+
+    if (!unique.size) return ['html', 'md', 'txt'];
+    return Array.from(unique);
+  };
+
+  const normalizeCharacterMode = (options = {}) =>
+    options.characterMode === 'combined' ? 'combined' : 'split';
+
+  const getNormalizedPathname = (url) => {
+    try {
+      let pathname = new URL(url).pathname || '';
+      pathname = pathname.replace(/\\/g, '/');
+      pathname = pathname.replace(/\/+/g, '/');
+      if (pathname.length > 1 && pathname.endsWith('/')) {
+        pathname = pathname.slice(0, -1);
+      }
+      return pathname;
+    } catch (error) {
+      return '';
+    }
+  };
+
+  const isCharacterPage = (page) => {
+    if (!page || !page.url) return false;
+    const pathname = getNormalizedPathname(page.url);
+    if (!pathname) return false;
+    const cleaned = pathname.replace(/\/index\.html$/, '');
+    if (cleaned === '/characters') return false;
+    return cleaned.startsWith('/characters/');
+  };
+
+  const splitPagesByCharacter = (pages) => {
+    const characterPages = [];
+    const otherPages = [];
+    pages.forEach((page) => {
+      if (isCharacterPage(page)) {
+        characterPages.push(page);
+      } else {
+        otherPages.push(page);
+      }
+    });
+    return { characterPages, otherPages };
+  };
+
+  const buildCombinedText = (pages) => {
+    const parts = pages
+      .map((page) => ensureTextTitle(page, getTextFromRoot(page.root)))
+      .map((part) => (part ?? '').trim())
+      .filter(Boolean);
+    return parts.join('\n\n');
+  };
+
+  const buildCombinedMarkdown = (pages) => {
+    const parts = pages
+      .map((page) => {
+        const markdown = toMarkdown(page.root).trim();
+        return ensureMarkdownTitle(page, markdown);
+      })
+      .map((part) => (part ?? '').trim())
+      .filter(Boolean);
+    return parts.join('\n\n');
+  };
+
   const exportPageText = () => {
     const root = cloneContentRoot();
     if (!root) return;
@@ -710,26 +786,66 @@
     printWindow.print();
   };
 
-  const exportSiteArchive = async () => {
+  const exportSiteArchive = async (options = {}) => {
+    const formats = normalizeExportFormats(options);
+    const formatSet = new Set(formats);
+    const characterMode = normalizeCharacterMode(options);
     const pages = await collectSitePages({ stripLinks: true });
     if (!pages.length) return;
 
+    const { characterPages, otherPages } = splitPagesByCharacter(pages);
     const usedNames = new Set();
     const files = [];
 
-    pages.forEach((page, index) => {
+    const addPageFiles = (page, index) => {
       const baseName = buildPageBaseName(page, index, usedNames);
-      const text = ensureTextTitle(page, getTextFromRoot(page.root));
-      if (text) files.push({ name: `txt/${baseName}.txt`, content: `${text}\n` });
 
-      const markdown = toMarkdown(page.root).trim();
-      const mdContent = ensureMarkdownTitle(page, markdown);
-      if (mdContent) files.push({ name: `md/${baseName}.md`, content: `${mdContent}\n` });
+      if (formatSet.has('txt')) {
+        const text = ensureTextTitle(page, getTextFromRoot(page.root));
+        if (text) files.push({ name: `txt/${baseName}.txt`, content: `${text}\n` });
+      }
 
-      const title = page.title || baseName;
-      const html = buildPrintHtml([{ title: page.title, root: page.root }], title);
-      files.push({ name: `html/${baseName}.html`, content: html });
-    });
+      if (formatSet.has('md')) {
+        const markdown = toMarkdown(page.root).trim();
+        const mdContent = ensureMarkdownTitle(page, markdown);
+        if (mdContent) files.push({ name: `md/${baseName}.md`, content: `${mdContent}\n` });
+      }
+
+      if (formatSet.has('html')) {
+        const title = page.title || baseName;
+        const html = buildPrintHtml([{ title: page.title, root: page.root }], title);
+        files.push({ name: `html/${baseName}.html`, content: html });
+      }
+    };
+
+    const pagesToExport = characterMode === 'combined' ? otherPages : pages;
+    pagesToExport.forEach((page, index) => addPageFiles(page, index));
+
+    if (characterMode === 'combined' && characterPages.length) {
+      const combinedTitle = 'All Characters';
+      const combinedBaseName = buildPageBaseName(
+        { title: combinedTitle },
+        usedNames.size,
+        usedNames
+      );
+
+      if (formatSet.has('txt')) {
+        const text = buildCombinedText(characterPages);
+        if (text) files.push({ name: `txt/${combinedBaseName}.txt`, content: `${text}\n` });
+      }
+
+      if (formatSet.has('md')) {
+        const markdown = buildCombinedMarkdown(characterPages);
+        if (markdown) {
+          files.push({ name: `md/${combinedBaseName}.md`, content: `${markdown}\n` });
+        }
+      }
+
+      if (formatSet.has('html')) {
+        const html = buildPrintHtml(characterPages, combinedTitle);
+        files.push({ name: `html/${combinedBaseName}.html`, content: html });
+      }
+    }
 
     if (!files.length) return;
     const archiveName = sanitizeFilename(`${getSiteTitle()}-all-pages`);
@@ -789,8 +905,72 @@
   };
 
   const setButtonBusy = (button, busy) => {
+    if (!button) return;
     button.disabled = busy;
     button.setAttribute('aria-busy', busy ? 'true' : 'false');
+  };
+
+  const setExportPanelState = (panel, isOpen) => {
+    panel.hidden = !isOpen;
+    document.body.classList.toggle('ua-export-panel-open', isOpen);
+  };
+
+  const openExportPanel = () => {
+    const panel = document.querySelector('[data-ua-export-panel]');
+    if (!panel) return;
+    setExportPanelState(panel, true);
+    const focusTarget = panel.querySelector('input, button, select, textarea');
+    if (focusTarget) focusTarget.focus();
+  };
+
+  const closeExportPanel = () => {
+    const panel = document.querySelector('[data-ua-export-panel]');
+    if (!panel || panel.hidden) return;
+    setExportPanelState(panel, false);
+  };
+
+  const getCheckedValue = (form, name, fallback) =>
+    form.querySelector(`input[name="${name}"]:checked`)?.value ?? fallback;
+
+  const bindExportPanel = () => {
+    const panel = document.querySelector('[data-ua-export-panel]');
+    if (!panel || panel.dataset.uaBound) return;
+    panel.dataset.uaBound = 'true';
+
+    panel.addEventListener('click', (event) => {
+      if (event.target.closest('[data-ua-export-close]')) {
+        closeExportPanel();
+      }
+    });
+
+    const form = panel.querySelector('[data-ua-export-form]');
+    if (form && !form.dataset.uaBound) {
+      form.dataset.uaBound = 'true';
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const submitButton = form.querySelector('[data-ua-export-submit]');
+        const format = getCheckedValue(form, 'ua-export-format', 'all');
+        const characterMode = getCheckedValue(form, 'ua-export-characters', 'split');
+        setButtonBusy(submitButton, true);
+
+        try {
+          await exportSiteArchive({
+            format,
+            characterMode: characterMode === 'combined' ? 'combined' : 'split',
+          });
+          closeExportPanel();
+        } finally {
+          setButtonBusy(submitButton, false);
+        }
+      });
+    }
+
+    if (!document.body.dataset.uaExportPanelBound) {
+      document.body.dataset.uaExportPanelBound = 'true';
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeExportPanel();
+      });
+    }
   };
 
   const bindExportActions = () => {
@@ -806,6 +986,11 @@
         if (button.disabled) return;
 
         const action = button.dataset.action;
+        if (action === 'zip-options') {
+          openExportPanel();
+          return;
+        }
+
         setButtonBusy(button, true);
 
         try {
@@ -836,6 +1021,7 @@
 
   const init = () => {
     bindMenus();
+    bindExportPanel();
     bindExportActions();
   };
 
