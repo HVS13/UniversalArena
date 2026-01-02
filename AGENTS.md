@@ -21,7 +21,7 @@ Project rules
 - Ensure Potency/Count/Value/Stack caps align with what the kit can reach, including edge cases.
 - Prioritize lore-accurate, synergistic, and fun character kits over balance.
 - Follow `docs/characters/character-creation-guide.md` for power budgeting (including variable/0-cost handling); document character-specific exceptions there, not on character pages.
-- Export actions (page PDF/MD/TXT + all-pages ZIP with `html/`, `md/`, `txt/`) live in `docs/overrides/main.html` and `docs/javascripts/print.js`; keep exports free of permalinks, URLs, and images.
+- Export actions (page PDF/MD/TXT + all-pages ZIP with format/character-combine options and `html/`, `md/`, `txt/`) live in `docs/overrides/main.html` and `docs/javascripts/print.js`; keep exports free of permalinks, URLs, and images.
 - Do not edit game pages or assets unless explicitly requested.
 - Game client changes live in `docs/javascripts/game/game.js` and `docs/stylesheets/game.css`; relay server changes live in `server/index.js`.
 

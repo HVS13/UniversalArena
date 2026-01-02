@@ -53,6 +53,11 @@
 
     const clone = root.cloneNode(true);
     clone.querySelectorAll('.ua-print-actions').forEach((node) => node.remove());
+    clone
+      .querySelectorAll(
+        '.ua-export-panel, .ua-export-panel__content, .ua-export-panel__backdrop'
+      )
+      .forEach((node) => node.remove());
     clone.querySelectorAll('button.md-content__button').forEach((node) => node.remove());
     removeUnsafeNodes(clone);
     removePermalinks(clone);
@@ -719,12 +724,23 @@
   };
 
   const isCharacterPage = (page) => {
-    if (!page || !page.url) return false;
+    if (!page) return false;
+    if (page.root?.querySelector?.('.character-header')) return true;
+    if (!page.url) return false;
     const pathname = getNormalizedPathname(page.url);
     if (!pathname) return false;
     const cleaned = pathname.replace(/\/index\.html$/, '');
-    if (cleaned === '/characters') return false;
-    return cleaned.startsWith('/characters/');
+    const lower = cleaned.toLowerCase();
+    const marker = '/characters';
+    const index = lower.lastIndexOf(marker);
+    if (index === -1) return false;
+    const before = index === 0 ? '' : lower[index - 1];
+    const after = lower[index + marker.length] || '';
+    if (before && before !== '/') return false;
+    if (after && after !== '/') return false;
+    const remainder = cleaned.slice(index + marker.length);
+    if (!remainder || remainder === '/') return false;
+    return true;
   };
 
   const splitPagesByCharacter = (pages) => {
@@ -738,6 +754,17 @@
       }
     });
     return { characterPages, otherPages };
+  };
+
+  const isTemplateCharacterPage = (page) => {
+    if (!page) return false;
+    const title = (page.title ?? '').toString().trim().toLowerCase();
+    if (title === 'template character' || title === 'template-character') return true;
+    if (page.root?.querySelector?.('img[alt="Template character portrait placeholder"]')) {
+      return true;
+    }
+    const pathname = getNormalizedPathname(page.url).toLowerCase();
+    return pathname.includes('/characters/template');
   };
 
   const buildCombinedText = (pages) => {
@@ -794,6 +821,10 @@
     if (!pages.length) return;
 
     const { characterPages, otherPages } = splitPagesByCharacter(pages);
+    const excludedCharacterPages = characterPages.filter(isTemplateCharacterPage);
+    const combinedCharacterPages = characterPages.filter(
+      (page) => !isTemplateCharacterPage(page)
+    );
     const usedNames = new Set();
     const files = [];
 
@@ -818,10 +849,13 @@
       }
     };
 
-    const pagesToExport = characterMode === 'combined' ? otherPages : pages;
+    const pagesToExport =
+      characterMode === 'combined'
+        ? [...otherPages, ...excludedCharacterPages]
+        : pages;
     pagesToExport.forEach((page, index) => addPageFiles(page, index));
 
-    if (characterMode === 'combined' && characterPages.length) {
+    if (characterMode === 'combined' && combinedCharacterPages.length) {
       const combinedTitle = 'All Characters';
       const combinedBaseName = buildPageBaseName(
         { title: combinedTitle },
@@ -830,19 +864,19 @@
       );
 
       if (formatSet.has('txt')) {
-        const text = buildCombinedText(characterPages);
+        const text = buildCombinedText(combinedCharacterPages);
         if (text) files.push({ name: `txt/${combinedBaseName}.txt`, content: `${text}\n` });
       }
 
       if (formatSet.has('md')) {
-        const markdown = buildCombinedMarkdown(characterPages);
+        const markdown = buildCombinedMarkdown(combinedCharacterPages);
         if (markdown) {
           files.push({ name: `md/${combinedBaseName}.md`, content: `${markdown}\n` });
         }
       }
 
       if (formatSet.has('html')) {
-        const html = buildPrintHtml(characterPages, combinedTitle);
+        const html = buildPrintHtml(combinedCharacterPages, combinedTitle);
         files.push({ name: `html/${combinedBaseName}.html`, content: html });
       }
     }

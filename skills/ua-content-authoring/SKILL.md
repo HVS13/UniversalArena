@@ -24,7 +24,7 @@ Use the repo's documented markup patterns to keep content consistent, linkable, 
 11. Avoid undefined mechanics; if a global keyword/status/term appears in content, ensure it exists in the reference pages.
 12. If a card references remaining Multihit Count, make sure the base count is explicit in the card text or defined by the Multihit rules.
 13. Keep `site/` untouched; it is build output.
-14. Export actions (page PDF/MD/TXT + all-pages ZIP with `html/`, `md/`, `txt/`) live in `docs/overrides/main.html` and `docs/javascripts/print.js`; keep exports free of permalinks, URLs, and images when editing them.
+14. Export actions (page PDF/MD/TXT + all-pages ZIP with format/character-combine options and `html/`, `md/`, `txt/`) live in `docs/overrides/main.html` and `docs/javascripts/print.js`; keep exports free of permalinks, URLs, and images when editing them.
 15. Run `mkdocs build --strict` or `mkdocs serve` when asked to validate.
 
 ## References
