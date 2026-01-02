@@ -8,6 +8,7 @@ Project rules
 - Follow patterns in `docs/adding-content.md` for content types; use templates and shared link markup.
 - Filtering uses the `hidden` attribute; avoid overriding it on filterable items (add an explicit `[hidden] { display: none; }` when custom display styles are applied).
 - When evaluating rules or potential ambiguity, check `docs/faq.md` and ensure durable rules are reflected in the relevant reference pages.
+- When clarifying timing or keyword interactions, update the keyword/term definition and add a short FAQ example (with a cross-link from the glossary) if it will come up at the table.
 - Character workflow: copy `docs/characters/template.md`, add art in `docs/assets/characters/`, set Roles in the header, add a card to `docs/characters/index.md` (include a Power line and role tags), and add the page to `mkdocs.yml`.
 - Character portraits in `docs/characters/` pages must use `../../assets/characters/<file>` so directory URLs resolve on deploy.
 - Basic naming rule: Basic + Attack cards must be named Strike; Basic + Defense cards must be named Defend; Basic + Special cards can use any name.

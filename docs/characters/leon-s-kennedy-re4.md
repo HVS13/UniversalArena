@@ -81,7 +81,8 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Spend Handgun Ammo up to X, where X is this card's remaining Multihit Count (before resolving this card). Spend as many as possible.</p>
+  <p>This card's Multihit Count starts at 3.</p>
+  <p>Set X to this card's remaining Multihit Count (before resolving this card). Spend Handgun Ammo up to X. Spend as many as possible.</p>
   <p>Deal Power / X damage once per Ammo spent.</p>
 </div>
 

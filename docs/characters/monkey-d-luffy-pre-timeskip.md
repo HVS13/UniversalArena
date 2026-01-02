@@ -29,17 +29,17 @@
   <p class="ua-entry__title">Gear 2nd</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Unique.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 1.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Turn Start</span> Gain 1 <a class="ua-status-link" data-status="status-strength" href="#">Strength</a>. Gain 1 <a class="ua-status-link" data-status="status-haste" href="#">Haste</a>.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce Stack by 1.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">On Gain</span> Gain 1 <a class="ua-status-link" data-status="status-strength" href="#">Strength</a>. Gain 1 <a class="ua-status-link" data-status="status-haste" href="#">Haste</a>.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Expires.</p>
 </div>
 
 <div class="ua-entry ua-entry--compact status-entry">
   <p class="ua-entry__title">Gear 3rd</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Unique.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 1.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Turn Start</span> Gain 3 <a class="ua-status-link" data-status="status-strength" href="#">Strength</a>. Gain 1 <a class="ua-status-link" data-status="status-slow" href="#">Slow</a>.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce Stack by 1.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Next Turn Start</span> Gain Deflate.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">On Gain</span> Gain 3 <a class="ua-status-link" data-status="status-strength" href="#">Strength</a>. Gain 1 <a class="ua-status-link" data-status="status-slow" href="#">Slow</a>.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Expires.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">When this expires</span> At your next Turn Start, gain Deflate.</p>
 </div>
 
 <div class="ua-entry ua-entry--compact status-entry">

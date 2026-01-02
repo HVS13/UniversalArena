@@ -62,6 +62,10 @@ This page is the reference glossary for game terms. Use the filter to quickly lo
       <td>Rule Priority</td>
       <td>If a card or character effect contradicts the core rules, apply the effect as written.</td>
     </tr>
+    <tr id="term-on-gain" class="term-entry">
+      <td>On Gain</td>
+      <td>A status effect timing label that resolves immediately when the status is gained, even mid-turn. See <a href="faq.md#faq-on-gain">FAQ</a>.</td>
+    </tr>
     <tr class="term-section">
       <th colspan="2">Card Flow</th>
     </tr>
@@ -132,7 +136,7 @@ This page is the reference glossary for game terms. Use the filter to quickly lo
     </tr>
     <tr id="term-hit" class="term-entry">
       <td>Hit</td>
-      <td>An Attack that is used is a hit unless a rule or effect prevents it (example: Evade).</td>
+      <td>An Attack that is used is a hit unless a rule or effect prevents it (example: Evade). See <a href="faq.md#faq-evade-shield">FAQ</a> for an Evade timing example.</td>
     </tr>
     <tr id="term-damage-types" class="term-entry">
       <td>Damage Types &amp; Attack Tags</td>

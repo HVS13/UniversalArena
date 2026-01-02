@@ -154,7 +154,7 @@ Use this ordering when listing Type tags on cards:
 <div class="ua-entry card-type-entry" id="card-type-multihit">
   <p class="ua-entry__title">Multihit</p>
   <p class="ua-entry__meta"><span class="ua-pill">Category</span> Attack Tag.</p>
-  <p class="ua-entry__desc">An attack that hits multiple times. If it loses a clash with another Attack, reduce the multihit count by 1 and Reuse it instead of discarding it. If there are no multihit counts left, treat it as a normal Attack card.</p>
+  <p class="ua-entry__desc">An attack that hits multiple times. The multihit count equals the number of hits the card would deal on this use (example: "deal damage 3 times" means count 3; "deal damage X times" means count X after X is set). If it loses a clash with another Attack, reduce the multihit count by 1 and Reuse it instead of discarding it. If it reaches 0, treat it as a normal Attack card. If a card references remaining multihit count, use the current count after any reductions.</p>
 </div>
 
 ### Effect

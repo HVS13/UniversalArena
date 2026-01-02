@@ -13,7 +13,7 @@ Use the repo's documented markup patterns to keep content consistent, linkable, 
 
 1. Identify the content type and follow the exact markup in `docs/adding-content.md`.
 2. For filterable lists, ensure item styles respect `hidden` (add `[hidden] { display: none; }` if your custom styles set a display value).
-3. Cross-check `docs/faq.md` for rule clarifications and ensure durable rules are also reflected in the relevant reference pages, using the target page's native format.
+3. Cross-check `docs/faq.md` for rule clarifications and ensure durable rules are also reflected in the relevant reference pages, using the target page's native format. When clarifying timing or keyword interactions, add a short FAQ example and cross-link from the relevant glossary entry.
 4. For characters, start from `docs/characters/template.md`, add art in `docs/assets/characters/`, set portrait `src` to `../../assets/characters/<file>`, add a card to `docs/characters/index.md` (include a Power line and role tags), and update `mkdocs.yml`.
 5. Apply basic naming: Basic + Attack cards must be named Strike; Basic + Defense cards must be named Defend; Basic + Special cards can use any name.
 6. Conditional "this card becomes X" effects are automatic in any zone; do not make them optional.
