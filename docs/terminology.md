@@ -146,6 +146,10 @@ This page is the reference glossary for game terms. Use the filter to quickly lo
       <td>Damage Types &amp; Attack Tags</td>
       <td>Cards can list multiple Damage Types (Physical, Magical, Mental, Electric) and Attack Tags (Slash, Pierce, Blunt, Multihit). A card counts as all listed types and tags for matching. If a single modifier lists multiple types or tags, it applies once when any match; separate modifiers stack.</td>
     </tr>
+    <tr id="term-base-power" class="term-entry">
+      <td>Base Power</td>
+      <td>Design baseline for setting a card's Power. Default target: Energy cost x 10 or Ultimate Meter cost x 1.5, rounded down. Adjust upward for hard requirements or downward for extra utility as needed.</td>
+    </tr>
     <tr id="term-power" class="term-entry">
       <td>Power</td>
       <td>The min-max value shown on a card. It is usually +/- floor(Base Power x 0.20) for Melee and +/- floor(Base Power x 0.25) for Ranged.</td>

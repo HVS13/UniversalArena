@@ -28,9 +28,10 @@ Design a cohesive kit, then output a complete character page that fits the proje
 8. Apply basic naming: Basic + Attack cards must be named Strike; Basic + Defense cards must be named Defend; Basic + Special cards can use any name.
 9. Conditional "this card becomes X" effects are automatic in any zone; do not make them optional.
 10. "Spend X" is mandatory; if optional, it must say "may." If the Spend cannot be paid, that part of the effect does not happen.
-11. Ensure Potency/Count/Value/Stack caps align with what the kit can reach, including edge cases.
-12. Prioritize lore-accurate, synergistic, and fun play feel over balance; avoid purely balance-driven nerfs that break fantasy.
-13. Sanity-check for infinite loops, auto-win combos, or uncounterable turns.
+11. Apply the power budgeting rules in `docs/characters/character-creation-guide.md` (including variable/0-cost handling). Document any character-specific exceptions in that guide.
+12. Ensure Potency/Count/Value/Stack caps align with what the kit can reach, including edge cases.
+13. Prioritize lore-accurate, synergistic, and fun play feel over balance; avoid purely balance-driven nerfs that break fantasy.
+14. Sanity-check for infinite loops, auto-win combos, or uncounterable turns.
 
 ## Output format
 
@@ -41,6 +42,7 @@ Design a cohesive kit, then output a complete character page that fits the proje
 ## References
 
 - `docs/characters/template.md`
+- `docs/characters/character-creation-guide.md`
 - `docs/characters/index.md`
 - `docs/adding-content.md`
 - `docs/keywords.md`

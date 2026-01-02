@@ -32,6 +32,35 @@ Minimum viable character checklist:
 - Prioritize lore-accurate, synergistic, and fun kits over balance.
 - Balance matters, but it is secondary to theme and play feel.
 
+### Power budgeting
+
+- Base Power targets: Energy cost x 10, Ultimate Meter cost x 1.5. Round down if you hit decimals.
+- Mixed-cost ultimates (Ultimate Meter + Energy): treat Ultimate Meter as 1 base per meter, then add the Energy base.
+- Variable Energy cost (X) on non-ultimates: if X can be 0, Base Power = 5 * (X + 1); otherwise use 10 * X.
+- Variable Energy on mixed-cost ultimates: use 10 * X even if X can be 0.
+- 0 Energy cards: if not created, Base Power = 5; if created, Base Power cannot exceed the Base Power of the card that creates it.
+- Melee Power range: Base Power +/- floor(Base Power x 0.20).
+- Ranged Power range: Base Power +/- floor(Base Power x 0.25).
+- If a card only deals Power damage or only grants Power Shield/HP, increase Base Power by 20% before applying the range.
+- Created cards and Fast speed: reduce Base Power by 10% each; penalties stack.
+- Bonuses and penalties stack; apply them to Base Power before the Melee/Ranged range.
+- If a card has high execution requirements or narrow conditions, you can add a 10-20% Base Power bonus.
+- If a card adds meaningful utility (status, draw, resource gain, multi-target, strong tempo effects), bias toward the low end of the range or reduce Base Power.
+- If a card deals Power damage and also heals, treat healing as extra output and lower Base Power so total impact matches the target.
+- Character-specific exceptions are allowed but must be documented in this guide.
+
+Examples:
+- 3 Energy, Ranged: Base Power 30 -> Power 23-37.
+- 60 Ultimate Meter, Melee: Base Power 90 -> Power 72-108.
+- 1 Energy, Melee, only damage: Base Power 12 -> Power 10-14.
+- X Energy (can be 0), Ranged: Base Power 5 * (X + 1) -> Power 4-6 + 4-6 times X.
+- 30 Ultimate Meter + X Energy, Melee: Base Power 30 + 10X -> Power 24-36 + 8-12 times X.
+- 20 Ultimate Meter, Ranged, damage + heal Power / 2: Target Base Power 30 -> set Base Power to 20 -> Power 15-25.
+- 0 Energy, created from a 1 Energy melee card: Base Power up to 10 -> Power 8-12.
+
+Exceptions (current roster):
+- DIO (Part 3) Ultimate: ROAD ROLLER DA! adds +30 Base Power for the 9 Energy prerequisite (The World: Time Stop).
+
 ### Basic naming
 
 - Basic + Attack cards must be named Strike.

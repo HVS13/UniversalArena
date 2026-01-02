@@ -90,7 +90,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
-    <span><strong>Power:</strong> 12-16</span>
+    <span><strong>Power:</strong> 10-14</span>
     <span><strong>Type:</strong> Basic, Attack, Physical, Melee, Slash</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Fast</span>
