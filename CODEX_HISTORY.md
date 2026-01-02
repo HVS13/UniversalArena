@@ -67,3 +67,4 @@ This file preserves the historical intent and decisions for CodexGPT. Append a n
 - 2026-01-01: Fixed character index filtering by honoring the `hidden` attribute on character cards, updated AGENTS and the content-authoring skill with the filter rule, and refreshed the front-page timestamp.
 - 2026-01-01: Added Kurosaki Ichigo (Soul Society) with local art, roster/nav updates, and fixed naming/count consistency; refreshed the front-page timestamp.
 - 2026-01-02: Clarified Evade keyword timing (0 Power damage after Shield), added an Evade vs Shield FAQ example with a glossary cross-link, and refreshed the front-page timestamp while updating agent guidance.
+- 2026-01-02: Fixed Gear timing with On Gain triggers and an explicit delayed Deflate on expiry, defined On Gain timing in status/terminology with a FAQ example, clarified Multihit count rules and Leon's Handgun setup, and refreshed the front-page timestamp while updating agent guidance and content skills.

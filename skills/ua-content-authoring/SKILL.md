@@ -21,9 +21,10 @@ Use the repo's documented markup patterns to keep content consistent, linkable, 
 8. For keywords, status effects, roles, card types, terms, or FAQ entries, append the correct block markup in the corresponding file and use the shared link classes.
 9. When referencing keywords/status effects/roles/terms in content, use `ua-*-link` markup; only link status effects that live in `docs/status-effects.md` (unique ones stay plain text).
 10. Avoid undefined mechanics; if a global keyword/status/term appears in content, ensure it exists in the reference pages.
-11. Keep `site/` untouched; it is build output.
-12. Export actions (page PDF/MD/TXT + all-pages ZIP with `html/`, `md/`, `txt/`) live in `docs/overrides/main.html` and `docs/javascripts/print.js`; keep exports free of permalinks, URLs, and images when editing them.
-13. Run `mkdocs build --strict` or `mkdocs serve` when asked to validate.
+11. If a card references remaining Multihit Count, make sure the base count is explicit in the card text or defined by the Multihit rules.
+12. Keep `site/` untouched; it is build output.
+13. Export actions (page PDF/MD/TXT + all-pages ZIP with `html/`, `md/`, `txt/`) live in `docs/overrides/main.html` and `docs/javascripts/print.js`; keep exports free of permalinks, URLs, and images when editing them.
+14. Run `mkdocs build --strict` or `mkdocs serve` when asked to validate.
 
 ## References
 

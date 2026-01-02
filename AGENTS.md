@@ -17,6 +17,7 @@ Project rules
 - Keyword/status/card type/term/role link markup uses the shared `ua-*-link` classes so `docs/javascripts/guide.js` can rewrite links.
 - Use the shared link markup in character pages and card text; only link status effects that live in `docs/status-effects.md` (unique ones stay plain text).
 - Avoid undefined mechanics; if a global keyword/status/term appears in content, ensure it exists in the reference pages.
+- If a card references remaining Multihit Count, ensure the base count is explicit in the card text or defined by the Multihit rules.
 - Ensure Potency/Count/Value/Stack caps align with what the kit can reach, including edge cases.
 - Prioritize lore-accurate, synergistic, and fun character kits over balance.
 - Export actions (page PDF/MD/TXT + all-pages ZIP with `html/`, `md/`, `txt/`) live in `docs/overrides/main.html` and `docs/javascripts/print.js`; keep exports free of permalinks, URLs, and images.
