@@ -6,10 +6,11 @@ Practical rules and guardrails for building new characters. Use this alongside t
 
 1. Copy `docs/characters/template.md` to `docs/characters/<slug>.md`.
 2. Add portrait art to `docs/assets/characters/` and reference it as `../../assets/characters/<file>`.
-3. Fill out the header (Name, Version, Origin, Roles, Difficulty, Gameplan).
-4. Use the card-block layout for all cards, then follow the naming and type-order rules below.
-5. Add the page to `mkdocs.yml` under `Characters`.
-6. Add a card entry to `docs/characters/index.md` and include a Power line in the meta.
+3. Add a data file at `docs/data/characters/<slug>.yml` that matches the docs content (see `docs/data/README.md` for the schema).
+4. Fill out the header (Name, Version, Origin, Roles, Difficulty, Gameplan).
+5. Use the card-block layout for all cards, then follow the naming and type-order rules below.
+6. Add the page to `mkdocs.yml` under `Characters`.
+7. Add a card entry to `docs/characters/index.md` and include a Power line in the meta.
 
 ## Start Here: Template + Minimum Viable Character
 
@@ -131,6 +132,7 @@ See `docs/faq.md` and `docs/status-effects.md` for the canonical wording.
 - Use local art in `docs/assets/characters/` and the `../../assets/characters/<file>` path.
 - Keep `site/` untouched; it is generated output.
 - Add the character to `mkdocs.yml` and `docs/characters/index.md`.
+- Keep the `docs/data/characters/<slug>.yml` file in sync with the page.
 
 ### Don't
 

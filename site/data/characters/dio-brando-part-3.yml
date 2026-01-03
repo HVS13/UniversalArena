@@ -1,0 +1,208 @@
+id: dio-brando-part-3
+name: DIO
+version: Part 3
+origin: JoJo's Bizarre Adventure
+roles:
+  - role-assassin
+  - role-controller
+difficulty: High
+gameplan: >
+  Fragile when unfed, oppressive when fed. Land Vampiric Drain to stock Stolen
+  Blood, convert it into Blood Focus to crush Energy costs, then use The World:
+  Time Stop to lock the round and close with knife pressure or ROAD ROLLER DA!
+art: dio-brando-part-3.png
+innates:
+  - name: Vampire Physiology
+    text: "Resist 3 (Physical)."
+  - name: Predator's Regeneration
+    text: "The first time each turn this character gains Stolen Blood, heal 10 HP."
+  - name: Blood Is Power
+    text: "Whenever this character gains X Stolen Blood, gain X Blood Focus. Whenever this character spends X Stolen Blood, reduce Blood Focus Value by X. Once per game, when this character would be reduced to 0 HP: You may spend 3 Stolen Blood. If you do, set HP to 1 instead."
+statusEffects:
+  - name: Stolen Blood
+    lines:
+      - "Type: Unique."
+      - "Max Value: 10."
+      - "Turn End: Reduce Value by 1."
+      - "Effect: A resource gained by feeding; used to extend Time Stop and empower finishers."
+  - name: Blood Focus
+    lines:
+      - "Type: Unique."
+      - "Max Value: 10."
+      - "Turn End: Reduce Value by 1."
+      - "Effect: Reduce the Energy cost of this character's cards by Value (minimum 0). This stacks with Focus."
+  - name: "The World: Time Stop"
+    lines:
+      - "Type: Unique."
+      - "Count: Max 8."
+      - "On Gain: Gain 2 Strength and +2 Strength Count. Gain 2 Haste and +2 Haste Count."
+      - "Effect: While this has 1+ Count, this character's Attack cards have Follow-Up."
+      - "Turn End: Reduce Count by 1."
+      - "When this expires: Gain 2 Strain and +4 Strain Count."
+cards:
+  - slot: "1-1"
+    name: Strike
+    cost: 4 Energy
+    power: 20-28
+    types:
+      - Basic
+      - Attack
+      - Physical
+      - Melee
+      - Blunt
+    target: 1 Enemy
+    speed: Normal
+    effect:
+      - "Deal Power damage."
+      - "On Hit: If the target has Stun, gain 1 Stolen Blood."
+      - "If this character has The World: Time Stop: This card becomes Strike: Muda Barrage."
+  - slot: "1-2"
+    name: "Strike: Muda Barrage"
+    cost: 4 Energy
+    power: 20-28
+    types:
+      - Basic
+      - Attack
+      - Physical
+      - Melee
+      - Blunt
+      - Multihit
+      - Debuff
+    target: 1 Enemy
+    speed: Fast
+    effect:
+      - "Deal Power / 4 damage 4 times."
+      - "On Hit: Inflict 1 Bleed."
+      - "Once per use, if the target has Stun: Gain 2 Stolen Blood."
+  - slot: "2-1"
+    name: Defend
+    cost: 4 Energy
+    power: 20-28
+    types:
+      - Basic
+      - Defense
+      - Physical
+      - Melee
+    target: 1 Ally
+    speed: Normal
+    effect:
+      - "Gain Power Shield."
+      - "Evade."
+      - "If this character has The World: Time Stop: This card becomes Defend: The World."
+  - slot: "2-2"
+    name: "Defend: The World"
+    cost: 4 Energy
+    power: 20-28
+    types:
+      - Basic
+      - Defense
+      - Physical
+      - Melee
+      - Buff
+    target: Self
+    speed: Fast
+    effect:
+      - "Gain Power Shield."
+      - "Evade."
+      - "Follow-Up."
+      - "Retain."
+      - "After Use: Gain 1 Haste and +1 Haste Count."
+  - slot: "3"
+    name: Vampiric Drain
+    cost: 5 Energy
+    power: 24-36
+    types:
+      - Technique
+      - Attack
+      - Physical
+      - Melee
+      - Pierce
+      - Recovery
+      - Debuff
+    target: 1 Enemy
+    speed: Normal
+    effect:
+      - "Deal Power damage."
+      - "Heal for Power / 2 HP."
+      - "Gain 4 Stolen Blood."
+      - "On Hit: Inflict 2 Weak and +2 Weak Count."
+      - "On Hit: If the target has Stun, gain 2 Stolen Blood."
+  - slot: "4-1"
+    name: Throwing Knives
+    cost: 7 Energy
+    power: 34-50
+    types:
+      - Technique
+      - Attack
+      - Physical
+      - Ranged
+      - Pierce
+      - Multihit
+      - Debuff
+    target: 1 Enemy
+    speed: Normal
+    effect:
+      - "This card's Multihit Count starts at 6."
+      - "Deal Power / 6 damage 6 times."
+      - "On Hit: Inflict 1 Bleed."
+      - "If this character has The World: Time Stop: This card becomes Throwing Knives: Time Stop."
+  - slot: "4-2"
+    name: "Throwing Knives: Time Stop"
+    cost: 7 Energy
+    power: 34-50
+    types:
+      - Technique
+      - Attack
+      - Physical
+      - Ranged
+      - Pierce
+      - Multihit
+      - Debuff
+    target: 1 Enemy
+    speed: Fast
+    effect:
+      - "This card's Multihit Count starts at 10."
+      - "Deal Power / 10 damage 10 times."
+      - "On Hit: Inflict 1 Bleed."
+      - "Once per use, if the target has Stun: Deal 10 bonus damage."
+  - slot: "5"
+    name: "The World: Time Stop"
+    cost: 9 Energy
+    power: "-"
+    types:
+      - Technique
+      - Special
+      - Magical
+      - Ranged
+      - AoE
+      - Transformation
+      - Debuff
+    target: Self
+    speed: Fast
+    effect:
+      - "Gain 1 The World: Time Stop and +2 The World: Time Stop Count."
+      - "You may spend X Stolen Blood (0-5). If you do, gain +X The World: Time Stop Count."
+      - "Inflict 1 Stun on All Enemies."
+      - "Until the end of this Combat Round, enemies cannot play cards. (Cards already played still resolve.)"
+      - "Retain."
+  - slot: ultimate
+    name: ROAD ROLLER DA!
+    cost: 40 Ultimate Meter
+    power: 72-108
+    types:
+      - Ultimate
+      - Attack
+      - Physical
+      - Melee
+      - Splash
+      - Blunt
+      - Debuff
+    target: 1 Enemy
+    speed: Fast
+    effect:
+      - "Can only be used if this character has The World: Time Stop."
+      - "Deal Power damage."
+      - "On Hit: Inflict 1 Stun."
+      - "You may spend X Stolen Blood (0-10). If you do, deal 6 times X bonus damage and inflict X Bleed."
+      - "After Use: Set this character's The World: Time Stop Count to 0."
+

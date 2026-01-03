@@ -73,3 +73,7 @@ This file preserves the historical intent and decisions for CodexGPT. Append a n
 - 2026-01-02: Added ZIP export options for format and combined character pages, fixed character page detection for subdirectory paths, and refreshed the front-page timestamp while updating agent/skill guidance.
 - 2026-01-02: Fixed combined character exports to detect character pages by content markers (not just URLs) and refreshed the front-page timestamp.
 - 2026-01-02: Removed export-panel UI text from exports, excluded the template character from combined character bundles, and refreshed the front-page timestamp.
+- 2026-01-03: Established `docs/data/` as the canonical game data source with per-character YAML files, added a docs-side exporter scaffold, updated contributor/agent guidance to keep data in sync, and refreshed the front-page last-updated timestamp.
+- 2026-01-03: Added a cross-repo TODO tracker to coordinate the docs-first data pipeline and the game implementation roadmap.
+- 2026-01-03: Added canonical YAML files for keywords, status effects, terms, card types, and roles; expanded the exporter to emit shared data JSON alongside characters; and added a GitHub Action to sync exports and character assets into the game repo.
+- 2026-01-03: Documented structured card effects and sync settings, validated optional effect objects in the exporter, and added initial structured effects to Rover's data.
