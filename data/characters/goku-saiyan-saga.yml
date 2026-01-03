@@ -1,0 +1,200 @@
+id: goku-saiyan-saga
+name: Goku
+version: Saiyan Saga
+origin: Dragon Ball Z
+roles:
+  - role-striker
+  - role-bruiser
+difficulty: High
+gameplan: >
+  Chain low-cost attacks to build meter, use Kaioken to ramp Strength/Dexterity
+  while managing the HP drain, then close with Spirit Bomb. Zenkai rewards
+  playing at low HP, so plan a late spike.
+art: goku-saiyan-saga.png
+innates:
+  - name: Zenkai Boost
+    text: "Each time this character reaches 25% HP, gain 1 Zenkai."
+statusEffects:
+  - name: Kaioken
+    lines:
+      - "Type: Unique."
+      - "Potency: Max 4."
+      - "Count: Max 99."
+      - "Turn Start: Gain X Strength. Gain X Dexterity. Gain X-1 Haste. X equal to Potency."
+      - "Turn End: Reduce Count by 1. Reduce current HP by X times 10%."
+  - name: Zenkai
+    lines:
+      - "Type: Unique."
+      - "Max Value: 999."
+      - "Effect: Increase Attack and Defense Power by 5% times Value."
+cards:
+  - slot: "1"
+    name: Strike
+    cost: 1 Energy
+    power: 10-14
+    types:
+      - Basic
+      - Attack
+      - Physical
+      - Melee
+      - Blunt
+    target: 1 Enemy
+    speed: Normal
+    effect:
+      - "Deal Power damage."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
+  - slot: "2"
+    name: Defend
+    cost: 1 Energy
+    power: 8-12
+    types:
+      - Basic
+      - Defense
+      - Physical
+      - Melee
+    target: 1 Ally
+    speed: Normal
+    effect:
+      - "Gain Power Shield."
+      - "Evade."
+    effects:
+      - timing: on_use
+        type: gain_shield
+        amount:
+          kind: power
+  - slot: "3-1"
+    name: Meteor Combination
+    cost: 1 Energy
+    power: 10-14
+    types:
+      - Technique
+      - Attack
+      - Physical
+      - Melee
+      - Blunt
+      - Multihit
+    target: 1 Enemy
+    speed: Normal
+    effect:
+      - "Deal Power / 3 damage 3 times."
+      - "If this character has Kaioken: This card becomes Kaio-ken Attack."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power_div
+          divisor: 3
+        hits: 3
+    transforms:
+      - condition:
+          kind: self_has_status
+          status: Kaioken
+        cardSlot: "3-2"
+  - slot: "3-2"
+    name: Kaio-ken Attack
+    cost: 1 Energy
+    power: 10-14
+    types:
+      - Technique
+      - Attack
+      - Physical
+      - Melee
+      - Blunt
+      - Multihit
+    target: 1 Enemy
+    speed: Normal
+    effect:
+      - "Deal Power / 4 damage 4 times."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power_div
+          divisor: 4
+        hits: 4
+  - slot: "4"
+    name: Kamehameha
+    cost: 2 Energy
+    power: 16-24
+    types:
+      - Technique
+      - Attack
+      - Magical
+      - Ranged
+      - Blunt
+    target: 1 Enemy
+    speed: Normal
+    effect:
+      - "Follow-Up."
+      - "Deal Power damage."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
+  - slot: "5"
+    name: Kaioken
+    cost: 1 Energy
+    power: "-"
+    types:
+      - Technique
+      - Special
+      - Physical
+      - Melee
+      - Transformation
+    target: Self
+    speed: Normal
+    effect:
+      - "Gain 1 Kaioken and +3 Kaioken Count."
+      - "If this character has Kaioken: Gain 1 Kaioken and +1 Kaioken Count instead."
+    effects:
+      - timing: on_use
+        type: gain_status
+        status: Kaioken
+        amount:
+          kind: flat
+          value: 1
+      - timing: on_use
+        type: gain_status
+        status: Kaioken
+        stat: count
+        amount:
+          kind: flat
+          value: 3
+        condition:
+          kind: self_missing_status
+          status: Kaioken
+      - timing: on_use
+        type: gain_status
+        status: Kaioken
+        stat: count
+        amount:
+          kind: flat
+          value: 1
+        condition:
+          kind: self_has_status
+          status: Kaioken
+  - slot: ultimate
+    name: Spirit Bomb
+    cost: 20 Ultimate Meter
+    power: 27-45
+    types:
+      - Ultimate
+      - Attack
+      - Magical
+      - Ranged
+      - Blunt
+    target: 1 Enemy
+    speed: Slow
+    effect:
+      - "Deal Power damage."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
+

@@ -1,0 +1,240 @@
+id: leon-s-kennedy-re4
+name: Leon S. Kennedy
+version: Resident Evil 4
+origin: Resident Evil
+roles:
+  - role-striker
+  - role-artillery
+difficulty: Medium
+gameplan: >
+  Choose the right weapon with Switch Weapon, use Handgun for steady multihit
+  poke and Riot Gun for follow-up burst into Suplex stuns, then dump excess
+  Energy into Chicago Typewriter. Defend reloads your current weapon and keeps
+  you safe; save Rocket Launcher for swing turns, and buy it with meter if you
+  need the finisher.
+art: leon-s-kennedy-re4.png
+innates:
+  - name: Special Agent Loadout
+    text: "This character starts with Equip: Handgun, 10 Handgun Ammo, 5 Shotgun Ammo, and 1 Rocket Launcher."
+statusEffects:
+  - name: "Equip: Handgun"
+    lines:
+      - "Type: Unique."
+      - "Turn Start: Gain 1 Dexterity."
+  - name: "Equip: Riot Gun"
+    lines:
+      - "Type: Unique."
+      - "Turn Start: Gain 1 Strength."
+  - name: "Equip: Chicago Typewriter"
+    lines:
+      - "Type: Unique."
+      - "Turn Start: Gain 1 Haste."
+cards:
+  - slot: "1"
+    name: Strike
+    cost: 1 Energy
+    power: 8-12
+    types:
+      - Basic
+      - Attack
+      - Physical
+      - Melee
+      - Slash
+      - Debuff
+    target: 1 Enemy
+    speed: Normal
+    effect:
+      - "Deal Power damage. Inflict 1 Bleed."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
+      - timing: on_use
+        type: inflict_status
+        status: Bleed
+        amount:
+          kind: flat
+          value: 1
+  - slot: "2"
+    name: Defend
+    cost: 1 Energy
+    power: 8-12
+    types:
+      - Basic
+      - Defense
+      - Physical
+      - Melee
+    target: 1 Ally
+    speed: Normal
+    effect:
+      - "Gain Power Shield. Reload currently Equipped Weapon."
+      - "Evade."
+    effects:
+      - timing: on_use
+        type: gain_shield
+        amount:
+          kind: power
+  - slot: "3-1"
+    name: "Shoot: Handgun"
+    cost: 1 Energy
+    power: 8-12
+    types:
+      - Technique
+      - Attack
+      - Physical
+      - Ranged
+      - Pierce
+      - Multihit
+    target: 1 Enemy
+    speed: Normal
+    effect:
+      - "This card's Multihit Count starts at 3."
+      - "Set X to this card's remaining Multihit Count (before resolving this card). Spend Handgun Ammo up to X. Spend as many as possible."
+      - "Deal Power / X damage once per Ammo spent."
+  - slot: "3-2"
+    name: "Shoot: Riot Gun"
+    cost: 2 Energy
+    power: 15-25
+    types:
+      - Technique
+      - Attack
+      - Physical
+      - Ranged
+      - Pierce
+      - Multihit
+    target: 1 Enemy
+    speed: Normal
+    effect:
+      - "Follow-Up."
+      - "Spend 1 Shotgun Ammo to deal damage."
+      - "Deal Power / 3 damage 3 times."
+      - "On Follow-Up: -1 Energy Cost."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power_div
+          divisor: 3
+        hits: 3
+  - slot: "3-3"
+    name: "Shoot: Chicago Typewriter"
+    cost: X Energy
+    power: "4-6 + 4-6 times X"
+    types:
+      - Technique
+      - Attack
+      - Physical
+      - Ranged
+      - Pierce
+      - Multihit
+    target: 1 Enemy
+    speed: Normal
+    effect:
+      - "Deal Power / (X + 4) damage (X + 4) times."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power_div
+          divisor:
+            kind: x_plus
+            value: 4
+        hits:
+          kind: x_plus
+          value: 4
+  - slot: "4"
+    name: Suplex
+    cost: 2 Energy
+    power: 16-24
+    types:
+      - Technique
+      - Attack
+      - Physical
+      - Melee
+      - Blunt
+    target: 1 Enemy
+    speed: Normal
+    effect:
+      - "Follow-Up."
+      - "Deal Power damage."
+      - "On Follow-Up: Deal Power damage. Inflict 1 Stun instead."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
+      - timing: on_use
+        type: inflict_status
+        status: Stun
+        amount:
+          kind: flat
+          value: 1
+  - slot: "5"
+    name: Switch Weapon
+    cost: 0 Energy
+    power: "-"
+    types:
+      - Technique
+      - Special
+      - Physical
+    target: Self
+    speed: Normal
+    effect:
+      - "Choose 1:"
+      - "Switch to Equip: Handgun."
+      - "Switch to Equip: Riot Gun."
+      - "Switch to Equip: Chicago Typewriter."
+      - "If you choose the same weapon, Reload instead."
+      - "Innate. Retain."
+  - slot: "ultimate-1"
+    name: "Shoot: Rocket Launcher"
+    cost: 30 Ultimate Meter
+    power: 45-75
+    types:
+      - Ultimate
+      - Attack
+      - Physical
+      - Ranged
+      - AoE
+      - Blunt
+    target: All Enemies
+    speed: Normal
+    effect:
+      - "Spend 1 Rocket Launcher to deal damage."
+      - "Deal Power damage."
+      - "If this character doesn't have Rocket Launcher, this Ultimate becomes Purchase Rocket Launcher."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
+    transforms:
+      - condition:
+          kind: self_missing_status
+          status: Rocket Launcher
+        cardSlot: "ultimate-2"
+  - slot: "ultimate-2"
+    name: "Purchase: Rocket Launcher"
+    cost: 10 Ultimate Meter
+    power: "-"
+    types:
+      - Ultimate
+      - Special
+      - Physical
+    target: Self
+    speed: Normal
+    effect:
+      - "Gain 1 Rocket Launcher."
+    effects:
+      - timing: on_use
+        type: gain_status
+        status: Rocket Launcher
+        amount:
+          kind: flat
+          value: 1
+

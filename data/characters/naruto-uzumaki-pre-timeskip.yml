@@ -1,0 +1,388 @@
+id: naruto-uzumaki-pre-timeskip
+name: Naruto Uzumaki
+version: Pre-Timeskip
+origin: Naruto
+roles:
+  - role-summoner
+  - role-striker
+difficulty: High
+gameplan: >
+  Open with Shadow Clone Jutsu to flood your hand with disposable clone attacks
+  and bank Shadow Clones as a resource. Keep 1 clone in reserve to turn Defend
+  into an Evade. Convert the swarm into Naruto Uzumaki Barrage to win zones via
+  Multihit pressure, then cash out with a clone-assisted Rasengan. When
+  Nine-Tails' Resentment triggers, Kyuubi Chakra and One-Tail Cloak fuel
+  Gamabunta follow-ups and unlock One-Tail Rasengan to close.
+art: naruto-uzumaki-pre-timeskip.png
+innates:
+  - name: Nine-Tails' Resentment
+    text: "The first time this character reaches 25% HP, gain 4 Kyuubi Chakra and +3 Kyuubi Chakra Count. Gain 4 One-Tail Cloak. Gain 2 Shadow Clones."
+statusEffects:
+  - name: Shadow Clones
+    lines:
+      - "Type: Unique."
+      - "Max Stack: 6."
+      - "Turn End: Reduce Stack by 1."
+      - "Effect: Used to enhance Naruto's cards."
+  - name: Kyuubi Chakra
+    lines:
+      - "Type: Unique."
+      - "Potency: Max 4."
+      - "Count: Max 4."
+      - "Turn Start: Gain X Strength. Gain X Haste."
+      - "Effect: The first time each turn this character plays Shadow Clone Jutsu, gain X Shadow Clones. X equals Potency."
+      - "Turn End: Reduce Count by 1. Reduce current HP by X times 5%. X equals Potency."
+  - name: "Summoned: Gamabunta"
+    lines:
+      - "Type: Unique."
+      - "Max Stack: 3."
+      - "Allies' Card Played: Once per turn, if Stack is 1+ and any ally plays an Attack that costs 2+ Energy and targets an enemy: Create 1 Gamabunta: Toad Smash in this character's hand."
+      - "Turn End: Reduce Stack by 1."
+  - name: One-Tail Cloak
+    lines:
+      - "Type: Unique."
+      - "Max Stack: 4."
+      - "Effect: A marker used to unlock Naruto's low-HP finishers."
+      - "Turn End: Reduce Stack by 1."
+cards:
+  - slot: "1"
+    name: Strike
+    cost: 1 Energy
+    power: 8-12
+    types:
+      - Basic
+      - Attack
+      - Physical
+      - Melee
+      - Blunt
+    target: 1 Enemy
+    speed: Normal
+    effect:
+      - "Deal Power damage."
+      - "On Hit: If this character has Kyuubi Chakra, gain 1 Shadow Clones."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
+      - timing: on_hit
+        type: gain_status
+        status: Shadow Clones
+        amount:
+          kind: flat
+          value: 1
+        condition:
+          kind: self_has_status
+          status: Kyuubi Chakra
+  - slot: "2"
+    name: Defend
+    cost: 1 Energy
+    power: 8-12
+    types:
+      - Basic
+      - Defense
+      - Physical
+      - Melee
+    target: 1 Ally
+    speed: Normal
+    effect:
+      - "Gain Power Shield."
+      - "If this character has 1+ Shadow Clones: You may spend 1 Shadow Clones. If you do, this card gains Evade."
+    effects:
+      - timing: on_use
+        type: gain_shield
+        amount:
+          kind: power
+  - slot: "3"
+    name: Shadow Clone Jutsu
+    cost: 1 Energy
+    power: "-"
+    types:
+      - Technique
+      - Special
+      - Magical
+    target: Self
+    speed: Fast
+    effect:
+      - "Gain 2 Shadow Clones."
+      - "Create 2 Shadow Clone: Strike in hand."
+      - "Innate."
+    effects:
+      - timing: on_use
+        type: gain_status
+        status: Shadow Clones
+        amount:
+          kind: flat
+          value: 2
+  - slot: "4"
+    name: Naruto Uzumaki Barrage
+    cost: 2 Energy
+    power: 16-24
+    types:
+      - Technique
+      - Attack
+      - Physical
+      - Melee
+      - Blunt
+      - Multihit
+    target: 1 Enemy
+    speed: Normal
+    effect:
+      - "Choose X (0-3)."
+      - "Spend X Shadow Clones."
+      - "Deal Power / (X + 2) damage (X + 2) times."
+      - "On Hit: If X is 3, inflict 1 Stun."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power_div
+          divisor:
+            kind: x_plus
+            value: 2
+        hits:
+          kind: x_plus
+          value: 2
+      - timing: on_hit
+        type: inflict_status
+        status: Stun
+        amount:
+          kind: flat
+          value: 1
+  - slot: "5-1"
+    name: Rasengan
+    cost: 3 Energy
+    power: 24-36
+    types:
+      - Technique
+      - Attack
+      - Magical
+      - Melee
+      - Blunt
+    target: 1 Enemy
+    speed: Slow
+    effect:
+      - "Deal Power damage."
+      - "If this character has 2+ Shadow Clones: This card becomes Rasengan: Clone Assist."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
+    transforms:
+      - condition:
+          kind: self_has_status
+          status: Shadow Clones
+          min: 2
+        cardSlot: "5-2"
+  - slot: "5-2"
+    name: "Rasengan: Clone Assist"
+    cost: 3 Energy
+    power: 24-36
+    types:
+      - Technique
+      - Attack
+      - Magical
+      - Melee
+      - Blunt
+    target: 1 Enemy
+    speed: Normal
+    effect:
+      - "Spend 2 Shadow Clones."
+      - "Follow-Up."
+      - "Deal Power damage."
+      - "On Hit: Inflict 2 Vulnerable and +2 Vulnerable Count."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
+        condition:
+          kind: self_has_status
+          status: Shadow Clones
+          min: 2
+      - timing: on_hit
+        type: inflict_status
+        status: Vulnerable
+        amount:
+          kind: flat
+          value: 2
+        condition:
+          kind: self_has_status
+          status: Shadow Clones
+          min: 2
+      - timing: on_hit
+        type: inflict_status
+        status: Vulnerable
+        stat: count
+        amount:
+          kind: flat
+          value: 2
+        condition:
+          kind: self_has_status
+          status: Shadow Clones
+          min: 2
+  - slot: "ultimate-1"
+    name: "Summoning Jutsu: Gamabunta"
+    cost: 30 Ultimate Meter
+    power: 34-56
+    types:
+      - Ultimate
+      - Attack
+      - Magical
+      - Ranged
+      - AoE
+      - Blunt
+      - Debuff
+    target: All Enemies
+    speed: Normal
+    effect:
+      - "Deal Power damage. Inflict 1 Slow and +1 Slow Count."
+      - "Gain 2 Summoned: Gamabunta."
+      - "If this character has One-Tail Cloak: This Ultimate becomes One-Tail Rasengan."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
+      - timing: on_use
+        type: inflict_status
+        status: Slow
+        amount:
+          kind: flat
+          value: 1
+      - timing: on_use
+        type: inflict_status
+        status: Slow
+        stat: count
+        amount:
+          kind: flat
+          value: 1
+      - timing: on_use
+        type: gain_status
+        status: "Summoned: Gamabunta"
+        amount:
+          kind: flat
+          value: 2
+    transforms:
+      - condition:
+          kind: self_has_status
+          status: One-Tail Cloak
+        cardSlot: "ultimate-2"
+  - slot: "ultimate-2"
+    name: One-Tail Rasengan
+    cost: 30 Ultimate Meter
+    power: 36-54
+    types:
+      - Ultimate
+      - Attack
+      - Magical
+      - Melee
+      - Blunt
+      - Debuff
+    target: 1 Enemy
+    speed: Normal
+    effect:
+      - "Can only be used if this character has One-Tail Cloak."
+      - "Spend 2 Shadow Clones."
+      - "Follow-Up."
+      - "Deal Power damage."
+      - "On Hit: Inflict 2 Vulnerable and +2 Vulnerable Count. Inflict 1 Slow and +1 Slow Count."
+      - "After Use: Reduce Kyuubi Chakra Count by 2."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
+        condition:
+          kind: self_has_status
+          status: One-Tail Cloak
+      - timing: on_hit
+        type: inflict_status
+        status: Vulnerable
+        amount:
+          kind: flat
+          value: 2
+        condition:
+          kind: self_has_status
+          status: One-Tail Cloak
+      - timing: on_hit
+        type: inflict_status
+        status: Vulnerable
+        stat: count
+        amount:
+          kind: flat
+          value: 2
+        condition:
+          kind: self_has_status
+          status: One-Tail Cloak
+      - timing: on_hit
+        type: inflict_status
+        status: Slow
+        amount:
+          kind: flat
+          value: 1
+        condition:
+          kind: self_has_status
+          status: One-Tail Cloak
+      - timing: on_hit
+        type: inflict_status
+        status: Slow
+        stat: count
+        amount:
+          kind: flat
+          value: 1
+        condition:
+          kind: self_has_status
+          status: One-Tail Cloak
+createdCards:
+  - slot: "created-1"
+    name: "Shadow Clone: Strike"
+    cost: 1 Energy
+    power: 7-9
+    types:
+      - Technique
+      - Attack
+      - Physical
+      - Melee
+      - Blunt
+    target: 1 Enemy
+    speed: Fast
+    effect:
+      - "Deal Power damage."
+      - "Exhaust. Ethereal."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
+  - slot: "created-2"
+    name: "Gamabunta: Toad Smash"
+    cost: 0 Energy
+    power: 8-12
+    types:
+      - Technique
+      - Attack
+      - Physical
+      - Melee
+      - Blunt
+      - Splash
+    target: 1 Enemy
+    speed: Normal
+    effect:
+      - "Follow-Up."
+      - "Deal Power damage."
+      - "On Hit: Inflict 1 Slow."
+      - "Exhaust. Ethereal."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
+      - timing: on_hit
+        type: inflict_status
+        status: Slow
+        amount:
+          kind: flat
+          value: 1
+

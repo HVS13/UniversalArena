@@ -1,0 +1,190 @@
+id: rover-spectro
+name: Rover
+version: Spectro
+origin: Wuthering Waves
+roles:
+  - role-controller
+  - role-support
+difficulty: Low
+gameplan: >
+  Build Diminutive Sound with Strike/Aftertune, spend it on Resonating Slashes to
+  stack Spectro Frazzle, and tax hands with Stagnate. Meter comes quickly, so
+  lean on Echoing Orchestra for sustain.
+art: rover-spectro.webp
+innates:
+  - name: World in a Grain of Sand
+    text: "Each time any character inflicts Spectro Frazzle, inflict 1 additional Spectro Frazzle."
+statusEffects:
+  - name: Diminutive Sound
+    lines:
+      - "Type: Unique."
+      - "Max Value: 2."
+      - "Effect: Used to enhance some cards."
+cards:
+  - slot: "1"
+    name: Strike
+    cost: 1 Energy
+    power: 8-12
+    types:
+      - Basic
+      - Attack
+      - Physical
+      - Melee
+      - Slash
+    target: 1 Enemy
+    speed: Normal
+    effect:
+      - "Deal Power damage. Gain 1 Diminutive Sound. Gain 1 Ultimate Meter."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
+      - timing: on_use
+        type: gain_status
+        status: Diminutive Sound
+        amount:
+          kind: flat
+          value: 1
+      - timing: on_use
+        type: gain_ultimate
+        amount:
+          kind: flat
+          value: 1
+  - slot: "2"
+    name: Defend
+    cost: 1 Energy
+    power: 8-12
+    types:
+      - Basic
+      - Defense
+      - Physical
+      - Melee
+    target: 1 Ally
+    speed: Normal
+    effect:
+      - "Gain Power Shield. Gain 1 Ultimate Meter."
+      - "Evade."
+    effects:
+      - timing: on_use
+        type: gain_shield
+        amount:
+          kind: power
+      - timing: on_use
+        type: gain_ultimate
+        amount:
+          kind: flat
+          value: 1
+  - slot: "3"
+    name: Resonating Slashes
+    cost: 1 Energy
+    power: 8-12
+    types:
+      - Technique
+      - Attack
+      - Physical
+      - Melee
+      - Slash
+      - Multihit
+      - Debuff
+    target: 1 Enemy
+    speed: Normal
+    effect:
+      - "Deal Power / 2 damage 2 times. On Hit: Spend 1 Diminutive Sound to inflict 2 Spectro Frazzle."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power_div
+          divisor: 2
+        hits: 2
+      - timing: on_hit
+        type: inflict_status
+        status: Spectro Frazzle
+        amount:
+          kind: flat
+          value: 2
+        condition:
+          kind: self_has_status
+          status: Diminutive Sound
+  - slot: "4"
+    name: Aftertune
+    cost: 1 Energy
+    power: 8-12
+    types:
+      - Technique
+      - Attack
+      - Physical
+      - Melee
+      - Blunt
+    target: 1 Enemy
+    speed: Normal
+    effect:
+      - "Deal Power damage. Gain 1 Diminutive Sound."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
+      - timing: on_use
+        type: gain_status
+        status: Diminutive Sound
+        amount:
+          kind: flat
+          value: 1
+  - slot: "5"
+    name: Instant
+    cost: 1 Energy
+    power: "-"
+    types:
+      - Technique
+      - Special
+      - Magical
+      - Ranged
+      - AoE
+      - Debuff
+    target: All Enemies
+    speed: Normal
+    effect:
+      - "Inflict 2 Stagnate."
+    effects:
+      - timing: on_use
+        type: inflict_status
+        status: Stagnate
+        amount:
+          kind: flat
+          value: 2
+  - slot: ultimate
+    name: Echoing Orchestra
+    cost: 20 Ultimate Meter
+    power: 15-25
+    types:
+      - Ultimate
+      - Attack
+      - Magical
+      - Ranged
+      - AoE
+      - Blunt
+      - Recovery
+      - Debuff
+    target: All Enemies
+    speed: Normal
+    effect:
+      - "Deal Power damage. Heal for Power / 2 HP. On Hit: Inflict 6 Spectro Frazzle."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
+      - timing: on_use
+        type: heal
+        amount:
+          kind: power_div
+          divisor: 2
+      - timing: on_hit
+        type: inflict_status
+        status: Spectro Frazzle
+        amount:
+          kind: flat
+          value: 6
+
