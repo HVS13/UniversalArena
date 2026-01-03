@@ -25,11 +25,8 @@ theme:
         name: Switch to light mode
 plugins:
   - search
-exclude_docs: |
-  game/index.md
 nav:
   - Home: index.md
-  # - Play: game/index.md
   # - Adding Content (internal only): adding-content.md
   - Terminology: terminology.md
   - Keywords: keywords.md
@@ -68,9 +65,6 @@ markdown_extensions:
       alternate_style: true
 extra_css:
   - stylesheets/guide.css
-  - stylesheets/game.css
 extra_javascript:
   - javascripts/guide.js
   - javascripts/print.js
-  - javascripts/game/config.js
-  - javascripts/game/game.js
