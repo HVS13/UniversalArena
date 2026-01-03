@@ -45,6 +45,17 @@ cards:
     speed: Normal
     effect:
       - "Deal Power damage. Inflict 1 Bleed."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
+      - timing: on_use
+        type: inflict_status
+        status: Bleed
+        amount:
+          kind: flat
+          value: 1
   - slot: "2"
     name: Defend
     cost: 1 Energy
@@ -59,6 +70,11 @@ cards:
     effect:
       - "Gain Power Shield. Reload currently Equipped Weapon."
       - "Evade."
+    effects:
+      - timing: on_use
+        type: gain_shield
+        amount:
+          kind: power
   - slot: "3-1"
     name: "Shoot: Handgun"
     cost: 1 Energy
@@ -94,6 +110,13 @@ cards:
       - "Spend 1 Shotgun Ammo to deal damage."
       - "Deal Power / 3 damage 3 times."
       - "On Follow-Up: -1 Energy Cost."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power_div
+          divisor: 3
+        hits: 3
   - slot: "3-3"
     name: "Shoot: Chicago Typewriter"
     cost: X Energy
@@ -109,6 +132,17 @@ cards:
     speed: Normal
     effect:
       - "Deal Power / (X + 4) damage (X + 4) times."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power_div
+          divisor:
+            kind: x_plus
+            value: 4
+        hits:
+          kind: x_plus
+          value: 4
   - slot: "4"
     name: Suplex
     cost: 2 Energy
@@ -125,6 +159,21 @@ cards:
       - "Follow-Up."
       - "Deal Power damage."
       - "On Follow-Up: Deal Power damage. Inflict 1 Stun instead."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
+      - timing: on_use
+        type: inflict_status
+        status: Stun
+        amount:
+          kind: flat
+          value: 1
   - slot: "5"
     name: Switch Weapon
     cost: 0 Energy
@@ -159,6 +208,16 @@ cards:
       - "Spend 1 Rocket Launcher to deal damage."
       - "Deal Power damage."
       - "If this character doesn't have Rocket Launcher, this Ultimate becomes Purchase Rocket Launcher."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
+    transforms:
+      - condition:
+          kind: self_missing_status
+          status: Rocket Launcher
+        cardSlot: "ultimate-2"
   - slot: "ultimate-2"
     name: "Purchase: Rocket Launcher"
     cost: 10 Ultimate Meter
@@ -171,4 +230,11 @@ cards:
     speed: Normal
     effect:
       - "Gain 1 Rocket Launcher."
+    effects:
+      - timing: on_use
+        type: gain_status
+        status: Rocket Launcher
+        amount:
+          kind: flat
+          value: 1
 

@@ -49,6 +49,11 @@ cards:
     speed: Normal
     effect:
       - "Deal Power damage."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
   - slot: "2"
     name: Defend
     cost: 1 Energy
@@ -62,6 +67,11 @@ cards:
     speed: Normal
     effect:
       - "Gain Power Shield."
+    effects:
+      - timing: on_use
+        type: gain_shield
+        amount:
+          kind: power
   - slot: "3-1"
     name: Gomu Gomu no Pistol
     cost: 1 Energy
@@ -78,6 +88,20 @@ cards:
       - "Deal Power damage."
       - "If this character has Gear 2nd: This card becomes Gomu Gomu no Jet Pistol."
       - "If this character has Gear 3rd: This card becomes Gomu Gomu no Gigant Pistol."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
+    transforms:
+      - condition:
+          kind: self_has_status
+          status: Gear 2nd
+        cardSlot: "3-2"
+      - condition:
+          kind: self_has_status
+          status: Gear 3rd
+        cardSlot: "3-3"
   - slot: "3-2"
     name: Gomu Gomu no Jet Pistol
     cost: 1 Energy
@@ -92,6 +116,11 @@ cards:
     speed: Fast
     effect:
       - "Deal Power damage."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
   - slot: "3-3"
     name: Gomu Gomu no Gigant Pistol
     cost: 1 Energy
@@ -106,6 +135,11 @@ cards:
     speed: Slow
     effect:
       - "Deal Power damage."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
   - slot: "4-1"
     name: Gomu Gomu no Bazooka
     cost: 2 Energy
@@ -122,6 +156,20 @@ cards:
       - "Deal Power damage."
       - "If this character has Gear 2nd: This card becomes Gomu Gomu no Jet Bazooka."
       - "If this character has Gear 3rd: This card becomes Gomu Gomu no Gigant Bazooka."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
+    transforms:
+      - condition:
+          kind: self_has_status
+          status: Gear 2nd
+        cardSlot: "4-2"
+      - condition:
+          kind: self_has_status
+          status: Gear 3rd
+        cardSlot: "4-3"
   - slot: "4-2"
     name: Gomu Gomu no Jet Bazooka
     cost: 2 Energy
@@ -136,6 +184,11 @@ cards:
     speed: Fast
     effect:
       - "Deal Power damage."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
   - slot: "4-3"
     name: Gomu Gomu no Gigant Bazooka
     cost: 2 Energy
@@ -150,6 +203,11 @@ cards:
     speed: Slow
     effect:
       - "Deal Power damage."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
   - slot: "5"
     name: Gear Transformation
     cost: 1 Energy
@@ -168,6 +226,28 @@ cards:
       - "Gain 1 Gear 2nd."
       - "Gain 1 Gear 3rd."
       - "Retain."
+    effects:
+      - timing: on_use
+        type: choose
+        options:
+          - label: Gain Gear 2nd
+            effects:
+              - timing: on_use
+                type: gain_status
+                status: Gear 2nd
+                amount:
+                  kind: flat
+                  value: 1
+          - label: Gain Gear 3rd
+            effects:
+              - timing: on_use
+                type: gain_status
+                status: Gear 3rd
+                amount:
+                  kind: flat
+                  value: 1
+      - timing: on_use
+        type: retain
   - slot: "ultimate-1"
     name: Gomu Gomu no Jet Gatling
     cost: 30 Ultimate Meter + X Energy
@@ -187,6 +267,67 @@ cards:
       - "Can only be used if this character has Gear 2nd."
       - "Deal Power / (X + 1) damage (X + 1) times. Inflict X Frail. Gain X Weak and +X Weak Count. Gain X Vulnerable and +X Vulnerable Count."
       - "If this character has Gear 3rd: This Ultimate becomes Gomu Gomu no Gigant Rifle."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power_div
+          divisor:
+            kind: x_plus
+            value: 1
+        hits:
+          kind: x_plus
+          value: 1
+        condition:
+          kind: self_has_status
+          status: Gear 2nd
+      - timing: on_use
+        type: inflict_status
+        status: Frail
+        amount:
+          kind: x
+        condition:
+          kind: self_has_status
+          status: Gear 2nd
+      - timing: on_use
+        type: gain_status
+        status: Weak
+        amount:
+          kind: x
+        condition:
+          kind: self_has_status
+          status: Gear 2nd
+      - timing: on_use
+        type: gain_status
+        status: Weak
+        stat: count
+        amount:
+          kind: x
+        condition:
+          kind: self_has_status
+          status: Gear 2nd
+      - timing: on_use
+        type: gain_status
+        status: Vulnerable
+        amount:
+          kind: x
+        condition:
+          kind: self_has_status
+          status: Gear 2nd
+      - timing: on_use
+        type: gain_status
+        status: Vulnerable
+        stat: count
+        amount:
+          kind: x
+        condition:
+          kind: self_has_status
+          status: Gear 2nd
+    transforms:
+      - condition:
+          kind: self_has_status
+          status: Gear 3rd
+        cardSlot: "ultimate-2"
   - slot: "ultimate-2"
     name: Gomu Gomu no Gigant Rifle
     cost: 30 Ultimate Meter
@@ -205,4 +346,17 @@ cards:
       - "Can only be used if this character has Gear 3rd."
       - "Deal Power damage."
       - "If this character has Gear 2nd: This Ultimate becomes Gomu Gomu no Jet Gatling."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
+        condition:
+          kind: self_has_status
+          status: Gear 3rd
+    transforms:
+      - condition:
+          kind: self_has_status
+          status: Gear 2nd
+        cardSlot: "ultimate-1"
 

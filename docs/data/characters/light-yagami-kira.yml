@@ -44,6 +44,38 @@ cards:
     effect:
       - "Deal Power damage. On Hit: Inflict 1 Stolen Information."
       - "On Hit: If the target has 3+ Stolen Information, inflict 1 Slow and +1 Slow Count."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
+      - timing: on_hit
+        type: inflict_status
+        status: Stolen Information
+        amount:
+          kind: flat
+          value: 1
+      - timing: on_hit
+        type: inflict_status
+        status: Slow
+        amount:
+          kind: flat
+          value: 1
+        condition:
+          kind: target_has_status
+          status: Stolen Information
+          min: 3
+      - timing: on_hit
+        type: inflict_status
+        status: Slow
+        stat: count
+        amount:
+          kind: flat
+          value: 1
+        condition:
+          kind: target_has_status
+          status: Stolen Information
+          min: 3
   - slot: "2"
     name: Defend
     cost: 1 Energy
@@ -58,6 +90,11 @@ cards:
     effect:
       - "Gain Power Shield."
       - "Evade."
+    effects:
+      - timing: on_use
+        type: gain_shield
+        amount:
+          kind: power
   - slot: "3"
     name: Surveillance
     cost: 1 Energy
@@ -72,6 +109,15 @@ cards:
     speed: Fast
     effect:
       - "Inflict 2 Stolen Information. Retain."
+    effects:
+      - timing: on_use
+        type: inflict_status
+        status: Stolen Information
+        amount:
+          kind: flat
+          value: 2
+      - timing: on_use
+        type: retain
   - slot: "4"
     name: Blackmail
     cost: 1 Energy
@@ -87,6 +133,23 @@ cards:
     effect:
       - "Inflict 2 Stagnate."
       - "If the target has 3+ Stolen Information, also inflict 1 Slow."
+    effects:
+      - timing: on_use
+        type: inflict_status
+        status: Stagnate
+        amount:
+          kind: flat
+          value: 2
+      - timing: on_use
+        type: inflict_status
+        status: Slow
+        amount:
+          kind: flat
+          value: 1
+        condition:
+          kind: target_has_status
+          status: Stolen Information
+          min: 3
   - slot: "5"
     name: "Death Note: Write the Name"
     cost: 2 Energy
@@ -102,6 +165,17 @@ cards:
     effect:
       - "Can only be used if the target has 6 Stolen Information."
       - "Inflict 3 Death by Death Note. Then set the target's Stolen Information Value to 0."
+    effects:
+      - timing: on_use
+        type: inflict_status
+        status: Death by Death Note
+        amount:
+          kind: flat
+          value: 3
+        condition:
+          kind: target_has_status
+          status: Stolen Information
+          min: 6
   - slot: ultimate
     name: "Death Note: Judgment"
     cost: 30 Ultimate Meter + X times 10 Ultimate Meter

@@ -42,6 +42,11 @@ cards:
     speed: Normal
     effect:
       - "Deal Power damage."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
   - slot: "2"
     name: Defend
     cost: 1 Energy
@@ -56,6 +61,11 @@ cards:
     effect:
       - "Gain Power Shield."
       - "Evade."
+    effects:
+      - timing: on_use
+        type: gain_shield
+        amount:
+          kind: power
   - slot: "3-1"
     name: Meteor Combination
     cost: 1 Energy
@@ -72,6 +82,18 @@ cards:
     effect:
       - "Deal Power / 3 damage 3 times."
       - "If this character has Kaioken: This card becomes Kaio-ken Attack."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power_div
+          divisor: 3
+        hits: 3
+    transforms:
+      - condition:
+          kind: self_has_status
+          status: Kaioken
+        cardSlot: "3-2"
   - slot: "3-2"
     name: Kaio-ken Attack
     cost: 1 Energy
@@ -87,6 +109,13 @@ cards:
     speed: Normal
     effect:
       - "Deal Power / 4 damage 4 times."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power_div
+          divisor: 4
+        hits: 4
   - slot: "4"
     name: Kamehameha
     cost: 2 Energy
@@ -102,6 +131,11 @@ cards:
     effect:
       - "Follow-Up."
       - "Deal Power damage."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
   - slot: "5"
     name: Kaioken
     cost: 1 Energy
@@ -117,6 +151,33 @@ cards:
     effect:
       - "Gain 1 Kaioken and +3 Kaioken Count."
       - "If this character has Kaioken: Gain 1 Kaioken and +1 Kaioken Count instead."
+    effects:
+      - timing: on_use
+        type: gain_status
+        status: Kaioken
+        amount:
+          kind: flat
+          value: 1
+      - timing: on_use
+        type: gain_status
+        status: Kaioken
+        stat: count
+        amount:
+          kind: flat
+          value: 3
+        condition:
+          kind: self_missing_status
+          status: Kaioken
+      - timing: on_use
+        type: gain_status
+        status: Kaioken
+        stat: count
+        amount:
+          kind: flat
+          value: 1
+        condition:
+          kind: self_has_status
+          status: Kaioken
   - slot: ultimate
     name: Spirit Bomb
     cost: 20 Ultimate Meter
@@ -131,4 +192,9 @@ cards:
     speed: Slow
     effect:
       - "Deal Power damage."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
 

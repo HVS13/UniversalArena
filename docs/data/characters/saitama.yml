@@ -48,6 +48,22 @@ cards:
     effect:
       - "Gain 1 State."
       - "If this character has State: Normal or State: Serious, this card becomes Strike."
+    effects:
+      - timing: on_use
+        type: gain_status
+        status: State
+        amount:
+          kind: flat
+          value: 1
+    transforms:
+      - condition:
+          kind: self_has_status
+          status: "State: Normal"
+        cardSlot: "1-2"
+      - condition:
+          kind: self_has_status
+          status: "State: Serious"
+        cardSlot: "1-2"
   - slot: "1-2"
     name: Strike
     cost: 1 Energy
@@ -62,6 +78,17 @@ cards:
     speed: Normal
     effect:
       - "Deal Power damage. Gain 1 State."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
+      - timing: on_use
+        type: gain_status
+        status: State
+        amount:
+          kind: flat
+          value: 1
   - slot: "2-1"
     name: Bored
     cost: 1 Energy
@@ -74,6 +101,22 @@ cards:
     effect:
       - "Gain 1 State."
       - "If this character has State: Normal or State: Serious, this card becomes Defend."
+    effects:
+      - timing: on_use
+        type: gain_status
+        status: State
+        amount:
+          kind: flat
+          value: 1
+    transforms:
+      - condition:
+          kind: self_has_status
+          status: "State: Normal"
+        cardSlot: "2-2"
+      - condition:
+          kind: self_has_status
+          status: "State: Serious"
+        cardSlot: "2-2"
   - slot: "2-2"
     name: Defend
     cost: 1 Energy
@@ -88,6 +131,17 @@ cards:
     effect:
       - "Gain Power Shield. Gain 1 State."
       - "Evade."
+    effects:
+      - timing: on_use
+        type: gain_shield
+        amount:
+          kind: power
+      - timing: on_use
+        type: gain_status
+        status: State
+        amount:
+          kind: flat
+          value: 1
   - slot: "3-1"
     name: Bored
     cost: 1 Energy
@@ -100,6 +154,22 @@ cards:
     effect:
       - "Gain 1 State."
       - "If this character has State: Normal or State: Serious, this card becomes Normal Punch."
+    effects:
+      - timing: on_use
+        type: gain_status
+        status: State
+        amount:
+          kind: flat
+          value: 1
+    transforms:
+      - condition:
+          kind: self_has_status
+          status: "State: Normal"
+        cardSlot: "3-2"
+      - condition:
+          kind: self_has_status
+          status: "State: Serious"
+        cardSlot: "3-2"
   - slot: "3-2"
     name: Normal Punch
     cost: 1 Energy
@@ -115,6 +185,22 @@ cards:
     effect:
       - "Deal Power damage. Gain 1 State."
       - "If this character has State: Serious, this card becomes Serious Punch."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
+      - timing: on_use
+        type: gain_status
+        status: State
+        amount:
+          kind: flat
+          value: 1
+    transforms:
+      - condition:
+          kind: self_has_status
+          status: "State: Serious"
+        cardSlot: "3-3"
   - slot: "3-3"
     name: Serious Punch
     cost: 3 Energy
@@ -130,6 +216,17 @@ cards:
     speed: Fast
     effect:
       - "Deal Power damage. Gain 1 State."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
+      - timing: on_use
+        type: gain_status
+        status: State
+        amount:
+          kind: flat
+          value: 1
   - slot: "4-1"
     name: Bored
     cost: 1 Energy
@@ -142,6 +239,22 @@ cards:
     effect:
       - "Gain 1 State."
       - "If this character has State: Normal or State: Serious, this card becomes Normal Punch."
+    effects:
+      - timing: on_use
+        type: gain_status
+        status: State
+        amount:
+          kind: flat
+          value: 1
+    transforms:
+      - condition:
+          kind: self_has_status
+          status: "State: Normal"
+        cardSlot: "4-2"
+      - condition:
+          kind: self_has_status
+          status: "State: Serious"
+        cardSlot: "4-2"
   - slot: "4-2"
     name: Normal Punch
     cost: 1 Energy
@@ -157,6 +270,22 @@ cards:
     effect:
       - "Deal Power damage. Gain 1 State."
       - "If this character has State: Serious, this card becomes Serious Headbutt."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
+      - timing: on_use
+        type: gain_status
+        status: State
+        amount:
+          kind: flat
+          value: 1
+    transforms:
+      - condition:
+          kind: self_has_status
+          status: "State: Serious"
+        cardSlot: "4-3"
   - slot: "4-3"
     name: Serious Headbutt
     cost: 3 Energy
@@ -172,6 +301,23 @@ cards:
     speed: Fast
     effect:
       - "Deal Power damage. Inflict 1 Stun. Gain 1 State."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
+      - timing: on_use
+        type: inflict_status
+        status: Stun
+        amount:
+          kind: flat
+          value: 1
+      - timing: on_use
+        type: gain_status
+        status: State
+        amount:
+          kind: flat
+          value: 1
   - slot: "5-1"
     name: Bored
     cost: 1 Energy
@@ -184,6 +330,22 @@ cards:
     effect:
       - "Gain 1 State."
       - "If this character has State: Normal or State: Serious, this card becomes Consecutive Normal Punch."
+    effects:
+      - timing: on_use
+        type: gain_status
+        status: State
+        amount:
+          kind: flat
+          value: 1
+    transforms:
+      - condition:
+          kind: self_has_status
+          status: "State: Normal"
+        cardSlot: "5-2"
+      - condition:
+          kind: self_has_status
+          status: "State: Serious"
+        cardSlot: "5-2"
   - slot: "5-2"
     name: Consecutive Normal Punch
     cost: X Energy
@@ -200,6 +362,27 @@ cards:
     effect:
       - "Deal Power / (X + 1) damage (X + 1) times. Gain X State."
       - "If this character has State: Serious, this card becomes Serious Consecutive Side Hops."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power_div
+          divisor:
+            kind: x_plus
+            value: 1
+        hits:
+          kind: x_plus
+          value: 1
+      - timing: on_use
+        type: gain_status
+        status: State
+        amount:
+          kind: x
+    transforms:
+      - condition:
+          kind: self_has_status
+          status: "State: Serious"
+        cardSlot: "5-3"
   - slot: "5-3"
     name: Serious Consecutive Side Hops
     cost: 3 Energy
@@ -217,6 +400,23 @@ cards:
     effect:
       - "Deal Power / 2 damage. Gain Power / 2 Shield. Gain 1 State."
       - "Evade."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power_div
+          divisor: 2
+      - timing: on_use
+        type: gain_shield
+        amount:
+          kind: power_div
+          divisor: 2
+      - timing: on_use
+        type: gain_status
+        status: State
+        amount:
+          kind: flat
+          value: 1
   - slot: "ultimate-1"
     name: Base
     cost: 10 Ultimate Meter
@@ -257,4 +457,15 @@ cards:
     speed: Fast
     effect:
       - "Deal Power damage. Inflict 1 Stun."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
+      - timing: on_use
+        type: inflict_status
+        status: Stun
+        amount:
+          kind: flat
+          value: 1
 

@@ -56,6 +56,25 @@ cards:
       - "Deal Power damage."
       - "On Hit: If the target has Stun, gain 1 Stolen Blood."
       - "If this character has The World: Time Stop: This card becomes Strike: Muda Barrage."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
+      - timing: on_hit
+        type: gain_status
+        status: Stolen Blood
+        amount:
+          kind: flat
+          value: 1
+        condition:
+          kind: target_has_status
+          status: Stun
+    transforms:
+      - condition:
+          kind: self_has_status
+          status: "The World: Time Stop"
+        cardSlot: "1-2"
   - slot: "1-2"
     name: "Strike: Muda Barrage"
     cost: 4 Energy
@@ -74,6 +93,28 @@ cards:
       - "Deal Power / 4 damage 4 times."
       - "On Hit: Inflict 1 Bleed."
       - "Once per use, if the target has Stun: Gain 2 Stolen Blood."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power_div
+          divisor: 4
+        hits: 4
+      - timing: on_hit
+        type: inflict_status
+        status: Bleed
+        amount:
+          kind: flat
+          value: 1
+      - timing: on_use
+        type: gain_status
+        status: Stolen Blood
+        amount:
+          kind: flat
+          value: 2
+        condition:
+          kind: target_has_status
+          status: Stun
   - slot: "2-1"
     name: Defend
     cost: 4 Energy
@@ -89,6 +130,16 @@ cards:
       - "Gain Power Shield."
       - "Evade."
       - "If this character has The World: Time Stop: This card becomes Defend: The World."
+    effects:
+      - timing: on_use
+        type: gain_shield
+        amount:
+          kind: power
+    transforms:
+      - condition:
+          kind: self_has_status
+          status: "The World: Time Stop"
+        cardSlot: "2-2"
   - slot: "2-2"
     name: "Defend: The World"
     cost: 4 Energy
@@ -107,6 +158,26 @@ cards:
       - "Follow-Up."
       - "Retain."
       - "After Use: Gain 1 Haste and +1 Haste Count."
+    effects:
+      - timing: on_use
+        type: gain_shield
+        amount:
+          kind: power
+      - timing: on_use
+        type: retain
+      - timing: after_use
+        type: gain_status
+        status: Haste
+        amount:
+          kind: flat
+          value: 1
+      - timing: after_use
+        type: gain_status
+        status: Haste
+        stat: count
+        amount:
+          kind: flat
+          value: 1
   - slot: "3"
     name: Vampiric Drain
     cost: 5 Energy
@@ -127,6 +198,44 @@ cards:
       - "Gain 4 Stolen Blood."
       - "On Hit: Inflict 2 Weak and +2 Weak Count."
       - "On Hit: If the target has Stun, gain 2 Stolen Blood."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
+      - timing: on_use
+        type: heal
+        amount:
+          kind: power_div
+          divisor: 2
+      - timing: on_use
+        type: gain_status
+        status: Stolen Blood
+        amount:
+          kind: flat
+          value: 4
+      - timing: on_hit
+        type: inflict_status
+        status: Weak
+        amount:
+          kind: flat
+          value: 2
+      - timing: on_hit
+        type: inflict_status
+        status: Weak
+        stat: count
+        amount:
+          kind: flat
+          value: 2
+      - timing: on_hit
+        type: gain_status
+        status: Stolen Blood
+        amount:
+          kind: flat
+          value: 2
+        condition:
+          kind: target_has_status
+          status: Stun
   - slot: "4-1"
     name: Throwing Knives
     cost: 7 Energy
@@ -146,6 +255,24 @@ cards:
       - "Deal Power / 6 damage 6 times."
       - "On Hit: Inflict 1 Bleed."
       - "If this character has The World: Time Stop: This card becomes Throwing Knives: Time Stop."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power_div
+          divisor: 6
+        hits: 6
+      - timing: on_hit
+        type: inflict_status
+        status: Bleed
+        amount:
+          kind: flat
+          value: 1
+    transforms:
+      - condition:
+          kind: self_has_status
+          status: "The World: Time Stop"
+        cardSlot: "4-2"
   - slot: "4-2"
     name: "Throwing Knives: Time Stop"
     cost: 7 Energy
@@ -165,6 +292,19 @@ cards:
       - "Deal Power / 10 damage 10 times."
       - "On Hit: Inflict 1 Bleed."
       - "Once per use, if the target has Stun: Deal 10 bonus damage."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power_div
+          divisor: 10
+        hits: 10
+      - timing: on_hit
+        type: inflict_status
+        status: Bleed
+        amount:
+          kind: flat
+          value: 1
   - slot: "5"
     name: "The World: Time Stop"
     cost: 9 Energy
@@ -185,6 +325,28 @@ cards:
       - "Inflict 1 Stun on All Enemies."
       - "Until the end of this Combat Round, enemies cannot play cards. (Cards already played still resolve.)"
       - "Retain."
+    effects:
+      - timing: on_use
+        type: gain_status
+        status: "The World: Time Stop"
+        amount:
+          kind: flat
+          value: 1
+      - timing: on_use
+        type: gain_status
+        status: "The World: Time Stop"
+        stat: count
+        amount:
+          kind: flat
+          value: 2
+      - timing: on_use
+        type: inflict_status
+        status: Stun
+        amount:
+          kind: flat
+          value: 1
+      - timing: on_use
+        type: retain
   - slot: ultimate
     name: ROAD ROLLER DA!
     cost: 40 Ultimate Meter
@@ -205,4 +367,21 @@ cards:
       - "On Hit: Inflict 1 Stun."
       - "You may spend X Stolen Blood (0-10). If you do, deal 6 times X bonus damage and inflict X Bleed."
       - "After Use: Set this character's The World: Time Stop Count to 0."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power
+        condition:
+          kind: self_has_status
+          status: "The World: Time Stop"
+      - timing: on_hit
+        type: inflict_status
+        status: Stun
+        amount:
+          kind: flat
+          value: 1
+        condition:
+          kind: self_has_status
+          status: "The World: Time Stop"
 

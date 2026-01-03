@@ -104,13 +104,80 @@ effects:
     type: deal_damage
     amount:
       kind: power
+    hits: 3
   - timing: on_hit
     type: gain_status
     status: Reiatsu
     amount:
       kind: flat
       value: 1
+    stat: count
+    condition:
+      kind: self_has_status
+      status: Reiatsu
 ```
+
+X-scaled amounts and hits:
+
+```yml
+effects:
+  - timing: on_use
+    type: deal_damage
+    amount:
+      kind: power_div
+      divisor:
+        kind: x_plus
+        value: 1
+    hits:
+      kind: x_plus
+      value: 1
+  - timing: on_use
+    type: inflict_status
+    status: Frail
+    amount:
+      kind: x
+```
+
+Choice effects:
+
+```yml
+effects:
+  - timing: on_use
+    type: choose
+    options:
+      - label: Gain Gear 2nd
+        effects:
+          - timing: on_use
+            type: gain_status
+            status: Gear 2nd
+            amount:
+              kind: flat
+              value: 1
+      - label: Gain Gear 3rd
+        effects:
+          - timing: on_use
+            type: gain_status
+            status: Gear 3rd
+            amount:
+              kind: flat
+              value: 1
+```
+
+Scalar expression kinds: `x`, `x_plus`, `x_minus`, `x_times`. Use a number for fixed values.
+Keyword-only effects like Retain can be represented as `type: retain`.
+
+Optional card transforms:
+
+```yml
+transforms:
+  - condition:
+      kind: self_has_status
+      status: Kaioken
+    cardSlot: "3-2"
+```
+
+Condition kinds: `self_has_status`, `self_missing_status`, `target_has_status`,
+`target_missing_status`.
 
 ## Keyword schema (YAML)
 

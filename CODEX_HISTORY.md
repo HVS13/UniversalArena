@@ -79,3 +79,15 @@ This file preserves the historical intent and decisions for CodexGPT. Append a n
 - 2026-01-03: Documented structured card effects and sync settings, validated optional effect objects in the exporter, and added initial structured effects to Rover's data.
 - 2026-01-03: Removed the embedded game page, scripts, and styles from the docs repo now that the web game lives in its own repository.
 - 2026-01-03: Removed generated `site/` output from tracking, expanded ignores/excludes for build artifacts, and refreshed repo guidance (README/TODO/AGENTS/skills) to reflect the docs-only scope.
+- 2026-01-03: Added structured effect extensions (conditions, hits, transforms), converted Goku to structured effects, and validated transforms in the exporter.
+- 2026-01-03: Refreshed the front-page timestamp and updated AGENTS/skills/README/TODO to reflect structured effects fields and cross-repo workflow state.
+- 2026-01-03: Began Luffy's structured effect pass by adding basic damage/shield effects and gear-based transforms; left choice/X-based effects unstructured for now.
+- 2026-01-03: Defined choice and X-scaled structured effect schema, validated them in the exporter, added choice selection plumbing in the game UI/core, and finished Luffy's Gear Transformation/Jet Gatling structured effects with Gear checks.
+- 2026-01-03: Implemented full timing windows in the core engine (On Play through Always), added text timing parsing, enforced "Can only be used if..." card restrictions, and wired Evade hit suppression + reuse handling during clashes.
+- 2026-01-03: Added after-use follow-up window tracking and out-of-turn Follow-Up/Assist Attack permissions, plus innate-based damage mitigation (Resist/Immune/Weakness/Absorb) in core damage resolution.
+- 2026-01-03: Surfaced out-of-turn Follow-Up/Assist play in the client UI, extended mitigation parsing to active statuses and defense card text, and added a deterministic core harness for timing/mitigation checks.
+- 2026-01-03: Added a reaction window indicator in the client UI and limited mitigation parsing from global status rules to passive (Effect/Always) entries.
+- 2026-01-03: Converted remaining character YAMLs to structured effects where possible (Saitama, Ichigo, Naruto, Leon, Light, DIO, Rover), adding transforms and conditional timing data to match card text.
+- 2026-01-03: Implemented status caps/expiry/trigger handling in core (turn start/end rules, On Gain/expire hooks, mitigation and power modifiers, cost and speed shifts, and card-played triggers), plus client-side affordance updates for adjusted costs/speeds and Time Stop follow-up reactions.
+- 2026-01-04: Refreshed project metadata (front-page last-updated timestamp, CODEX_HISTORY, AGENTS/skills guidance, README/TODO notes) to document the current engine/data state and next steps.
+- 2026-01-04: Updated the front-page timestamp and refreshed AGENTS/README/TODO to reflect the core engine's hand/deck and spend/draw/creation support, while documenting remaining structured-effect gaps.

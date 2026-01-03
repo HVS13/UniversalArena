@@ -65,6 +65,16 @@ cards:
     effect:
       - "Gain Power Shield. Gain 1 Ultimate Meter."
       - "Evade."
+    effects:
+      - timing: on_use
+        type: gain_shield
+        amount:
+          kind: power
+      - timing: on_use
+        type: gain_ultimate
+        amount:
+          kind: flat
+          value: 1
   - slot: "3"
     name: Resonating Slashes
     cost: 1 Energy
@@ -81,6 +91,22 @@ cards:
     speed: Normal
     effect:
       - "Deal Power / 2 damage 2 times. On Hit: Spend 1 Diminutive Sound to inflict 2 Spectro Frazzle."
+    effects:
+      - timing: on_use
+        type: deal_damage
+        amount:
+          kind: power_div
+          divisor: 2
+        hits: 2
+      - timing: on_hit
+        type: inflict_status
+        status: Spectro Frazzle
+        amount:
+          kind: flat
+          value: 2
+        condition:
+          kind: self_has_status
+          status: Diminutive Sound
   - slot: "4"
     name: Aftertune
     cost: 1 Energy

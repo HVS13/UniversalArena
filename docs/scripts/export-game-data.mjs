@@ -37,6 +37,28 @@ const requiredFields = [
 
 const cardFields = ["slot", "name", "cost", "power", "types", "target", "speed", "effect"];
 const effectFields = ["type", "timing"];
+const effectTypes = new Set([
+  "deal_damage",
+  "gain_shield",
+  "heal",
+  "gain_ultimate",
+  "gain_status",
+  "inflict_status",
+  "choose",
+  "retain",
+]);
+const amountKinds = new Set([
+  "flat",
+  "power",
+  "power_div",
+  "x",
+  "x_plus",
+  "x_minus",
+  "x_times",
+]);
+const scalarKinds = new Set(["x", "x_plus", "x_minus", "x_times"]);
+const transformFields = ["condition", "cardSlot"];
+const transformConditionFields = ["kind"];
 
 const dataFileConfigs = [
   {
@@ -76,6 +98,131 @@ const dataFileConfigs = [
   },
 ];
 
+const isPlainObject = (value) =>
+  Boolean(value) && typeof value === "object" && !Array.isArray(value);
+
+const validateScalar = (value, label, errors) => {
+  if (typeof value === "number") return;
+  if (!isPlainObject(value)) {
+    errors.push(`${label} must be a number or an object.`);
+    return;
+  }
+  const kind = value.kind;
+  if (!scalarKinds.has(kind)) {
+    errors.push(`${label} has invalid kind "${kind}".`);
+    return;
+  }
+  if (kind !== "x" && typeof value.value !== "number") {
+    errors.push(`${label} with kind "${kind}" missing numeric value.`);
+  }
+};
+
+const validateAmount = (amount, label, errors) => {
+  if (!isPlainObject(amount)) {
+    errors.push(`${label} must be an object.`);
+    return;
+  }
+  const kind = amount.kind;
+  if (!amountKinds.has(kind)) {
+    errors.push(`${label} has invalid kind "${kind}".`);
+    return;
+  }
+  if (kind === "flat") {
+    if (typeof amount.value !== "number") {
+      errors.push(`${label} with kind "flat" missing numeric value.`);
+    }
+    return;
+  }
+  if (kind === "power_div") {
+    if (!("divisor" in amount)) {
+      errors.push(`${label} with kind "power_div" missing divisor.`);
+      return;
+    }
+    validateScalar(amount.divisor, `${label}.divisor`, errors);
+    return;
+  }
+  if (kind === "x_plus" || kind === "x_minus" || kind === "x_times") {
+    if (typeof amount.value !== "number") {
+      errors.push(`${label} with kind "${kind}" missing numeric value.`);
+    }
+  }
+};
+
+const validateEffectList = (effects, label, filename, errors) => {
+  if (!Array.isArray(effects)) {
+    errors.push(`${filename}: ${label} effects must be an array.`);
+    return;
+  }
+  effects.forEach((effect, effectIndex) => {
+    if (!effect || typeof effect !== "object") {
+      errors.push(`${filename}: ${label} effects[${effectIndex}] is not an object.`);
+      return;
+    }
+    effectFields.forEach((field) => {
+      if (!(field in effect)) {
+        errors.push(`${filename}: ${label} effects[${effectIndex}] missing "${field}".`);
+      }
+    });
+    if (!effect.type || !effectTypes.has(effect.type)) {
+      errors.push(
+        `${filename}: ${label} effects[${effectIndex}] has invalid type "${effect.type}".`
+      );
+      return;
+    }
+
+    const context = `${filename}: ${label} effects[${effectIndex}]`;
+    switch (effect.type) {
+      case "deal_damage": {
+        validateAmount(effect.amount, `${context}.amount`, errors);
+        if (effect.hits !== undefined) {
+          validateScalar(effect.hits, `${context}.hits`, errors);
+        }
+        break;
+      }
+      case "gain_shield":
+      case "heal":
+      case "gain_ultimate": {
+        validateAmount(effect.amount, `${context}.amount`, errors);
+        break;
+      }
+      case "gain_status":
+      case "inflict_status": {
+        if (typeof effect.status !== "string" || !effect.status.trim()) {
+          errors.push(`${context} missing status.`);
+        }
+        validateAmount(effect.amount, `${context}.amount`, errors);
+        break;
+      }
+      case "choose": {
+        if (!Array.isArray(effect.options)) {
+          errors.push(`${context} missing options array.`);
+          break;
+        }
+        effect.options.forEach((option, optionIndex) => {
+          if (!option || typeof option !== "object") {
+            errors.push(`${context} options[${optionIndex}] is not an object.`);
+            return;
+          }
+          if (option.effects === undefined) {
+            errors.push(`${context} options[${optionIndex}] missing effects.`);
+            return;
+          }
+          validateEffectList(
+            option.effects,
+            `${label} effects[${effectIndex}].options[${optionIndex}]`,
+            filename,
+            errors
+          );
+        });
+        break;
+      }
+      case "retain":
+      default:
+        break;
+    }
+  });
+};
+
 const validateCardList = (cards, label, filename, errors) => {
   if (!Array.isArray(cards)) {
     errors.push(`${filename}: ${label} must be an array.`);
@@ -98,23 +245,35 @@ const validateCardList = (cards, label, filename, errors) => {
       errors.push(`${filename}: ${label}[${index}] effect must be an array.`);
     }
     if (card.effects !== undefined) {
-      if (!Array.isArray(card.effects)) {
-        errors.push(`${filename}: ${label}[${index}] effects must be an array.`);
+      validateEffectList(card.effects, `${label}[${index}]`, filename, errors);
+    }
+    if (card.transforms !== undefined) {
+      if (!Array.isArray(card.transforms)) {
+        errors.push(`${filename}: ${label}[${index}] transforms must be an array.`);
       } else {
-        card.effects.forEach((effect, effectIndex) => {
-          if (!effect || typeof effect !== "object") {
+        card.transforms.forEach((transform, transformIndex) => {
+          if (!transform || typeof transform !== "object") {
             errors.push(
-              `${filename}: ${label}[${index}] effects[${effectIndex}] is not an object.`
+              `${filename}: ${label}[${index}] transforms[${transformIndex}] is not an object.`
             );
             return;
           }
-          effectFields.forEach((field) => {
-            if (!(field in effect)) {
+          transformFields.forEach((field) => {
+            if (!(field in transform)) {
               errors.push(
-                `${filename}: ${label}[${index}] effects[${effectIndex}] missing "${field}".`
+                `${filename}: ${label}[${index}] transforms[${transformIndex}] missing "${field}".`
               );
             }
           });
+          if (transform.condition && typeof transform.condition === "object") {
+            transformConditionFields.forEach((field) => {
+              if (!(field in transform.condition)) {
+                errors.push(
+                  `${filename}: ${label}[${index}] transforms[${transformIndex}] condition missing "${field}".`
+                );
+              }
+            });
+          }
         });
       }
     }

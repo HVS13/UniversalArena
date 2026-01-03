@@ -7,6 +7,8 @@ Project rules
 - MkDocs theme overrides live in `docs/overrides/`; use them for site-wide UI tweaks.
 - Follow patterns in `docs/adding-content.md` for content types; use templates and shared link markup.
 - Game data for the web game lives in `docs/data/`; keep it in sync with the docs and export via `docs/scripts/export-game-data.mjs`.
+- Structured card data supports `effects` (with `condition`, `hits`, `stat`) plus optional `transforms`; keep `docs/data/README.md` and the exporter in sync.
+- Core now enforces timing windows plus status caps/expiry/trigger hooks and supports hand/deck play plus spend/draw/creation text rules; legacy text parsing still exists in the game repo for unmodeled mechanics (do not remove it until coverage is high).
 - Filtering uses the `hidden` attribute; avoid overriding it on filterable items (add an explicit `[hidden] { display: none; }` when custom display styles are applied).
 - When evaluating rules or potential ambiguity, check `docs/faq.md` and ensure durable rules are reflected in the relevant reference pages.
 - When clarifying timing or keyword interactions, update the keyword/term definition and add a short FAQ example (with a cross-link from the glossary) if it will come up at the table.
