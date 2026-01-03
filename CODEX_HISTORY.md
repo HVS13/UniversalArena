@@ -78,3 +78,4 @@ This file preserves the historical intent and decisions for CodexGPT. Append a n
 - 2026-01-03: Added canonical YAML files for keywords, status effects, terms, card types, and roles; expanded the exporter to emit shared data JSON alongside characters; and added a GitHub Action to sync exports and character assets into the game repo.
 - 2026-01-03: Documented structured card effects and sync settings, validated optional effect objects in the exporter, and added initial structured effects to Rover's data.
 - 2026-01-03: Removed the embedded game page, scripts, and styles from the docs repo now that the web game lives in its own repository.
+- 2026-01-03: Removed generated `site/` output from tracking, expanded ignores/excludes for build artifacts, and refreshed repo guidance (README/TODO/AGENTS/skills) to reflect the docs-only scope.

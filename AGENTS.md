@@ -1,6 +1,6 @@
 # AGENTS
 
-This repo is a MkDocs Material rules reference with a static site, a small JS game client, and a WebSocket relay.
+This repo is a MkDocs Material rules reference and canonical data source. The web game lives in `C:\Git\UniversalArena-Web`; the optional relay server lives in `server/`.
 
 Project rules
 - Work in `docs/` and `server/`; treat `site/` as generated output and do not edit it.
@@ -23,8 +23,8 @@ Project rules
 - Prioritize lore-accurate, synergistic, and fun character kits over balance.
 - Follow `docs/characters/character-creation-guide.md` for power budgeting (including variable/0-cost handling); document character-specific exceptions there, not on character pages.
 - Export actions (page PDF/MD/TXT + all-pages ZIP with format/character-combine options and `html/`, `md/`, `txt/`) live in `docs/overrides/main.html` and `docs/javascripts/print.js`; keep exports free of permalinks, URLs, and images.
-- Do not edit game pages or assets unless explicitly requested.
-- Game client changes live in `docs/javascripts/game/game.js` and `docs/stylesheets/game.css`; relay server changes live in `server/index.js`.
+- Do not add game pages or game assets to this repo unless explicitly requested.
+- Game client changes live in `C:\Git\UniversalArena-Web`; relay server changes live in `server/index.js`.
 
 Quality checks
 - Run `mkdocs build --strict` or `mkdocs serve` when asked to validate docs changes.

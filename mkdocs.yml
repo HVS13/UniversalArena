@@ -25,6 +25,10 @@ theme:
         name: Switch to light mode
 plugins:
   - search
+exclude_docs: |
+  adding-content.md
+  data/README.md
+  scripts/**
 nav:
   - Home: index.md
   # - Adding Content (internal only): adding-content.md
