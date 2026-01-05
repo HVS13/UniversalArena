@@ -27,14 +27,15 @@ Design a cohesive kit, then output a complete character page that fits the proje
 7. Avoid undefined mechanics; if a global keyword/status/term appears in content, ensure it exists in the reference pages.
 8. If a card references remaining Multihit Count, make sure the base count is explicit in the card text or defined by the Multihit rules.
 9. Create five cards plus an Ultimate; keep effect text concise and tag order consistent with `docs/adding-content.md`.
-10. Apply basic naming: Basic + Attack cards must be named Strike; Basic + Defense cards must be named Defend; Basic + Special cards can use any name.
-11. Conditional "this card becomes X" effects are automatic in any zone; do not make them optional.
-12. "Spend X" is mandatory; if optional, it must say "may." If the Spend cannot be paid, that part of the effect does not happen.
-13. When writing `docs/data/characters/<slug>.yml`, use `effects` plus optional `transforms` from `docs/data/README.md` (conditions, hits, stat targeting) and keep them consistent with the card text.
-14. Apply the power budgeting rules in `docs/characters/character-creation-guide.md` (including variable/0-cost handling). Document any character-specific exceptions in that guide.
-15. Ensure Potency/Count/Value/Stack caps align with what the kit can reach, including edge cases.
-16. Prioritize lore-accurate, synergistic, and fun play feel over balance; avoid purely balance-driven nerfs that break fantasy.
-17. Sanity-check for infinite loops, auto-win combos, or uncounterable turns.
+10. Follow the timing-labeled sentence templates in `docs/characters/character-creation-guide.md` (On Play -> Always).
+11. Apply basic naming: Basic + Attack cards must be named Strike; Basic + Defense cards must be named Defend; Basic + Special cards can use any name.
+12. Conditional "this card becomes X" effects are automatic in any zone; do not make them optional.
+13. "Spend X" is mandatory; if optional, it must say "may." If the Spend cannot be paid, that part of the effect does not happen.
+14. When writing `docs/data/characters/<slug>.yml`, use `effects` plus optional `transforms` from `docs/data/README.md` (conditions, hits, stat targeting) and keep them consistent with the card text.
+15. Apply the power budgeting rules in `docs/characters/character-creation-guide.md` (including variable/0-cost handling). Document any character-specific exceptions in that guide.
+16. Ensure Potency/Count/Value/Stack caps align with what the kit can reach, including edge cases.
+17. Prioritize lore-accurate, synergistic, and fun play feel over balance; avoid purely balance-driven nerfs that break fantasy.
+18. Sanity-check for infinite loops, auto-win combos, or uncounterable turns.
 
 ## Output format
 
@@ -42,6 +43,7 @@ Design a cohesive kit, then output a complete character page that fits the proje
 2. Add artwork in `docs/assets/characters/` and set portrait `src` to `../../assets/characters/<file>` in the page.
 3. Create `docs/data/characters/<slug>.yml` that matches the character page (see `docs/data/README.md`).
 4. Update `docs/characters/index.md` (include role tags) and `mkdocs.yml` when adding a new character.
+5. Re-export data into `C:\Git\UniversalArena-Web\packages\data\src` (and assets) so the game stays in sync.
 
 ## References
 
