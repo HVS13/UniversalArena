@@ -429,6 +429,14 @@ cards:
     speed: Normal
     effect:
       - "Set State Value to 10."
+    effects:
+      - timing: on_use
+        type: set_status
+        status: State
+        stat: value
+        amount:
+          kind: flat
+          value: 10
   - slot: "ultimate-2"
     name: "Killer Move: Serious Series"
     cost: 60 Ultimate Meter
@@ -441,6 +449,14 @@ cards:
     speed: Fast
     effect:
       - "Set State Value to 30."
+    effects:
+      - timing: on_use
+        type: set_status
+        status: State
+        stat: value
+        amount:
+          kind: flat
+          value: 30
   - slot: "ultimate-3"
     name: Serious Table Flip
     cost: 100 Ultimate Meter
