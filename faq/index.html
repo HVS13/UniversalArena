@@ -1024,6 +1024,12 @@ Example: If an Attack is Immune, On Hit triggers but On Damage and On HP Damage 
 <p>A card counts as all listed damage types and attack tags. If a modifier lists multiple types or tags, it applies once when any match; separate modifiers stack. For flat/percentage formats, calculate both and use the higher value, then apply after percent modifiers, Shield, and Barrier. If any matching Immune applies, damage becomes 0 before modifiers.
 Example: A Magical + Blunt attack deals 20 damage after Shield and Barrier. The target has Resist 5 (Blunt) and Absorb 30% (Magical). Resist reduces 5, Absorb reduces 6 and heals 6. Final damage is 9.</p>
 </details>
+<p><a id="faq-redirect-splash"></a></p>
+<details class="question">
+<summary>How do Redirect and Cover interact with Splash and Bounce?</summary>
+<p><a class="ua-keyword-link" data-keyword="keyword-redirect" href="#">Redirect</a> changes the primary target of a single-target effect. If the effect has <a class="ua-term-link" data-term="term-splash" href="#">Splash</a> or <a class="ua-term-link" data-term="term-bounce" href="#">Bounce</a>, resolve those from the new target. Redirect and <a class="ua-status-link" data-status="status-cover" href="#">Cover</a> do not affect AoE or random targeting.
+Example: A single-target Attack with Splash targets Ally A, but Cover redirects it to Ally B. The Splash now hits a character adjacent to Ally B.</p>
+</details>
 <details class="question">
 <summary>How do Created cards enter play?</summary>
 <p>The effect that creates the card tells you where it goes (hand, draw pile, discard pile, or play). If it does not specify, add it to the discard pile.</p>
