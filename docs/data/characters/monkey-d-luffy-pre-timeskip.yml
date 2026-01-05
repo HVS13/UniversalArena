@@ -226,6 +226,13 @@ cards:
       - "Gain 1 Gear 2nd."
       - "Gain 1 Gear 3rd."
       - "Retain."
+    restrictions:
+      - kind: forbid
+        subject: self
+        mode: any
+        statuses:
+          - name: Gear 2nd
+          - name: Gear 3rd
     effects:
       - timing: on_use
         type: choose
@@ -267,6 +274,12 @@ cards:
       - "Can only be used if this character has Gear 2nd."
       - "Deal Power / (X + 1) damage (X + 1) times. Inflict X Frail. Gain X Weak and +X Weak Count. Gain X Vulnerable and +X Vulnerable Count."
       - "If this character has Gear 3rd: This Ultimate becomes Gomu Gomu no Gigant Rifle."
+    restrictions:
+      - kind: require
+        subject: self
+        mode: all
+        statuses:
+          - name: Gear 2nd
     effects:
       - timing: on_use
         type: deal_damage
@@ -346,6 +359,12 @@ cards:
       - "Can only be used if this character has Gear 3rd."
       - "Deal Power damage."
       - "If this character has Gear 2nd: This Ultimate becomes Gomu Gomu no Jet Gatling."
+    restrictions:
+      - kind: require
+        subject: self
+        mode: all
+        statuses:
+          - name: Gear 3rd
     effects:
       - timing: on_use
         type: deal_damage

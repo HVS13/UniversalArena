@@ -332,6 +332,12 @@ cards:
       - "Can only be used if this character has Bankai: Tensa Zangetsu."
       - "Deal Power damage."
       - "You may spend up to 6 Reiatsu. If you do, deal 4 times Reiatsu spent bonus damage."
+    restrictions:
+      - kind: require
+        subject: self
+        mode: all
+        statuses:
+          - name: "Bankai: Tensa Zangetsu"
     effects:
       - timing: on_use
         type: deal_damage

@@ -289,6 +289,12 @@ cards:
       - "Deal Power damage."
       - "On Hit: Inflict 2 Vulnerable and +2 Vulnerable Count. Inflict 1 Slow and +1 Slow Count."
       - "After Use: Reduce Kyuubi Chakra Count by 2."
+    restrictions:
+      - kind: require
+        subject: self
+        mode: all
+        statuses:
+          - name: One-Tail Cloak
     effects:
       - timing: on_use
         type: deal_damage

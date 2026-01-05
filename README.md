@@ -18,7 +18,8 @@ Rules reference and canonical data source for Universal Arena.
 
 ## Current state
 
-- All current character YAMLs include structured effects where supported; keep `effect` text for unmodeled mechanics.
-- The game engine now enforces timing windows, status caps/expiry/trigger hooks, hand/deck play, and spend/draw/creation handling; legacy text parsing still exists for unmodeled mechanics (set-value effects, unique triggers).
+- All current character YAMLs include structured effects and restrictions; keep `effect` text for readability and any unmodeled mechanics.
+- The game engine enforces timing windows, status caps/expiry/trigger hooks, hand/deck play, and structured effects for set/reduce/spend and equipment switching; restriction enforcement is structured-only.
+- Legacy text parsing still exists for unmodeled mechanics (optional spend, bonus damage, draw/create, unique triggers); keep coverage tracked in `TODO.md`.
 - Keyword data includes a Core/Advanced tier; status entries include Mode (P/C, S, V) and explicit Turn End lines in docs.
 - Use `TODO.md` in both repos to track remaining engine gaps before removing legacy parsing.

@@ -21,7 +21,8 @@ The game client no longer lives in this docs repo. All client/engine changes hap
 
 - The docs site is static; the web game runs in the separate repo.
 - Prefer small, testable changes over large refactors.
-- Current engine coverage includes timing windows and status caps/expiry/trigger hooks (cost/speed/power/damage modifiers). Legacy text parsing still handles unmodeled mechanics like spend, draw, card creation, and ammo.
+- Current engine coverage includes timing windows and status caps/expiry/trigger hooks (cost/speed/power/damage modifiers), plus structured effects for set/reduce/spend and equipment switching. Restriction enforcement is structured-only; text parsing no longer gates card use.
+- Legacy text parsing still handles unmodeled mechanics like optional spend, bonus damage, draw, card creation, and unique triggers.
 - Keyword data includes an optional `tier` (Core/Advanced); status entries include Mode and explicit Turn End lines in docs.
 
 ## References

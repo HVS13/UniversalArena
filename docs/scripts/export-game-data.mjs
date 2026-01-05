@@ -44,6 +44,12 @@ const effectTypes = new Set([
   "gain_ultimate",
   "gain_status",
   "inflict_status",
+  "set_status",
+  "spend_status",
+  "deal_damage_per_spent",
+  "reload_equipped",
+  "switch_equip",
+  "reduce_status",
   "choose",
   "retain",
 ]);
@@ -59,6 +65,9 @@ const amountKinds = new Set([
 const scalarKinds = new Set(["x", "x_plus", "x_minus", "x_times"]);
 const transformFields = ["condition", "cardSlot"];
 const transformConditionFields = ["kind"];
+const restrictionKinds = new Set(["require", "forbid"]);
+const restrictionSubjects = new Set(["self", "target"]);
+const restrictionModes = new Set(["any", "all"]);
 
 const dataFileConfigs = [
   {
@@ -193,6 +202,67 @@ const validateEffectList = (effects, label, filename, errors) => {
         validateAmount(effect.amount, `${context}.amount`, errors);
         break;
       }
+      case "set_status": {
+        if (typeof effect.status !== "string" || !effect.status.trim()) {
+          errors.push(`${context} missing status.`);
+        }
+        validateAmount(effect.amount, `${context}.amount`, errors);
+        if (effect.target !== undefined && effect.target !== "self" && effect.target !== "target") {
+          errors.push(`${context} has invalid target "${effect.target}".`);
+        }
+        break;
+      }
+      case "spend_status": {
+        if (typeof effect.status !== "string" || !effect.status.trim()) {
+          errors.push(`${context} missing status.`);
+        }
+        validateAmount(effect.amount, `${context}.amount`, errors);
+        if (effect.amount?.kind === "power" || effect.amount?.kind === "power_div") {
+          errors.push(`${context} amount cannot use power-based scaling.`);
+        }
+        if (effect.allowPartial !== undefined && typeof effect.allowPartial !== "boolean") {
+          errors.push(`${context} allowPartial must be a boolean.`);
+        }
+        if (effect.gateAll !== undefined && typeof effect.gateAll !== "boolean") {
+          errors.push(`${context} gateAll must be a boolean.`);
+        }
+        if (effect.gateDamage !== undefined && typeof effect.gateDamage !== "boolean") {
+          errors.push(`${context} gateDamage must be a boolean.`);
+        }
+        break;
+      }
+      case "deal_damage_per_spent": {
+        if (typeof effect.status !== "string" || !effect.status.trim()) {
+          errors.push(`${context} missing status.`);
+        }
+        validateAmount(effect.amount, `${context}.amount`, errors);
+        break;
+      }
+      case "reload_equipped": {
+        break;
+      }
+      case "switch_equip": {
+        if (typeof effect.status !== "string" || !effect.status.trim()) {
+          errors.push(`${context} missing status.`);
+        }
+        break;
+      }
+      case "reduce_status": {
+        if (typeof effect.status !== "string" || !effect.status.trim()) {
+          errors.push(`${context} missing status.`);
+        }
+        validateAmount(effect.amount, `${context}.amount`, errors);
+        if (effect.target !== undefined && effect.target !== "self" && effect.target !== "target") {
+          errors.push(`${context} has invalid target "${effect.target}".`);
+        }
+        if (effect.minValue !== undefined && typeof effect.minValue !== "number") {
+          errors.push(`${context} minValue must be a number.`);
+        }
+        if (effect.maxAmount !== undefined && typeof effect.maxAmount !== "number") {
+          errors.push(`${context} maxAmount must be a number.`);
+        }
+        break;
+      }
       case "choose": {
         if (!Array.isArray(effect.options)) {
           errors.push(`${context} missing options array.`);
@@ -223,6 +293,60 @@ const validateEffectList = (effects, label, filename, errors) => {
   });
 };
 
+const validateRestrictions = (restrictions, label, filename, errors) => {
+  if (!Array.isArray(restrictions)) {
+    errors.push(`${filename}: ${label} restrictions must be an array.`);
+    return;
+  }
+  restrictions.forEach((restriction, restrictionIndex) => {
+    if (!restriction || typeof restriction !== "object") {
+      errors.push(
+        `${filename}: ${label} restrictions[${restrictionIndex}] is not an object.`
+      );
+      return;
+    }
+    if (!restrictionKinds.has(restriction.kind)) {
+      errors.push(
+        `${filename}: ${label} restrictions[${restrictionIndex}] has invalid kind "${restriction.kind}".`
+      );
+    }
+    if (!restrictionSubjects.has(restriction.subject)) {
+      errors.push(
+        `${filename}: ${label} restrictions[${restrictionIndex}] has invalid subject "${restriction.subject}".`
+      );
+    }
+    if (!restrictionModes.has(restriction.mode)) {
+      errors.push(
+        `${filename}: ${label} restrictions[${restrictionIndex}] has invalid mode "${restriction.mode}".`
+      );
+    }
+    if (!Array.isArray(restriction.statuses)) {
+      errors.push(
+        `${filename}: ${label} restrictions[${restrictionIndex}] statuses must be an array.`
+      );
+      return;
+    }
+    restriction.statuses.forEach((status, statusIndex) => {
+      if (!status || typeof status !== "object") {
+        errors.push(
+          `${filename}: ${label} restrictions[${restrictionIndex}] statuses[${statusIndex}] is not an object.`
+        );
+        return;
+      }
+      if (typeof status.name !== "string" || !status.name.trim()) {
+        errors.push(
+          `${filename}: ${label} restrictions[${restrictionIndex}] statuses[${statusIndex}] missing name.`
+        );
+      }
+      if (status.min !== undefined && (typeof status.min !== "number" || status.min < 1)) {
+        errors.push(
+          `${filename}: ${label} restrictions[${restrictionIndex}] statuses[${statusIndex}] min must be a number >= 1.`
+        );
+      }
+    });
+  });
+};
+
 const validateCardList = (cards, label, filename, errors) => {
   if (!Array.isArray(cards)) {
     errors.push(`${filename}: ${label} must be an array.`);
@@ -246,6 +370,9 @@ const validateCardList = (cards, label, filename, errors) => {
     }
     if (card.effects !== undefined) {
       validateEffectList(card.effects, `${label}[${index}]`, filename, errors);
+    }
+    if (card.restrictions !== undefined) {
+      validateRestrictions(card.restrictions, `${label}[${index}]`, filename, errors);
     }
     if (card.transforms !== undefined) {
       if (!Array.isArray(card.transforms)) {

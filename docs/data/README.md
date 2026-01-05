@@ -95,6 +95,7 @@ createdCards:
 - Quote values that contain `:` to avoid YAML parsing issues.
 - `effect` preserves the exact sentence order from the docs page.
 - `effects` is optional structured data for game rules. Keep `effect` for human-readable text.
+- `restrictions` is optional structured use gating; rules enforcement only reads this field (effect text is not parsed).
 
 ## Card effect schema (YAML)
 
@@ -163,8 +164,92 @@ effects:
               value: 1
 ```
 
+Spend and per-spend damage:
+
+```yml
+effects:
+  - timing: on_use
+    type: spend_status
+    status: Handgun Ammo
+    amount:
+      kind: x
+    allowPartial: true
+  - timing: on_use
+    type: deal_damage_per_spent
+    status: Handgun Ammo
+    amount:
+      kind: power_div
+      divisor:
+        kind: x
+```
+
+Use `gateAll` or `gateDamage` on `spend_status` to block follow-up effects when the spend fails.
+
+Reload and equipment switching:
+
+```yml
+effects:
+  - timing: on_use
+    type: reload_equipped
+
+effects:
+  - timing: on_use
+    type: switch_equip
+    status: "Equip: Handgun"
+```
+
+Set status values:
+
+```yml
+effects:
+  - timing: on_use
+    type: set_status
+    status: State
+    stat: value
+    amount:
+      kind: flat
+      value: 10
+  - timing: on_use
+    type: set_status
+    status: Stolen Information
+    stat: stack
+    target: target
+    amount:
+      kind: flat
+      value: 0
+```
+
+Reduce status values with caps/floors:
+
+```yml
+effects:
+  - timing: on_use
+    type: reduce_status
+    status: Death by Death Note
+    stat: value
+    target: target
+    amount:
+      kind: x_plus
+      value: 1
+    maxAmount: 3
+    minValue: 1
+```
+
 Scalar expression kinds: `x`, `x_plus`, `x_minus`, `x_times`. Use a number for fixed values.
 Keyword-only effects like Retain can be represented as `type: retain`.
+
+## Card restrictions (YAML)
+
+```yml
+restrictions:
+  - kind: require
+    subject: target
+    mode: any
+    statuses:
+      - name: Stolen Information
+        min: 6
+      - name: Death by Death Note
+```
 
 Optional card transforms:
 

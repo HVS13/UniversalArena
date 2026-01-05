@@ -105,3 +105,12 @@ This file preserves the historical intent and decisions for CodexGPT. Append a n
 - 2026-01-05: Clarified cross-repo workflow in AGENTS/skills/README/TODO, aligned web repo skills with the current client/core structure, and refreshed the front-page timestamp.
 - 2026-01-05: Renamed the Redirect status effect to Guard and introduced the Redirect keyword for general target redirection, syncing docs/data and refreshing the front-page timestamp.
 - 2026-01-05: Renamed Guard to Cover, clarified Redirect/Cover to apply to single-target effects with Splash/Bounce, added a Redirect glossary term and FAQ example, and refreshed the front-page timestamp.
+- 2026-01-05: Reordered TODO priorities to focus on rules completeness, UI polish, then multiplayer for the web game roadmap.
+- 2026-01-05: Added a set-status structured effect type, documented it, and used it to model Saitama's State-setting ultimates plus Light's Death Note reset.
+- 2026-01-05: Added structured spend/switch/reload effects, documented the schema, and fully structured Leon's Handgun and Switch Weapon data.
+- 2026-01-05: Added a reduce-status effect with caps/floors and structured Light's Death Note: Judgment for variable Ultimate spend.
+- 2026-01-05: Added an explicit use restriction line to Light's Death Note: Judgment and re-exported data to enforce targeting.
+- 2026-01-05: Added structured card restrictions and validation, documenting the schema and wiring Light's Judgment requirement into data export.
+- 2026-01-05: Added structured use restrictions to remaining gated cards (Luffy, Ichigo, Naruto, DIO, Light) and re-exported data.
+- 2026-01-05: Clarified that restriction enforcement is structured-only; removed text parsing from the core engine.
+- 2026-01-05: Refreshed front-page timestamp and updated README/TODO/AGENTS/skills to document structured-only restrictions and the latest schema coverage.

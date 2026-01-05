@@ -12,8 +12,9 @@ Project rules
 - Game data for the web game lives in `docs/data/`; keep it in sync with the docs and export via `docs/scripts/export-game-data.mjs`.
 - If rules or data expectations change in `C:\Git\UniversalArena-Web` (core or UI), update the matching docs reference pages and `docs/data` here, then re-export.
 - If you add or rename keywords/status effects/terms in core, define them in the docs (`docs/keywords.md`, `docs/status-effects.md`, `docs/terminology.md`) and `docs/data/*.yml`.
-- Structured card data supports `effects` (with `condition`, `hits`, `stat`) plus optional `transforms`; keep `docs/data/README.md` and the exporter in sync.
-- Core now enforces timing windows plus status caps/expiry/trigger hooks and supports hand/deck play plus spend/draw/creation text rules; legacy text parsing still exists in the game repo for unmodeled mechanics (do not remove it until coverage is high).
+- Structured card data supports `effects`, `restrictions`, and optional `transforms`; keep `docs/data/README.md` and the exporter in sync (recent effect types include `set_status`, `reduce_status`, `spend_status`, `deal_damage_per_spent`, `reload_equipped`, `switch_equip`).
+- Restriction enforcement is structured-only; any "Can only be used if" / "Cannot be used if" text must be mirrored in `restrictions` or it will not be enforced by the game.
+- Core now enforces timing windows plus status caps/expiry/trigger hooks and supports hand/deck play plus spend/draw/creation text rules; legacy text parsing still exists in the game repo for unmodeled mechanics (optional spend, bonus damage, draw/create, unique triggers).
 - Filtering uses the `hidden` attribute; avoid overriding it on filterable items (add an explicit `[hidden] { display: none; }` when custom display styles are applied).
 - When evaluating rules or potential ambiguity, check `docs/faq.md` and ensure durable rules are reflected in the relevant reference pages.
 - When clarifying timing or keyword interactions, update the keyword/term definition and add a short FAQ example (with a cross-link from the glossary) if it will come up at the table.

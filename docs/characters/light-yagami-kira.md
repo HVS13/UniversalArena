@@ -122,6 +122,7 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
+  <p>Can only be used if the target has 6 Stolen Information or Death by Death Note.</p>
   <p>Choose 1 enemy with 6 Stolen Information or Death by Death Note.</p>
   <p>If the target has 6 Stolen Information, inflict 3 Death by Death Note and set its Stolen Information Value to 0.</p>
   <p>Reduce the target's Death by Death Note Value by 1.</p>
