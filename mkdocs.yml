@@ -31,6 +31,7 @@ exclude_docs: |
   scripts/**
 nav:
   - Home: index.md
+  - Combat Round Ref Card: combat-round-ref.md
   # - Adding Content (internal only): adding-content.md
   - Terminology: terminology.md
   - Keywords: keywords.md

@@ -19,6 +19,8 @@ This guide summarizes core systems and links to the detailed reference pages for
 7. When both players pass, resolve the Active Zone right to left, then continue until all zones are empty.
 8. The initiative player may start another Combat Round or end the turn; at Turn End, discard all remaining cards.
 
+Need a condensed, table-ready version? See the [Combat Round Ref Card](combat-round-ref.md).
+
 ## Win Conditions
 
 Reduce all opposing characters' HP to 0 (or meet the scenario's win condition, if you're playing a special mode).

@@ -2,6 +2,8 @@
 
 This page holds the full keyword reference. Use the filter to navigate large lists efficiently.
 
+Core keywords are expected in early play. Advanced keywords are less common or more specialized, but still fully supported.
+
 ## Reference
 
 <div class="ua-filter">
@@ -9,36 +11,9 @@ This page holds the full keyword reference. Use the filter to navigate large lis
   <input class="ua-filter__input" type="search" id="keyword-filter" placeholder="Type to filter..." autocomplete="off" spellcheck="false" />
 </div>
 
-### Card Lifecycle
+### Core Keywords
 
-<div class="ua-entry keyword-entry" id="keyword-ethereal">
-  <p class="ua-entry__title">Ethereal</p>
-  <p class="ua-entry__desc">If this card is in hand at the end of the turn, it is Exhausted.</p>
-</div>
-
-<div class="ua-entry keyword-entry" id="keyword-exhaust">
-  <p class="ua-entry__title">Exhaust</p>
-  <p class="ua-entry__desc">When this card is played, remove this card from play for the rest of the game.</p>
-</div>
-
-<div class="ua-entry keyword-entry" id="keyword-innate">
-  <p class="ua-entry__title">Innate</p>
-  <p class="ua-entry__desc">Start the game with this card in the opening hand.</p>
-</div>
-
-<div class="ua-entry keyword-entry" id="keyword-retain">
-  <p class="ua-entry__title">Retain</p>
-  <p class="ua-entry__desc">Keep the card in hand at the end of the turn instead of discarding it.</p>
-</div>
-
-### Cost Modifiers
-
-<div class="ua-entry keyword-entry" id="keyword-prepare">
-  <p class="ua-entry__title">Prepare X</p>
-  <p class="ua-entry__desc">Each turn, increase or reduce the Energy cost of this card by X until the card is used.</p>
-</div>
-
-### Combat
+#### Combat
 
 <div class="ua-entry keyword-entry" id="keyword-evade">
   <p class="ua-entry__title">Evade</p>
@@ -65,7 +40,7 @@ This page holds the full keyword reference. Use the filter to navigate large lis
   <p class="ua-entry__desc">After Use: This card can be played after any other card used by a different character.</p>
 </div>
 
-### Damage Mitigation
+#### Damage Mitigation
 
 <div class="ua-entry keyword-entry" id="keyword-resist">
   <p class="ua-entry__title">Resist X</p>
@@ -87,7 +62,7 @@ This page holds the full keyword reference. Use the filter to navigate large lis
   <p class="ua-entry__desc">When damage would be dealt to HP, reduce that damage by X after Shield and Barrier are applied, then heal for the amount reduced. X can be a flat value (example: Absorb 5), a percentage (example: Absorb 20%), or both (example: Absorb 5/20%). If both are listed, calculate both and use the higher reduction. If damage types or attack tags are listed, Absorb applies only to those; if multiple are listed, apply once when any match. Damage cannot go below 0.</p>
 </div>
 
-### Status Control
+#### Status Control
 
 <div class="ua-entry keyword-entry" id="keyword-cleanse">
   <p class="ua-entry__title">Cleanse</p>
@@ -104,7 +79,7 @@ This page holds the full keyword reference. Use the filter to navigate large lis
   <p class="ua-entry__desc">Remove or reduce positive or negative status effects. Purge [Status]: remove that status entirely. Purge X [Status]: reduce that status's Potency/Value/Stack by X. Purge All: remove all positive and negative statuses. Purge All X: reduce all positive and negative statuses' Potency/Value/Stack by X. Purge does not affect Count and does not affect Unique statuses. If a status uses Potency + Count, reduce Potency; if Potency reaches 0, remove the status.</p>
 </div>
 
-### Positioning
+#### Positioning
 
 <div class="ua-entry keyword-entry" id="keyword-push">
   <p class="ua-entry__title">Push X</p>
@@ -121,7 +96,38 @@ This page holds the full keyword reference. Use the filter to navigate large lis
   <p class="ua-entry__desc">Exchange the positions of two characters on the same team line.</p>
 </div>
 
-### Deck Manipulation
+### Advanced Keywords
+
+#### Card Lifecycle
+
+<div class="ua-entry keyword-entry" id="keyword-ethereal">
+  <p class="ua-entry__title">Ethereal</p>
+  <p class="ua-entry__desc">If this card is in hand at the end of the turn, it is Exhausted.</p>
+</div>
+
+<div class="ua-entry keyword-entry" id="keyword-exhaust">
+  <p class="ua-entry__title">Exhaust</p>
+  <p class="ua-entry__desc">When this card is played, remove this card from play for the rest of the game.</p>
+</div>
+
+<div class="ua-entry keyword-entry" id="keyword-innate">
+  <p class="ua-entry__title">Innate</p>
+  <p class="ua-entry__desc">Start the game with this card in the opening hand.</p>
+</div>
+
+<div class="ua-entry keyword-entry" id="keyword-retain">
+  <p class="ua-entry__title">Retain</p>
+  <p class="ua-entry__desc">Keep the card in hand at the end of the turn instead of discarding it.</p>
+</div>
+
+#### Cost Modifiers
+
+<div class="ua-entry keyword-entry" id="keyword-prepare">
+  <p class="ua-entry__title">Prepare X</p>
+  <p class="ua-entry__desc">Each turn, increase or reduce the Energy cost of this card by X until the card is used.</p>
+</div>
+
+#### Deck Manipulation
 
 <div class="ua-entry keyword-entry" id="keyword-scry">
   <p class="ua-entry__title">Scry X</p>
@@ -138,7 +144,7 @@ This page holds the full keyword reference. Use the filter to navigate large lis
   <p class="ua-entry__desc">Seek X (criteria, Y): Look at the top X cards of your draw pile. You may reveal and take up to Y cards that match the listed criteria or name, put them into your hand, then discard the rest.</p>
 </div>
 
-### Targeting
+#### Targeting
 
 <div class="ua-entry keyword-entry" id="keyword-bounce">
   <p class="ua-entry__title">Bounce X</p>

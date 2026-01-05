@@ -3,6 +3,7 @@
 This repo is a MkDocs Material rules reference and canonical data source. The web game lives in `C:\Git\UniversalArena-Web`; the optional relay server lives in `server/`.
 
 Project rules
+- Skills manifest lives in `SKILLS.md`.
 - Work in `docs/` and `server/`; treat `site/` as generated output and do not edit it.
 - MkDocs theme overrides live in `docs/overrides/`; use them for site-wide UI tweaks.
 - Follow patterns in `docs/adding-content.md` for content types; use templates and shared link markup.

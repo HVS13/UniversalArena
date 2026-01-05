@@ -80,6 +80,20 @@ When listing `Type:` tags, use this order:
 6. Slash / Pierce / Blunt / Multihit
 7. Transformation / Recovery / Buff / Debuff
 
+### Card text templates (timing order)
+
+Standardize sentences so they align with the timing ladder: On Play -> Before Clash -> After Clash -> Before Use -> On Use -> On Hit -> After Use -> Always. Each sentence should start with a timing label; split mixed timing effects into separate sentences.
+
+Templates:
+
+- Attack (Power): "On Use: Deal Power damage." "On Hit: [bonus]." "After Use: [follow-up]."
+- Defense (Power Shield): "On Use: Gain Power Shield." "After Clash: [bonus]." "After Use: [follow-up]."
+- Special (no Power roll): "On Play: [effect]." "On Use: [effect]." "After Use: [cleanup]."
+- Utility/Setup: "On Play: [draw/move/status]." "Before Use: [prep]." "After Use: [cleanup]."
+- Reactive/Interrupt: "After Clash: [effect]." "Before Use: [effect]." "After Use: [effect]."
+
+If an effect is optional, it must explicitly say "may."
+
 ### Status effects, keywords, terms, roles
 
 - Use the shared link markup so `guide.js` can rewrite links:

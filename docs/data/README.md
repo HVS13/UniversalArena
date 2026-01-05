@@ -186,8 +186,11 @@ keywords:
   - id: keyword-evade
     name: Evade
     category: Combat
+    tier: Core
     description: "After Clash: If an Attack vs Defense clash would deal 0 Power damage after Shield, that Attack is not a hit. Reuse this card."
 ```
+
+`tier` is optional; use `Core` or `Advanced` to match the docs breakdown.
 
 ## Status effect schema (YAML)
 
