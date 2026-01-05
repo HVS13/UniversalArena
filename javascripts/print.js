@@ -113,6 +113,15 @@
       .replace(/"/g, '&quot;')
       .replace(/'/g, '&#39;');
 
+  const escapeXml = (value) =>
+    (value ?? '')
+      .toString()
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&apos;');
+
   const getSiteTitle = () => {
     const appName = document
       .querySelector('meta[name="application-name"]')
@@ -706,8 +715,12 @@
     return Array.from(unique);
   };
 
-  const normalizeCharacterMode = (options = {}) =>
-    options.characterMode === 'combined' ? 'combined' : 'split';
+  const normalizeCharacterMode = (options = {}) => {
+    const mode = (options.characterMode ?? '').toString().trim().toLowerCase();
+    if (mode === 'combined') return 'combined';
+    if (mode === 'xlsx') return 'xlsx';
+    return 'split';
+  };
 
   const getNormalizedPathname = (url) => {
     try {
@@ -786,6 +799,528 @@
     return parts.join('\n\n');
   };
 
+  const normalizeExportText = (value) => normalizeInlineText(value ?? '').trim();
+
+  const getSectionHeading = (root, headingText) => {
+    const target = normalizeExportText(headingText).toLowerCase();
+    return Array.from(root.querySelectorAll('h2')).find((heading) => {
+      const text = normalizeExportText(heading.textContent).toLowerCase();
+      return text === target;
+    });
+  };
+
+  const getSectionNodes = (heading) => {
+    const nodes = [];
+    if (!heading) return nodes;
+    let current = heading.nextElementSibling;
+    while (current) {
+      const tag = current.tagName?.toUpperCase?.();
+      if (tag === 'H1' || tag === 'H2') break;
+      nodes.push(current);
+      current = current.nextElementSibling;
+    }
+    return nodes;
+  };
+
+  const extractCharacterMeta = (root) => {
+    const meta = {};
+    const metaRoot = root.querySelector('.character-header .character-meta');
+    if (!metaRoot) return meta;
+    metaRoot.querySelectorAll('p').forEach((row) => {
+      const strong = row.querySelector('strong');
+      if (!strong) return;
+      const label = normalizeExportText(strong.textContent).replace(/:$/, '');
+      if (!label) return;
+      let value = normalizeExportText(row.textContent);
+      if (value.toLowerCase().startsWith(label.toLowerCase())) {
+        value = value.slice(label.length).trim();
+      }
+      if (value.startsWith(':')) value = value.slice(1).trim();
+      meta[label] = value;
+    });
+    return meta;
+  };
+
+  const extractInnates = (root) => {
+    const section = getSectionHeading(root, 'Innates');
+    const nodes = getSectionNodes(section);
+    return nodes
+      .filter((node) => node.classList?.contains?.('card-block'))
+      .map((block) => {
+        const title = normalizeExportText(
+          block.querySelector('.card-block__title')?.textContent
+        );
+        const paragraphs = Array.from(block.querySelectorAll('p')).filter(
+          (p) => !p.classList.contains('card-block__title')
+        );
+        const text = paragraphs
+          .map((p) => normalizeExportText(p.textContent))
+          .filter(Boolean)
+          .join('\n');
+        return { title, text };
+      })
+      .filter((entry) => entry.title || entry.text);
+  };
+
+  const extractStatusEffects = (root) => {
+    const section = getSectionHeading(root, 'Status Effects');
+    const nodes = getSectionNodes(section);
+    return nodes
+      .filter((node) => node.classList?.contains?.('ua-entry'))
+      .map((entry) => {
+        const title = normalizeExportText(
+          entry.querySelector('.ua-entry__title')?.textContent
+        );
+        const meta = {};
+        entry.querySelectorAll('.ua-entry__meta').forEach((row) => {
+          const pill = row.querySelector('.ua-pill');
+          if (!pill) return;
+          const label = normalizeExportText(pill.textContent);
+          if (!label) return;
+          let value = normalizeExportText(row.textContent);
+          if (value.toLowerCase().startsWith(label.toLowerCase())) {
+            value = value.slice(label.length).trim();
+          }
+          if (value.startsWith(':')) value = value.slice(1).trim();
+          meta[label] = value;
+        });
+        return { title, meta };
+      })
+      .filter((entry) => entry.title || Object.keys(entry.meta).length);
+  };
+
+  const extractCards = (root) => {
+    const section = getSectionHeading(root, 'Cards');
+    const nodes = getSectionNodes(section);
+    const cards = [];
+    nodes.forEach((node) => {
+      if (node.tagName?.toUpperCase?.() !== 'H3') return;
+      const headingText = normalizeExportText(node.textContent);
+      const cardBlock = node.nextElementSibling;
+      if (!cardBlock || !cardBlock.classList?.contains?.('card-block')) return;
+      const [labelPart, ...nameParts] = headingText.split(':');
+      const label = normalizeExportText(labelPart);
+      const name = normalizeExportText(nameParts.join(':'));
+      const meta = {};
+      cardBlock.querySelectorAll('.card-block__meta span').forEach((span) => {
+        const strong = span.querySelector('strong');
+        if (!strong) return;
+        const metaLabel = normalizeExportText(strong.textContent).replace(/:$/, '');
+        if (!metaLabel) return;
+        let value = normalizeExportText(span.textContent);
+        if (value.toLowerCase().startsWith(metaLabel.toLowerCase())) {
+          value = value.slice(metaLabel.length).trim();
+        }
+        if (value.startsWith(':')) value = value.slice(1).trim();
+        meta[metaLabel] = value;
+      });
+      const paragraphs = Array.from(cardBlock.querySelectorAll('p')).filter(
+        (p) =>
+          !p.classList.contains('card-block__heading') &&
+          !p.classList.contains('card-block__title')
+      );
+      const effect = paragraphs
+        .map((p) => normalizeExportText(p.textContent))
+        .filter(Boolean)
+        .join('\n');
+      cards.push({ label, name, meta, effect });
+    });
+    return cards;
+  };
+
+  const sortKeysByPriority = (keys, priority) => {
+    const normalized = new Map();
+    keys.forEach((key) => {
+      const trimmed = normalizeExportText(key);
+      if (!trimmed) return;
+      const lowered = trimmed.toLowerCase();
+      if (!normalized.has(lowered)) normalized.set(lowered, trimmed);
+    });
+    const ordered = [];
+    const used = new Set();
+    priority.forEach((key) => {
+      const lowered = key.toLowerCase();
+      if (normalized.has(lowered)) {
+        ordered.push(normalized.get(lowered));
+        used.add(lowered);
+      }
+    });
+    const remaining = Array.from(normalized.entries())
+      .filter(([lowered]) => !used.has(lowered))
+      .map(([, value]) => value)
+      .sort((a, b) => a.localeCompare(b));
+    return [...ordered, ...remaining];
+  };
+
+  const columnNumberToName = (column) => {
+    let index = column;
+    let name = '';
+    while (index > 0) {
+      const remainder = (index - 1) % 26;
+      name = String.fromCharCode(65 + remainder) + name;
+      index = Math.floor((index - 1) / 26);
+    }
+    return name || 'A';
+  };
+
+  const sanitizeSheetName = (name, usedNames) => {
+    const cleaned = (name ?? '')
+      .toString()
+      .trim()
+      .replace(/[\\/?*\[\]:]/g, '')
+      .slice(0, 31);
+    const baseName = cleaned || 'Sheet';
+    let candidate = baseName;
+    let counter = 2;
+    while (usedNames.has(candidate)) {
+      const suffix = ` ${counter}`;
+      const maxLength = Math.max(0, 31 - suffix.length);
+      candidate = `${baseName.slice(0, maxLength)}${suffix}`;
+      counter += 1;
+    }
+    usedNames.add(candidate);
+    return candidate;
+  };
+
+  const buildWorksheetXml = (rows, getSharedStringIndex) => {
+    const rowXml = rows
+      .map((row, rowIndex) => {
+        const cells = (row ?? []).map((value, colIndex) => {
+          if (value === null || value === undefined || value === '') return '';
+          const cellRef = `${columnNumberToName(colIndex + 1)}${rowIndex + 1}`;
+          const index = getSharedStringIndex(String(value));
+          return `<c r="${cellRef}" t="s"><v>${index}</v></c>`;
+        });
+        return `<row r="${rowIndex + 1}">${cells.join('')}</row>`;
+      })
+      .join('');
+    const rowCount = Math.max(rows.length, 1);
+    const columnCount = Math.max(
+      rows.reduce((max, row) => Math.max(max, (row ?? []).length), 1),
+      1
+    );
+    const dimension = `A1:${columnNumberToName(columnCount)}${rowCount}`;
+    const sheetViews =
+      rowCount > 1
+        ? '<sheetViews><sheetView workbookViewId="0"><pane ySplit="1" topLeftCell="A2" activePane="bottomLeft" state="frozen"/></sheetView></sheetViews>'
+        : '<sheetViews><sheetView workbookViewId="0"/></sheetViews>';
+    return `<?xml version="1.0" encoding="UTF-8"?>
+<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
+  <dimension ref="${dimension}"/>
+  ${sheetViews}
+  <sheetFormatPr defaultRowHeight="15"/>
+  <sheetData>${rowXml}</sheetData>
+</worksheet>`;
+  };
+
+  const buildWorkbookXml = (sheets) => {
+    const sheetXml = sheets
+      .map(
+        (sheet, index) =>
+          `<sheet name="${escapeXml(sheet.name)}" sheetId="${index + 1}" r:id="rId${
+            index + 1
+          }"/>`
+      )
+      .join('');
+    return `<?xml version="1.0" encoding="UTF-8"?>
+<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
+  <sheets>${sheetXml}</sheets>
+</workbook>`;
+  };
+
+  const buildWorkbookRelsXml = (sheetCount) => {
+    const sheetRels = Array.from({ length: sheetCount }, (_, index) => {
+      const id = index + 1;
+      return `<Relationship Id="rId${id}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet${id}.xml"/>`;
+    }).join('');
+    const sharedId = sheetCount + 1;
+    const stylesId = sheetCount + 2;
+    return `<?xml version="1.0" encoding="UTF-8"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  ${sheetRels}
+  <Relationship Id="rId${sharedId}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/sharedStrings" Target="sharedStrings.xml"/>
+  <Relationship Id="rId${stylesId}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/>
+</Relationships>`;
+  };
+
+  const buildContentTypesXml = (sheetCount) => {
+    const sheetOverrides = Array.from({ length: sheetCount }, (_, index) => {
+      const id = index + 1;
+      return `<Override PartName="/xl/worksheets/sheet${id}.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>`;
+    }).join('');
+    return `<?xml version="1.0" encoding="UTF-8"?>
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
+  <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
+  <Default Extension="xml" ContentType="application/xml"/>
+  <Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/>
+  ${sheetOverrides}
+  <Override PartName="/xl/sharedStrings.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sharedStrings+xml"/>
+  <Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/>
+</Types>`;
+  };
+
+  const buildSharedStringsXml = (strings, count) => {
+    const items = strings
+      .map((value) => `<si><t xml:space="preserve">${escapeXml(value)}</t></si>`)
+      .join('');
+    return `<?xml version="1.0" encoding="UTF-8"?>
+<sst xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" count="${count}" uniqueCount="${strings.length}">
+  ${items}
+</sst>`;
+  };
+
+  const buildStylesXml = () => `<?xml version="1.0" encoding="UTF-8"?>
+<styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
+  <fonts count="1">
+    <font>
+      <sz val="11"/>
+      <color theme="1"/>
+      <name val="Calibri"/>
+      <family val="2"/>
+    </font>
+  </fonts>
+  <fills count="1">
+    <fill>
+      <patternFill patternType="none"/>
+    </fill>
+  </fills>
+  <borders count="1">
+    <border>
+      <left/>
+      <right/>
+      <top/>
+      <bottom/>
+      <diagonal/>
+    </border>
+  </borders>
+  <cellStyleXfs count="1">
+    <xf numFmtId="0" fontId="0" fillId="0" borderId="0"/>
+  </cellStyleXfs>
+  <cellXfs count="1">
+    <xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/>
+  </cellXfs>
+  <cellStyles count="1">
+    <cellStyle name="Normal" xfId="0" builtinId="0"/>
+  </cellStyles>
+</styleSheet>`;
+
+  const buildCharacterWorkbookData = (characterPages) => {
+    const characterRows = [];
+    const innateRows = [];
+    const statusRows = [];
+    const cardRows = [];
+    const characterMetaKeys = new Set();
+    const statusMetaKeys = new Set();
+    const cardMetaKeys = new Set();
+
+    characterPages.forEach((page) => {
+      const root = page.root;
+      if (!root) return;
+      const displayName = normalizeExportText(page.title);
+      const meta = extractCharacterMeta(root);
+      Object.keys(meta).forEach((key) => characterMetaKeys.add(key));
+      const name = meta.Name || '';
+      const version = meta.Version || '';
+
+      characterRows.push({ displayName, meta });
+
+      extractInnates(root).forEach((innate) => {
+        innateRows.push([displayName, name, version, innate.title || '', innate.text || '']);
+      });
+
+      extractStatusEffects(root).forEach((status) => {
+        Object.keys(status.meta).forEach((key) => statusMetaKeys.add(key));
+        statusRows.push({
+          displayName,
+          name,
+          version,
+          title: status.title || '',
+          meta: status.meta || {},
+        });
+      });
+
+      extractCards(root).forEach((card) => {
+        Object.keys(card.meta).forEach((key) => cardMetaKeys.add(key));
+        cardRows.push({
+          displayName,
+          name,
+          version,
+          label: card.label || '',
+          cardName: card.name || '',
+          meta: card.meta || {},
+          effect: card.effect || '',
+        });
+      });
+    });
+
+    ['Name', 'Version', 'Origin', 'Roles', 'Difficulty', 'Gameplan'].forEach((key) =>
+      characterMetaKeys.add(key)
+    );
+
+    const characterMetaOrder = sortKeysByPriority(characterMetaKeys, [
+      'Name',
+      'Version',
+      'Origin',
+      'Roles',
+      'Difficulty',
+      'Gameplan',
+    ]);
+
+    const characterHeader = ['Character', ...characterMetaOrder];
+
+    const characterData = characterRows.map((entry) => [
+      entry.displayName,
+      ...characterMetaOrder.map((key) => entry.meta[key] || ''),
+    ]);
+
+    const statusMetaOrder = sortKeysByPriority(statusMetaKeys, [
+      'Type',
+      'Potency',
+      'Count',
+      'Max Value',
+      'Max Stack',
+      'Max Stacks',
+      'Value',
+      'Stack',
+      'Stacks',
+      'Effect',
+      'Turn Start',
+      'Turn End',
+      'Trigger',
+      'Expiry',
+      'Duration',
+    ]);
+
+    const cardMetaOrder = sortKeysByPriority(cardMetaKeys, [
+      'Cost',
+      'Power',
+      'Type',
+      'Target',
+      'Speed',
+    ]);
+
+    const statusHeader = [
+      'Character',
+      'Name',
+      'Version',
+      'Status',
+      ...statusMetaOrder,
+    ];
+
+    const statusData = statusRows.map((entry) => [
+      entry.displayName,
+      entry.name,
+      entry.version,
+      entry.title,
+      ...statusMetaOrder.map((key) => entry.meta[key] || ''),
+    ]);
+
+    const cardHeader = [
+      'Character',
+      'Name',
+      'Version',
+      'Card',
+      'Card Name',
+      ...cardMetaOrder,
+      'Effect',
+    ];
+
+    const cardData = cardRows.map((entry) => [
+      entry.displayName,
+      entry.name,
+      entry.version,
+      entry.label,
+      entry.cardName,
+      ...cardMetaOrder.map((key) => entry.meta[key] || ''),
+      entry.effect,
+    ]);
+
+    const sheets = [
+      {
+        name: 'Characters',
+        rows: [characterHeader, ...characterData],
+      },
+      {
+        name: 'Innates',
+        rows: [['Character', 'Name', 'Version', 'Innate', 'Text'], ...innateRows],
+      },
+      {
+        name: 'Status Effects',
+        rows: [statusHeader, ...statusData],
+      },
+      {
+        name: 'Cards',
+        rows: [cardHeader, ...cardData],
+      },
+    ];
+
+    return { sheets };
+  };
+
+  const buildCharactersXlsx = async (characterPages) => {
+    if (!characterPages.length) return null;
+    const { sheets } = buildCharacterWorkbookData(characterPages);
+    if (!sheets.length) return null;
+    const usedSheetNames = new Set();
+    const sheetInfos = sheets.map((sheet) => ({
+      name: sanitizeSheetName(sheet.name, usedSheetNames),
+      rows: sheet.rows,
+    }));
+    const sharedStrings = [];
+    const sharedIndex = new Map();
+    let sharedCount = 0;
+
+    const getSharedStringIndex = (value) => {
+      sharedCount += 1;
+      const key = value ?? '';
+      if (sharedIndex.has(key)) return sharedIndex.get(key);
+      const index = sharedStrings.length;
+      sharedStrings.push(key);
+      sharedIndex.set(key, index);
+      return index;
+    };
+
+    const sheetFiles = sheetInfos.map((sheet, index) => ({
+      name: `xl/worksheets/sheet${index + 1}.xml`,
+      content: buildWorksheetXml(sheet.rows, getSharedStringIndex),
+    }));
+
+    const files = [
+      {
+        name: '[Content_Types].xml',
+        content: buildContentTypesXml(sheetInfos.length),
+      },
+      {
+        name: '_rels/.rels',
+        content: `<?xml version="1.0" encoding="UTF-8"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/>
+</Relationships>`,
+      },
+      {
+        name: 'xl/workbook.xml',
+        content: buildWorkbookXml(sheetInfos),
+      },
+      {
+        name: 'xl/_rels/workbook.xml.rels',
+        content: buildWorkbookRelsXml(sheetInfos.length),
+      },
+      {
+        name: 'xl/sharedStrings.xml',
+        content: buildSharedStringsXml(sharedStrings, sharedCount),
+      },
+      {
+        name: 'xl/styles.xml',
+        content: buildStylesXml(),
+      },
+      ...sheetFiles,
+    ];
+
+    const workbookBlob = buildZip(files);
+    const workbookBuffer = await workbookBlob.arrayBuffer();
+    return new Uint8Array(workbookBuffer);
+  };
+
   const exportPageText = () => {
     const root = cloneContentRoot();
     if (!root) return;
@@ -850,7 +1385,7 @@
     };
 
     const pagesToExport =
-      characterMode === 'combined'
+      characterMode === 'combined' || characterMode === 'xlsx'
         ? [...otherPages, ...excludedCharacterPages]
         : pages;
     pagesToExport.forEach((page, index) => addPageFiles(page, index));
@@ -878,6 +1413,22 @@
       if (formatSet.has('html')) {
         const html = buildPrintHtml(combinedCharacterPages, combinedTitle);
         files.push({ name: `html/${combinedBaseName}.html`, content: html });
+      }
+    }
+
+    if (characterMode === 'xlsx' && combinedCharacterPages.length) {
+      const workbookTitle = 'All Characters';
+      const workbookBaseName = buildPageBaseName(
+        { title: workbookTitle },
+        usedNames.size,
+        usedNames
+      );
+      const workbookData = await buildCharactersXlsx(combinedCharacterPages);
+      if (workbookData) {
+        files.push({
+          name: `xlsx/${workbookBaseName}.xlsx`,
+          content: workbookData,
+        });
       }
     }
 
@@ -988,9 +1539,12 @@
         setButtonBusy(submitButton, true);
 
         try {
+          let normalizedCharacterMode = 'split';
+          if (characterMode === 'combined') normalizedCharacterMode = 'combined';
+          if (characterMode === 'xlsx') normalizedCharacterMode = 'xlsx';
           await exportSiteArchive({
             format,
-            characterMode: characterMode === 'combined' ? 'combined' : 'split',
+            characterMode: normalizedCharacterMode,
           });
           closeExportPanel();
         } finally {
