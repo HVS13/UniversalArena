@@ -29,7 +29,7 @@ Use the repo's documented markup patterns to keep content consistent, linkable, 
 15. If a card references remaining Multihit Count, make sure the base count is explicit in the card text or defined by the Multihit rules.
 16. Keep `site/` untouched; it is build output.
 17. This repo is docs-only; do not add game pages or game JS/CSS here (game lives in `C:\Git\UniversalArena-Web`).
-18. Export actions (page PDF/MD/TXT + all-pages ZIP with format/character-combine options and `html/`, `md/`, `txt/`) live in `docs/overrides/main.html` and `docs/javascripts/print.js`; keep exports free of permalinks, URLs, and images when editing them.
+18. Export actions (page PDF/MD/TXT + all-pages ZIP with format/character-combine/XLSX options and `html/`, `md/`, `txt/`, `xlsx/`) live in `docs/overrides/main.html` and `docs/javascripts/print.js`; keep exports free of permalinks, URLs, and images when editing them.
 19. Run `mkdocs build --strict` or `mkdocs serve` when asked to validate.
 
 ## References

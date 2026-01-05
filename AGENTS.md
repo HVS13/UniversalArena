@@ -26,7 +26,7 @@ Project rules
 - Ensure Potency/Count/Value/Stack caps align with what the kit can reach, including edge cases.
 - Prioritize lore-accurate, synergistic, and fun character kits over balance.
 - Follow `docs/characters/character-creation-guide.md` for power budgeting (including variable/0-cost handling); document character-specific exceptions there, not on character pages.
-- Export actions (page PDF/MD/TXT + all-pages ZIP with format/character-combine options and `html/`, `md/`, `txt/`) live in `docs/overrides/main.html` and `docs/javascripts/print.js`; keep exports free of permalinks, URLs, and images.
+- Export actions (page PDF/MD/TXT + all-pages ZIP with format/character-combine/XLSX options and `html/`, `md/`, `txt/`, `xlsx/`) live in `docs/overrides/main.html` and `docs/javascripts/print.js`; keep exports free of permalinks, URLs, and images.
 - Do not add game pages or game assets to this repo unless explicitly requested.
 - Game client changes live in `C:\Git\UniversalArena-Web`; relay server changes live in `server/index.js`.
 
