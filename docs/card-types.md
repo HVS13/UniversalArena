@@ -131,6 +131,12 @@ Use this ordering when listing Type tags on cards:
   <p class="ua-entry__desc">A card that affects the main target and its adjacent neighbors.</p>
 </div>
 
+<div class="ua-entry card-type-entry" id="card-type-bounce">
+  <p class="ua-entry__title">Bounce</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Category</span> Area.</p>
+  <p class="ua-entry__desc">A card that affects the main target and a random adjacent character. Use <a class="ua-keyword-link" data-keyword="keyword-bounce" href="#">Bounce X</a> to repeat the random adjacent effect.</p>
+</div>
+
 ### Attack Tag
 
 <div class="ua-entry card-type-entry" id="card-type-slash">

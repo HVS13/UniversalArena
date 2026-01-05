@@ -11,7 +11,7 @@ This page explains what status effects are and how their values work.
     - **Single-value mode:** one value is typically called Count, Stack, or Value.
     - **Double-value mode:** two values (Potency + Count). Generally, Potency determines strength, while Count determines duration.
 
-    Trigger labels like "Turn Start," "Turn End," "On Gain," and "Allies' Card Played" describe when the effect happens. "On Gain" triggers immediately when the status is gained, even during Combat. "Allies' Card Played" triggers whenever any ally (including the user) plays a card.
+    Trigger labels like "Turn Start," "Turn End," "On Gain," "On Hit," "On Damage," "On HP Damage," and "Allies' Card Played" describe when the effect happens. "On Gain" triggers immediately when the status is gained, even during Combat. "Allies' Card Played" triggers whenever any ally (including the user) plays a card.
 
     "Next Turn Start" means the next time that unit reaches Turn Start, even if the status that created the trigger has expired. If an effect says "When this expires: At your next Turn Start, ...", it creates a delayed trigger that resolves at that next Turn Start.
 
@@ -126,7 +126,7 @@ Use the filter to quickly locate a mode, rule, or attribute.
   <p class="ua-entry__title">Stagnate</p>
   <p class="ua-entry__meta"><span class="ua-pill">Type</span> Negative.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Max Value</span> 10.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Instant</span> Increase the Energy cost of a random card in hand by 1 until that card is used. Repeat <strong>Value</strong> times. Expires.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">On Gain</span> Increase the Energy cost of a random card in hand by 1 until that card is used. Repeat <strong>Value</strong> times. Expires.</p>
 </div>
 
 <div class="ua-entry status-entry" id="status-stun">
@@ -199,5 +199,62 @@ Use the filter to quickly locate a mode, rule, or attribute.
   <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 999.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Increase Attack Power by 10% times Potency.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
+</div>
+
+<div class="ua-entry status-entry" id="status-barrier">
+  <p class="ua-entry__title">Barrier</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Positive.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Max Value</span> 99.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Damage is applied to Shield first, then Barrier, then HP. Reduce <strong>Value</strong> by the damage it absorbs.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Value</strong> by 1.</p>
+</div>
+
+<div class="ua-entry status-entry" id="status-invulnerable">
+  <p class="ua-entry__title">Invulnerable</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Positive.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Max Value</span> 99.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> All damage becomes 0 before Shield, Barrier, and HP. Attacks against you still count as hits.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Value</strong> by 1.</p>
+</div>
+
+<div class="ua-entry status-entry" id="status-regen">
+  <p class="ua-entry__title">Regen</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Positive.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 999.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Heal HP equal to <strong>Potency</strong>. Then reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
+</div>
+
+<div class="ua-entry status-entry" id="status-renewal">
+  <p class="ua-entry__title">Renewal</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Positive.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 999.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Heal HP equal to <strong>Potency</strong>% of max HP. Then reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
+</div>
+
+<div class="ua-entry status-entry" id="status-redirect">
+  <p class="ua-entry__title">Redirect</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Positive.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Max Value</span> 99.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Before Use</span> When a single-target Attack targets an ally, change the target to this character if able and reduce <strong>Value</strong> by 1. Redirect (Adjacent) only applies to adjacent allies; Redirect (All) applies to any ally. Only one Redirect can apply per card use; if multiple apply, the defending player chooses. Redirect does not affect AoE, Splash, Bounce, or random targeting.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Expires.</p>
+</div>
+
+<div class="ua-entry status-entry" id="status-taunt">
+  <p class="ua-entry__title">Taunt</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Positive.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Max Stack</span> 99.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Effect</span> Enemies must choose this character as the target for any single-target enemy effect if able. This does not affect AoE, Splash, Bounce, or random targeting. If multiple enemies have Taunt, choose among them.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Stack</strong> by <strong>Halve</strong>.</p>
+</div>
+
+<div class="ua-entry status-entry" id="status-thorns">
+  <p class="ua-entry__title">Thorns</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Type</span> Positive.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 999.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">On Hit</span> When you are hit by an Attack, deal <strong>Potency</strong> damage to the attacker.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
 </div>

@@ -47,9 +47,19 @@ This page collects frequently asked questions about Universal Arena.
 ??? question "How does Evade work against Shield in an Attack vs Defense clash?"
     In an Attack vs Defense clash, resolve Defense first to gain <a class="ua-term-link" data-term="term-shield" href="#">Shield</a>, then resolve the Attack. <a class="ua-keyword-link" data-keyword="keyword-evade" href="#">Evade</a> checks after Shield: if the Attack would deal 0 Power damage after Shield, it is not a hit and you <a class="ua-keyword-link" data-keyword="keyword-reuse" href="#">Reuse</a> the Defense card. If any Power damage gets through Shield, the Attack is a hit and Evade does not apply. Example: Defense rolls 10 Shield and the Attack rolls 10 or less, Evade triggers; if the Attack rolls 11+, Evade does not.
 
+<a id="faq-damage-resolution"></a>
+??? question "What is the damage resolution order?"
+    Apply damage in this order: roll Power and apply Power modifiers, apply Immune, apply percent damage modifiers (Fortified/Vulnerable), apply Shield, apply Barrier, apply flat HP modifiers (Resist/Weakness/Absorb), then deal remaining damage to HP.
+    Example: An Attack rolls 20. Fortified 1 reduces it to 18. Shield 5 reduces it to 13. Barrier 3 reduces it to 10. Resist 2 reduces it to 8 HP damage.
+
+<a id="faq-hit-vs-damage"></a>
+??? question "What's the difference between On Hit, On Damage, and On HP Damage?"
+    On Hit triggers when an Attack is a hit, even if it deals 0 damage. On Damage triggers only if damage greater than 0 is dealt to Shield, Barrier, or HP. On HP Damage triggers only if HP is reduced by damage.
+    Example: If an Attack is Immune, On Hit triggers but On Damage and On HP Damage do not. If Shield absorbs all damage, On Hit and On Damage trigger but On HP Damage does not.
+
 ??? question "How do multiple damage types interact with Resist, Weakness, and Absorb?"
-    A card counts as all listed damage types and attack tags. If a modifier lists multiple types or tags, it applies once when any match; separate modifiers stack. For flat/percentage formats, calculate both and use the higher value, then apply after Shield. If any matching Immune applies, damage becomes 0.
-    Example: A Magical + Blunt attack deals 20 damage after Shield. The target has Resist 5 (Blunt) and Absorb 30% (Magical). Resist reduces 5, Absorb reduces 6 and heals 6. Final damage is 9.
+    A card counts as all listed damage types and attack tags. If a modifier lists multiple types or tags, it applies once when any match; separate modifiers stack. For flat/percentage formats, calculate both and use the higher value, then apply after percent modifiers, Shield, and Barrier. If any matching Immune applies, damage becomes 0 before modifiers.
+    Example: A Magical + Blunt attack deals 20 damage after Shield and Barrier. The target has Resist 5 (Blunt) and Absorb 30% (Magical). Resist reduces 5, Absorb reduces 6 and heals 6. Final damage is 9.
 
 ??? question "How do Created cards enter play?"
     The effect that creates the card tells you where it goes (hand, draw pile, discard pile, or play). If it does not specify, add it to the discard pile.

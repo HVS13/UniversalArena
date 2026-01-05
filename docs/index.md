@@ -2,7 +2,7 @@
 
 This site outlines the structure and references for Universal Arena. Add your own content as you grow the guide.
 
-<p class="ua-last-updated">Last updated: <time datetime="2026-01-04T01:51">2026-01-04 01:51</time></p>
+<p class="ua-last-updated">Last updated: <time datetime="2026-01-05T10:30">2026-01-05 10:30</time></p>
 
 ## Introduction
 
@@ -32,7 +32,7 @@ Reduce all opposing characters' HP to 0 (or meet the scenario's win condition, i
    3. Slow Zone: This is where you play your fast, normal, or slow cards.
 
 > In each zone, cards are placed from **left to right** as they are played.
-> Characters are arranged left to right in a single row; adjacent means the immediate left or right neighbor.
+> Each team has its own line arranged left to right; adjacent means the immediate left or right neighbor on the same team line.
 
 ## Preparation
 

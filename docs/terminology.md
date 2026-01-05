@@ -66,6 +66,18 @@ This page is the reference glossary for game terms. Use the filter to quickly lo
       <td>On Gain</td>
       <td>A status effect timing label that resolves immediately when the status is gained, even mid-turn. See <a href="faq.md#faq-on-gain">FAQ</a>.</td>
     </tr>
+    <tr id="term-on-hit" class="term-entry">
+      <td>On Hit</td>
+      <td>A timing label that resolves when an Attack is a hit, even if it deals 0 damage. See <a href="faq.md#faq-hit-vs-damage">FAQ</a>.</td>
+    </tr>
+    <tr id="term-on-damage" class="term-entry">
+      <td>On Damage</td>
+      <td>A timing label that resolves when damage is actually dealt after mitigation, whether to Shield, Barrier, or HP. Damage must be greater than 0. See <a href="faq.md#faq-hit-vs-damage">FAQ</a>.</td>
+    </tr>
+    <tr id="term-on-hp-damage" class="term-entry">
+      <td>On HP Damage</td>
+      <td>A timing label that resolves when HP is reduced by damage after mitigation. See <a href="faq.md#faq-hit-vs-damage">FAQ</a>.</td>
+    </tr>
     <tr class="term-section">
       <th colspan="2">Card Flow</th>
     </tr>
@@ -142,6 +154,14 @@ This page is the reference glossary for game terms. Use the filter to quickly lo
       <td>Hit</td>
       <td>An Attack that is used is a hit unless a rule or effect prevents it (example: Evade). See <a href="faq.md#faq-evade-shield">FAQ</a> for an Evade timing example.</td>
     </tr>
+    <tr id="term-damage" class="term-entry">
+      <td>Damage</td>
+      <td>Damage reduces Shield, Barrier, or HP. Effects that say "Lose HP" are not damage.</td>
+    </tr>
+    <tr id="term-damage-resolution" class="term-entry">
+      <td>Damage Resolution</td>
+      <td>Apply damage in this order: roll Power and apply Power modifiers, apply Immune, apply percent damage modifiers (Fortified/Vulnerable), apply Shield, apply Barrier, apply flat HP modifiers (Resist/Weakness/Absorb), then deal remaining damage to HP. See <a href="faq.md#faq-damage-resolution">FAQ</a>.</td>
+    </tr>
     <tr id="term-damage-types" class="term-entry">
       <td>Damage Types &amp; Attack Tags</td>
       <td>Cards can list multiple Damage Types (Physical, Magical, Mental, Electric) and Attack Tags (Slash, Pierce, Blunt, Multihit). A card counts as all listed types and tags for matching. If a single modifier lists multiple types or tags, it applies once when any match; separate modifiers stack.</td>
@@ -169,6 +189,10 @@ This page is the reference glossary for game terms. Use the filter to quickly lo
       <td>Shield</td>
       <td>Temporary protection that soaks damage before HP. At Turn End, remove all Shield.</td>
     </tr>
+    <tr id="term-barrier" class="term-entry">
+      <td>Barrier</td>
+      <td>A persistent damage buffer from the <a class="ua-status-link" data-status="status-barrier" href="#">Barrier</a> status effect that absorbs damage after Shield and before HP.</td>
+    </tr>
     <tr class="term-section">
       <th colspan="2">Targeting</th>
     </tr>
@@ -194,7 +218,11 @@ This page is the reference glossary for game terms. Use the filter to quickly lo
     </tr>
     <tr id="term-adjacent" class="term-entry">
       <td>Adjacent</td>
-      <td>Characters are arranged left to right in a single row. Adjacent means the immediate left or right neighbor of the target.</td>
+      <td>Each team has its own line arranged left to right. Adjacent means the immediate left or right neighbor of the target on the same team line.</td>
+    </tr>
+    <tr id="term-opposed" class="term-entry">
+      <td>Opposed</td>
+      <td>Characters are opposed if they are in the same column on opposing team lines.</td>
     </tr>
     <tr class="term-section">
       <th colspan="2">Area</th>
@@ -205,7 +233,7 @@ This page is the reference glossary for game terms. Use the filter to quickly lo
     </tr>
     <tr id="term-bounce" class="term-entry">
       <td>Bounce</td>
-      <td>A random adjacent character to the main target will also take the effect.</td>
+      <td>A card with the Bounce area tag affects the main target and a random adjacent character. See <a class="ua-keyword-link" data-keyword="keyword-bounce" href="#">Bounce X</a> for repeats.</td>
     </tr>
     <tr id="term-splash" class="term-entry">
       <td>Splash</td>
