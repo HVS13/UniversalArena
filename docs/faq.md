@@ -36,6 +36,15 @@ This page collects frequently asked questions about Universal Arena.
 ??? question "What is a Combat Round and the Active Zone?"
     A Combat Round starts when the initiative player plays a card. The zone they choose becomes the Active Zone. Players can only add cards to the Active Zone (or a faster zone) until both pass, then the Active Zone resolves right to left.
 
+<a id="faq-movement-round"></a>
+??? question "How does the Movement Round work?"
+    During the <a class="ua-term-link" data-term="term-movement-round" href="#">Movement Round</a>, players alternate priority. On your priority, you may spend 1 Energy to swap two adjacent allies or Pass. Movement swaps are not card plays and do not grant Ultimate Meter. If a swap would include a rooted character, the swap fails but the Energy is still spent. The round ends when both players pass consecutively. Rooted characters cannot be moved or swapped.
+
+<a id="faq-healing-reduction"></a>
+??? question "How do Wound and Wither reduce healing?"
+    Determine the healing amount, then reduce it by <a class="ua-status-link" data-status="status-wither" href="#">Wither</a> (percent) and <a class="ua-status-link" data-status="status-wound" href="#">Wound</a> (flat) before applying it. If both apply, reduce by both, then clamp the healing to a minimum of 0.
+    Example: You would heal 12 HP with Wither 10 and Wound 3. Wither reduces the heal by 1 (10% of 12), Wound reduces it by 3, so you heal 8 total.
+
 ??? question "Where can I play a card based on Speed?"
     Fast cards can be played in any zone, Normal cards in the Normal or Slow Zone, and Slow cards only in the Slow Zone. A faster zone can interrupt a slower Active Zone.
 

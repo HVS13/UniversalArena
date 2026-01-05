@@ -196,7 +196,7 @@ statusEffects:
   - id: status-bleed
     name: Bleed
     type: Negative
-    potencyMax: 999
+    potencyMax: 10
     countMax: 99
     rules:
       - timing: "Allies' Card Played"

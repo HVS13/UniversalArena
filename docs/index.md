@@ -2,7 +2,7 @@
 
 This site outlines the structure and references for Universal Arena. Add your own content as you grow the guide.
 
-<p class="ua-last-updated">Last updated: <time datetime="2026-01-05T11:04">2026-01-05 11:04</time></p>
+<p class="ua-last-updated">Last updated: <time datetime="2026-01-05T14:57">2026-01-05 14:57</time></p>
 
 ## Introduction
 
@@ -13,10 +13,11 @@ This guide summarizes core systems and links to the detailed reference pages for
 1. Each player chooses 3 characters (no duplicate Name + Version on the same team).
 2. Take each character's 5 cards (2 Basic + 3 Technique), shuffle them into one draw pile, and keep each Ultimate card outside the draw pile.
 3. Turn Start: draw to 5 cards, then set Energy to 5.
-4. The player with initiative starts a Combat Round by playing a card into a legal zone (Fast/Normal/Slow).
-5. Players alternate playing or passing; faster cards can interrupt slower zones.
-6. When both players pass, resolve the Active Zone right to left, then continue until all zones are empty.
-7. The initiative player may start another Combat Round or end the turn; at Turn End, discard all remaining cards.
+4. Movement Round: players alternate. On your priority, spend 1 Energy to swap two adjacent allies or pass. Movement swaps are not card plays and do not grant Ultimate Meter. The round ends when both players pass consecutively.
+5. The player with initiative starts a Combat Round by playing a card into a legal zone (Fast/Normal/Slow).
+6. Players alternate playing or passing; faster cards can interrupt slower zones.
+7. When both players pass, resolve the Active Zone right to left, then continue until all zones are empty.
+8. The initiative player may start another Combat Round or end the turn; at Turn End, discard all remaining cards.
 
 ## Win Conditions
 
@@ -43,12 +44,13 @@ Reduce all opposing characters' HP to 0 (or meet the scenario's win condition, i
 
 ## How To Play
 
-1. Play is divided into 3 phases: Turn Start, Combat, Turn End.
+1. Play is divided into 4 phases: Turn Start, Movement, Combat, Turn End.
 2. At Turn Start, both players simultaneously draw until they have a hand size of 5, modified by draw effects (if any), then set Energy to 5 unless modified.
-3. At Combat Start, the player with initiative plays a card to initiate a Combat Round.
-4. During Combat, players play cards and clash. Combat Rounds can repeat.
-5. A Combat Round ends when there are no cards on any zone. The player with initiative may start another Combat Round or end their turn.
-6. At Turn End, all players discard all remaining cards, then initiative passes to the next player.
+3. During the Movement Round, players alternate priority. On your priority, spend 1 Energy to swap two adjacent allies or Pass. Movement swaps are not card plays and do not grant Ultimate Meter. The round ends when both players pass consecutively.
+4. At Combat Start, the player with initiative plays a card to initiate a Combat Round.
+5. During Combat, players play cards and clash. Combat Rounds can repeat.
+6. A Combat Round ends when there are no cards on any zone. The player with initiative may start another Combat Round or end their turn.
+7. At Turn End, all players discard all remaining cards, then initiative passes to the next player.
 
 ## Playing Cards
 
@@ -56,6 +58,15 @@ Reduce all opposing characters' HP to 0 (or meet the scenario's win condition, i
 2. Any card played in any zone stays in that zone until it is used, then it is discarded.
 3. For each card played, your team gains Ultimate Meter equal to the Energy spent to play the card.
 4. If a card's speed is modified, treat it as its current speed for where it can be played.
+
+## Movement Round
+
+1. The Movement Round happens after Turn Start and before Combat.
+2. The player with initiative has priority first.
+3. On your priority, you may spend 1 Energy to swap two adjacent allied characters or Pass. Movement swaps are not card plays and do not grant Ultimate Meter.
+4. If a swap would include a rooted character, the swap fails but the Energy is still spent.
+5. Priority alternates back and forth until both players pass consecutively, then the Movement Round ends.
+6. Rooted characters cannot be moved or swapped.
 
 ## How To Combat
 
@@ -89,16 +100,17 @@ Example:
 
 This is a single annotated combat round from initiative through resolution.
 
-1. Initiative: Player A has initiative and starts a Combat Round by playing a Normal attack targeting Player B in the Normal Zone. The Normal Zone becomes the Active Zone.
-2. Player B responds by playing a Normal defense in the Normal Zone.
-3. Player A adds another Normal attack to the same zone.
-4. Player B interrupts by playing a Fast attack in the Fast Zone. The Fast Zone becomes the Active Zone and the Normal Zone pauses.
-5. Player A plays a Fast defense in the Fast Zone.
-6. Player B passes. Priority returns to Player A, who passes. The Fast Zone resolves.
-7. Fast Zone resolution (right to left): Player A's defense and Player B's attack clash (Attack vs Defense). Use the defense (gain shield), then use the attack (it is a hit). Discard both cards.
-8. Return to the paused Normal Zone. Priority is with Player B, who passes. Player A passes, so the Normal Zone resolves.
-9. Normal Zone resolution (right to left): Player A's most recent attack clashes with Player B's defense (Attack vs Defense). Use the defense, then the attack. The earlier attack has no card to its left, so it is used unopposed.
-10. All zones are empty, so the Combat Round ends. Player A may start another Combat Round or end their turn.
+1. Initiative: Player A has initiative. Both players pass in the Movement Round.
+2. Player A starts a Combat Round by playing a Normal attack targeting Player B in the Normal Zone. The Normal Zone becomes the Active Zone.
+3. Player B responds by playing a Normal defense in the Normal Zone.
+4. Player A adds another Normal attack to the same zone.
+5. Player B interrupts by playing a Fast attack in the Fast Zone. The Fast Zone becomes the Active Zone and the Normal Zone pauses.
+6. Player A plays a Fast defense in the Fast Zone.
+7. Player B passes. Priority returns to Player A, who passes. The Fast Zone resolves.
+8. Fast Zone resolution (right to left): Player A's defense and Player B's attack clash (Attack vs Defense). Use the defense (gain shield), then use the attack (it is a hit). Discard both cards.
+9. Return to the paused Normal Zone. Priority is with Player B, who passes. Player A passes, so the Normal Zone resolves.
+10. Normal Zone resolution (right to left): Player A's most recent attack clashes with Player B's defense (Attack vs Defense). Use the defense, then the attack. The earlier attack has no card to its left, so it is used unopposed.
+11. All zones are empty, so the Combat Round ends. Player A may start another Combat Round or end their turn.
 
 ## Card Use and Timing
 
@@ -127,7 +139,7 @@ If multiple effects trigger at the same timing, apply them in the order they are
 3. Use the Power Roll only for damage dealt, shield gained, and HP recovered. Other numeric effects use their written values unless the effect uses another value (example: X). Costs and requirements stay as written.
 4. Special cards have Power: - and do not roll Power.
 5. Roll Power each time a card is used. Multihit and Reuse roll again for each hit or reuse.
-6. All Power calculations round down and do not clamp the minimum.
+6. All Power calculations round down and clamp the minimum at 0.
 
 ## How To Clash
 

@@ -27,6 +27,10 @@ terms:
     id: term-initiative
     name: Initiative
     definition: "Determines who takes the first action at Combat Start each turn."
+  - section: Turn Structure
+    id: term-movement-round
+    name: Movement Round
+    definition: "A phase after Turn Start where players alternate priority to spend 1 Energy to swap two adjacent allied characters or pass. Movement swaps are not card plays and do not grant Ultimate Meter. The round ends when both players pass consecutively. Rooted characters cannot be moved or swapped. See FAQ: faq.md#faq-movement-round."
   - section: Rules
     id: term-rule-priority
     name: Rule Priority
@@ -106,7 +110,7 @@ terms:
   - section: Combat
     id: term-priority
     name: Priority
-    definition: "The right to act next during Combat. Priority passes after each play or pass."
+    definition: "The right to act next during Combat or the Movement Round. Priority passes after each play, swap, or pass."
   - section: Combat
     id: term-hit
     name: Hit
@@ -115,6 +119,10 @@ terms:
     id: term-damage
     name: Damage
     definition: "Damage reduces Shield, Barrier, or HP. Effects that say \"Lose HP\" are not damage."
+  - section: Combat
+    id: term-healing
+    name: Healing
+    definition: "Effects that restore HP. Healing is reduced by Wound and Wither before it is gained. See FAQ: faq.md#faq-healing-reduction."
   - section: Combat
     id: term-damage-resolution
     name: Damage Resolution
@@ -130,7 +138,7 @@ terms:
   - section: Combat
     id: term-power
     name: Power
-    definition: "The min-max value shown on a card. It is usually +/- floor(Base Power x 0.20) for Melee and +/- floor(Base Power x 0.25) for Ranged."
+    definition: "The min-max value shown on a card. It is usually +/- floor(Base Power x 0.20) for Melee and +/- floor(Base Power x 0.25) for Ranged. Power cannot be reduced below 0."
   - section: Combat
     id: term-power-roll
     name: Power Roll

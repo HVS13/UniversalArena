@@ -55,6 +55,10 @@ This page is the reference glossary for game terms. Use the filter to quickly lo
       <td>Initiative</td>
       <td>Determines who takes the first action at Combat Start each turn.</td>
     </tr>
+    <tr id="term-movement-round" class="term-entry">
+      <td>Movement Round</td>
+      <td>A phase after Turn Start where players alternate priority to spend 1 Energy to swap two adjacent allied characters or pass. Movement swaps are not card plays and do not grant Ultimate Meter. The round ends when both players pass consecutively. Rooted characters cannot be moved or swapped. See <a href="faq.md#faq-movement-round">FAQ</a>.</td>
+    </tr>
     <tr class="term-section">
       <th colspan="2">Rules</th>
     </tr>
@@ -148,7 +152,7 @@ This page is the reference glossary for game terms. Use the filter to quickly lo
     </tr>
     <tr id="term-priority" class="term-entry">
       <td>Priority</td>
-      <td>The right to act next during Combat. Priority passes after each play or pass.</td>
+      <td>The right to act next during Combat or the Movement Round. Priority passes after each play, swap, or pass.</td>
     </tr>
     <tr id="term-hit" class="term-entry">
       <td>Hit</td>
@@ -157,6 +161,10 @@ This page is the reference glossary for game terms. Use the filter to quickly lo
     <tr id="term-damage" class="term-entry">
       <td>Damage</td>
       <td>Damage reduces Shield, Barrier, or HP. Effects that say "Lose HP" are not damage.</td>
+    </tr>
+    <tr id="term-healing" class="term-entry">
+      <td>Healing</td>
+      <td>Effects that restore HP. Healing is reduced by Wound and Wither before it is gained. See <a href="faq.md#faq-healing-reduction">FAQ</a>.</td>
     </tr>
     <tr id="term-damage-resolution" class="term-entry">
       <td>Damage Resolution</td>
@@ -172,7 +180,7 @@ This page is the reference glossary for game terms. Use the filter to quickly lo
     </tr>
     <tr id="term-power" class="term-entry">
       <td>Power</td>
-      <td>The min-max value shown on a card. It is usually +/- floor(Base Power x 0.20) for Melee and +/- floor(Base Power x 0.25) for Ranged.</td>
+      <td>The min-max value shown on a card. It is usually +/- floor(Base Power x 0.20) for Melee and +/- floor(Base Power x 0.25) for Ranged. Power cannot be reduced below 0.</td>
     </tr>
     <tr id="term-power-roll" class="term-entry">
       <td>Power Roll</td>

@@ -24,6 +24,8 @@ Project rules
 - Avoid undefined mechanics; if a global keyword/status/term appears in content, ensure it exists in the reference pages.
 - If a card references remaining Multihit Count, ensure the base count is explicit in the card text or defined by the Multihit rules.
 - Ensure Potency/Count/Value/Stack caps align with what the kit can reach, including edge cases.
+- Prefer Stack for single-value duration statuses that decay at Turn End; reserve Value for resource-like effects that are consumed by other rules.
+- Movement Round happens before Combat; Root blocks movement and swaps. Keep turn-flow references aligned across `docs/index.md`, `docs/terminology.md`, `docs/faq.md`, and `docs/data/terms.yml`.
 - Prioritize lore-accurate, synergistic, and fun character kits over balance.
 - Follow `docs/characters/character-creation-guide.md` for power budgeting (including variable/0-cost handling); document character-specific exceptions there, not on character pages.
 - Export actions (page PDF/MD/TXT + all-pages ZIP with format/character-combine/XLSX options and `html/`, `md/`, `txt/`, `xlsx/`) live in `docs/overrides/main.html` and `docs/javascripts/print.js`; keep exports free of permalinks, URLs, and images.
