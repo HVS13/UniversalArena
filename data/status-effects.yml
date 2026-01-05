@@ -2,7 +2,7 @@ statusEffects:
   - id: status-bleed
     name: Bleed
     type: Negative
-    potencyMax: 999
+    potencyMax: 10
     countMax: 99
     rules:
       - timing: "Allies' Card Played"
@@ -12,43 +12,79 @@ statusEffects:
   - id: status-burn
     name: Burn
     type: Negative
-    potencyMax: 999
+    potencyMax: 10
     countMax: 99
     rules:
       - timing: "Allies' Card Played"
         text: "Take Potency damage. Then reduce Count by Energy spent."
       - timing: "Turn End"
         text: "Take Potency damage. Then reduce Count by Halve."
+  - id: status-disarm
+    name: Disarm
+    type: Negative
+    stackMax: 10
+    rules:
+      - timing: Effect
+        text: "You cannot play Physical cards."
+      - timing: "Turn End"
+        text: "Reduce Stack by 1."
   - id: status-frail
     name: Frail
     type: Negative
-    potencyMax: 999
+    potencyMax: 10
     countMax: 99
     rules:
       - timing: Effect
         text: "Reduce Defense Power by 10% times Potency."
       - timing: "Turn End"
-        text: "Reduce Count by Halve."
+        text: "Reduce Count by 1."
   - id: status-poison
     name: Poison
     type: Negative
-    potencyMax: 999
+    potencyMax: 10
     countMax: 99
     rules:
       - timing: "Allies' Card Played"
         text: "Increase Potency by Energy spent."
       - timing: "Turn End"
         text: "Take Potency damage. Then reduce Count by Halve."
+  - id: status-root
+    name: Root
+    type: Negative
+    stackMax: 10
+    rules:
+      - timing: Effect
+        text: "You cannot be moved or swapped by any effect, including Push, Pull, Swap, and the Movement Round. If a move or swap would include you, that movement fails; costs are still paid and other effects still resolve."
+      - timing: "Turn End"
+        text: "Reduce Stack by 1."
+  - id: status-seal
+    name: Seal
+    type: Negative
+    stackMax: 10
+    rules:
+      - timing: Effect
+        text: "You cannot play Special cards."
+      - timing: "Turn End"
+        text: "Reduce Stack by 1."
+  - id: status-silence
+    name: Silence
+    type: Negative
+    stackMax: 10
+    rules:
+      - timing: Effect
+        text: "You cannot play Magical cards."
+      - timing: "Turn End"
+        text: "Reduce Stack by 1."
   - id: status-slow
     name: Slow
     type: Negative
-    potencyMax: 999
+    potencyMax: 10
     countMax: 99
     rules:
       - timing: Effect
         text: "Reduce the card's Speed by Potency steps (Fast -> Normal -> Slow), capped at 2 steps."
       - timing: "Turn End"
-        text: "Reduce Count by Halve."
+        text: "Reduce Count by 1."
   - id: status-spectro-frazzle
     name: Spectro Frazzle
     type: Negative
@@ -56,16 +92,25 @@ statusEffects:
     rules:
       - timing: "Turn End"
         text: "Inflict damage equal to 5 times Stack. Then reduce Stack by 1."
+  - id: status-stagger
+    name: Stagger
+    type: Negative
+    stackMax: 10
+    rules:
+      - timing: Effect
+        text: "The next time you would play a Defense card, it is Cancelled before Use. Reduce Stack by 1."
+      - timing: "Turn End"
+        text: "Reduce Stack by 1."
   - id: status-strain
     name: Strain
     type: Negative
-    potencyMax: 999
+    potencyMax: 10
     countMax: 99
     rules:
       - timing: Effect
         text: "Increase the Energy cost of this character's cards by Potency."
       - timing: "Turn End"
-        text: "Reduce Count by Halve."
+        text: "Reduce Count by 1."
   - id: status-stagnate
     name: Stagnate
     type: Negative
@@ -85,73 +130,91 @@ statusEffects:
   - id: status-weak
     name: Weak
     type: Negative
-    potencyMax: 999
+    potencyMax: 10
     countMax: 99
     rules:
       - timing: Effect
         text: "Reduce Attack Power by 10% times Potency."
       - timing: "Turn End"
-        text: "Reduce Count by Halve."
+        text: "Reduce Count by 1."
   - id: status-vulnerable
     name: Vulnerable
     type: Negative
-    potencyMax: 999
+    potencyMax: 10
     countMax: 99
     rules:
       - timing: Effect
         text: "Increase damage taken by 10% times Potency."
       - timing: "Turn End"
-        text: "Reduce Count by Halve."
+        text: "Reduce Count by 1."
+  - id: status-wound
+    name: Wound
+    type: Negative
+    stackMax: 999
+    rules:
+      - timing: Effect
+        text: "When you would heal HP, reduce that healing by Stack. Healing cannot go below 0."
+      - timing: "Turn End"
+        text: "Reduce Stack by 1."
+  - id: status-wither
+    name: Wither
+    type: Negative
+    stackMax: 999
+    rules:
+      - timing: Effect
+        text: "When you would heal HP, reduce that healing by Stack% of the healing amount. Healing cannot go below 0."
+      - timing: "Turn End"
+        text: "Reduce Stack by 1."
   - id: status-dexterity
     name: Dexterity
     type: Positive
-    potencyMax: 999
+    potencyMax: 10
     countMax: 99
     rules:
       - timing: Effect
         text: "Increase Defense Power by 10% times Potency."
       - timing: "Turn End"
-        text: "Reduce Count by Halve."
+        text: "Reduce Count by 1."
   - id: status-focus
     name: Focus
     type: Positive
-    potencyMax: 999
+    potencyMax: 10
     countMax: 99
     rules:
       - timing: Effect
         text: "Reduce the Energy cost of this character's cards by Potency (minimum 0)."
       - timing: "Turn End"
-        text: "Reduce Count by Halve."
+        text: "Reduce Count by 1."
   - id: status-fortified
     name: Fortified
     type: Positive
-    potencyMax: 999
+    potencyMax: 10
     countMax: 99
     rules:
       - timing: Effect
         text: "Reduce damage taken by 10% times Potency."
       - timing: "Turn End"
-        text: "Reduce Count by Halve."
+        text: "Reduce Count by 1."
   - id: status-haste
     name: Haste
     type: Positive
-    potencyMax: 999
+    potencyMax: 10
     countMax: 99
     rules:
       - timing: Effect
         text: "Increase the card's Speed by Potency steps (Slow -> Normal -> Fast), capped at 2 steps."
       - timing: "Turn End"
-        text: "Reduce Count by Halve."
+        text: "Reduce Count by 1."
   - id: status-strength
     name: Strength
     type: Positive
-    potencyMax: 999
+    potencyMax: 10
     countMax: 99
     rules:
       - timing: Effect
         text: "Increase Attack Power by 10% times Potency."
       - timing: "Turn End"
-        text: "Reduce Count by Halve."
+        text: "Reduce Count by 1."
   - id: status-barrier
     name: Barrier
     type: Positive
@@ -177,7 +240,7 @@ statusEffects:
     countMax: 99
     rules:
       - timing: "Turn End"
-        text: "Heal HP equal to Potency. Then reduce Count by Halve."
+        text: "Heal HP equal to Potency. Then reduce Count by 1."
   - id: status-renewal
     name: Renewal
     type: Positive
@@ -185,7 +248,7 @@ statusEffects:
     countMax: 99
     rules:
       - timing: "Turn End"
-        text: "Heal HP equal to Potency% of max HP. Then reduce Count by Halve."
+        text: "Heal HP equal to Potency% of max HP. Then reduce Count by 1."
   - id: status-redirect
     name: Redirect
     type: Positive
@@ -198,19 +261,19 @@ statusEffects:
   - id: status-taunt
     name: Taunt
     type: Positive
-    stackMax: 99
+    stackMax: 10
     rules:
       - timing: Effect
         text: "Enemies must choose this character as the target for any single-target enemy effect if able. This does not affect AoE, Splash, Bounce, or random targeting. If multiple enemies have Taunt, choose among them."
       - timing: "Turn End"
-        text: "Reduce Stack by Halve."
+        text: "Reduce Stack by 1."
   - id: status-thorns
     name: Thorns
     type: Positive
-    potencyMax: 999
+    potencyMax: 10
     countMax: 99
     rules:
       - timing: "On Hit"
         text: "When you are hit by an Attack, deal Potency damage to the attacker."
       - timing: "Turn End"
-        text: "Reduce Count by Halve."
+        text: "Reduce Count by 1."

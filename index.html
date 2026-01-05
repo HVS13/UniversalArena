@@ -347,6 +347,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#movement-round" class="md-nav__link">
+    <span class="md-ellipsis">
+      Movement Round
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#how-to-combat" class="md-nav__link">
     <span class="md-ellipsis">
       How To Combat
@@ -1005,6 +1014,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#movement-round" class="md-nav__link">
+    <span class="md-ellipsis">
+      Movement Round
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#how-to-combat" class="md-nav__link">
     <span class="md-ellipsis">
       How To Combat
@@ -1297,7 +1315,7 @@
 
 <h1 id="welcome-to-universal-arena">Welcome to Universal Arena<a class="headerlink" href="#welcome-to-universal-arena" title="Permanent link">&para;</a></h1>
 <p>This site outlines the structure and references for Universal Arena. Add your own content as you grow the guide.</p>
-<p class="ua-last-updated">Last updated: <time datetime="2026-01-05T11:04">2026-01-05 11:04</time></p>
+<p class="ua-last-updated">Last updated: <time datetime="2026-01-05T14:57">2026-01-05 14:57</time></p>
 
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
 <p>This guide summarizes core systems and links to the detailed reference pages for terms, keywords, and characters.</p>
@@ -1306,6 +1324,7 @@
 <li>Each player chooses 3 characters (no duplicate Name + Version on the same team).</li>
 <li>Take each character's 5 cards (2 Basic + 3 Technique), shuffle them into one draw pile, and keep each Ultimate card outside the draw pile.</li>
 <li>Turn Start: draw to 5 cards, then set Energy to 5.</li>
+<li>Movement Round: players alternate. On your priority, spend 1 Energy to swap two adjacent allies or pass. Movement swaps are not card plays and do not grant Ultimate Meter. The round ends when both players pass consecutively.</li>
 <li>The player with initiative starts a Combat Round by playing a card into a legal zone (Fast/Normal/Slow).</li>
 <li>Players alternate playing or passing; faster cards can interrupt slower zones.</li>
 <li>When both players pass, resolve the Active Zone right to left, then continue until all zones are empty.</li>
@@ -1335,8 +1354,9 @@ Each team has its own line arranged left to right; adjacent means the immediate 
 </ol>
 <h2 id="how-to-play">How To Play<a class="headerlink" href="#how-to-play" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Play is divided into 3 phases: Turn Start, Combat, Turn End.</li>
+<li>Play is divided into 4 phases: Turn Start, Movement, Combat, Turn End.</li>
 <li>At Turn Start, both players simultaneously draw until they have a hand size of 5, modified by draw effects (if any), then set Energy to 5 unless modified.</li>
+<li>During the Movement Round, players alternate priority. On your priority, spend 1 Energy to swap two adjacent allies or Pass. Movement swaps are not card plays and do not grant Ultimate Meter. The round ends when both players pass consecutively.</li>
 <li>At Combat Start, the player with initiative plays a card to initiate a Combat Round.</li>
 <li>During Combat, players play cards and clash. Combat Rounds can repeat.</li>
 <li>A Combat Round ends when there are no cards on any zone. The player with initiative may start another Combat Round or end their turn.</li>
@@ -1348,6 +1368,15 @@ Each team has its own line arranged left to right; adjacent means the immediate 
 <li>Any card played in any zone stays in that zone until it is used, then it is discarded.</li>
 <li>For each card played, your team gains Ultimate Meter equal to the Energy spent to play the card.</li>
 <li>If a card's speed is modified, treat it as its current speed for where it can be played.</li>
+</ol>
+<h2 id="movement-round">Movement Round<a class="headerlink" href="#movement-round" title="Permanent link">&para;</a></h2>
+<ol>
+<li>The Movement Round happens after Turn Start and before Combat.</li>
+<li>The player with initiative has priority first.</li>
+<li>On your priority, you may spend 1 Energy to swap two adjacent allied characters or Pass. Movement swaps are not card plays and do not grant Ultimate Meter.</li>
+<li>If a swap would include a rooted character, the swap fails but the Energy is still spent.</li>
+<li>Priority alternates back and forth until both players pass consecutively, then the Movement Round ends.</li>
+<li>Rooted characters cannot be moved or swapped.</li>
 </ol>
 <h2 id="how-to-combat">How To Combat<a class="headerlink" href="#how-to-combat" title="Permanent link">&para;</a></h2>
 <ol>
@@ -1385,7 +1414,8 @@ Each team has its own line arranged left to right; adjacent means the immediate 
 <h2 id="golden-example-turn">Golden Example Turn<a class="headerlink" href="#golden-example-turn" title="Permanent link">&para;</a></h2>
 <p>This is a single annotated combat round from initiative through resolution.</p>
 <ol>
-<li>Initiative: Player A has initiative and starts a Combat Round by playing a Normal attack targeting Player B in the Normal Zone. The Normal Zone becomes the Active Zone.</li>
+<li>Initiative: Player A has initiative. Both players pass in the Movement Round.</li>
+<li>Player A starts a Combat Round by playing a Normal attack targeting Player B in the Normal Zone. The Normal Zone becomes the Active Zone.</li>
 <li>Player B responds by playing a Normal defense in the Normal Zone.</li>
 <li>Player A adds another Normal attack to the same zone.</li>
 <li>Player B interrupts by playing a Fast attack in the Fast Zone. The Fast Zone becomes the Active Zone and the Normal Zone pauses.</li>
@@ -1422,7 +1452,7 @@ Each team has its own line arranged left to right; adjacent means the immediate 
 <li>Use the Power Roll only for damage dealt, shield gained, and HP recovered. Other numeric effects use their written values unless the effect uses another value (example: X). Costs and requirements stay as written.</li>
 <li>Special cards have Power: - and do not roll Power.</li>
 <li>Roll Power each time a card is used. Multihit and Reuse roll again for each hit or reuse.</li>
-<li>All Power calculations round down and do not clamp the minimum.</li>
+<li>All Power calculations round down and clamp the minimum at 0.</li>
 </ol>
 <h2 id="how-to-clash">How To Clash<a class="headerlink" href="#how-to-clash" title="Permanent link">&para;</a></h2>
 <ol>

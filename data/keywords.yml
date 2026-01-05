@@ -23,6 +23,10 @@ keywords:
     name: Evade
     category: Combat
     description: "After Clash: If a Defense card's Shield reduces the Attack's Power damage to 0, that Attack is not a hit. Reuse this card."
+  - id: keyword-counter
+    name: Counter
+    category: Combat
+    description: "After Clash: If this Defense reduces the Attack's Power damage to 0, you may play any card targeting the attacker. This follows the same timing and play rules as Follow-Up and Assist Attack."
   - id: keyword-reuse
     name: Reuse
     category: Combat
