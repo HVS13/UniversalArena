@@ -146,6 +146,11 @@ Core keywords are expected in early play. Advanced keywords are less common or m
 
 #### Targeting
 
+<div class="ua-entry keyword-entry" id="keyword-redirect">
+  <p class="ua-entry__title">Redirect (Target)</p>
+  <p class="ua-entry__desc">Change the target of a single-target card or effect to the listed target if legal. Redirect can point to self, an ally, an enemy, or another specified character. Redirect can apply even if the effect has Splash or Bounce; resolve Splash/Bounce from the new target. Redirect does not affect AoE or random targeting. Only one Redirect can apply per card use; if multiple apply, the defending player chooses. The effect that grants Redirect specifies the timing.</p>
+</div>
+
 <div class="ua-entry keyword-entry" id="keyword-bounce">
   <p class="ua-entry__title">Bounce X</p>
   <p class="ua-entry__desc">A random adjacent character to the main target will also take the effect. Repeat X times. Each bounce chooses a random adjacent character; the same character can be chosen more than once unless the effect says otherwise.</p>

@@ -103,3 +103,5 @@ This file preserves the historical intent and decisions for CodexGPT. Append a n
 - 2026-01-05: Raised Regen/Renewal Potency caps and Wound/Wither Stack caps to 999, synced data, and refreshed the front-page timestamp.
 - 2026-01-05: Added a Combat Round ref card page and nav link, tiered keywords into Core/Advanced with keyword tier metadata (plus web data typing), standardized status effect Mode/Turn End visibility, added timing-labeled card text templates and removed the finisher-range guidance, introduced SKILLS manifests, updated AGENTS/skills guidance, and refreshed the front-page timestamp.
 - 2026-01-05: Clarified cross-repo workflow in AGENTS/skills/README/TODO, aligned web repo skills with the current client/core structure, and refreshed the front-page timestamp.
+- 2026-01-05: Renamed the Redirect status effect to Guard and introduced the Redirect keyword for general target redirection, syncing docs/data and refreshing the front-page timestamp.
+- 2026-01-05: Renamed Guard to Cover, clarified Redirect/Cover to apply to single-target effects with Splash/Bounce, added a Redirect glossary term and FAQ example, and refreshed the front-page timestamp.

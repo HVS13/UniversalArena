@@ -232,6 +232,10 @@ This page is the reference glossary for game terms. Use the filter to quickly lo
       <td>Opposed</td>
       <td>Characters are opposed if they are in the same column on opposing team lines.</td>
     </tr>
+    <tr id="term-redirect" class="term-entry">
+      <td>Redirect</td>
+      <td>A keyword that changes the primary target of a single-target effect. <a class="ua-keyword-link" data-keyword="keyword-redirect" href="#">Redirect</a> can apply even if the effect has <a class="ua-term-link" data-term="term-splash" href="#">Splash</a> or <a class="ua-term-link" data-term="term-bounce" href="#">Bounce</a>; resolve those from the new target. See <a href="faq.md#faq-redirect-splash">FAQ</a>.</td>
+    </tr>
     <tr class="term-section">
       <th colspan="2">Area</th>
     </tr>
