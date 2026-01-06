@@ -9,6 +9,7 @@ Rules reference and canonical data source for Universal Arena.
 - Game repo: `C:\Git\UniversalArena-Web`
 - Export data to game:
   `node C:\Git\UniversalArena\docs\scripts\export-game-data.mjs --out C:\Git\UniversalArena-Web\packages\data\src --assets-out C:\Git\UniversalArena-Web\apps\client\public\assets\characters`
+- CI sync: `.github/workflows/export-game-data.yml` exports on push to `main` when `UA_GAME_REPO` and `UA_SYNC_TOKEN` are configured.
 
 ## Cross-repo workflow
 
@@ -27,6 +28,21 @@ Rules reference and canonical data source for Universal Arena.
 4. If core rules changed, run the golden tests in the game repo:
    - `cd C:\Git\UniversalArena-Web`
    - `cmd /c pnpm golden`
+
+## One-time setup: CI export workflow
+
+Use this once per repo to enable the auto-sync from docs to the game repo.
+
+1. Create a fine-grained PAT with write access to `UniversalArena-Web` contents.
+2. In the docs repo (GitHub):
+   - Settings -> Secrets and variables -> Actions -> Variables:
+     - `UA_GAME_REPO` = `Owner/UniversalArena-Web`
+   - Settings -> Secrets and variables -> Actions -> Secrets:
+     - `UA_SYNC_TOKEN` = your PAT
+3. Run the workflow:
+   - Actions -> Export Game Data -> Run workflow.
+4. Verify a commit appears in the game repo:
+   - Commit message: `chore: sync game data`.
 
 ## Current state
 

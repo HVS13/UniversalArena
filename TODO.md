@@ -7,8 +7,9 @@
 4. Multiplayer (relay server + client sync), only after 1-3 are done.
 
 ## Docs repo (UniversalArena)
-- Add a CI workflow or script to export canonical `docs/data` and sync to `C:\Git\UniversalArena-Web\packages\data` without relying on a local Windows path.
+- DONE: Add a CI workflow or script to export canonical `docs/data` and sync to `C:\Git\UniversalArena-Web\packages\data` without relying on a local Windows path.
 - Configure the GitHub Action secrets/vars (`UA_GAME_REPO`, `UA_SYNC_TOKEN`) to enable auto-sync.
+- Verify the export workflow pushes a sync commit after a docs/data change (manual dispatch is fine).
 - Keep structured `effects` + `transforms` aligned with the exporter and `docs/data/README.md` as new mechanics are added.
 - Extend schema validation for new effect types as they are introduced.
 - Extend the schema only when needed for remaining unmodeled mechanics (optional spend, bonus damage, draw/create, unique triggers).
