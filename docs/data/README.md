@@ -229,6 +229,16 @@ effects:
       value: 2
 ```
 
+Block play effects:
+
+```yml
+effects:
+  - timing: on_use
+    type: block_play
+    target: opponent
+    duration: combat_round
+```
+
 Keyword grants (useful with spend gating):
 
 ```yml

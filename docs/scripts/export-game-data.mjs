@@ -57,6 +57,7 @@ const effectTypes = new Set([
   "grant_keyword",
   "choose",
   "retain",
+  "block_play",
 ]);
 const amountKinds = new Set([
   "flat",
@@ -73,6 +74,7 @@ const transformConditionFields = ["kind"];
 const restrictionKinds = new Set(["require", "forbid"]);
 const restrictionSubjects = new Set(["self", "target"]);
 const restrictionModes = new Set(["any", "all"]);
+const effectTargets = new Set(["self", "target", "opponent"]);
 
 const dataFileConfigs = [
   {
@@ -226,7 +228,7 @@ const validateEffectList = (effects, label, filename, errors) => {
           errors.push(`${context} missing status.`);
         }
         validateAmount(effect.amount, `${context}.amount`, errors);
-        if (effect.target !== undefined && effect.target !== "self" && effect.target !== "target") {
+        if (effect.target !== undefined && !effectTargets.has(effect.target)) {
           errors.push(`${context} has invalid target "${effect.target}".`);
         }
         break;
@@ -262,7 +264,7 @@ const validateEffectList = (effects, label, filename, errors) => {
         if (effect.amount?.kind === "power" || effect.amount?.kind === "power_div") {
           errors.push(`${context} amount cannot use power-based scaling.`);
         }
-        if (effect.target !== undefined && effect.target !== "self" && effect.target !== "target") {
+        if (effect.target !== undefined && !effectTargets.has(effect.target)) {
           errors.push(`${context} has invalid target "${effect.target}".`);
         }
         break;
@@ -275,8 +277,17 @@ const validateEffectList = (effects, label, filename, errors) => {
         if (effect.count?.kind === "power" || effect.count?.kind === "power_div") {
           errors.push(`${context} count cannot use power-based scaling.`);
         }
-        if (effect.target !== undefined && effect.target !== "self" && effect.target !== "target") {
+        if (effect.target !== undefined && !effectTargets.has(effect.target)) {
           errors.push(`${context} has invalid target "${effect.target}".`);
+        }
+        break;
+      }
+      case "block_play": {
+        if (effect.target !== undefined && !effectTargets.has(effect.target)) {
+          errors.push(`${context} has invalid target "${effect.target}".`);
+        }
+        if (effect.duration !== "combat_round") {
+          errors.push(`${context} has invalid duration "${effect.duration}".`);
         }
         break;
       }
@@ -306,7 +317,7 @@ const validateEffectList = (effects, label, filename, errors) => {
           errors.push(`${context} missing status.`);
         }
         validateAmount(effect.amount, `${context}.amount`, errors);
-        if (effect.target !== undefined && effect.target !== "self" && effect.target !== "target") {
+        if (effect.target !== undefined && !effectTargets.has(effect.target)) {
           errors.push(`${context} has invalid target "${effect.target}".`);
         }
         if (effect.minValue !== undefined && typeof effect.minValue !== "number") {
