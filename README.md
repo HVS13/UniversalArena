@@ -16,6 +16,18 @@ Rules reference and canonical data source for Universal Arena.
 2. Export to `C:\Git\UniversalArena-Web\packages\data\src` (and assets) after any data changes.
 3. If core logic or UI changes in the web repo alter rules, update the docs and data here to match.
 
+## Step-by-step for docs + game sync
+
+1. Edit docs in `docs/` and data in `docs/data/`.
+2. Preview or validate the docs:
+   - `mkdocs serve` (local preview), or
+   - `mkdocs build --strict` (strict build).
+3. Export data to the game repo:
+   - `node C:\Git\UniversalArena\docs\scripts\export-game-data.mjs --out C:\Git\UniversalArena-Web\packages\data\src --assets-out C:\Git\UniversalArena-Web\apps\client\public\assets\characters`
+4. If core rules changed, run the golden tests in the game repo:
+   - `cd C:\Git\UniversalArena-Web`
+   - `cmd /c pnpm golden`
+
 ## Current state
 
 - All current character YAMLs include structured effects and restrictions; keep `effect` text for readability and any unmodeled mechanics.

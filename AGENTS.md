@@ -11,6 +11,7 @@ Project rules
 - Status effect entries include a Mode line (P/C, S, V) and an explicit Turn End line (use "No change" when nothing ticks).
 - Game data for the web game lives in `docs/data/`; keep it in sync with the docs and export via `docs/scripts/export-game-data.mjs`.
 - If rules or data expectations change in `C:\Git\UniversalArena-Web` (core or UI), update the matching docs reference pages and `docs/data` here, then re-export.
+- Track docs/data tasks in this repo's `TODO.md`; track game-client tasks in `C:\Git\UniversalArena-Web\TODO.md` to avoid duplication.
 - If you add or rename keywords/status effects/terms in core, define them in the docs (`docs/keywords.md`, `docs/status-effects.md`, `docs/terminology.md`) and `docs/data/*.yml`.
 - Structured card data supports `effects`, `restrictions`, and optional `transforms`; keep `docs/data/README.md` and the exporter in sync (recent effect types include `set_status`, `reduce_status`, `spend_status`, `deal_damage_per_spent`, `reload_equipped`, `switch_equip`).
 - Restriction enforcement is structured-only; any "Can only be used if" / "Cannot be used if" text must be mirrored in `restrictions` or it will not be enforced by the game.

@@ -4,32 +4,17 @@ This file preserves the historical intent and decisions for CodexGPT. Append a n
 
 ## Project Intent
 - Maintain Universal Arena documentation as the source of truth.
-- Provide a text-first, playable prototype with clean UI/UX.
-- Support two-player multiplayer: username -> create/join lobby -> character select -> play.
-- Keep the game easy to update as docs evolve.
+- Keep canonical data in `docs/data` and export to the web game repo.
+- Keep rules/reference docs aligned with core behavior.
 
-## Separation Rules
-- Game pages live in `docs/game/`.
-- Game logic lives in `docs/javascripts/game/`.
-- Game styles live in `docs/stylesheets/game.css`.
-- Game assets live in `docs/assets/game/`.
-- Multiplayer relay server lives in `server/` and is optional.
-- Removing the game should only require deleting the above paths and removing the Play nav entry in `mkdocs.yml`.
+## Repo Scope (Current)
+- Docs + data live here; the web game lives in `C:\Git\UniversalArena-Web`.
+- Relay server (optional) lives in `server/`.
+- `site/` is generated output; do not edit it.
 
-## Multiplayer Architecture
-- MkDocs site stays static.
-- Real-time multiplayer uses a small WebSocket relay server (Node + `ws`).
-- Relay stores lobbies in memory; no database.
-- Client auto-selects `ws://localhost:8787` for local dev and `wss://<host>` for GitHub Pages.
-- Host is authoritative for match state; relay only forwards messages.
-
-## Current Implementation (as of 2025-12-23)
-- Added `docs/game/index.md` with the lobby/character/match UI.
-- Added `docs/stylesheets/game.css` for the game UI theme.
-- Added `docs/javascripts/game/config.js` and `docs/javascripts/game/game.js`.
-- Updated `mkdocs.yml` to include the Play page and game assets.
-- Added relay server under `server/` with `index.js`, `package.json`, and `README.md`.
-- Game auto-parses `docs/characters/index.md` and character pages for cards.
+## Legacy (Docs-Based Game Removed)
+- The docs-based Play page and client prototype were removed after the game moved to `C:\Git\UniversalArena-Web`.
+- Legacy implementation details are preserved in log entries from 2025-12-23 through 2026-01-03.
 
 ## Log
 - 2025-12-23: Implemented isolated game page + multiplayer lobby prototype; added relay server; wired into MkDocs; game reads character data directly from docs to stay in sync.
@@ -114,3 +99,5 @@ This file preserves the historical intent and decisions for CodexGPT. Append a n
 - 2026-01-05: Added structured use restrictions to remaining gated cards (Luffy, Ichigo, Naruto, DIO, Light) and re-exported data.
 - 2026-01-05: Clarified that restriction enforcement is structured-only; removed text parsing from the core engine.
 - 2026-01-05: Refreshed front-page timestamp and updated README/TODO/AGENTS/skills to document structured-only restrictions and the latest schema coverage.
+- 2026-01-06: Updated CODEX_HISTORY scope and legacy notes to reflect the docs-only repo and the separate web game repository.
+- 2026-01-06: Reorganized AGENTS/SKILLS/TODO to keep docs/data tasks here and web-game tasks in `C:\Git\UniversalArena-Web`.
