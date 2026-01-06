@@ -103,3 +103,4 @@ This file preserves the historical intent and decisions for CodexGPT. Append a n
 - 2026-01-06: Reorganized AGENTS/SKILLS/TODO to keep docs/data tasks here and web-game tasks in `C:\Git\UniversalArena-Web`.
 - 2026-01-06: Added new structured effect types (draw/create, per-spend status, keyword grants) and updated Ichigo/DIO/Naruto data to model optional spend and bonus damage before re-exporting.
 - 2026-01-06: Documented the export-game-data workflow in README and marked the CI data sync task as completed (pending secret/var configuration).
+- 2026-01-06: Defined the draw pile reshuffle rule in terminology/FAQ, synced terms data, and refreshed the front-page timestamp.

@@ -91,7 +91,7 @@ This page is the reference glossary for game terms. Use the filter to quickly lo
     </tr>
     <tr id="term-draw" class="term-entry">
       <td>Draw</td>
-      <td>The act of taking cards from your Draw Pile and adding them to your hand. By default, at Turn Start you draw until you reach a hand size of 5, modified by draw effects (if any).</td>
+      <td>The act of taking cards from your Draw Pile and adding them to your hand. If you need to draw and your Draw Pile is empty, shuffle your Discard Pile into a new Draw Pile and continue drawing; if both piles are empty, draw as many as possible (possibly 0). By default, at Turn Start you draw until you reach a hand size of 5, modified by draw effects (if any). See <a href="faq.md#faq-draw-reshuffle">FAQ</a>.</td>
     </tr>
     <tr id="term-played" class="term-entry">
       <td>Played</td>
