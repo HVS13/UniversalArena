@@ -45,11 +45,16 @@ const effectTypes = new Set([
   "gain_status",
   "inflict_status",
   "set_status",
+  "gain_status_per_spent",
+  "inflict_status_per_spent",
   "spend_status",
   "deal_damage_per_spent",
+  "draw_cards",
+  "create_card",
   "reload_equipped",
   "switch_equip",
   "reduce_status",
+  "grant_keyword",
   "choose",
   "retain",
 ]);
@@ -202,6 +207,20 @@ const validateEffectList = (effects, label, filename, errors) => {
         validateAmount(effect.amount, `${context}.amount`, errors);
         break;
       }
+      case "gain_status_per_spent":
+      case "inflict_status_per_spent": {
+        if (typeof effect.status !== "string" || !effect.status.trim()) {
+          errors.push(`${context} missing status.`);
+        }
+        if (typeof effect.resource !== "string" || !effect.resource.trim()) {
+          errors.push(`${context} missing resource.`);
+        }
+        validateAmount(effect.amount, `${context}.amount`, errors);
+        if (effect.amount?.kind === "power" || effect.amount?.kind === "power_div") {
+          errors.push(`${context} amount cannot use power-based scaling.`);
+        }
+        break;
+      }
       case "set_status": {
         if (typeof effect.status !== "string" || !effect.status.trim()) {
           errors.push(`${context} missing status.`);
@@ -238,12 +257,47 @@ const validateEffectList = (effects, label, filename, errors) => {
         validateAmount(effect.amount, `${context}.amount`, errors);
         break;
       }
+      case "draw_cards": {
+        validateAmount(effect.amount, `${context}.amount`, errors);
+        if (effect.amount?.kind === "power" || effect.amount?.kind === "power_div") {
+          errors.push(`${context} amount cannot use power-based scaling.`);
+        }
+        if (effect.target !== undefined && effect.target !== "self" && effect.target !== "target") {
+          errors.push(`${context} has invalid target "${effect.target}".`);
+        }
+        break;
+      }
+      case "create_card": {
+        if (typeof effect.cardName !== "string" || !effect.cardName.trim()) {
+          errors.push(`${context} missing cardName.`);
+        }
+        validateAmount(effect.count, `${context}.count`, errors);
+        if (effect.count?.kind === "power" || effect.count?.kind === "power_div") {
+          errors.push(`${context} count cannot use power-based scaling.`);
+        }
+        if (effect.target !== undefined && effect.target !== "self" && effect.target !== "target") {
+          errors.push(`${context} has invalid target "${effect.target}".`);
+        }
+        break;
+      }
       case "reload_equipped": {
         break;
       }
       case "switch_equip": {
         if (typeof effect.status !== "string" || !effect.status.trim()) {
           errors.push(`${context} missing status.`);
+        }
+        break;
+      }
+      case "grant_keyword": {
+        if (typeof effect.keyword !== "string" || !effect.keyword.trim()) {
+          errors.push(`${context} missing keyword.`);
+        }
+        if (effect.resource !== undefined && typeof effect.resource !== "string") {
+          errors.push(`${context} resource must be a string.`);
+        }
+        if (effect.minSpent !== undefined && typeof effect.minSpent !== "number") {
+          errors.push(`${context} minSpent must be a number.`);
         }
         break;
       }

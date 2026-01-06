@@ -67,6 +67,18 @@ cards:
         amount:
           kind: flat
           value: 1
+      - timing: on_use
+        type: spend_status
+        status: Reiatsu
+        amount:
+          kind: x
+        allowPartial: true
+      - timing: on_use
+        type: deal_damage_per_spent
+        status: Reiatsu
+        amount:
+          kind: flat
+          value: 4
     transforms:
       - condition:
           kind: self_has_status
@@ -101,6 +113,18 @@ cards:
         amount:
           kind: flat
           value: 1
+      - timing: on_use
+        type: spend_status
+        status: Reiatsu
+        amount:
+          kind: x
+        allowPartial: true
+      - timing: on_use
+        type: deal_damage_per_spent
+        status: Reiatsu
+        amount:
+          kind: flat
+          value: 5
   - slot: "1-3"
     name: "Strike: White"
     cost: 1 Energy
@@ -346,4 +370,16 @@ cards:
         condition:
           kind: self_has_status
           status: "Bankai: Tensa Zangetsu"
+      - timing: on_use
+        type: spend_status
+        status: Reiatsu
+        amount:
+          kind: x
+        allowPartial: true
+      - timing: on_use
+        type: deal_damage_per_spent
+        status: Reiatsu
+        amount:
+          kind: flat
+          value: 4
 

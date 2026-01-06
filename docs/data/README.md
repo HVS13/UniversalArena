@@ -185,6 +185,67 @@ effects:
 
 Use `gateAll` or `gateDamage` on `spend_status` to block follow-up effects when the spend fails.
 
+Per-spend status gains/inflicts:
+
+```yml
+effects:
+  - timing: on_use
+    type: spend_status
+    status: Stolen Blood
+    amount:
+      kind: x
+    allowPartial: true
+  - timing: on_use
+    type: gain_status_per_spent
+    status: "The World: Time Stop"
+    stat: count
+    resource: Stolen Blood
+    amount:
+      kind: flat
+      value: 1
+  - timing: on_use
+    type: inflict_status_per_spent
+    status: Bleed
+    resource: Stolen Blood
+    amount:
+      kind: flat
+      value: 1
+```
+
+Draw and create effects:
+
+```yml
+effects:
+  - timing: on_use
+    type: draw_cards
+    amount:
+      kind: flat
+      value: 2
+  - timing: on_use
+    type: create_card
+    cardName: "Shadow Clone: Strike"
+    count:
+      kind: flat
+      value: 2
+```
+
+Keyword grants (useful with spend gating):
+
+```yml
+effects:
+  - timing: before_clash
+    type: spend_status
+    status: Shadow Clones
+    amount:
+      kind: x
+    allowPartial: true
+  - timing: before_clash
+    type: grant_keyword
+    keyword: Evade
+    resource: Shadow Clones
+    minSpent: 1
+```
+
 Reload and equipment switching:
 
 ```yml
