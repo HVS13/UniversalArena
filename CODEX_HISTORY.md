@@ -105,3 +105,7 @@ This file preserves the historical intent and decisions for CodexGPT. Append a n
 - 2026-01-06: Documented the export-game-data workflow in README and marked the CI data sync task as completed (pending secret/var configuration).
 - 2026-01-06: Defined the draw pile reshuffle rule in terminology/FAQ, synced terms data, and refreshed the front-page timestamp.
 - 2026-01-06: Added a `block_play` structured effect to model cannot-play locks, updated exporter validation, and wired DIO's Time Stop data to use it.
+- 2026-01-10: Expanded README export workflow steps (prereqs, CI verification) and marked the documentation task as done in TODO.
+- 2026-01-10: Verified the Export Game Data workflow produces the `chore: sync game data` commit in the game repo.
+- 2026-01-10: Clarified shared hand and shared Energy in terminology/FAQ/index, synced terms data, and refreshed the front-page timestamp.
+- 2026-01-11: Documented Defeated and Resurrection in terminology and FAQ, synced terms data, and refreshed the front-page timestamp.

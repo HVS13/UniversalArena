@@ -2,7 +2,7 @@
 
 This site outlines the structure and references for Universal Arena. Add your own content as you grow the guide.
 
-<p class="ua-last-updated">Last updated: <time datetime="2026-01-06T15:19">2026-01-06 15:19</time></p>
+<p class="ua-last-updated">Last updated: <time datetime="2026-01-11T01:03">2026-01-11 01:03</time></p>
 
 ## Introduction
 
@@ -11,8 +11,8 @@ This guide summarizes core systems and links to the detailed reference pages for
 ## Quick Start
 
 1. Each player chooses 3 characters (no duplicate Name + Version on the same team).
-2. Take each character's 5 cards (2 Basic + 3 Technique), shuffle them into one draw pile, and keep each Ultimate card outside the draw pile.
-3. Turn Start: draw to 5 cards, then set Energy to 5.
+2. Take each character's 5 cards (2 Basic + 3 Technique), shuffle them into one shared draw pile, and keep each Ultimate card outside the draw pile.
+3. Turn Start: draw to 5 cards in a shared hand, then set shared Energy to 5.
 4. Movement Round: players alternate. On your priority, spend 1 Energy to swap two adjacent allies or pass. Movement swaps are not card plays and do not grant Ultimate Meter. The round ends when both players pass consecutively.
 5. The player with initiative starts a Combat Round by playing a card into a legal zone (Fast/Normal/Slow).
 6. Players alternate playing or passing; faster cards can interrupt slower zones.
@@ -58,7 +58,7 @@ Reduce all opposing characters' HP to 0 (or meet the scenario's win condition, i
 
 1. To play any card, pay the Energy cost, select a legal target, then place it on a legal zone.
 2. Any card played in any zone stays in that zone until it is used, then it is discarded.
-3. For each card played, your team gains Ultimate Meter equal to the Energy spent to play the card.
+3. For each card played, your team gains Ultimate Meter equal to the Energy spent to play the card. Energy is shared across the team.
 4. If a card's speed is modified, treat it as its current speed for where it can be played.
 
 ## Movement Round
