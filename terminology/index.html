@@ -1021,7 +1021,7 @@
     </tr>
     <tr id="term-energy" class="term-entry">
       <td>Energy</td>
-      <td>The resource used to play cards. By default, at Turn Start each player sets Energy to 5; effects can modify this and there is no Energy cap.</td>
+      <td>The shared team resource used to play cards. By default, at Turn Start each team sets Energy to 5; effects can modify this and there is no Energy cap.</td>
     </tr>
     <tr id="term-ultimate-meter" class="term-entry">
       <td>Ultimate Meter</td>
@@ -1088,6 +1088,10 @@
       <td>Draw</td>
       <td>The act of taking cards from your Draw Pile and adding them to your hand. If you need to draw and your Draw Pile is empty, shuffle your Discard Pile into a new Draw Pile and continue drawing; if both piles are empty, draw as many as possible (possibly 0). By default, at Turn Start you draw until you reach a hand size of 5, modified by draw effects (if any). See <a href="faq.md#faq-draw-reshuffle">FAQ</a>.</td>
     </tr>
+    <tr id="term-hand" class="term-entry">
+      <td>Hand</td>
+      <td>Your team's shared hand of cards. Any character may play cards from the shared hand as long as they can legally play that card. See <a href="faq.md#faq-shared-hand-energy">FAQ</a>.</td>
+    </tr>
     <tr id="term-played" class="term-entry">
       <td>Played</td>
       <td>A card is played when it is placed in a legal zone after paying its cost and selecting legal targets.</td>
@@ -1133,6 +1137,14 @@
     <tr id="term-role" class="term-entry">
       <td>Role</td>
       <td>A character archetype tag used to communicate playstyle. See <a href="roles.md">Roles</a>.</td>
+    </tr>
+    <tr id="term-defeated" class="term-entry">
+      <td>Defeated</td>
+      <td>A character is defeated when their HP reaches 0. Defeated characters cannot be targeted or play cards, and their cards are removed from play. The match ends when all characters on a team are defeated.</td>
+    </tr>
+    <tr id="term-resurrection" class="term-entry">
+      <td>Resurrection</td>
+      <td>An effect that returns a defeated character to play. The effect must explicitly state how it restores that character; otherwise the character remains defeated.</td>
     </tr>
     <tr class="term-section">
       <th colspan="2">Combat</th>
