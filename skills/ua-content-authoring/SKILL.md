@@ -20,9 +20,9 @@ Use the repo's documented markup patterns to keep content consistent, linkable, 
 7. Apply basic naming: Basic + Attack cards must be named Strike; Basic + Defense cards must be named Defend; Basic + Special cards can use any name.
 8. Conditional "this card becomes X" effects are automatic in any zone; do not make them optional.
 9. "Spend X" is mandatory; if optional, it must say "may." If the Spend cannot be paid, that part of the effect does not happen.
-10. When adding structured data, use `effects`, `restrictions`, and optional `transforms` per `docs/data/README.md` (conditions, hits, stat targeting, set/reduce/spend handling) and keep the exporter aligned.
+10. When adding structured data, use `effects`, `restrictions`, and optional `transforms` per `docs/data/README.md` (conditions, hits, stat targeting, set/reduce/spend handling).
    - Restriction enforcement is structured-only; include `restrictions` for any "Can only be used if" / "Cannot be used if" lines.
-   - Keep the human-readable `effect` text even when structured effects exist; the game still relies on text parsing for unmodeled mechanics.
+   - Keep the human-readable `effect` text even when structured effects exist.
 11. For character Power numbers, follow `docs/characters/character-creation-guide.md` (including variable/0-cost handling). Document any character-specific exceptions in that guide.
 12. For keywords, status effects, roles, card types, terms, or FAQ entries, append the correct block markup in the corresponding file and use the shared link classes.
 13. For keywords, keep Core/Advanced sections in `docs/keywords.md` aligned with `tier` values in `docs/data/keywords.yml`.
@@ -30,11 +30,9 @@ Use the repo's documented markup patterns to keep content consistent, linkable, 
 15. When referencing keywords/status effects/roles/terms in content, use `ua-*-link` markup; only link status effects that live in `docs/status-effects.md` (unique ones stay plain text).
 16. Avoid undefined mechanics; if a global keyword/status/term appears in content, ensure it exists in the reference pages.
 17. If a card references remaining Multihit Count, make sure the base count is explicit in the card text or defined by the Multihit rules.
-18. After updating docs data, re-export into `C:\Git\UniversalArena-Web\packages\data\src` (and assets) so the game stays in sync.
-19. Keep `site/` untouched; it is build output.
-20. This repo is docs-only; do not add game pages or game JS/CSS here (game lives in `C:\Git\UniversalArena-Web`).
-21. Export actions (page PDF/MD/TXT + all-pages ZIP with format/character-combine/XLSX options and `html/`, `md/`, `txt/`, `xlsx/`) live in `docs/overrides/main.html` and `docs/javascripts/print.js`; keep exports free of permalinks, URLs, and images when editing them.
-22. Run `mkdocs build --strict` or `mkdocs serve` when asked to validate.
+18. Keep `site/` untouched; it is build output.
+19. Export actions (page PDF/MD/TXT + all-pages ZIP with format/character-combine/XLSX options and `html/`, `md/`, `txt/`, `xlsx/`) live in `docs/overrides/main.html` and `docs/javascripts/print.js`; keep exports free of permalinks, URLs, and images when editing them.
+20. Run `mkdocs build --strict` or `mkdocs serve` when asked to validate.
 
 ## References
 

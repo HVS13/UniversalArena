@@ -1,22 +1,20 @@
 # AGENTS
 
-This repo is a MkDocs Material rules reference and canonical data source. The web game lives in `C:\Git\UniversalArena-Web`; the optional relay server lives in `server/`.
+This repo is a MkDocs Material rules reference and canonical data source.
 
 Project rules
 - Skills manifest lives in `SKILLS.md`.
-- Work in `docs/` and `server/`; treat `site/` as generated output and do not edit it.
+- Work in `docs/`; treat `site/` as generated output and do not edit it.
 - MkDocs theme overrides live in `docs/overrides/`; use them for site-wide UI tweaks.
 - Follow patterns in `docs/adding-content.md` for content types; use templates and shared link markup.
 - Keywords are tiered Core/Advanced in `docs/keywords.md`; keep `docs/data/keywords.yml` `tier` values in sync.
 - Status effect entries include a Mode line (P/C, S, V) and an explicit Turn End line (use "No change" when nothing ticks).
-- Game data for the web game lives in `docs/data/`; keep it in sync with the docs and export via `docs/scripts/export-game-data.mjs`.
-- If rules or data expectations change in `C:\Git\UniversalArena-Web` (core or UI), update the matching docs reference pages and `docs/data` here, then re-export.
+- Structured data lives in `docs/data/`; keep it in sync with the reference pages.
 - The game is 3v3 per team with a shared deck/hand/energy/ultimate and per-character HP/status; keep docs and `docs/data` aligned.
-- Track docs/data tasks in this repo's `TODO.md`; track game-client tasks in `C:\Git\UniversalArena-Web\TODO.md` to avoid duplication.
-- If you add or rename keywords/status effects/terms in core, define them in the docs (`docs/keywords.md`, `docs/status-effects.md`, `docs/terminology.md`) and `docs/data/*.yml`.
-- Structured card data supports `effects`, `restrictions`, and optional `transforms`; keep `docs/data/README.md` and the exporter in sync (recent effect types include `set_status`, `reduce_status`, `spend_status`, `deal_damage_per_spent`, `reload_equipped`, `switch_equip`).
-- Restriction enforcement is structured-only; any "Can only be used if" / "Cannot be used if" text must be mirrored in `restrictions` or it will not be enforced by the game.
-- Core now enforces timing windows plus status caps/expiry/trigger hooks and supports hand/deck play plus spend/draw/creation text rules; legacy text parsing still exists in the game repo for unmodeled mechanics (optional spend, bonus damage, draw/create, unique triggers).
+- Track docs/data tasks in this repo's `TODO.md`.
+- If you add or rename keywords/status effects/terms, define them in the docs (`docs/keywords.md`, `docs/status-effects.md`, `docs/terminology.md`) and `docs/data/*.yml`.
+- Structured card data supports `effects`, `restrictions`, and optional `transforms`; keep `docs/data/README.md` aligned (recent effect types include `set_status`, `reduce_status`, `spend_status`, `deal_damage_per_spent`, `reload_equipped`, `switch_equip`).
+- Restriction enforcement is structured-only; any "Can only be used if" / "Cannot be used if" text must be mirrored in `restrictions` or it will not be enforced by rules parsing.
 - Filtering uses the `hidden` attribute; avoid overriding it on filterable items (add an explicit `[hidden] { display: none; }` when custom display styles are applied).
 - When evaluating rules or potential ambiguity, check `docs/faq.md` and ensure durable rules are reflected in the relevant reference pages.
 - When clarifying timing or keyword interactions, update the keyword/term definition and add a short FAQ example (with a cross-link from the glossary) if it will come up at the table.
@@ -38,7 +36,6 @@ Project rules
 - Follow `docs/characters/character-creation-guide.md` for power budgeting (including variable/0-cost handling); document character-specific exceptions there, not on character pages.
 - Export actions (page PDF/MD/TXT + all-pages ZIP with format/character-combine/XLSX options and `html/`, `md/`, `txt/`, `xlsx/`) live in `docs/overrides/main.html` and `docs/javascripts/print.js`; keep exports free of permalinks, URLs, and images.
 - Do not add game pages or game assets to this repo unless explicitly requested.
-- Game client changes live in `C:\Git\UniversalArena-Web`; relay server changes live in `server/index.js`.
 
 Quality checks
 - Run `mkdocs build --strict` or `mkdocs serve` when asked to validate docs changes.

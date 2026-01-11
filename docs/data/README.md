@@ -1,7 +1,7 @@
-# Game Data (Source of Truth)
+# Structured Data (Source of Truth)
 
-This directory is the canonical source for game data consumed by the web game.
-Docs pages remain human-readable; do not rely on parsing prose for runtime logic.
+This directory is the canonical source for structured rules data used by the docs.
+Docs pages remain human-readable; do not rely on parsing prose for logic or validation.
 
 ## Layout
 
@@ -11,22 +11,6 @@ Docs pages remain human-readable; do not rely on parsing prose for runtime logic
 - `docs/data/terms.yml`
 - `docs/data/card-types.yml`
 - `docs/data/roles.yml`
-
-## Exporter
-
-The exporter lives in `docs/scripts/` and reads from `docs/data/`.
-
-```powershell
-cd docs/scripts
-npm install
-npm run export
-```
-
-Optional overrides:
-
-```powershell
-node export-game-data.mjs --out ..\..\..\UniversalArena-Web\packages\data\src --assets-out ..\..\..\UniversalArena-Web\apps\client\public\assets\characters
-```
 
 ## Character schema (YAML)
 
@@ -88,7 +72,7 @@ createdCards:
 ### Notes
 
 - `id` must match the filename slug.
-- `art` is the filename under `docs/assets/characters/`. The exporter copies it to the game repo.
+- `art` is the filename under `docs/assets/characters/`.
 - `slot` should mirror the docs heading (example: `1`, `1-1`, `3-2`, `ultimate`).
 - `cards` includes ultimates. Use `ultimate-1`, `ultimate-2`, etc when a character has multiple ultimates.
 - `createdCards` is optional and uses the same card shape for created cards.
@@ -393,10 +377,3 @@ roles:
     description: "Primary damage dealer focused on securing takedowns."
 ```
 
-## GitHub Action sync
-
-The docs repo owns the data. The sync workflow exports into the game repo when you push or run it manually.
-
-Required repo settings:
-- Repo variable: `UA_GAME_REPO` (example: `YourOrg/UniversalArena-Web`)
-- Repo secret: `UA_SYNC_TOKEN` (token with write access to the game repo)
