@@ -30,9 +30,10 @@ Use the repo's documented markup patterns to keep content consistent, linkable, 
 15. When referencing keywords/status effects/roles/terms in content, use `ua-*-link` markup; only link status effects that live in `docs/status-effects.md` (unique ones stay plain text).
 16. Avoid undefined mechanics; if a global keyword/status/term appears in content, ensure it exists in the reference pages.
 17. If a card references remaining Multihit Count, make sure the base count is explicit in the card text or defined by the Multihit rules.
-18. Keep `site/` untouched; it is build output.
-19. Export actions (page PDF/MD/TXT + all-pages ZIP with format/character-combine/XLSX options and `html/`, `md/`, `txt/`, `xlsx/`) live in `docs/overrides/main.html` and `docs/javascripts/print.js`; keep exports free of permalinks, URLs, and images when editing them.
-20. Run `mkdocs build --strict` or `mkdocs serve` when asked to validate.
+18. After updating `docs/data`, run the exporter or trigger the CI sync so the game repo stays in sync.
+19. Keep `site/` untouched; it is build output.
+20. Export actions (page PDF/MD/TXT + all-pages ZIP with format/character-combine/XLSX options and `html/`, `md/`, `txt/`, `xlsx/`) live in `docs/overrides/main.html` and `docs/javascripts/print.js`; keep exports free of permalinks, URLs, and images when editing them.
+21. Run `mkdocs build --strict` or `mkdocs serve` when asked to validate.
 
 ## References
 

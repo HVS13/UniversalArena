@@ -16,6 +16,24 @@ Rules reference and canonical data source for Universal Arena.
    - `mkdocs build --strict` (strict build).
 3. Keep reference pages and `docs/data` aligned (keywords, status effects, terms, and templates).
 
+## Data export (for the web game)
+
+Exporter script: `docs/scripts/export-game-data.mjs`.
+
+```powershell
+cd C:\Git\UniversalArena\docs\scripts
+npm install
+node export-game-data.mjs --out C:\Git\UniversalArena-Web\packages\data\src --assets-out C:\Git\UniversalArena-Web\apps\client\public\assets\characters
+```
+
+## CI export workflow (docs -> game repo)
+
+Workflow: `.github/workflows/export-game-data.yml`
+
+Required repo settings:
+- Repo variable: `UA_GAME_REPO` = `Owner/UniversalArena-Web`
+- Repo secret: `UA_SYNC_TOKEN` (token with write access to the game repo)
+
 ## Current state
 
 - Character YAMLs include structured effects and restrictions; keep `effect` text for readability and any unmodeled mechanics.

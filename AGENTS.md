@@ -11,10 +11,12 @@ Project rules
 - Status effect entries include a Mode line (P/C, S, V) and an explicit Turn End line (use "No change" when nothing ticks).
 - Structured data lives in `docs/data/`; keep it in sync with the reference pages.
 - The game is 3v3 per team with a shared deck/hand/energy/ultimate and per-character HP/status; keep docs and `docs/data` aligned.
+- Exporter lives in `docs/scripts/`; use it (or CI) to sync data into the game repo.
+- If core or UI changes affect rules/keywords/status effects/terms, update the docs and `docs/data`, then re-export.
 - Track docs/data tasks in this repo's `TODO.md`.
 - If you add or rename keywords/status effects/terms, define them in the docs (`docs/keywords.md`, `docs/status-effects.md`, `docs/terminology.md`) and `docs/data/*.yml`.
 - Structured card data supports `effects`, `restrictions`, and optional `transforms`; keep `docs/data/README.md` aligned (recent effect types include `set_status`, `reduce_status`, `spend_status`, `deal_damage_per_spent`, `reload_equipped`, `switch_equip`).
-- Restriction enforcement is structured-only; any "Can only be used if" / "Cannot be used if" text must be mirrored in `restrictions` or it will not be enforced by rules parsing.
+- Restriction enforcement is structured-only; any "Can only be played if" / "Cannot be played if" text must be mirrored in `restrictions` or it will not be enforced by rules parsing.
 - Filtering uses the `hidden` attribute; avoid overriding it on filterable items (add an explicit `[hidden] { display: none; }` when custom display styles are applied).
 - When evaluating rules or potential ambiguity, check `docs/faq.md` and ensure durable rules are reflected in the relevant reference pages.
 - When clarifying timing or keyword interactions, update the keyword/term definition and add a short FAQ example (with a cross-link from the glossary) if it will come up at the table.
@@ -24,7 +26,7 @@ Project rules
 - Character portraits in `docs/characters/` pages must use `../../assets/characters/<file>` so directory URLs resolve on deploy.
 - Basic naming rule: Basic + Attack cards must be named Strike; Basic + Defense cards must be named Defend; Basic + Special cards can use any name.
 - Conditional "this card becomes X" effects are automatic in any zone; do not make them optional.
-- "Spend X" is mandatory; if it is optional, the effect must say "may."
+- "Spend X" is mandatory; if it is optional, use `?` (example: "Spend X Resource? Gain Evade.").
 - Keyword/status/card type/term/role link markup uses the shared `ua-*-link` classes so `docs/javascripts/guide.js` can rewrite links.
 - Use the shared link markup in character pages and card text; only link status effects that live in `docs/status-effects.md` (unique ones stay plain text).
 - Avoid undefined mechanics; if a global keyword/status/term appears in content, ensure it exists in the reference pages.

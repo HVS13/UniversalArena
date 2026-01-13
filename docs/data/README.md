@@ -12,6 +12,22 @@ Docs pages remain human-readable; do not rely on parsing prose for logic or vali
 - `docs/data/card-types.yml`
 - `docs/data/roles.yml`
 
+## Exporter
+
+The exporter lives in `docs/scripts/` and reads from `docs/data/`.
+
+```powershell
+cd docs/scripts
+npm install
+npm run export
+```
+
+Optional overrides:
+
+```powershell
+node export-game-data.mjs --out ..\..\..\UniversalArena-Web\packages\data\src --assets-out ..\..\..\UniversalArena-Web\apps\client\public\assets\characters
+```
+
 ## Character schema (YAML)
 
 ```yml
@@ -376,4 +392,12 @@ roles:
     name: Striker
     description: "Primary damage dealer focused on securing takedowns."
 ```
+
+## GitHub Action sync
+
+The docs repo owns the data. The sync workflow exports into the game repo when you push or run it manually.
+
+Required repo settings:
+- Repo variable: `UA_GAME_REPO` (example: `YourOrg/UniversalArena-Web`)
+- Repo secret: `UA_SYNC_TOKEN` (token with write access to the game repo)
 

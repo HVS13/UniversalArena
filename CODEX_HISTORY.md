@@ -21,3 +21,4 @@ This file preserves documentation-only decisions and rule clarifications.
 - 2026-01-10: Clarified shared hand and shared Energy in terminology/FAQ/index and synced terms data.
 - 2026-01-11: Documented Defeated and Resurrection in terminology/FAQ and synced terms data.
 - 2026-01-11: Trimmed repo guidance to documentation-only scope and removed implementation tooling from this repo.
+- 2026-01-13: Restored the exporter and auto-sync workflow in the docs repo.

@@ -11,3 +11,4 @@ Canonical skill index for Codex in this repo.
 
 ## Notes
 - Keep rules/reference pages and `docs/data` aligned.
+- Use `docs/scripts/export-game-data.mjs` (or CI) to sync data into the game repo.
