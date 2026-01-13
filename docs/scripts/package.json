@@ -3,7 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "export": "node export-game-data.mjs"
+    "export": "node export-game-data.mjs",
+    "validate": "node validate-data-sync.mjs"
   },
   "dependencies": {
     "yaml": "^2.4.2"

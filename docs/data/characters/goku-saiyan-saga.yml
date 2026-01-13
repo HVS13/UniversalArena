@@ -68,8 +68,8 @@ cards:
           kind: power
   - slot: "3-1"
     name: Meteor Combination
-    cost: 1 Energy
-    power: 10-14
+    cost: 2 Energy
+    power: 20-28
     types:
       - Technique
       - Attack
@@ -96,8 +96,8 @@ cards:
         cardSlot: "3-2"
   - slot: "3-2"
     name: Kaio-ken Attack
-    cost: 1 Energy
-    power: 10-14
+    cost: 2 Energy
+    power: 20-28
     types:
       - Technique
       - Attack
@@ -118,8 +118,8 @@ cards:
         hits: 4
   - slot: "4"
     name: Kamehameha
-    cost: 2 Energy
-    power: 16-24
+    cost: 3 Energy
+    power: 27-45
     types:
       - Technique
       - Attack
@@ -139,7 +139,7 @@ cards:
           kind: power
   - slot: "5"
     name: Kaioken
-    cost: 1 Energy
+    cost: 2 Energy
     power: "-"
     types:
       - Technique
@@ -181,8 +181,8 @@ cards:
           status: Kaioken
   - slot: ultimate
     name: Spirit Bomb
-    cost: 20 Ultimate Meter
-    power: 27-45
+    cost: 30 Ultimate Meter
+    power: 41-67
     types:
       - Ultimate
       - Attack

@@ -322,6 +322,16 @@ restrictions:
       - name: Death by Death Note
 ```
 
+Window-only restrictions (non-status gating):
+
+```yml
+restrictions:
+  - kind: require_window
+    window: assist_attack
+```
+
+Supported windows: `assist_attack`, `follow_up`, `after_use`.
+
 Optional card transforms:
 
 ```yml

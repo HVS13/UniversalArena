@@ -205,8 +205,8 @@ cards:
           status: "Bankai: Tensa Zangetsu"
   - slot: "3"
     name: Shunpo
-    cost: 1 Energy
-    power: 8-12
+    cost: 2 Energy
+    power: 16-24
     types:
       - Technique
       - Defense
@@ -229,8 +229,8 @@ cards:
         type: retain
   - slot: "4-1"
     name: Getsuga Tensho
-    cost: 2 Energy
-    power: 16-24
+    cost: 3 Energy
+    power: 23-37
     types:
       - Technique
       - Attack
@@ -249,6 +249,18 @@ cards:
         type: deal_damage
         amount:
           kind: power
+      - timing: on_use
+        type: spend_status
+        status: Reiatsu
+        amount:
+          kind: x
+        allowPartial: true
+      - timing: on_use
+        type: deal_damage_per_spent
+        status: Reiatsu
+        amount:
+          kind: flat
+          value: 4
       - timing: on_hit
         type: gain_status
         status: Reiatsu
@@ -262,8 +274,8 @@ cards:
         cardSlot: "4-2"
   - slot: "4-2"
     name: "Getsuga Tensho: Tensa Zangetsu"
-    cost: 2 Energy
-    power: 16-24
+    cost: 3 Energy
+    power: 23-37
     types:
       - Technique
       - Attack
@@ -280,6 +292,18 @@ cards:
         type: deal_damage
         amount:
           kind: power
+      - timing: on_use
+        type: spend_status
+        status: Reiatsu
+        amount:
+          kind: x
+        allowPartial: true
+      - timing: on_use
+        type: deal_damage_per_spent
+        status: Reiatsu
+        amount:
+          kind: flat
+          value: 5
       - timing: on_hit
         type: gain_status
         status: Reiatsu
@@ -288,7 +312,7 @@ cards:
           value: 1
   - slot: "5"
     name: "Bankai: Tensa Zangetsu"
-    cost: 1 Energy
+    cost: 2 Energy
     power: "-"
     types:
       - Technique
@@ -356,7 +380,7 @@ cards:
     effect:
       - "Can only be played if this character has Bankai: Tensa Zangetsu."
       - "Deal Power damage."
-      - "Spend up to 6 Reiatsu? Deal 4 times Reiatsu spent bonus damage."
+      - "Spend X Reiatsu (0-6)? Deal 4 times Reiatsu spent bonus damage."
     restrictions:
       - kind: require
         subject: self

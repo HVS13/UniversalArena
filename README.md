@@ -11,10 +11,15 @@ Rules reference and canonical data source for Universal Arena.
 ## Workflow
 
 1. Update docs in `docs/` and structured data in `docs/data/`.
-2. Preview or validate the docs:
+   - Character markdown is presentation-only; update matching `docs/data/characters/*.yml` for any card changes.
+2. Validate markdown/data alignment:
+   - `cd docs/scripts`
+   - `npm install`
+   - `npm run validate`
+3. Preview or validate the docs:
    - `mkdocs serve` (local preview), or
    - `mkdocs build --strict` (strict build).
-3. Keep reference pages and `docs/data` aligned (keywords, status effects, terms, and templates).
+4. Keep reference pages and `docs/data` aligned (keywords, status effects, terms, and templates).
 
 ## Data export (for the web game)
 

@@ -22,3 +22,5 @@ This file preserves documentation-only decisions and rule clarifications.
 - 2026-01-11: Documented Defeated and Resurrection in terminology/FAQ and synced terms data.
 - 2026-01-11: Trimmed repo guidance to documentation-only scope and removed implementation tooling from this repo.
 - 2026-01-13: Restored the exporter and auto-sync workflow in the docs repo.
+- 2026-01-13: Synced character card costs/power with updated pages and tightened spend modeling in structured data.
+- 2026-01-13: Added markdown/YAML drift validation and window-only restriction support in structured data.

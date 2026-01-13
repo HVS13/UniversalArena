@@ -133,7 +133,7 @@ cards:
     speed: Normal
     effect:
       - "Inflict 2 Stagnate."
-      - "If the target has 3+ Stolen Information, also inflict 1 Slow."
+      - "If the target has 3+ Stolen Information: Inflict 1 Slow."
     effects:
       - timing: on_use
         type: inflict_status
@@ -165,7 +165,7 @@ cards:
     speed: Slow
     effect:
       - "Can only be played if the target has 6 Stolen Information."
-      - "Inflict 3 Death by Death Note. Then set the target's Stolen Information Value to 0."
+      - "Inflict 3 Death by Death Note. Set the target's Stolen Information Value to 0."
     restrictions:
       - kind: require
         subject: target
@@ -210,8 +210,7 @@ cards:
     speed: Normal
     effect:
       - "Can only be played if the target has 6 Stolen Information or Death by Death Note."
-      - "Choose 1 enemy with 6 Stolen Information or Death by Death Note."
-      - "If the target has 6 Stolen Information, inflict 3 Death by Death Note and set its Stolen Information Value to 0."
+      - "If the target has 6 Stolen Information: Inflict 3 Death by Death Note. Set the target's Stolen Information Value to 0."
       - "Reduce the target's Death by Death Note Value by 1."
       - "Reduce by 1 additional per 10 Ultimate Meter spent (max 2; cannot reduce below 1)."
     restrictions:

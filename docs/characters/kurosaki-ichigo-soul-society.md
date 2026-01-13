@@ -142,7 +142,7 @@
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Deal Power damage. On Hit: Gain 1 Reiatsu.</p>
-  <p>Spend X Reiatsu (0-3): Deal 4 times X bonus damage.</p>
+  <p>Spend X Reiatsu (0-3)? Deal 4 times X bonus damage.</p>
   <p><a class="ua-keyword-link" data-keyword="keyword-follow-up" href="#">Follow-Up</a>.</p>
   <p>If this character has Bankai: Tensa Zangetsu: This card becomes Getsuga Tensho: Tensa Zangetsu.</p>
 </div>
@@ -158,7 +158,7 @@
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Deal Power damage. On Hit: Gain 1 Reiatsu.</p>
-  <p>Spend X Reiatsu (0-4): Deal 5 times X bonus damage.</p>
+  <p>Spend X Reiatsu (0-4)? Deal 5 times X bonus damage.</p>
 </div>
 
 ### Card 5: Bankai: Tensa Zangetsu
@@ -189,6 +189,6 @@
   <p class="card-block__heading">Effect</p>
   <p>Can only be played if this character has Bankai: Tensa Zangetsu.</p>
   <p>Deal Power damage.</p>
-  <p>Spend X Reiatsu (0-6): Deal 4 times Reiatsu spent bonus damage.</p>
+  <p>Spend X Reiatsu (0-6)? Deal 4 times Reiatsu spent bonus damage.</p>
 </div>
 

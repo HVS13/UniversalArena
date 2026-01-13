@@ -77,8 +77,8 @@ cards:
           value: 1
   - slot: "3"
     name: Resonating Slashes
-    cost: 1 Energy
-    power: 8-12
+    cost: 2 Energy
+    power: 16-24
     types:
       - Technique
       - Attack
@@ -99,14 +99,18 @@ cards:
           divisor: 2
         hits: 2
       - timing: on_hit
+        type: spend_status
+        status: Diminutive Sound
+        amount:
+          kind: flat
+          value: 1
+        gateAll: true
+      - timing: on_hit
         type: inflict_status
         status: Spectro Frazzle
         amount:
           kind: flat
           value: 2
-        condition:
-          kind: self_has_status
-          status: Diminutive Sound
   - slot: "4"
     name: Aftertune
     cost: 1 Energy
@@ -134,7 +138,7 @@ cards:
           value: 1
   - slot: "5"
     name: Instant
-    cost: 1 Energy
+    cost: 2 Energy
     power: "-"
     types:
       - Technique
@@ -146,7 +150,12 @@ cards:
     target: All Enemies
     speed: Normal
     effect:
+      - "Can only be played as Assist Attack."
+      - "Assist Attack."
       - "Inflict 2 Stagnate."
+    restrictions:
+      - kind: require_window
+        window: assist_attack
     effects:
       - timing: on_use
         type: inflict_status

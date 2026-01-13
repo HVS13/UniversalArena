@@ -172,8 +172,8 @@ cards:
         cardSlot: "3-2"
   - slot: "3-2"
     name: Normal Punch
-    cost: 1 Energy
-    power: 8-12
+    cost: 2 Energy
+    power: 16-24
     types:
       - Technique
       - Attack
@@ -257,8 +257,8 @@ cards:
         cardSlot: "4-2"
   - slot: "4-2"
     name: Normal Punch
-    cost: 1 Energy
-    power: 8-12
+    cost: 2 Energy
+    power: 16-24
     types:
       - Technique
       - Attack

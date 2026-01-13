@@ -1,6 +1,7 @@
 # TODO
 
 ## Docs/data
+- DONE: Added markdown/YAML drift validator (`docs/scripts/validate-data-sync.mjs`).
 - Keep structured `effects` + `transforms` aligned with `docs/data/README.md` as new mechanics are added.
 - Extend schema validation for new effect types as they are introduced.
 - Extend the schema only when needed for remaining unmodeled mechanics (optional spend, bonus damage, draw/create, unique triggers).

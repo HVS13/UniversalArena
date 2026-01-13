@@ -78,9 +78,12 @@ const amountKinds = new Set([
 const scalarKinds = new Set(["x", "x_plus", "x_minus", "x_times"]);
 const transformFields = ["condition", "cardSlot"];
 const transformConditionFields = ["kind"];
-const restrictionKinds = new Set(["require", "forbid"]);
+const restrictionStatusKinds = new Set(["require", "forbid"]);
+const restrictionWindowKinds = new Set(["require_window", "forbid_window"]);
+const restrictionKinds = new Set([...restrictionStatusKinds, ...restrictionWindowKinds]);
 const restrictionSubjects = new Set(["self", "target"]);
 const restrictionModes = new Set(["any", "all"]);
+const restrictionWindows = new Set(["assist_attack", "follow_up", "after_use"]);
 const effectTargets = new Set(["self", "target", "opponent"]);
 
 const dataFileConfigs = [
@@ -381,6 +384,14 @@ const validateRestrictions = (restrictions, label, filename, errors) => {
       errors.push(
         `${filename}: ${label} restrictions[${restrictionIndex}] has invalid kind "${restriction.kind}".`
       );
+    }
+    if (restrictionWindowKinds.has(restriction.kind)) {
+      if (!restrictionWindows.has(restriction.window)) {
+        errors.push(
+          `${filename}: ${label} restrictions[${restrictionIndex}] has invalid window "${restriction.window}".`
+        );
+      }
+      return;
     }
     if (!restrictionSubjects.has(restriction.subject)) {
       errors.push(

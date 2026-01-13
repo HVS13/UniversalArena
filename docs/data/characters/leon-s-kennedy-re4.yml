@@ -138,6 +138,13 @@ cards:
       - "On Follow-Up: -1 Energy Cost."
     effects:
       - timing: on_use
+        type: spend_status
+        status: Shotgun Ammo
+        amount:
+          kind: flat
+          value: 1
+        gateAll: true
+      - timing: on_use
         type: deal_damage
         amount:
           kind: power_div
@@ -256,6 +263,13 @@ cards:
       - "Spend 1 Rocket Launcher: Deal Power damage."
       - "If this character doesn't have Rocket Launcher: this Ultimate becomes Purchase Rocket Launcher."
     effects:
+      - timing: on_use
+        type: spend_status
+        status: Rocket Launcher
+        amount:
+          kind: flat
+          value: 1
+        gateAll: true
       - timing: on_use
         type: deal_damage
         amount:
