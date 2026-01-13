@@ -55,7 +55,7 @@ cards:
     effect:
       - "Deal Power damage."
       - "On Hit: If the target has Stun: Gain 1 Stolen Blood."
-      - "If this character has The World: Time Stop: This card becomes Strike: Muda Barrage."
+      - "Always: If this character has The World: Time Stop: This card becomes Strike: Muda Barrage."
     effects:
       - timing: on_use
         type: deal_damage
@@ -129,7 +129,7 @@ cards:
     effect:
       - "Gain Power Shield."
       - "Evade."
-      - "If this character has The World: Time Stop: This card becomes Defend: The World."
+      - "Always: If this character has The World: Time Stop: This card becomes Defend: The World."
     effects:
       - timing: on_use
         type: gain_shield
@@ -251,10 +251,10 @@ cards:
     target: 1 Enemy
     speed: Normal
     effect:
-      - "This card's Multihit Count starts at 6."
+      - "Always: This card's Multihit Count starts at 6."
       - "Deal Power / 6 damage 6 times."
       - "On Hit: Inflict 1 Bleed."
-      - "If this character has The World: Time Stop: This card becomes Throwing Knives: Time Stop."
+      - "Always: If this character has The World: Time Stop: This card becomes Throwing Knives: Time Stop."
     effects:
       - timing: on_use
         type: deal_damage
@@ -288,7 +288,7 @@ cards:
     target: 1 Enemy
     speed: Fast
     effect:
-      - "This card's Multihit Count starts at 10."
+      - "Always: This card's Multihit Count starts at 10."
       - "Deal Power / 10 damage 10 times."
       - "On Hit: Inflict 1 Bleed."
       - "Once per use, if the target has Stun: Deal 10 bonus damage."

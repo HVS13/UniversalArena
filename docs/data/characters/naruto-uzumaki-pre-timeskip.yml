@@ -188,7 +188,7 @@ cards:
     speed: Slow
     effect:
       - "Deal Power damage."
-      - "If this character has 2+ Shadow Clones: This card becomes Rasengan: Clone Assist."
+      - "Always: If this character has 2+ Shadow Clones: This card becomes Rasengan: Clone Assist."
     effects:
       - timing: on_use
         type: deal_damage
@@ -272,9 +272,10 @@ cards:
     target: All Enemies
     speed: Normal
     effect:
-      - "Deal Power damage. Inflict 1 Slow and +1 Slow Count."
+      - "Deal Power damage."
+      - "Inflict 1 Slow and +1 Slow Count."
       - "Gain 2 Summoned: Gamabunta."
-      - "If this character has One-Tail Cloak: This Ultimate becomes One-Tail Rasengan."
+      - "Always: If this character has One-Tail Cloak: This Ultimate becomes One-Tail Rasengan."
     effects:
       - timing: on_use
         type: deal_damage
@@ -320,7 +321,8 @@ cards:
     effect:
       - "Can only be played if this character has One-Tail Cloak."
       - "Spend 2 Shadow Clones: Deal Power damage."
-      - "On Hit: Inflict 2 Vulnerable and +2 Vulnerable Count. Inflict 1 Slow and +1 Slow Count."
+      - "On Hit: Inflict 2 Vulnerable and +2 Vulnerable Count."
+      - "On Hit: Inflict 1 Slow and +1 Slow Count."
       - "Follow-Up."
       - "After Use: Reduce Kyuubi Chakra Count by 2."
     restrictions:

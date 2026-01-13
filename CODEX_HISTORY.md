@@ -24,3 +24,4 @@ This file preserves documentation-only decisions and rule clarifications.
 - 2026-01-13: Restored the exporter and auto-sync workflow in the docs repo.
 - 2026-01-13: Synced character card costs/power with updated pages and tightened spend modeling in structured data.
 - 2026-01-13: Added markdown/YAML drift validation and window-only restriction support in structured data.
+- 2026-01-14: Clarified Follow-Up/Assist Attack to resolve immediately without clashing, and Counter to replace Follow-Up/Assist windows; synced keywords, terms, and FAQ.

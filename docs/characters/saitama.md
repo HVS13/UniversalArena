@@ -67,7 +67,7 @@
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Gain 1 State.</p>
-  <p>If this character has State: Normal or State: Serious, this card becomes Strike.</p>
+  <p>Always: If this character has State: Normal or State: Serious, this card becomes Strike.</p>
 </div>
 
 ### Card 1-2: Strike
@@ -80,7 +80,8 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal Power damage. Gain 1 State.</p>
+  <p>Deal Power damage.</p>
+  <p>Gain 1 State.</p>
 </div>
 
 ### Card 2-1: Bored
@@ -94,7 +95,7 @@
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Gain 1 State.</p>
-  <p>If this character has State: Normal or State: Serious, this card becomes Defend.</p>
+  <p>Always: If this character has State: Normal or State: Serious, this card becomes Defend.</p>
 </div>
 
 ### Card 2-2: Defend
@@ -107,7 +108,8 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Gain Power Shield. Gain 1 State.</p>
+  <p>Gain Power Shield.</p>
+  <p>Gain 1 State.</p>
   <p><a class="ua-keyword-link" data-keyword="keyword-evade" href="#">Evade</a>.</p>
 </div>
 
@@ -122,7 +124,7 @@
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Gain 1 State.</p>
-  <p>If this character has State: Normal or State: Serious, this card becomes Normal Punch.</p>
+  <p>Always: If this character has State: Normal or State: Serious, this card becomes Normal Punch.</p>
 </div>
 
 ### Card 3-2: Normal Punch
@@ -135,8 +137,9 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal Power damage. Gain 1 State.</p>
-  <p>If this character has State: Serious, this card becomes Serious Punch.</p>
+  <p>Deal Power damage.</p>
+  <p>Gain 1 State.</p>
+  <p>Always: If this character has State: Serious, this card becomes Serious Punch.</p>
 </div>
 
 ### Card 3-3: Serious Punch
@@ -149,7 +152,8 @@
     <span><strong>Speed:</strong> Fast</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal Power damage. Gain 1 State.</p>
+  <p>Deal Power damage.</p>
+  <p>Gain 1 State.</p>
 </div>
 
 ### Card 4-1: Bored
@@ -163,7 +167,7 @@
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Gain 1 State.</p>
-  <p>If this character has State: Normal or State: Serious, this card becomes Normal Punch.</p>
+  <p>Always: If this character has State: Normal or State: Serious, this card becomes Normal Punch.</p>
 </div>
 
 ### Card 4-2: Normal Punch
@@ -176,8 +180,9 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal Power damage. Gain 1 State.</p>
-  <p>If this character has State: Serious, this card becomes Serious Headbutt.</p>
+  <p>Deal Power damage.</p>
+  <p>Gain 1 State.</p>
+  <p>Always: If this character has State: Serious, this card becomes Serious Headbutt.</p>
 </div>
 
 ### Card 4-3: Serious Headbutt
@@ -190,7 +195,9 @@
     <span><strong>Speed:</strong> Fast</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal Power damage. Inflict 1 <a class="ua-status-link" data-status="status-stun" href="#">Stun</a>. Gain 1 State.</p>
+  <p>Deal Power damage.</p>
+  <p>Inflict 1 <a class="ua-status-link" data-status="status-stun" href="#">Stun</a>.</p>
+  <p>Gain 1 State.</p>
 </div>
 
 ### Card 5-1: Bored
@@ -204,7 +211,7 @@
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Gain 1 State.</p>
-  <p>If this character has State: Normal or State: Serious, this card becomes Consecutive Normal Punch.</p>
+  <p>Always: If this character has State: Normal or State: Serious, this card becomes Consecutive Normal Punch.</p>
 </div>
 
 ### Card 5-2: Consecutive Normal Punch
@@ -217,8 +224,9 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal Power / (X + 1) damage (X + 1) times. Gain X State.</p>
-  <p>If this character has State: Serious, this card becomes Serious Consecutive Side Hops.</p>
+  <p>Deal Power / (X + 1) damage (X + 1) times.</p>
+  <p>Gain X State.</p>
+  <p>Always: If this character has State: Serious, this card becomes Serious Consecutive Side Hops.</p>
 </div>
 
 ### Card 5-3: Serious Consecutive Side Hops
@@ -231,7 +239,9 @@
     <span><strong>Speed:</strong> Fast</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal Power / 2 damage. Gain Power / 2 Shield. Gain 1 State.</p>
+  <p>Deal Power / 2 damage.</p>
+  <p>Gain Power / 2 Shield.</p>
+  <p>Gain 1 State.</p>
   <p><a class="ua-keyword-link" data-keyword="keyword-evade" href="#">Evade</a>.</p>
 </div>
 
@@ -271,5 +281,6 @@
     <span><strong>Speed:</strong> Fast</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal Power damage. Inflict 1 <a class="ua-status-link" data-status="status-stun" href="#">Stun</a>.</p>
+  <p>Deal Power damage.</p>
+  <p>Inflict 1 <a class="ua-status-link" data-status="status-stun" href="#">Stun</a>.</p>
 </div>

@@ -44,7 +44,8 @@ cards:
     target: 1 Enemy
     speed: Normal
     effect:
-      - "Deal Power damage. Inflict 1 Bleed."
+      - "Deal Power damage."
+      - "Inflict 1 Bleed."
     effects:
       - timing: on_use
         type: deal_damage
@@ -68,7 +69,8 @@ cards:
     target: 1 Ally
     speed: Normal
     effect:
-      - "Gain Power Shield. Reload currently Equipped Weapon."
+      - "Gain Power Shield."
+      - "Reload currently Equipped Weapon."
       - "Evade."
     effects:
       - timing: on_use
@@ -91,11 +93,11 @@ cards:
     target: 1 Enemy
     speed: Normal
     effect:
-      - "This card's Multihit Count starts at 3."
+      - "Always: This card's Multihit Count starts at 3."
       - "Set X to this card's remaining Multihit Count (before resolving this card)."
       - "Spend X Handgun Ammo: Deal Power / X damage once per Ammo spent."
-      - "If this character has Equip: Riot Gun: This card becomes Shoot: Riot Gun."
-      - "If this character has Equip: Chicago Typewriter: This card becomes Shoot: Chicago Typewriter."
+      - "Always: If this character has Equip: Riot Gun: This card becomes Shoot: Riot Gun."
+      - "Always: If this character has Equip: Chicago Typewriter: This card becomes Shoot: Chicago Typewriter."
     effects:
       - timing: on_use
         type: spend_status
@@ -261,7 +263,7 @@ cards:
     speed: Normal
     effect:
       - "Spend 1 Rocket Launcher: Deal Power damage."
-      - "If this character doesn't have Rocket Launcher: this Ultimate becomes Purchase Rocket Launcher."
+      - "Always: If this character doesn't have Rocket Launcher: this Ultimate becomes Purchase Rocket Launcher."
     effects:
       - timing: on_use
         type: spend_status

@@ -22,7 +22,7 @@ Core keywords are expected in early play. Advanced keywords are less common or m
 
 <div class="ua-entry keyword-entry" id="keyword-counter">
   <p class="ua-entry__title">Counter</p>
-  <p class="ua-entry__desc">After Clash: If this Defense reduces the Attack's Power damage to 0, you may play any card targeting the attacker. This follows the same timing and play rules as Follow-Up and Assist Attack.</p>
+  <p class="ua-entry__desc">After Clash: If this Defense reduces the Attack's Power damage to 0, you may play any card targeting the attacker. This follows the same timing and play rules as Follow-Up and Assist Attack, and replaces any Follow-Up/Assist window from that clash.</p>
 </div>
 
 <div class="ua-entry keyword-entry" id="keyword-reuse">
@@ -32,12 +32,12 @@ Core keywords are expected in early play. Advanced keywords are less common or m
 
 <div class="ua-entry keyword-entry" id="keyword-follow-up">
   <p class="ua-entry__title">Follow-Up</p>
-  <p class="ua-entry__desc">After Use: This card can be played after any other card from the same character.</p>
+  <p class="ua-entry__desc">After Use: You may play this card immediately after another card from the same character is used. It resolves immediately, does not enter the zone stack, and does not clash with the next card. It must be played into the same zone and be legal for that zone's Speed; pay costs and choose legal targets as normal. Cancelled or Negated cards are not used and do not allow Follow-Up.</p>
 </div>
 
 <div class="ua-entry keyword-entry" id="keyword-assist-attack">
   <p class="ua-entry__title">Assist Attack</p>
-  <p class="ua-entry__desc">After Use: This card can be played after any other card used by a different character.</p>
+  <p class="ua-entry__desc">After Use: You may play this card immediately after another card used by a different character on your team. It resolves immediately and does not clash with the next card. It follows the same timing and play rules as Follow-Up.</p>
 </div>
 
 #### Damage Mitigation

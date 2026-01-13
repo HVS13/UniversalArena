@@ -53,7 +53,8 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal Power damage. On Hit: Inflict 1 Stolen Information.</p>
+  <p>Deal Power damage.</p>
+  <p>On Hit: Inflict 1 Stolen Information.</p>
   <p>On Hit: If the target has 3+ Stolen Information: Inflict 1 <a class="ua-status-link" data-status="status-slow" href="#">Slow</a> and +1 Slow Count.</p>
 </div>
 
@@ -110,7 +111,8 @@
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Can only be played if the target has 6 Stolen Information.</p>
-  <p>Inflict 3 Death by Death Note. Set the target's Stolen Information Value to 0.</p>
+  <p>Inflict 3 Death by Death Note.</p>
+  <p>Set the target's Stolen Information Value to 0.</p>
 </div>
 
 ### Ultimate: Death Note: Judgment
@@ -124,7 +126,8 @@
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Can only be played if the target has 6 Stolen Information or Death by Death Note.</p>
-  <p>If the target has 6 Stolen Information: Inflict 3 Death by Death Note. Set the target's Stolen Information Value to 0.</p>
+  <p>If the target has 6 Stolen Information: Inflict 3 Death by Death Note.</p>
+  <p>If the target has 6 Stolen Information: Set the target's Stolen Information Value to 0.</p>
   <p>Reduce the target's Death by Death Note Value by 1.</p>
   <p>Reduce by 1 additional per 10 Ultimate Meter spent (max 2; cannot reduce below 1).</p>
 </div>

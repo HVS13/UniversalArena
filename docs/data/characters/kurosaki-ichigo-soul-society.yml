@@ -53,9 +53,10 @@ cards:
     target: 1 Enemy
     speed: Normal
     effect:
-      - "Deal Power damage. On Hit: Gain 1 Reiatsu."
-      - "If this character has Hollow Interference: This card becomes Strike: White."
-      - "Otherwise, if this character has Bankai: Tensa Zangetsu: This card becomes Strike: Tensa Zangetsu."
+      - "Deal Power damage."
+      - "On Hit: Gain 1 Reiatsu."
+      - "Always: If this character has Hollow Interference: This card becomes Strike: White."
+      - "Always: Otherwise, if this character has Bankai: Tensa Zangetsu: This card becomes Strike: Tensa Zangetsu."
     effects:
       - timing: on_use
         type: deal_damage
@@ -101,7 +102,8 @@ cards:
     target: 1 Enemy
     speed: Fast
     effect:
-      - "Deal Power damage. On Hit: Gain 1 Reiatsu."
+      - "Deal Power damage."
+      - "On Hit: Gain 1 Reiatsu."
     effects:
       - timing: on_use
         type: deal_damage
@@ -138,7 +140,8 @@ cards:
     target: 1 Enemy
     speed: Fast
     effect:
-      - "Deal Power damage. On Hit: Gain 2 Reiatsu."
+      - "Deal Power damage."
+      - "On Hit: Gain 2 Reiatsu."
       - "Follow-Up."
       - "After Use: Gain 1 Vulnerable and +1 Vulnerable Count."
     effects:
@@ -240,10 +243,11 @@ cards:
     target: 1 Enemy
     speed: Normal
     effect:
-      - "Deal Power damage. On Hit: Gain 1 Reiatsu."
+      - "Deal Power damage."
+      - "On Hit: Gain 1 Reiatsu."
       - "Spend X Reiatsu (0-3)? Deal 4 times X bonus damage."
       - "Follow-Up."
-      - "If this character has Bankai: Tensa Zangetsu: This card becomes Getsuga Tensho: Tensa Zangetsu."
+      - "Always: If this character has Bankai: Tensa Zangetsu: This card becomes Getsuga Tensho: Tensa Zangetsu."
     effects:
       - timing: on_use
         type: deal_damage
@@ -285,7 +289,8 @@ cards:
     target: 1 Enemy
     speed: Fast
     effect:
-      - "Deal Power damage. On Hit: Gain 1 Reiatsu."
+      - "Deal Power damage."
+      - "On Hit: Gain 1 Reiatsu."
       - "Spend X Reiatsu (0-4)? Deal 5 times X bonus damage."
     effects:
       - timing: on_use

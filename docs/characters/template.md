@@ -50,7 +50,7 @@
 
 ## Cards
 
-Use timing labels in the standard order (On Play -> Before Clash -> After Clash -> Before Use -> On Use -> On Hit -> After Use -> Always). Start each sentence with the timing label. Use `?` for optional effects and `:` for mandatory costs; place keyword-only lines where they resolve (pre-play first, After Clash after Shield/damage, After Use after On Hit, cleanup keywords last).
+Use timing labels in the standard order (On Play -> Before Clash -> After Clash -> Before Use -> On Use -> On Hit -> After Use -> Always). Start each sentence with a timing label unless it is default On Use (which can be left unlabeled). Use `?` for optional effects and `:` for mandatory costs; place keyword-only lines where they resolve (pre-play first, After Clash after Shield/damage, After Use after On Hit, cleanup keywords last).
 
 ### Card 1: Card Name
 <div class="card-block">
@@ -62,7 +62,7 @@ Use timing labels in the standard order (On Play -> Before Clash -> After Clash 
     <span><strong>Speed:</strong> Value</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>On Use: Effect description.</p>
+  <p>Effect description.</p>
   <p><strong>Conditional:</strong> Conditional text (if any).</p>
 </div>
 
@@ -76,7 +76,7 @@ Use timing labels in the standard order (On Play -> Before Clash -> After Clash 
     <span><strong>Speed:</strong> Value</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>On Use: Effect description.</p>
+  <p>Effect description.</p>
   <p><strong>Conditional:</strong> Conditional text (if any).</p>
 </div>
 
@@ -90,7 +90,7 @@ Use timing labels in the standard order (On Play -> Before Clash -> After Clash 
     <span><strong>Speed:</strong> Value</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>On Use: Effect description.</p>
+  <p>Effect description.</p>
   <p><strong>Conditional:</strong> Conditional text (if any).</p>
 </div>
 
@@ -104,7 +104,7 @@ Use timing labels in the standard order (On Play -> Before Clash -> After Clash 
     <span><strong>Speed:</strong> Value</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>On Use: Effect description.</p>
+  <p>Effect description.</p>
   <p><strong>Conditional:</strong> Conditional text (if any).</p>
 </div>
 
@@ -118,7 +118,7 @@ Use timing labels in the standard order (On Play -> Before Clash -> After Clash 
     <span><strong>Speed:</strong> Value</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>On Use: Effect description.</p>
+  <p>Effect description.</p>
   <p><strong>Conditional:</strong> Conditional text (if any).</p>
 </div>
 
@@ -132,6 +132,6 @@ Use timing labels in the standard order (On Play -> Before Clash -> After Clash 
     <span><strong>Speed:</strong> Value</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>On Use: Effect description.</p>
+  <p>Effect description.</p>
   <p><strong>Conditional:</strong> Conditional text (if any).</p>
 </div>

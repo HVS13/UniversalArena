@@ -68,9 +68,10 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal Power damage. On Hit: Gain 1 Reiatsu.</p>
-  <p>If this character has Hollow Interference: This card becomes Strike: White.</p>
-  <p>Otherwise, if this character has Bankai: Tensa Zangetsu: This card becomes Strike: Tensa Zangetsu.</p>
+  <p>Deal Power damage.</p>
+  <p>On Hit: Gain 1 Reiatsu.</p>
+  <p>Always: If this character has Hollow Interference: This card becomes Strike: White.</p>
+  <p>Always: Otherwise, if this character has Bankai: Tensa Zangetsu: This card becomes Strike: Tensa Zangetsu.</p>
 </div>
 
 ### Card 1-2: Strike: Tensa Zangetsu
@@ -83,7 +84,8 @@
     <span><strong>Speed:</strong> Fast</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal Power damage. On Hit: Gain 1 Reiatsu.</p>
+  <p>Deal Power damage.</p>
+  <p>On Hit: Gain 1 Reiatsu.</p>
 </div>
 
 ### Card 1-3: Strike: White
@@ -96,7 +98,8 @@
     <span><strong>Speed:</strong> Fast</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal Power damage. On Hit: Gain 2 Reiatsu.</p>
+  <p>Deal Power damage.</p>
+  <p>On Hit: Gain 2 Reiatsu.</p>
   <p><a class="ua-keyword-link" data-keyword="keyword-follow-up" href="#">Follow-Up</a>.</p>
   <p>After Use: Gain 1 <a class="ua-status-link" data-status="status-vulnerable" href="#">Vulnerable</a> and +1 Vulnerable Count.</p>
 </div>
@@ -141,10 +144,11 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal Power damage. On Hit: Gain 1 Reiatsu.</p>
+  <p>Deal Power damage.</p>
+  <p>On Hit: Gain 1 Reiatsu.</p>
   <p>Spend X Reiatsu (0-3)? Deal 4 times X bonus damage.</p>
   <p><a class="ua-keyword-link" data-keyword="keyword-follow-up" href="#">Follow-Up</a>.</p>
-  <p>If this character has Bankai: Tensa Zangetsu: This card becomes Getsuga Tensho: Tensa Zangetsu.</p>
+  <p>Always: If this character has Bankai: Tensa Zangetsu: This card becomes Getsuga Tensho: Tensa Zangetsu.</p>
 </div>
 
 ### Card 4-2: Getsuga Tensho: Tensa Zangetsu
@@ -157,7 +161,8 @@
     <span><strong>Speed:</strong> Fast</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal Power damage. On Hit: Gain 1 Reiatsu.</p>
+  <p>Deal Power damage.</p>
+  <p>On Hit: Gain 1 Reiatsu.</p>
   <p>Spend X Reiatsu (0-4)? Deal 5 times X bonus damage.</p>
 </div>
 

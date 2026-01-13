@@ -54,7 +54,8 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal Power damage. Inflict 1 <a class="ua-status-link" data-status="status-bleed" href="#">Bleed</a>.</p>
+  <p>Deal Power damage.</p>
+  <p>Inflict 1 <a class="ua-status-link" data-status="status-bleed" href="#">Bleed</a>.</p>
 </div>
 
 ### Card 2: Defend
@@ -67,7 +68,8 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Gain Power Shield. Reload currently Equipped Weapon.</p>
+  <p>Gain Power Shield.</p>
+  <p>Reload currently Equipped Weapon.</p>
   <p><a class="ua-keyword-link" data-keyword="keyword-evade" href="#">Evade</a>.</p>
 </div>
 
@@ -81,11 +83,11 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>This card's Multihit Count starts at 3.</p>
+  <p>Always: This card's Multihit Count starts at 3.</p>
   <p>Set X to this card's remaining Multihit Count (before resolving this card).</p>
   <p>Spend X Handgun Ammo: Deal Power / X damage once per Ammo spent.</p>
-  <p>If this character has Equip: Riot Gun: This card becomes Shoot: Riot Gun.</p>
-  <p>If this character has Equip: Chicago Typewriter: This card becomes Shoot: Chicago Typewriter.</p>
+  <p>Always: If this character has Equip: Riot Gun: This card becomes Shoot: Riot Gun.</p>
+  <p>Always: If this character has Equip: Chicago Typewriter: This card becomes Shoot: Chicago Typewriter.</p>
 </div>
 
 ### Card 3-2: Shoot: Riot Gun
@@ -161,7 +163,7 @@
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Spend 1 Rocket Launcher: Deal Power damage.</p>
-  <p>If this character doesn't have Rocket Launcher: this Ultimate becomes Purchase Rocket Launcher.</p>
+  <p>Always: If this character doesn't have Rocket Launcher: this Ultimate becomes Purchase Rocket Launcher.</p>
 </div>
 
 ### Ultimate-2: Purchase: Rocket Launcher

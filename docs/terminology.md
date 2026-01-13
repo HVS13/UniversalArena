@@ -202,6 +202,14 @@ This page is the reference glossary for game terms. Use the filter to quickly lo
       <td>Reuse</td>
       <td>If a card is instructed to Reuse, do not discard it after its clash; keep it in the current zone so it can be paired again during the same zone resolution.</td>
     </tr>
+    <tr id="term-follow-up" class="term-entry">
+      <td>Follow-Up</td>
+      <td>A keyword that lets you play a card immediately after another card from the same character is used. The Follow-Up resolves immediately, does not enter the zone stack, and does not clash with the next card; it must be played into the same zone if legal. See <a href="faq.md#faq-follow-up-assist-attack">FAQ</a>.</td>
+    </tr>
+    <tr id="term-assist-attack" class="term-entry">
+      <td>Assist Attack</td>
+      <td>A keyword that lets you play a card immediately after another card used by a different character on your team. The Assist Attack resolves immediately, does not enter the zone stack, and does not clash with the next card; it must be played into the same zone if legal. See <a href="faq.md#faq-follow-up-assist-attack">FAQ</a>.</td>
+    </tr>
     <tr class="term-section">
       <th colspan="2">Defense</th>
     </tr>

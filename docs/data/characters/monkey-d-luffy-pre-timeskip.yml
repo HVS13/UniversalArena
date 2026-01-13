@@ -86,8 +86,8 @@ cards:
     speed: Normal
     effect:
       - "Deal Power damage."
-      - "If this character has Gear 2nd: This card becomes Gomu Gomu no Jet Pistol."
-      - "If this character has Gear 3rd: This card becomes Gomu Gomu no Gigant Pistol."
+      - "Always: If this character has Gear 2nd: This card becomes Gomu Gomu no Jet Pistol."
+      - "Always: If this character has Gear 3rd: This card becomes Gomu Gomu no Gigant Pistol."
     effects:
       - timing: on_use
         type: deal_damage
@@ -154,8 +154,8 @@ cards:
     speed: Normal
     effect:
       - "Deal Power damage."
-      - "If this character has Gear 2nd: This card becomes Gomu Gomu no Jet Bazooka."
-      - "If this character has Gear 3rd: This card becomes Gomu Gomu no Gigant Bazooka."
+      - "Always: If this character has Gear 2nd: This card becomes Gomu Gomu no Jet Bazooka."
+      - "Always: If this character has Gear 3rd: This card becomes Gomu Gomu no Gigant Bazooka."
     effects:
       - timing: on_use
         type: deal_damage
@@ -272,8 +272,11 @@ cards:
     speed: Fast
     effect:
       - "Can only be played if this character has Gear 2nd."
-      - "Deal Power / (X + 1) damage (X + 1) times. Inflict X Frail. Gain X Weak and +X Weak Count. Gain X Vulnerable and +X Vulnerable Count."
-      - "If this character has Gear 3rd: This Ultimate becomes Gomu Gomu no Gigant Rifle."
+      - "Deal Power / (X + 1) damage (X + 1) times."
+      - "Inflict X Frail."
+      - "Gain X Weak and +X Weak Count."
+      - "Gain X Vulnerable and +X Vulnerable Count."
+      - "Always: If this character has Gear 3rd: This Ultimate becomes Gomu Gomu no Gigant Rifle."
     restrictions:
       - kind: require
         subject: self
@@ -358,7 +361,7 @@ cards:
     effect:
       - "Can only be played if this character has Gear 3rd."
       - "Deal Power damage."
-      - "If this character has Gear 2nd: This Ultimate becomes Gomu Gomu no Jet Gatling."
+      - "Always: If this character has Gear 2nd: This Ultimate becomes Gomu Gomu no Jet Gatling."
     restrictions:
       - kind: require
         subject: self

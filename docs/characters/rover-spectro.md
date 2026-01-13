@@ -43,7 +43,9 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal Power damage. Gain 1 Diminutive Sound. Gain 1 Ultimate Meter.</p>
+  <p>Deal Power damage.</p>
+  <p>Gain 1 Diminutive Sound.</p>
+  <p>Gain 1 Ultimate Meter.</p>
 </div>
 
 ### Card 2: Defend
@@ -56,7 +58,8 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Gain Power Shield. Gain 1 Ultimate Meter.</p>
+  <p>Gain Power Shield.</p>
+  <p>Gain 1 Ultimate Meter.</p>
   <p><a class="ua-keyword-link" data-keyword="keyword-evade" href="#">Evade</a>.</p>
 </div>
 
@@ -70,7 +73,8 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal Power / 2 damage 2 times. On Hit: Spend 1 Diminutive Sound: Inflict 2 <a class="ua-status-link" data-status="status-spectro-frazzle" href="#">Spectro Frazzle</a>.</p>
+  <p>Deal Power / 2 damage 2 times.</p>
+  <p>On Hit: Spend 1 Diminutive Sound: Inflict 2 <a class="ua-status-link" data-status="status-spectro-frazzle" href="#">Spectro Frazzle</a>.</p>
 </div>
 
 ### Card 4: Aftertune
@@ -83,7 +87,8 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal Power damage. Gain 1 Diminutive Sound.</p>
+  <p>Deal Power damage.</p>
+  <p>Gain 1 Diminutive Sound.</p>
 </div>
 
 ### Card 5: Instant
@@ -96,8 +101,8 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Can only be played as Assist Attack.</p>
-  <p>Assist Attack.</p>
+  <p>Can only be played as <a class="ua-keyword-link" data-keyword="keyword-assist-attack" href="#">Assist Attack</a>.</p>
+  <p><a class="ua-keyword-link" data-keyword="keyword-assist-attack" href="#">Assist Attack</a>.</p>
   <p>Inflict 2 <a class="ua-status-link" data-status="status-stagnate" href="#">Stagnate</a>.</p>
 </div>
 
@@ -111,5 +116,7 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal Power damage. Heal for Power / 2 HP. On Hit: Inflict 6 <a class="ua-status-link" data-status="status-spectro-frazzle" href="#">Spectro Frazzle</a>.</p>
+  <p>Deal Power damage.</p>
+  <p>Heal for Power / 2 HP.</p>
+  <p>On Hit: Inflict 6 <a class="ua-status-link" data-status="status-spectro-frazzle" href="#">Spectro Frazzle</a>.</p>
 </div>

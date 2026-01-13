@@ -60,6 +60,11 @@ This page collects frequently asked questions about Universal Arena.
 ??? question "Where can I play a card based on Speed?"
     Fast cards can be played in any zone, Normal cards in the Normal or Slow Zone, and Slow cards only in the Slow Zone. A faster zone can interrupt a slower Active Zone.
 
+<a id="faq-follow-up-assist-attack"></a>
+??? question "When can I play a Follow-Up or Assist Attack card?"
+    Follow-Up/Assist Attack opens an immediate play window after a card is used, before the next card in that zone resolves. The Follow-Up/Assist card resolves immediately, does not enter the zone stack, and does not clash with the next card. Follow-Up requires the triggering card to be from the same character; Assist Attack requires a different allied character. The Follow-Up/Assist Attack card must be played into that same zone and be legal there based on Speed; pay costs and choose legal targets as normal. Cancelled or Negated cards are not used and do not open this window. If Counter triggers, it replaces any Follow-Up/Assist window from that clash.
+    Example: Your Fast Strike resolves in the Fast Zone. You may Follow-Up with a Fast card, but a Normal Follow-Up cannot be played because it cannot enter the Fast Zone.
+
 <a id="faq-cannot-play-cards"></a>
 ??? question "What happens when a player cannot play cards?"
     While an effect says a player cannot play cards, they cannot add cards to any zone; they still pass priority and resolve cards already played. Example: If a Time Stop effect is used mid-round, the opponent can only pass until the round ends, and all already played cards still resolve.

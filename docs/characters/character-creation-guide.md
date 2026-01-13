@@ -82,13 +82,13 @@ When listing `Type:` tags, use this order:
 
 ### Card text templates (timing order)
 
-Standardize sentences so they align with the timing ladder: On Play -> Before Clash -> After Clash -> Before Use -> On Use -> On Hit -> After Use -> Always. Each sentence should start with a timing label; split mixed timing effects into separate sentences.
+Standardize sentences so they align with the timing ladder: On Play -> Before Clash -> After Clash -> Before Use -> On Use -> On Hit -> After Use -> Always. Each sentence should start with a timing label unless it is default On Use (which can be left unlabeled); split mixed timing effects into separate sentences.
 
 Templates:
 
-- Attack (Power): "On Use: Deal Power damage." "On Hit: [bonus]." "After Use: [follow-up]."
-- Defense (Power Shield): "On Use: Gain Power Shield." "After Clash: [bonus]." "After Use: [follow-up]."
-- Special (no Power roll): "On Play: [effect]." "On Use: [effect]." "After Use: [cleanup]."
+- Attack (Power): "Deal Power damage." "On Hit: [bonus]." "After Use: [follow-up]."
+- Defense (Power Shield): "Gain Power Shield." "After Clash: [bonus]." "After Use: [follow-up]."
+- Special (no Power roll): "On Play: [effect]." "[effect]." "After Use: [cleanup]."
 - Utility/Setup: "On Play: [draw/move/status]." "Before Use: [prep]." "After Use: [cleanup]."
 - Reactive/Interrupt: "After Clash: [effect]." "Before Use: [effect]." "After Use: [effect]."
 
@@ -99,7 +99,7 @@ Keyword placement:
 - Place keyword-only lines at the timing they resolve on the ladder.
 - Pre-play keywords (Innate, Prepare) go first.
 - After Clash keywords (Evade, Counter, Reuse) go after the Shield/damage line they depend on.
-- After Use keywords (Follow-Up) go after On Hit lines; keep any "On Follow-Up" lines directly after the Follow-Up line.
+- After Use keywords (Follow-Up, Assist Attack) go after On Hit lines; keep any "On Follow-Up" or "On Assist Attack" lines directly after the keyword line.
 - Cleanup keywords (Retain, Exhaust, Ethereal) go last.
 
 ### Status effects, keywords, terms, roles

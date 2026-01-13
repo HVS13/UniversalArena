@@ -80,7 +80,7 @@
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Deal Power / 3 damage 3 times.</p>
-  <p>If this character has Kaioken: This card becomes Kaio-ken Attack.</p>
+  <p>Always: If this character has Kaioken: This card becomes Kaio-ken Attack.</p>
 </div>
 
 ### Card 3-2: Kaio-ken Attack

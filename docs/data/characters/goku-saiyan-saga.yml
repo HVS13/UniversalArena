@@ -81,7 +81,7 @@ cards:
     speed: Normal
     effect:
       - "Deal Power / 3 damage 3 times."
-      - "If this character has Kaioken: This card becomes Kaio-ken Attack."
+      - "Always: If this character has Kaioken: This card becomes Kaio-ken Attack."
     effects:
       - timing: on_use
         type: deal_damage

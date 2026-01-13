@@ -76,7 +76,7 @@
   <p class="card-block__heading">Effect</p>
   <p>Deal Power damage.</p>
   <p>On Hit: If the target has <a class="ua-status-link" data-status="status-stun" href="#">Stun</a>: Gain 1 Stolen Blood.</p>
-  <p>If this character has The World: Time Stop: This card becomes Strike: Muda Barrage.</p>
+  <p>Always: If this character has The World: Time Stop: This card becomes Strike: Muda Barrage.</p>
 </div>
 
 ### Card 1-2: Strike: Muda Barrage
@@ -106,7 +106,7 @@
   <p class="card-block__heading">Effect</p>
   <p>Gain Power Shield.</p>
   <p><a class="ua-keyword-link" data-keyword="keyword-evade" href="#">Evade</a>.</p>
-  <p>If this character has The World: Time Stop: This card becomes Defend: The World.</p>
+  <p>Always: If this character has The World: Time Stop: This card becomes Defend: The World.</p>
 </div>
 
 ### Card 2-2: Defend: The World
@@ -153,10 +153,10 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>This card's Multihit Count starts at 6.</p>
+  <p>Always: This card's Multihit Count starts at 6.</p>
   <p>Deal Power / 6 damage 6 times.</p>
   <p>On Hit: Inflict 1 <a class="ua-status-link" data-status="status-bleed" href="#">Bleed</a>.</p>
-  <p>If this character has The World: Time Stop: This card becomes Throwing Knives: Time Stop.</p>
+  <p>Always: If this character has The World: Time Stop: This card becomes Throwing Knives: Time Stop.</p>
 </div>
 
 ### Card 4-2: Throwing Knives: Time Stop
@@ -169,7 +169,7 @@
     <span><strong>Speed:</strong> Fast</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>This card's Multihit Count starts at 10.</p>
+  <p>Always: This card's Multihit Count starts at 10.</p>
   <p>Deal Power / 10 damage 10 times.</p>
   <p>On Hit: Inflict 1 <a class="ua-status-link" data-status="status-bleed" href="#">Bleed</a>.</p>
   <p>Once per use, if the target has <a class="ua-status-link" data-status="status-stun" href="#">Stun</a>: Deal 10 bonus damage.</p>

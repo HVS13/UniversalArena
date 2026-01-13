@@ -89,8 +89,8 @@
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Deal Power damage.</p>
-  <p>If this character has Gear 2nd: This card becomes Gomu Gomu no Jet Pistol.</p>
-  <p>If this character has Gear 3rd: This card becomes Gomu Gomu no Gigant Pistol.</p>
+  <p>Always: If this character has Gear 2nd: This card becomes Gomu Gomu no Jet Pistol.</p>
+  <p>Always: If this character has Gear 3rd: This card becomes Gomu Gomu no Gigant Pistol.</p>
 </div>
 
 ### Card 3-2: Gomu Gomu no Jet Pistol
@@ -130,8 +130,8 @@
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Deal Power damage.</p>
-  <p>If this character has Gear 2nd: This card becomes Gomu Gomu no Jet Bazooka.</p>
-  <p>If this character has Gear 3rd: This card becomes Gomu Gomu no Gigant Bazooka.</p>
+  <p>Always: If this character has Gear 2nd: This card becomes Gomu Gomu no Jet Bazooka.</p>
+  <p>Always: If this character has Gear 3rd: This card becomes Gomu Gomu no Gigant Bazooka.</p>
 </div>
 
 ### Card 4-2: Gomu Gomu no Jet Bazooka
@@ -188,8 +188,11 @@
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Can only be played if this character has Gear 2nd.</p>
-  <p>Deal Power / (X + 1) damage (X + 1) times. Inflict X <a class="ua-status-link" data-status="status-frail" href="#">Frail</a>. Gain X <a class="ua-status-link" data-status="status-weak" href="#">Weak</a> and +X Weak Count. Gain X <a class="ua-status-link" data-status="status-vulnerable" href="#">Vulnerable</a> and +X Vulnerable Count.</p>
-  <p>If this character has Gear 3rd: This Ultimate becomes Gomu Gomu no Gigant Rifle.</p>
+  <p>Deal Power / (X + 1) damage (X + 1) times.</p>
+  <p>Inflict X <a class="ua-status-link" data-status="status-frail" href="#">Frail</a>.</p>
+  <p>Gain X <a class="ua-status-link" data-status="status-weak" href="#">Weak</a> and +X Weak Count.</p>
+  <p>Gain X <a class="ua-status-link" data-status="status-vulnerable" href="#">Vulnerable</a> and +X Vulnerable Count.</p>
+  <p>Always: If this character has Gear 3rd: This Ultimate becomes Gomu Gomu no Gigant Rifle.</p>
 </div>
 
 ### Ultimate-2: Gomu Gomu no Gigant Rifle
@@ -204,6 +207,6 @@
   <p class="card-block__heading">Effect</p>
   <p>Can only be played if this character has Gear 3rd.</p>
   <p>Deal Power damage.</p>
-  <p>If this character has Gear 2nd: This Ultimate becomes Gomu Gomu no Jet Gatling.</p>
+  <p>Always: If this character has Gear 2nd: This Ultimate becomes Gomu Gomu no Jet Gatling.</p>
 </div>
 

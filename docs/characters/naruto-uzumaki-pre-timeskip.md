@@ -129,7 +129,7 @@
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Deal Power damage.</p>
-  <p>If this character has 2+ Shadow Clones: This card becomes Rasengan: Clone Assist.</p>
+  <p>Always: If this character has 2+ Shadow Clones: This card becomes Rasengan: Clone Assist.</p>
 </div>
 
 ### Card 5-2: Rasengan: Clone Assist
@@ -189,9 +189,10 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Deal Power damage. Inflict 1 <a class="ua-status-link" data-status="status-slow" href="#">Slow</a> and +1 Slow Count.</p>
+  <p>Deal Power damage.</p>
+  <p>Inflict 1 <a class="ua-status-link" data-status="status-slow" href="#">Slow</a> and +1 Slow Count.</p>
   <p>Gain 2 Summoned: Gamabunta.</p>
-  <p>If this character has One-Tail Cloak: This Ultimate becomes One-Tail Rasengan.</p>
+  <p>Always: If this character has One-Tail Cloak: This Ultimate becomes One-Tail Rasengan.</p>
 </div>
 
 ## Ultimate-2: One-Tail Rasengan
@@ -206,7 +207,8 @@
   <p class="card-block__heading">Effect</p>
   <p>Can only be played if this character has One-Tail Cloak.</p>
   <p>Spend 2 Shadow Clones: Deal Power damage.</p>
-  <p>On Hit: Inflict 2 <a class="ua-status-link" data-status="status-vulnerable" href="#">Vulnerable</a> and +2 Vulnerable Count. Inflict 1 <a class="ua-status-link" data-status="status-slow" href="#">Slow</a> and +1 Slow Count.</p>
+  <p>On Hit: Inflict 2 <a class="ua-status-link" data-status="status-vulnerable" href="#">Vulnerable</a> and +2 Vulnerable Count.</p>
+  <p>On Hit: Inflict 1 <a class="ua-status-link" data-status="status-slow" href="#">Slow</a> and +1 Slow Count.</p>
   <p><a class="ua-keyword-link" data-keyword="keyword-follow-up" href="#">Follow-Up</a>.</p>
   <p>After Use: Reduce Kyuubi Chakra Count by 2.</p>
 </div>
