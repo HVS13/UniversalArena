@@ -90,7 +90,7 @@ cards:
     target: 1 Enemy
     speed: Normal
     effect:
-      - "Deal Power / 2 damage 2 times. On Hit: Spend 1 Diminutive Sound to inflict 2 Spectro Frazzle."
+      - "Deal Power / 2 damage 2 times. On Hit: Spend 1 Diminutive Sound: Inflict 2 Spectro Frazzle."
     effects:
       - timing: on_use
         type: deal_damage

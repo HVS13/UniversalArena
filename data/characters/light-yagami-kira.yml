@@ -43,7 +43,7 @@ cards:
     speed: Normal
     effect:
       - "Deal Power damage. On Hit: Inflict 1 Stolen Information."
-      - "On Hit: If the target has 3+ Stolen Information, inflict 1 Slow and +1 Slow Count."
+      - "On Hit: If the target has 3+ Stolen Information: Inflict 1 Slow and +1 Slow Count."
     effects:
       - timing: on_use
         type: deal_damage
@@ -108,7 +108,8 @@ cards:
     target: 1 Enemy
     speed: Fast
     effect:
-      - "Inflict 2 Stolen Information. Retain."
+      - "Inflict 2 Stolen Information."
+      - "Retain."
     effects:
       - timing: on_use
         type: inflict_status
@@ -163,7 +164,7 @@ cards:
     target: 1 Enemy
     speed: Slow
     effect:
-      - "Can only be used if the target has 6 Stolen Information."
+      - "Can only be played if the target has 6 Stolen Information."
       - "Inflict 3 Death by Death Note. Then set the target's Stolen Information Value to 0."
     restrictions:
       - kind: require
@@ -208,7 +209,7 @@ cards:
     target: 1 Enemy
     speed: Normal
     effect:
-      - "Can only be used if the target has 6 Stolen Information or Death by Death Note."
+      - "Can only be played if the target has 6 Stolen Information or Death by Death Note."
       - "Choose 1 enemy with 6 Stolen Information or Death by Death Note."
       - "If the target has 6 Stolen Information, inflict 3 Death by Death Note and set its Stolen Information Value to 0."
       - "Reduce the target's Death by Death Note Value by 1."
@@ -254,4 +255,5 @@ cards:
           value: 1
         maxAmount: 3
         minValue: 1
+
 

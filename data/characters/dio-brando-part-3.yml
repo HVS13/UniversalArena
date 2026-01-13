@@ -17,7 +17,7 @@ innates:
   - name: Predator's Regeneration
     text: "The first time each turn this character gains Stolen Blood, heal 10 HP."
   - name: Blood Is Power
-    text: "Whenever this character gains X Stolen Blood, gain X Blood Focus. Whenever this character spends X Stolen Blood, reduce Blood Focus Value by X. Once per game, when this character would be reduced to 0 HP: You may spend 3 Stolen Blood. If you do, set HP to 1 instead."
+    text: "Whenever this character gains X Stolen Blood, gain X Blood Focus. Whenever this character spends X Stolen Blood, reduce Blood Focus Value by X. Once per game, when this character would be reduced to 0 HP: Spend 3 Stolen Blood? Set HP to 1 instead."
 statusEffects:
   - name: Stolen Blood
     lines:
@@ -54,7 +54,7 @@ cards:
     speed: Normal
     effect:
       - "Deal Power damage."
-      - "On Hit: If the target has Stun, gain 1 Stolen Blood."
+      - "On Hit: If the target has Stun: Gain 1 Stolen Blood."
       - "If this character has The World: Time Stop: This card becomes Strike: Muda Barrage."
     effects:
       - timing: on_use
@@ -156,8 +156,8 @@ cards:
       - "Gain Power Shield."
       - "Evade."
       - "Follow-Up."
-      - "Retain."
       - "After Use: Gain 1 Haste and +1 Haste Count."
+      - "Retain."
     effects:
       - timing: on_use
         type: gain_shield
@@ -197,7 +197,7 @@ cards:
       - "Heal for Power / 2 HP."
       - "Gain 4 Stolen Blood."
       - "On Hit: Inflict 2 Weak and +2 Weak Count."
-      - "On Hit: If the target has Stun, gain 2 Stolen Blood."
+      - "On Hit: If the target has Stun: Gain 2 Stolen Blood."
     effects:
       - timing: on_use
         type: deal_damage
@@ -329,7 +329,7 @@ cards:
     speed: Fast
     effect:
       - "Gain 1 The World: Time Stop and +2 The World: Time Stop Count."
-      - "You may spend X Stolen Blood (0-5). If you do, gain +X The World: Time Stop Count."
+      - "Spend X Stolen Blood (0-5)? Gain +X The World: Time Stop Count."
       - "Inflict 1 Stun on All Enemies."
       - "Until the end of this Combat Round, enemies cannot play cards. (Cards already played still resolve.)"
       - "Retain."
@@ -388,10 +388,10 @@ cards:
     target: 1 Enemy
     speed: Fast
     effect:
-      - "Can only be used if this character has The World: Time Stop."
+      - "Can only be played if this character has The World: Time Stop."
       - "Deal Power damage."
       - "On Hit: Inflict 1 Stun."
-      - "You may spend X Stolen Blood (0-10). If you do, deal 6 times X bonus damage and inflict X Bleed."
+      - "Spend X Stolen Blood (0-10)? Deal 6 times X bonus damage and inflict X Bleed."
       - "After Use: Set this character's The World: Time Stop Count to 0."
     restrictions:
       - kind: require
@@ -435,4 +435,5 @@ cards:
         amount:
           kind: flat
           value: 1
+
 

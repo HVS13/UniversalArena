@@ -87,7 +87,7 @@ cards:
     speed: Normal
     effect:
       - "Gain Power Shield."
-      - "If this character has 1+ Shadow Clones: You may spend 1 Shadow Clones. If you do, this card gains Evade."
+      - "If this character has 1+ Shadow Clones? Spend 1 Shadow Clones: This card gains Evade."
     effects:
       - timing: on_use
         type: gain_shield
@@ -118,9 +118,9 @@ cards:
     target: Self
     speed: Fast
     effect:
+      - "Innate."
       - "Gain 2 Shadow Clones."
       - "Create 2 Shadow Clone: Strike in hand."
-      - "Innate."
     effects:
       - timing: on_use
         type: gain_status
@@ -149,9 +149,8 @@ cards:
     speed: Normal
     effect:
       - "Choose X (0-3)."
-      - "Spend X Shadow Clones."
-      - "Deal Power / (X + 2) damage (X + 2) times."
-      - "On Hit: If X is 3, inflict 1 Stun."
+      - "Spend X Shadow Clones: Deal Power / (X + 2) damage (X + 2) times."
+      - "On Hit: If X is 3: Inflict 1 Stun."
     effects:
       - timing: on_use
         type: deal_damage
@@ -208,10 +207,9 @@ cards:
     target: 1 Enemy
     speed: Normal
     effect:
-      - "Spend 2 Shadow Clones."
-      - "Follow-Up."
-      - "Deal Power damage."
+      - "Spend 2 Shadow Clones: Deal Power damage."
       - "On Hit: Inflict 2 Vulnerable and +2 Vulnerable Count."
+      - "Follow-Up."
     effects:
       - timing: on_use
         type: deal_damage
@@ -303,11 +301,10 @@ cards:
     target: 1 Enemy
     speed: Normal
     effect:
-      - "Can only be used if this character has One-Tail Cloak."
-      - "Spend 2 Shadow Clones."
-      - "Follow-Up."
-      - "Deal Power damage."
+      - "Can only be played if this character has One-Tail Cloak."
+      - "Spend 2 Shadow Clones: Deal Power damage."
       - "On Hit: Inflict 2 Vulnerable and +2 Vulnerable Count. Inflict 1 Slow and +1 Slow Count."
+      - "Follow-Up."
       - "After Use: Reduce Kyuubi Chakra Count by 2."
     restrictions:
       - kind: require
@@ -396,9 +393,9 @@ createdCards:
     target: 1 Enemy
     speed: Normal
     effect:
-      - "Follow-Up."
       - "Deal Power damage."
       - "On Hit: Inflict 1 Slow."
+      - "Follow-Up."
       - "Exhaust. Ethereal."
     effects:
       - timing: on_use
@@ -411,4 +408,5 @@ createdCards:
         amount:
           kind: flat
           value: 1
+
 

@@ -1395,7 +1395,15 @@
 <li>Utility/Setup: "On Play: [draw/move/status]." "Before Use: [prep]." "After Use: [cleanup]."</li>
 <li>Reactive/Interrupt: "After Clash: [effect]." "Before Use: [effect]." "After Use: [effect]."</li>
 </ul>
-<p>If an effect is optional, it must explicitly say "may."</p>
+<p>Optional effects use <code>?</code> and mandatory effects use <code>:</code> after the condition or cost (example: "Spend X Status? Gain Evade." vs "Spend 1 Ammo: Deal Power damage."). Use "Can only be played if" / "Cannot be played if" for play restrictions.</p>
+<p>Keyword placement:</p>
+<ul>
+<li>Place keyword-only lines at the timing they resolve on the ladder.</li>
+<li>Pre-play keywords (Innate, Prepare) go first.</li>
+<li>After Clash keywords (Evade, Counter, Reuse) go after the Shield/damage line they depend on.</li>
+<li>After Use keywords (Follow-Up) go after On Hit lines; keep any "On Follow-Up" lines directly after the Follow-Up line.</li>
+<li>Cleanup keywords (Retain, Exhaust, Ethereal) go last.</li>
+</ul>
 <h3 id="status-effects-keywords-terms-roles">Status effects, keywords, terms, roles<a class="headerlink" href="#status-effects-keywords-terms-roles" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Use the shared link markup so <code>guide.js</code> can rewrite links:</li>
@@ -1418,7 +1426,7 @@
 <h3 id="spend-is-mandatory">Spend is mandatory<a class="headerlink" href="#spend-is-mandatory" title="Permanent link">&para;</a></h3>
 <ul>
 <li>"Spend X" is required, not optional. If you cannot spend, the effect that requires the Spend does not happen.</li>
-<li>If you want a Spend to be optional, explicitly write "You may spend X."</li>
+<li>Optional Spend uses <code>?</code> (example: "Spend X Resource? Gain Evade."). Do not write "You may spend."</li>
 </ul>
 <h3 id="potency-count-rule-read-this">Potency + Count rule (read this)<a class="headerlink" href="#potency-count-rule-read-this" title="Permanent link">&para;</a></h3>
 <p>This is the standard rule for effects that say "Inflict X A" or "Gain X A" when A has Potency + Count. It is already defined in the FAQ and status effect rules, and you should write cards with this in mind:</p>

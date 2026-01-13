@@ -221,7 +221,7 @@ cards:
     target: Self
     speed: Normal
     effect:
-      - "Cannot be used if this character has Gear 2nd or Gear 3rd."
+      - "Cannot be played if this character has Gear 2nd or Gear 3rd."
       - "Choose 1:"
       - "Gain 1 Gear 2nd."
       - "Gain 1 Gear 3rd."
@@ -271,7 +271,7 @@ cards:
     target: 1 Enemy
     speed: Fast
     effect:
-      - "Can only be used if this character has Gear 2nd."
+      - "Can only be played if this character has Gear 2nd."
       - "Deal Power / (X + 1) damage (X + 1) times. Inflict X Frail. Gain X Weak and +X Weak Count. Gain X Vulnerable and +X Vulnerable Count."
       - "If this character has Gear 3rd: This Ultimate becomes Gomu Gomu no Gigant Rifle."
     restrictions:
@@ -356,7 +356,7 @@ cards:
     target: 1 Enemy
     speed: Slow
     effect:
-      - "Can only be used if this character has Gear 3rd."
+      - "Can only be played if this character has Gear 3rd."
       - "Deal Power damage."
       - "If this character has Gear 2nd: This Ultimate becomes Gomu Gomu no Jet Gatling."
     restrictions:
@@ -378,4 +378,5 @@ cards:
           kind: self_has_status
           status: Gear 2nd
         cardSlot: "ultimate-1"
+
 

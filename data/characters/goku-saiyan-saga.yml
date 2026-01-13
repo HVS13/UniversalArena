@@ -129,8 +129,9 @@ cards:
     target: 1 Enemy
     speed: Normal
     effect:
-      - "Follow-Up."
       - "Deal Power damage."
+      - "Follow-Up."
+      - "On Follow-Up: -1 Energy Cost."
     effects:
       - timing: on_use
         type: deal_damage
