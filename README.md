@@ -31,6 +31,13 @@ npm install
 node export-game-data.mjs --out C:\Git\UniversalArena-Web\packages\data\src --assets-out C:\Git\UniversalArena-Web\apps\client\public\assets\characters
 ```
 
+## Sync checklist
+
+1. Make docs/data changes in this repo and run `npm run validate` in `docs/scripts`.
+2. Export into the game repo (`node export-game-data.mjs --out ... --assets-out ...`).
+3. Commit/push the docs repo.
+4. Commit/push the game repo export output (or let CI do it).
+
 ## CI export workflow (docs -> game repo)
 
 Workflow: `.github/workflows/export-game-data.yml`
