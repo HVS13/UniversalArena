@@ -96,8 +96,8 @@
     <span><strong>Speed:</strong> Fast</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p><a class="ua-keyword-link" data-keyword="keyword-follow-up" href="#">Follow-Up</a>.</p>
   <p>Deal Power damage. On Hit: Gain 2 Reiatsu.</p>
+  <p><a class="ua-keyword-link" data-keyword="keyword-follow-up" href="#">Follow-Up</a>.</p>
   <p>After Use: Gain 1 <a class="ua-status-link" data-status="status-vulnerable" href="#">Vulnerable</a> and +1 Vulnerable Count.</p>
 </div>
 
@@ -118,8 +118,8 @@
 ### Card 3: Shunpo
 <div class="card-block">
   <div class="card-block__meta">
-    <span><strong>Cost:</strong> 1 Energy</span>
-    <span><strong>Power:</strong> 8-12</span>
+    <span><strong>Cost:</strong> 2 Energy</span>
+    <span><strong>Power:</strong> 16-24</span>
     <span><strong>Type:</strong> Technique, Defense, Physical, Melee, Buff</span>
     <span><strong>Target:</strong> Self</span>
     <span><strong>Speed:</strong> Fast</span>
@@ -134,36 +134,37 @@
 ### Card 4-1: Getsuga Tensho
 <div class="card-block">
   <div class="card-block__meta">
-    <span><strong>Cost:</strong> 2 Energy</span>
-    <span><strong>Power:</strong> 16-24</span>
+    <span><strong>Cost:</strong> 3 Energy</span>
+    <span><strong>Power:</strong> 23-37</span>
     <span><strong>Type:</strong> Technique, Attack, Magical, Ranged, Slash</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Deal Power damage. On Hit: Gain 1 Reiatsu.</p>
-  <p>You may spend X Reiatsu (0-3). If you do, deal 4 times X bonus damage.</p>
+  <p>Spend X Reiatsu (0-3): Deal 4 times X bonus damage.</p>
+  <p><a class="ua-keyword-link" data-keyword="keyword-follow-up" href="#">Follow-Up</a>.</p>
   <p>If this character has Bankai: Tensa Zangetsu: This card becomes Getsuga Tensho: Tensa Zangetsu.</p>
 </div>
 
 ### Card 4-2: Getsuga Tensho: Tensa Zangetsu
 <div class="card-block">
   <div class="card-block__meta">
-    <span><strong>Cost:</strong> 2 Energy</span>
-    <span><strong>Power:</strong> 16-24</span>
+    <span><strong>Cost:</strong> 3 Energy</span>
+    <span><strong>Power:</strong> 23-37</span>
     <span><strong>Type:</strong> Technique, Attack, Magical, Ranged, Slash</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Fast</span>
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Deal Power damage. On Hit: Gain 1 Reiatsu.</p>
-  <p>You may spend X Reiatsu (0-4). If you do, deal 5 times X bonus damage.</p>
+  <p>Spend X Reiatsu (0-4): Deal 5 times X bonus damage.</p>
 </div>
 
 ### Card 5: Bankai: Tensa Zangetsu
 <div class="card-block">
   <div class="card-block__meta">
-    <span><strong>Cost:</strong> 1 Energy</span>
+    <span><strong>Cost:</strong> 2 Energy</span>
     <span><strong>Power:</strong> -</span>
     <span><strong>Type:</strong> Technique, Special, Physical, Melee, Transformation</span>
     <span><strong>Target:</strong> Self</span>
@@ -186,7 +187,8 @@
     <span><strong>Speed:</strong> Fast</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Can only be used if this character has Bankai: Tensa Zangetsu.</p>
+  <p>Can only be played if this character has Bankai: Tensa Zangetsu.</p>
   <p>Deal Power damage.</p>
-  <p>You may spend up to 6 Reiatsu. If you do, deal 4 times Reiatsu spent bonus damage.</p>
+  <p>Spend X Reiatsu (0-6): Deal 4 times Reiatsu spent bonus damage.</p>
 </div>
+

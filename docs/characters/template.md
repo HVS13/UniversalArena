@@ -50,7 +50,7 @@
 
 ## Cards
 
-Use timing labels in the standard order (On Play -> Before Clash -> After Clash -> Before Use -> On Use -> On Hit -> After Use -> Always). Start each sentence with the timing label.
+Use timing labels in the standard order (On Play -> Before Clash -> After Clash -> Before Use -> On Use -> On Hit -> After Use -> Always). Start each sentence with the timing label. Use `?` for optional effects and `:` for mandatory costs; place keyword-only lines where they resolve (pre-play first, After Clash after Shield/damage, After Use after On Hit, cleanup keywords last).
 
 ### Card 1: Card Name
 <div class="card-block">

@@ -82,8 +82,10 @@
   </div>
   <p class="card-block__heading">Effect</p>
   <p>This card's Multihit Count starts at 3.</p>
-  <p>Set X to this card's remaining Multihit Count (before resolving this card). Spend Handgun Ammo up to X. Spend as many as possible.</p>
-  <p>Deal Power / X damage once per Ammo spent.</p>
+  <p>Set X to this card's remaining Multihit Count (before resolving this card).</p>
+  <p>Spend X Handgun Ammo: Deal Power / X damage once per Ammo spent.</p>
+  <p>If this character has Equip: Riot Gun: This card becomes Shoot: Riot Gun.</p>
+  <p>If this character has Equip: Chicago Typewriter: This card becomes Shoot: Chicago Typewriter.</p>
 </div>
 
 ### Card 3-2: Shoot: Riot Gun
@@ -96,9 +98,8 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
+  <p>Spend 1 Shotgun Ammo: Deal Power / 3 damage 3 times.</p>
   <p><a class="ua-keyword-link" data-keyword="keyword-follow-up" href="#">Follow-Up</a>.</p>
-  <p>Spend 1 Shotgun Ammo to deal damage.</p>
-  <p>Deal Power / 3 damage 3 times.</p>
   <p>On <a class="ua-keyword-link" data-keyword="keyword-follow-up" href="#">Follow-Up</a>: -1 Energy Cost.</p>
 </div>
 
@@ -125,9 +126,9 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p><a class="ua-keyword-link" data-keyword="keyword-follow-up" href="#">Follow-Up</a>.</p>
   <p>Deal Power damage.</p>
-  <p>On <a class="ua-keyword-link" data-keyword="keyword-follow-up" href="#">Follow-Up</a>: Deal Power damage. Inflict 1 <a class="ua-status-link" data-status="status-stun" href="#">Stun</a> instead.</p>
+  <p><a class="ua-keyword-link" data-keyword="keyword-follow-up" href="#">Follow-Up</a>.</p>
+  <p>On <a class="ua-keyword-link" data-keyword="keyword-follow-up" href="#">Follow-Up</a>: Inflict 1 <a class="ua-status-link" data-status="status-stun" href="#">Stun</a>.</p>
 </div>
 
 ### Card 5: Switch Weapon
@@ -140,12 +141,13 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
+  <p><a class="ua-keyword-link" data-keyword="keyword-innate" href="#">Innate</a>.</p>
   <p>Choose 1:</p>
   <p>Switch to Equip: Handgun.</p>
   <p>Switch to Equip: Riot Gun.</p>
   <p>Switch to Equip: Chicago Typewriter.</p>
-  <p>If you choose the same weapon, Reload instead.</p>
-  <p><a class="ua-keyword-link" data-keyword="keyword-innate" href="#">Innate</a>. <a class="ua-keyword-link" data-keyword="keyword-retain" href="#">Retain</a>.</p>
+  <p>If you choose the same weapon: Reload instead.</p>
+  <p><a class="ua-keyword-link" data-keyword="keyword-retain" href="#">Retain</a>.</p>
 </div>
 
 ### Ultimate-1: Shoot: Rocket Launcher
@@ -158,9 +160,8 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Spend 1 Rocket Launcher to deal damage.</p>
-  <p>Deal Power damage.</p>
-  <p>If this character doesn't have Rocket Launcher, this Ultimate becomes Purchase Rocket Launcher.</p>
+  <p>Spend 1 Rocket Launcher: Deal Power damage.</p>
+  <p>If this character doesn't have Rocket Launcher: this Ultimate becomes Purchase Rocket Launcher.</p>
 </div>
 
 ### Ultimate-2: Purchase: Rocket Launcher

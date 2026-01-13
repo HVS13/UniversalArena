@@ -128,8 +128,8 @@
 ### Card 3-2: Normal Punch
 <div class="card-block">
   <div class="card-block__meta">
-    <span><strong>Cost:</strong> 1 Energy</span>
-    <span><strong>Power:</strong> 8-12</span>
+    <span><strong>Cost:</strong> 2 Energy</span>
+    <span><strong>Power:</strong> 16-24</span>
     <span><strong>Type:</strong> Technique, Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Normal</span>
@@ -169,8 +169,8 @@
 ### Card 4-2: Normal Punch
 <div class="card-block">
   <div class="card-block__meta">
-    <span><strong>Cost:</strong> 1 Energy</span>
-    <span><strong>Power:</strong> 8-12</span>
+    <span><strong>Cost:</strong> 2 Energy</span>
+    <span><strong>Power:</strong> 16-24</span>
     <span><strong>Type:</strong> Technique, Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Normal</span>

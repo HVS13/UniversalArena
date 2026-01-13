@@ -81,8 +81,8 @@
 ### Card 3-1: Gomu Gomu no Pistol
 <div class="card-block">
   <div class="card-block__meta">
-    <span><strong>Cost:</strong> 1 Energy</span>
-    <span><strong>Power:</strong> 10-14</span>
+    <span><strong>Cost:</strong> 2 Energy</span>
+    <span><strong>Power:</strong> 20-28</span>
     <span><strong>Type:</strong> Technique, Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Normal</span>
@@ -96,8 +96,8 @@
 ### Card 3-2: Gomu Gomu no Jet Pistol
 <div class="card-block">
   <div class="card-block__meta">
-    <span><strong>Cost:</strong> 1 Energy</span>
-    <span><strong>Power:</strong> 10-14</span>
+    <span><strong>Cost:</strong> 2 Energy</span>
+    <span><strong>Power:</strong> 20-28</span>
     <span><strong>Type:</strong> Technique, Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Fast</span>
@@ -109,8 +109,8 @@
 ### Card 3-3: Gomu Gomu no Gigant Pistol
 <div class="card-block">
   <div class="card-block__meta">
-    <span><strong>Cost:</strong> 1 Energy</span>
-    <span><strong>Power:</strong> 10-14</span>
+    <span><strong>Cost:</strong> 2 Energy</span>
+    <span><strong>Power:</strong> 20-28</span>
     <span><strong>Type:</strong> Technique, Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Slow</span>
@@ -122,8 +122,8 @@
 ### Card 4-1: Gomu Gomu no Bazooka
 <div class="card-block">
   <div class="card-block__meta">
-    <span><strong>Cost:</strong> 2 Energy</span>
-    <span><strong>Power:</strong> 20-28</span>
+    <span><strong>Cost:</strong> 3 Energy</span>
+    <span><strong>Power:</strong> 27-45</span>
     <span><strong>Type:</strong> Technique, Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Normal</span>
@@ -137,8 +137,8 @@
 ### Card 4-2: Gomu Gomu no Jet Bazooka
 <div class="card-block">
   <div class="card-block__meta">
-    <span><strong>Cost:</strong> 2 Energy</span>
-    <span><strong>Power:</strong> 20-30</span>
+    <span><strong>Cost:</strong> 3 Energy</span>
+    <span><strong>Power:</strong> 27-45</span>
     <span><strong>Type:</strong> Technique, Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Fast</span>
@@ -150,8 +150,8 @@
 ### Card 4-3: Gomu Gomu no Gigant Bazooka
 <div class="card-block">
   <div class="card-block__meta">
-    <span><strong>Cost:</strong> 2 Energy</span>
-    <span><strong>Power:</strong> 20-30</span>
+    <span><strong>Cost:</strong> 3 Energy</span>
+    <span><strong>Power:</strong> 27-45</span>
     <span><strong>Type:</strong> Technique, Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Slow</span>
@@ -170,7 +170,7 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Cannot be used if this character has Gear 2nd or Gear 3rd.</p>
+  <p>Cannot be played if this character has Gear 2nd or Gear 3rd.</p>
   <p>Choose 1:</p>
   <p>Gain 1 Gear 2nd.</p>
   <p>Gain 1 Gear 3rd.</p>
@@ -187,7 +187,7 @@
     <span><strong>Speed:</strong> Fast</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Can only be used if this character has Gear 2nd.</p>
+  <p>Can only be played if this character has Gear 2nd.</p>
   <p>Deal Power / (X + 1) damage (X + 1) times. Inflict X <a class="ua-status-link" data-status="status-frail" href="#">Frail</a>. Gain X <a class="ua-status-link" data-status="status-weak" href="#">Weak</a> and +X Weak Count. Gain X <a class="ua-status-link" data-status="status-vulnerable" href="#">Vulnerable</a> and +X Vulnerable Count.</p>
   <p>If this character has Gear 3rd: This Ultimate becomes Gomu Gomu no Gigant Rifle.</p>
 </div>
@@ -202,7 +202,8 @@
     <span><strong>Speed:</strong> Slow</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Can only be used if this character has Gear 3rd.</p>
+  <p>Can only be played if this character has Gear 3rd.</p>
   <p>Deal Power damage.</p>
   <p>If this character has Gear 2nd: This Ultimate becomes Gomu Gomu no Jet Gatling.</p>
 </div>
+

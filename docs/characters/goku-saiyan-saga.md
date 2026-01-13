@@ -72,8 +72,8 @@
 ### Card 3-1: Meteor Combination
 <div class="card-block">
   <div class="card-block__meta">
-    <span><strong>Cost:</strong> 1 Energy</span>
-    <span><strong>Power:</strong> 10-14</span>
+    <span><strong>Cost:</strong> 2 Energy</span>
+    <span><strong>Power:</strong> 20-28</span>
     <span><strong>Type:</strong> Technique, Attack, Physical, Melee, Blunt, Multihit</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Normal</span>
@@ -86,8 +86,8 @@
 ### Card 3-2: Kaio-ken Attack
 <div class="card-block">
   <div class="card-block__meta">
-    <span><strong>Cost:</strong> 1 Energy</span>
-    <span><strong>Power:</strong> 10-14</span>
+    <span><strong>Cost:</strong> 2 Energy</span>
+    <span><strong>Power:</strong> 20-28</span>
     <span><strong>Type:</strong> Technique, Attack, Physical, Melee, Blunt, Multihit</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Normal</span>
@@ -99,21 +99,22 @@
 ### Card 4: Kamehameha
 <div class="card-block">
   <div class="card-block__meta">
-    <span><strong>Cost:</strong> 2 Energy</span>
-    <span><strong>Power:</strong> 16-24</span>
+    <span><strong>Cost:</strong> 3 Energy</span>
+    <span><strong>Power:</strong> 27-45</span>
     <span><strong>Type:</strong> Technique, Attack, Magical, Ranged, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p><a class="ua-keyword-link" data-keyword="keyword-follow-up" href="#">Follow-Up</a>.</p>
   <p>Deal Power damage.</p>
+  <p><a class="ua-keyword-link" data-keyword="keyword-follow-up" href="#">Follow-Up</a>.</p>
+  <p>On <a class="ua-keyword-link" data-keyword="keyword-follow-up" href="#">Follow-Up</a>: -1 Energy Cost.</p>
 </div>
 
 ### Card 5: Kaioken
 <div class="card-block">
   <div class="card-block__meta">
-    <span><strong>Cost:</strong> 1 Energy</span>
+    <span><strong>Cost:</strong> 2 Energy</span>
     <span><strong>Power:</strong> -</span>
     <span><strong>Type:</strong> Technique, Special, Physical, Melee, Transformation</span>
     <span><strong>Target:</strong> Self</span>
@@ -127,8 +128,8 @@
 ### Ultimate: Spirit Bomb
 <div class="card-block">
   <div class="card-block__meta">
-    <span><strong>Cost:</strong> 20 Ultimate Meter</span>
-    <span><strong>Power:</strong> 27-45</span>
+    <span><strong>Cost:</strong> 30 Ultimate Meter</span>
+    <span><strong>Power:</strong> 41-67</span>
     <span><strong>Type:</strong> Ultimate, Attack, Magical, Ranged, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Slow</span>

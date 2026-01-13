@@ -92,8 +92,10 @@ cards:
     speed: Normal
     effect:
       - "This card's Multihit Count starts at 3."
-      - "Set X to this card's remaining Multihit Count (before resolving this card). Spend Handgun Ammo up to X. Spend as many as possible."
-      - "Deal Power / X damage once per Ammo spent."
+      - "Set X to this card's remaining Multihit Count (before resolving this card)."
+      - "Spend X Handgun Ammo: Deal Power / X damage once per Ammo spent."
+      - "If this character has Equip: Riot Gun: This card becomes Shoot: Riot Gun."
+      - "If this character has Equip: Chicago Typewriter: This card becomes Shoot: Chicago Typewriter."
     effects:
       - timing: on_use
         type: spend_status
@@ -108,6 +110,15 @@ cards:
           kind: power_div
           divisor:
             kind: x
+    transforms:
+      - condition:
+          kind: self_has_status
+          status: "Equip: Riot Gun"
+        cardSlot: "3-2"
+      - condition:
+          kind: self_has_status
+          status: "Equip: Chicago Typewriter"
+        cardSlot: "3-3"
   - slot: "3-2"
     name: "Shoot: Riot Gun"
     cost: 2 Energy
@@ -122,9 +133,8 @@ cards:
     target: 1 Enemy
     speed: Normal
     effect:
+      - "Spend 1 Shotgun Ammo: Deal Power / 3 damage 3 times."
       - "Follow-Up."
-      - "Spend 1 Shotgun Ammo to deal damage."
-      - "Deal Power / 3 damage 3 times."
       - "On Follow-Up: -1 Energy Cost."
     effects:
       - timing: on_use
@@ -172,9 +182,9 @@ cards:
     target: 1 Enemy
     speed: Normal
     effect:
-      - "Follow-Up."
       - "Deal Power damage."
-      - "On Follow-Up: Deal Power damage. Inflict 1 Stun instead."
+      - "Follow-Up."
+      - "On Follow-Up: Inflict 1 Stun."
     effects:
       - timing: on_use
         type: deal_damage
@@ -201,12 +211,13 @@ cards:
     target: Self
     speed: Normal
     effect:
+      - "Innate."
       - "Choose 1:"
       - "Switch to Equip: Handgun."
       - "Switch to Equip: Riot Gun."
       - "Switch to Equip: Chicago Typewriter."
-      - "If you choose the same weapon, Reload instead."
-      - "Innate. Retain."
+      - "If you choose the same weapon: Reload instead."
+      - "Retain."
     effects:
       - timing: on_use
         type: choose
@@ -242,9 +253,8 @@ cards:
     target: All Enemies
     speed: Normal
     effect:
-      - "Spend 1 Rocket Launcher to deal damage."
-      - "Deal Power damage."
-      - "If this character doesn't have Rocket Launcher, this Ultimate becomes Purchase Rocket Launcher."
+      - "Spend 1 Rocket Launcher: Deal Power damage."
+      - "If this character doesn't have Rocket Launcher: this Ultimate becomes Purchase Rocket Launcher."
     effects:
       - timing: on_use
         type: deal_damage

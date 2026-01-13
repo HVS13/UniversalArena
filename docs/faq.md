@@ -94,7 +94,7 @@ This page collects frequently asked questions about Universal Arena.
     Yes. Reapplying a status effect increases its values according to its mode, up to its cap. For Potency + Count effects, see the next question.
 
 ??? question "Is Spend optional?"
-    No. "Spend X" is mandatory; if you cannot spend the full amount, that part of the effect does not happen. If a Spend is optional, the effect must say "may."
+    No. "Spend X" is mandatory; if you cannot spend the full amount, that part of the effect does not happen. Optional Spend uses `?` (example: "Spend X Resource? Gain Evade.").
 
 ??? question "If a status effect has potency and count, and an effect says \"Inflict X A\", what happens to the count?"
     If the target already has A, only potency increases by X; count stays the same. If the target has no A, it gains A with potency X and count 1. The same rule applies to Gain on allies.

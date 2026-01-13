@@ -54,7 +54,7 @@
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Deal Power damage. On Hit: Inflict 1 Stolen Information.</p>
-  <p>On Hit: If the target has 3+ Stolen Information, inflict 1 <a class="ua-status-link" data-status="status-slow" href="#">Slow</a> and +1 Slow Count.</p>
+  <p>On Hit: If the target has 3+ Stolen Information: Inflict 1 <a class="ua-status-link" data-status="status-slow" href="#">Slow</a> and +1 Slow Count.</p>
 </div>
 
 ### Card 2: Defend
@@ -81,7 +81,8 @@
     <span><strong>Speed:</strong> Fast</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Inflict 2 Stolen Information. <a class="ua-keyword-link" data-keyword="keyword-retain" href="#">Retain</a>.</p>
+  <p>Inflict 2 Stolen Information.</p>
+  <p><a class="ua-keyword-link" data-keyword="keyword-retain" href="#">Retain</a>.</p>
 </div>
 
 ### Card 4: Blackmail
@@ -95,7 +96,7 @@
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Inflict 2 <a class="ua-status-link" data-status="status-stagnate" href="#">Stagnate</a>.</p>
-  <p>If the target has 3+ Stolen Information, also inflict 1 <a class="ua-status-link" data-status="status-slow" href="#">Slow</a>.</p>
+  <p>If the target has 3+ Stolen Information: Inflict 1 <a class="ua-status-link" data-status="status-slow" href="#">Slow</a>.</p>
 </div>
 
 ### Card 5: Death Note: Write the Name
@@ -108,8 +109,8 @@
     <span><strong>Speed:</strong> Slow</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Can only be used if the target has 6 Stolen Information.</p>
-  <p>Inflict 3 Death by Death Note. Then set the target's Stolen Information Value to 0.</p>
+  <p>Can only be played if the target has 6 Stolen Information.</p>
+  <p>Inflict 3 Death by Death Note. Set the target's Stolen Information Value to 0.</p>
 </div>
 
 ### Ultimate: Death Note: Judgment
@@ -122,9 +123,9 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Can only be used if the target has 6 Stolen Information or Death by Death Note.</p>
-  <p>Choose 1 enemy with 6 Stolen Information or Death by Death Note.</p>
-  <p>If the target has 6 Stolen Information, inflict 3 Death by Death Note and set its Stolen Information Value to 0.</p>
+  <p>Can only be played if the target has 6 Stolen Information or Death by Death Note.</p>
+  <p>If the target has 6 Stolen Information: Inflict 3 Death by Death Note. Set the target's Stolen Information Value to 0.</p>
   <p>Reduce the target's Death by Death Note Value by 1.</p>
   <p>Reduce by 1 additional per 10 Ultimate Meter spent (max 2; cannot reduce below 1).</p>
 </div>
+

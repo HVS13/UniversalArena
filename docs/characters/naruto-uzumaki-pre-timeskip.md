@@ -71,7 +71,7 @@
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Deal Power damage.</p>
-  <p>On Hit: If this character has Kyuubi Chakra, gain 1 Shadow Clones.</p>
+  <p>On Hit: If this character has Kyuubi Chakra: Gain 1 Shadow Clones.</p>
 </div>
 
 ### Card 2: Defend
@@ -85,22 +85,22 @@
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Gain Power Shield.</p>
-  <p>If this character has 1+ Shadow Clones: You may spend 1 Shadow Clones. If you do, this card gains <a class="ua-keyword-link" data-keyword="keyword-evade" href="#">Evade</a>.</p>
+  <p>If this character has 1+ Shadow Clones? Spend 1 Shadow Clones: This card gains <a class="ua-keyword-link" data-keyword="keyword-evade" href="#">Evade</a>.</p>
 </div>
 
 ### Card 3: Shadow Clone Jutsu
 <div class="card-block">
   <div class="card-block__meta">
-    <span><strong>Cost:</strong> 1 Energy</span>
+    <span><strong>Cost:</strong> 2 Energy</span>
     <span><strong>Power:</strong> -</span>
     <span><strong>Type:</strong> Technique, Special, Magical</span>
     <span><strong>Target:</strong> Self</span>
     <span><strong>Speed:</strong> Fast</span>
   </div>
   <p class="card-block__heading">Effect</p>
+  <p><a class="ua-keyword-link" data-keyword="keyword-innate" href="#">Innate</a>.</p>
   <p>Gain 2 Shadow Clones.</p>
   <p>Create 2 Shadow Clone: Strike in hand.</p>
-  <p><a class="ua-keyword-link" data-keyword="keyword-innate" href="#">Innate</a>.</p>
 </div>
 
 ### Card 4: Naruto Uzumaki Barrage
@@ -114,9 +114,8 @@
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Choose X (0-3).</p>
-  <p>Spend X Shadow Clones.</p>
-  <p>Deal Power / (X + 2) damage (X + 2) times.</p>
-  <p>On Hit: If X is 3, inflict 1 <a class="ua-status-link" data-status="status-stun" href="#">Stun</a>.</p>
+  <p>Spend X Shadow Clones: Deal Power / (X + 2) damage (X + 2) times.</p>
+  <p>On Hit: If X is 3: Inflict 1 <a class="ua-status-link" data-status="status-stun" href="#">Stun</a>.</p>
 </div>
 
 ### Card 5-1: Rasengan
@@ -143,10 +142,9 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Spend 2 Shadow Clones.</p>
-  <p><a class="ua-keyword-link" data-keyword="keyword-follow-up" href="#">Follow-Up</a>.</p>
-  <p>Deal Power damage.</p>
+  <p>Spend 2 Shadow Clones: Deal Power damage.</p>
   <p>On Hit: Inflict 2 <a class="ua-status-link" data-status="status-vulnerable" href="#">Vulnerable</a> and +2 Vulnerable Count.</p>
+  <p><a class="ua-keyword-link" data-keyword="keyword-follow-up" href="#">Follow-Up</a>.</p>
 </div>
 
 ## Created Cards
@@ -175,9 +173,9 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p><a class="ua-keyword-link" data-keyword="keyword-follow-up" href="#">Follow-Up</a>.</p>
   <p>Deal Power damage.</p>
   <p>On Hit: Inflict 1 <a class="ua-status-link" data-status="status-slow" href="#">Slow</a>.</p>
+  <p><a class="ua-keyword-link" data-keyword="keyword-follow-up" href="#">Follow-Up</a>.</p>
   <p><a class="ua-keyword-link" data-keyword="keyword-exhaust" href="#">Exhaust</a>. <a class="ua-keyword-link" data-keyword="keyword-ethereal" href="#">Ethereal</a>.</p>
 </div>
 
@@ -206,10 +204,10 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Can only be used if this character has One-Tail Cloak.</p>
-  <p>Spend 2 Shadow Clones.</p>
-  <p><a class="ua-keyword-link" data-keyword="keyword-follow-up" href="#">Follow-Up</a>.</p>
-  <p>Deal Power damage.</p>
+  <p>Can only be played if this character has One-Tail Cloak.</p>
+  <p>Spend 2 Shadow Clones: Deal Power damage.</p>
   <p>On Hit: Inflict 2 <a class="ua-status-link" data-status="status-vulnerable" href="#">Vulnerable</a> and +2 Vulnerable Count. Inflict 1 <a class="ua-status-link" data-status="status-slow" href="#">Slow</a> and +1 Slow Count.</p>
+  <p><a class="ua-keyword-link" data-keyword="keyword-follow-up" href="#">Follow-Up</a>.</p>
   <p>After Use: Reduce Kyuubi Chakra Count by 2.</p>
 </div>
+

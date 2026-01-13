@@ -138,8 +138,8 @@ cards:
     target: 1 Enemy
     speed: Fast
     effect:
-      - "Follow-Up."
       - "Deal Power damage. On Hit: Gain 2 Reiatsu."
+      - "Follow-Up."
       - "After Use: Gain 1 Vulnerable and +1 Vulnerable Count."
     effects:
       - timing: on_use
@@ -241,7 +241,8 @@ cards:
     speed: Normal
     effect:
       - "Deal Power damage. On Hit: Gain 1 Reiatsu."
-      - "You may spend X Reiatsu (0-3). If you do, deal 4 times X bonus damage."
+      - "Spend X Reiatsu (0-3)? Deal 4 times X bonus damage."
+      - "Follow-Up."
       - "If this character has Bankai: Tensa Zangetsu: This card becomes Getsuga Tensho: Tensa Zangetsu."
     effects:
       - timing: on_use
@@ -273,7 +274,7 @@ cards:
     speed: Fast
     effect:
       - "Deal Power damage. On Hit: Gain 1 Reiatsu."
-      - "You may spend X Reiatsu (0-4). If you do, deal 5 times X bonus damage."
+      - "Spend X Reiatsu (0-4)? Deal 5 times X bonus damage."
     effects:
       - timing: on_use
         type: deal_damage
@@ -353,9 +354,9 @@ cards:
     target: 1 Enemy
     speed: Fast
     effect:
-      - "Can only be used if this character has Bankai: Tensa Zangetsu."
+      - "Can only be played if this character has Bankai: Tensa Zangetsu."
       - "Deal Power damage."
-      - "You may spend up to 6 Reiatsu. If you do, deal 4 times Reiatsu spent bonus damage."
+      - "Spend up to 6 Reiatsu? Deal 4 times Reiatsu spent bonus damage."
     restrictions:
       - kind: require
         subject: self
@@ -382,4 +383,5 @@ cards:
         amount:
           kind: flat
           value: 4
+
 

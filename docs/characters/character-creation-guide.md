@@ -92,7 +92,15 @@ Templates:
 - Utility/Setup: "On Play: [draw/move/status]." "Before Use: [prep]." "After Use: [cleanup]."
 - Reactive/Interrupt: "After Clash: [effect]." "Before Use: [effect]." "After Use: [effect]."
 
-If an effect is optional, it must explicitly say "may."
+Optional effects use `?` and mandatory effects use `:` after the condition or cost (example: "Spend X Status? Gain Evade." vs "Spend 1 Ammo: Deal Power damage."). Use "Can only be played if" / "Cannot be played if" for play restrictions.
+
+Keyword placement:
+
+- Place keyword-only lines at the timing they resolve on the ladder.
+- Pre-play keywords (Innate, Prepare) go first.
+- After Clash keywords (Evade, Counter, Reuse) go after the Shield/damage line they depend on.
+- After Use keywords (Follow-Up) go after On Hit lines; keep any "On Follow-Up" lines directly after the Follow-Up line.
+- Cleanup keywords (Retain, Exhaust, Ethereal) go last.
 
 ### Status effects, keywords, terms, roles
 
@@ -117,7 +125,7 @@ If an effect is optional, it must explicitly say "may."
 ### Spend is mandatory
 
 - "Spend X" is required, not optional. If you cannot spend, the effect that requires the Spend does not happen.
-- If you want a Spend to be optional, explicitly write "You may spend X."
+- Optional Spend uses `?` (example: "Spend X Resource? Gain Evade."). Do not write "You may spend."
 
 ### Potency + Count rule (read this)
 

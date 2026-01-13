@@ -31,7 +31,7 @@
   <p class="card-block__title">Blood Is Power</p>
   <p>Whenever this character gains X Stolen Blood, gain X Blood Focus.</p>
   <p>Whenever this character spends X Stolen Blood, reduce Blood Focus Value by X.</p>
-  <p>Once per game, when this character would be reduced to 0 HP: You may spend 3 Stolen Blood. If you do, set HP to 1 instead.</p>
+  <p>Once per game, when this character would be reduced to 0 HP: Spend 3 Stolen Blood? Set HP to 1 instead.</p>
 </div>
 
 ## Status Effects
@@ -75,7 +75,7 @@
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Deal Power damage.</p>
-  <p>On Hit: If the target has <a class="ua-status-link" data-status="status-stun" href="#">Stun</a>, gain 1 Stolen Blood.</p>
+  <p>On Hit: If the target has <a class="ua-status-link" data-status="status-stun" href="#">Stun</a>: Gain 1 Stolen Blood.</p>
   <p>If this character has The World: Time Stop: This card becomes Strike: Muda Barrage.</p>
 </div>
 
@@ -122,8 +122,8 @@
   <p>Gain Power Shield.</p>
   <p><a class="ua-keyword-link" data-keyword="keyword-evade" href="#">Evade</a>.</p>
   <p><a class="ua-keyword-link" data-keyword="keyword-follow-up" href="#">Follow-Up</a>.</p>
-  <p><a class="ua-keyword-link" data-keyword="keyword-retain" href="#">Retain</a>.</p>
   <p>After Use: Gain 1 <a class="ua-status-link" data-status="status-haste" href="#">Haste</a> and +1 Haste Count.</p>
+  <p><a class="ua-keyword-link" data-keyword="keyword-retain" href="#">Retain</a>.</p>
 </div>
 
 ### Card 3: Vampiric Drain
@@ -140,7 +140,7 @@
   <p>Heal for Power / 2 HP.</p>
   <p>Gain 4 Stolen Blood.</p>
   <p>On Hit: Inflict 2 <a class="ua-status-link" data-status="status-weak" href="#">Weak</a> and +2 Weak Count.</p>
-  <p>On Hit: If the target has <a class="ua-status-link" data-status="status-stun" href="#">Stun</a>, gain 2 Stolen Blood.</p>
+  <p>On Hit: If the target has <a class="ua-status-link" data-status="status-stun" href="#">Stun</a>: Gain 2 Stolen Blood.</p>
 </div>
 
 ### Card 4-1: Throwing Knives
@@ -186,7 +186,7 @@
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Gain 1 The World: Time Stop and +2 The World: Time Stop Count.</p>
-  <p>You may spend X Stolen Blood (0-5). If you do, gain +X The World: Time Stop Count.</p>
+  <p>Spend X Stolen Blood (0-5)? Gain +X The World: Time Stop Count.</p>
   <p>Inflict 1 <a class="ua-status-link" data-status="status-stun" href="#">Stun</a> on All Enemies.</p>
   <p>Until the end of this Combat Round, enemies <a class="ua-term-link" data-term="term-cannot-play-cards" href="#">cannot play cards</a>. (Cards already played still resolve.)</p>
   <p><a class="ua-keyword-link" data-keyword="keyword-retain" href="#">Retain</a>.</p>
@@ -202,9 +202,10 @@
     <span><strong>Speed:</strong> Fast</span>
   </div>
   <p class="card-block__heading">Effect</p>
-  <p>Can only be used if this character has The World: Time Stop.</p>
+  <p>Can only be played if this character has The World: Time Stop.</p>
   <p>Deal Power damage.</p>
   <p>On Hit: Inflict 1 <a class="ua-status-link" data-status="status-stun" href="#">Stun</a>.</p>
-  <p>You may spend X Stolen Blood (0-10). If you do, deal 6 times X bonus damage and inflict X <a class="ua-status-link" data-status="status-bleed" href="#">Bleed</a>.</p>
+  <p>Spend X Stolen Blood (0-10)? Deal 6 times X bonus damage and inflict X <a class="ua-status-link" data-status="status-bleed" href="#">Bleed</a>.</p>
   <p>After Use: Set this character's The World: Time Stop Count to 0.</p>
 </div>
+
