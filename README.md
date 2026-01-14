@@ -45,6 +45,7 @@ Workflow: `.github/workflows/export-game-data.yml`
 Required repo settings:
 - Repo variable: `UA_GAME_REPO` = `Owner/UniversalArena-Web`
 - Repo secret: `UA_SYNC_TOKEN` (token with write access to the game repo)
+Without these, the workflow will not push and manual export remains required.
 
 ## Current state
 

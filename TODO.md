@@ -13,5 +13,5 @@
 - Enforce template sections and timing label phrasing for all characters.
 - Standardize card type tag order for data/UI filtering.
 - Enforce power budgeting targets unless exceptions are documented.
-- Configure the export workflow repo variable `UA_GAME_REPO` and secret `UA_SYNC_TOKEN`.
-- Verify `Export Game Data` pushes a `chore: sync game data` commit after docs changes.
+- DONE: Configured the export workflow repo variable `UA_GAME_REPO` and secret `UA_SYNC_TOKEN`.
+- DONE: Verified `Export Game Data` pushes a `chore: sync game data` commit after docs changes.
