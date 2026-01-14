@@ -16,6 +16,10 @@ This page collects frequently asked questions about Universal Arena.
 ??? question "What happens when a character is defeated, and how does Resurrection work?"
     A character is defeated when their HP reaches 0. Defeated characters cannot be targeted or play cards, and their cards are removed from play. Only effects that explicitly say they resurrect a defeated character can return them to play; otherwise they remain defeated.
 
+<a id="faq-max-hp"></a>
+??? question "What is the default max HP?"
+    By default, each character has 100 max HP unless a scenario, mode, or character says otherwise. Characters start at full HP and cannot heal above max HP. Design target: most non-ultimate single-target attacks should take about 4-6 average hits to defeat a full-HP character.
+
 ??? question "How does Ultimate Meter work?"
     Your team gains Ultimate Meter as you play cards; it is a shared resource. Once you have enough, any character can pay the Ultimate Meter cost to use its Ultimate card. Ultimate cards sit outside the draw pile and are always available to play.
 
@@ -48,9 +52,20 @@ This page collects frequently asked questions about Universal Arena.
 ??? question "What is a Combat Round and the Active Zone?"
     A Combat Round starts when the initiative player plays a card. The zone they choose becomes the Active Zone. Players can only add cards to the Active Zone (or a faster zone) until both pass, then the Active Zone resolves right to left.
 
+<a id="faq-combat-judge-examples"></a>
+??? question "Combat Round judge examples"
+    1. Winner stays chain: Normal Zone (left to right): B1, A1, B2. Resolve right to left: B2 clashes with A1; if A1 wins, it stays and then clashes with B1.
+    2. Same-player adjacency: Fast Zone (left to right): A1, A2. Resolve right to left: A2 is used unopposed and discarded; A1 stays and can be paired later.
+    3. Reuse in a clash: A1 is a Defense with Reuse and clashes with B1 Attack. A1 is used and stays in the zone instead of being discarded.
+    4. Multihit clash math: A1 has Multihit 2 and rolls 6 and 8 (total 14). B1 rolls 13. A1 wins because 14 > 13.
+    5. Remaining Multihit Count: A1 has Multihit 3, loses a clash, and drops to 2. If it clashes again later in the same zone, it rolls two hits, not three.
+
+??? question "How does a Power Roll work?"
+    A Power Roll is a uniform integer between the printed min and max (inclusive). Roll each time a card is used, including each hit of Multihit and each Reuse.
+
 <a id="faq-movement-round"></a>
 ??? question "How does the Movement Round work?"
-    During the <a class="ua-term-link" data-term="term-movement-round" href="#">Movement Round</a>, players alternate priority. On your priority, you may spend 1 Energy to swap two adjacent allies or Pass. Movement swaps are not card plays and do not grant Ultimate Meter. If a swap would include a rooted character, the swap fails but the Energy is still spent. The round ends when both players pass consecutively. Rooted characters cannot be moved or swapped.
+    During the <a class="ua-term-link" data-term="term-movement-round" href="#">Movement Round</a>, players alternate priority. Each team gets one free swap per turn; additional swaps cost 1 Energy. On your priority, you may use the free swap, spend 1 Energy to swap two adjacent allies, or Pass. Movement swaps are not card plays and do not grant Ultimate Meter. If a swap would include a rooted character, the swap fails but the free swap or Energy is still spent. The round ends when both players pass consecutively. Rooted characters cannot be moved or swapped.
 
 <a id="faq-healing-reduction"></a>
 ??? question "How do Wound and Wither reduce healing?"
@@ -76,6 +91,11 @@ This page collects frequently asked questions about Universal Arena.
 <a id="faq-distance-power"></a>
 ??? question "How does Distance affect Power and clashing targets?"
     <a class="ua-term-link" data-term="term-distance" href="#">Distance</a> is the absolute column difference between a source and its target. For single-target cards with Power, each distance step reduces Power by 10% + 1 (percent first, then flat; round down). Opposed targets (distance 0) have no change. <a class="ua-keyword-link" data-keyword="keyword-close" href="#">Close</a> and <a class="ua-keyword-link" data-keyword="keyword-far" href="#">Far</a> modify this.
+    Quick lookup (standard Distance, no Close/Far):
+    - Power Roll 10: distance 0 = 10, distance 1 = 8, distance 2 = 6, distance 3 = 4.
+    - Power Roll 15: distance 0 = 15, distance 1 = 13, distance 2 = 10, distance 3 = 8.
+    - Power Roll 20: distance 0 = 20, distance 1 = 17, distance 2 = 14, distance 3 = 11.
+    These use total percent first (10% x distance, rounded down), then flat (1 x distance). Close/Far uses the same ordering with different modifiers.
     If a single-target card is redirected before the Power roll (Redirect/Cover), use the redirected target for Distance.
     Attack vs Attack: each card uses its own target for distance and still hits its own target. Attack vs Defense: each card uses its own target for distance; the attack is retargeted to the defending character for the hit. Defense vs Defense: each card uses its own target for distance. Specials have no Power, so Distance does not apply.
     Example: A2 targets B1 (distance 1). A1 defends targeting Self (distance 0). A2 is reduced by 1 step; A1 is not reduced.
@@ -108,6 +128,9 @@ This page collects frequently asked questions about Universal Arena.
 
 ??? question "Is Spend optional?"
     No. "Spend X" is mandatory; if you cannot spend the full amount, that part of the effect does not happen. Optional Spend uses `?` (example: "Spend X Resource? Gain Evade.").
+
+??? question "Can card costs go below 0?"
+    No. After all modifiers, card Energy and Ultimate Meter costs cannot be reduced below 0.
 
 ??? question "If a status effect has potency and count, and an effect says \"Inflict X A\", what happens to the count?"
     If the target already has A, only potency increases by X; count stays the same. If the target has no A, it gains A with potency X and count 1. The same rule applies to Gain on allies.

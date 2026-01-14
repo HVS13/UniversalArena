@@ -32,3 +32,5 @@ This file preserves documentation-only decisions and rule clarifications.
 - 2026-01-14: Added On Hit Bleed to Leon RE4 Shoot: Handgun/Riot Gun/Chicago Typewriter.
 - 2026-01-14: Clarified On Hit to resolve once per hit and updated the rules text accordingly.
 - 2026-01-14: Noted that CI export requires repo variables/secrets; otherwise manual export is required.
+- 2026-01-14: Added max HP baseline, Power Roll distribution, Movement Round free swap, combat judge examples, and a global cost floor rule.
+- 2026-01-14: Added Distance quick lookup examples to reduce table math friction.

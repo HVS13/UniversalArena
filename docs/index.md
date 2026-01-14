@@ -2,7 +2,7 @@
 
 This site outlines the structure and references for Universal Arena. Add your own content as you grow the guide.
 
-<p class="ua-last-updated">Last updated: <time datetime="2026-01-14T13:50">2026-01-14 13:50</time></p>
+<p class="ua-last-updated">Last updated: <time datetime="2026-01-14T16:35">2026-01-14 16:35</time></p>
 
 ## Introduction
 
@@ -13,7 +13,7 @@ This guide summarizes core systems and links to the detailed reference pages for
 1. Each player chooses 3 characters (no duplicate Name + Version on the same team).
 2. Take each character's 5 cards (2 Basic + 3 Technique), shuffle them into one shared draw pile, and keep each Ultimate card outside the draw pile.
 3. Turn Start: draw to 5 cards in a shared hand, then set shared Energy to 5.
-4. Movement Round: players alternate. On your priority, spend 1 Energy to swap two adjacent allies or pass. Movement swaps are not card plays and do not grant Ultimate Meter. The round ends when both players pass consecutively.
+4. Movement Round: players alternate. Each team gets one free swap per turn; additional swaps cost 1 Energy. You may always pass. Movement swaps are not card plays and do not grant Ultimate Meter. The round ends when both players pass consecutively.
 5. The player with initiative starts a Combat Round by playing a card into a legal zone (Fast/Normal/Slow).
 6. Players alternate playing or passing; faster cards can interrupt slower zones.
 7. When both players pass, resolve the Active Zone right to left, then continue until all zones are empty.
@@ -24,6 +24,12 @@ Need a condensed, table-ready version? See the [Combat Round Ref Card](combat-ro
 ## Win Conditions
 
 Reduce all opposing characters' HP to 0 (or meet the scenario's win condition, if you're playing a special mode).
+
+## HP Baseline
+
+1. Default max HP is 100 per character unless a scenario, mode, or character explicitly sets another value.
+2. Characters start each match at full HP; healing cannot raise HP above max HP.
+3. Design target: most non-ultimate single-target attacks should take about 4-6 average hits to defeat a full-HP character; ultimates can defeat faster.
 
 ## Board
 
@@ -48,7 +54,7 @@ Reduce all opposing characters' HP to 0 (or meet the scenario's win condition, i
 
 1. Play is divided into 4 phases: Turn Start, Movement, Combat, Turn End.
 2. At Turn Start, both players simultaneously draw until they have a hand size of 5, modified by draw effects (if any), then set Energy to 5 unless modified.
-3. During the Movement Round, players alternate priority. On your priority, spend 1 Energy to swap two adjacent allies or Pass. Movement swaps are not card plays and do not grant Ultimate Meter. The round ends when both players pass consecutively.
+3. During the Movement Round, players alternate priority. Each team gets one free swap per turn; additional swaps cost 1 Energy. You may also Pass. Movement swaps are not card plays and do not grant Ultimate Meter. The round ends when both players pass consecutively.
 4. At Combat Start, the player with initiative plays a card to initiate a Combat Round.
 5. During Combat, players play cards and clash. Combat Rounds can repeat.
 6. A Combat Round ends when there are no cards on any zone. The player with initiative may start another Combat Round or end their turn.
@@ -60,12 +66,13 @@ Reduce all opposing characters' HP to 0 (or meet the scenario's win condition, i
 2. Any card played in any zone stays in that zone until it is used, then it is discarded.
 3. For each card played, your team gains Ultimate Meter equal to the Energy spent to play the card. Energy is shared across the team.
 4. If a card's speed is modified, treat it as its current speed for where it can be played.
+5. After all modifiers, a card's Energy and Ultimate Meter costs cannot go below 0.
 
 ## Movement Round
 
 1. The Movement Round happens after Turn Start and before Combat.
 2. The player with initiative has priority first.
-3. On your priority, you may spend 1 Energy to swap two adjacent allied characters or Pass. Movement swaps are not card plays and do not grant Ultimate Meter.
+3. On your priority, you may use your team's free swap (once per turn), spend 1 Energy to swap two adjacent allied characters, or Pass. Movement swaps are not card plays and do not grant Ultimate Meter.
 4. If a swap would include a rooted character, the swap fails but the Energy is still spent.
 5. Priority alternates back and forth until both players pass consecutively, then the Movement Round ends.
 6. Rooted characters cannot be moved or swapped.
@@ -137,7 +144,7 @@ If multiple effects trigger at the same timing, apply them in the order they are
 ## Power
 
 1. Each card has a Power value shown in its card block as a min-max range (example: 8-12).
-2. When a card is used (after any clash, or when unopposed), roll Power within its printed min-max; that roll is the Power Roll.
+2. When a card is used (after any clash, or when unopposed), roll Power as a uniform integer between its printed min-max (inclusive); that roll is the Power Roll.
 3. Use the Power Roll only for damage dealt, shield gained, and HP recovered. Other numeric effects use their written values unless the effect uses another value (example: X). Costs and requirements stay as written.
 4. Special cards have Power: - and do not roll Power.
 5. Roll Power each time a card is used. Multihit and Reuse roll again for each hit or reuse.
