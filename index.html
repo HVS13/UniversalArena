@@ -311,6 +311,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#hp-baseline" class="md-nav__link">
+    <span class="md-ellipsis">
+      HP Baseline
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#board" class="md-nav__link">
     <span class="md-ellipsis">
       Board
@@ -1000,6 +1009,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#hp-baseline" class="md-nav__link">
+    <span class="md-ellipsis">
+      HP Baseline
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#board" class="md-nav__link">
     <span class="md-ellipsis">
       Board
@@ -1337,7 +1355,7 @@
 
 <h1 id="welcome-to-universal-arena">Welcome to Universal Arena<a class="headerlink" href="#welcome-to-universal-arena" title="Permanent link">&para;</a></h1>
 <p>This site outlines the structure and references for Universal Arena. Add your own content as you grow the guide.</p>
-<p class="ua-last-updated">Last updated: <time datetime="2026-01-14T13:50">2026-01-14 13:50</time></p>
+<p class="ua-last-updated">Last updated: <time datetime="2026-01-14T16:35">2026-01-14 16:35</time></p>
 
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
 <p>This guide summarizes core systems and links to the detailed reference pages for terms, keywords, and characters.</p>
@@ -1346,7 +1364,7 @@
 <li>Each player chooses 3 characters (no duplicate Name + Version on the same team).</li>
 <li>Take each character's 5 cards (2 Basic + 3 Technique), shuffle them into one shared draw pile, and keep each Ultimate card outside the draw pile.</li>
 <li>Turn Start: draw to 5 cards in a shared hand, then set shared Energy to 5.</li>
-<li>Movement Round: players alternate. On your priority, spend 1 Energy to swap two adjacent allies or pass. Movement swaps are not card plays and do not grant Ultimate Meter. The round ends when both players pass consecutively.</li>
+<li>Movement Round: players alternate. Each team gets one free swap per turn; additional swaps cost 1 Energy. You may always pass. Movement swaps are not card plays and do not grant Ultimate Meter. The round ends when both players pass consecutively.</li>
 <li>The player with initiative starts a Combat Round by playing a card into a legal zone (Fast/Normal/Slow).</li>
 <li>Players alternate playing or passing; faster cards can interrupt slower zones.</li>
 <li>When both players pass, resolve the Active Zone right to left, then continue until all zones are empty.</li>
@@ -1355,6 +1373,12 @@
 <p>Need a condensed, table-ready version? See the <a href="combat-round-ref/">Combat Round Ref Card</a>.</p>
 <h2 id="win-conditions">Win Conditions<a class="headerlink" href="#win-conditions" title="Permanent link">&para;</a></h2>
 <p>Reduce all opposing characters' HP to 0 (or meet the scenario's win condition, if you're playing a special mode).</p>
+<h2 id="hp-baseline">HP Baseline<a class="headerlink" href="#hp-baseline" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Default max HP is 100 per character unless a scenario, mode, or character explicitly sets another value.</li>
+<li>Characters start each match at full HP; healing cannot raise HP above max HP.</li>
+<li>Design target: most non-ultimate single-target attacks should take about 4-6 average hits to defeat a full-HP character; ultimates can defeat faster.</li>
+</ol>
 <h2 id="board">Board<a class="headerlink" href="#board" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Deck Zone: This is where you place your deck. The pile is named <strong>Draw Pile</strong>.</li>
@@ -1379,7 +1403,7 @@ Each team has its own line arranged left to right; adjacent means the immediate 
 <ol>
 <li>Play is divided into 4 phases: Turn Start, Movement, Combat, Turn End.</li>
 <li>At Turn Start, both players simultaneously draw until they have a hand size of 5, modified by draw effects (if any), then set Energy to 5 unless modified.</li>
-<li>During the Movement Round, players alternate priority. On your priority, spend 1 Energy to swap two adjacent allies or Pass. Movement swaps are not card plays and do not grant Ultimate Meter. The round ends when both players pass consecutively.</li>
+<li>During the Movement Round, players alternate priority. Each team gets one free swap per turn; additional swaps cost 1 Energy. You may also Pass. Movement swaps are not card plays and do not grant Ultimate Meter. The round ends when both players pass consecutively.</li>
 <li>At Combat Start, the player with initiative plays a card to initiate a Combat Round.</li>
 <li>During Combat, players play cards and clash. Combat Rounds can repeat.</li>
 <li>A Combat Round ends when there are no cards on any zone. The player with initiative may start another Combat Round or end their turn.</li>
@@ -1391,12 +1415,13 @@ Each team has its own line arranged left to right; adjacent means the immediate 
 <li>Any card played in any zone stays in that zone until it is used, then it is discarded.</li>
 <li>For each card played, your team gains Ultimate Meter equal to the Energy spent to play the card. Energy is shared across the team.</li>
 <li>If a card's speed is modified, treat it as its current speed for where it can be played.</li>
+<li>After all modifiers, a card's Energy and Ultimate Meter costs cannot go below 0.</li>
 </ol>
 <h2 id="movement-round">Movement Round<a class="headerlink" href="#movement-round" title="Permanent link">&para;</a></h2>
 <ol>
 <li>The Movement Round happens after Turn Start and before Combat.</li>
 <li>The player with initiative has priority first.</li>
-<li>On your priority, you may spend 1 Energy to swap two adjacent allied characters or Pass. Movement swaps are not card plays and do not grant Ultimate Meter.</li>
+<li>On your priority, you may use your team's free swap (once per turn), spend 1 Energy to swap two adjacent allied characters, or Pass. Movement swaps are not card plays and do not grant Ultimate Meter.</li>
 <li>If a swap would include a rooted character, the swap fails but the Energy is still spent.</li>
 <li>Priority alternates back and forth until both players pass consecutively, then the Movement Round ends.</li>
 <li>Rooted characters cannot be moved or swapped.</li>
@@ -1471,7 +1496,7 @@ Each team has its own line arranged left to right; adjacent means the immediate 
 <h2 id="power">Power<a class="headerlink" href="#power" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Each card has a Power value shown in its card block as a min-max range (example: 8-12).</li>
-<li>When a card is used (after any clash, or when unopposed), roll Power within its printed min-max; that roll is the Power Roll.</li>
+<li>When a card is used (after any clash, or when unopposed), roll Power as a uniform integer between its printed min-max (inclusive); that roll is the Power Roll.</li>
 <li>Use the Power Roll only for damage dealt, shield gained, and HP recovered. Other numeric effects use their written values unless the effect uses another value (example: X). Costs and requirements stay as written.</li>
 <li>Special cards have Power: - and do not roll Power.</li>
 <li>Roll Power each time a card is used. Multihit and Reuse roll again for each hit or reuse.</li>

@@ -1031,6 +1031,10 @@
       <td>Spend</td>
       <td>When an effect says to Spend X (Energy, Ammo, a status value, etc.), you must reduce that resource by X to resolve that part of the effect. If you cannot spend the full amount, that part of the effect does not happen. Optional Spend uses <code>?</code> (example: "Spend X Resource? Gain Evade.").</td>
     </tr>
+    <tr id="term-cost-floor" class="term-entry">
+      <td>Cost Floor</td>
+      <td>After all modifiers, a card's Energy and Ultimate Meter costs cannot go below 0.</td>
+    </tr>
     <tr id="term-ultimate-card" class="term-entry">
       <td>Ultimate Card</td>
       <td>A card that starts outside the draw pile and is always available to play. It follows normal card rules and counts as an Ultimate type for effects.</td>
@@ -1052,7 +1056,7 @@
     </tr>
     <tr id="term-movement-round" class="term-entry">
       <td>Movement Round</td>
-      <td>A phase after Turn Start where players alternate priority to spend 1 Energy to swap two adjacent allied characters or pass. Movement swaps are not card plays and do not grant Ultimate Meter. The round ends when both players pass consecutively. Rooted characters cannot be moved or swapped. See <a href="faq.md#faq-movement-round">FAQ</a>.</td>
+      <td>A phase after Turn Start where players alternate priority. Each team gets one free swap per turn; additional swaps cost 1 Energy. Movement swaps are not card plays and do not grant Ultimate Meter. The round ends when both players pass consecutively. Rooted characters cannot be moved or swapped. See <a href="faq.md#faq-movement-round">FAQ</a>.</td>
     </tr>
     <tr class="term-section">
       <th colspan="2">Rules</th>
@@ -1142,6 +1146,10 @@
       <td>Defeated</td>
       <td>A character is defeated when their HP reaches 0. Defeated characters cannot be targeted or play cards, and their cards are removed from play. The match ends when all characters on a team are defeated.</td>
     </tr>
+    <tr id="term-max-hp" class="term-entry">
+      <td>Max HP</td>
+      <td>The maximum HP a character can have. By default, max HP is 100 unless a scenario, mode, or character sets another value. Healing cannot raise HP above max HP.</td>
+    </tr>
     <tr id="term-resurrection" class="term-entry">
       <td>Resurrection</td>
       <td>An effect that returns a defeated character to play. The effect must explicitly state how it restores that character; otherwise the character remains defeated.</td>
@@ -1191,7 +1199,7 @@
     </tr>
     <tr id="term-power-roll" class="term-entry">
       <td>Power Roll</td>
-      <td>The rolled value from a card's Power used for clash comparisons, damage dealt, Shield gained, and HP recovered. Roll Power each time a card is used.</td>
+      <td>The rolled value from a card's Power used for clash comparisons, damage dealt, Shield gained, and HP recovered. Roll a uniform integer between the printed min and max (inclusive) each time a card is used.</td>
     </tr>
     <tr id="term-reuse" class="term-entry">
       <td>Reuse</td>
