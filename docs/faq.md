@@ -73,6 +73,14 @@ This page collects frequently asked questions about Universal Arena.
 ??? question "How does Evade work against Shield in an Attack vs Defense clash?"
     In an Attack vs Defense clash, resolve Defense first to gain <a class="ua-term-link" data-term="term-shield" href="#">Shield</a>, then resolve the Attack. <a class="ua-keyword-link" data-keyword="keyword-evade" href="#">Evade</a> checks after Shield: if the Attack would deal 0 Power damage after Shield, it is not a hit and you <a class="ua-keyword-link" data-keyword="keyword-reuse" href="#">Reuse</a> the Defense card. If any Power damage gets through Shield, the Attack is a hit and Evade does not apply. Example: Defense rolls 10 Shield and the Attack rolls 10 or less, Evade triggers; if the Attack rolls 11+, Evade does not.
 
+<a id="faq-distance-power"></a>
+??? question "How does Distance affect Power and clashing targets?"
+    <a class="ua-term-link" data-term="term-distance" href="#">Distance</a> is the absolute column difference between a source and its target. For single-target cards with Power, each distance step reduces Power by 10% + 1 (percent first, then flat; round down). Opposed targets (distance 0) have no change. <a class="ua-keyword-link" data-keyword="keyword-close" href="#">Close</a> and <a class="ua-keyword-link" data-keyword="keyword-far" href="#">Far</a> modify this.
+    If a single-target card is redirected before the Power roll (Redirect/Cover), use the redirected target for Distance.
+    Attack vs Attack: each card uses its own target for distance and still hits its own target. Attack vs Defense: each card uses its own target for distance; the attack is retargeted to the defending character for the hit. Defense vs Defense: each card uses its own target for distance. Specials have no Power, so Distance does not apply.
+    Example: A2 targets B1 (distance 1). A1 defends targeting Self (distance 0). A2 is reduced by 1 step; A1 is not reduced.
+    Example: A2 targets A1 (distance 0). C1 defends targeting B1 (distance 1). A2 is not reduced; C1 is reduced by 1 step.
+
 <a id="faq-damage-resolution"></a>
 ??? question "What is the damage resolution order?"
     Apply damage in this order: roll Power and apply Power modifiers, apply Immune, apply percent damage modifiers (Fortified/Vulnerable), apply Shield, apply Barrier, apply flat HP modifiers (Resist/Weakness/Absorb), then deal remaining damage to HP.
@@ -80,8 +88,8 @@ This page collects frequently asked questions about Universal Arena.
 
 <a id="faq-hit-vs-damage"></a>
 ??? question "What's the difference between On Hit, On Damage, and On HP Damage?"
-    On Hit triggers when an Attack is a hit, even if it deals 0 damage. On Damage triggers only if damage greater than 0 is dealt to Shield, Barrier, or HP. On HP Damage triggers only if HP is reduced by damage.
-    Example: If an Attack is Immune, On Hit triggers but On Damage and On HP Damage do not. If Shield absorbs all damage, On Hit and On Damage trigger but On HP Damage does not.
+    On Hit triggers when an Attack is a hit, even if it deals 0 damage. On Damage triggers only if damage greater than 0 is dealt to Shield, Barrier, or HP. On HP Damage triggers only if HP is reduced by damage. If an Attack hits multiple times, resolve On Hit once per hit.
+    Example: If an Attack is Immune, On Hit triggers but On Damage and On HP Damage do not. If Shield absorbs all damage, On Hit and On Damage trigger but On HP Damage does not. If a Multihit attack hits 3 times, On Hit resolves 3 times.
 
 ??? question "How do multiple damage types interact with Resist, Weakness, and Absorb?"
     A card counts as all listed damage types and attack tags. If a modifier lists multiple types or tags, it applies once when any match; separate modifiers stack. For flat/percentage formats, calculate both and use the higher value, then apply after percent modifiers, Shield, and Barrier. If any matching Immune applies, damage becomes 0 before modifiers.

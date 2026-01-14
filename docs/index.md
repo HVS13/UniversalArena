@@ -2,7 +2,7 @@
 
 This site outlines the structure and references for Universal Arena. Add your own content as you grow the guide.
 
-<p class="ua-last-updated">Last updated: <time datetime="2026-01-13T23:56">2026-01-13 23:56</time></p>
+<p class="ua-last-updated">Last updated: <time datetime="2026-01-14T13:50">2026-01-14 13:50</time></p>
 
 ## Introduction
 
@@ -142,6 +142,7 @@ If multiple effects trigger at the same timing, apply them in the order they are
 4. Special cards have Power: - and do not roll Power.
 5. Roll Power each time a card is used. Multihit and Reuse roll again for each hit or reuse.
 6. All Power calculations round down and clamp the minimum at 0.
+7. For single-target cards with Power, apply Distance modifiers: opposed targets have no change; each distance step reduces Power by 10% + 1 (percent first, then flat). <a class="ua-keyword-link" data-keyword="keyword-close" href="#">Close</a> and <a class="ua-keyword-link" data-keyword="keyword-far" href="#">Far</a> modify this.
 
 ## How To Clash
 

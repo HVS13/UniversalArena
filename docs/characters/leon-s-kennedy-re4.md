@@ -85,7 +85,9 @@
   <p class="card-block__heading">Effect</p>
   <p>Always: This card's Multihit Count starts at 3.</p>
   <p>Set X to this card's remaining Multihit Count (before resolving this card).</p>
+  <p><a class="ua-term-link" data-term="term-distance" href="#">Distance</a> &gt; 0: Reduce this card's final Power by <a class="ua-term-link" data-term="term-distance" href="#">Distance</a>.</p>
   <p>Spend X Handgun Ammo: Deal Power / X damage once per Ammo spent.</p>
+  <p>On Hit: Inflict 1 <a class="ua-status-link" data-status="status-bleed" href="#">Bleed</a>.</p>
   <p>Always: If this character has Equip: Riot Gun: This card becomes Shoot: Riot Gun.</p>
   <p>Always: If this character has Equip: Chicago Typewriter: This card becomes Shoot: Chicago Typewriter.</p>
 </div>
@@ -100,7 +102,9 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
+  <p><a class="ua-keyword-link" data-keyword="keyword-close" href="#">Close</a>.</p>
   <p>Spend 1 Shotgun Ammo: Deal Power / 3 damage 3 times.</p>
+  <p>On Hit: Inflict 1 <a class="ua-status-link" data-status="status-bleed" href="#">Bleed</a>.</p>
   <p><a class="ua-keyword-link" data-keyword="keyword-follow-up" href="#">Follow-Up</a>.</p>
   <p>On <a class="ua-keyword-link" data-keyword="keyword-follow-up" href="#">Follow-Up</a>: -1 Energy Cost.</p>
 </div>
@@ -116,6 +120,7 @@
   </div>
   <p class="card-block__heading">Effect</p>
   <p>Deal Power / (X + 4) damage (X + 4) times.</p>
+  <p>On Hit: Inflict 1 <a class="ua-status-link" data-status="status-bleed" href="#">Bleed</a>.</p>
 </div>
 
 ### Card 4: Suplex
@@ -128,6 +133,7 @@
     <span><strong>Speed:</strong> Normal</span>
   </div>
   <p class="card-block__heading">Effect</p>
+  <p><a class="ua-keyword-link" data-keyword="keyword-close" href="#">Close</a>.</p>
   <p>Deal Power damage.</p>
   <p><a class="ua-keyword-link" data-keyword="keyword-follow-up" href="#">Follow-Up</a>.</p>
   <p>On <a class="ua-keyword-link" data-keyword="keyword-follow-up" href="#">Follow-Up</a>: Inflict 1 <a class="ua-status-link" data-status="status-stun" href="#">Stun</a>.</p>

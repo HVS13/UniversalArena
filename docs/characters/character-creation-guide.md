@@ -48,6 +48,7 @@ Minimum viable character checklist:
 - If a card has high execution requirements or narrow conditions, you can add a 10-20% Base Power bonus.
 - If a card adds meaningful utility (status, draw, resource gain, multi-target, strong tempo effects), bias toward the low end of the range or reduce Base Power.
 - If a card deals Power damage and also heals, treat healing as extra output and lower Base Power so total impact matches the target.
+- Single-target cards with Power are affected by Distance; if you use Close or Far, budget around the resulting peaks and valleys.
 - Character-specific exceptions are allowed but must be documented in this guide.
 
 Examples:
@@ -98,6 +99,7 @@ Keyword placement:
 
 - Place keyword-only lines at the timing they resolve on the ladder.
 - Pre-play keywords (Innate, Prepare) go first.
+- Distance keywords (Close, Far) go before the main Power line they modify.
 - After Clash keywords (Evade, Counter, Reuse) go after the Shield/damage line they depend on.
 - After Use keywords (Follow-Up, Assist Attack) go after On Hit lines; keep any "On Follow-Up" or "On Assist Attack" lines directly after the keyword line.
 - Cleanup keywords (Retain, Exhaust, Ethereal) go last.

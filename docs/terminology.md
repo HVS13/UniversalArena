@@ -72,7 +72,7 @@ This page is the reference glossary for game terms. Use the filter to quickly lo
     </tr>
     <tr id="term-on-hit" class="term-entry">
       <td>On Hit</td>
-      <td>A timing label that resolves when an Attack is a hit, even if it deals 0 damage. See <a href="faq.md#faq-hit-vs-damage">FAQ</a>.</td>
+      <td>A timing label that resolves when an Attack is a hit, even if it deals 0 damage. If the Attack hits multiple times, resolve On Hit once per hit. See <a href="faq.md#faq-hit-vs-damage">FAQ</a>.</td>
     </tr>
     <tr id="term-on-damage" class="term-entry">
       <td>On Damage</td>
@@ -251,6 +251,10 @@ This page is the reference glossary for game terms. Use the filter to quickly lo
     <tr id="term-opposed" class="term-entry">
       <td>Opposed</td>
       <td>Characters are opposed if they are in the same column on opposing team lines.</td>
+    </tr>
+    <tr id="term-distance" class="term-entry">
+      <td>Distance</td>
+      <td>The absolute column difference between a source and its target. Distance 0 means the same column (opposed for enemies); distance 1 is adjacent, distance 2 is two columns away, and so on. If the target changes before the Power roll (Redirect/Cover), use the new target for Distance. Distance modifies Power for single-target cards with Power. See <a class="ua-keyword-link" data-keyword="keyword-close" href="#">Close</a>, <a class="ua-keyword-link" data-keyword="keyword-far" href="#">Far</a>, and <a href="faq.md#faq-distance-power">FAQ</a>.</td>
     </tr>
     <tr id="term-redirect" class="term-entry">
       <td>Redirect</td>

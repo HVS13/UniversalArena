@@ -144,6 +144,18 @@ Core keywords are expected in early play. Advanced keywords are less common or m
   <p class="ua-entry__desc">Seek X (criteria, Y): Look at the top X cards of your draw pile. You may reveal and take up to Y cards that match the listed criteria or name, put them into your hand, then discard the rest.</p>
 </div>
 
+#### Positioning
+
+<div class="ua-entry keyword-entry" id="keyword-close">
+  <p class="ua-entry__title">Close</p>
+  <p class="ua-entry__desc">This card modifies the <a class="ua-term-link" data-term="term-distance" href="#">Distance</a> Power adjustment for single-target cards with Power. If the target is opposed, add 10% + 1 Power. If the target is not opposed, reduce Power by 20% + 2 per distance step. Apply the percent first, then the flat amount, rounding down.</p>
+</div>
+
+<div class="ua-entry keyword-entry" id="keyword-far">
+  <p class="ua-entry__title">Far</p>
+  <p class="ua-entry__desc">This card modifies the <a class="ua-term-link" data-term="term-distance" href="#">Distance</a> Power adjustment for single-target cards with Power. If the target is opposed, reduce Power by 10% + 1. If the target is 1 step away, there is no penalty. If the target is 2+ steps away, reduce Power by 10% + 1 per step beyond the first. Apply the percent first, then the flat amount, rounding down.</p>
+</div>
+
 #### Targeting
 
 <div class="ua-entry keyword-entry" id="keyword-redirect">
