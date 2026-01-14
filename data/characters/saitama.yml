@@ -47,7 +47,7 @@ cards:
     speed: Slow
     effect:
       - "Gain 1 State."
-      - "If this character has State: Normal or State: Serious, this card becomes Strike."
+      - "Always: If this character has State: Normal or State: Serious, this card becomes Strike."
     effects:
       - timing: on_use
         type: gain_status
@@ -77,7 +77,8 @@ cards:
     target: 1 Enemy
     speed: Normal
     effect:
-      - "Deal Power damage. Gain 1 State."
+      - "Deal Power damage."
+      - "Gain 1 State."
     effects:
       - timing: on_use
         type: deal_damage
@@ -100,7 +101,7 @@ cards:
     speed: Slow
     effect:
       - "Gain 1 State."
-      - "If this character has State: Normal or State: Serious, this card becomes Defend."
+      - "Always: If this character has State: Normal or State: Serious, this card becomes Defend."
     effects:
       - timing: on_use
         type: gain_status
@@ -129,7 +130,8 @@ cards:
     target: 1 Ally
     speed: Normal
     effect:
-      - "Gain Power Shield. Gain 1 State."
+      - "Gain Power Shield."
+      - "Gain 1 State."
       - "Evade."
     effects:
       - timing: on_use
@@ -153,7 +155,7 @@ cards:
     speed: Slow
     effect:
       - "Gain 1 State."
-      - "If this character has State: Normal or State: Serious, this card becomes Normal Punch."
+      - "Always: If this character has State: Normal or State: Serious, this card becomes Normal Punch."
     effects:
       - timing: on_use
         type: gain_status
@@ -172,8 +174,8 @@ cards:
         cardSlot: "3-2"
   - slot: "3-2"
     name: Normal Punch
-    cost: 1 Energy
-    power: 8-12
+    cost: 2 Energy
+    power: 16-24
     types:
       - Technique
       - Attack
@@ -183,8 +185,9 @@ cards:
     target: 1 Enemy
     speed: Normal
     effect:
-      - "Deal Power damage. Gain 1 State."
-      - "If this character has State: Serious, this card becomes Serious Punch."
+      - "Deal Power damage."
+      - "Gain 1 State."
+      - "Always: If this character has State: Serious, this card becomes Serious Punch."
     effects:
       - timing: on_use
         type: deal_damage
@@ -215,7 +218,8 @@ cards:
     target: All Enemies
     speed: Fast
     effect:
-      - "Deal Power damage. Gain 1 State."
+      - "Deal Power damage."
+      - "Gain 1 State."
     effects:
       - timing: on_use
         type: deal_damage
@@ -238,7 +242,7 @@ cards:
     speed: Slow
     effect:
       - "Gain 1 State."
-      - "If this character has State: Normal or State: Serious, this card becomes Normal Punch."
+      - "Always: If this character has State: Normal or State: Serious, this card becomes Normal Punch."
     effects:
       - timing: on_use
         type: gain_status
@@ -257,8 +261,8 @@ cards:
         cardSlot: "4-2"
   - slot: "4-2"
     name: Normal Punch
-    cost: 1 Energy
-    power: 8-12
+    cost: 2 Energy
+    power: 16-24
     types:
       - Technique
       - Attack
@@ -268,8 +272,9 @@ cards:
     target: 1 Enemy
     speed: Normal
     effect:
-      - "Deal Power damage. Gain 1 State."
-      - "If this character has State: Serious, this card becomes Serious Headbutt."
+      - "Deal Power damage."
+      - "Gain 1 State."
+      - "Always: If this character has State: Serious, this card becomes Serious Headbutt."
     effects:
       - timing: on_use
         type: deal_damage
@@ -300,7 +305,9 @@ cards:
     target: 1 Enemy
     speed: Fast
     effect:
-      - "Deal Power damage. Inflict 1 Stun. Gain 1 State."
+      - "Deal Power damage."
+      - "Inflict 1 Stun."
+      - "Gain 1 State."
     effects:
       - timing: on_use
         type: deal_damage
@@ -329,7 +336,7 @@ cards:
     speed: Slow
     effect:
       - "Gain 1 State."
-      - "If this character has State: Normal or State: Serious, this card becomes Consecutive Normal Punch."
+      - "Always: If this character has State: Normal or State: Serious, this card becomes Consecutive Normal Punch."
     effects:
       - timing: on_use
         type: gain_status
@@ -360,8 +367,9 @@ cards:
     target: 1 Enemy
     speed: Normal
     effect:
-      - "Deal Power / (X + 1) damage (X + 1) times. Gain X State."
-      - "If this character has State: Serious, this card becomes Serious Consecutive Side Hops."
+      - "Deal Power / (X + 1) damage (X + 1) times."
+      - "Gain X State."
+      - "Always: If this character has State: Serious, this card becomes Serious Consecutive Side Hops."
     effects:
       - timing: on_use
         type: deal_damage
@@ -398,7 +406,9 @@ cards:
     target: All Enemies
     speed: Fast
     effect:
-      - "Deal Power / 2 damage. Gain Power / 2 Shield. Gain 1 State."
+      - "Deal Power / 2 damage."
+      - "Gain Power / 2 Shield."
+      - "Gain 1 State."
       - "Evade."
     effects:
       - timing: on_use
@@ -472,7 +482,8 @@ cards:
     target: All Enemies
     speed: Fast
     effect:
-      - "Deal Power damage. Inflict 1 Stun."
+      - "Deal Power damage."
+      - "Inflict 1 Stun."
     effects:
       - timing: on_use
         type: deal_damage

@@ -74,8 +74,8 @@ cards:
           kind: power
   - slot: "3-1"
     name: Gomu Gomu no Pistol
-    cost: 1 Energy
-    power: 10-14
+    cost: 2 Energy
+    power: 20-28
     types:
       - Technique
       - Attack
@@ -86,8 +86,8 @@ cards:
     speed: Normal
     effect:
       - "Deal Power damage."
-      - "If this character has Gear 2nd: This card becomes Gomu Gomu no Jet Pistol."
-      - "If this character has Gear 3rd: This card becomes Gomu Gomu no Gigant Pistol."
+      - "Always: If this character has Gear 2nd: This card becomes Gomu Gomu no Jet Pistol."
+      - "Always: If this character has Gear 3rd: This card becomes Gomu Gomu no Gigant Pistol."
     effects:
       - timing: on_use
         type: deal_damage
@@ -104,8 +104,8 @@ cards:
         cardSlot: "3-3"
   - slot: "3-2"
     name: Gomu Gomu no Jet Pistol
-    cost: 1 Energy
-    power: 10-14
+    cost: 2 Energy
+    power: 20-28
     types:
       - Technique
       - Attack
@@ -123,8 +123,8 @@ cards:
           kind: power
   - slot: "3-3"
     name: Gomu Gomu no Gigant Pistol
-    cost: 1 Energy
-    power: 10-14
+    cost: 2 Energy
+    power: 20-28
     types:
       - Technique
       - Attack
@@ -142,8 +142,8 @@ cards:
           kind: power
   - slot: "4-1"
     name: Gomu Gomu no Bazooka
-    cost: 2 Energy
-    power: 20-28
+    cost: 3 Energy
+    power: 27-45
     types:
       - Technique
       - Attack
@@ -154,8 +154,8 @@ cards:
     speed: Normal
     effect:
       - "Deal Power damage."
-      - "If this character has Gear 2nd: This card becomes Gomu Gomu no Jet Bazooka."
-      - "If this character has Gear 3rd: This card becomes Gomu Gomu no Gigant Bazooka."
+      - "Always: If this character has Gear 2nd: This card becomes Gomu Gomu no Jet Bazooka."
+      - "Always: If this character has Gear 3rd: This card becomes Gomu Gomu no Gigant Bazooka."
     effects:
       - timing: on_use
         type: deal_damage
@@ -172,8 +172,8 @@ cards:
         cardSlot: "4-3"
   - slot: "4-2"
     name: Gomu Gomu no Jet Bazooka
-    cost: 2 Energy
-    power: 20-30
+    cost: 3 Energy
+    power: 27-45
     types:
       - Technique
       - Attack
@@ -191,8 +191,8 @@ cards:
           kind: power
   - slot: "4-3"
     name: Gomu Gomu no Gigant Bazooka
-    cost: 2 Energy
-    power: 20-30
+    cost: 3 Energy
+    power: 27-45
     types:
       - Technique
       - Attack
@@ -272,8 +272,11 @@ cards:
     speed: Fast
     effect:
       - "Can only be played if this character has Gear 2nd."
-      - "Deal Power / (X + 1) damage (X + 1) times. Inflict X Frail. Gain X Weak and +X Weak Count. Gain X Vulnerable and +X Vulnerable Count."
-      - "If this character has Gear 3rd: This Ultimate becomes Gomu Gomu no Gigant Rifle."
+      - "Deal Power / (X + 1) damage (X + 1) times."
+      - "Inflict X Frail."
+      - "Gain X Weak and +X Weak Count."
+      - "Gain X Vulnerable and +X Vulnerable Count."
+      - "Always: If this character has Gear 3rd: This Ultimate becomes Gomu Gomu no Gigant Rifle."
     restrictions:
       - kind: require
         subject: self
@@ -358,7 +361,7 @@ cards:
     effect:
       - "Can only be played if this character has Gear 3rd."
       - "Deal Power damage."
-      - "If this character has Gear 2nd: This Ultimate becomes Gomu Gomu no Jet Gatling."
+      - "Always: If this character has Gear 2nd: This Ultimate becomes Gomu Gomu no Jet Gatling."
     restrictions:
       - kind: require
         subject: self

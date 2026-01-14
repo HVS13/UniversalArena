@@ -44,7 +44,8 @@ cards:
     target: 1 Enemy
     speed: Normal
     effect:
-      - "Deal Power damage. Inflict 1 Bleed."
+      - "Deal Power damage."
+      - "Inflict 1 Bleed."
     effects:
       - timing: on_use
         type: deal_damage
@@ -68,7 +69,8 @@ cards:
     target: 1 Ally
     speed: Normal
     effect:
-      - "Gain Power Shield. Reload currently Equipped Weapon."
+      - "Gain Power Shield."
+      - "Reload currently Equipped Weapon."
       - "Evade."
     effects:
       - timing: on_use
@@ -91,11 +93,13 @@ cards:
     target: 1 Enemy
     speed: Normal
     effect:
-      - "This card's Multihit Count starts at 3."
+      - "Always: This card's Multihit Count starts at 3."
       - "Set X to this card's remaining Multihit Count (before resolving this card)."
+      - "Distance > 0: Reduce this card's final Power by Distance."
       - "Spend X Handgun Ammo: Deal Power / X damage once per Ammo spent."
-      - "If this character has Equip: Riot Gun: This card becomes Shoot: Riot Gun."
-      - "If this character has Equip: Chicago Typewriter: This card becomes Shoot: Chicago Typewriter."
+      - "On Hit: Inflict 1 Bleed."
+      - "Always: If this character has Equip: Riot Gun: This card becomes Shoot: Riot Gun."
+      - "Always: If this character has Equip: Chicago Typewriter: This card becomes Shoot: Chicago Typewriter."
     effects:
       - timing: on_use
         type: spend_status
@@ -110,6 +114,12 @@ cards:
           kind: power_div
           divisor:
             kind: x
+      - timing: on_hit
+        type: inflict_status
+        status: Bleed
+        amount:
+          kind: flat
+          value: 1
     transforms:
       - condition:
           kind: self_has_status
@@ -133,16 +143,31 @@ cards:
     target: 1 Enemy
     speed: Normal
     effect:
+      - "Close."
       - "Spend 1 Shotgun Ammo: Deal Power / 3 damage 3 times."
+      - "On Hit: Inflict 1 Bleed."
       - "Follow-Up."
       - "On Follow-Up: -1 Energy Cost."
     effects:
+      - timing: on_use
+        type: spend_status
+        status: Shotgun Ammo
+        amount:
+          kind: flat
+          value: 1
+        gateAll: true
       - timing: on_use
         type: deal_damage
         amount:
           kind: power_div
           divisor: 3
         hits: 3
+      - timing: on_hit
+        type: inflict_status
+        status: Bleed
+        amount:
+          kind: flat
+          value: 1
   - slot: "3-3"
     name: "Shoot: Chicago Typewriter"
     cost: X Energy
@@ -158,6 +183,7 @@ cards:
     speed: Normal
     effect:
       - "Deal Power / (X + 4) damage (X + 4) times."
+      - "On Hit: Inflict 1 Bleed."
     effects:
       - timing: on_use
         type: deal_damage
@@ -169,6 +195,12 @@ cards:
         hits:
           kind: x_plus
           value: 4
+      - timing: on_hit
+        type: inflict_status
+        status: Bleed
+        amount:
+          kind: flat
+          value: 1
   - slot: "4"
     name: Suplex
     cost: 2 Energy
@@ -182,6 +214,7 @@ cards:
     target: 1 Enemy
     speed: Normal
     effect:
+      - "Close."
       - "Deal Power damage."
       - "Follow-Up."
       - "On Follow-Up: Inflict 1 Stun."
@@ -254,8 +287,15 @@ cards:
     speed: Normal
     effect:
       - "Spend 1 Rocket Launcher: Deal Power damage."
-      - "If this character doesn't have Rocket Launcher: this Ultimate becomes Purchase Rocket Launcher."
+      - "Always: If this character doesn't have Rocket Launcher: this Ultimate becomes Purchase Rocket Launcher."
     effects:
+      - timing: on_use
+        type: spend_status
+        status: Rocket Launcher
+        amount:
+          kind: flat
+          value: 1
+        gateAll: true
       - timing: on_use
         type: deal_damage
         amount:

@@ -1012,6 +1012,12 @@ Example: You would heal 12 HP with Wither 10 and Wound 3. Wither reduces the hea
 <summary>Where can I play a card based on Speed?</summary>
 <p>Fast cards can be played in any zone, Normal cards in the Normal or Slow Zone, and Slow cards only in the Slow Zone. A faster zone can interrupt a slower Active Zone.</p>
 </details>
+<p><a id="faq-follow-up-assist-attack"></a></p>
+<details class="question">
+<summary>When can I play a Follow-Up or Assist Attack card?</summary>
+<p>Follow-Up/Assist Attack opens an immediate play window after a card is used, before the next card in that zone resolves. The Follow-Up/Assist card resolves immediately, does not enter the zone stack, and does not clash with the next card. Follow-Up requires the triggering card to be from the same character; Assist Attack requires a different allied character. The Follow-Up/Assist Attack card must be played into that same zone and be legal there based on Speed; pay costs and choose legal targets as normal. Cancelled or Negated cards are not used and do not open this window. If Counter triggers, it replaces any Follow-Up/Assist window from that clash.
+Example: Your Fast Strike resolves in the Fast Zone. You may Follow-Up with a Fast card, but a Normal Follow-Up cannot be played because it cannot enter the Fast Zone.</p>
+</details>
 <p><a id="faq-cannot-play-cards"></a></p>
 <details class="question">
 <summary>What happens when a player cannot play cards?</summary>
@@ -1022,6 +1028,15 @@ Example: You would heal 12 HP with Wither 10 and Wound 3. Wither reduces the hea
 <summary>How does Evade work against Shield in an Attack vs Defense clash?</summary>
 <p>In an Attack vs Defense clash, resolve Defense first to gain <a class="ua-term-link" data-term="term-shield" href="#">Shield</a>, then resolve the Attack. <a class="ua-keyword-link" data-keyword="keyword-evade" href="#">Evade</a> checks after Shield: if the Attack would deal 0 Power damage after Shield, it is not a hit and you <a class="ua-keyword-link" data-keyword="keyword-reuse" href="#">Reuse</a> the Defense card. If any Power damage gets through Shield, the Attack is a hit and Evade does not apply. Example: Defense rolls 10 Shield and the Attack rolls 10 or less, Evade triggers; if the Attack rolls 11+, Evade does not.</p>
 </details>
+<p><a id="faq-distance-power"></a></p>
+<details class="question">
+<summary>How does Distance affect Power and clashing targets?</summary>
+<p><a class="ua-term-link" data-term="term-distance" href="#">Distance</a> is the absolute column difference between a source and its target. For single-target cards with Power, each distance step reduces Power by 10% + 1 (percent first, then flat; round down). Opposed targets (distance 0) have no change. <a class="ua-keyword-link" data-keyword="keyword-close" href="#">Close</a> and <a class="ua-keyword-link" data-keyword="keyword-far" href="#">Far</a> modify this.
+If a single-target card is redirected before the Power roll (Redirect/Cover), use the redirected target for Distance.
+Attack vs Attack: each card uses its own target for distance and still hits its own target. Attack vs Defense: each card uses its own target for distance; the attack is retargeted to the defending character for the hit. Defense vs Defense: each card uses its own target for distance. Specials have no Power, so Distance does not apply.
+Example: A2 targets B1 (distance 1). A1 defends targeting Self (distance 0). A2 is reduced by 1 step; A1 is not reduced.
+Example: A2 targets A1 (distance 0). C1 defends targeting B1 (distance 1). A2 is not reduced; C1 is reduced by 1 step.</p>
+</details>
 <p><a id="faq-damage-resolution"></a></p>
 <details class="question">
 <summary>What is the damage resolution order?</summary>
@@ -1031,8 +1046,8 @@ Example: An Attack rolls 20. Fortified 1 reduces it to 18. Shield 5 reduces it t
 <p><a id="faq-hit-vs-damage"></a></p>
 <details class="question">
 <summary>What's the difference between On Hit, On Damage, and On HP Damage?</summary>
-<p>On Hit triggers when an Attack is a hit, even if it deals 0 damage. On Damage triggers only if damage greater than 0 is dealt to Shield, Barrier, or HP. On HP Damage triggers only if HP is reduced by damage.
-Example: If an Attack is Immune, On Hit triggers but On Damage and On HP Damage do not. If Shield absorbs all damage, On Hit and On Damage trigger but On HP Damage does not.</p>
+<p>On Hit triggers when an Attack is a hit, even if it deals 0 damage. On Damage triggers only if damage greater than 0 is dealt to Shield, Barrier, or HP. On HP Damage triggers only if HP is reduced by damage. If an Attack hits multiple times, resolve On Hit once per hit.
+Example: If an Attack is Immune, On Hit triggers but On Damage and On HP Damage do not. If Shield absorbs all damage, On Hit and On Damage trigger but On HP Damage does not. If a Multihit attack hits 3 times, On Hit resolves 3 times.</p>
 </details>
 <details class="question">
 <summary>How do multiple damage types interact with Resist, Weakness, and Absorb?</summary>

@@ -1356,6 +1356,7 @@
 <li>If a card has high execution requirements or narrow conditions, you can add a 10-20% Base Power bonus.</li>
 <li>If a card adds meaningful utility (status, draw, resource gain, multi-target, strong tempo effects), bias toward the low end of the range or reduce Base Power.</li>
 <li>If a card deals Power damage and also heals, treat healing as extra output and lower Base Power so total impact matches the target.</li>
+<li>Single-target cards with Power are affected by Distance; if you use Close or Far, budget around the resulting peaks and valleys.</li>
 <li>Character-specific exceptions are allowed but must be documented in this guide.</li>
 </ul>
 <p>Examples:
@@ -1386,12 +1387,12 @@
 <li>Transformation / Recovery / Buff / Debuff</li>
 </ol>
 <h3 id="card-text-templates-timing-order">Card text templates (timing order)<a class="headerlink" href="#card-text-templates-timing-order" title="Permanent link">&para;</a></h3>
-<p>Standardize sentences so they align with the timing ladder: On Play -&gt; Before Clash -&gt; After Clash -&gt; Before Use -&gt; On Use -&gt; On Hit -&gt; After Use -&gt; Always. Each sentence should start with a timing label; split mixed timing effects into separate sentences.</p>
+<p>Standardize sentences so they align with the timing ladder: On Play -&gt; Before Clash -&gt; After Clash -&gt; Before Use -&gt; On Use -&gt; On Hit -&gt; After Use -&gt; Always. Each sentence should start with a timing label unless it is default On Use (which can be left unlabeled); split mixed timing effects into separate sentences.</p>
 <p>Templates:</p>
 <ul>
-<li>Attack (Power): "On Use: Deal Power damage." "On Hit: [bonus]." "After Use: [follow-up]."</li>
-<li>Defense (Power Shield): "On Use: Gain Power Shield." "After Clash: [bonus]." "After Use: [follow-up]."</li>
-<li>Special (no Power roll): "On Play: [effect]." "On Use: [effect]." "After Use: [cleanup]."</li>
+<li>Attack (Power): "Deal Power damage." "On Hit: [bonus]." "After Use: [follow-up]."</li>
+<li>Defense (Power Shield): "Gain Power Shield." "After Clash: [bonus]." "After Use: [follow-up]."</li>
+<li>Special (no Power roll): "On Play: [effect]." "[effect]." "After Use: [cleanup]."</li>
 <li>Utility/Setup: "On Play: [draw/move/status]." "Before Use: [prep]." "After Use: [cleanup]."</li>
 <li>Reactive/Interrupt: "After Clash: [effect]." "Before Use: [effect]." "After Use: [effect]."</li>
 </ul>
@@ -1400,8 +1401,9 @@
 <ul>
 <li>Place keyword-only lines at the timing they resolve on the ladder.</li>
 <li>Pre-play keywords (Innate, Prepare) go first.</li>
+<li>Distance keywords (Close, Far) go before the main Power line they modify.</li>
 <li>After Clash keywords (Evade, Counter, Reuse) go after the Shield/damage line they depend on.</li>
-<li>After Use keywords (Follow-Up) go after On Hit lines; keep any "On Follow-Up" lines directly after the Follow-Up line.</li>
+<li>After Use keywords (Follow-Up, Assist Attack) go after On Hit lines; keep any "On Follow-Up" or "On Assist Attack" lines directly after the keyword line.</li>
 <li>Cleanup keywords (Retain, Exhaust, Ethereal) go last.</li>
 </ul>
 <h3 id="status-effects-keywords-terms-roles">Status effects, keywords, terms, roles<a class="headerlink" href="#status-effects-keywords-terms-roles" title="Permanent link">&para;</a></h3>

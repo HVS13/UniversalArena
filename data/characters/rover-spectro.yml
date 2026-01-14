@@ -34,7 +34,9 @@ cards:
     target: 1 Enemy
     speed: Normal
     effect:
-      - "Deal Power damage. Gain 1 Diminutive Sound. Gain 1 Ultimate Meter."
+      - "Deal Power damage."
+      - "Gain 1 Diminutive Sound."
+      - "Gain 1 Ultimate Meter."
     effects:
       - timing: on_use
         type: deal_damage
@@ -63,7 +65,8 @@ cards:
     target: 1 Ally
     speed: Normal
     effect:
-      - "Gain Power Shield. Gain 1 Ultimate Meter."
+      - "Gain Power Shield."
+      - "Gain 1 Ultimate Meter."
       - "Evade."
     effects:
       - timing: on_use
@@ -77,8 +80,8 @@ cards:
           value: 1
   - slot: "3"
     name: Resonating Slashes
-    cost: 1 Energy
-    power: 8-12
+    cost: 2 Energy
+    power: 16-24
     types:
       - Technique
       - Attack
@@ -90,7 +93,8 @@ cards:
     target: 1 Enemy
     speed: Normal
     effect:
-      - "Deal Power / 2 damage 2 times. On Hit: Spend 1 Diminutive Sound: Inflict 2 Spectro Frazzle."
+      - "Deal Power / 2 damage 2 times."
+      - "On Hit: Spend 1 Diminutive Sound: Inflict 2 Spectro Frazzle."
     effects:
       - timing: on_use
         type: deal_damage
@@ -99,14 +103,18 @@ cards:
           divisor: 2
         hits: 2
       - timing: on_hit
+        type: spend_status
+        status: Diminutive Sound
+        amount:
+          kind: flat
+          value: 1
+        gateAll: true
+      - timing: on_hit
         type: inflict_status
         status: Spectro Frazzle
         amount:
           kind: flat
           value: 2
-        condition:
-          kind: self_has_status
-          status: Diminutive Sound
   - slot: "4"
     name: Aftertune
     cost: 1 Energy
@@ -120,7 +128,8 @@ cards:
     target: 1 Enemy
     speed: Normal
     effect:
-      - "Deal Power damage. Gain 1 Diminutive Sound."
+      - "Deal Power damage."
+      - "Gain 1 Diminutive Sound."
     effects:
       - timing: on_use
         type: deal_damage
@@ -134,7 +143,7 @@ cards:
           value: 1
   - slot: "5"
     name: Instant
-    cost: 1 Energy
+    cost: 2 Energy
     power: "-"
     types:
       - Technique
@@ -146,7 +155,12 @@ cards:
     target: All Enemies
     speed: Normal
     effect:
+      - "Can only be played as Assist Attack."
+      - "Assist Attack."
       - "Inflict 2 Stagnate."
+    restrictions:
+      - kind: require_window
+        window: assist_attack
     effects:
       - timing: on_use
         type: inflict_status
@@ -170,7 +184,9 @@ cards:
     target: All Enemies
     speed: Normal
     effect:
-      - "Deal Power damage. Heal for Power / 2 HP. On Hit: Inflict 6 Spectro Frazzle."
+      - "Deal Power damage."
+      - "Heal for Power / 2 HP."
+      - "On Hit: Inflict 6 Spectro Frazzle."
     effects:
       - timing: on_use
         type: deal_damage
