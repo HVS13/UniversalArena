@@ -34,3 +34,4 @@ This file preserves documentation-only decisions and rule clarifications.
 - 2026-01-14: Noted that CI export requires repo variables/secrets; otherwise manual export is required.
 - 2026-01-14: Added max HP baseline, Power Roll distribution, Movement Round free swap, combat judge examples, and a global cost floor rule.
 - 2026-01-14: Added Distance quick lookup examples to reduce table math friction.
+- 2026-03-09: Overhauled the docs theme styling and page chrome to push the site toward a game-codex/HUD presentation, including upgraded content panels, card blocks, character cards, and export controls.
