@@ -11,13 +11,16 @@ When sources disagree, use this order:
    - `docs/design/design-principles.md`
    - `docs/design/character-authoring-framework.md`
    - `docs/design/rules-v2-decisions.md`
+   - `docs/design/rules-v2-supplement.md`
    - `docs/data/schema-v2.md`
    - `docs/data/migrations/v1-to-v2.md`
    - `docs/design/roster-audit-checklist.md`
-3. Human-readable rules and character pages.
+3. Human-readable Rules v1 pages and character pages.
 4. Generated exports and `site/` output.
 
-Rules v2 documents are approved specifications but are not fully implemented until structured data, exporter logic, migrations, generated pages, and tests are updated. Never claim Rules v1 content already behaves as Rules v2 merely because the specification exists.
+Rules v2 documents are approved specifications but are not fully implemented until structured data, exporter logic, migrations, generated pages, and tests are updated. Never claim Rules v1 content already behaves as Rules v2 merely because a specification exists.
+
+When an initial Rules v2 document conflicts with an explicit correction in `rules-v2-supplement.md` or the corrected Schema v2 specification, use the correction.
 
 ## Highest design priority
 
@@ -52,8 +55,8 @@ Before creating or revising cards:
 7. Select actions for distinct gameplay jobs, not fame alone.
 8. Design exactly two Basics and three Techniques.
 9. Define at least one Ultimate pathway.
-10. Add typed Innates, statuses, effects, restrictions, ownership, lifecycle, and source basis.
-11. Assign Roles, Archetypes, Capability Tags, economy profile, and synergy metadata after the kit exists.
+10. Add typed Innates, statuses, effects, restrictions, ownership, lifecycle, provenance, and source basis.
+11. Assign Roles, Combat Archetypes, Capability Tags, economy profile, and synergy metadata after the kit exists.
 12. Run `docs/design/roster-audit-checklist.md`.
 
 ## Character and card rules
@@ -67,11 +70,14 @@ Before creating or revising cards:
 - Innates are continuous truths, not hidden sixth Techniques.
 - Statuses store persistent state.
 - Created cards provide prepared, temporary, conditional, summon, equipment, or expandable breadth.
+- Created is provenance, not an Action Type.
 - `Becomes` is automatic and state-dependent in deck, hand, and play.
 - Variants should change decisions, not only numbers.
 - Every character has one or more Ultimate pathways.
 - Power benchmarks are guides, not ceilings; document significant deviations.
 - Card Speed represents response window and commitment, not only movement-speed ranking.
+- Noncombat characters use source-supported indirect actions rather than invented brawling.
+- Copy and adaptive mechanics require explicit boundaries, ownership, lifecycle, and recursion rules.
 
 ## Crossover and classification rules
 
@@ -85,7 +91,7 @@ Rules v2 broad Damage Types:
 - Mental
 - Spiritual
 
-Electric and other elements or phenomena are Properties, not universal Damage Types. Properties have no inherent rules unless referenced.
+Properties describe elements or phenomena such as Electric, Fire, Ice, Sonic, Explosive, or Radiation. Source-System Tags describe frameworks such as Ki, Chakra, Reiatsu, Haki, Stand, Nen, or Cursed Energy. Neither has inherent universal rules unless referenced.
 
 Slash, Pierce, and Blunt are Attack Tags and do not automatically bypass defenses.
 
@@ -100,9 +106,12 @@ The team shares Draw Pile, Discard Pile, hand, Energy, and Ultimate Meter. Cards
 - Created cards inherit source-character ownership unless stated.
 - Meter comes only from Energy actually paid as card play cost.
 - Creation is not play.
+- Reveal is not Draw, Discard, Play, Use, or removal.
 - Defeat removes the owner's cards from active circulation under Rules v2 Defeat Reserve rules.
 
 Avoid named-pair and franchise bonuses. Prefer synergy through statuses, position, Speed, timing, targeting, card access, Energy, Meter, protection, and broad conditions.
+
+Character Core Roles and Combat Archetypes describe individuals. Optional Lineup Archetypes describe team plans and never impose legality or required composition.
 
 ## Structured-data requirements
 
@@ -111,8 +120,8 @@ Avoid named-pair and franchise bonuses. Prefer synergy through statuses, positio
 Rules v2 structured content requires:
 
 - Stable IDs.
-- Explicit owner.
-- Separated action types, Damage Types, Properties, range, area, Attack Tags, and Effect Tags.
+- Explicit owner and card provenance.
+- Separated Action Types, Damage Types, Properties, Source-System Tags, range, area, Attack Tags, and Effect Tags.
 - Typed targets and lock modes.
 - Typed effects with stable IDs, timing, and scope.
 - Typed conditions and restrictions.
@@ -122,6 +131,8 @@ Rules v2 structured content requires:
 - Source-basis records.
 
 Do not add an undefined global mechanic without adding its registry/reference entry and validation support.
+
+Every effect primitive used by content or examples must be registered. Do not invent specialized primitives when a general typed primitive and target/filter can represent the behavior.
 
 Keep `schemaVersion` and `rulesVersion` separate.
 
@@ -142,16 +153,18 @@ Never silently reinterpret Rules v1 exports as Rules v2.
 Required migrations include:
 
 - Electric Damage Type to Electric Property.
-- Flat roles to Core Roles, Archetypes, and Capability Tags.
+- Flat roles to Core Roles, Combat Archetypes, and Capability Tags.
 - Defender to Guardian alias.
 - Exhaust-on-play to Exhaust-after-resolution, with manual intent review.
 - Unscoped Taunt to Taunt (All).
 - Bare Bounce to Bounce 1.
 - Implicit ownership to explicit ownership.
+- Created provenance separated from Action Types.
 - Ultimates to Ultimate pathways.
 - Unique status prose to typed rules.
 - Team-turn Stun ambiguity to per-character Stun behavior.
 - Defeated-owner cards to Defeat Reserve behavior.
+- Legacy source-system classifications to Source-System Tags.
 
 ## Validation behavior
 
@@ -167,6 +180,7 @@ Warnings include:
 - No low-investment action.
 - Variants that only add numbers.
 - Apparently dominant Ultimate pathway.
+- Excessive independent decisions or memory burden.
 - Later-version ability.
 - Unsupported immunity.
 - Hax reduced to damage.
@@ -184,12 +198,12 @@ Warnings include:
 - Structured data lives in `docs/data/`; keep it in sync with reference pages.
 - The game is 3v3 with a shared deck, hand, Energy, and Ultimate Meter, plus per-character HP, statuses, resources, ownership, and defeat state.
 - Exporter lives in `docs/scripts/`; use it or CI to sync data into the game repository.
-- If core or UI changes affect rules, keywords, statuses, terms, classifications, roles, or Properties, update the docs and structured registries, then re-export.
+- If core or UI changes affect rules, keywords, statuses, terms, classifications, roles, or registries, update docs and structured data, then re-export.
 - Track docs/data tasks in `TODO.md`.
-- If adding or renaming keywords, statuses, terms, roles, archetypes, capabilities, Damage Types, Properties, or other registries, define them in human-readable references and `docs/data/`.
+- If adding or renaming a registry entry, define it in human-readable references and `docs/data/`.
 - Restriction enforcement is structured-only. Any display restriction must be mirrored in structured restrictions.
 - Filtering uses the `hidden` attribute; avoid overriding it on filterable items.
-- When evaluating ambiguity, check `docs/faq.md` and reflect durable rules in the relevant reference and structured files.
+- When evaluating ambiguity, check `docs/faq.md` and reflect durable rules in relevant reference and structured files.
 - When clarifying timing or interactions, update the definition and add a short FAQ example when it will recur at the table.
 - Keep damage order, timing labels, target semantics, and status behavior synchronized across references and structured data.
 - Adjacency is per-team line. Empty positions break adjacency. Opposed means the same column across teams.
@@ -198,7 +212,7 @@ Warnings include:
 - Shared link markup uses the `ua-*-link` classes so `docs/javascripts/guide.js` can rewrite links.
 - Only link global statuses from the global status reference; Unique statuses remain character-specific.
 - Ensure Potency, Count, Value, and Stack caps match reachable behavior.
-- Prefer Stack for simple single-value duration and Value for resource-like or progress behavior; use Potency + Count when strength and persistence are separate.
+- Use the simplest coherent status mode; never create dummy Potency or Count.
 - Do not add game pages or game assets to this repository unless explicitly requested.
 - Export actions live in `docs/overrides/main.html` and `docs/javascripts/print.js`; keep exports free of permalinks, URLs, and images as currently required.
 
