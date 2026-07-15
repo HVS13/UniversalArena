@@ -1,8 +1,8 @@
 # Universal Arena Schema v2 Specification
 
 > **Status:** Approved implementation specification, pending exporter and roster migration.  
-> **Canonical relationship:** `docs/data/` remains the structured source of truth. Human-readable pages should be generated from, or validated against, structured data.  
-> **Related documents:** [Design Principles](../design/design-principles.md), [Character Authoring Framework](../design/character-authoring-framework.md), [Rules v2 Decisions](../design/rules-v2-decisions.md).
+> **Canonical relationship:** `docs/data/` remains the executable source of truth after migration. Human-readable pages should be generated from, or validated against, structured data.  
+> **Related documents:** [Design Principles](../design/design-principles.md), [Character Authoring Framework](../design/character-authoring-framework.md), [Rules v2 Decisions](../design/rules-v2-decisions.md), and [Rules v2 Audit Supplement](../design/rules-v2-supplement.md).
 
 ## 1. Versioning
 
@@ -13,69 +13,71 @@ schemaVersion: 2
 rulesVersion: 2
 ```
 
-- `schemaVersion` identifies the shape and validation contract of structured data.
-- `rulesVersion` identifies the gameplay semantics used to interpret that data.
-- A schema migration may preserve the same rules interpretation.
-- A rules migration may require no structural change but still alter behavior.
-- Exports must record both values in the manifest.
+- `schemaVersion` identifies data shape and validation contracts.
+- `rulesVersion` identifies gameplay semantics.
+- Exports record both values.
+- Unsupported future major versions are rejected.
+- Older versions must produce an actionable migration path.
+- Never interpret Rules v1 content as Rules v2 merely because it can be deserialized.
 
-The exporter must reject unsupported future major versions and provide actionable migration errors for older versions.
+## 2. Architecture
 
-## 2. Registry architecture
-
-Rules v1 hard-codes many allowed values in exporter code. Rules v2 divides concepts into:
+Rules v2 separates **versioned engine primitives** from **content registries**.
 
 ### Versioned engine primitives
 
-These require code support and belong to versioned schema modules:
+These require documented code support:
 
-- Effect primitive shapes.
-- Scalar expression evaluation.
-- Condition evaluation.
-- Timing queue behavior.
-- Target selection execution.
-- Random selection execution.
-- Card-zone transitions.
-- Clash and Use resolution.
+- Effect execution.
+- Expression evaluation.
+- Conditions and restrictions.
+- Timing queues and continuous rules.
+- Target locking and legality.
+- Random selection.
+- Zone and lifecycle transitions.
+- Clash, Use, Hit, and damage resolution.
 - Status storage modes.
+- Defeat, Resurrection, and victory timing.
 
 ### Content registries
 
-These are structured data entries and should not require unrelated code edits:
+These are additive structured entries with stable IDs:
 
 - Damage Types.
 - Properties.
+- Source-System Tags.
 - Attack Tags.
 - Effect Tags.
 - Roles.
-- Archetypes.
+- Combat Archetypes.
+- Lineup Archetypes.
 - Capability Tags.
 - Keywords.
 - Global statuses.
-- Area definitions.
+- Speeds.
+- Ranges.
+- Areas.
 - Roll modes.
 - Lifecycle destinations.
 - Defeat states.
 - Resurrection modes.
-- Source-system tags.
 
-Registry entries require stable IDs, display names, categories, descriptions, and deprecation metadata.
-
-Example:
+Each registry entry contains:
 
 ```yaml
 id: property-electric
 name: Electric
 category: phenomenon
+description: "Electrical or lightning-associated action. No inherent rule."
 rules: []
 deprecated: false
 aliases:
   - card-type-electric
 ```
 
-A registry entry may have no inherent rules. Properties are normally descriptive selectors until an effect references them.
+Adding a registry entry must not require editing unrelated character files.
 
-## 3. Character root schema
+## 3. Character root
 
 ```yaml
 schemaVersion: 2
@@ -107,39 +109,30 @@ consideredButOmitted: []
 metadata: {}
 ```
 
-### Identity
+Identity rules:
 
-- `id` is the unique character-version identifier and filename slug.
+- `id` is the unique character-version ID and filename slug.
 - `characterId` groups versions of the same identity.
-- `versionId` identifies the version within that identity.
-- `name + version` remains unique on one team.
-- Optional aliases may connect shared identities, transformations, codenames, or localized names.
+- `versionId` identifies the selected version.
+- `name + version` remains the same-team uniqueness rule.
+- Aliases may connect codenames, localized names, or shared identities without merging distinct versions.
 
-## 4. Source boundary schema
+## 4. Source boundary and design metadata
 
 ```yaml
 sourceBoundary:
   continuity: manga
   start: "Part 3 introduction"
   end: "final battle in Cairo"
-  baselineState: "vampire body with The World, before feeding on Joseph"
+  baselineState: "vampire body with The World before feeding on Joseph"
   accessibleForms: []
   standardEquipment:
     - knives
-  exceptionalAbilities:
-    - name: extended-time-stop-after-feeding
-      classification: unlockable
-  excludedMaterial:
-    - Part 1-only techniques not used in the selected period
-  knowledgeBoundary: "Part 3 knowledge through the selected endpoint"
-  personalityBoundary: "Part 3 behavior and restraint"
-```
+  exceptionalAbilities: []
+  excludedMaterial: []
+  knowledgeBoundary: "knowledge available through the selected endpoint"
+  personalityBoundary: "behavior and restraint during the selected period"
 
-Fields may reference source-basis records by ID.
-
-## 5. Design schema
-
-```yaml
 design:
   thesis: ""
   weakness: ""
@@ -150,9 +143,9 @@ design:
   complexityNotes: ""
 ```
 
-This data is review metadata and is not mechanically executed.
+These fields guide authoring and review; they do not execute mechanics.
 
-## 6. Role and team metadata
+## 5. Role, archetype, economy, and synergy metadata
 
 ```yaml
 role:
@@ -188,19 +181,30 @@ synergy:
 Validation:
 
 - Exactly one Primary Core Role.
-- Zero or one Secondary Core Role.
-- Primary and Secondary must differ.
-- Zero to two Archetypes by default; more requires an explicit exception.
-- Capability and synergy identifiers must exist in registries.
-- These fields grant no gameplay behavior.
+- Zero or one different Secondary Core Role.
+- Zero to two Combat Archetypes by default; more requires a documented exception.
+- Capability and synergy IDs must exist.
+- These fields grant no mechanics.
 
-## 7. Card schema
+Lineup Archetypes belong to a team or lineup analysis object, not a character:
 
 ```yaml
+lineupAnalysis:
+  primaryArchetype: lineup-setup-execution
+  secondaryArchetype: lineup-control
+  warnings: []
+```
+
+## 6. Card schema
+
+```yaml
+id: dio-muda
 slotId: regular-1
+cardOrigin: starting
 owner:
   kind: character
   characterId: dio-brando-part-3
+
 name: Muda
 cost:
   energy:
@@ -220,6 +224,8 @@ actionTypes:
 damageTypes:
   - damage-physical
 properties: []
+sourceSystemTags:
+  - system-stand
 range: range-melee
 area: null
 attackTags:
@@ -230,26 +236,51 @@ target:
   kind: character
   allegiance: enemy
   count: 1
+  selection: chosen
   lockMode: character
+  filters: []
+  fallback: fail_target_effects
+
+resolution:
+  clashRollMode: single
+  useRollMode: single
+  targetBatch: sequential
+  triggerOrder: primary_then_left_to_right
 
 lifecycle:
   afterResolution: destination-discard
+  ifCancelled: destination-discard
+  ifNegated: destination-discard
   ifUnusedAtTurnEnd: destination-discard
+  onOwnerDefeat: destination-defeat-reserve
+  onResurrection: destination-discard
 
 effects: []
+continuousRules: []
 transforms: []
 restrictions: []
 sourceBasis: []
 ```
 
-### Stable slots
+### Stable identity
 
-- `slotId` is stable across renames.
-- Starting regular slots must map to exactly two Basics and three Techniques.
-- Variant cards use separate IDs but may declare `variantOf` or belong to a transform group.
-- Display headings are generated from order metadata, not parsed into identity.
+- Card `id` and `slotId` are stable across renames.
+- Starting regular cards map to exactly two Basics and three Techniques.
+- Variant cards use separate IDs and declare `variantOf`, a transform group, or pathway membership.
+- Display order is metadata, not identity.
 
-## 8. Ownership schema
+### Card provenance
+
+`cardOrigin` is separate from Action Types:
+
+- `starting`
+- `created`
+- `scenario`
+- `generated_variant`
+
+`Created` is not an Action Type. A Created card may still be a Technique, Attack, Defense, or Special.
+
+## 7. Ownership
 
 ```yaml
 owner:
@@ -260,27 +291,27 @@ owner:
 
 Defaults:
 
-- Starting cards: owning character.
+- Starting regular cards: owning character.
 - Ultimate cards: owning character.
-- Created cards: inherited from source character.
+- Created cards: inherit source-character ownership.
 - Scenario cards: scenario or team ownership.
 
-Ownership controls:
+Ownership determines:
 
-- Who may normally play the card.
-- Which personal resources the card can use.
-- What happens on owner defeat.
-- Which Defeat Reserve receives it.
-- Whether Resurrection restores it.
+- Who may normally play a card.
+- Which personal resources it may use.
+- Owner-defeat behavior.
+- Defeat Reserve destination.
+- Resurrection recovery.
 
-An explicit effect may temporarily override play permission without changing ownership.
+Play permission can change without changing ownership.
 
-## 9. Cost schema
+## 8. Costs and locked values
 
 ```yaml
 cost:
   energy:
-    kind: x
+    kind: chosen
     min: 0
     max: 5
   ultimateMeter:
@@ -295,88 +326,93 @@ cost:
         min: 0
         max: 5
       optional: true
+      failureBehavior: skip_costed_branch
 ```
 
-Play-time values are locked after payment.
+Rules:
 
-Meter generation is computed from Energy actually paid as the play cost, after cost modifiers.
+- Play-time costs, X, user, target, zone, and play-time modes lock on play.
+- Meter gained equals Energy actually paid as the card's play cost after modifiers.
+- Additional costs do not generate Meter unless explicit text says otherwise.
+- Later replacement never changes paid cost or Meter gained retroactively.
 
-Additional costs do not generate Meter unless a rule explicitly says otherwise.
-
-## 10. Classification schema
-
-Rules v2 replaces the overloaded flat `types` array.
+## 9. Classification axes
 
 ### Action Types
 
-Examples:
+Initial IDs:
 
-- action-basic
-- action-technique
-- action-ultimate
-- action-attack
-- action-defense
-- action-special
-- action-created
+- `action-basic`
+- `action-technique`
+- `action-ultimate`
+- `action-attack`
+- `action-defense`
+- `action-special`
 
 ### Damage Types
 
-Initial registry:
+Initial IDs:
 
-- damage-physical
-- damage-energy
-- damage-magical
-- damage-mental
-- damage-spiritual
+- `damage-physical`
+- `damage-energy`
+- `damage-magical`
+- `damage-mental`
+- `damage-spiritual`
 
 ### Properties
 
-Examples:
+Elements, materials, or phenomena with no inherent rules:
 
-- property-electric
-- property-fire
-- property-ice
-- property-sonic
-- property-explosive
-- property-radiation
-- property-haki
-- property-ki
-- property-chakra
-- property-reiatsu
+- `property-electric`
+- `property-fire`
+- `property-ice`
+- `property-sonic`
+- `property-explosive`
+- `property-radiation`
+- `property-acid`
 
-Properties have no inherent behavior unless registered rules or explicit effects reference them.
+### Source-System Tags
+
+Fictional power frameworks with no inherent cross-system equivalence:
+
+- `system-ki`
+- `system-chakra`
+- `system-reiatsu`
+- `system-haki`
+- `system-stand`
+- `system-nen`
+- `system-cursed-energy`
+- `system-technology`
 
 ### Range
 
-- range-melee
-- range-ranged
-- null for non-spatial effects when appropriate
+- `range-melee`
+- `range-ranged`
+- `null` when spatial delivery is not meaningful
 
 ### Attack Tags
 
-Initial registry:
-
-- attack-slash
-- attack-pierce
-- attack-blunt
-- attack-multihit
+- `attack-slash`
+- `attack-pierce`
+- `attack-blunt`
+- `attack-multihit`
 
 ### Effect Tags
 
 Examples:
 
-- effect-transformation
-- effect-recovery
-- effect-buff
-- effect-debuff
-- effect-equipment
-- effect-summon
-- effect-information
-- effect-alternate-defeat
+- `effect-transformation`
+- `effect-recovery`
+- `effect-buff`
+- `effect-debuff`
+- `effect-equipment`
+- `effect-summon`
+- `effect-information`
+- `effect-alternate-defeat`
 
-Effect Tags are descriptive unless a mechanic explicitly references them.
+Classification entries do not grant behavior unless a rule references them.
 
-## 11. Target schema
+## 10. Target schema
 
 ```yaml
 target:
@@ -389,25 +425,17 @@ target:
   fallback: fail_target_effects
 ```
 
-### Character lock
+Defaults:
 
-A character-locked target follows that character through movement. Distance and adjacency use current positions when required.
+- Character lock follows the selected character through movement.
+- Position lock remains on the selected position.
+- Object lock follows the selected card, status, or other object while legal.
+- If a character target becomes illegal before Use, target-facing effects fail, the card is still Used, and unrelated self/card effects resolve.
+- Retargeting requires explicit text.
 
-### Position lock
+## 11. Area and random selection
 
-A position-locked effect remains at the selected position and may miss or affect a new occupant.
-
-### Target failure
-
-Default `fallback: fail_target_effects` means:
-
-- Target-facing effects fail.
-- The card is still Used.
-- Unrelated self and card effects resolve.
-
-Retargeting requires an explicit effect.
-
-## 12. Area schema
+Splash example:
 
 ```yaml
 area:
@@ -418,7 +446,7 @@ area:
   targetBatch: simultaneous
 ```
 
-Bounce:
+Bounce example:
 
 ```yaml
 area:
@@ -432,69 +460,52 @@ area:
   recalculateEligibility: each_application
 ```
 
-Area registry examples:
-
-- area-aoe
-- area-splash
-- area-bounce
-- area-chain
-- area-line
-- area-cone
-- area-ring
-- area-random-enemies
-- area-source-radius
-
-An area definition specifies:
+Area definitions specify:
 
 - Anchor.
 - Snapshot timing.
-- Eligible positions or characters.
-- Whether target batches are simultaneous.
-- Whether selection is random.
+- Eligibility.
+- Sequential or simultaneous resolution.
+- Random selection behavior.
 - Replacement behavior.
 - Redirect and Cover interaction.
 
-Legacy bare Bounce migrates to count 1.
+Initial area IDs may include:
 
-## 13. Roll and Power schema
+- `area-aoe`
+- `area-splash`
+- `area-bounce`
+- `area-chain`
+- `area-line`
+- `area-cone`
+- `area-ring`
+- `area-random-enemies`
+- `area-source-radius`
+
+Legacy bare Bounce migrates to Bounce 1.
+
+Random defaults:
 
 ```yaml
-power:
-  kind: range
-  min: 24
-  max: 36
-  formula: null
+random:
+  selection: uniform
+  replacement: true
+  eligibilityTiming: each_selection
+  noEligibleBehavior: fail_application
+  public: true
+```
 
+Digital logs retain eligible pools, ordered results, weights, and replayable random state.
+
+## 12. Roll and Multihit schema
+
+```yaml
 resolution:
   clashRollMode: per_remaining_hit_sum
   useRollMode: per_hit_shared_targets
   targetBatch: simultaneous
   triggerOrder: primary_then_left_to_right
-```
 
-Roll-mode registry examples:
-
-- single
-- per_remaining_hit_sum
-- per_hit_shared_targets
-- per_target
-- roll_once_then_split
-- fixed_value
-- custom
-
-The schema distinguishes:
-
-- Printed Power.
-- Raw Power Roll.
-- Adjusted Power.
-- Clash Total.
-- Damage instance.
-
-Clash results are never reused as Use Rolls.
-
-## 14. Multihit schema
-
-```yaml
 multihit:
   startingCount:
     kind: flat
@@ -509,27 +520,27 @@ multihit:
     behavior: ordinary_single_hit_attack
 ```
 
-Damage effect example:
+Roll-mode examples:
 
-```yaml
-- id: throwing-knives-damage
-  timing: on_use
-  scope: per_hit_per_target
-  type: deal_damage
-  amount:
-    kind: power_div
-    divisor:
-      kind: fixed
-      value: 6
-  hits:
-    kind: remaining_multihit_count
-```
+- `single`
+- `per_remaining_hit_sum`
+- `per_hit_shared_targets`
+- `per_target`
+- `roll_once_then_split`
+- `fixed_value`
+- `custom`
 
-A fixed divisor does not change when remaining Count changes. Use an explicit remaining-count expression when scaling is intended.
+Rules:
 
-## 15. Effect schema
+- Clash Rolls and Use Rolls are separate.
+- Reuse generates fresh rolls.
+- Default area behavior rolls once per hit and shares that roll across targets.
+- Each target resolves mitigation and triggers separately.
+- A fixed printed divisor remains fixed after Multihit Count loss.
 
-Every effect requires a stable ID.
+## 13. Effects
+
+Every effect requires:
 
 ```yaml
 - id: muda-deal-damage
@@ -543,106 +554,107 @@ Every effect requires a stable ID.
   failureBehavior: skip_effect
 ```
 
-### Required common fields
+### Initial timings and events
 
-- `id`
-- `timing`
-- `scope`
-- `type`
+- `on_play`
+- `before_clash`
+- `clash`
+- `after_clash`
+- `before_use`
+- `on_use`
+- `on_hit`
+- `on_damage`
+- `on_hp_damage`
+- `after_use`
+- `turn_start`
+- `turn_end`
+- `on_gain`
+- `on_expire`
+- `on_heal`
+- `on_hp_restored`
+- `would_be_defeated`
+- `when_defeated`
+- `when_sacrificed`
+- `when_resurrected`
 
-### Timings
+`Always` is represented as a continuous rule, not an event at the end of the timing ladder.
 
-Initial engine timings:
+### Initial scopes
 
-- on_play
-- before_clash
-- clash
-- after_clash
-- before_use
-- on_use
-- on_hit
-- on_damage
-- on_hp_damage
-- after_use
-- turn_start
-- turn_end
-- on_gain
-- on_expire
-- would_be_defeated
-- when_defeated
-- when_resurrected
+- `once_per_play`
+- `once_per_use`
+- `once_per_turn`
+- `once_per_game`
+- `per_target`
+- `per_hit`
+- `per_hit_per_target`
+- `once_per_target_per_use`
+- `per_amount_spent`
+- `continuous`
 
-`Always` is represented as a continuous rule, not an event timing.
+Scope must not be inferred solely from display prose.
 
-### Scopes
+### Required effect primitives
 
-Initial scopes:
+The v2 implementation must include, or provide documented equivalents and migrations for:
 
-- once_per_play
-- once_per_use
-- once_per_turn
-- once_per_game
-- per_target
-- per_hit
-- per_hit_per_target
-- once_per_target_per_use
-- per_amount_spent
-- continuous
+- `deal_damage`
+- `lose_hp`
+- `pay_hp`
+- `set_hp`
+- `change_max_hp`
+- `gain_shield`
+- `gain_barrier`
+- `heal`
+- `gain_status`
+- `inflict_status`
+- `set_status`
+- `reduce_status`
+- `remove_status`
+- `spend_status`
+- `transfer_status`
+- `gain_energy`
+- `set_energy`
+- `spend_energy`
+- `gain_ultimate_meter`
+- `spend_ultimate_meter`
+- `create_card`
+- `reveal_cards`
+- `draw_cards`
+- `discard_cards`
+- `scry`
+- `seek`
+- `search`
+- `move_character`
+- `swap_characters`
+- `redirect`
+- `grant_keyword`
+- `block_play`
+- `allow_play`
+- `switch_equipment`
+- `reload`
+- `transform_card`
+- `resurrect`
+- `sacrifice`
+- `prevent_defeat`
+- `defeat`
+- `modify_cost`
+- `modify_power`
+- `modify_speed`
+- `choose`
+- `random_select`
+- `sequence`
+- `schedule_trigger`
+- `record_match_flag`
+- `replace_ultimate_pathway`
 
-Do not infer scope solely from prose.
+Legacy `gain_ultimate` migrates to `gain_ultimate_meter`.
 
-### Effect primitives
+A general primitive may target a typed collection. Do not invent undocumented special primitives when `grant_keyword` plus a card filter is sufficient.
 
-Initial v2 primitives should include or migrate existing behavior for:
+## 14. Expressions
 
-- deal_damage
-- lose_hp
-- pay_hp
-- gain_shield
-- gain_barrier
-- heal
-- change_max_hp
-- gain_status
-- inflict_status
-- set_status
-- reduce_status
-- remove_status
-- spend_status
-- transfer_status
-- create_card
-- draw_cards
-- discard_cards
-- scry
-- seek
-- search
-- move_character
-- swap_characters
-- redirect
-- grant_keyword
-- block_play
-- allow_play
-- switch_equipment
-- reload
-- transform_card
-- resurrect
-- sacrifice
-- prevent_defeat
-- defeat
-- modify_cost
-- modify_power
-- modify_speed
-- choose
-- random_select
-- sequence
-- schedule_trigger
-- record_match_flag
-- replace_ultimate_pathway
-
-The exporter may retain specialized primitives for efficiency, but their semantics must be documented and versioned.
-
-## 16. Scalar expression schema
-
-Rules v2 uses typed expression trees rather than a short hard-coded list.
+Rules v2 uses typed expression trees.
 
 ```yaml
 amount:
@@ -653,7 +665,7 @@ amount:
     value: 4
 ```
 
-Supported foundational expression nodes should include:
+Foundational references include:
 
 - Literal number.
 - Locked X.
@@ -664,32 +676,31 @@ Supported foundational expression nodes should include:
 - Energy or Meter actually paid.
 - Amount spent by a prior effect.
 - Target count.
-- Arithmetic: add, subtract, multiply, floor-divide, minimum, maximum, clamp, halve.
 
-Expressions must declare whether references are:
+Operators include add, subtract, multiply, floor-divide, minimum, maximum, clamp, and halve.
+
+Every live reference declares whether it is:
 
 - Locked on play.
 - Snapshotted on Use.
-- Evaluated live when the sentence resolves.
+- Evaluated when the effect resolves.
 
-## 17. Condition schema
+## 15. Conditions and restrictions
 
 ```yaml
 condition:
   op: and
   conditions:
-    - kind: subject_has_status
+    - kind: subject_status_compare
       subject: user
       statusId: unique-time-stop
-      min:
-        stat: count
-        value: 1
+      stat: value
+      operator: greater_or_equal
+      value: 1
     - kind: target_is_legal
 ```
 
-Condition registry must support additive expansion.
-
-Initial conditions should cover:
+Initial condition support includes:
 
 - Has or lacks status.
 - Status comparisons.
@@ -698,41 +709,16 @@ Initial conditions should cover:
 - Position, Distance, adjacency, and opposed state.
 - Character defeated or in play.
 - Ally or enemy count.
-- Card classifications and Properties.
+- Card classifications, Properties, and Source-System Tags.
 - Current form or equipment.
-- Once-per-game match flags.
+- Match flags.
 - Previous card or effect events.
 - Target legality.
-- Owner identity.
+- Ownership.
 - Amount paid or spent.
 - Random result.
 
-Conditions declare evaluation timing and do not retroactively alter paid costs or locked choices.
-
-## 18. Continuous rules and `Becomes`
-
-```yaml
-transforms:
-  - id: strike-to-muda-barrage
-    priority: 100
-    condition:
-      kind: subject_has_status
-      subject: owner
-      statusId: unique-time-stop
-    replacementCardId: dio-strike-muda-barrage
-```
-
-Rules:
-
-- Automatic while true.
-- Applies in deck, hand, and play.
-- Reevaluate between timing steps.
-- No mid-effect-block replacement.
-- Paid costs, Meter gained, locked X, user, target, and zone remain unchanged.
-- Current unresolved definition supplies name, classifications, Power, and effects.
-- Multiple simultaneous replacements require explicit priority or mutual exclusion validation.
-
-## 19. Restrictions schema
+Restrictions default to play-time checks:
 
 ```yaml
 restrictions:
@@ -748,21 +734,34 @@ restrictions:
       value: 6
 ```
 
-Restrictions default to play-time checks.
+Use-time rechecking must be explicit.
 
-Use `timing: use` only when the design explicitly rechecks legality at Use.
+## 16. Continuous rules and `Becomes`
 
-Restriction categories include:
+```yaml
+transforms:
+  - id: strike-to-muda-barrage
+    priority: 100
+    condition:
+      kind: subject_status_compare
+      subject: owner
+      statusId: unique-time-stop
+      stat: value
+      operator: greater_or_equal
+      value: 1
+    replacementCardId: dio-strike-muda-barrage
+```
 
-- Status and resource requirements.
-- Form or equipment requirements.
-- Target conditions.
-- Position or Distance.
-- Response windows such as Follow-Up or Assist Attack.
-- Once-per-turn or once-per-game flags.
-- Owner and allegiance.
+Rules:
 
-## 20. Card lifecycle schema
+- Automatic while true.
+- Applies in deck, hand, and play.
+- Reevaluate between timing steps, not mid-effect block.
+- Preserve paid costs, Meter gained, X, user, target, and zone.
+- Current unresolved definition supplies name, classification, Power, and effects.
+- Multiple replacements require priority or mutual-exclusion validation.
+
+## 17. Card lifecycle
 
 ```yaml
 lifecycle:
@@ -776,20 +775,18 @@ lifecycle:
 
 Registered destinations include:
 
-- destination-draw
-- destination-hand
-- destination-discard
-- destination-exhaust
-- destination-ultimate-area
-- destination-defeat-reserve
-- destination-removed
-- destination-created-reserve
+- `destination-draw`
+- `destination-hand`
+- `destination-discard`
+- `destination-exhaust`
+- `destination-ultimate-area`
+- `destination-defeat-reserve`
+- `destination-removed`
+- `destination-created-reserve`
 
-Rules v2 Exhaust uses `afterResolution: destination-exhaust`.
+Rules v2 Exhaust uses `afterResolution: destination-exhaust`. Immediate removal On Play is a separate effect or field.
 
-Immediate removal On Play is a separate effect or lifecycle field and must not reuse Exhaust semantics.
-
-## 21. Ultimate pathway schema
+## 18. Ultimate pathways
 
 ```yaml
 ultimatePathways:
@@ -811,34 +808,44 @@ ultimatePathways:
 
 Lifecycle kinds:
 
-- repeatable
-- resource_gated
-- once_per_game
-- replacement_after_use
-- temporary_lockout
-- custom
+- `repeatable`
+- `resource_gated`
+- `once_per_game`
+- `replacement_after_use`
+- `temporary_lockout`
+- `custom`
 
 Validation:
 
 - Every character has at least one pathway.
-- Every Ultimate card belongs to exactly one pathway unless explicitly shared.
-- Each reachable character state has understandable pathway availability.
-- Variants in one pathway are not treated as separately available choices unless the pathway says so.
-- A pathway's paid cost is checked on play and not retroactively changed by replacement.
+- Every Ultimate belongs to exactly one pathway unless intentionally shared.
+- Each reachable state has understandable availability.
+- Variants in one pathway are not separately available unless specified.
+- Cost and readiness are checked on play.
 
-## 22. Status schema
+## 19. Status schema
 
-Global and Unique statuses use the same typed structure.
+Global and Unique statuses use the same typed shape.
+
+Modes:
+
+- `binary`
+- `stack`
+- `value`
+- `potency_count`
+
+Use the simplest coherent mode. Do not create dummy Potency for a Count-only concept.
+
+DIO Time Stop example:
 
 ```yaml
 statusEffects:
   - id: unique-the-world-time-stop
     name: "The World: Time Stop"
     type: unique
-    mode: potency_count
+    mode: value
     caps:
-      potency: 1
-      count: 8
+      value: 8
     visibility: public
     persistence:
       onDefeat: remove
@@ -848,54 +855,40 @@ statusEffects:
       - id: time-stop-follow-up
         timing: continuous
         scope: continuous
-        type: grant_keyword_to_owned_cards
+        type: grant_keyword
+        target:
+          kind: owned_cards
+          owner: subject
+          filters:
+            actionTypes:
+              - action-attack
         keywordId: keyword-follow-up
-        cardFilter:
-          actionTypes:
-            - action-attack
         condition:
           kind: status_compare
-          stat: count
+          stat: value
           operator: greater_or_equal
           value: 1
 ```
 
-### Modes
+Status persistence explicitly records:
 
-- binary
-- stack
-- value
-- potency_count
-
-### Persistence
-
-Status persistence must explicitly support:
-
-- Removal on subject defeat.
-- Survival after source defeat.
-- Source-linked removal.
-- Persistence through Resurrection.
+- Subject-defeat behavior.
+- Source-defeat dependence.
+- Resurrection persistence.
 - Generic Cleanse, Dispel, and Purge eligibility.
-- Hidden or public visibility.
+- Visibility.
+- Zero handling and expiry consequences.
 
 Unique statuses default to generic removal immunity.
 
-### Zero handling
+## 20. Defeat and Resurrection
 
-A status defines:
-
-- Which values reaching zero remove it.
-- Whether zero triggers an expiration consequence.
-- Whether the consequence resolves before removal.
-- Whether a delayed trigger survives removal.
-
-## 23. Defeat and Resurrection schema
-
-### Defeat defaults
+Defeat defaults:
 
 ```yaml
 defeatDefaults:
-  timing: after_current_atomic_use
+  timing: after_current_resolution_unit
+  resolutionUnitDefinition: "finish the current atomic effect or current card use as defined by Rules v2"
   cardDestination: destination-defeat-reserve
   clearShield: true
   clearBarrier: true
@@ -908,7 +901,7 @@ defeatDefaults:
   immediateReplacementDraw: false
 ```
 
-### Defeat replacement
+Defeat replacement example:
 
 ```yaml
 - id: survive-with-blood
@@ -916,13 +909,24 @@ defeatDefaults:
   scope: once_per_game
   decision:
     kind: optional_defeat_replacement
-    costs: []
+    costs:
+      - kind: spend_status
+        statusId: unique-stolen-blood
+        amount:
+          kind: flat
+          value: 3
     effects:
-      - type: set_hp
-        value: 1
+      - id: survive-set-hp
+        timing: would_be_defeated
+        scope: once_per_use
+        type: set_hp
+        targetRef: subject
+        amount:
+          kind: flat
+          value: 1
 ```
 
-### Resurrection defaults
+Resurrection defaults:
 
 ```yaml
 resurrectionDefaults:
@@ -938,29 +942,17 @@ resurrectionDefaults:
   preserveMatchFlags: true
 ```
 
-A Resurrection primitive is invalid without an HP specification.
+A Resurrection primitive without returned HP is invalid.
 
-## 24. Randomness schema
+## 21. Reveal semantics
 
-```yaml
-random:
-  selection: uniform
-  replacement: true
-  eligibilityTiming: each_selection
-  noEligibleBehavior: fail_application
-  public: true
-```
+`reveal_cards` preserves each card's current zone until another effect relocates it.
 
-Digital exports and match logs should retain:
+Reveal alone is not Draw, Discard, Play, Use, or removal and generates no Meter.
 
-- Eligible pool.
-- Ordered results.
-- Seed or deterministic replay state.
-- Any weights.
+If a revealed card's owner is defeated before selection or relocation, owner-defeat lifecycle applies before the effect continues with remaining legal cards.
 
-Randomness must not be used as an undocumented balancing substitute.
-
-## 25. Source-basis schema
+## 22. Source basis and omissions
 
 ```yaml
 sourceBasis:
@@ -975,91 +967,79 @@ sourceBasis:
     supports:
       - unique-the-world-time-stop
       - dio-time-stop-card
-```
 
-Every major hax, transformation, immunity, extreme Power deviation, alternate defeat condition, and unusual lifecycle should reference source-basis records.
-
-## 26. Considered-but-omitted schema
-
-```yaml
 consideredButOmitted:
   - name: "Space Ripper Stingy Eyes"
     classification: excluded
-    reason: "Outside this version's represented action set or redundant with another gameplay job."
+    reason: "Outside the selected period or redundant with another gameplay job."
     sourceBasisIds: []
 ```
 
-Omission metadata prevents future authors from repeatedly reintroducing redundant or out-of-bound material.
+Every major hax, transformation, immunity, extreme Power deviation, alternate defeat condition, and unusual lifecycle references source-basis records.
 
-## 27. Validation levels
+## 23. Validation
 
-### Structural errors
+### Structural errors — block export
 
-Block export:
-
-- Missing stable IDs.
-- Duplicate IDs.
+- Missing or duplicate stable IDs.
 - Invalid references.
 - Wrong regular-card count.
 - Missing Ultimate pathway.
-- Unknown registry entries.
-- Transformation cycles.
-- Missing ownership.
-- Invalid target or lifecycle.
-- Executable Unique status behavior stored only as prose.
+- Unknown registry entry.
+- Transformation cycle.
+- Missing ownership or provenance.
+- Invalid target, lifecycle, or status mode.
+- Executable Unique-status behavior stored only in prose.
 
-### Semantic errors
+### Semantic errors — block export
 
-Block export:
-
-- On Hit effect on a non-Attack without explicit exception.
-- Position-target behavior encoded as character lock.
+- On Hit on a non-Attack without explicit exception.
+- Position behavior encoded as character lock.
 - Created card with unresolved ownership or lifecycle.
 - Resurrection without HP.
-- Spend cost with undefined failure behavior.
-- Area effect with undefined target scope or batch mode.
-- Ultimate card with no pathway.
-- Effect scope incompatible with timing.
-- A status mode referenced with the wrong stat.
+- Spend with undefined failure behavior.
+- Area effect without scope or batch mode.
+- Ultimate with no pathway.
+- Scope incompatible with timing.
+- Wrong stat for a status mode.
+- Effect primitive used without registration.
+- Dummy Potency or Count with no coherent meaning.
 
-### Compatibility errors
-
-Block export:
+### Compatibility errors — block export
 
 - Unsupported schema or rules version.
-- Deprecated identifier without migration.
-- Electric still active as Damage Type.
-- Old flat role with no mapping.
+- Deprecated ID without migration.
+- Electric active as Damage Type.
+- Old role with no mapping.
 - Ambiguous legacy Exhaust.
 - Bare Bounce not normalized.
+- Created stored as an Action Type.
+- Legacy source-system classification without migration.
 
-### Design warnings
-
-Do not block export:
+### Design warnings — review, do not auto-nerf
 
 - Large Power deviation.
-- Multiple hard-control effects.
+- Several hard-control effects.
 - Heavy Retain or Created-card pressure.
 - No low-investment action.
 - Variant changes only numbers.
 - Excessive personal currencies.
-- One apparently dominant Ultimate pathway.
+- Dominant Ultimate pathway.
 - Multiple high-demand economy ratings.
+- Excessive independent decisions or memory burden.
 
-### Lore-review warnings
-
-Require human review:
+### Lore-review warnings — human review
 
 - Later-version ability.
-- Composite continuity not labeled.
+- Unlabeled composite continuity.
 - Hax reduced to ordinary damage.
 - Strong character lacks baseline superiority.
 - Weak character receives unsupported parity.
 - Canonical drawback omitted.
-- Immunity inferred only from raw strength.
-- Major mechanic has no source-basis record.
+- Immunity inferred only from strength.
+- Major mechanic lacks source basis.
 
-## 28. Export manifest v2
+## 24. Export manifest
 
 ```json
 {
@@ -1079,32 +1059,30 @@ Require human review:
 }
 ```
 
-Do not publish a canonical build from dirty structured data.
+Do not publish canonical exports from dirty structured data.
 
-## 29. Human-readable generation
+## 25. Human-readable generation
 
-Preferred authority order:
+Authority order after implementation:
 
 1. Structured Rules v2 data.
-2. Generated human-readable card and status text.
-3. Explicit `displayTextOverride` when generation cannot express intended wording.
+2. Generated card, status, and rules text.
+3. Reviewed `displayTextOverride` when generation cannot express intended wording.
 
-Overrides must reference the structured effects they describe. Validation should warn when the override and executable effects appear inconsistent.
+Overrides reference the structured effects they represent. Validation warns when display and executable behavior diverge.
 
-Do not parse normal prose to execute gameplay.
+Do not execute normal prose.
 
-## 30. Compatibility doctrine
-
-Adding a new registry entry should not require editing unrelated character files.
+## 26. Compatibility doctrine
 
 Changing old meaning requires:
 
 1. A rules-version or schema-version decision.
 2. An ordered migration.
-3. Legacy aliases.
-4. Affected-content report.
+3. Temporary legacy aliases.
+4. An affected-content report.
 5. Roster regression tests.
 6. Updated generated documentation.
 7. Changelog documentation.
 
-Never silently reinterpret exported Rules v1 data as Rules v2.
+Never silently reinterpret Rules v1 data as Rules v2.
