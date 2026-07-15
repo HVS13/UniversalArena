@@ -474,5 +474,12 @@ cards:
         amount:
           kind: flat
           value: 1
+      - timing: after_use
+        type: set_status
+        status: "The World: Time Stop"
+        stat: count
+        amount:
+          kind: flat
+          value: 0
 
 
