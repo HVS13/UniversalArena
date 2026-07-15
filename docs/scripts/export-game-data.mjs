@@ -1,6 +1,8 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { createHash } from "node:crypto";
+import { execFileSync } from "node:child_process";
 import YAML from "yaml";
 
 const getArg = (name) => {
@@ -29,6 +31,48 @@ const outDir = getArg("--out")
 const assetsOutDir = getArg("--assets-out")
   ? path.resolve(process.cwd(), getArg("--assets-out"))
   : path.join(outDir, "assets", "characters");
+
+const schemaVersion = 1;
+const sourceRepository =
+  getArg("--source-repository") || process.env.UA_SOURCE_REPOSITORY || "HVS13/UniversalArena";
+
+const runGit = (args) =>
+  execFileSync("git", ["-C", docsRoot, ...args], { encoding: "utf8" }).trim();
+
+const resolveSourceMetadata = () => {
+  const explicitCommit = getArg("--source-commit") || process.env.UA_SOURCE_COMMIT || process.env.GITHUB_SHA;
+  const commit = explicitCommit || runGit(["rev-parse", "HEAD"]);
+  const dirty = runGit([
+    "status",
+    "--porcelain",
+    "--",
+    ":(glob)docs/data/*.yml",
+    "docs/data/characters",
+    "docs/assets/characters",
+  ]);
+  const generatedAt = dirty
+    ? new Date().toISOString()
+    : runGit(["show", "-s", "--format=%cI", commit]);
+  return {
+    sourceCommit: dirty ? `${commit}-dirty` : commit,
+    generatedAt,
+  };
+};
+
+const serializeJson = (data) => JSON.stringify(data, null, 2) + "\n";
+
+const createContentHash = (files) => {
+  const hash = createHash("sha256");
+  [...files.entries()]
+    .sort(([left], [right]) => left.localeCompare(right))
+    .forEach(([filename, contents]) => {
+      hash.update(filename);
+      hash.update("\0");
+      hash.update(contents);
+      hash.update("\0");
+    });
+  return `sha256:${hash.digest("hex")}`;
+};
 
 const requiredFields = [
   "id",
@@ -588,7 +632,7 @@ const readYaml = async (filePath) => {
 
 const ensureDir = (dir) => fs.mkdir(dir, { recursive: true });
 const writeJson = (filePath, data) =>
-  fs.writeFile(filePath, JSON.stringify(data, null, 2) + "\n", "utf8");
+  fs.writeFile(filePath, serializeJson(data), "utf8");
 
 const slugFromFilename = (filename) => filename.replace(/\.(yml|yaml)$/i, "");
 
@@ -718,15 +762,33 @@ const exportData = async () => {
     return;
   }
 
-  await ensureDir(outDir);
-  await writeJson(path.join(outDir, "characters.json"), { characters });
+  const exportedFiles = new Map();
+  exportedFiles.set("characters.json", serializeJson({ characters }));
   for (const config of dataFileConfigs) {
     const entriesList = sharedData[config.key] ?? [];
-    await writeJson(path.join(outDir, config.output), { [config.root]: entriesList });
+    exportedFiles.set(config.output, serializeJson({ [config.root]: entriesList }));
   }
 
+  const source = resolveSourceMetadata();
+  const manifest = {
+    schemaVersion,
+    sourceRepository,
+    sourceCommit: source.sourceCommit,
+    generatedAt: source.generatedAt,
+    contentHash: createContentHash(exportedFiles),
+    rosterCount: characters.length,
+  };
+
+  await ensureDir(outDir);
+  for (const [filename, contents] of exportedFiles) {
+    await fs.writeFile(path.join(outDir, filename), contents, "utf8");
+  }
+  await writeJson(path.join(outDir, "manifest.json"), manifest);
+
   await copyAssets(characters);
-  console.log(`Exported ${characters.length} character(s) to ${outDir}.`);
+  console.log(
+    `Exported ${characters.length} character(s) to ${outDir} (${manifest.contentHash}).`
+  );
 };
 
 exportData().catch((error) => {

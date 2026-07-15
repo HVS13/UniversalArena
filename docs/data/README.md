@@ -118,6 +118,18 @@ Innate gameplay is structured-only; `text` is display copy and is never parsed b
 - Status amplification triggers use `originalOnly: true` and `additional: true` to prevent recursive amplification.
 - Optional defeat replacements use `decision.type: optional_defeat_replacement`; the controlling player must explicitly accept or decline.
 
+## Export manifest
+
+Every export writes `manifest.json` beside the generated data files. The manifest is the compatibility identity for a Friend Alpha data build:
+
+- `schemaVersion` identifies the exported data contract.
+- `sourceRepository` and `sourceCommit` identify the canonical source revision.
+- `generatedAt` uses the source commit timestamp for reproducible clean exports.
+- `contentHash` is a SHA-256 digest over the sorted generated JSON filenames and exact file contents, excluding the manifest itself.
+- `rosterCount` records the exported character count.
+
+If canonical data or character art has uncommitted changes, `sourceCommit` is suffixed with `-dirty`. Do not publish a Friend Alpha build from a dirty canonical export.
+
 ## Card effect schema (YAML)
 
 ```yml

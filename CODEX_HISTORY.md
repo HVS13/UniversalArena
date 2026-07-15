@@ -36,3 +36,4 @@ This file preserves documentation-only decisions and rule clarifications.
 - 2026-01-14: Added Distance quick lookup examples to reduce table math friction.
 - 2026-03-09: Overhauled the docs theme styling and page chrome to push the site toward a game-codex/HUD presentation, including upgraded content panels, card blocks, character cards, and export controls.
 - 2026-07-15: Replaced prose-parsed character innates with stable structured setup, mitigation, trigger, threshold, amplification, and optional defeat-replacement data for all nine characters.
+- 2026-07-15: Added a deterministic exported data manifest with schema version, canonical source revision, content hash, generation timestamp, and roster count for Friend Alpha compatibility checks.
