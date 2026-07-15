@@ -15,8 +15,19 @@ gameplan: >
   Gamabunta follow-ups and unlock One-Tail Rasengan to close.
 art: naruto-uzumaki-pre-timeskip.png
 innates:
-  - name: Nine-Tails' Resentment
+  - id: nine-tails-resentment
+    name: Nine-Tails' Resentment
     text: "The first time this character reaches 25% HP, gain 4 Kyuubi Chakra and +3 Kyuubi Chakra Count. Gain 4 One-Tail Cloak. Gain 2 Shadow Clones."
+    triggers:
+      - id: unleash-nine-tails
+        event: hp_threshold_crossed
+        scope: once_per_game
+        filters: { subject: self, direction: downward, threshold: 25 }
+        effects:
+          - { type: gain_status, status: Kyuubi Chakra, amount: 4, stat: potency }
+          - { type: gain_status, status: Kyuubi Chakra, amount: 3, stat: count }
+          - { type: gain_status, status: One-Tail Cloak, amount: 4 }
+          - { type: gain_status, status: Shadow Clones, amount: 2 }
 statusEffects:
   - name: Shadow Clones
     lines:

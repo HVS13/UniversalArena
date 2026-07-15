@@ -35,3 +35,4 @@ This file preserves documentation-only decisions and rule clarifications.
 - 2026-01-14: Added max HP baseline, Power Roll distribution, Movement Round free swap, combat judge examples, and a global cost floor rule.
 - 2026-01-14: Added Distance quick lookup examples to reduce table math friction.
 - 2026-03-09: Overhauled the docs theme styling and page chrome to push the site toward a game-codex/HUD presentation, including upgraded content panels, card blocks, character cards, and export controls.
+- 2026-07-15: Replaced prose-parsed character innates with stable structured setup, mitigation, trigger, threshold, amplification, and optional defeat-replacement data for all nine characters.

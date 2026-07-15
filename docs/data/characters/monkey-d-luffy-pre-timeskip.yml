@@ -12,8 +12,17 @@ gameplan: >
   high-pressure finisher when you are ahead.
 art: monkey-d-luffy-pre-timeskip.png
 innates:
-  - name: Gomu Gomu no Mi
+  - id: gomu-gomu-no-mi
+    name: Gomu Gomu no Mi
     text: "Resist 5 (non-Haki Pierce, non-Haki Blunt). Immune (Electric)."
+    mitigations:
+      - kind: resist
+        amount: 5
+        amountMode: flat
+        include: { mode: any, types: [Pierce, Blunt] }
+        exclude: { mode: any, tags: [Haki] }
+      - kind: immune
+        include: { mode: any, types: [Electric] }
 statusEffects:
   - name: Gear 2nd
     lines:

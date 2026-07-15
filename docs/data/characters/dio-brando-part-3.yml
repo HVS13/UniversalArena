@@ -12,12 +12,51 @@ gameplan: >
   Time Stop to lock the round and close with knife pressure or ROAD ROLLER DA!
 art: dio-brando-part-3.png
 innates:
-  - name: Vampire Physiology
+  - id: vampire-physiology
+    name: Vampire Physiology
     text: "Resist 3 (Physical)."
-  - name: Predator's Regeneration
+    mitigations:
+      - kind: resist
+        amount: 3
+        amountMode: flat
+        include: { mode: any, types: [Physical] }
+  - id: predators-regeneration
+    name: Predator's Regeneration
     text: "The first time each turn this character gains Stolen Blood, heal 10 HP."
-  - name: Blood Is Power
+    triggers:
+      - id: heal-from-blood
+        event: status_changed
+        scope: once_per_turn
+        filters: { subject: self, status: Stolen Blood, direction: upward }
+        effects:
+          - { type: heal, amount: 10 }
+  - id: blood-is-power
+    name: Blood Is Power
     text: "Whenever this character gains X Stolen Blood, gain X Blood Focus. Whenever this character spends X Stolen Blood, reduce Blood Focus Value by X. Once per game, when this character would be reduced to 0 HP: Spend 3 Stolen Blood? Set HP to 1 instead."
+    triggers:
+      - id: mirror-blood-gain
+        event: status_changed
+        scope: always
+        filters: { subject: self, status: Stolen Blood, direction: upward }
+        useEventAmount: true
+        effects:
+          - { type: gain_status, status: Blood Focus, amount: 0 }
+      - id: mirror-blood-spend
+        event: status_changed
+        scope: always
+        filters: { subject: self, status: Stolen Blood, direction: downward }
+        useEventAmount: true
+        effects:
+          - { type: reduce_status, status: Blood Focus, amount: event_amount }
+      - id: survive-defeat
+        event: would_be_defeated
+        scope: once_per_game
+        filters: { subject: self }
+        decision:
+          type: optional_defeat_replacement
+          spendStatus: Stolen Blood
+          spendAmount: 3
+          setHp: 1
 statusEffects:
   - name: Stolen Blood
     lines:

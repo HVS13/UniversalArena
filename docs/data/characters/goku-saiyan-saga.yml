@@ -12,8 +12,16 @@ gameplan: >
   playing at low HP, so plan a late spike.
 art: goku-saiyan-saga.png
 innates:
-  - name: Zenkai Boost
+  - id: zenkai-boost
+    name: Zenkai Boost
     text: "Each time this character reaches 25% HP, gain 1 Zenkai."
+    triggers:
+      - id: low-hp-zenkai
+        event: hp_threshold_crossed
+        scope: always
+        filters: { subject: self, direction: downward, threshold: 25 }
+        effects:
+          - { type: gain_status, status: Zenkai, amount: 1 }
 statusEffects:
   - name: Kaioken
     lines:

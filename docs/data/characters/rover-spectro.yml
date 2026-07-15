@@ -12,8 +12,17 @@ gameplan: >
   lean on Echoing Orchestra for sustain.
 art: rover-spectro.webp
 innates:
-  - name: World in a Grain of Sand
+  - id: world-in-a-grain-of-sand
+    name: World in a Grain of Sand
     text: "Each time any character inflicts Spectro Frazzle, inflict 1 additional Spectro Frazzle."
+    triggers:
+      - id: amplify-spectro-frazzle
+        event: status_inflicted
+        scope: always
+        filters: { source: any, status: Spectro Frazzle, direction: upward, originalOnly: true }
+        additional: true
+        effects:
+          - { type: gain_status, target: event_target, status: Spectro Frazzle, amount: 1 }
 statusEffects:
   - name: Diminutive Sound
     lines:

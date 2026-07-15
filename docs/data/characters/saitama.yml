@@ -12,8 +12,27 @@ gameplan: >
   once the power spikes come online.
 art: saitama-hero-for-fun.png
 innates:
-  - name: Limitless Potential
+  - id: limitless-potential
+    name: Limitless Potential
     text: "This character starts with State at 0 and State: Bored. When State reaches 10, remove State: Bored and gain State: Normal. When State reaches 30, remove State: Normal and gain State: Serious."
+    setup:
+      - { type: set_status, status: State, amount: 0 }
+      - { type: gain_status, status: "State: Bored", amount: 1 }
+    triggers:
+      - id: become-normal
+        event: status_threshold_crossed
+        scope: once_per_game
+        filters: { subject: self, status: State, direction: upward, threshold: 10 }
+        effects:
+          - { type: remove_status, status: "State: Bored" }
+          - { type: gain_status, status: "State: Normal", amount: 1 }
+      - id: become-serious
+        event: status_threshold_crossed
+        scope: once_per_game
+        filters: { subject: self, status: State, direction: upward, threshold: 30 }
+        effects:
+          - { type: remove_status, status: "State: Normal" }
+          - { type: gain_status, status: "State: Serious", amount: 1 }
 statusEffects:
   - name: State
     lines:

@@ -13,10 +13,27 @@ gameplan: >
   can save or throw the fight.
 art: kurosaki-ichigo-soul-society.png
 innates:
-  - name: Fighting Spirit
+  - id: fighting-spirit
+    name: Fighting Spirit
     text: "The first time each turn this character takes damage to HP from an enemy Attack, gain 1 Reiatsu."
-  - name: Inner Hollow (Uncontrolled)
+    triggers:
+      - id: reiatsu-from-attack
+        event: hp_damage_taken
+        scope: once_per_turn
+        filters: { subject: self, source: enemy, cardType: Attack, hpDamageOnly: true }
+        effects:
+          - { type: gain_status, status: Reiatsu, amount: 1 }
+  - id: inner-hollow-uncontrolled
+    name: Inner Hollow (Uncontrolled)
     text: "The first time this character reaches 25% HP, gain 1 Hollow Interference. Gain 2 Reiatsu."
+    triggers:
+      - id: awaken-hollow
+        event: hp_threshold_crossed
+        scope: once_per_game
+        filters: { subject: self, direction: downward, threshold: 25 }
+        effects:
+          - { type: gain_status, status: Hollow Interference, amount: 1 }
+          - { type: gain_status, status: Reiatsu, amount: 2 }
 statusEffects:
   - name: Reiatsu
     lines:

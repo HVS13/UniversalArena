@@ -12,8 +12,16 @@ gameplan: >
   full intel is secured.
 art: light-yagami-kira.png
 innates:
-  - name: Meticulous Planner
+  - id: meticulous-planner
+    name: Meticulous Planner
     text: "The first time each turn this character inflicts Stolen Information, draw 1."
+    triggers:
+      - id: draw-from-information
+        event: status_inflicted
+        scope: once_per_turn
+        filters: { source: self, status: Stolen Information, direction: upward }
+        effects:
+          - { type: draw_cards, amount: 1 }
 statusEffects:
   - name: Stolen Information
     lines:

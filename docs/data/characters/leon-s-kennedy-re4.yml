@@ -14,8 +14,14 @@ gameplan: >
   need the finisher.
 art: leon-s-kennedy-re4.png
 innates:
-  - name: Special Agent Loadout
+  - id: special-agent-loadout
+    name: Special Agent Loadout
     text: "This character starts with Equip: Handgun, 10 Handgun Ammo, 5 Shotgun Ammo, and 1 Rocket Launcher."
+    setup:
+      - { type: gain_status, status: "Equip: Handgun", amount: 1, recordMax: true }
+      - { type: gain_status, status: Handgun Ammo, amount: 10, recordMax: true }
+      - { type: gain_status, status: Shotgun Ammo, amount: 5, recordMax: true }
+      - { type: gain_status, status: Rocket Launcher, amount: 1, recordMax: true }
 statusEffects:
   - name: "Equip: Handgun"
     lines:

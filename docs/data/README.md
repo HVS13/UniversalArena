@@ -43,8 +43,16 @@ gameplan: >
   One paragraph describing how the character plays.
 art: kurosaki-ichigo-soul-society.png
 innates:
-  - name: Fighting Spirit
+  - id: fighting-spirit
+    name: Fighting Spirit
     text: The first time each turn this character takes damage to HP from an enemy Attack, gain 1 Reiatsu.
+    triggers:
+      - id: reiatsu-from-attack
+        event: hp_damage_taken
+        scope: once_per_turn
+        filters: { subject: self, source: enemy, cardType: Attack, hpDamageOnly: true }
+        effects:
+          - { type: gain_status, status: Reiatsu, amount: 1 }
 statusEffects:
   - name: Reiatsu
     lines:
@@ -96,6 +104,19 @@ createdCards:
 - `effect` preserves the exact sentence order from the docs page.
 - `effects` is optional structured data for game rules. Keep `effect` for human-readable text.
 - `restrictions` is optional structured use gating; rules enforcement only reads this field (effect text is not parsed).
+
+## Innate schema
+
+Innate gameplay is structured-only; `text` is display copy and is never parsed by the engine.
+
+- Every innate requires a stable `id` and at least one of `setup`, `mitigations`, or `triggers`.
+- Every trigger requires a stable `id`, an `event`, a usage `scope` (`always`, `once_per_turn`, or `once_per_game`), typed `filters`, and `effects` or an optional replacement `decision`.
+- Supported events are `status_changed`, `status_inflicted`, `status_threshold_crossed`, `hp_damage_taken`, `hp_threshold_crossed`, and `would_be_defeated`.
+- Status gain/spend triggers use the amount actually applied after caps, not the requested amount.
+- `setup` supports structured status gain/set/removal. Use `recordMax: true` for starting consumable resources such as Ammo.
+- `mitigations` supports structured Resist/Immune/Weakness/Absorb rules with `include` and `exclude` predicates for damage types/tags.
+- Status amplification triggers use `originalOnly: true` and `additional: true` to prevent recursive amplification.
+- Optional defeat replacements use `decision.type: optional_defeat_replacement`; the controlling player must explicitly accept or decline.
 
 ## Card effect schema (YAML)
 

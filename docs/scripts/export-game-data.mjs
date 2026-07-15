@@ -85,6 +85,24 @@ const restrictionSubjects = new Set(["self", "target"]);
 const restrictionModes = new Set(["any", "all"]);
 const restrictionWindows = new Set(["assist_attack", "follow_up", "after_use"]);
 const effectTargets = new Set(["self", "target", "opponent"]);
+const innateEvents = new Set([
+  "status_changed",
+  "status_inflicted",
+  "status_threshold_crossed",
+  "hp_damage_taken",
+  "hp_threshold_crossed",
+  "would_be_defeated",
+]);
+const innateScopes = new Set(["always", "once_per_turn", "once_per_game"]);
+const innateEffectTypes = new Set([
+  "gain_status",
+  "reduce_status",
+  "set_status",
+  "remove_status",
+  "heal",
+  "draw_cards",
+]);
+const mitigationKinds = new Set(["resist", "immune", "weakness", "absorb"]);
 
 const dataFileConfigs = [
   {
@@ -490,6 +508,79 @@ const validateCardList = (cards, label, filename, errors) => {
   });
 };
 
+const validateInnates = (innates, filename, errors) => {
+  if (!Array.isArray(innates)) {
+    errors.push(`${filename}: innates must be an array.`);
+    return;
+  }
+  const innateIds = new Set();
+  innates.forEach((innate, innateIndex) => {
+    const label = `${filename}: innates[${innateIndex}]`;
+    if (!isPlainObject(innate)) {
+      errors.push(`${label} must be an object.`);
+      return;
+    }
+    if (typeof innate.id !== "string" || !innate.id.trim()) {
+      errors.push(`${label} missing stable id.`);
+    } else if (innateIds.has(innate.id)) {
+      errors.push(`${label} duplicates innate id "${innate.id}".`);
+    } else {
+      innateIds.add(innate.id);
+    }
+    if (!innate.setup && !innate.mitigations && !innate.triggers) {
+      errors.push(`${label} has no structured behavior.`);
+    }
+    if (innate.setup !== undefined) {
+      if (!Array.isArray(innate.setup)) errors.push(`${label}.setup must be an array.`);
+      else innate.setup.forEach((effect, index) => {
+        if (!isPlainObject(effect) || !innateEffectTypes.has(effect.type)) {
+          errors.push(`${label}.setup[${index}] has invalid effect type "${effect?.type}".`);
+        }
+      });
+    }
+    if (innate.mitigations !== undefined) {
+      if (!Array.isArray(innate.mitigations)) errors.push(`${label}.mitigations must be an array.`);
+      else innate.mitigations.forEach((rule, index) => {
+        if (!isPlainObject(rule) || !mitigationKinds.has(rule.kind)) {
+          errors.push(`${label}.mitigations[${index}] has invalid kind "${rule?.kind}".`);
+        }
+      });
+    }
+    if (innate.triggers !== undefined) {
+      if (!Array.isArray(innate.triggers)) {
+        errors.push(`${label}.triggers must be an array.`);
+      } else {
+        const triggerIds = new Set();
+        innate.triggers.forEach((trigger, index) => {
+          const triggerLabel = `${label}.triggers[${index}]`;
+          if (!isPlainObject(trigger)) {
+            errors.push(`${triggerLabel} must be an object.`);
+            return;
+          }
+          if (typeof trigger.id !== "string" || !trigger.id.trim()) {
+            errors.push(`${triggerLabel} missing stable id.`);
+          } else if (triggerIds.has(trigger.id)) {
+            errors.push(`${triggerLabel} duplicates trigger id "${trigger.id}".`);
+          } else triggerIds.add(trigger.id);
+          if (!innateEvents.has(trigger.event)) errors.push(`${triggerLabel} has invalid event "${trigger.event}".`);
+          if (!innateScopes.has(trigger.scope)) errors.push(`${triggerLabel} has invalid scope "${trigger.scope}".`);
+          if (!Array.isArray(trigger.effects) && !isPlainObject(trigger.decision)) {
+            errors.push(`${triggerLabel} requires effects or a decision.`);
+          }
+          trigger.effects?.forEach((effect, effectIndex) => {
+            if (!isPlainObject(effect) || !innateEffectTypes.has(effect.type)) {
+              errors.push(`${triggerLabel}.effects[${effectIndex}] has invalid type "${effect?.type}".`);
+            }
+          });
+          if (trigger.event === "would_be_defeated" && trigger.decision?.type !== "optional_defeat_replacement") {
+            errors.push(`${triggerLabel} requires an optional defeat replacement decision.`);
+          }
+        });
+      }
+    }
+  });
+};
+
 const readYaml = async (filePath) => {
   const raw = await fs.readFile(filePath, "utf8");
   return YAML.parse(raw);
@@ -557,6 +648,8 @@ const validateCharacter = async (data, filename, errors, warnings) => {
   if (Array.isArray(data.cards)) {
     validateCardList(data.cards, "cards", filename, errors);
   }
+
+  validateInnates(data.innates, filename, errors);
 
   if (data.createdCards !== undefined) {
     validateCardList(data.createdCards, "createdCards", filename, errors);
