@@ -182,7 +182,7 @@ cards:
   - slot: "5-1"
     name: Rasengan
     cost: 3 Energy
-    power: 24-36
+    power: 27-39
     types:
       - Technique
       - Attack

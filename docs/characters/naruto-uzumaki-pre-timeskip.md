@@ -122,7 +122,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 3 Energy</span>
-    <span><strong>Power:</strong> 24-36</span>
+    <span><strong>Power:</strong> 27-39</span>
     <span><strong>Type:</strong> Technique, Attack, Magical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Slow</span>

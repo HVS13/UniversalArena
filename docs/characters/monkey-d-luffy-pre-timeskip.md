@@ -97,7 +97,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 2 Energy</span>
-    <span><strong>Power:</strong> 20-28</span>
+    <span><strong>Power:</strong> 17-25</span>
     <span><strong>Type:</strong> Technique, Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Fast</span>
@@ -110,7 +110,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 2 Energy</span>
-    <span><strong>Power:</strong> 20-28</span>
+    <span><strong>Power:</strong> 21-31</span>
     <span><strong>Type:</strong> Technique, Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Slow</span>
@@ -138,7 +138,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 3 Energy</span>
-    <span><strong>Power:</strong> 29-43</span>
+    <span><strong>Power:</strong> 26-38</span>
     <span><strong>Type:</strong> Technique, Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Fast</span>
@@ -151,7 +151,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 3 Energy</span>
-    <span><strong>Power:</strong> 29-43</span>
+    <span><strong>Power:</strong> 32-46</span>
     <span><strong>Type:</strong> Technique, Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Slow</span>
@@ -181,7 +181,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 30 Ultimate Meter + X Energy</span>
-    <span><strong>Power:</strong> 24-36 + 8-12 times X</span>
+    <span><strong>Power:</strong> 22-32 + 8-10 times X</span>
     <span><strong>Type:</strong> Ultimate, Attack, Physical, Melee, Splash, Blunt, Multihit, Debuff</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Fast</span>
@@ -199,7 +199,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 30 Ultimate Meter</span>
-    <span><strong>Power:</strong> 36-54</span>
+    <span><strong>Power:</strong> 40-58</span>
     <span><strong>Type:</strong> Ultimate, Attack, Physical, Melee, Splash, Blunt, Debuff</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Slow</span>

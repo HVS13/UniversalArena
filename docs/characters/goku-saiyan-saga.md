@@ -129,7 +129,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 30 Ultimate Meter</span>
-    <span><strong>Power:</strong> 41-67</span>
+    <span><strong>Power:</strong> 45-73</span>
     <span><strong>Type:</strong> Ultimate, Attack, Magical, Ranged, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Slow</span>

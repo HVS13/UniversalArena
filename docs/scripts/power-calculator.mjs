@@ -11,7 +11,7 @@ function parseArgs(argv) {
     const token = argv[i];
     if (!token.startsWith("--")) fail(`unexpected argument ${token}`);
     const key = token.slice(2);
-    if (["pure", "created", "ultimate", "help"].includes(key)) {
+    if (["pure", "created", "help"].includes(key)) {
       args[key] = true;
       continue;
     }
@@ -36,7 +36,6 @@ function rangeFor(basePower, rangeType) {
   return {
     minimum: Math.max(0, basePower - adjustment),
     maximum: basePower + adjustment,
-    adjustment,
   };
 }
 
@@ -55,19 +54,18 @@ Optional components:
   --pure                       Apply the x1.20 pure-output multiplier
   --created                    Apply the x0.90 Created multiplier
   --speed <fast|normal|slow>   Apply x0.90, x1.00, or x1.10 (default normal)
-  --ultimate                   Ignore automatic speed multipliers
   --execution <number>         Execution multiplier (default 1)
-  --utility-constant <number>  Subtract from the rounded constant component
+  --utility-constant <number>  Subtract after non-speed multiplier rounding
   --utility-per-x <number>     Subtract from the rounded X component
-  --allocation-constant <n>    Add to the constant component after utility
-  --allocation-per-x <number>  Add to the X component after utility
+  --allocation-constant <n>    Add before the printed-speed multiplier
+  --allocation-per-x <number>  Add to the X component before printed Speed
   --ceiling <number>           Cap Final Base Power for a fixed card
   --help                       Show this help
 
 Examples:
   npm run power -- --constant 20 --range melee --pure --speed slow
   npm run power -- --constant 10 --range melee --pure --created --speed fast
-  npm run power -- --constant 30 --per-x 10 --range melee --ultimate
+  npm run power -- --constant 30 --per-x 10 --range melee --speed fast
 `);
 }
 
@@ -85,14 +83,10 @@ const perX = numberArg(args, "per-x", 0);
 if (perX < 0) fail("--per-x cannot be negative");
 
 const rangeType = args.range;
-if (!new Set(["melee", "ranged"]).has(rangeType)) {
-  fail("--range must be melee or ranged");
-}
+if (!new Set(["melee", "ranged"]).has(rangeType)) fail("--range must be melee or ranged");
 
 const speed = args.speed ?? "normal";
-if (!new Set(["fast", "normal", "slow"]).has(speed)) {
-  fail("--speed must be fast, normal, or slow");
-}
+if (!new Set(["fast", "normal", "slow"]).has(speed)) fail("--speed must be fast, normal, or slow");
 
 const execution = numberArg(args, "execution", 1);
 if (execution <= 0) fail("--execution must be greater than 0");
@@ -100,19 +94,21 @@ if (execution <= 0) fail("--execution must be greater than 0");
 const speedMultipliers = { fast: 0.9, normal: 1, slow: 1.1 };
 const pureMultiplier = args.pure ? 1.2 : 1;
 const createdMultiplier = args.created ? 0.9 : 1;
-const speedMultiplier = args.ultimate ? 1 : speedMultipliers[speed];
-const totalMultiplier = pureMultiplier * createdMultiplier * speedMultiplier * execution;
+const nonSpeedMultiplier = pureMultiplier * createdMultiplier * execution;
+const speedMultiplier = speedMultipliers[speed];
 
 const utilityConstant = numberArg(args, "utility-constant", 0);
 const utilityPerX = numberArg(args, "utility-per-x", 0);
 const allocationConstant = numberArg(args, "allocation-constant", 0);
 const allocationPerX = numberArg(args, "allocation-per-x", 0);
 
-const adjustedConstant = Math.floor(constant * totalMultiplier);
-const adjustedPerX = Math.floor(perX * totalMultiplier);
+const adjustedConstant = Math.floor(constant * nonSpeedMultiplier);
+const adjustedPerX = Math.floor(perX * nonSpeedMultiplier);
+const preSpeedConstant = Math.max(0, adjustedConstant - utilityConstant + allocationConstant);
+const preSpeedPerX = Math.max(0, adjustedPerX - utilityPerX + allocationPerX);
 
-let finalConstant = Math.max(0, adjustedConstant - utilityConstant + allocationConstant);
-const finalPerX = Math.max(0, adjustedPerX - utilityPerX + allocationPerX);
+let finalConstant = Math.floor(preSpeedConstant * speedMultiplier);
+const finalPerX = Math.floor(preSpeedPerX * speedMultiplier);
 
 const ceiling = numberArg(args, "ceiling", undefined);
 if (ceiling !== undefined) {
@@ -131,12 +127,13 @@ console.log("Power Budget Result");
 console.log(`Cost Base Power: ${perX === 0 ? constant : `${constant} + ${perX}X`}`);
 console.log(`Pure-output multiplier: ${pureMultiplier}`);
 console.log(`Created multiplier: ${createdMultiplier}`);
-console.log(`Printed-speed multiplier: ${speedMultiplier}${args.ultimate ? " (Ultimate override)" : ""}`);
 console.log(`Execution multiplier: ${execution}`);
-console.log(`Combined multiplier: ${totalMultiplier}`);
+console.log(`Combined non-speed multiplier: ${nonSpeedMultiplier}`);
 console.log(`Adjusted Base Power: ${adjustedPerX === 0 ? adjustedConstant : `${adjustedConstant} + ${adjustedPerX}X`}`);
 console.log(`Utility adjustment: -${utilityConstant}${utilityPerX === 0 ? "" : ` - ${utilityPerX}X`}`);
 console.log(`Allocation: +${allocationConstant}${allocationPerX === 0 ? "" : ` + ${allocationPerX}X`}`);
+console.log(`Pre-Speed Base Power: ${preSpeedPerX === 0 ? preSpeedConstant : `${preSpeedConstant} + ${preSpeedPerX}X`}`);
+console.log(`Printed-speed multiplier: ${speedMultiplier}`);
 if (ceiling !== undefined) console.log(`Ceiling: ${ceiling}`);
 console.log(`Final Base Power: ${finalPerX === 0 ? finalConstant : `${finalConstant} + ${finalPerX}X`}`);
 console.log(`Range type: ${rangeType}`);

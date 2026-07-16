@@ -41,8 +41,10 @@ Before assigning printed Power, complete the required Power Budget Record. Prese
 
 Safeguards:
 
-- Fast non-Ultimates use `x0.90` and Slow non-Ultimates use `x1.10`, unless a documented family allocation explicitly overrides individual form speed.
-- Ultimates have no automatic speed multiplier.
+- Every Power-bearing card uses its own printed Speed: Fast `x0.90`, Normal `x1.00`, Slow `x1.10`.
+- Printed Speed applies after utility and family allocations to the complete Pre-Speed Base Power.
+- Ultimate, transformation, progression, Created, Basic, and Technique cards have no Speed exemption.
+- A family may share Pre-Speed Base Power, but forms with different printed Speeds must have different Final Base Power.
 - Evade normally removes eligibility for the pure Shield/HP bonus but has no second universal deduction.
 - Variable Power expressions use component ranging.
 - Current roster precedents explain existing families; they are not automatic templates for new cards.

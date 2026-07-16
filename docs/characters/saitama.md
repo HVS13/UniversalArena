@@ -146,7 +146,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 3 Energy</span>
-    <span><strong>Power:</strong> 24-36</span>
+    <span><strong>Power:</strong> 22-32</span>
     <span><strong>Type:</strong> Technique, Attack, Physical, Melee, AoE, Blunt</span>
     <span><strong>Target:</strong> All Enemies</span>
     <span><strong>Speed:</strong> Fast</span>
@@ -189,7 +189,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 3 Energy</span>
-    <span><strong>Power:</strong> 24-36</span>
+    <span><strong>Power:</strong> 22-32</span>
     <span><strong>Type:</strong> Technique, Attack, Physical, Melee, Blunt, Debuff</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Fast</span>
@@ -233,7 +233,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 3 Energy</span>
-    <span><strong>Power:</strong> 24-36</span>
+    <span><strong>Power:</strong> 22-32</span>
     <span><strong>Type:</strong> Technique, Attack, Defense, Physical, Melee, AoE, Blunt</span>
     <span><strong>Target:</strong> All Enemies</span>
     <span><strong>Speed:</strong> Fast</span>
@@ -275,7 +275,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 100 Ultimate Meter</span>
-    <span><strong>Power:</strong> 120-180</span>
+    <span><strong>Power:</strong> 108-162</span>
     <span><strong>Type:</strong> Ultimate, Attack, Physical, Melee, AoE, Blunt, Debuff</span>
     <span><strong>Target:</strong> All Enemies</span>
     <span><strong>Speed:</strong> Fast</span>

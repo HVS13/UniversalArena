@@ -25,6 +25,7 @@ Printed-speed multiplier:
 Execution modifier:
 Utility/output adjustment:
 Prerequisite or family allocation:
+Pre-Speed Base Power:
 Final Base Power:
 Range type:
 Printed Power:
@@ -35,19 +36,23 @@ Do not omit a line. Write `None` when it does not apply. A value that cannot be 
 
 ## Power stages
 
+Use these terms consistently:
+
 - **Cost Base Power**: Power produced directly by the authoring cost.
-- **Adjusted Base Power**: Cost Base Power after percentage multipliers and rounding.
-- **Final Base Power**: Adjusted Base Power after utility/output adjustments and documented allocations.
+- **Adjusted Base Power**: Cost Base Power after pure-output, Created, and execution multipliers, rounded down.
+- **Pre-Speed Base Power**: Adjusted Base Power after utility/output adjustments and documented allocations.
+- **Final Base Power**: Pre-Speed Base Power after the printed-speed multiplier, rounded down.
 - **Printed Power**: The final Melee or Ranged range shown on the card.
 
 For a fixed-value card:
 
 ```text
-Adjusted Base Power = floor(Cost Base Power x all applicable percentage multipliers)
-Final Base Power = Adjusted Base Power - utility reduction + documented allocation
+Adjusted Base Power = floor(Cost Base Power x pure-output x Created x execution)
+Pre-Speed Base Power = Adjusted Base Power - utility reduction + documented allocation
+Final Base Power = floor(Pre-Speed Base Power x printed-speed multiplier)
 ```
 
-Clamp Final Base Power at 0 before generating the range.
+Clamp each post-adjustment stage at 0. Apply a Created-card ceiling to Final Base Power before generating the range.
 
 ## 1. Determine Cost Base Power
 
@@ -103,9 +108,11 @@ A 0 Energy Created card uses the creating source's Final Base Power as a ceiling
 
 Cards with `Power: -` do not receive a range or Power multipliers.
 
-## 2. Apply percentage multipliers
+## 2. Apply non-speed percentage multipliers
 
-Apply all percentages multiplicatively. Do not add percentages together and do not round between multipliers.
+Apply pure-output, Created, and execution multipliers multiplicatively. Do not add percentages together and do not round between these multipliers.
+
+Printed Speed is applied later to the complete Pre-Speed Base Power. This ensures Speed also affects utility-adjusted budgets, prerequisite allocations, transformation budgets, progression budgets, and character-specific exceptions.
 
 ### Pure-output multiplier
 
@@ -127,24 +134,6 @@ Created cards multiply Base Power by `0.90`.
 
 Creation is an access advantage. Exhaust and Ethereal limit lifecycle but do not cancel the Created multiplier.
 
-### Printed-speed multiplier
-
-For non-Ultimate cards with Power:
-
-```text
-Fast   x 0.90
-Normal x 1.00
-Slow   x 1.10
-```
-
-Slow is an intentional compensation for being restricted to the Slow Zone and being easier to interrupt. Do not add another execution bonus merely because the card is Slow; an additional execution modifier requires a separate material restriction.
-
-Temporary Haste, Slow, Prepare, cost changes, and other in-match effects do not recalculate printed Power.
-
-### Ultimates and Speed
-
-Ultimates do not receive automatic Fast or Slow multipliers. Their speed is budgeted together with Meter cost, targeting, utility, restrictions, setup, and finisher role.
-
 ### Execution modifier
 
 A narrow, costly, or difficult requirement may multiply Base Power by `1.10-1.20`.
@@ -153,20 +142,22 @@ Do not grant this merely because a condition exists. It must materially reduce a
 
 ## 3. Round Adjusted Base Power
 
-After all percentage multipliers:
+After pure-output, Created, and execution multipliers:
 
 ```text
 Adjusted Base Power = floor(unrounded adjusted value)
 ```
 
-Do not round after each multiplier.
+Do not round between those multipliers.
 
 Example:
 
 ```text
 1 Energy, Created, Fast, pure Melee damage
-10 x 1.20 x 0.90 x 0.90 = 9.72
-Adjusted Base Power = 9
+10 x 1.20 x 0.90 = 10.8
+Adjusted Base Power = 10
+Pre-Speed Base Power = 10
+Fast: floor(10 x 0.90) = 9 Final Base Power
 ```
 
 ## 4. Budget additional value
@@ -197,14 +188,15 @@ Evade has no second universal fixed penalty. Reduce further only for additional 
 When a card deals Power damage and heals for `Power / 2`, total Power-scaled output is approximately `1.5 x Power`. A common target is:
 
 ```text
-Final Base Power = Cost Base Power / 1.5
+Pre-Speed Base Power = Cost Base Power / 1.5
 ```
 
 Example:
 
 ```text
 20 Ultimate Meter = 30 Cost Base Power
-30 / 1.5 = 20 Final Base Power
+30 / 1.5 = 20 Pre-Speed Base Power
+Normal: floor(20 x 1.00) = 20 Final Base Power
 Ranged Power = 15-25
 ```
 
@@ -260,11 +252,11 @@ Record a free starting copy separately; it changes the first use, not the repeat
 
 ### Replacement and progression families
 
-A replacement form normally uses its own printed cost and printed speed.
+A replacement form normally uses its own printed cost and effects.
 
-A documented family may share one Final Base Power when a transformation card, status, threshold, consumed resource, limited duration, or drawback already pays for the stronger form.
+A documented family may share one **Pre-Speed Base Power** when a transformation card, status, threshold, consumed resource, limited duration, or drawback pays for the forms' different utility and access.
 
-The record must name what pays for the difference. A shared family may override Fast or Slow multipliers only when that override is explicit; do not count the same benefit again as speed, utility, or execution value.
+Printed Speed is never shared or overridden. Every Power-bearing form applies its own printed Fast, Normal, or Slow multiplier to that shared Pre-Speed Base Power.
 
 ## 6. Generate Printed Power
 
@@ -324,13 +316,15 @@ When a card has Close or Far, budget around expected peaks and valleys, but keep
 1. Determine Cost Base Power.
 2. For a 0 Energy Created card, record the creator's Final Base Power ceiling.
 3. Express variable costs as additive components.
-4. Apply pure-output, Created, printed-speed, and execution percentages multiplicatively.
-5. Round each fixed value or variable component down once.
+4. Apply pure-output, Created, and execution percentages multiplicatively.
+5. Round each fixed value or variable component down once to Adjusted Base Power.
 6. Reduce for additional output and utility.
-7. Apply documented prerequisite, recurring-cycle, family, or character-specific allocation.
-8. Apply the Created ceiling.
-9. Generate Melee or Ranged ranges.
-10. Verify the result against the Power Budget Record.
+7. Apply documented prerequisite, recurring-cycle, family, or character-specific allocation to obtain Pre-Speed Base Power.
+8. Apply the card form's printed Speed to every Power-bearing card: Fast `x0.90`, Normal `x1.00`, Slow `x1.10`.
+9. Round down to Final Base Power.
+10. Apply the Created ceiling.
+11. Generate Melee or Ranged ranges.
+12. Verify the result against the Power Budget Record.
 
 ## Worked examples
 
@@ -338,7 +332,9 @@ When a card has Close or Far, budget around expected peaks and valleys, but keep
 
 ```text
 1 Energy = 10
-Pure output: 10 x 1.20 = 12
+Pure output: 10 x 1.20 = 12 Adjusted Base Power
+Pre-Speed Base Power = 12
+Normal: floor(12 x 1.00) = 12 Final Base Power
 Melee adjustment: floor(12 x 0.20) = 2
 Printed Power: 10-14
 ```
@@ -348,8 +344,9 @@ Printed Power: 10-14
 ```text
 1 Energy = 10
 No pure-output bonus because Evade is utility
+Pre-Speed Base Power = 10
+Normal: floor(10 x 1.00) = 10 Final Base Power
 No separate Evade penalty
-Melee adjustment: floor(10 x 0.20) = 2
 Printed Power: 8-12
 ```
 
@@ -358,8 +355,8 @@ Printed Power: 8-12
 ```text
 2 Energy = 20
 No pure-output bonus
-Fast: 20 x 0.90 = 18
-Melee adjustment: floor(18 x 0.20) = 3
+Pre-Speed Base Power = 20
+Fast: floor(20 x 0.90) = 18 Final Base Power
 Printed Power: 15-21
 ```
 
@@ -367,9 +364,9 @@ Printed Power: 15-21
 
 ```text
 2 Energy = 20
-20 x 1.20 x 1.10 = 26.4
-Adjusted Base Power: 26
-Melee adjustment: floor(26 x 0.20) = 5
+Pure output: 20 x 1.20 = 24 Adjusted Base Power
+Pre-Speed Base Power = 24
+Slow: floor(24 x 1.10) = 26 Final Base Power
 Printed Power: 21-31
 ```
 
@@ -377,28 +374,38 @@ Printed Power: 21-31
 
 ```text
 1 Energy = 10
-10 x 1.20 x 0.90 x 0.90 = 9.72
-Adjusted Base Power: 9
-Melee adjustment: floor(9 x 0.20) = 1
+Pure and Created: 10 x 1.20 x 0.90 = 10.8
+Adjusted Base Power = 10
+Pre-Speed Base Power = 10
+Fast: floor(10 x 0.90) = 9 Final Base Power
 Printed Power: 8-10
+```
+
+### Fast Ultimate
+
+```text
+30 Ultimate Meter = 45
+Pre-Speed Base Power = 45
+Fast: floor(45 x 0.90) = 40 Final Base Power
+Ranged Power: 30-50
 ```
 
 ### Ranged damage plus healing
 
 ```text
 20 Ultimate Meter = 30
-Damage plus Power / 2 healing: 30 / 1.5 = 20
-Ranged adjustment: floor(20 x 0.25) = 5
-Printed Power: 15-25
+Damage plus Power / 2 healing: 30 / 1.5 = 20 Pre-Speed Base Power
+Normal: floor(20 x 1.00) = 20 Final Base Power
+Ranged Power: 15-25
 ```
 
 ### Recurring consumable Ultimate
 
 ```text
 10 Ultimate Meter acquisition + 30 Ultimate Meter activation = 40
-40 x 1.5 = 60 Final Base Power
-Ranged adjustment: floor(60 x 0.25) = 15
-Printed Power: 45-75
+40 x 1.5 = 60 Pre-Speed Base Power
+Normal: floor(60 x 1.00) = 60 Final Base Power
+Ranged Power: 45-75
 ```
 
 ## Current roster precedents
@@ -406,24 +413,23 @@ Printed Power: 45-75
 These explain existing families; they are not blanket permission for unrelated cards.
 
 - **DIO Basic and Technique cards** use a reconstructed expected-cost exception based on approximately 2 expected Blood Focus reduction. New cards require their own state assumptions.
-- **DIO Time Stop forms** share parent Power because setup, access, and drawback pay for enhanced delivery.
-- **ROAD ROLLER DA!** uses Final Base Power 90: 60 from 40 Ultimate Meter plus a partial 30 allocation from the consumed Time Stop setup. Other Time Stop value is not counted again.
-- **Luffy Gear families** share Power across replacement forms because Gear Transformation, limited duration, Slow, and Deflate pay for the differences. This documented family overrides individual Fast and Slow multipliers.
-- **Ichigo Bankai and Hollow families** share parent Power because transformation access, duration, and Strain pay for enhanced forms.
-- **Naruto Rasengan forms** use Final Base Power 30. The Slow base form reaches Adjusted Base Power 33, then the shared family's Clone Assist utility allocation reduces the family to 30; Clone Assist consumes Shadow Clones and adds Follow-Up and Vulnerable.
-- **Saitama State forms** use progression-family budgets because State thresholds pay for enhanced forms.
-- **Leon Rocket Launcher** uses the recurring 10 Meter acquisition plus 30 Meter activation cycle.
+- **DIO Time Stop forms** share their parent forms' Pre-Speed Base Power, then apply their own printed Fast multiplier.
+- **ROAD ROLLER DA!** has Pre-Speed Base Power 90: 60 from 40 Ultimate Meter plus a partial 30 allocation from the consumed Time Stop setup. Fast `x0.90` produces Final Base Power 81 and printed Power `65-97`.
+- **Luffy Gear families** share Pre-Speed Base Power across replacement forms because Gear Transformation, limited duration, and Deflate pay for utility differences. Normal, Fast, and Slow forms still apply `x1.00`, `x0.90`, and `x1.10`.
+- **Ichigo Bankai and Hollow families** share parent Pre-Speed Base Power because transformation access, duration, and Strain pay for enhanced effects. Each form still applies its printed Speed.
+- **Naruto Rasengan forms** share Pre-Speed Base Power 30. Slow Rasengan becomes Final Base Power 33 and `27-39`; Normal Clone Assist remains Final Base Power 30 and `24-36`.
+- **Saitama State forms** use progression-family Pre-Speed budgets because State thresholds pay for enhanced effects. Their Fast forms still apply `x0.90`.
+- **Leon Rocket Launcher** uses the recurring 10 Meter acquisition plus 30 Meter activation cycle, then applies its Normal multiplier.
 
 ## Final checklist
 
 - The Power Budget Record is complete.
 - The original cost baseline is visible.
-- Every multiplier has a reason.
-- Fast and Slow use the correct printed-speed multiplier unless a family explicitly overrides it.
-- Ultimates have no automatic speed multiplier.
-- Evade has no invented second deduction.
+- Every non-speed multiplier has a reason.
 - Utility and additional output are not double-counted.
 - Setup value is not counted twice.
+- Every Power-bearing card applies its own printed Speed with no card-type or family exemption.
+- `Power: -` cards do not receive Power calculations.
 - Variable coefficients use component ranging.
 - Melee/Ranged spread matches the printed type.
 - Markdown and YAML show the same Power.

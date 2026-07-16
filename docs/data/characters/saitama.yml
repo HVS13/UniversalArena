@@ -226,7 +226,7 @@ cards:
   - slot: "3-3"
     name: Serious Punch
     cost: 3 Energy
-    power: 24-36
+    power: 22-32
     types:
       - Technique
       - Attack
@@ -313,7 +313,7 @@ cards:
   - slot: "4-3"
     name: Serious Headbutt
     cost: 3 Energy
-    power: 24-36
+    power: 22-32
     types:
       - Technique
       - Attack
@@ -413,7 +413,7 @@ cards:
   - slot: "5-3"
     name: Serious Consecutive Side Hops
     cost: 3 Energy
-    power: 24-36
+    power: 22-32
     types:
       - Technique
       - Attack
@@ -489,7 +489,7 @@ cards:
   - slot: "ultimate-3"
     name: Serious Table Flip
     cost: 100 Ultimate Meter
-    power: 120-180
+    power: 108-162
     types:
       - Ultimate
       - Attack
