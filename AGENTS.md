@@ -7,20 +7,25 @@ This repository is the MkDocs Material rules reference and canonical structured 
 When sources disagree, use this order:
 
 1. `docs/data/` structured data for currently implemented executable behavior.
-2. Approved Rules v2 specifications for intended migration behavior:
+2. Approved Rules v2 specifications and parallel migration data for intended Rules v2 behavior:
    - `docs/design/design-principles.md`
    - `docs/design/character-authoring-framework.md`
    - `docs/design/rules-v2-decisions.md`
    - `docs/design/rules-v2-supplement.md`
+   - `docs/design/rules-v2-global-reference.md`
    - `docs/data/schema-v2.md`
+   - `docs/data/registries.yml`
+   - `docs/data/rules-v2/global-rules.yml`
    - `docs/data/migrations/v1-to-v2.md`
    - `docs/design/roster-audit-checklist.md`
 3. Human-readable Rules v1 pages and character pages.
 4. Generated exports and `site/` output.
 
-Rules v2 documents are approved specifications but are not fully implemented until structured data, exporter logic, migrations, generated pages, and tests are updated. Never claim Rules v1 content already behaves as Rules v2 merely because a specification exists.
+Rules v2 documents and parallel data are approved specifications but are not fully implemented until structured character data, exporter logic, migrations, generated pages, and tests are updated. Never claim Rules v1 content already behaves as Rules v2 merely because a specification or overlay exists.
 
-When an initial Rules v2 document conflicts with an explicit correction in `rules-v2-supplement.md` or the corrected Schema v2 specification, use the correction.
+`docs/data/rules-v2/global-rules.yml` applies only to content explicitly declaring `rulesVersion: 2`. During staged migration, the legacy keyword, status, term, role, and card-type files remain canonical for Rules v1 exports.
+
+When an initial Rules v2 document conflicts with an explicit correction in `rules-v2-supplement.md`, `rules-v2-global-reference.md`, or the corrected Schema v2 specification, use the correction.
 
 ## Highest design priority
 
@@ -130,6 +135,8 @@ Rules v2 structured content requires:
 - Ultimate pathways.
 - Source-basis records.
 
+Rules v2 global mechanics and changed legacy meanings must be represented in `docs/data/rules-v2/global-rules.yml`, described in `docs/design/rules-v2-global-reference.md`, and accepted by `validate-rules-v2-global.mjs`.
+
 Do not add an undefined global mechanic without adding its registry/reference entry and validation support.
 
 Every effect primitive used by content or examples must be registered. Do not invent specialized primitives when a general typed primitive and target/filter can represent the behavior.
@@ -193,7 +200,7 @@ Warnings include:
 - Work in `docs/`; treat `site/` as generated output and do not edit it.
 - MkDocs theme overrides live in `docs/overrides/`; use them for site-wide UI tweaks.
 - Follow patterns in `docs/adding-content.md` for content types; use templates and shared link markup.
-- Keywords are tiered Core/Advanced in `docs/keywords.md`; keep `docs/data/keywords.yml` `tier` values in sync.
+- Keywords are tiered Core/Advanced in `docs/keywords.md`; keep `docs/data/keywords.yml` `tier` values in sync for Rules v1 content.
 - Status effect entries include a Mode line and explicit Turn End behavior.
 - Structured data lives in `docs/data/`; keep it in sync with reference pages.
 - The game is 3v3 with a shared deck, hand, Energy, and Ultimate Meter, plus per-character HP, statuses, resources, ownership, and defeat state.
@@ -229,6 +236,7 @@ Warnings include:
 ## Quality checks
 
 - Run `mkdocs build --strict` or `mkdocs serve` when validating documentation changes.
+- Run `npm run validate:v2:global:strict` when changing Rules v2 registries or global mechanics.
 - Run exporter and schema validation when changing structured data or schema behavior.
 - Run Rules v2 migration and roster regression tests before claiming migration completion.
 
