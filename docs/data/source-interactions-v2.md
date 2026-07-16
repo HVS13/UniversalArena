@@ -54,11 +54,20 @@ condition:
 
 The interaction is checked at the timing declared by the containing restriction or effect. Ordinary target legality, Reveal, Damage Type, Properties, and Source-System Tags do not satisfy it implicitly.
 
+## Export behavior
+
+The canonical `npm run export:v2` command validates this registry before packaging character data and emits `source-interactions.json` alongside the other Rules v2 package files.
+
+When a card in the selected export directory references a `target_eligibility` interaction, every character version in that directory must declare a reviewed non-default outcome for that interaction. This prevents a later roster addition from silently becoming a valid Death Note or feeding target merely because its audit is unfinished.
+
+The low-level `npm run export:v2:core` command does not package this extension and is reserved for the isolated structural exporter fixture.
+
 ## Required behavior
 
 - Missing or unknown interaction IDs are validation errors when referenced.
 - Outcomes outside the definition's closed set are validation errors.
 - `uncertain` never silently becomes `eligible`.
+- A required target-eligibility outcome that remains at its default blocks the canonical package export.
 - A source interaction creates no universal numerical modifier unless its definition or invoking effect states one.
 - A character's result must include a concise source-grounded reason.
 - Updating an outcome requires a lore audit and migration note when exported content is affected.
