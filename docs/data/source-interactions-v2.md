@@ -25,7 +25,7 @@ Each interaction definition has a stable ID and a closed outcome set:
   deprecated: false
 ```
 
-`uncertain` is conservative. It does not count as eligible and must be resolved by a version-specific lore audit before an effect may rely on the interaction.
+`uncertain` is conservative. It never counts as `eligible`; it records that the available source material does not justify a stronger crossover claim.
 
 ## Character declaration
 
@@ -39,6 +39,8 @@ sourceInteractions:
 ```
 
 The result belongs to that exact character version. A different continuity, form, body, species state, or ownership state may receive a different result.
+
+An explicit `uncertain` result is valid when the lore audit genuinely cannot resolve the interaction. Effects requiring `eligible` still fail against that version.
 
 ## Conditions
 
@@ -58,7 +60,7 @@ The interaction is checked at the timing declared by the containing restriction 
 
 The canonical `npm run export:v2` command validates this registry before packaging character data and emits `source-interactions.json` alongside the other Rules v2 package files.
 
-When a card in the selected export directory references a `target_eligibility` interaction, every character version in that directory must declare a reviewed non-default outcome for that interaction. This prevents a later roster addition from silently becoming a valid Death Note or feeding target merely because its audit is unfinished.
+When a card in the selected export directory references a `target_eligibility` interaction, every character version in that directory must declare an explicit audited outcome for that interaction. The outcome may remain `uncertain`, but it cannot be omitted and will not satisfy an `eligible` requirement.
 
 The low-level `npm run export:v2:core` command does not package this extension and is reserved for the isolated structural exporter fixture.
 
@@ -67,7 +69,6 @@ The low-level `npm run export:v2:core` command does not package this extension a
 - Missing or unknown interaction IDs are validation errors when referenced.
 - Outcomes outside the definition's closed set are validation errors.
 - `uncertain` never silently becomes `eligible`.
-- A required target-eligibility outcome that remains at its default blocks the canonical package export.
 - A source interaction creates no universal numerical modifier unless its definition or invoking effect states one.
 - A character's result must include a concise source-grounded reason.
 - Updating an outcome requires a lore audit and migration note when exported content is affected.
