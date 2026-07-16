@@ -18,32 +18,4 @@ jobs:
           show-progress: false
 
       - name: Count source anchors
-        shell: bash
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-
-          checks = [
-              ('schema version', 'docs/scripts/export-game-data.mjs', 'const schemaVersion = 1;'),
-              ('transform fields', 'docs/scripts/export-game-data.mjs', 'const transformConditionFields = ["kind"];\n'),
-              ('restriction windows', 'docs/scripts/export-game-data.mjs', 'const restrictionWindows = new Set(["assist_attack", "follow_up", "after_use"]);\n'),
-              ('validate amount boundary', 'docs/scripts/export-game-data.mjs', '};\n\nconst validateAmount = (amount, label, errors) => {\n'),
-              ('effect context', 'docs/scripts/export-game-data.mjs', '    const context = `${filename}: ${label} effects[${effectIndex}]`;\n    switch (effect.type) {\n'),
-              ('transform condition block start', 'docs/scripts/export-game-data.mjs', '          if (transform.condition && typeof transform.condition === "object") {\n'),
-              ('format issue', 'docs/scripts/validate-data-sync.mjs', 'const formatIssue = (issue) =>\n  `${issue.file} :: ${issue.card ?? "(card)"}${issue.slot ? ` (${issue.slot})` : ""} -> ${issue.field}`;\n'),
-              ('warning arrays', 'docs/scripts/validate-data-sync.mjs', '  const restrictionWarnings = [];\n  const spendWarnings = [];\n'),
-              ('mandatory spend block start', 'docs/scripts/validate-data-sync.mjs', '        if (hasMandatorySpendWithoutStructured(mdEffect, yamlCard.effects)) {\n'),
-              ('clean result condition', 'docs/scripts/validate-data-sync.mjs', '  if (!mismatches.length && !missingCards.length && !extraCards.length) {\n'),
-              ('extra cards block start', 'docs/scripts/validate-data-sync.mjs', '    if (extraCards.length) {\n'),
-              ('has errors', 'docs/scripts/validate-data-sync.mjs', '  const hasErrors = mismatches.length || missingCards.length || extraCards.length;\n'),
-              ('schema bullet', 'docs/data/README.md', '- `schemaVersion` identifies the exported data contract.\n'),
-              ('effect condition insertion', 'docs/data/README.md', 'Scalar expression kinds: `x`, `x_plus`, `x_minus`, `x_times`. Use a number for fixed values.\nKeyword-only effects like Retain can be represented as `type: retain`.\n\n## Card restrictions (YAML)\n'),
-              ('transform condition docs', 'docs/data/README.md', 'Condition kinds: `self_has_status`, `self_missing_status`, `target_has_status`,\n`target_missing_status`.\n'),
-              ('leon insertion', 'docs/data/characters/leon-s-kennedy-re4.yml', '      - timing: on_use\n        type: deal_damage\n        amount:\n          kind: power\n  - slot: "5"\n'),
-              ('naruto insertion', 'docs/data/characters/naruto-uzumaki-pre-timeskip.yml', '        hits:\n          kind: x_plus\n          value: 2\n  - slot: "5-1"\n'),
-          ]
-
-          for label, path, anchor in checks:
-              count = Path(path).read_text(encoding='utf-8').count(anchor)
-              print(f'{label}: {count}')
-          PY
+        run: python .github/check-structured-effect-anchors.py
