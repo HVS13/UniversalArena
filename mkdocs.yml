@@ -42,6 +42,8 @@ nav:
   - Characters:
       - Overview: characters/index.md
       - Character Creation Guide: characters/character-creation-guide.md
+      - Power Calculation Reference: power-calculation.md
+      - Current Roster Power Ledger: power-ledger.md
       - Character Template: characters/template.md
       - Goku (Saiyan Saga): characters/goku-saiyan-saga.md
       - Leon S. Kennedy (Resident Evil 4): characters/leon-s-kennedy-re4.md

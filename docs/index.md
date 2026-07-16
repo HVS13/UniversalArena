@@ -17,7 +17,7 @@ This guide summarizes core systems and links to the detailed reference pages for
 5. The player with initiative starts a Combat Round by playing a card into a legal zone (Fast/Normal/Slow).
 6. Players alternate playing or passing; faster cards can interrupt slower zones.
 7. When both players pass, resolve the Active Zone right to left, then continue until all zones are empty.
-8. The initiative player may start another Combat Round or end the turn; at Turn End, discard all remaining cards.
+8. The initiative player may start another Combat Round or end the turn; at Turn End, resolve card lifecycle effects, keep Retained cards, then discard all other remaining cards.
 
 Need a condensed, table-ready version? See the [Combat Round Ref Card](combat-round-ref.md).
 
@@ -58,12 +58,12 @@ Reduce all opposing characters' HP to 0 (or meet the scenario's win condition, i
 4. At Combat Start, the player with initiative plays a card to initiate a Combat Round.
 5. During Combat, players play cards and clash. Combat Rounds can repeat.
 6. A Combat Round ends when there are no cards on any zone. The player with initiative may start another Combat Round or end their turn.
-7. At Turn End, all players discard all remaining cards, then initiative passes to the next player.
+7. At Turn End, resolve card lifecycle effects such as Ethereal, keep cards with Retain, discard all other cards remaining in hand, then initiative passes to the next player.
 
 ## Playing Cards
 
 1. To play any card, pay the Energy cost, select a legal target, then place it on a legal zone.
-2. Any card played in any zone stays in that zone until it is used, then it is discarded.
+2. Any card played in any zone stays in that zone until it finishes resolving. It then goes to the Discard Pile unless an effect such as Reuse or Exhaust changes its destination.
 3. For each card played, your team gains Ultimate Meter equal to the Energy spent to play the card. Energy is shared across the team.
 4. If a card's speed is modified, treat it as its current speed for where it can be played.
 5. After all modifiers, a card's Energy and Ultimate Meter costs cannot go below 0.
@@ -203,5 +203,3 @@ Frequently asked questions about the game.
 Browse character cards and their keyword callouts.
 
 - [Characters](characters/index.md)
-
-

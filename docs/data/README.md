@@ -404,7 +404,7 @@ statusEffects:
       - timing: "Allies' Card Played"
         text: "Take Potency damage. Then increase Potency by Energy spent."
       - timing: "Turn End"
-        text: "Reduce Count by Halve."
+        text: "Halve Count."
 ```
 
 ## Term schema (YAML)
@@ -414,7 +414,7 @@ terms:
   - section: Resources
     id: term-energy
     name: Energy
-    definition: "The resource used to play cards. By default, at Turn Start each player sets Energy to 5; effects can modify this and there is no Energy cap."
+    definition: "The shared team resource used to play cards. By default, at Turn Start each team sets Energy to 5; effects can modify this and there is no Energy cap."
 ```
 
 ## Card type schema (YAML)
@@ -443,4 +443,3 @@ The docs repo owns the data. The sync workflow exports into the game repo when y
 Required repo settings:
 - Repo variable: `UA_GAME_REPO` (example: `YourOrg/UniversalArena-Web`)
 - Repo secret: `UA_SYNC_TOKEN` (token with write access to the game repo)
-

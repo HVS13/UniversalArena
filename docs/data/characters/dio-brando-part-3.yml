@@ -117,7 +117,7 @@ cards:
   - slot: "1-2"
     name: "Strike: Muda Barrage"
     cost: 4 Energy
-    power: 20-28
+    power: 17-25
     types:
       - Basic
       - Attack
@@ -157,7 +157,7 @@ cards:
   - slot: "2-1"
     name: Defend
     cost: 4 Energy
-    power: 20-28
+    power: 16-24
     types:
       - Basic
       - Defense
@@ -182,7 +182,7 @@ cards:
   - slot: "2-2"
     name: "Defend: The World"
     cost: 4 Energy
-    power: 20-28
+    power: 15-21
     types:
       - Basic
       - Defense
@@ -278,7 +278,7 @@ cards:
   - slot: "4-1"
     name: Throwing Knives
     cost: 7 Energy
-    power: 34-50
+    power: 32-52
     types:
       - Technique
       - Attack
@@ -315,7 +315,7 @@ cards:
   - slot: "4-2"
     name: "Throwing Knives: Time Stop"
     cost: 7 Energy
-    power: 34-50
+    power: 28-46
     types:
       - Technique
       - Attack
@@ -415,7 +415,7 @@ cards:
   - slot: ultimate
     name: ROAD ROLLER DA!
     cost: 40 Ultimate Meter
-    power: 72-108
+    power: 65-97
     types:
       - Ultimate
       - Attack
@@ -481,5 +481,3 @@ cards:
         amount:
           kind: flat
           value: 0
-
-

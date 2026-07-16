@@ -78,7 +78,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
-    <span><strong>Power:</strong> 10-14</span>
+    <span><strong>Power:</strong> 8-12</span>
     <span><strong>Type:</strong> Basic, Attack, Physical, Melee, Slash</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Fast</span>
@@ -92,7 +92,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
-    <span><strong>Power:</strong> 10-14</span>
+    <span><strong>Power:</strong> 8-12</span>
     <span><strong>Type:</strong> Basic, Attack, Physical, Melee, Slash</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Fast</span>
@@ -122,7 +122,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 2 Energy</span>
-    <span><strong>Power:</strong> 16-24</span>
+    <span><strong>Power:</strong> 15-21</span>
     <span><strong>Type:</strong> Technique, Defense, Physical, Melee, Buff</span>
     <span><strong>Target:</strong> Self</span>
     <span><strong>Speed:</strong> Fast</span>
@@ -155,7 +155,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 3 Energy</span>
-    <span><strong>Power:</strong> 23-37</span>
+    <span><strong>Power:</strong> 21-33</span>
     <span><strong>Type:</strong> Technique, Attack, Magical, Ranged, Slash</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Fast</span>
@@ -186,7 +186,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 30 Ultimate Meter</span>
-    <span><strong>Power:</strong> 36-54</span>
+    <span><strong>Power:</strong> 30-50</span>
     <span><strong>Type:</strong> Ultimate, Attack, Magical, Ranged, Slash</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Fast</span>
@@ -196,4 +196,3 @@
   <p>Deal Power damage.</p>
   <p>Spend X Reiatsu (0-6)? Deal 4 times Reiatsu spent bonus damage.</p>
 </div>
-

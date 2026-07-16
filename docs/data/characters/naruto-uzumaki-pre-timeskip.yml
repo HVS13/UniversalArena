@@ -179,16 +179,10 @@ cards:
         hits:
           kind: x_plus
           value: 2
-      - timing: on_hit
-        type: inflict_status
-        status: Stun
-        amount:
-          kind: flat
-          value: 1
   - slot: "5-1"
     name: Rasengan
     cost: 3 Energy
-    power: 24-36
+    power: 27-39
     types:
       - Technique
       - Attack
@@ -406,7 +400,7 @@ createdCards:
   - slot: "created-1"
     name: "Shadow Clone: Strike"
     cost: 1 Energy
-    power: 7-9
+    power: 8-10
     types:
       - Technique
       - Attack
@@ -452,5 +446,4 @@ createdCards:
         amount:
           kind: flat
           value: 1
-
 

@@ -114,7 +114,7 @@ cards:
   - slot: "3-2"
     name: Gomu Gomu no Jet Pistol
     cost: 2 Energy
-    power: 20-28
+    power: 17-25
     types:
       - Technique
       - Attack
@@ -133,7 +133,7 @@ cards:
   - slot: "3-3"
     name: Gomu Gomu no Gigant Pistol
     cost: 2 Energy
-    power: 20-28
+    power: 21-31
     types:
       - Technique
       - Attack
@@ -152,7 +152,7 @@ cards:
   - slot: "4-1"
     name: Gomu Gomu no Bazooka
     cost: 3 Energy
-    power: 27-45
+    power: 29-43
     types:
       - Technique
       - Attack
@@ -182,7 +182,7 @@ cards:
   - slot: "4-2"
     name: Gomu Gomu no Jet Bazooka
     cost: 3 Energy
-    power: 27-45
+    power: 26-38
     types:
       - Technique
       - Attack
@@ -201,7 +201,7 @@ cards:
   - slot: "4-3"
     name: Gomu Gomu no Gigant Bazooka
     cost: 3 Energy
-    power: 27-45
+    power: 32-46
     types:
       - Technique
       - Attack
@@ -267,7 +267,7 @@ cards:
   - slot: "ultimate-1"
     name: Gomu Gomu no Jet Gatling
     cost: 30 Ultimate Meter + X Energy
-    power: "24-36 + 8-12 times X"
+    power: "22-32 + 8-10 times X"
     types:
       - Ultimate
       - Attack
@@ -356,7 +356,7 @@ cards:
   - slot: "ultimate-2"
     name: Gomu Gomu no Gigant Rifle
     cost: 30 Ultimate Meter
-    power: 36-54
+    power: 40-58
     types:
       - Ultimate
       - Attack
@@ -390,5 +390,3 @@ cards:
           kind: self_has_status
           status: Gear 2nd
         cardSlot: "ultimate-1"
-
-

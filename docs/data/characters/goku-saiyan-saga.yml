@@ -190,7 +190,7 @@ cards:
   - slot: ultimate
     name: Spirit Bomb
     cost: 30 Ultimate Meter
-    power: 41-67
+    power: 45-73
     types:
       - Ultimate
       - Attack
