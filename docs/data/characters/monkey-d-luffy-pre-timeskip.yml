@@ -152,7 +152,7 @@ cards:
   - slot: "4-1"
     name: Gomu Gomu no Bazooka
     cost: 3 Energy
-    power: 27-45
+    power: 29-43
     types:
       - Technique
       - Attack
@@ -182,7 +182,7 @@ cards:
   - slot: "4-2"
     name: Gomu Gomu no Jet Bazooka
     cost: 3 Energy
-    power: 27-45
+    power: 29-43
     types:
       - Technique
       - Attack
@@ -201,7 +201,7 @@ cards:
   - slot: "4-3"
     name: Gomu Gomu no Gigant Bazooka
     cost: 3 Energy
-    power: 27-45
+    power: 29-43
     types:
       - Technique
       - Attack
@@ -390,5 +390,3 @@ cards:
           kind: self_has_status
           status: Gear 2nd
         cardSlot: "ultimate-1"
-
-
