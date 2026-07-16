@@ -14,6 +14,6 @@
     "validate:v2:global:strict": "node validate-rules-v2-global.mjs --strict"
   },
   "dependencies": {
-    "yaml": "^2.4.2"
+    "yaml": "^2.8.3"
   }
 }
