@@ -2,7 +2,27 @@
 
 This repo is a MkDocs Material rules reference and canonical data source.
 
-Project rules
+## Improvement principles
+
+Improve the existing Universal Arena foundation directly.
+
+Preserve established rules, character identity, gameplay loops, numeric formulas, and player expectations when they already serve the intended vision. Make the smallest change that fully solves an important problem; do not redesign merely because another structure looks cleaner or more familiar.
+
+Before changing established gameplay, record:
+
+1. the current behavior and its original purpose;
+2. the actual problem;
+3. the proposed improvement;
+4. what existing intent remains preserved;
+5. affected characters, cards, statuses, references, structured data, exports, and tests;
+6. trade-offs and regression risks.
+
+Use the complete Power and cost procedure in `docs/characters/character-creation-guide.md` for every numeric proposal. Tooling, schemas, examples, warnings, and validators may identify problems, but they do not independently authorize gameplay changes.
+
+Update the existing canonical rule, reference, or data file instead of creating a competing source.
+
+## Project rules
+
 - Skills manifest lives in `SKILLS.md`.
 - Work in `docs/`; treat `site/` as generated output and do not edit it.
 - MkDocs theme overrides live in `docs/overrides/`; use them for site-wide UI tweaks.
@@ -39,8 +59,10 @@ Project rules
 - Export actions (page PDF/MD/TXT + all-pages ZIP with format/character-combine/XLSX options and `html/`, `md/`, `txt/`, `xlsx/`) live in `docs/overrides/main.html` and `docs/javascripts/print.js`; keep exports free of permalinks, URLs, and images.
 - Do not add game pages or game assets to this repo unless explicitly requested.
 
-Quality checks
+## Quality checks
+
 - Run `mkdocs build --strict` or `mkdocs serve` when asked to validate docs changes.
 
-Response style
+## Response style
+
 - Tell it like it is; don't sugar-coat responses. Adopt a skeptical, questioning approach. Take a forward-thinking view. Readily share strong opinions. Use a formal, professional tone. Be practical above all. Be innovative and think outside the box. Get right to the point.
