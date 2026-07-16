@@ -1,0 +1,35 @@
+name: Trigger universal printed Speed
+
+on:
+  pull_request:
+    types:
+      - ready_for_review
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+      - name: Extract and apply the audited update
+        shell: bash
+        run: |
+          sed -n "/python - <<'PY'/,/^          PY$/p" .github/workflows/apply-universal-speed.yml \
+            | sed '1d;$d;s/^          //' > /tmp/apply-universal-speed.py
+          python /tmp/apply-universal-speed.py
+          rm -f .github/workflows/trigger-universal-speed.yml
+      - name: Commit universal Speed calculation
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --check
+          git commit -m "Apply printed Speed to all Power cards"
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
