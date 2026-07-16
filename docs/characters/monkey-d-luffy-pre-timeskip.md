@@ -123,7 +123,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 3 Energy</span>
-    <span><strong>Power:</strong> 27-45</span>
+    <span><strong>Power:</strong> 29-43</span>
     <span><strong>Type:</strong> Technique, Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Normal</span>
@@ -138,7 +138,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 3 Energy</span>
-    <span><strong>Power:</strong> 27-45</span>
+    <span><strong>Power:</strong> 29-43</span>
     <span><strong>Type:</strong> Technique, Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Fast</span>
@@ -151,7 +151,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 3 Energy</span>
-    <span><strong>Power:</strong> 27-45</span>
+    <span><strong>Power:</strong> 29-43</span>
     <span><strong>Type:</strong> Technique, Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Slow</span>
@@ -209,4 +209,3 @@
   <p>Deal Power damage.</p>
   <p>Always: If this character has Gear 2nd: This Ultimate becomes Gomu Gomu no Jet Gatling.</p>
 </div>
-
