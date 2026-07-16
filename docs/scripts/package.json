@@ -4,12 +4,15 @@
   "type": "module",
   "scripts": {
     "export": "node export-game-data.mjs",
-    "validate": "node validate-data-sync.mjs && node validate-rules-v2.mjs --allow-v1 && node validate-rules-v2-global.mjs",
+    "export:v1": "node export-game-data.mjs",
+    "export:v2": "node export-game-data-v2.mjs",
+    "test:export:v2": "node test-rules-v2-export.mjs",
+    "validate": "node validate-data-sync.mjs && node validate-rules-v2.mjs --allow-v1 && node validate-rules-v2-global.mjs && node test-rules-v2-export.mjs",
     "validate:legacy": "node validate-data-sync.mjs",
     "migrate:v2:check": "node migrate-rules-v2.mjs --check",
     "migrate:v2": "node migrate-rules-v2.mjs --write",
-    "validate:v2": "node validate-rules-v2.mjs && node validate-rules-v2-global.mjs",
-    "validate:v2:strict": "node validate-rules-v2.mjs --strict && node validate-rules-v2-global.mjs --strict",
+    "validate:v2": "node validate-rules-v2.mjs && node validate-rules-v2-global.mjs && node test-rules-v2-export.mjs",
+    "validate:v2:strict": "node validate-rules-v2.mjs --strict && node validate-rules-v2-global.mjs --strict && node test-rules-v2-export.mjs",
     "validate:v2:global": "node validate-rules-v2-global.mjs",
     "validate:v2:global:strict": "node validate-rules-v2-global.mjs --strict"
   },
