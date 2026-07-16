@@ -14,17 +14,17 @@ Practical rules and guardrails for building new characters. Use this alongside t
 
 ## Start Here: Template + Minimum Viable Character
 
-- The template page is the canonical structure reference. If you are new, read `docs/characters/template.md` first and follow its section order.
+- The template page is the canonical structure reference. Read `docs/characters/template.md` first and follow its section order.
 
 Minimum viable character checklist:
 
 1. Header block with Name, Version, Origin, Roles, Difficulty, and Gameplan.
-2. At least one Innate (if none, say so explicitly).
+2. At least one Innate; if none, say so explicitly.
 3. A `## Cards` section with exactly five cards:
-   - 2 Basic cards (Strike + Defend)
-   - 3 Technique cards
+   - 2 Basic cards: Strike and Defend;
+   - 3 Technique cards.
 4. One Ultimate card.
-5. If you create cards, add a `## Created Cards` section with those card blocks.
+5. If the kit creates cards, a `## Created Cards` section with those card blocks.
 
 ## Rules and Consistency
 
@@ -35,96 +35,18 @@ Minimum viable character checklist:
 
 ### Power budgeting
 
-Cost baselines:
+Use [Power Calculation Reference](../power-calculation.md) as the single canonical formula.
 
-- Energy cost: Base Power = Energy cost x 10.
-- Ultimate Meter-only cost: Base Power = Ultimate Meter cost x 1.5.
-- Mixed-cost Ultimate (Ultimate Meter + Energy): Base Power = Ultimate Meter cost x 1, then add Energy cost x 10.
-- Variable Energy cost (X) on non-Ultimates: if X can be 0, Base Power = 5 x (X + 1); otherwise use 10 x X.
-- Variable Energy on mixed-cost Ultimates: use 10 x X even if X can be 0.
-- 0 Energy cards: if not Created, Base Power = 5. For a 0 Energy Created card, record the creating card's final budgeted Base Power before its Melee/Ranged range as a ceiling.
-- Special cards with `Power: -` do not receive a Power range or speed-based Power adjustment.
+Before assigning printed Power, complete the required Power Budget Record. Preserve the cost baseline, every multiplier, utility adjustment, prerequisite or family allocation, Final Base Power, range type, and printed result.
 
-Standard adjustments:
+Safeguards:
 
-- Melee Power range: Base Power +/- floor(Base Power x 0.20).
-- Ranged Power range: Base Power +/- floor(Base Power x 0.25).
-- If a card only deals Power damage or only grants Power Shield/HP, with no meaningful additional utility, multiply Base Power by 1.20 before applying the range.
-- Evade counts as utility. A Defense card with Evade normally does not receive the pure Shield/HP x 1.20 bonus. Evade has no separate universal percentage penalty; reduce further only when the card has additional meaningful value.
-- Created cards multiply Base Power by 0.90.
-- For non-Ultimate cards with Power, use the card form's printed Speed: Fast x 0.90, Normal x 1.00, Slow x 1.10.
-- Ultimate cards do not receive an automatic Fast or Slow Power modifier. Their Speed is considered together with their Meter cost, utility, restrictions, and overall finisher role.
-- Temporary Haste, Slow, Prepare, cost reduction, or other in-match modifiers do not recalculate printed Power.
-- By default, a transformed or replacement form uses that form's own printed cost and printed Speed for authoring. A documented transformation or progression family may instead share one Power budget when the setup card, status, threshold, drawback, or other access cost already pays for the enhanced form. State what pays for the improvement and do not count it again as a Speed or utility adjustment.
-- If a card has high execution requirements or narrow conditions, you can multiply Base Power by 1.10-1.20.
-- If a card adds meaningful utility (status, draw, resource gain, multi-target, strong tempo effects), bias toward the low end of the range or reduce Base Power.
-- If a card deals Power damage and also heals, treat healing as extra output and lower Base Power so total impact matches the target.
-- Single-target cards with Power are affected by Distance; if you use Close or Far, budget around the resulting peaks and valleys.
-
-Expected effective cost:
-
-- Printed cost is the default authoring baseline.
-- A reliable, character-defining cost engine may instead use expected effective cost: the weighted average amount normally paid during the character's intended play pattern.
-- Record the printed cost, expected reliable reduction, expected effective cost, and why the engine is reliable enough to use.
-- Use ordinary expected play, not the maximum theoretical discount. Rare, random, enemy-dependent, or once-per-game reductions normally do not change the baseline.
-- Expected effective cost is an authoring assumption only. Actual in-match cost changes never recalculate printed Power.
-- Different cards may need different assumptions if they are normally used at different stages of the engine.
-
-Special costs and prerequisites:
-
-- Optional additional spending does not add its maximum possible amount to printed Base Power. Budget the per-spend effect separately because the player only receives it when the resource is actually spent.
-- A requirement that remains available after the card is used normally justifies the 10-20% execution bonus, not the requirement's full cost.
-- A setup or prerequisite that is consumed by the payoff card may contribute part of its own Power budget. Credit only the portion used exclusively by the payoff; do not count value already delivered by the setup card itself.
-- Crediting the full setup cost is exceptional and is only appropriate when the setup exists solely to enable the payoff and is fully consumed by it.
-- If a payoff consumes an item or resource that must normally be repurchased, its repeatable budget may include the recurring acquisition cost plus the activation cost. Document any free starting copy separately because the first use is cheaper than later uses.
-- Follow-Up and other conditional cost reductions do not recalculate printed Power during play. Their expected repeat value still counts as utility during authoring.
-- Character-specific exceptions must state the normal baseline, the prerequisite or limitation being credited, any standard modifier being overridden, and the final Base Power before the Melee/Ranged range.
-
-Calculation order:
-
-1. Calculate Base Power from printed cost, or from a documented expected effective cost or recurring prerequisite cycle.
-2. If it is a 0 Energy Created card, record the creating card's final budgeted Base Power before range as the ceiling.
-3. Apply percentage bonuses and penalties multiplicatively. Do not add percentages together.
-4. Do not round between percentage modifiers.
-5. After all percentage modifiers, round adjusted Base Power down.
-6. Reduce that result for utility, healing, statuses, area effects, card access, resource generation, or other additional value.
-7. Apply any documented prerequisite allocation, shared-family allocation, or character-specific adjustment.
-8. For a 0 Energy Created card, cap the result at the recorded creating-card ceiling.
-9. Generate the final Melee or Ranged range from the resulting Base Power.
-10. Round range calculations down and clamp minimum Power at 0.
-
-Worked examples:
-
-- Created, Melee, only damage, created by a card with final budgeted Base Power 10: `10 x 1.20 x 0.90 = 10.8`, rounded down to Base Power 10, then `10 +/- floor(10 x 0.20)` = Power 8-12.
-- Created, Fast, Melee, only damage, created by a card with final budgeted Base Power 10: `10 x 1.20 x 0.90 x 0.90 = 9.72`, rounded down to Base Power 9, then `9 +/- floor(9 x 0.20)` = Power 8-10.
-- Slow, non-Ultimate, 2 Energy, Melee, only damage: `20 x 1.20 x 1.10 = 26.4`, rounded down to Base Power 26, then `26 +/- floor(26 x 0.20)` = Power 21-31.
-- Slow, 30 Ultimate Meter, Ranged, only damage: Ultimate Speed has no automatic modifier, so `30 x 1.5 x 1.20 = 54`, then `54 +/- floor(54 x 0.25)` = Power 41-67.
-- 1 Energy, Melee Defense with Shield + Evade: Evade makes the card non-pure, so Base Power stays 10; `10 +/- floor(10 x 0.20)` = Power 8-12.
-- DIO Strike reconstructed expected-cost example: printed cost 4, expected Blood Focus reduction 2, expected effective cost 2; `2 x 10 x 1.20 = 24`, then Melee Power 20-28.
-- Leon Rocket Launcher recurring-cycle example: 10 Ultimate Meter to repurchase the consumed launcher + 30 Ultimate Meter to fire = 40 recurring Meter; `40 x 1.5 = 60`, then Ranged Power 45-75. The free starting launcher makes the first shot cheaper but does not change the repeatable budget.
-
-Examples:
-
-- 3 Energy, Ranged: Base Power 30 -> Power 23-37.
-- 60 Ultimate Meter, Melee: Base Power 90 -> Power 72-108.
-- 1 Energy, Melee, only damage: Base Power 12 -> Power 10-14.
-- X Energy (can be 0), Ranged: Base Power 5 x (X + 1) -> Power 4-6 + 4-6 times X.
-- 30 Ultimate Meter + X Energy, Melee: Base Power 30 + 10X -> Power 24-36 + 8-12 times X.
-- 20 Ultimate Meter, Ranged, damage + heal Power / 2: Target Base Power 30 -> set Base Power to 20 -> Power 15-25.
-- 0 Energy, Created from a 1 Energy Melee card: Base Power up to the creating card's final budgeted Base Power, then Power range as normal.
-
-Exceptions and current-roster transition:
-
-- These authoring rules do not automatically recalculate the whole current roster. Existing values remain until an individual review approves a change. Existing values that differ from this procedure are not benchmarks for new cards.
-- Targeted arithmetic and data corrections approved in the current review are exceptions to that safeguard: DIO's Defend and Throwing Knives families, Luffy's Bazooka family, Ichigo's Bankai Finisher range, and Leon's Suplex structured effects.
-- DIO (Part 3), Basic and Technique cards: use an approximately 2 Energy expected Blood Focus reduction as a reconstructed authoring assumption. This is supported by the current values and gameplan but was not explicitly recorded in the original guide. Strike uses expected cost 2 and the pure-damage bonus for final Base Power 24. Defend uses expected cost 2, receives no pure-Shield bonus because it has Evade, and uses final Base Power 20. Vampiric Drain uses expected cost 3 and final Base Power 30 after its extra output replaces the pure-damage bonus. Throwing Knives uses expected cost 5 and a documented utility reduction to final Base Power 42.
-- DIO's Time Stop replacement forms share their parent card's Power. The 9 Energy Time Stop setup, its access requirement, and its later drawback pay for the enhanced forms; do not apply an additional Fast penalty to those family members.
-- DIO (Part 3), ROAD ROLLER DA!: 40 Ultimate Meter gives Base Power 60. Allocate +30 Base Power from the 9 Energy The World: Time Stop setup because ROAD ROLLER DA! requires that status and sets its Count to 0 after use. Do not credit the full 90 setup Base Power because Time Stop already provides Stun, card-play denial, Strength, Haste, Follow-Up access, and Retain. Final Base Power is 90, producing Power 72-108. This final exception already accounts for the card's Fast Speed and other effects; do not apply additional Fast or pure-output modifiers. Optional Stolen Blood spending is budgeted separately and is not included in printed Power.
-- Luffy's Gear card families share Power across Normal, Fast, and Slow replacement forms. Gear Transformation, Gear 2nd's temporary duration, and Gear 3rd's Slow/Deflate drawbacks pay for the form changes. The Bazooka family uses final Base Power 36 and the Melee range 29-43.
-- Ichigo's Bankai and Hollow replacement families share their parent card's Power because their transformation states, limited duration, and Strain drawback pay for the enhanced forms. Getsuga Tensho (Bankai Finisher) uses Base Power 45 and the Ranged range 34-56.
-- Naruto's Rasengan family shares Power between its base and Clone Assist form; Shadow Clone spending and transformation access pay for the additional effects. Existing Rasengan values remain pending a separate Slow-budget review.
-- Existing Slow Ultimates, including Spirit Bomb and Gomu Gomu no Gigant Rifle, receive no automatic Slow bonus under the Ultimate rule above.
-- Slow Special cards with `Power: -`, including Saitama's Bored forms and Death Note: Write the Name, are unaffected by Power speed adjustments.
+- Fast non-Ultimates use `x0.90` and Slow non-Ultimates use `x1.10`, unless a documented family allocation explicitly overrides individual form speed.
+- Ultimates have no automatic speed multiplier.
+- Evade normally removes eligibility for the pure Shield/HP bonus but has no second universal deduction.
+- Variable Power expressions use component ranging.
+- Current roster precedents explain existing families; they are not automatic templates for new cards.
+- Keep Markdown and YAML Power values identical.
 
 ### Basic naming
 
@@ -144,32 +66,37 @@ When listing `Type:` tags, use this order:
 6. Slash / Pierce / Blunt / Multihit
 7. Transformation / Recovery / Buff / Debuff
 
-### Card text templates (timing order)
+### Card text templates and timing order
 
-Standardize sentences so they align with the timing ladder: On Play -> Before Clash -> After Clash -> Before Use -> On Use -> On Hit -> After Use -> Always. Each sentence should start with a timing label unless it is default On Use (which can be left unlabeled); split mixed timing effects into separate sentences.
+Use this order:
+
+```text
+On Play -> Before Clash -> After Clash -> Before Use -> On Use -> On Hit -> After Use -> Always
+```
+
+Start each sentence with a timing label unless it is default On Use, which may be unlabeled. Split mixed timing effects into separate sentences.
 
 Templates:
 
-- Attack (Power): "Deal Power damage." "On Hit: [bonus]." "After Use: [follow-up]."
-- Defense (Power Shield): "Gain Power Shield." "After Clash: [bonus]." "After Use: [follow-up]."
-- Special (no Power roll): "On Play: [effect]." "[effect]." "After Use: [cleanup]."
-- Utility/Setup: "On Play: [draw/move/status]." "Before Use: [prep]." "After Use: [cleanup]."
-- Reactive/Interrupt: "After Clash: [effect]." "Before Use: [effect]." "After Use: [effect]."
+- Attack: `Deal Power damage.` `On Hit: [bonus].` `After Use: [follow-up].`
+- Defense: `Gain Power Shield.` `After Clash: [bonus].` `After Use: [follow-up].`
+- Special: `On Play: [effect].` `[effect].` `After Use: [cleanup].`
+- Utility/Setup: `On Play: [draw/move/status].` `Before Use: [prep].` `After Use: [cleanup].`
+- Reactive/Interrupt: `After Clash: [effect].` `Before Use: [effect].` `After Use: [effect].`
 
-Optional effects use `?` and mandatory effects use `:` after the condition or cost (example: "Spend X Status? Gain Evade." vs "Spend 1 Ammo: Deal Power damage."). Use "Can only be played if" / "Cannot be played if" for play restrictions.
+Optional effects use `?` and mandatory effects use `:` after the condition or cost. Use `Can only be played if` and `Cannot be played if` for play restrictions.
 
 Keyword placement:
 
-- Place keyword-only lines at the timing they resolve on the ladder.
-- Pre-play keywords (Innate, Prepare) go first.
-- Distance keywords (Close, Far) go before the main Power line they modify.
-- After Clash keywords (Evade, Counter, Reuse) go after the Shield/damage line they depend on.
-- After Use keywords (Follow-Up, Assist Attack) go after On Hit lines; keep any "On Follow-Up" or "On Assist Attack" lines directly after the keyword line.
-- Cleanup keywords (Retain, Exhaust, Ethereal) go last.
+- Pre-play keywords such as Innate and Prepare go first.
+- Distance keywords Close and Far go before the Power line they modify.
+- After Clash keywords Evade, Counter, and Reuse go after the Shield or damage line they depend on.
+- After Use keywords Follow-Up and Assist Attack go after On Hit lines; keep related conditional lines directly after the keyword.
+- Cleanup keywords Retain, Exhaust, and Ethereal go last.
 
-### Status effects, keywords, terms, roles
+### Status effects, keywords, terms, and roles
 
-- Use the shared link markup so `guide.js` can rewrite links:
+Use the shared link markup:
 
 ```html
 <a class="ua-keyword-link" data-keyword="keyword-evade" href="#">Evade</a>
@@ -178,40 +105,42 @@ Keyword placement:
 <a class="ua-role-link" data-role="role-striker" href="#">Striker</a>
 ```
 
-- Only link status effects that live in `docs/status-effects.md`. Unique per-character status effects should stay plain text on the character page.
-- Avoid undefined mechanics. If you introduce a global keyword/status/term, add it to the relevant reference page.
+- Only link status effects defined in `docs/status-effects.md`.
+- Keep unique per-character statuses as plain text on the character page.
+- Add every new global mechanic to its reference page before using it.
 
-### Card replacement (Becomes)
+### Card replacement
 
-- Conditional "this card becomes X" effects are automatic, not optional.
-- Treat the card as X in any zone (deck, hand, play) whenever the condition is true.
-- Do not write optional "may become" effects. If you need an option, use a different mechanic.
+- Conditional `this card becomes X` effects are automatic.
+- Treat the card as X in every zone whenever the condition is true.
+- Do not write optional `may become` effects; use a different mechanic when a choice is required.
 
 ### Spend is mandatory
 
-- "Spend X" is required, not optional. If you cannot spend, the effect that requires the Spend does not happen.
-- Optional Spend uses `?` (example: "Spend X Resource? Gain Evade."). Do not write "You may spend."
+- `Spend X` is required. If the required amount cannot be spent, the dependent effect does not happen.
+- Optional Spend uses `?`, for example: `Spend X Resource? Gain Evade.`
 
-### Potency + Count rule (read this)
+### Potency + Count
 
-This is the standard rule for effects that say "Inflict X A" or "Gain X A" when A has Potency + Count. It is already defined in the FAQ and status effect rules, and you should write cards with this in mind:
+For `Inflict X A` or `Gain X A` when A uses Potency + Count:
 
-- If the target already has A, only Potency increases by X; Count stays the same.
-- If the target has no A, it gains A with Potency X and Count 1.
-- When an effect changes both Potency and Count, write the two changes separately and explicitly.
+- If the target already has A, increase Potency by X and leave Count unchanged.
+- If the target does not have A, give Potency X and Count 1.
+- When an effect changes both Potency and Count, write both changes separately.
 
-See `docs/faq.md` and `docs/status-effects.md` for the canonical wording.
+See `docs/faq.md` and `docs/status-effects.md` for canonical wording.
 
 ### Values, caps, and edge cases
 
-- Set Potency/Count/Value/Stack caps that the kit can actually reach.
-- If a kit can exceed a cap through multiple sources, raise the cap or reduce the sources.
-- Make sure every value you introduce has a clear path to gain and lose, and that timing order is unambiguous.
+- Set Potency, Count, Value, and Stack caps that the kit can actually reach.
+- If several sources can exceed a cap, raise the cap or reduce the sources.
+- Every value needs a clear gain path, loss path, and timing order.
 
 ### Created cards
 
-- If a card is created, list it under a `## Created Cards` section on the character page.
-- If an effect creates a card and does not specify where it goes, it goes to the discard pile (see `docs/faq.md`).
+- List Created cards under `## Created Cards`.
+- If an effect creates a card without specifying a destination, it goes to the Discard Pile.
+- Complete a separate Power Budget Record for each Created card.
 
 ## Do / Don't
 
@@ -220,10 +149,12 @@ See `docs/faq.md` and `docs/status-effects.md` for the canonical wording.
 - Use local art in `docs/assets/characters/` and the `../../assets/characters/<file>` path.
 - Keep `site/` untouched; it is generated output.
 - Add the character to `mkdocs.yml` and `docs/characters/index.md`.
-- Keep the `docs/data/characters/<slug>.yml` file in sync with the page.
+- Keep `docs/data/characters/<slug>.yml` synchronized with the page.
+- Run the data validator, Power calculator when needed, exporter, and strict MkDocs build.
 
 ### Don't
 
 - Do not invent undefined global mechanics without adding them to reference pages.
-- Do not link unique status effects as if they were global.
+- Do not link unique status effects as global statuses.
 - Do not omit the Power line in the character index card.
+- Do not publish a Power value that lacks a reproducible Power Budget Record.
