@@ -1,0 +1,183 @@
+schemaVersion: 2
+rulesVersion: 2
+
+registries:
+  actionTypes:
+    - { id: action-basic, name: Basic }
+    - { id: action-technique, name: Technique }
+    - { id: action-ultimate, name: Ultimate }
+    - { id: action-attack, name: Attack }
+    - { id: action-defense, name: Defense }
+    - { id: action-special, name: Special }
+
+  damageTypes:
+    - { id: damage-physical, name: Physical }
+    - { id: damage-energy, name: Energy }
+    - { id: damage-magical, name: Magical }
+    - { id: damage-mental, name: Mental }
+    - { id: damage-spiritual, name: Spiritual }
+
+  properties:
+    - { id: property-electric, name: Electric, category: phenomenon, rules: [] }
+    - { id: property-fire, name: Fire, category: element, rules: [] }
+    - { id: property-ice, name: Ice, category: element, rules: [] }
+    - { id: property-sonic, name: Sonic, category: phenomenon, rules: [] }
+    - { id: property-explosive, name: Explosive, category: phenomenon, rules: [] }
+    - { id: property-radiation, name: Radiation, category: phenomenon, rules: [] }
+    - { id: property-acid, name: Acid, category: substance, rules: [] }
+
+  sourceSystemTags:
+    - { id: system-ki, name: Ki, rules: [] }
+    - { id: system-chakra, name: Chakra, rules: [] }
+    - { id: system-reiatsu, name: Reiatsu, rules: [] }
+    - { id: system-haki, name: Haki, rules: [] }
+    - { id: system-stand, name: Stand, rules: [] }
+    - { id: system-nen, name: Nen, rules: [] }
+    - { id: system-cursed-energy, name: Cursed Energy, rules: [] }
+    - { id: system-technology, name: Technology, rules: [] }
+
+  ranges:
+    - { id: range-melee, name: Melee }
+    - { id: range-ranged, name: Ranged }
+
+  areas:
+    - { id: area-aoe, name: AoE }
+    - { id: area-splash, name: Splash }
+    - { id: area-bounce, name: Bounce }
+    - { id: area-chain, name: Chain }
+    - { id: area-line, name: Line }
+    - { id: area-cone, name: Cone }
+    - { id: area-ring, name: Ring }
+    - { id: area-random-enemies, name: Random Enemies }
+    - { id: area-source-radius, name: Source Radius }
+
+  attackTags:
+    - { id: attack-slash, name: Slash }
+    - { id: attack-pierce, name: Pierce }
+    - { id: attack-blunt, name: Blunt }
+    - { id: attack-multihit, name: Multihit }
+
+  effectTags:
+    - { id: effect-transformation, name: Transformation }
+    - { id: effect-recovery, name: Recovery }
+    - { id: effect-buff, name: Buff }
+    - { id: effect-debuff, name: Debuff }
+    - { id: effect-equipment, name: Equipment }
+    - { id: effect-summon, name: Summon }
+    - { id: effect-information, name: Information }
+    - { id: effect-alternate-defeat, name: Alternate Defeat }
+
+  roles:
+    - { id: role-vanguard, name: Vanguard }
+    - { id: role-guardian, name: Guardian }
+    - { id: role-striker, name: Striker }
+    - { id: role-eliminator, name: Eliminator }
+    - { id: role-controller, name: Controller }
+    - { id: role-support, name: Support }
+    - { id: role-specialist, name: Specialist }
+
+  combatArchetypes:
+    - { id: archetype-bruiser, name: Bruiser }
+    - { id: archetype-duelist, name: Duelist }
+    - { id: archetype-skirmisher, name: Skirmisher }
+    - { id: archetype-juggernaut, name: Juggernaut }
+    - { id: archetype-assassin, name: Assassin }
+    - { id: archetype-marksman, name: Marksman }
+    - { id: archetype-artillery, name: Artillery }
+    - { id: archetype-summoner, name: Summoner }
+    - { id: archetype-tactician, name: Tactician }
+    - { id: archetype-shapeshifter, name: Shapeshifter }
+
+  capabilities:
+    - { id: capability-burst, name: Burst }
+    - { id: capability-sustained, name: Sustained }
+    - { id: capability-execute, name: Execute }
+    - { id: capability-multihit, name: Multihit }
+    - { id: capability-area, name: Area }
+    - { id: capability-follow-up, name: Follow-Up }
+    - { id: capability-clash, name: Clash }
+    - { id: capability-durable, name: Durable }
+    - { id: capability-evade, name: Evade }
+    - { id: capability-counter, name: Counter }
+    - { id: capability-cover, name: Cover }
+    - { id: capability-recovery, name: Recovery }
+    - { id: capability-resurrection, name: Resurrection }
+    - { id: capability-disabler, name: Disabler }
+    - { id: capability-movement, name: Movement }
+    - { id: capability-targeting, name: Targeting }
+    - { id: capability-denial, name: Denial }
+    - { id: capability-debuffer, name: Debuffer }
+    - { id: capability-status, name: Status }
+    - { id: capability-healer, name: Healer }
+    - { id: capability-buffer, name: Buffer }
+    - { id: capability-card-access, name: Card Access }
+    - { id: capability-energy, name: Energy }
+    - { id: capability-meter, name: Meter }
+    - { id: capability-resource, name: Resource }
+    - { id: capability-ramp, name: Ramp }
+    - { id: capability-transformation, name: Transformation }
+    - { id: capability-equipment, name: Equipment }
+    - { id: capability-summon, name: Summon }
+    - { id: capability-created-cards, name: Created Cards }
+    - { id: capability-alternate-defeat, name: Alternate Defeat }
+    - { id: capability-information, name: Information }
+
+  lineupArchetypes:
+    - { id: lineup-tempo, name: Tempo }
+    - { id: lineup-midrange, name: Midrange }
+    - { id: lineup-attrition, name: Attrition }
+    - { id: lineup-control, name: Control }
+    - { id: lineup-setup-execution, name: Setup–Execution }
+    - { id: lineup-status-engine, name: Status Engine }
+    - { id: lineup-formation, name: Formation }
+    - { id: lineup-ramp, name: Ramp }
+    - { id: lineup-chain, name: Chain }
+
+  speeds:
+    - { id: speed-fast, name: Fast }
+    - { id: speed-normal, name: Normal }
+    - { id: speed-slow, name: Slow }
+
+  lifecycleDestinations:
+    - { id: destination-draw, name: Draw Pile }
+    - { id: destination-hand, name: Hand }
+    - { id: destination-discard, name: Discard Pile }
+    - { id: destination-exhaust, name: Exhausted Area }
+    - { id: destination-ultimate-area, name: Ultimate Area }
+    - { id: destination-defeat-reserve, name: Defeat Reserve }
+    - { id: destination-removed, name: Removed }
+    - { id: destination-created-reserve, name: Created Reserve }
+
+  timings:
+    - { id: on_play, name: On Play }
+    - { id: before_clash, name: Before Clash }
+    - { id: clash, name: Clash }
+    - { id: after_clash, name: After Clash }
+    - { id: before_use, name: Before Use }
+    - { id: on_use, name: On Use }
+    - { id: on_hit, name: On Hit }
+    - { id: on_damage, name: On Damage }
+    - { id: on_hp_damage, name: On HP Damage }
+    - { id: after_use, name: After Use }
+    - { id: turn_start, name: Turn Start }
+    - { id: turn_end, name: Turn End }
+    - { id: on_gain, name: On Gain }
+    - { id: on_expire, name: On Expire }
+    - { id: on_heal, name: On Heal }
+    - { id: on_hp_restored, name: On HP Restored }
+    - { id: would_be_defeated, name: Would Be Defeated }
+    - { id: when_defeated, name: When Defeated }
+    - { id: when_sacrificed, name: When Sacrificed }
+    - { id: when_resurrected, name: When Resurrected }
+
+  scopes:
+    - { id: once_per_play, name: Once per Play }
+    - { id: once_per_use, name: Once per Use }
+    - { id: once_per_turn, name: Once per Turn }
+    - { id: once_per_game, name: Once per Game }
+    - { id: per_target, name: Per Target }
+    - { id: per_hit, name: Per Hit }
+    - { id: per_hit_per_target, name: Per Hit per Target }
+    - { id: once_per_target_per_use, name: Once per Target per Use }
+    - { id: per_amount_spent, name: Per Amount Spent }
+    - { id: continuous, name: Continuous }
