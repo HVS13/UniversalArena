@@ -179,10 +179,9 @@ const main = async () => {
         tempRoot,
         "--skip-assets",
         "--source-commit",
-        "rules-v2-dio-light-audit",
+        "unknown",
         "--generated-at",
         "2026-07-16T00:00:00.000Z",
-        "--require-publishable",
       ],
       { cwd: repoRoot, encoding: "utf8", stdio: "pipe" }
     );
@@ -190,6 +189,7 @@ const main = async () => {
     assert.equal(manifest.schemaVersion, 2);
     assert.equal(manifest.rulesVersion, 2);
     assert.equal(manifest.rosterCount, 2);
+    assert.equal(manifest.publishable, false);
     assert.deepEqual(manifest.validation, { errors: 0, warnings: 0, strict: true });
   } finally {
     await fs.rm(tempRoot, { recursive: true, force: true });
