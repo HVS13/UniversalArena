@@ -2,7 +2,7 @@ name: Apply structured effect conditions
 
 on:
   pull_request:
-    types: [opened]
+    types: [opened, ready_for_review]
 
 permissions:
   contents: write
