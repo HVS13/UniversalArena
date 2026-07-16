@@ -4,6 +4,12 @@ This page is the canonical authoring reference for printed card Power. Use it fo
 
 The formula produces an authoring budget. It does not replace playtesting, and temporary in-match effects never recalculate printed Power.
 
+Use the calculator from `docs/scripts` for deterministic arithmetic:
+
+```text
+npm run power -- --help
+```
+
 ## Required Power Budget Record
 
 Before assigning a printed Power range, record:
