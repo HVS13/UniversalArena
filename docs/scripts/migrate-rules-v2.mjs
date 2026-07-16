@@ -236,7 +236,7 @@ const normalizeAmount = (amount) => {
 const mapEffectType = (type) => (type === "gain_ultimate" ? "gain_ultimate_meter" : type);
 
 const inferScope = (effect) => {
-  if (effect.scope) return effect.scope;
+  if (effect.scope) return effect.scope === "always" ? "continuous" : effect.scope;
   if (effect.timing === "on_play") return "once_per_play";
   if (effect.timing === "on_hit") return "per_hit_per_target";
   if (["after_use", "before_use"].includes(effect.timing)) return "once_per_use";
@@ -320,7 +320,7 @@ const parseStatusMode = (lines) => {
   if (potency && count) {
     return { mode: "potency_count", caps: { potency: Number(potency[1]), count: Number(count[1]) } };
   }
-  if (value) return { mode: "value", caps: { value: Number(value[1]) } };
+  if (value) return { mode: "value", caps: { value: Number(value[1]) };
   if (stack) return { mode: "stack", caps: { stack: Number(stack[1]) } };
   if (count) return { mode: "value", caps: { value: Number(count[1]) } };
   return { mode: "binary", caps: {} };
@@ -392,7 +392,7 @@ const migrateInnates = (innates, characterId, statusIds, warnings) =>
       const migrated = {
         id: trigger.id ?? `${characterId}-${innate.id ?? `innate-${innateIndex + 1}`}-trigger-${triggerIndex + 1}`,
         event: trigger.event,
-        scope: trigger.scope ?? "continuous",
+        scope: trigger.scope === "always" ? "continuous" : trigger.scope ?? "continuous",
         filters: clone(trigger.filters ?? {}),
         effects: (trigger.effects ?? []).map((effect, effectIndex) =>
           migrateEffect(effect, {
@@ -416,7 +416,7 @@ const slotGroup = (slot, isUltimate) => {
     const number = text.match(/ultimate-(\d+)/i)?.[1] ?? text.match(/^(\d+)-/)?.[1] ?? "1";
     return `ultimate-${number}`;
   }
-  const first = text.match(/^(\d+)/)?.[1] ?? slugify(text) || "unknown";
+  const first = text.match(/^(\d+)/)?.[1] ?? (slugify(text) || "unknown");
   return `regular-${first}`;
 };
 
@@ -516,7 +516,7 @@ const migrateCharacter = (legacy, filename, override, globalStatusIds) => {
     allLegacyCards.flatMap((card) => (card.transforms ?? []).map((transform) => String(transform.cardSlot)))
   );
 
-  const cards = allLegacyCards.map((card, cardIndex) => {
+  const cards = allLegacyCards.map((card) => {
     const label = `${filename}:${card.name}`;
     const classification = splitTypes(card.types, warnings, label);
     const isUltimate = classification.actionTypes.includes("action-ultimate");
@@ -581,7 +581,6 @@ const migrateCharacter = (legacy, filename, override, globalStatusIds) => {
     if (multihit) migrated.multihit = multihit;
     if (classification.unknownLegacyTypes.length) migrated.legacyUnmappedTypes = classification.unknownLegacyTypes;
     if (cardOrigin === "generated_variant") migrated.variantOf = migrated.slotId;
-    delete card.__collection;
     return migrated;
   });
 
