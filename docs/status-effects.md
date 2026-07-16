@@ -9,7 +9,7 @@ This page explains what status effects are and how their values work.
 
     - **Zero-value mode:** the value is always fixed at 1 and has no inherent effect on the status effect's strength.
     - **Single-value mode:** one value, typically **Stack** or **Value**.
-    - **Double-value mode:** two values (**Potency + Count**). Potency determines strength, while Count determines duration.
+    - **Double-value mode:** two values (**Potency + Count**). Potency determines the status effect's strength. Count determines how many activations, triggers, or periods of duration remain, as defined by that status effect.
 
     **Stack** is a single-value duration that typically reduces at Turn End. **Value** is a single-value resource that is usually reduced or consumed by other effects and may or may not reduce at Turn End.
 
@@ -32,7 +32,7 @@ This page explains what status effects are and how their values work.
 
     Reapplying a status effect increases its Potency, Count, Stack, or Value up to its cap, following any mode-specific rules below.
 
-    For Potency + Count effects, "Inflict/Gain X" increases Potency by X; if the target has none, set Potency to X and Count to 1. For Stack or Value effects, "Inflict/Gain X" increases Stack or Value by X; if the target has none, set it to X.
+    For Potency + Count effects, "Inflict/Gain X" increases Potency by X; if the target has none, set Potency to X and Count to 1. For Stack or Value effects, "Inflict/Gain X" increases Stack or Value by X; if the target has none, set it to X. If an effect changes both Potency and Count, write and resolve the two changes separately.
 
     "Halve" means set the current value to half its current value, rounding down.
 
@@ -75,7 +75,7 @@ Use the filter to quickly locate a mode, rule, or attribute.
   <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 10.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Allies' Card Played</span> Take <strong>Potency</strong> damage. Then increase <strong>Potency</strong> by <strong>Energy</strong> spent.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Halve <strong>Count</strong>.</p>
 </div>
 
 <div class="ua-entry status-entry" id="status-burn">
@@ -85,7 +85,7 @@ Use the filter to quickly locate a mode, rule, or attribute.
   <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 10.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Allies' Card Played</span> Take <strong>Potency</strong> damage. Then reduce <strong>Count</strong> by <strong>Energy</strong> spent.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Take <strong>Potency</strong> damage. Then reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Take <strong>Potency</strong> damage. Then Halve <strong>Count</strong>.</p>
 </div>
 
 <div class="ua-entry status-entry" id="status-disarm">
@@ -114,7 +114,7 @@ Use the filter to quickly locate a mode, rule, or attribute.
   <p class="ua-entry__meta"><span class="ua-pill">Potency</span> Max 10.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Count</span> Max 99.</p>
   <p class="ua-entry__meta"><span class="ua-pill">Allies' Card Played</span> Increase <strong>Potency</strong> by <strong>Energy</strong> spent.</p>
-  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Take <strong>Potency</strong> damage. Then reduce <strong>Count</strong> by <strong>Halve</strong>.</p>
+  <p class="ua-entry__meta"><span class="ua-pill">Turn End</span> Take <strong>Potency</strong> damage. Then Halve <strong>Count</strong>.</p>
 </div>
 
 <div class="ua-entry status-entry" id="status-root">
