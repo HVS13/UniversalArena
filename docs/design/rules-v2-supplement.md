@@ -1,15 +1,19 @@
-# Rules v2 Audit Supplement
+# Rules v2 Historical Audit Supplement
 
-> **Status:** Approved supplement to the Rules v2 specification.  
-> **Purpose:** Records accepted decisions and clarifications omitted or expressed inconsistently in the initial specification package.  
-> **Precedence:** Where this document explicitly corrects an example or taxonomy in an earlier Rules v2 document, this supplement and the corrected Schema v2 specification take precedence.
+> **Status:** Historical integration record.
+> **Purpose:** Preserve the accepted findings and correction history from the second Rules v2 audit until each item is integrated into the canonical source that owns its subject.
+> **Authority:** This document does not independently override the current Design Principles, Compatibility Policy, Decision Record, Schema, or approved character changelogs. Use the current canonical source after an item has been integrated.
 
 Read this with:
 
+- [Rules v2 Authority Map](rules-v2-authority-map.md)
+- [Rules v2 Compatibility Policy](rules-v2-compatibility-policy.md)
 - [Design Principles](design-principles.md)
 - [Character Authoring Framework](character-authoring-framework.md)
 - [Rules v2 Decision Record](rules-v2-decisions.md)
 - [Schema v2 Specification](../data/schema-v2.md)
+
+The sections below preserve the original audit findings. They remain useful evidence and integration requirements, but character-specific examples are not character approval.
 
 ## 1. Lineup Archetypes
 
@@ -53,7 +57,7 @@ Invests early actions and resources into transformations, summons, equipment, pe
 
 Builds action sequences through Follow-Up, Assist Attack, Counter, Reuse, immediate plays, or repeated clash pressure.
 
-A lineup may fit several archetypes. The metadata is intended for search, recommendations, warnings, and AI lineup analysis—not legality enforcement.
+A lineup may fit several archetypes. The metadata is intended for search, recommendations, warnings, and automated lineup analysis, not legality enforcement.
 
 ## 2. Reveal Semantics
 
@@ -146,7 +150,7 @@ Rules v2 status modes are:
 
 Do not use `potency_count` when only Count is meaningful. Do not invent a dummy Potency merely to preserve a display label.
 
-For example, DIO's Time Stop state should use a one-number mode such as `value` unless its design later introduces a genuinely separate strength dimension. Its display can still use lore-appropriate wording, but the stored mode must remain coherent.
+The original audit used DIO's Time Stop as an example of a possible one-number migration. That example identifies a status-model question; it does not approve a character-specific mode, value, duration, or dependency change. Those decisions require DIO's own reviewed changelog.
 
 ## 7. Card Provenance Is Not an Action Type
 
@@ -203,29 +207,35 @@ Neither category has inherent universal rules. They matter only when an effect, 
 
 Do not classify a source system as a Damage Type. Do not assume two source systems are equivalent merely because both are supernatural energy.
 
-## 9. Required Schema Corrections
+## 9. Schema Integration Findings
 
-The corrected Schema v2 specification must:
+The second-pass audit required Schema v2 to:
 
-- Register every effect primitive used by its examples.
-- Include `set_hp` or an equivalent typed HP-setting primitive.
-- Use the general `grant_keyword` primitive with a typed card target/filter instead of an undocumented specialized primitive.
-- Include `when_sacrificed`, `on_heal`, and `on_hp_restored` in the timing/event model.
-- Include `reveal_cards` as a distinct effect primitive.
-- Preserve existing Ultimate-Meter gain behavior through a typed resource primitive or documented migration alias.
-- Store Created-card provenance separately from Action Types.
-- Keep Properties separate from Source-System Tags.
-- Represent Time Stop with a coherent one-number status mode unless a second numeric concept is intentionally added.
-- Define defeat timing as after the current resolving unit—an atomic effect or the current card use according to the Rules v2 timing model—not through an undefined `atomic use` phrase.
+- register every effect primitive used by its examples;
+- include `set_hp` or an equivalent typed HP-setting primitive;
+- use the general `grant_keyword` primitive with a typed card target or filter instead of an undocumented specialized primitive;
+- include `when_sacrificed`, `on_heal`, and `on_hp_restored` in the timing and event model;
+- include `reveal_cards` as a distinct effect primitive;
+- preserve existing Ultimate-Meter gain behavior through a typed resource primitive or documented migration alias;
+- store Created-card provenance separately from Action Types;
+- keep Properties separate from Source-System Tags;
+- support a coherent one-number status mode without deciding a character-specific migration;
+- define defeat timing through named resolving units rather than an undefined phrase.
 
-## 10. Review Requirement
+These are implementation and representation findings. A schema correction does not independently approve a gameplay change.
 
-Before this PR is considered merge-ready:
+## 10. Integration status
 
-1. The Schema v2 document must incorporate the corrections above.
-2. `AGENTS.md` must include this supplement in the Rules v2 authority list.
-3. MkDocs navigation must expose this supplement.
-4. The PR description must report the second-pass audit honestly.
-5. A strict MkDocs build must be run in CI or a networked checkout.
+This historical record remains visible until its accepted content is checked against the owning canonical sources.
 
-Repository existence and GitHub mergeability are not substitutes for specification correctness or build validation.
+Integration targets:
+
+1. Lineup Archetypes, Reveal semantics, provenance, classifications, and approved global semantics belong in the Rules v2 Decision Record and structured global reference.
+2. Complexity, noncombat design, copying, and broad move-library guidance belong in the Character Authoring Framework.
+3. Status-mode requirements belong in the Decision Record, Schema v2, and compatibility review rules.
+4. Schema findings belong in Schema v2 and its validators.
+5. Character-specific examples belong only in reviewed character changelogs when they propose executable changes.
+
+After every accepted item is integrated and verified, this page may be moved out of active navigation or archived. Its history should remain traceable rather than being silently erased.
+
+Repository existence, implementation support, and GitHub mergeability are not substitutes for specification correctness, review, and validation.
