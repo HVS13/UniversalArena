@@ -10,7 +10,7 @@ const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(scriptDir, "..", "..");
 const characterDir = path.join(repoRoot, "docs", "data", "rules-v2", "characters");
 const interactionPath = path.join(repoRoot, "docs", "data", "rules-v2", "source-interactions.yml");
-const exporterPath = path.join(scriptDir, "export-game-data-v2.mjs");
+const exporterPath = path.join(scriptDir, "export-game-data-v2-package.mjs");
 
 const readYaml = async (filename) => YAML.parse(await fs.readFile(filename, "utf8"));
 const readText = (filename) => fs.readFile(filename, "utf8");
@@ -65,7 +65,8 @@ const main = async () => {
   ]);
 
   const files = (await fs.readdir(characterDir)).filter((filename) => /\.ya?ml$/i.test(filename)).sort();
-  assert.deepEqual(files, ["dio-brando-part-3.yml", "light-yagami-kira.yml"]);
+  assert.ok(files.includes("dio-brando-part-3.yml"), "Parallel Rules v2 data must include DIO.");
+  assert.ok(files.includes("light-yagami-kira.yml"), "Parallel Rules v2 data must include Light.");
 
   assert.equal(registry.schemaVersion, 2);
   assert.equal(registry.rulesVersion, 2);
@@ -186,11 +187,15 @@ const main = async () => {
       { cwd: repoRoot, encoding: "utf8", stdio: "pipe" }
     );
     const manifest = JSON.parse(await fs.readFile(path.join(tempRoot, "manifest.json"), "utf8"));
+    const exportedInteractions = JSON.parse(await fs.readFile(path.join(tempRoot, "source-interactions.json"), "utf8"));
     assert.equal(manifest.schemaVersion, 2);
     assert.equal(manifest.rulesVersion, 2);
-    assert.equal(manifest.rosterCount, 2);
+    assert.equal(manifest.rosterCount, files.length);
     assert.equal(manifest.publishable, false);
+    assert.equal(manifest.sourceInteractionCount, registry.interactions.length);
     assert.deepEqual(manifest.validation, { errors: 0, warnings: 0, strict: true });
+    assert.match(manifest.files["source-interactions.json"], /^sha256:[0-9a-f]{64}$/);
+    assert.equal(exportedInteractions.interactions.length, registry.interactions.length);
   } finally {
     await fs.rm(tempRoot, { recursive: true, force: true });
   }
