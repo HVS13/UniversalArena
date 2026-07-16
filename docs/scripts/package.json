@@ -5,7 +5,7 @@
   "scripts": {
     "export": "node export-game-data.mjs",
     "power": "node power-calculator.mjs",
-    "validate": "node validate-data-sync.mjs"
+    "validate": "node validate-data-sync.mjs && node validate-effect-conditions.mjs"
   },
   "dependencies": {
     "yaml": "^2.8.3"
