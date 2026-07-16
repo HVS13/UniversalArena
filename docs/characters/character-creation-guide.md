@@ -51,6 +51,23 @@ Minimum viable character checklist:
 - Single-target cards with Power are affected by Distance; if you use Close or Far, budget around the resulting peaks and valleys.
 - Character-specific exceptions are allowed but must be documented in this guide.
 
+Calculation order:
+
+1. Calculate Base Power from the card's printed Energy and/or Ultimate Meter cost.
+2. For a Created card, its starting Base Power cannot exceed the creating card's Base Power.
+3. Apply percentage bonuses and penalties multiplicatively. Do not add the percentages together.
+4. Do not round between percentage modifiers.
+5. After all percentage modifiers, round the adjusted Base Power down.
+6. Reduce that result for utility, healing, statuses, area effects, card access, resource generation, or other additional value.
+7. Apply any documented character-specific adjustment.
+8. Generate the final Melee or Ranged range from the resulting Base Power.
+9. Round range calculations down and clamp the minimum Power at 0.
+
+Worked examples:
+
+- Created, Melee, only damage, created by a card with Base Power 10: `10 x 1.20 x 0.90 = 10.8`, rounded down to Base Power 10, then `10 +/- floor(10 x 0.20)` = Power 8-12.
+- Created, Fast, Melee, only damage, created by a card with Base Power 10: `10 x 1.20 x 0.90 x 0.90 = 9.72`, rounded down to Base Power 9, then `9 +/- floor(9 x 0.20)` = Power 8-10.
+
 Examples:
 - 3 Energy, Ranged: Base Power 30 -> Power 23-37.
 - 60 Ultimate Meter, Melee: Base Power 90 -> Power 72-108.
@@ -135,6 +152,7 @@ This is the standard rule for effects that say "Inflict X A" or "Gain X A" when 
 
 - If the target already has A, only Potency increases by X; Count stays the same.
 - If the target has no A, it gains A with Potency X and Count 1.
+- When an effect changes both Potency and Count, write the two changes separately and explicitly.
 
 See `docs/faq.md` and `docs/status-effects.md` for the canonical wording.
 
