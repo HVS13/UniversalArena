@@ -9,13 +9,7 @@ origin: Death Note
 art: light-yagami-kira.png
 role: { primary: role-controller, secondary: role-eliminator }
 archetypes: [archetype-tactician]
-capabilities:
-  - capability-information
-  - capability-alternate-defeat
-  - capability-targeting
-  - capability-denial
-  - capability-card-access
-  - capability-clash
+capabilities: [capability-information, capability-alternate-defeat, capability-targeting, capability-denial, capability-card-access, capability-clash]
 difficulty: High
 gameplan: >
   Use cheap contestable Basics and retained surveillance to build Stolen Information,
@@ -55,12 +49,8 @@ synergy:
   outputs: [information, slow, stagnate, alternate_defeat_pressure]
   conflicts: [low_direct_power, ineligible_targets, setup_decay]
 sourceInteractions:
-  interaction-death-note-eligibility:
-    outcome: eligible
-    reason: Selected Light is a living human and may be targeted by another valid Death Note user.
-  interaction-vampiric-feeding-eligibility:
-    outcome: eligible
-    reason: Selected Light is a living human with ordinary blood.
+  interaction-death-note-eligibility: { outcome: eligible, reason: Selected Light is a living human and may be targeted by another valid Death Note user. }
+  interaction-vampiric-feeding-eligibility: { outcome: eligible, reason: Selected Light is a living human with ordinary blood. }
 innates:
   - id: light-meticulous-planner
     name: Meticulous Planner
@@ -71,12 +61,7 @@ innates:
         scope: once_per_turn
         filters: { source: self, statusId: unique-light-stolen-information, direction: upward }
         effects:
-          - id: light-draw-from-information-effect
-            timing: on_gain
-            scope: once_per_turn
-            type: draw_cards
-            targetRef: source_team
-            amount: { kind: flat, value: 1 }
+          - { id: light-draw-from-information-effect, timing: on_gain, scope: once_per_turn, type: draw_cards, targetRef: source_team, amount: { kind: flat, value: 1 } }
 statusEffects:
   - id: unique-light-stolen-information
     name: Stolen Information
@@ -106,27 +91,9 @@ statusEffects:
     initialValue: 3
     persistence: { onDefeat: persist_until_resolution, onSourceDefeat: independent, onResurrection: persist, genericCleanse: immune, genericDispel: immune, genericPurge: immune, zeroBehavior: resolve }
     rules:
-      - id: light-death-note-tick
-        timing: turn_end
-        scope: once_per_turn
-        type: reduce_status
-        targetRef: subject
-        statusId: unique-light-death-note-countdown
-        stat: value
-        amount: { kind: flat, value: 1 }
-      - id: light-death-note-defeat
-        timing: turn_end
-        scope: once_per_turn
-        type: defeat
-        targetRef: subject
-        condition: { kind: subject_status_compare, statusId: unique-light-death-note-countdown, stat: value, operator: less_or_equal, value: 0, ifAlreadyDefeated: no_additional_defeat }
-      - id: light-death-note-expire
-        timing: turn_end
-        scope: once_per_turn
-        type: remove_status
-        targetRef: subject
-        statusId: unique-light-death-note-countdown
-        condition: { kind: subject_status_compare, statusId: unique-light-death-note-countdown, stat: value, operator: less_or_equal, value: 0 }
+      - { id: light-death-note-tick, timing: turn_end, scope: once_per_turn, type: reduce_status, targetRef: subject, statusId: unique-light-death-note-countdown, stat: value, amount: { kind: flat, value: 1 } }
+      - { id: light-death-note-defeat, timing: turn_end, scope: once_per_turn, type: defeat, targetRef: subject, condition: { kind: subject_status_compare, statusId: unique-light-death-note-countdown, stat: value, operator: less_or_equal, value: 0, ifAlreadyDefeated: no_additional_defeat } }
+      - { id: light-death-note-expire, timing: turn_end, scope: once_per_turn, type: remove_status, targetRef: subject, statusId: unique-light-death-note-countdown, condition: { kind: subject_status_compare, statusId: unique-light-death-note-countdown, stat: value, operator: less_or_equal, value: 0 } }
 createdCards: []
 cards:
   - id: light-calculated-pressure
@@ -146,7 +113,7 @@ cards:
     attackTags: []
     effectTags: [effect-information, effect-debuff]
     target: { lockMode: character, side: enemy, count: 1 }
-    lifecycle: { afterResolution: destination-discard, ifCancelled: destination-discard, ifNegated: destination-discard, ifUnusedAtTurnEnd: destination-discard, onOwnerDefeat: destination-defeat-reserve, onResurrection: destination-discard }
+    lifecycle: &regular_lifecycle { afterResolution: destination-discard, ifCancelled: destination-discard, ifNegated: destination-discard, ifUnusedAtTurnEnd: destination-discard, onOwnerDefeat: destination-defeat-reserve, onResurrection: destination-discard }
     effects:
       - { id: light-pressure-damage, timing: on_use, scope: once_per_use, type: deal_damage, targetRef: locked_target, amount: { ref: current_power, evaluation: on_use } }
       - { id: light-pressure-information, timing: on_hit, scope: once_per_target_per_use, type: inflict_status, targetRef: locked_target, statusId: unique-light-stolen-information, amount: { kind: flat, value: 1 } }
@@ -180,7 +147,7 @@ cards:
     attackTags: []
     effectTags: [effect-buff]
     target: { lockMode: character, side: self, count: 1 }
-    lifecycle: { afterResolution: destination-discard, ifCancelled: destination-discard, ifNegated: destination-discard, ifUnusedAtTurnEnd: destination-discard, onOwnerDefeat: destination-defeat-reserve, onResurrection: destination-discard }
+    lifecycle: *regular_lifecycle
     effects:
       - { id: light-alibi-shield, timing: on_use, scope: once_per_use, type: gain_shield, targetRef: user, amount: { ref: current_power, evaluation: on_use } }
       - { id: light-alibi-evade, timing: on_use, scope: once_per_use, type: grant_keyword, targetRef: this_card, keywordId: keyword-evade }
@@ -205,7 +172,7 @@ cards:
     attackTags: []
     effectTags: [effect-information, effect-debuff]
     target: { lockMode: character, side: enemy, count: 1 }
-    lifecycle: { afterResolution: destination-discard, ifCancelled: destination-discard, ifNegated: destination-discard, ifUnusedAtTurnEnd: destination-discard, onOwnerDefeat: destination-defeat-reserve, onResurrection: destination-discard }
+    lifecycle: *regular_lifecycle
     effects:
       - { id: light-surveillance-information, timing: on_use, scope: once_per_use, type: inflict_status, targetRef: locked_target, statusId: unique-light-stolen-information, amount: { kind: flat, value: 2 } }
       - { id: light-surveillance-retain, timing: on_use, scope: once_per_use, type: retain, targetRef: this_card }
@@ -230,7 +197,7 @@ cards:
     attackTags: []
     effectTags: [effect-debuff, effect-information]
     target: { lockMode: character, side: enemy, count: 1 }
-    lifecycle: { afterResolution: destination-discard, ifCancelled: destination-discard, ifNegated: destination-discard, ifUnusedAtTurnEnd: destination-discard, onOwnerDefeat: destination-defeat-reserve, onResurrection: destination-discard }
+    lifecycle: *regular_lifecycle
     effects:
       - { id: light-blackmail-stagnate, timing: on_use, scope: once_per_use, type: inflict_status, targetRef: locked_target, statusId: status-stagnate, amount: { kind: flat, value: 2 } }
       - { id: light-blackmail-slow, timing: on_use, scope: once_per_use, type: inflict_status, targetRef: locked_target, statusId: status-slow, amount: { kind: flat, value: 1 }, condition: { kind: target_has_status, statusId: unique-light-stolen-information, minimum: 3 } }
@@ -242,7 +209,7 @@ cards:
     slotId: regular-5
     cardOrigin: starting
     owner: { kind: character, characterId: light-yagami-kira }
-    name: Death Note: Write the Name
+    name: "Death Note: Write the Name"
     cost: { energy: 2, ultimateMeter: 0 }
     power: null
     speed: speed-slow
@@ -255,7 +222,7 @@ cards:
     attackTags: []
     effectTags: [effect-information, effect-alternate-defeat]
     target: { lockMode: character, side: enemy, count: 1 }
-    lifecycle: { afterResolution: destination-discard, ifCancelled: destination-discard, ifNegated: destination-discard, ifUnusedAtTurnEnd: destination-discard, onOwnerDefeat: destination-defeat-reserve, onResurrection: destination-discard }
+    lifecycle: *regular_lifecycle
     effects:
       - { id: light-write-countdown, timing: on_use, scope: once_per_use, type: set_status, targetRef: locked_target, statusId: unique-light-death-note-countdown, stat: value, amount: { kind: flat, value: 3 } }
       - { id: light-write-clear-information, timing: on_use, scope: once_per_use, type: set_status, targetRef: locked_target, statusId: unique-light-stolen-information, stat: stack, amount: { kind: flat, value: 0 } }
@@ -276,7 +243,7 @@ cards:
     slotId: ultimate-1
     cardOrigin: starting
     owner: { kind: character, characterId: light-yagami-kira }
-    name: Death Note: Judgment
+    name: "Death Note: Judgment"
     cost: { energy: 0, ultimateMeter: 30, additionalUltimateMeterPerX: 10, x: { min: 0, max: 2, lockTiming: on_play } }
     power: null
     speed: speed-normal
@@ -336,56 +303,46 @@ cards:
     sourceBasis: [light-source-death-note-eligibility, light-source-countdown, light-source-judgment]
 ultimatePathways:
   - id: light-judgment-pathway
-    name: Death Note: Judgment
+    name: "Death Note: Judgment"
     lifecycle: repeatable
     variants: [{ cardId: light-judgment }]
 sourceBasis:
   - id: light-source-contestable-pressure
     classification: baseline
-    sources: [{ reference: Light's interrogations, social pressure, manipulation, and psychological contests throughout the manga, note: Light repeatedly pressures opponents and shapes their decisions without supernatural psychic force. }]
-    interpretation: A low-Power Mental Attack represents contestable psychological pressure and loss of combat effectiveness, not telepathic damage.
-    uncertainty: Mental damage is an abstract game classification.
-    intentionalDeviation: Retains normal Attack clash participation at deliberately human-level Power.
+    sources: [{ reference: Light's interrogations and psychological contests, note: Light pressures opponents and shapes decisions without supernatural psychic force. }]
+    interpretation: Low Mental Attack Power represents contestable psychological pressure and operational disruption, not telepathy.
+    uncertainty: Mental damage is a game abstraction.
+    intentionalDeviation: Retains normal Attack clash participation at human-level Power.
   - id: light-source-contestable-defense
     classification: baseline
-    sources: [{ reference: Light's alibis, controlled persona, misdirection, and repeated evasion of suspicion, note: Light survives through concealment, composure, and prepared explanations. }]
-    interpretation: A low-Power Mental Defense represents an alibi and evasive positioning rather than supernatural armor.
+    sources: [{ reference: Light's alibis and controlled persona, note: Light survives through concealment, composure, and prepared explanations. }]
+    interpretation: Low Mental Defense represents an alibi and evasive positioning rather than supernatural armor.
     uncertainty: ''
     intentionalDeviation: Power Shield abstracts preserved operational safety.
   - id: light-source-information-methods
     classification: baseline
-    sources: [{ reference: Light's investigation, surveillance, police access, and manipulation of information, note: Light accumulates partial and complete target profiles. }]
-    interpretation: Stolen Information is visible public setup; incomplete leads decay until a full six-stack profile is completed.
+    sources: [{ reference: Light's investigation and surveillance, note: Light accumulates partial and complete target profiles. }]
+    interpretation: Incomplete Stolen Information decays until a complete six-stack identity profile is reached.
     uncertainty: ''
     intentionalDeviation: Turn-End decay creates pressure to maintain an active investigation.
-  - id: light-source-surveillance
-    classification: baseline
-    sources: [{ reference: Light's use of surveillance, records, and retained plans, note: Prepared observation creates reliable information access. }]
-    interpretation: Retain represents a prepared surveillance route held for the correct target.
-    uncertainty: ''
-    intentionalDeviation: ''
-  - id: light-source-blackmail
-    classification: baseline
-    sources: [{ reference: Light's coercion, manipulation, and exploitation of personal knowledge, note: He converts information into hesitation and restricted choices. }]
-    interpretation: Stagnate and conditional Slow model tempo denial without turning the action into damage.
-    uncertainty: ''
-    intentionalDeviation: ''
+  - { id: light-source-surveillance, classification: baseline, sources: [{ reference: Light's surveillance and retained plans, note: Prepared observation creates reliable information access. }], interpretation: Retain represents a prepared surveillance route., uncertainty: '', intentionalDeviation: '' }
+  - { id: light-source-blackmail, classification: baseline, sources: [{ reference: Light's coercion and manipulation, note: He converts personal knowledge into hesitation and restricted choices. }], interpretation: Stagnate and Slow model tempo denial., uncertainty: '', intentionalDeviation: '' }
   - id: light-source-death-note-eligibility
     classification: baseline
     sources: [{ reference: Death Note How to Use It rules, note: The notebook requires an eligible human, a true name, and the writer picturing the face. }]
-    interpretation: Ordinary target legality is separate from version-specific Death Note eligibility; six information represents confirmed name-and-face access.
-    uncertainty: Crossover species require typed source adjudication.
+    interpretation: Ordinary targeting is separate from Death Note eligibility; six information represents confirmed name-and-face access.
+    uncertainty: Crossover species require typed adjudication.
     intentionalDeviation: ''
   - id: light-source-countdown
     classification: baseline
-    sources: [{ reference: Death Note timing and cause-of-death rules, note: A valid written name creates a scheduled, difficult-to-reverse death. }]
-    interpretation: A visible three-Value countdown provides the opponent a response window while preserving alternate defeat.
+    sources: [{ reference: Death Note timing rules, note: A valid written name creates a scheduled and difficult-to-reverse death. }]
+    interpretation: A visible three-Value countdown preserves alternate defeat while creating a response window.
     uncertainty: ''
     intentionalDeviation: Literal seconds are translated into team Turn Ends.
   - id: light-source-judgment
     classification: exceptional
-    sources: [{ reference: Light's prepared contingencies, timing control, and delegated execution plans, note: Light spends accumulated resources to compress the remaining plan. }]
-    interpretation: Ultimate Meter shortens the public countdown or establishes it after complete information; it does not add ordinary damage.
+    sources: [{ reference: Light's prepared contingencies and timing control, note: Light spends accumulated resources to compress the remaining plan. }]
+    interpretation: Ultimate Meter establishes or shortens the public countdown; it does not add ordinary damage.
     uncertainty: ''
     intentionalDeviation: Shared Meter represents strategic preparation and execution capacity.
 consideredButOmitted:
