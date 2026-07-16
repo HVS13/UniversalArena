@@ -1,0 +1,47 @@
+schemaVersion: 2
+rulesVersion: 2
+status: approved_parallel_registry
+
+interactions:
+  - id: interaction-death-note-eligibility
+    name: Death Note Target Eligibility
+    kind: target_eligibility
+    source: Death Note
+    outcomes: [eligible, ineligible, uncertain]
+    defaultOutcome: uncertain
+    rules:
+      - "Eligible means the selected character version is a living human whose canonical true name and face can be established."
+      - "Ineligible means the selected version clearly fails the notebook's human requirement."
+      - "Uncertain blocks Death Note access until a roster-specific adjudication resolves the ambiguity."
+    deprecated: false
+  - id: interaction-vampiric-feeding-eligibility
+    name: Vampiric Feeding Eligibility
+    kind: target_eligibility
+    source: JoJo Vampire Physiology
+    outcomes: [eligible, ineligible, uncertain]
+    defaultOutcome: uncertain
+    rules:
+      - "Eligible means the target has usable blood or an explicitly equivalent biological resource."
+      - "Damage from a drain attack may still occur when feeding is ineligible, but healing and Blood Reserve do not."
+      - "Uncertain blocks feeding benefits until the character version is reviewed."
+    deprecated: false
+  - id: interaction-vampire-sunlight
+    name: Vampire Sunlight Vulnerability
+    kind: weakness
+    source: JoJo Vampire Physiology
+    outcomes: [vulnerable, not_vulnerable, uncertain]
+    defaultOutcome: uncertain
+    rules:
+      - "Vulnerable records an existential source weakness without inventing a universal numeric multiplier."
+      - "A card or effect must explicitly invoke sunlight exposure for the weakness to matter."
+    deprecated: false
+  - id: interaction-vampire-ripple
+    name: Vampire Ripple Vulnerability
+    kind: weakness
+    source: JoJo Vampire Physiology
+    outcomes: [vulnerable, not_vulnerable, uncertain]
+    defaultOutcome: uncertain
+    rules:
+      - "Vulnerable records the canonical vampire weakness to Ripple."
+      - "Ordinary Energy, Magical, or Spiritual damage does not become Ripple without explicit source classification."
+    deprecated: false
