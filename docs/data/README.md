@@ -77,7 +77,7 @@ cards:
       - Deal Power damage. On Hit: Gain 1 Reiatsu.
 createdCards:
   - slot: "created-1"
-    name: Shadow Clone: Strike
+    name: "Shadow Clone: Strike"
     cost: 1 Energy
     power: 7-9
     types:
@@ -404,7 +404,7 @@ statusEffects:
       - timing: "Allies' Card Played"
         text: "Take Potency damage. Then increase Potency by Energy spent."
       - timing: "Turn End"
-        text: "Reduce Count by Halve."
+        text: "Halve Count."
 ```
 
 ## Term schema (YAML)
@@ -414,33 +414,9 @@ terms:
   - section: Resources
     id: term-energy
     name: Energy
-    definition: "The resource used to play cards. By default, at Turn Start each player sets Energy to 5; effects can modify this and there is no Energy cap."
+    definition: "The shared team resource used to play cards. By default, at Turn Start each team sets Energy to 5; effects can modify this and there is no Energy cap."
 ```
 
 ## Card type schema (YAML)
 
 ```yml
-cardTypes:
-  - id: card-type-basic
-    name: Basic
-    category: Action
-    description: "A card tagged as Basic for rules and synergies that reference Basic cards."
-```
-
-## Role schema (YAML)
-
-```yml
-roles:
-  - id: role-striker
-    name: Striker
-    description: "Primary damage dealer focused on securing takedowns."
-```
-
-## GitHub Action sync
-
-The docs repo owns the data. The sync workflow exports into the game repo when you push or run it manually.
-
-Required repo settings:
-- Repo variable: `UA_GAME_REPO` (example: `YourOrg/UniversalArena-Web`)
-- Repo secret: `UA_SYNC_TOKEN` (token with write access to the game repo)
-
