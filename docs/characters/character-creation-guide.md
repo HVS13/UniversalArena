@@ -99,6 +99,7 @@ Examples:
 
 Exceptions and current-roster transition:
 
+- These authoring rules do not automatically recalculate the current roster. Existing Fast, Slow, Created, transformed, conditional, and Ultimate cards retain their printed values until an individual character review approves a change. Existing values that differ from this procedure are not benchmarks for new cards.
 - DIO (Part 3), ROAD ROLLER DA!: 40 Ultimate Meter gives Base Power 60. Allocate +30 Base Power from the 9 Energy The World: Time Stop setup because ROAD ROLLER DA! requires that status and sets its Count to 0 after use. Do not credit the full 90 setup Base Power because Time Stop already provides Stun, card-play denial, Strength, Haste, Follow-Up access, and Retain. Final Base Power is 90, producing Power 72-108. This final exception already accounts for the card's Fast Speed and other effects; do not apply additional Fast or pure-output modifiers. Optional Stolen Blood spending is budgeted separately and is not included in printed Power.
 - Existing non-Ultimate Slow cards with Power keep their current printed values until individual character review: Gomu Gomu no Gigant Pistol, Gomu Gomu no Gigant Bazooka, and Rasengan. This temporary preservation is not the benchmark for new cards.
 - Existing Slow Ultimates, including Spirit Bomb and Gomu Gomu no Gigant Rifle, receive no automatic Slow bonus under the Ultimate rule above.
