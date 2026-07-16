@@ -15,6 +15,17 @@ const fixedTimestamp = "2026-07-16T00:00:00.000Z";
 
 const readJson = async (filename) => JSON.parse(await fs.readFile(filename, "utf8"));
 const sha256 = (contents) => `sha256:${createHash("sha256").update(contents).digest("hex")}`;
+const packageSha256 = async (directory, filenames) => {
+  const hash = createHash("sha256");
+  for (const filename of [...filenames].sort((left, right) => left.localeCompare(right))) {
+    const contents = await fs.readFile(path.join(directory, filename), "utf8");
+    hash.update(filename);
+    hash.update("\0");
+    hash.update(contents);
+    hash.update("\0");
+  }
+  return `sha256:${hash.digest("hex")}`;
+};
 
 const runExporter = (outDir) =>
   execFileSync(
@@ -65,6 +76,16 @@ const main = async () => {
       const contents = await fs.readFile(path.join(firstOut, filename), "utf8");
       assert.equal(firstManifest.files[filename], sha256(contents), `${filename} hash must match its contents.`);
     }
+    assert.match(
+      firstManifest.contentHash,
+      /^sha256:[0-9a-f]{64}$/,
+      "Aggregate contentHash must be a canonical SHA-256 value."
+    );
+    assert.equal(
+      firstManifest.contentHash,
+      await packageSha256(firstOut, expectedFiles),
+      "Aggregate contentHash must match the sorted exported package contents."
+    );
 
     const characters = await readJson(path.join(firstOut, "characters.json"));
     assert.equal(characters.schemaVersion, 2);
