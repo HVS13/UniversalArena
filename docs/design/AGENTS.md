@@ -1,20 +1,40 @@
 # Design Directory Instructions
 
-For every file under `docs/design/`, read `rules-v2-foundation-corrections.md` before editing or interpreting another Rules v2 design document.
+Before editing or interpreting a Rules v2 design document, read:
 
-Rules v2 is additive and corrective. It does not supersede the original Character Creation Guide, active character intent, or original numeric budgeting unless a specific before/after rule change is documented.
+1. `rules-v2-authority-map.md`
+2. `rules-v2-compatibility-policy.md`
+3. the canonical source that owns the specific question.
 
-When revising an existing character or rule:
+Rules v2 evolves Universal Arena's established foundation. It should carry forward what works, clarify implicit behavior, upgrade systems that can serve the same purpose better, expand what the game can represent, and correct demonstrated defects.
 
-1. Read the original rule and active implementation.
-2. State the original intent.
+Do not treat a newer document, cleaner abstraction, schema capability, example, warning, or recommendation as approval to overwrite an established rule or character.
+
+Use the least disruptive change that fully solves the problem and advances the intended vision.
+
+## Separate the work type
+
+- **New design:** create from the intended vision and approved global rules.
+- **Structural migration:** preserve gameplay while changing representation.
+- **Redesign:** improve established behavior through a reviewed before-and-after proposal.
+- **Global-rule change:** use a separate foundation proposal and Decision Record entry.
+
+## Existing-content review
+
+Before changing an existing character or rule:
+
+1. Read the original rule, active implementation, relevant design documents, and source material.
+2. State the original purpose and established player expectation.
 3. Separate structural migration from gameplay change.
-4. Preserve behavior by default.
-5. Show the complete original Power/cost calculation for numeric changes.
-6. Show classification and dependency consequences.
-7. Provide a player-facing changelog before executable edits.
-8. Treat optional refinements as unapproved until the project owner accepts them.
+4. Record the actual problem or improvement opportunity.
+5. Show the complete Power and cost calculation for numeric changes.
+6. Show classification, dependency, economy, and regression consequences.
+7. Compare the proposal with preserving the current behavior and making a smaller change.
+8. Provide a player-facing changelog before executable edits.
+9. Treat optional or disputed changes as unapproved until explicitly accepted.
 
-Do not use examples in a framework as approval for character-specific changes.
+Do not use character examples as character-specific approval.
 
-All public design documents must be self-contained. State the durable rule, rationale, scope, affected content, source basis, and approval status. Do not rely on unexplained context outside the repository.
+The Audit Supplement preserves correction history until its accepted material is integrated into the canonical source that owns each subject. Do not create new competing authority layers.
+
+All public design documents must be self-contained. State the durable rule, rationale, scope, affected content, source basis, trade-offs, and approval status in clear language.
