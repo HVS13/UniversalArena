@@ -4,7 +4,9 @@ Rules reference and canonical data source for Universal Arena.
 
 - Local preview: `mkdocs serve`
 - Production build: `mkdocs build --strict`
-- Authoring guide: `docs/adding-content.md`
+- Character authoring guide: `docs/characters/character-creation-guide.md`
+- Power formula: `docs/power-calculation.md`
+- Current roster Power ledger: `docs/power-ledger.md`
 - Data schema: `docs/data/README.md`
 - MkDocs config: `mkdocs.yml`
 
@@ -12,14 +14,18 @@ Rules reference and canonical data source for Universal Arena.
 
 1. Update docs in `docs/` and structured data in `docs/data/`.
    - Character markdown is presentation-only; update matching `docs/data/characters/*.yml` for any card changes.
+   - Complete a Power Budget Record for every new or changed Power-bearing card family.
 2. Validate markdown/data alignment:
    - `cd docs/scripts`
    - `npm install`
    - `npm run validate`
-3. Preview or validate the docs:
+3. Reproduce Power arithmetic when needed:
+   - `npm run power -- --help`
+   - Example: `npm run power -- --constant 20 --range melee --pure --speed slow`
+4. Preview or validate the docs:
    - `mkdocs serve` (local preview), or
    - `mkdocs build --strict` (strict build).
-4. Keep reference pages and `docs/data` aligned (keywords, status effects, terms, and templates).
+5. Keep reference pages and `docs/data` aligned (keywords, status effects, terms, and templates).
 
 ## Data export (for the web game)
 
@@ -34,9 +40,10 @@ node export-game-data.mjs --out C:\Git\UniversalArena-Web\packages\data\src --as
 ## Sync checklist
 
 1. Make docs/data changes in this repo and run `npm run validate` in `docs/scripts`.
-2. Export into the game repo (`node export-game-data.mjs --out ... --assets-out ...`).
-3. Commit/push the docs repo.
-4. Commit/push the game repo export output (or let CI do it).
+2. Run `npm run power -- ...` for changed Power calculations and update `docs/power-ledger.md` when a pattern changes.
+3. Export into the game repo (`node export-game-data.mjs --out ... --assets-out ...`).
+4. Commit/push the docs repo.
+5. Commit/push the game repo export output, or let CI do it.
 
 ## CI export workflow (docs -> game repo)
 
@@ -45,6 +52,7 @@ Workflow: `.github/workflows/export-game-data.yml`
 Required repo settings:
 - Repo variable: `UA_GAME_REPO` = `Owner/UniversalArena-Web`
 - Repo secret: `UA_SYNC_TOKEN` (token with write access to the game repo)
+
 Without these, the workflow will not push and manual export remains required.
 
 ## Current state
@@ -52,4 +60,5 @@ Without these, the workflow will not push and manual export remains required.
 - Character YAMLs include structured effects and restrictions; keep `effect` text for readability and any unmodeled mechanics.
 - Keyword data includes a Core/Advanced tier; status entries include Mode (P/C, S, V) and explicit Turn End lines.
 - Rules assume 3v3 teams with shared deck/hand/energy/ultimate and per-character HP/status.
+- Power authoring uses the canonical reference, calculator, and current-roster ledger.
 - Use `TODO.md` to track outstanding documentation or data consistency work.
