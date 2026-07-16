@@ -3,13 +3,13 @@
 ## Decision status
 
 - **Continuity:** Original *Death Note* manga continuity.
-- **Selected version:** Light as Kira with Death Note ownership and memories, using his demonstrated knowledge and planning through the final investigation.
+- **Selected version:** Light as late-series Kira with his Death Note memories, demonstrated rule knowledge, and practical access to a notebook or concealed page fragment when performing a Death Note action.
 - **Primary canon window:** Manga chapters 1–108 plus the canonical `How to Use It` rules printed with the manga.
 - **Rules v2 status:** Approved character-specific interpretation for the parallel Rules v2 roster. It does not alter the active Rules v1 character.
 
 ## Why this version
 
-`Kira` is not a physical-combat form. It is Light with ownership of a Death Note, knowledge of its rules, access to concealed page fragments, and the strategic methods he demonstrates across the original manga. The selected version does not borrow the Shinigami Eyes from Misa or Mikami and does not treat their independent abilities as Light's innate powers.
+`Kira` is not a physical-combat form. It is Light with retained Kira memories, knowledge of the notebook's rules, practical access to a Death Note or concealed page fragment when using its power, and the strategic methods he demonstrates across the original manga. The selected baseline does **not** claim that one uninterrupted ownership arrangement persists across every arc; ownership, memory, and physical possession change several times in canon. It also does not borrow the Shinigami Eyes from Misa or Mikami or treat their independent abilities as Light's innate powers.
 
 ## Primary-source basis
 
@@ -18,12 +18,12 @@
 | The notebook kills a human whose name is written | `How to Use It: I`, Chapter 1 | Death Note eligibility is source-specific and human-only. It is not universal target legality. |
 | The writer must know the target's face | `How to Use It: I`, Chapter 1 | Identity acquisition must represent both true-name and face confirmation. Ordinary targeting or Reveal is insufficient. |
 | Cause may be written within 40 seconds; details within 6 minutes 40 seconds | `How to Use It: I` | Once access is established, the notebook's lethal result is rapid. Ultimate Meter must not make the notebook intrinsically kill faster. |
-| A page or page fragment has the notebook's full effect | `How to Use It: VII`, Chapter 7 | Light may use concealed scraps; destroying or separating the main notebook does not automatically invalidate a written name. |
+| A page or page fragment has the notebook's full effect | `How to Use It: VII`, Chapter 7 | Light may use concealed scraps; separation from the main notebook does not invalidate a page fragment's effect. |
 | Conditions must be physically possible for the victim | `How to Use It: VI`, Chapter 6 | Light cannot command arbitrary impossible actions through the notebook. |
 | A specified death cannot directly cause additional unintended deaths | `How to Use It: X`, Chapter 14 | The notebook is not an unrestricted AoE kill engine. |
 | Once the victim's name is written, death cannot be avoided | `How to Use It: XI`, Chapter 17 | A successfully applied Name Written status is not removable by generic Cleanse, Dispel, or Purge. |
-| Ownership loss removes Death Note memories; touching or regaining the notebook can restore access under the manga's ownership rules | Memory-loss and Yotsuba arcs | The selected version explicitly starts with ownership and memories. Memory-loss Light is not mixed into the baseline. |
-| Light refuses the Shinigami Eye deal | Chapter 5 and later offers | The kit cannot passively know true names or use Misa's/Mikami's Eyes. |
+| Ownership loss can remove Death Note memories; contact, ownership changes, and page access follow distinct manga rules | Memory-loss, Yotsuba, and Near arcs | The baseline requires Kira memories plus practical Death Note access, but does not flatten every arc into one ownership state. Memory-loss Light is excluded. |
+| Light refuses the Shinigami Eye deal | Chapter 5 and later offers | The kit cannot passively know true names or use Misa's or Mikami's Eyes. |
 | Light defeats opponents through surveillance, social engineering, staged alibis, proxies, and prepared contingencies | FBI-agent, Naomi Misora, surveillance-camera, Yotsuba, and Near arcs | The regular deck builds information and restricts choices. It should not contain a generic Mental-damage Strike. |
 
 ## Supported abilities
@@ -40,10 +40,10 @@
 
 ### Death Note eligibility
 
-A target must satisfy a source-specific `system-death-note` interaction entry:
+A target must satisfy `interaction-death-note-eligibility`:
 
 - `eligible`: a living human whose canonical true name and face can be established.
-- `ineligible`: not human under the selected version, such as an undead vampire.
+- `ineligible`: clearly fails the notebook's human requirement, such as the selected undead-vampire DIO.
 - `uncertain`: hybrid, transformed, artificial, duplicated, or setting-specific cases requiring an explicit roster adjudication.
 
 This avoids inventing a universal species taxonomy while still preserving the notebook's first rule.
@@ -93,13 +93,14 @@ The Ultimate represents a completed contingency or master plan that closes missi
 - Light is physically human and highly vulnerable when exposed.
 - He requires time and actions to acquire identity information.
 - He cannot use the Death Note on ineligible targets.
+- He requires practical notebook or page-fragment access when performing a Death Note action.
 - He does not begin with Shinigami Eyes or automatic true-name knowledge.
 - His arrogance, need for control, and willingness to take unnecessary risks are part of his personality boundary.
 - The notebook cannot force physically impossible behavior or collateral deaths outside its rules.
 
 ## Crossover adjudications
 
-- Each Rules v2 character records a `system-death-note` target-eligibility result when migrated.
+- Each Rules v2 character records an `interaction-death-note-eligibility` result when migrated.
 - `uncertain` is not treated as eligible by default. A roster decision must resolve it.
 - Death Note defeat is an alternate defeat effect, not Mental, Magical, or Spiritual damage.
 - Standard game targeting defenses can prevent the card from being legally played or resolved before the name is successfully written. Once `Name Written` exists, generic status removal cannot erase it.
