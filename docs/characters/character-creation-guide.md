@@ -1,5 +1,8 @@
 # Character Creation Guide
 
+> **Current authority:** Rules v1 character authoring and the foundational Power and cost procedure.
+> **Rules v2 transition:** Rules v2 may carry forward, clarify, upgrade, or expand this guide through approved decisions. A newer framework does not silently replace these rules. Until an approved change is integrated, this guide remains the numeric baseline and current Rules v1 authoring reference.
+
 Practical rules and guardrails for building new characters. Use this alongside the template so pages stay consistent and maintainable.
 
 ## Quick Start
