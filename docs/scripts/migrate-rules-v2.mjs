@@ -293,9 +293,7 @@ const migrateEffect = (effect, context) => {
     next.keywordId = `keyword-${slugify(next.keyword)}`;
     delete next.keyword;
   }
-  if (next.cardName) {
-    next.cardRef = `created-${slugify(next.cardName)}`;
-  }
+  if (next.cardName) next.cardRef = `created-${slugify(next.cardName)}`;
   if (next.options) {
     next.options = next.options.map((option, optionIndex) => ({
       ...clone(option),
@@ -320,7 +318,7 @@ const parseStatusMode = (lines) => {
   if (potency && count) {
     return { mode: "potency_count", caps: { potency: Number(potency[1]), count: Number(count[1]) } };
   }
-  if (value) return { mode: "value", caps: { value: Number(value[1]) };
+  if (value) return { mode: "value", caps: { value: Number(value[1]) } };
   if (stack) return { mode: "stack", caps: { stack: Number(stack[1]) } };
   if (count) return { mode: "value", caps: { value: Number(count[1]) } };
   return { mode: "binary", caps: {} };
