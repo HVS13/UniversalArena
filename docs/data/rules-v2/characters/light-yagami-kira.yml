@@ -66,6 +66,9 @@ sourceInteractions:
   interaction-death-note-eligibility:
     outcome: eligible
     reason: "Selected Light is a living human and may be targeted by another valid Death Note user."
+  interaction-vampiric-feeding-eligibility:
+    outcome: eligible
+    reason: "Selected Light is a living human with ordinary blood."
 innates:
   - id: light-meticulous-planner
     name: Meticulous Planner
