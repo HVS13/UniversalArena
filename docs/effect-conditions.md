@@ -6,6 +6,8 @@ Conditions are evaluated in addition to an effect's `timing`. Keep resolution ti
 
 Each structured effect currently accepts one condition.
 
+Human-readable card text remains display copy. Runtime logic and validation consume structured fields and do not parse prose.
+
 ## Status conditions
 
 Existing status conditions remain supported:
@@ -23,7 +25,7 @@ Supported status condition kinds:
 - `target_has_status`
 - `target_missing_status`
 
-A status condition requires a non-empty `status`. Existing numeric fields such as `min` may further constrain the required status amount.
+A status condition requires a non-empty `status`. Optional numeric `min` and `max` fields may further constrain the required status amount.
 
 ## Play-window conditions
 
@@ -77,14 +79,14 @@ Supported comparison operators:
 - `gt`
 - `gte`
 
-Each operand may be a number or a scalar expression object using:
+Each operand may be a finite number or a scalar expression object using:
 
 - `x`
 - `x_plus`
 - `x_minus`
 - `x_times`
 
-Non-`x` scalar expressions require a numeric `value`.
+Non-`x` scalar expressions require a finite numeric `value`.
 
 ## Transform conditions
 
@@ -102,17 +104,9 @@ Validation checks:
 
 - condition objects use a supported kind;
 - required status, window, operator, and operands are present;
+- numeric values are finite;
 - scalar operands use a supported shape;
-- transform conditions remain status-only;
-- supported conditional status wording has matching structured data.
+- nested effects inside `choose` options are checked;
+- transform conditions remain status-only.
 
-The completeness check currently recognizes these human-readable patterns:
-
-```text
-On Follow-Up: Inflict N Status.
-On Follow-Up: Gain N Status.
-On Hit: If X is N: Inflict M Status.
-On Hit: If X is N: Gain M Status.
-```
-
-Human-readable card text remains display copy. The engine and exported data must consume the structured condition rather than parse these sentences at runtime.
+Validation does not infer missing gameplay logic from card prose. Authors and reviewers must ensure every conditional sentence has an equivalent structured effect before publication.
