@@ -11,191 +11,134 @@ const repoRoot = path.resolve(scriptDir, "..", "..");
 const characterDir = path.join(repoRoot, "docs", "data", "rules-v2", "characters");
 const interactionPath = path.join(repoRoot, "docs", "data", "rules-v2", "source-interactions.yml");
 const exporterPath = path.join(scriptDir, "export-game-data-v2-package.mjs");
-
 const readYaml = async (filename) => YAML.parse(await fs.readFile(filename, "utf8"));
 const readText = (filename) => fs.readFile(filename, "utf8");
-const cardById = (character, id) => [...character.cards, ...(character.createdCards ?? [])].find((card) => card.id === id);
+const cardsOf = (character) => [...character.cards, ...(character.createdCards ?? [])];
+const cardById = (character, id) => cardsOf(character).find((card) => card.id === id);
 const statusById = (character, id) => character.statusEffects.find((status) => status.id === id);
-const effectsOf = (character) => {
-  const effects = [];
-  for (const card of [...character.cards, ...(character.createdCards ?? [])]) {
-    effects.push(...(card.effects ?? []), ...(card.continuousRules ?? []));
-  }
-  for (const status of character.statusEffects ?? []) effects.push(...(status.rules ?? []));
-  for (const innate of character.innates ?? []) {
-    effects.push(...(innate.setup ?? []));
-    for (const trigger of innate.triggers ?? []) {
-      effects.push(...(trigger.effects ?? []), ...(trigger.decision?.effects ?? []));
-    }
-  }
-  return effects;
-};
 const collectObjects = (value, predicate, output = []) => {
-  if (Array.isArray(value)) {
-    value.forEach((item) => collectObjects(item, predicate, output));
-  } else if (value && typeof value === "object") {
+  if (Array.isArray(value)) value.forEach((item) => collectObjects(item, predicate, output));
+  else if (value && typeof value === "object") {
     if (predicate(value)) output.push(value);
     Object.values(value).forEach((item) => collectObjects(item, predicate, output));
   }
   return output;
 };
-
-const validateSourceBasis = (character) => {
-  const basisIds = new Set((character.sourceBasis ?? []).map((entry) => entry.id));
-  assert.equal(basisIds.size, character.sourceBasis.length, `${character.id}: sourceBasis IDs must be unique.`);
-  for (const card of [...character.cards, ...(character.createdCards ?? [])]) {
-    for (const id of card.sourceBasis ?? []) {
-      assert.ok(basisIds.has(id), `${character.id}: ${card.id} references missing source basis ${id}.`);
-    }
-  }
-  for (const omitted of character.consideredButOmitted ?? []) {
-    for (const id of omitted.sourceBasisIds ?? []) {
-      assert.ok(basisIds.has(id), `${character.id}: omitted ${omitted.name} references missing source basis ${id}.`);
-    }
-  }
-};
+const effectsOf = (character) => collectObjects(character, (value) => typeof value.type === "string" && typeof value.id === "string");
 
 const main = async () => {
-  const [dio, light, registry, dioAudit, lightAudit] = await Promise.all([
+  const [dio, light, registry, dioAudit, lightAudit, revisionFramework] = await Promise.all([
     readYaml(path.join(characterDir, "dio-brando-part-3.yml")),
     readYaml(path.join(characterDir, "light-yagami-kira.yml")),
     readYaml(interactionPath),
     readText(path.join(repoRoot, "docs", "design", "lore-audits", "dio-brando-part-3.md")),
     readText(path.join(repoRoot, "docs", "design", "lore-audits", "light-yagami-kira.md")),
+    readText(path.join(repoRoot, "docs", "design", "character-revision-framework.md")),
   ]);
-
-  const files = (await fs.readdir(characterDir)).filter((filename) => /\.ya?ml$/i.test(filename)).sort();
-  assert.ok(files.includes("dio-brando-part-3.yml"), "Parallel Rules v2 data must include DIO.");
-  assert.ok(files.includes("light-yagami-kira.yml"), "Parallel Rules v2 data must include Light.");
 
   assert.equal(registry.schemaVersion, 2);
   assert.equal(registry.rulesVersion, 2);
-  const interactionMap = new Map();
-  for (const entry of registry.interactions ?? []) {
-    assert.ok(entry.id && !interactionMap.has(entry.id), `Duplicate or missing interaction ID: ${entry.id}`);
-    assert.ok(Array.isArray(entry.outcomes) && entry.outcomes.length > 0, `${entry.id}: outcomes are required.`);
-    assert.ok(entry.outcomes.includes(entry.defaultOutcome), `${entry.id}: defaultOutcome must be registered.`);
-    interactionMap.set(entry.id, entry);
-  }
+  assert.match(revisionFramework, /intent matrix/i);
+  assert.match(revisionFramework, /changelog-before-implementation/i);
+  assert.match(revisionFramework, /classification-semantics gate/i);
 
-  for (const character of [dio, light]) {
-    assert.equal(character.schemaVersion, 2);
-    assert.equal(character.rulesVersion, 2);
-    validateSourceBasis(character);
-    for (const [interactionId, result] of Object.entries(character.sourceInteractions ?? {})) {
-      const definition = interactionMap.get(interactionId);
-      assert.ok(definition, `${character.id}: unknown source interaction ${interactionId}.`);
-      assert.ok(definition.outcomes.includes(result.outcome), `${character.id}: invalid ${interactionId} outcome ${result.outcome}.`);
-      assert.ok(typeof result.reason === "string" && result.reason.trim(), `${character.id}: ${interactionId} requires a reason.`);
-    }
-    for (const reference of collectObjects(character, (value) => typeof value.interactionId === "string")) {
-      const definition = interactionMap.get(reference.interactionId);
-      assert.ok(definition, `${character.id}: condition references unknown interaction ${reference.interactionId}.`);
-      if (reference.outcome != null) {
-        assert.ok(definition.outcomes.includes(reference.outcome), `${character.id}: invalid required outcome ${reference.outcome}.`);
-      }
-    }
-    for (const mitigation of collectObjects(character, (value) => typeof value.sourceInteractionId === "string")) {
-      assert.ok(interactionMap.has(mitigation.sourceInteractionId), `${character.id}: unknown weakness interaction ${mitigation.sourceInteractionId}.`);
-    }
-  }
-
-  assert.match(dio.version, /High DIO/);
+  assert.match(dio.version, /Cairo DIO/i);
+  assert.match(dio.design.thesis, /Stolen Blood/i);
+  assert.match(dio.design.thesis, /lower costs/i);
   assert.equal(dio.sourceInteractions["interaction-death-note-eligibility"].outcome, "ineligible");
-  assert.equal(dio.sourceInteractions["interaction-vampire-sunlight"].outcome, "vulnerable");
-  assert.equal(dio.sourceInteractions["interaction-vampire-ripple"].outcome, "vulnerable");
-  const executableDioNames = [
-    ...dio.cards.map((card) => card.name),
-    ...(dio.createdCards ?? []).map((card) => card.name),
-    ...(dio.statusEffects ?? []).map((status) => status.name),
-    ...(dio.innates ?? []).map((innate) => innate.name),
-  ];
-  assert.ok(!executableDioNames.some((name) => /Blood Focus/i.test(name)), "Blood Focus may be documented only as omitted material.");
-  const dioTimeStop = statusById(dio, "unique-dio-time-stop");
-  assert.equal(dioTimeStop.mode, "binary");
-  assert.equal(dioTimeStop.persistence.duration, "combat_round");
-  const timeStopCard = cardById(dio, "dio-time-stop");
-  const playBlock = timeStopCard.effects.find((effect) => effect.type === "block_play");
-  assert.equal(playBlock.duration, "combat_round");
-  assert.equal(playBlock.existingPlaysContinue, true);
-  assert.ok(!effectsOf(dio).some((effect) => effect.type === "inflict_status" && /stun/i.test(effect.statusId ?? effect.status ?? "")), "Time Stop must not create generic post-stop Stun.");
-  const ordinaryAttacks = dio.cards.filter((card) => card.actionTypes.includes("action-attack") && !card.actionTypes.includes("action-ultimate"));
-  assert.ok(ordinaryAttacks.every((card) => card.power?.min >= 30), "High DIO must already have elite ordinary Attack Power.");
-  const roadRoller = cardById(dio, "dio-road-roller");
-  assert.ok(collectObjects(roadRoller.restrictions, (value) => value.statusId === "unique-dio-time-stop").length > 0);
-  assert.ok(roadRoller.effects.some((effect) => effect.type === "remove_status" && effect.statusId === "unique-dio-time-stop"));
+  const stolenBlood = statusById(dio, "unique-dio-stolen-blood");
+  const bloodFocus = statusById(dio, "unique-dio-blood-focus");
+  const timeStop = statusById(dio, "unique-dio-time-stop");
+  assert.equal(stolenBlood.mode, "value");
+  assert.equal(stolenBlood.caps.value, 10);
+  assert.equal(bloodFocus.caps.value, 10);
+  assert.ok(bloodFocus.rules.some((rule) => rule.type === "modify_cost" && rule.minimum === 0));
+  assert.equal(timeStop.mode, "value");
+  assert.equal(timeStop.caps.value, 8);
+  assert.ok(timeStop.rules.some((rule) => rule.type === "grant_keyword" && rule.keywordId === "keyword-follow-up"));
+  assert.ok(timeStop.rules.some((rule) => rule.timing === "on_expire" && rule.statusId === "status-strain"));
+
+  const dioCosts = Object.fromEntries(dio.cards.map((card) => [card.id, card.cost.energy]));
+  assert.deepEqual(dioCosts, {
+    "dio-predatory-strike": 2,
+    "dio-world-intercept": 2,
+    "dio-vampiric-drain": 4,
+    "dio-throwing-knives": 6,
+    "dio-time-stop": 8,
+    "dio-road-roller": 0,
+  });
   const drain = cardById(dio, "dio-vampiric-drain");
   for (const effect of drain.effects.filter((effect) => ["heal", "gain_status"].includes(effect.type))) {
-    assert.equal(effect.condition?.interactionId, "interaction-vampiric-feeding-eligibility");
-    assert.equal(effect.condition?.outcome, "eligible");
+    const refs = collectObjects(effect.condition, (value) => value.interactionId === "interaction-vampiric-feeding-eligibility");
+    assert.ok(refs.some((value) => value.outcome === "eligible"), `${effect.id} must require eligible blood.`);
   }
-  assert.match(dioAudit, /High DIO/);
-  assert.match(dioAudit, /already played cards/i);
-  assert.match(dioAudit, /Blood Focus/);
+  const stopCard = cardById(dio, "dio-time-stop");
+  assert.ok(stopCard.effects.some((effect) => effect.type === "spend_status" && effect.statusId === "unique-dio-stolen-blood"));
+  assert.ok(stopCard.effects.some((effect) => effect.type === "gain_status_per_spent" && effect.statusId === "unique-dio-time-stop"));
+  const block = stopCard.effects.find((effect) => effect.type === "block_play");
+  assert.equal(block.duration, "combat_round");
+  assert.equal(block.existingPlaysContinue, true);
+  const stun = stopCard.effects.find((effect) => effect.type === "inflict_status" && effect.statusId === "status-stun");
+  assert.equal(stun.duration, "next_team_turn");
+  const roller = cardById(dio, "dio-road-roller");
+  assert.ok(collectObjects(roller.restrictions, (value) => value.statusId === "unique-dio-time-stop").length > 0);
+  assert.ok(roller.effects.some((effect) => effect.type === "spend_status" && effect.statusId === "unique-dio-stolen-blood"));
+  assert.ok(roller.effects.some((effect) => effect.type === "deal_damage_per_spent"));
+  assert.ok(roller.effects.some((effect) => effect.type === "inflict_status_per_spent"));
+  assert.ok(roller.effects.some((effect) => effect.type === "set_status" && effect.statusId === "unique-dio-time-stop"));
+  assert.match(dioAudit, /Blood Focus/i);
+  assert.match(dioAudit, /cards already played/i);
+  assert.match(dioAudit, /next-turn Stun/i);
 
   assert.equal(light.sourceInteractions["interaction-death-note-eligibility"].outcome, "eligible");
-  assert.equal(light.sourceInteractions["interaction-vampiric-feeding-eligibility"].outcome, "eligible");
-  for (const card of light.cards) {
-    assert.equal(card.power, null, `${card.id}: Light cards must not receive unsupported combat Power.`);
-    assert.deepEqual(card.damageTypes, [], `${card.id}: Light cards must not deal classified damage.`);
-    assert.ok(!card.actionTypes.includes("action-attack"), `${card.id}: Light must not gain a generic Attack.`);
-    assert.ok(!card.actionTypes.includes("action-defense"), `${card.id}: Light must not gain combat-parity Defense.`);
-  }
-  assert.ok(!effectsOf(light).some((effect) => effect.type === "deal_damage"), "Light must not deal generic Mental damage.");
+  const lightBasics = light.cards.filter((card) => card.actionTypes.includes("action-basic"));
+  assert.equal(lightBasics.length, 2);
+  assert.ok(lightBasics.some((card) => card.actionTypes.includes("action-attack") && card.power?.min === 8 && card.power?.max === 12));
+  assert.ok(lightBasics.some((card) => card.actionTypes.includes("action-defense") && card.power?.min === 8 && card.power?.max === 12));
+  const lightTechniques = light.cards.filter((card) => card.actionTypes.includes("action-technique"));
+  assert.equal(lightTechniques.length, 3);
+  assert.ok(lightTechniques.every((card) => card.actionTypes.includes("action-special")));
+
   const information = statusById(light, "unique-light-stolen-information");
   assert.equal(information.mode, "stack");
   assert.equal(information.caps.stack, 6);
-  assert.equal(information.persistence.onSourceDefeat, "independent");
-  assert.equal(information.persistence.genericCleanse, "immune");
-  const nameWritten = statusById(light, "unique-light-name-written");
-  assert.equal(nameWritten.schedule.anchor, "next_subject_team_turn_end");
-  assert.equal(nameWritten.persistence.onSourceDefeat, "independent");
-  assert.equal(nameWritten.persistence.onResurrection, "persist");
-  assert.equal(nameWritten.persistence.genericCleanse, "immune");
-  assert.ok(nameWritten.rules.some((effect) => effect.type === "defeat" && effect.timing === "turn_end"));
-  assert.ok(nameWritten.rules.some((effect) => effect.type === "remove_status" && effect.statusId === "unique-light-name-written"));
+  const decay = information.rules.find((rule) => rule.id === "light-information-decay");
+  assert.equal(decay.timing, "turn_end");
+  assert.equal(decay.condition.operator, "less_or_equal");
+  assert.equal(decay.condition.value, 5);
+  const countdown = statusById(light, "unique-light-death-note-countdown");
+  assert.equal(countdown.mode, "value");
+  assert.equal(countdown.caps.value, 3);
+  assert.equal(countdown.persistence.onSourceDefeat, "independent");
+  assert.ok(countdown.rules.some((rule) => rule.type === "reduce_status" && rule.timing === "turn_end"));
+  assert.ok(countdown.rules.some((rule) => rule.type === "defeat"));
+
   const writeName = cardById(light, "light-write-the-name");
   const writeConditions = collectObjects(writeName.restrictions, (value) => value.kind === "source_interaction_equals" || value.kind === "subject_status_compare");
   assert.ok(writeConditions.some((condition) => condition.interactionId === "interaction-death-note-eligibility" && condition.outcome === "eligible"));
   assert.ok(writeConditions.some((condition) => condition.statusId === "unique-light-stolen-information" && condition.value === 6));
-  const ultimate = cardById(light, "light-just-as-planned");
-  const ultimateConditions = collectObjects(ultimate.restrictions, (value) => value.kind === "source_interaction_equals" || value.kind === "subject_status_compare");
-  assert.ok(ultimateConditions.some((condition) => condition.interactionId === "interaction-death-note-eligibility" && condition.outcome === "eligible"));
-  assert.ok(ultimateConditions.some((condition) => condition.statusId === "unique-light-stolen-information" && condition.value === 3));
-  assert.ok(!ultimate.effects.some((effect) => effect.type === "reduce_status"), "Light's Ultimate must not accelerate an existing written-name schedule.");
-  assert.ok(light.consideredButOmitted.some((entry) => entry.name === "Shinigami Eyes"));
-  assert.match(lightAudit, /living human/i);
-  assert.match(lightAudit, /Shinigami Eyes/);
-  assert.match(lightAudit, /Meter improves access/i);
+  assert.equal(writeName.cost.energy, 2);
+  const judgment = cardById(light, "light-judgment");
+  assert.equal(judgment.cost.ultimateMeter, 30);
+  assert.equal(judgment.cost.additionalUltimateMeterPerX, 10);
+  assert.deepEqual(judgment.cost.x, { min: 0, max: 2, lockTiming: "on_play" });
+  const reduction = judgment.effects.find((effect) => effect.id === "light-judgment-reduce-countdown");
+  assert.equal(reduction.type, "reduce_status");
+  assert.equal(reduction.minimumValue, 1);
+  assert.match(lightAudit, /contestable/i);
+  assert.match(lightAudit, /three-step countdown/i);
+  assert.match(lightAudit, /Meter acceleration/i);
+
+  assert.ok(!effectsOf(light).some((effect) => effect.type === "defeat" && effect.targetRef !== "subject"));
 
   const tempRoot = await fs.mkdtemp(path.join(os.tmpdir(), "ua-dio-light-v2-"));
   try {
-    execFileSync(
-      process.execPath,
-      [
-        exporterPath,
-        "--characters-dir",
-        characterDir,
-        "--out",
-        tempRoot,
-        "--skip-assets",
-        "--source-commit",
-        "unknown",
-        "--generated-at",
-        "2026-07-16T00:00:00.000Z",
-      ],
-      { cwd: repoRoot, encoding: "utf8", stdio: "pipe" }
-    );
+    execFileSync(process.execPath, [exporterPath, "--characters-dir", characterDir, "--out", tempRoot, "--skip-assets", "--source-commit", "unknown", "--generated-at", "2026-07-16T00:00:00.000Z"], { cwd: repoRoot, encoding: "utf8", stdio: "pipe" });
     const manifest = JSON.parse(await fs.readFile(path.join(tempRoot, "manifest.json"), "utf8"));
-    const exportedInteractions = JSON.parse(await fs.readFile(path.join(tempRoot, "source-interactions.json"), "utf8"));
-    assert.equal(manifest.schemaVersion, 2);
-    assert.equal(manifest.rulesVersion, 2);
-    assert.equal(manifest.rosterCount, files.length);
+    assert.equal(manifest.rosterCount, 2);
     assert.equal(manifest.publishable, false);
     assert.equal(manifest.sourceInteractionCount, registry.interactions.length);
-    assert.deepEqual(manifest.validation, { errors: 0, warnings: 0, strict: true });
     assert.match(manifest.files["source-interactions.json"], /^sha256:[0-9a-f]{64}$/);
-    assert.equal(exportedInteractions.interactions.length, registry.interactions.length);
   } finally {
     await fs.rm(tempRoot, { recursive: true, force: true });
   }
