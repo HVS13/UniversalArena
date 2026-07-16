@@ -1,0 +1,630 @@
+schemaVersion: 2
+rulesVersion: 2
+id: dio-brando-part-3
+characterId: dio-brando
+versionId: stardust-crusaders-high-dio
+name: DIO
+version: "Stardust Crusaders — High DIO"
+origin: "JoJo's Bizarre Adventure"
+art: dio-brando-part-3.png
+role:
+  primary: role-eliminator
+  secondary: role-controller
+archetypes: [archetype-assassin, archetype-bruiser]
+capabilities:
+  - capability-burst
+  - capability-multihit
+  - capability-denial
+  - capability-follow-up
+  - capability-durable
+  - capability-recovery
+difficulty: High
+gameplan: >
+  Apply elite close-range pressure immediately, open a stopped-time combat window
+  that denies new enemy plays, then chain Fast replacement cards or commit
+  ROAD ROLLER DA! before time resumes.
+sourceBoundary:
+  continuity: "Original JoJo's Bizarre Adventure manga continuity"
+  start: "Stardust Crusaders chapter 261, immediately after DIO drains Joseph Joestar's blood"
+  end: "Stardust Crusaders chapter 264, before DIO's final defeat"
+  baselineState: "Fully synchronized High DIO with Jonathan Joestar's body and a nine-second Time Stop"
+  accessibleForms: ["High DIO"]
+  standardEquipment: ["The World", "throwing knives", "road roller when accessed through the Ultimate pathway"]
+  exceptionalAbilities: ["Time Stop", "vampiric blood drain", "accelerated regeneration"]
+  excludedMaterial:
+    - "Vaporization Freezing Technique"
+    - "Space Ripper Stingy Eyes"
+    - "Flesh Bud combat control"
+    - "Jonathan's reconnaissance Stand"
+    - "Heaven-plan abilities and post-Part-3 material"
+  knowledgeBoundary: "DIO's knowledge and tactics through the final Cairo battle"
+  personalityBoundary: "Analytical, cruel, theatrical, supremely arrogant, and prone to prolonging a winning position"
+design:
+  thesis: "An already-elite eliminator who converts one expensive Time Stop into overwhelming action advantage."
+  weakness: "Sunlight and Ripple are existential weaknesses; Time Stop must be consciously activated and DIO remains vulnerable to denied actions and Stand damage."
+  powerExpression: "Ordinary Stand attacks are high benchmark; Time Stop improves action access and definitions rather than creating DIO's baseline strength."
+  signatureHax: ["The World: Time Stop", "enemy play denial", "stopped-time Becomes"]
+  mandatoryFeelPoints:
+    - "DIO is dangerous before Time Stop."
+    - "Already played enemy cards still resolve."
+    - "Time Stop creates oppressive Follow-Up chains."
+    - "ROAD ROLLER DA! requires and consumes Time Stop."
+  forbiddenOutcomes:
+    - "Generic blood reproduces Joseph Joestar's synchronization effect."
+    - "Time Stop is reduced to ordinary Stun."
+    - "Blood reduces Energy costs."
+    - "Part 1 techniques appear without a Part 3 basis."
+economyProfile:
+  energyDemand: high
+  meterDemand: high
+  handPressure: high
+  setupSpeed: immediate
+synergy:
+  inputs: [energy_support, card_access, target_isolation]
+  outputs: [fast_pressure, action_denial, splash_finisher, self_recovery]
+  conflicts: [high_energy_demand, high_meter_demand, close_range_commitment]
+sourceInteractions:
+  interaction-death-note-eligibility:
+    outcome: ineligible
+    reason: "Selected DIO is an undead vampire rather than a living human."
+innates:
+  - id: dio-vampire-physiology
+    name: Vampire Physiology
+    mitigations:
+      - id: dio-sunlight-weakness
+        kind: weakness
+        sourceInteractionId: interaction-vampire-sunlight
+      - id: dio-ripple-weakness
+        kind: weakness
+        sourceInteractionId: interaction-vampire-ripple
+    setup: []
+    triggers: []
+  - id: dio-predators-regeneration
+    name: Predator's Regeneration
+    setup: []
+    triggers:
+      - id: dio-heal-from-blood-reserve
+        event: status_changed
+        scope: once_per_turn
+        filters: { subject: self, statusId: unique-dio-blood-reserve, direction: upward }
+        effects:
+          - id: dio-heal-from-blood-reserve-effect
+            timing: on_gain
+            scope: once_per_turn
+            type: heal
+            targetRef: subject
+            amount: { kind: flat, value: 10 }
+  - id: dio-final-regeneration
+    name: Final Regeneration
+    setup: []
+    triggers:
+      - id: dio-spend-blood-to-survive
+        event: would_be_defeated
+        scope: once_per_game
+        filters:
+          subject: self
+          condition:
+            kind: subject_status_compare
+            statusId: unique-dio-blood-reserve
+            stat: value
+            operator: greater_or_equal
+            value: 2
+        decision:
+          kind: optional_defeat_replacement
+          costs:
+            - kind: spend_status
+              statusId: unique-dio-blood-reserve
+              amount: { kind: flat, value: 2 }
+          effects:
+            - id: dio-final-regeneration-set-hp
+              timing: would_be_defeated
+              scope: once_per_game
+              type: set_hp
+              targetRef: subject
+              amount: { kind: flat, value: 1 }
+        effects: []
+statusEffects:
+  - id: unique-dio-blood-reserve
+    name: Blood Reserve
+    type: unique
+    mode: value
+    caps: { value: 3 }
+    visibility: public
+    persistence:
+      onDefeat: remove
+      onSourceDefeat: independent
+      onResurrection: remove
+      genericCleanse: immune
+      genericDispel: immune
+      genericPurge: immune
+      zeroBehavior: remove
+    rules: []
+  - id: unique-dio-time-stop
+    name: "The World: Time Stop"
+    type: unique
+    mode: binary
+    caps: { value: 1 }
+    visibility: public
+    persistence:
+      duration: combat_round
+      onDefeat: remove
+      onSourceDefeat: remove
+      onResurrection: remove
+      genericCleanse: immune
+      genericDispel: immune
+      genericPurge: immune
+      zeroBehavior: remove
+    rules:
+      - id: dio-time-stop-follow-up
+        timing: on_gain
+        scope: continuous
+        type: grant_keyword
+        target:
+          kind: owned_cards
+          owner: subject
+        keywordId: keyword-follow-up
+createdCards:
+  - &dio_stopped_barrage
+    id: dio-world-barrage-stopped
+    slotId: variant-regular-1
+    cardOrigin: generated_variant
+    owner: { kind: character, characterId: dio-brando-part-3 }
+    name: "The World: Stopped-Time Muda Barrage"
+    cost: { energy: 4, ultimateMeter: 0 }
+    power: { kind: range, min: 40, max: 56 }
+    speed: speed-fast
+    actionTypes: [action-basic, action-attack]
+    damageTypes: [damage-physical]
+    properties: []
+    sourceSystemTags: [system-stand]
+    range: range-melee
+    area: null
+    attackTags: [attack-blunt, attack-multihit]
+    effectTags: []
+    target: { lockMode: character, side: enemy, count: 1 }
+    lifecycle: &dio_variant_lifecycle
+      afterResolution: destination-discard
+      ifCancelled: destination-discard
+      ifNegated: destination-discard
+      ifUnusedAtTurnEnd: destination-discard
+      onOwnerDefeat: destination-defeat-reserve
+      onResurrection: destination-discard
+    effects:
+      - id: dio-stopped-barrage-damage
+        timing: on_use
+        scope: per_hit
+        type: deal_damage
+        targetRef: target
+        amount:
+          op: floor_divide
+          left: { ref: current_power, evaluation: use }
+          right: { value: 8 }
+        hits: { value: 8 }
+    continuousRules: []
+    transforms: []
+    restrictions: []
+    sourceBasis: [source-dio-world-power, source-dio-time-stop]
+  - id: dio-world-guard-stopped
+    slotId: variant-regular-2
+    cardOrigin: generated_variant
+    owner: { kind: character, characterId: dio-brando-part-3 }
+    name: "The World: Stopped-Time Guard"
+    cost: { energy: 4, ultimateMeter: 0 }
+    power: { kind: range, min: 36, max: 50 }
+    speed: speed-fast
+    actionTypes: [action-basic, action-defense]
+    damageTypes: []
+    properties: []
+    sourceSystemTags: [system-stand]
+    range: range-melee
+    area: null
+    attackTags: []
+    effectTags: []
+    target: { lockMode: character, side: self, count: 1 }
+    lifecycle: *dio_variant_lifecycle
+    effects:
+      - id: dio-stopped-guard-shield
+        timing: on_use
+        scope: once_per_use
+        type: gain_shield
+        targetRef: self
+        amount: { ref: current_power, evaluation: use }
+    continuousRules: []
+    transforms: []
+    restrictions: []
+    sourceBasis: [source-dio-world-power, source-dio-time-stop]
+  - id: dio-knife-barrage-stopped
+    slotId: variant-regular-4
+    cardOrigin: generated_variant
+    owner: { kind: character, characterId: dio-brando-part-3 }
+    name: "Knife Barrage: Stopped Time"
+    cost: { energy: 6, ultimateMeter: 0 }
+    power: { kind: range, min: 50, max: 70 }
+    speed: speed-fast
+    actionTypes: [action-technique, action-attack]
+    damageTypes: [damage-physical]
+    properties: []
+    sourceSystemTags: []
+    range: range-ranged
+    area: null
+    attackTags: [attack-pierce, attack-multihit]
+    effectTags: []
+    target: { lockMode: character, side: enemy, count: 1 }
+    lifecycle: *dio_variant_lifecycle
+    effects:
+      - id: dio-stopped-knives-damage
+        timing: on_use
+        scope: per_hit
+        type: deal_damage
+        targetRef: target
+        amount:
+          op: floor_divide
+          left: { ref: current_power, evaluation: use }
+          right: { value: 10 }
+        hits: { value: 10 }
+        projectileBehavior:
+          suspendedUntilTimeResumes: true
+          committedCardContinuesAfterSourceDefeat: true
+    continuousRules: []
+    transforms: []
+    restrictions: []
+    sourceBasis: [source-dio-knives, source-dio-time-stop]
+cards:
+  - id: dio-world-barrage
+    slotId: regular-1
+    cardOrigin: starting
+    owner: { kind: character, characterId: dio-brando-part-3 }
+    name: "The World: Muda Barrage"
+    cost: { energy: 4, ultimateMeter: 0 }
+    power: { kind: range, min: 36, max: 48 }
+    speed: speed-normal
+    actionTypes: [action-basic, action-attack]
+    damageTypes: [damage-physical]
+    properties: []
+    sourceSystemTags: [system-stand]
+    range: range-melee
+    area: null
+    attackTags: [attack-blunt, attack-multihit]
+    effectTags: []
+    target: { lockMode: character, side: enemy, count: 1 }
+    lifecycle: &dio_regular_lifecycle
+      afterResolution: destination-discard
+      ifCancelled: destination-discard
+      ifNegated: destination-discard
+      ifUnusedAtTurnEnd: destination-discard
+      onOwnerDefeat: destination-defeat-reserve
+      onResurrection: destination-discard
+    effects:
+      - id: dio-world-barrage-damage
+        timing: on_use
+        scope: per_hit
+        type: deal_damage
+        targetRef: target
+        amount:
+          op: floor_divide
+          left: { ref: current_power, evaluation: use }
+          right: { value: 4 }
+        hits: { value: 4 }
+    continuousRules: []
+    transforms:
+      - id: dio-world-barrage-becomes-stopped
+        priority: 100
+        condition:
+          kind: subject_has_status
+          subject: owner
+          statusId: unique-dio-time-stop
+        replacementCardId: dio-world-barrage-stopped
+    restrictions: []
+    sourceBasis: [source-dio-world-power, source-dio-time-stop]
+  - id: dio-world-guard
+    slotId: regular-2
+    cardOrigin: starting
+    owner: { kind: character, characterId: dio-brando-part-3 }
+    name: "The World: Guard"
+    cost: { energy: 4, ultimateMeter: 0 }
+    power: { kind: range, min: 32, max: 44 }
+    speed: speed-normal
+    actionTypes: [action-basic, action-defense]
+    damageTypes: []
+    properties: []
+    sourceSystemTags: [system-stand]
+    range: range-melee
+    area: null
+    attackTags: []
+    effectTags: []
+    target: { lockMode: character, side: self, count: 1 }
+    lifecycle: *dio_regular_lifecycle
+    effects:
+      - id: dio-world-guard-shield
+        timing: on_use
+        scope: once_per_use
+        type: gain_shield
+        targetRef: self
+        amount: { ref: current_power, evaluation: use }
+    continuousRules: []
+    transforms:
+      - id: dio-world-guard-becomes-stopped
+        priority: 100
+        condition:
+          kind: subject_has_status
+          subject: owner
+          statusId: unique-dio-time-stop
+        replacementCardId: dio-world-guard-stopped
+    restrictions: []
+    sourceBasis: [source-dio-world-power, source-dio-time-stop]
+  - id: dio-vampiric-drain
+    slotId: regular-3
+    cardOrigin: starting
+    owner: { kind: character, characterId: dio-brando-part-3 }
+    name: Vampiric Drain
+    cost: { energy: 5, ultimateMeter: 0 }
+    power: { kind: range, min: 30, max: 42 }
+    speed: speed-normal
+    actionTypes: [action-technique, action-attack]
+    damageTypes: [damage-physical]
+    properties: []
+    sourceSystemTags: []
+    range: range-melee
+    area: null
+    attackTags: [attack-pierce]
+    effectTags: [effect-recovery]
+    target: { lockMode: character, side: enemy, count: 1 }
+    lifecycle: *dio_regular_lifecycle
+    effects:
+      - id: dio-vampiric-drain-damage
+        timing: on_use
+        scope: once_per_use
+        type: deal_damage
+        targetRef: target
+        amount: { ref: current_power, evaluation: use }
+      - id: dio-vampiric-drain-heal
+        timing: on_hp_damage
+        scope: once_per_use
+        type: heal
+        targetRef: self
+        amount:
+          op: floor_divide
+          left: { ref: hp_damage_dealt_by_effect, effectId: dio-vampiric-drain-damage }
+          right: { value: 2 }
+      - id: dio-vampiric-drain-blood
+        timing: on_hp_damage
+        scope: once_per_use
+        type: gain_status
+        targetRef: self
+        statusId: unique-dio-blood-reserve
+        amount: { kind: flat, value: 1 }
+    continuousRules: []
+    transforms: []
+    restrictions: []
+    sourceBasis: [source-dio-vampirism]
+  - id: dio-knife-barrage
+    slotId: regular-4
+    cardOrigin: starting
+    owner: { kind: character, characterId: dio-brando-part-3 }
+    name: Knife Barrage
+    cost: { energy: 6, ultimateMeter: 0 }
+    power: { kind: range, min: 42, max: 60 }
+    speed: speed-normal
+    actionTypes: [action-technique, action-attack]
+    damageTypes: [damage-physical]
+    properties: []
+    sourceSystemTags: []
+    range: range-ranged
+    area: null
+    attackTags: [attack-pierce, attack-multihit]
+    effectTags: []
+    target: { lockMode: character, side: enemy, count: 1 }
+    lifecycle: *dio_regular_lifecycle
+    effects:
+      - id: dio-knife-barrage-damage
+        timing: on_use
+        scope: per_hit
+        type: deal_damage
+        targetRef: target
+        amount:
+          op: floor_divide
+          left: { ref: current_power, evaluation: use }
+          right: { value: 6 }
+        hits: { value: 6 }
+    continuousRules: []
+    transforms:
+      - id: dio-knives-become-stopped
+        priority: 100
+        condition:
+          kind: subject_has_status
+          subject: owner
+          statusId: unique-dio-time-stop
+        replacementCardId: dio-knife-barrage-stopped
+    restrictions: []
+    sourceBasis: [source-dio-knives]
+  - id: dio-time-stop
+    slotId: regular-5
+    cardOrigin: starting
+    owner: { kind: character, characterId: dio-brando-part-3 }
+    name: "The World: Time Stop"
+    cost: { energy: 9, ultimateMeter: 0 }
+    power: null
+    speed: speed-fast
+    actionTypes: [action-technique, action-special]
+    damageTypes: []
+    properties: []
+    sourceSystemTags: [system-stand]
+    range: null
+    area: null
+    attackTags: []
+    effectTags: [effect-transformation, effect-debuff]
+    target: { lockMode: character, side: self, count: 1 }
+    lifecycle: *dio_regular_lifecycle
+    effects:
+      - id: dio-time-stop-gain-state
+        timing: on_use
+        scope: once_per_use
+        type: gain_status
+        targetRef: self
+        statusId: unique-dio-time-stop
+        amount: { kind: flat, value: 1 }
+      - id: dio-time-stop-block-enemy-play
+        timing: on_use
+        scope: once_per_use
+        type: block_play
+        targetRef: opposing_team
+        duration: combat_round
+        existingPlaysContinue: true
+      - id: dio-time-stop-retain
+        timing: on_use
+        scope: once_per_use
+        type: retain
+        targetRef: this_card
+    continuousRules: []
+    transforms: []
+    restrictions:
+      - id: dio-time-stop-not-already-active
+        timing: play
+        kind: forbid
+        subject: user
+        condition:
+          kind: subject_has_status
+          statusId: unique-dio-time-stop
+    sourceBasis: [source-dio-time-stop]
+  - id: dio-road-roller
+    slotId: ultimate-1
+    cardOrigin: starting
+    owner: { kind: character, characterId: dio-brando-part-3 }
+    name: ROAD ROLLER DA!
+    cost: { energy: 0, ultimateMeter: 40 }
+    power: { kind: range, min: 90, max: 130 }
+    speed: speed-fast
+    actionTypes: [action-ultimate, action-attack]
+    damageTypes: [damage-physical]
+    properties: []
+    sourceSystemTags: [system-stand]
+    range: range-melee
+    area:
+      kind: area-splash
+      batchMode: simultaneous
+      anchor: final_primary_position
+    attackTags: [attack-blunt]
+    effectTags: [effect-debuff]
+    target: { lockMode: character, side: enemy, count: 1 }
+    lifecycle:
+      afterResolution: destination-ultimate-area
+      ifCancelled: destination-ultimate-area
+      ifNegated: destination-ultimate-area
+      ifUnusedAtTurnEnd: destination-ultimate-area
+      onOwnerDefeat: destination-ultimate-area
+      onResurrection: destination-ultimate-area
+    effects:
+      - id: dio-road-roller-damage
+        timing: on_use
+        scope: per_target
+        type: deal_damage
+        targetRef: affected_targets
+        amount: { ref: current_power, evaluation: use }
+      - id: dio-road-roller-end-time-stop
+        timing: after_use
+        scope: once_per_use
+        type: remove_status
+        targetRef: self
+        statusId: unique-dio-time-stop
+    continuousRules: []
+    transforms: []
+    restrictions:
+      - id: dio-road-roller-requires-time-stop
+        timing: play
+        kind: require
+        subject: user
+        condition:
+          kind: subject_has_status
+          statusId: unique-dio-time-stop
+    sourceBasis: [source-dio-road-roller, source-dio-time-stop]
+ultimatePathways:
+  - id: dio-greatest-high-pathway
+    name: Greatest High
+    lifecycle:
+      kind: repeatable
+      returnDestination: destination-ultimate-area
+    variants:
+      - cardId: dio-road-roller
+        availability:
+          kind: subject_has_status
+          statusId: unique-dio-time-stop
+sourceBasis:
+  - id: source-dio-world-power
+    classification: demonstrated
+    sources:
+      - reference: "Stardust Crusaders manga, final DIO battle, chapters 248-264"
+        note: "The World is an elite close-range Stand capable of overpowering opponents before Time Stop is considered."
+    interpretation: "DIO receives high ordinary Attack and Defense Power rather than a weak pre-setup baseline."
+    uncertainty: "Exact cross-setting numeric comparison remains a gameplay benchmark decision."
+    intentionalDeviation: "Power ranges are comparative game values, not literal destructive-output measurements."
+    supports: [dio-world-barrage, dio-world-guard, dio-world-barrage-stopped, dio-world-guard-stopped]
+  - id: source-dio-time-stop
+    classification: demonstrated
+    sources:
+      - reference: "Stardust Crusaders manga, chapters 248-264"
+        note: "DIO consciously stops time, acts while others cannot, and reaches a nine-second endpoint after Joseph's blood."
+    interpretation: "One activation creates a binary combat-round play-denial window; already committed cards continue."
+    uncertainty: "Literal seconds are not converted into an arbitrary number of card plays."
+    intentionalDeviation: "Follow-Up and Becomes model action advantage without claiming one card equals one second."
+    supports: [unique-dio-time-stop, dio-time-stop, dio-world-barrage-stopped, dio-world-guard-stopped, dio-knife-barrage-stopped, dio-road-roller]
+  - id: source-dio-vampirism
+    classification: demonstrated
+    sources:
+      - reference: "Stardust Crusaders manga, Joseph blood-drain sequence"
+        note: "Blood restores and strengthens DIO's vampiric body."
+    interpretation: "Blood Reserve supports healing and one narrow defeat replacement."
+    uncertainty: "Arbitrary crossover blood does not reproduce Joseph Joestar's unique synchronization effect."
+    intentionalDeviation: "Blood Reserve is capped and has no Energy or Time Stop-duration conversion."
+    supports: [unique-dio-blood-reserve, dio-vampiric-drain, dio-predators-regeneration, dio-final-regeneration]
+  - id: source-dio-knives
+    classification: demonstrated
+    sources:
+      - reference: "Stardust Crusaders manga, stopped-time knife sequence"
+        note: "DIO throws multiple knives in stopped time; they halt near Jotaro and resume when time flows."
+    interpretation: "Knife Barrage gains more Hits and Fast speed through Becomes while Time Stop is active."
+    uncertainty: "The exact number of knives varies by panel and adaptation."
+    intentionalDeviation: "Ten Hits is a gameplay-readable representation of overwhelming projectile pressure."
+    supports: [dio-knife-barrage, dio-knife-barrage-stopped]
+  - id: source-dio-road-roller
+    classification: demonstrated
+    sources:
+      - reference: "Stardust Crusaders manga, chapter 263"
+        note: "DIO drops and pummels a road roller during stopped time."
+    interpretation: "The Ultimate is a high-Power Physical Splash attack that requires and consumes Time Stop."
+    uncertainty: "The road roller is situational environmental access, not carried equipment."
+    intentionalDeviation: "Ultimate pathway availability represents access to the set piece."
+    supports: [dio-road-roller, dio-greatest-high-pathway]
+  - id: source-dio-vampire-weaknesses
+    classification: core
+    sources:
+      - reference: "JoJo's Bizarre Adventure manga, Phantom Blood vampire rules retained by Part 3 DIO"
+        note: "Sunlight and Ripple are existential vampire weaknesses."
+    interpretation: "Source-interaction weakness records remain explicit even before every roster member can exploit them."
+    uncertainty: "No universal damage multiplier is inferred."
+    intentionalDeviation: "Weakness behavior is resolved by the source-interaction adjudication rather than a generic element table."
+    supports: [dio-vampire-physiology, interaction-vampire-sunlight, interaction-vampire-ripple]
+consideredButOmitted:
+  - name: Vaporization Freezing Technique
+    classification: excluded
+    reason: "Part 3 DIO never demonstrates compatibility with this Part 1 technique after taking Jonathan's body."
+    sourceBasisIds: [source-dio-vampire-weaknesses]
+  - name: Space Ripper Stingy Eyes
+    classification: excluded
+    reason: "Part 3 DIO never demonstrates the technique in the original manga."
+    sourceBasisIds: [source-dio-vampire-weaknesses]
+  - name: Flesh Buds
+    classification: excluded
+    reason: "Canonical long-term coercion tool, but not part of the selected final-combat play pattern."
+    sourceBasisIds: [source-dio-world-power]
+  - name: Jonathan's reconnaissance Stand
+    classification: excluded
+    reason: "Canonical reconnaissance ability, but unused in the selected final-combat action plan."
+    sourceBasisIds: [source-dio-world-power]
+  - name: Blood Focus
+    classification: excluded
+    reason: "No canonical basis exists for blood reducing DIO's Energy costs."
+    sourceBasisIds: [source-dio-vampirism]
+  - name: Post-Time-Stop Strain
+    classification: excluded
+    reason: "DIO repeatedly activates Time Stop without the former generic Strain aftermath."
+    sourceBasisIds: [source-dio-time-stop]
