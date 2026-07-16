@@ -16,6 +16,10 @@ When sources disagree, use this order:
    - `docs/data/schema-v2.md`
    - `docs/data/registries.yml`
    - `docs/data/rules-v2/global-rules.yml`
+   - `docs/data/rules-v2/source-interactions.yml`
+   - `docs/data/source-interactions-v2.md`
+   - `docs/data/rules-v2/characters/`
+   - `docs/design/lore-audits/`
    - `docs/data/migrations/v1-to-v2.md`
    - `docs/design/roster-audit-checklist.md`
 3. Human-readable Rules v1 pages and character pages.
@@ -25,7 +29,9 @@ Rules v2 documents and parallel data are approved specifications but are not ful
 
 `docs/data/rules-v2/global-rules.yml` applies only to content explicitly declaring `rulesVersion: 2`. During staged migration, the legacy keyword, status, term, role, and card-type files remain canonical for Rules v1 exports.
 
-When an initial Rules v2 document conflicts with an explicit correction in `rules-v2-supplement.md`, `rules-v2-global-reference.md`, or the corrected Schema v2 specification, use the correction.
+Rules v2 character files under `docs/data/rules-v2/characters/` are parallel audited data until the active roster cutover. They do not replace same-slug Rules v1 files under `docs/data/characters/` merely by existing.
+
+When an initial Rules v2 document conflicts with an explicit correction in `rules-v2-supplement.md`, `rules-v2-global-reference.md`, the corrected Schema v2 specification, or a character-specific approved lore audit, use the correction with the narrowest applicable scope.
 
 ## Highest design priority
 
@@ -102,6 +108,8 @@ Slash, Pierce, and Blunt are Attack Tags and do not automatically bypass defense
 
 Do not force hax through damage when statuses, restrictions, targeting, defeat clauses, replacement, lifecycle, or explicit effects preserve it better.
 
+Source-specific eligibility, weakness, immunity, perception, feeding, naming, or equivalent matchup questions must use stable source-interaction IDs. Do not infer them from Damage Types, Properties, Source-System Tags, raw Power, or ordinary target legality. `uncertain` never silently becomes eligible.
+
 ## Shared economy and ownership
 
 The team shares Draw Pile, Discard Pile, hand, Energy, and Ultimate Meter. Cards still have owners.
@@ -134,8 +142,11 @@ Rules v2 structured content requires:
 - Typed Unique statuses.
 - Ultimate pathways.
 - Source-basis records.
+- Version-specific source-interaction outcomes when a mechanic depends on crossover eligibility or weakness.
 
 Rules v2 global mechanics and changed legacy meanings must be represented in `docs/data/rules-v2/global-rules.yml`, described in `docs/design/rules-v2-global-reference.md`, and accepted by `validate-rules-v2-global.mjs`.
+
+Source-interaction definitions must be represented in `docs/data/rules-v2/source-interactions.yml`, documented in `docs/data/source-interactions-v2.md`, and validated alongside every Rules v2 character that declares or references them.
 
 Do not add an undefined global mechanic without adding its registry/reference entry and validation support.
 
@@ -238,6 +249,7 @@ Warnings include:
 - Run `mkdocs build --strict` or `mkdocs serve` when validating documentation changes.
 - Run `npm run validate:v2:global:strict` when changing Rules v2 registries or global mechanics.
 - Run exporter and schema validation when changing structured data or schema behavior.
+- Run character-specific Rules v2 regression tests when changing audited parallel character files.
 - Run Rules v2 migration and roster regression tests before claiming migration completion.
 
 ## Response style
