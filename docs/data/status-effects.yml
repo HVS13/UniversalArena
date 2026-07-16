@@ -8,7 +8,7 @@ statusEffects:
       - timing: "Allies' Card Played"
         text: "Take Potency damage. Then increase Potency by Energy spent."
       - timing: "Turn End"
-        text: "Reduce Count by Halve."
+        text: "Halve Count."
   - id: status-burn
     name: Burn
     type: Negative
@@ -18,7 +18,7 @@ statusEffects:
       - timing: "Allies' Card Played"
         text: "Take Potency damage. Then reduce Count by Energy spent."
       - timing: "Turn End"
-        text: "Take Potency damage. Then reduce Count by Halve."
+        text: "Take Potency damage. Then Halve Count."
   - id: status-disarm
     name: Disarm
     type: Negative
@@ -47,7 +47,7 @@ statusEffects:
       - timing: "Allies' Card Played"
         text: "Increase Potency by Energy spent."
       - timing: "Turn End"
-        text: "Take Potency damage. Then reduce Count by Halve."
+        text: "Take Potency damage. Then Halve Count."
   - id: status-root
     name: Root
     type: Negative
