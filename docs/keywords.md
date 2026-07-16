@@ -102,12 +102,12 @@ Core keywords are expected in early play. Advanced keywords are less common or m
 
 <div class="ua-entry keyword-entry" id="keyword-ethereal">
   <p class="ua-entry__title">Ethereal</p>
-  <p class="ua-entry__desc">If this card is in hand at the end of the turn, it is Exhausted.</p>
+  <p class="ua-entry__desc">At Turn End, if this card is still in hand, Exhaust it before the normal hand discard.</p>
 </div>
 
 <div class="ua-entry keyword-entry" id="keyword-exhaust">
   <p class="ua-entry__title">Exhaust</p>
-  <p class="ua-entry__desc">When this card is played, remove this card from play for the rest of the game.</p>
+  <p class="ua-entry__desc">After this card is used, Cancelled, or Negated, remove it from play instead of putting it in the Discard Pile. If an effect Exhausts a card from hand or another non-combat zone, remove it immediately.</p>
 </div>
 
 <div class="ua-entry keyword-entry" id="keyword-innate">
