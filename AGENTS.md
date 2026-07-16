@@ -1,249 +1,68 @@
 # AGENTS
 
-This repository is the MkDocs Material rules reference and canonical structured data source for Universal Arena.
+This repo is a MkDocs Material rules reference and canonical data source.
 
-## Authority order
+## Improvement doctrine
 
-When sources disagree, use this order:
+Improve the existing Universal Arena foundation directly. Do not create parallel rule versions, duplicate rulebooks, migration layers, or replacement schemas unless the project owner explicitly approves that direction.
 
-1. `docs/data/` structured data for currently implemented executable behavior.
-2. Approved Rules v2 specifications and parallel migration data for intended Rules v2 behavior:
-   - `docs/design/design-principles.md`
-   - `docs/design/character-authoring-framework.md`
-   - `docs/design/rules-v2-decisions.md`
-   - `docs/design/rules-v2-supplement.md`
-   - `docs/design/rules-v2-global-reference.md`
-   - `docs/data/schema-v2.md`
-   - `docs/data/registries.yml`
-   - `docs/data/rules-v2/global-rules.yml`
-   - `docs/data/migrations/v1-to-v2.md`
-   - `docs/design/roster-audit-checklist.md`
-3. Human-readable Rules v1 pages and character pages.
-4. Generated exports and `site/` output.
+Preserve established rules, character identity, gameplay loops, numeric formulas, and player expectations when they already serve the intended vision. Make the smallest change that fully solves an important problem; do not redesign merely because another structure looks cleaner or more familiar.
 
-Rules v2 documents and parallel data are approved specifications but are not fully implemented until structured character data, exporter logic, migrations, generated pages, and tests are updated. Never claim Rules v1 content already behaves as Rules v2 merely because a specification or overlay exists.
+Before changing established gameplay, record:
 
-`docs/data/rules-v2/global-rules.yml` applies only to content explicitly declaring `rulesVersion: 2`. During staged migration, the legacy keyword, status, term, role, and card-type files remain canonical for Rules v1 exports.
+1. the current behavior and its original purpose;
+2. the actual problem;
+3. the proposed improvement;
+4. what existing intent remains preserved;
+5. affected characters, cards, statuses, references, structured data, exports, and tests;
+6. trade-offs and regression risks.
 
-When an initial Rules v2 document conflicts with an explicit correction in `rules-v2-supplement.md`, `rules-v2-global-reference.md`, or the corrected Schema v2 specification, use the correction.
+Use the complete Power and cost procedure in `docs/characters/character-creation-guide.md` for every numeric proposal. Tooling, schemas, examples, warnings, and validators may identify problems, but they do not independently authorize gameplay changes.
 
-## Highest design priority
+Update the existing canonical rule, reference, or data file instead of creating a competing version of it.
 
-Universal Arena is lore-first.
-
-Prioritize, in order:
-
-1. The selected canonical version.
-2. Character feel and recognizable play pattern.
-3. Signature gimmicks, transformations, equipment, resources, and hax.
-4. Canonical requirements, weaknesses, limitations, and aftermaths.
-5. Clear, deterministic Universal Arena translation.
-6. Access, opportunity cost, counterplay, and team economy.
-7. Conventional balance.
-
-Do not flatten vastly different characters into equal duelists. A canonically overwhelming character should feel more powerful in ordinary play. A weak character should contribute through source-appropriate efficiency, utility, preparation, equipment, information, deception, survival, or narrow payoff—not unsupported statistics.
-
-Do not reduce defining hax into ordinary damage or a minor status merely because the original effect is powerful. Regulate setup, cost, resource, Speed, visibility, duration, frequency, target conditions, and aftermath before weakening the payoff.
-
-Raw Power, HP, durability, and Speed do not grant automatic hax resistance. Use source-supported Damage Immunity, Status Immunity, Effect Immunity, targeting restrictions, or explicit text.
-
-## Required character workflow
-
-Before creating or revising cards:
-
-1. Define continuity and source-period boundaries.
-2. Define baseline form, equipment, knowledge, and personality.
-3. Classify abilities as Baseline, Unlockable, Exceptional, or Excluded.
-4. Write the winning thesis and weakness.
-5. Write mandatory and forbidden feel outcomes.
-6. Explain how power disparity appears before the Ultimate.
-7. Select actions for distinct gameplay jobs, not fame alone.
-8. Design exactly two Basics and three Techniques.
-9. Define at least one Ultimate pathway.
-10. Add typed Innates, statuses, effects, restrictions, ownership, lifecycle, provenance, and source basis.
-11. Assign Roles, Combat Archetypes, Capability Tags, economy profile, and synergy metadata after the kit exists.
-12. Run `docs/design/roster-audit-checklist.md`.
-
-## Character and card rules
-
-- Exactly two Basics and three Techniques.
-- Do not require Strike + Defend.
-- Do not require generic Basic names.
-- Prefer canonical names.
-- Basics establish the floor; Techniques create the ceiling.
-- Every card needs a canonical job and a gameplay job.
-- Innates are continuous truths, not hidden sixth Techniques.
-- Statuses store persistent state.
-- Created cards provide prepared, temporary, conditional, summon, equipment, or expandable breadth.
-- Created is provenance, not an Action Type.
-- `Becomes` is automatic and state-dependent in deck, hand, and play.
-- Variants should change decisions, not only numbers.
-- Every character has one or more Ultimate pathways.
-- Power benchmarks are guides, not ceilings; document significant deviations.
-- Card Speed represents response window and commitment, not only movement-speed ranking.
-- Noncombat characters use source-supported indirect actions rather than invented brawling.
-- Copy and adaptive mechanics require explicit boundaries, ownership, lifecycle, and recursion rules.
-
-## Crossover and classification rules
-
-Use minimal crossover equalization: characters can perceive, target, clash with, and affect one another enough for play, but fictional power systems do not automatically become identical.
-
-Rules v2 broad Damage Types:
-
-- Physical
-- Energy
-- Magical
-- Mental
-- Spiritual
-
-Properties describe elements or phenomena such as Electric, Fire, Ice, Sonic, Explosive, or Radiation. Source-System Tags describe frameworks such as Ki, Chakra, Reiatsu, Haki, Stand, Nen, or Cursed Energy. Neither has inherent universal rules unless referenced.
-
-Slash, Pierce, and Blunt are Attack Tags and do not automatically bypass defenses.
-
-Do not force hax through damage when statuses, restrictions, targeting, defeat clauses, replacement, lifecycle, or explicit effects preserve it better.
-
-## Shared economy and ownership
-
-The team shares Draw Pile, Discard Pile, hand, Energy, and Ultimate Meter. Cards still have owners.
-
-- Shared hand is access, not ownership.
-- Only the owner normally plays its card.
-- Created cards inherit source-character ownership unless stated.
-- Meter comes only from Energy actually paid as card play cost.
-- Creation is not play.
-- Reveal is not Draw, Discard, Play, Use, or removal.
-- Defeat removes the owner's cards from active circulation under Rules v2 Defeat Reserve rules.
-
-Avoid named-pair and franchise bonuses. Prefer synergy through statuses, position, Speed, timing, targeting, card access, Energy, Meter, protection, and broad conditions.
-
-Character Core Roles and Combat Archetypes describe individuals. Optional Lineup Archetypes describe team plans and never impose legality or required composition.
-
-## Structured-data requirements
-
-`docs/data/` is the source of truth. Do not rely on parsing normal prose for executable behavior.
-
-Rules v2 structured content requires:
-
-- Stable IDs.
-- Explicit owner and card provenance.
-- Separated Action Types, Damage Types, Properties, Source-System Tags, range, area, Attack Tags, and Effect Tags.
-- Typed targets and lock modes.
-- Typed effects with stable IDs, timing, and scope.
-- Typed conditions and restrictions.
-- Explicit lifecycle destinations.
-- Typed Unique statuses.
-- Ultimate pathways.
-- Source-basis records.
-
-Rules v2 global mechanics and changed legacy meanings must be represented in `docs/data/rules-v2/global-rules.yml`, described in `docs/design/rules-v2-global-reference.md`, and accepted by `validate-rules-v2-global.mjs`.
-
-Do not add an undefined global mechanic without adding its registry/reference entry and validation support.
-
-Every effect primitive used by content or examples must be registered. Do not invent specialized primitives when a general typed primitive and target/filter can represent the behavior.
-
-Keep `schemaVersion` and `rulesVersion` separate.
-
-When changing old meaning:
-
-1. Add an ordered migration.
-2. Add temporary legacy aliases.
-3. Produce an affected-content report.
-4. Update structured data.
-5. Run roster-wide regression tests.
-6. Regenerate human-readable documentation.
-7. Record the change.
-
-Never silently reinterpret Rules v1 exports as Rules v2.
-
-## Initial Rules v2 migrations
-
-Required migrations include:
-
-- Electric Damage Type to Electric Property.
-- Flat roles to Core Roles, Combat Archetypes, and Capability Tags.
-- Defender to Guardian alias.
-- Exhaust-on-play to Exhaust-after-resolution, with manual intent review.
-- Unscoped Taunt to Taunt (All).
-- Bare Bounce to Bounce 1.
-- Implicit ownership to explicit ownership.
-- Created provenance separated from Action Types.
-- Ultimates to Ultimate pathways.
-- Unique status prose to typed rules.
-- Team-turn Stun ambiguity to per-character Stun behavior.
-- Defeated-owner cards to Defeat Reserve behavior.
-- Legacy source-system classifications to Source-System Tags.
-
-## Validation behavior
-
-Block export for structural, semantic, and compatibility errors.
-
-Design and lore warnings require review but must not automatically nerf or reject a source-accurate design.
-
-Warnings include:
-
-- Large Power deviation.
-- Multiple hard-control effects.
-- High hand or resource pressure.
-- No low-investment action.
-- Variants that only add numbers.
-- Apparently dominant Ultimate pathway.
-- Excessive independent decisions or memory burden.
-- Later-version ability.
-- Unsupported immunity.
-- Hax reduced to damage.
-- Strong character lacking baseline superiority.
-- Weak character receiving unsupported parity.
-
-## Existing project rules
+## Project rules
 
 - Skills manifest lives in `SKILLS.md`.
 - Work in `docs/`; treat `site/` as generated output and do not edit it.
 - MkDocs theme overrides live in `docs/overrides/`; use them for site-wide UI tweaks.
 - Follow patterns in `docs/adding-content.md` for content types; use templates and shared link markup.
-- Keywords are tiered Core/Advanced in `docs/keywords.md`; keep `docs/data/keywords.yml` `tier` values in sync for Rules v1 content.
-- Status effect entries include a Mode line and explicit Turn End behavior.
-- Structured data lives in `docs/data/`; keep it in sync with reference pages.
-- The game is 3v3 with a shared deck, hand, Energy, and Ultimate Meter, plus per-character HP, statuses, resources, ownership, and defeat state.
-- Exporter lives in `docs/scripts/`; use it or CI to sync data into the game repository.
-- If core or UI changes affect rules, keywords, statuses, terms, classifications, roles, or registries, update docs and structured data, then re-export.
-- Track docs/data tasks in `TODO.md`.
-- If adding or renaming a registry entry, define it in human-readable references and `docs/data/`.
-- Restriction enforcement is structured-only. Any display restriction must be mirrored in structured restrictions.
-- Filtering uses the `hidden` attribute; avoid overriding it on filterable items.
-- When evaluating ambiguity, check `docs/faq.md` and reflect durable rules in relevant reference and structured files.
-- When clarifying timing or interactions, update the definition and add a short FAQ example when it will recur at the table.
-- Keep damage order, timing labels, target semantics, and status behavior synchronized across references and structured data.
-- Adjacency is per-team line. Empty positions break adjacency. Opposed means the same column across teams.
-- Character portraits must use `../../assets/characters/<file>` on character pages.
-- `Spend X` is mandatory. Optional Spend uses `?`.
-- Shared link markup uses the `ua-*-link` classes so `docs/javascripts/guide.js` can rewrite links.
-- Only link global statuses from the global status reference; Unique statuses remain character-specific.
-- Ensure Potency, Count, Value, and Stack caps match reachable behavior.
-- Use the simplest coherent status mode; never create dummy Potency or Count.
-- Do not add game pages or game assets to this repository unless explicitly requested.
-- Export actions live in `docs/overrides/main.html` and `docs/javascripts/print.js`; keep exports free of permalinks, URLs, and images as currently required.
-
-## Repository hygiene
-
-- Keep structured data and human-readable docs synchronized.
-- Prefer generation from structured effects over duplicate manually authored mechanics.
-- Do not publish canonical exports from dirty structured data.
-- Preserve stable IDs across display-name changes.
-- Cite or record source basis for major mechanics.
-- State uncertainty honestly.
-- Do not silently overwrite unrelated instructions when updating this file.
+- Keywords are tiered Core/Advanced in `docs/keywords.md`; keep `docs/data/keywords.yml` `tier` values in sync.
+- Status effect entries include a Mode line (P/C, S, V) and an explicit Turn End line (use "No change" when nothing ticks).
+- Structured data lives in `docs/data/`; keep it in sync with the reference pages.
+- The game is 3v3 per team with a shared deck/hand/energy/ultimate and per-character HP/status; keep docs and `docs/data` aligned.
+- Exporter lives in `docs/scripts/`; use it (or CI) to sync data into the game repo.
+- If core or UI changes affect rules/keywords/status effects/terms, update the docs and `docs/data`, then re-export.
+- Track docs/data tasks in this repo's `TODO.md`.
+- If you add or rename keywords/status effects/terms, define them in the docs (`docs/keywords.md`, `docs/status-effects.md`, `docs/terminology.md`) and `docs/data/*.yml`.
+- Structured card data supports `effects`, `restrictions`, and optional `transforms`; keep `docs/data/README.md` aligned (recent effect types include `set_status`, `reduce_status`, `spend_status`, `deal_damage_per_spent`, `reload_equipped`, `switch_equip`).
+- Restriction enforcement is structured-only; any "Can only be played if" / "Cannot be played if" text must be mirrored in `restrictions` or it will not be enforced by rules parsing.
+- Filtering uses the `hidden` attribute; avoid overriding it on filterable items (add an explicit `[hidden] { display: none; }` when custom display styles are applied).
+- When evaluating rules or potential ambiguity, check `docs/faq.md` and ensure durable rules are reflected in the relevant reference pages.
+- When clarifying timing or keyword interactions, update the keyword/term definition and add a short FAQ example (with a cross-link from the glossary) if it will come up at the table.
+- When adjusting combat math or timing labels, keep `docs/keywords.md`, `docs/status-effects.md`, `docs/terminology.md`, `docs/faq.md`, and `docs/data/*.yml` in sync. Current damage order: Power modifiers -> Immune -> % modifiers -> Shield -> Barrier -> flat HP modifiers -> HP.
+- Adjacency is per-team line; "Opposed" means same column across teams. Use this framing in card text and rules.
+- Character workflow: copy `docs/characters/template.md`, add art in `docs/assets/characters/`, add `docs/data/characters/<slug>.yml`, set Roles in the header, add a card to `docs/characters/index.md` (include a Power line and role tags), and add the page to `mkdocs.yml`.
+- Character portraits in `docs/characters/` pages must use `../../assets/characters/<file>` so directory URLs resolve on deploy.
+- Basic naming rule: Basic + Attack cards must be named Strike; Basic + Defense cards must be named Defend; Basic + Special cards can use any name.
+- Conditional "this card becomes X" effects are automatic in any zone; do not make them optional.
+- "Spend X" is mandatory; if it is optional, use `?` (example: "Spend X Resource? Gain Evade.").
+- Keyword/status/card type/term/role link markup uses the shared `ua-*-link` classes so `docs/javascripts/guide.js` can rewrite links.
+- Use the shared link markup in character pages and card text; only link status effects that live in `docs/status-effects.md` (unique ones stay plain text).
+- Avoid undefined mechanics; if a global keyword/status/term appears in content, ensure it exists in the reference pages.
+- If a card references remaining Multihit Count, ensure the base count is explicit in the card text or defined by the Multihit rules.
+- Ensure Potency/Count/Value/Stack caps align with what the kit can reach, including edge cases.
+- Prefer Stack for single-value duration statuses that decay at Turn End; reserve Value for resource-like effects that are consumed by other rules.
+- Movement Round happens before Combat; Root blocks movement and swaps. Keep turn-flow references aligned across `docs/index.md`, `docs/terminology.md`, `docs/faq.md`, and `docs/data/terms.yml`.
+- Prioritize lore-accurate, synergistic, and fun character kits over balance.
+- Follow `docs/characters/character-creation-guide.md` for power budgeting (including variable/0-cost handling); document character-specific exceptions there, not on character pages.
+- Export actions (page PDF/MD/TXT + all-pages ZIP with format/character-combine/XLSX options and `html/`, `md/`, `txt/`, `xlsx/`) live in `docs/overrides/main.html` and `docs/javascripts/print.js`; keep exports free of permalinks, URLs, and images.
+- Do not add game pages or game assets to this repo unless explicitly requested.
 
 ## Quality checks
 
-- Run `mkdocs build --strict` or `mkdocs serve` when validating documentation changes.
-- Run `npm run validate:v2:global:strict` when changing Rules v2 registries or global mechanics.
-- Run exporter and schema validation when changing structured data or schema behavior.
-- Run Rules v2 migration and roster regression tests before claiming migration completion.
+- Run `mkdocs build --strict` or `mkdocs serve` when asked to validate docs changes.
 
 ## Response style
 
-- Tell it like it is; do not sugar-coat responses.
-- Use a skeptical, questioning, forward-looking approach.
-- Share strong, well-supported opinions.
-- Use a formal, professional, practical tone.
-- Prefer precise implementation guidance over vague reassurance.
+- Tell it like it is; don't sugar-coat responses. Adopt a skeptical, questioning approach. Take a forward-thinking view. Readily share strong opinions. Use a formal, professional tone. Be practical above all. Be innovative and think outside the box. Get right to the point.

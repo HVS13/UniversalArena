@@ -4,7 +4,5 @@ docs/scripts/node_modules/
 docs/scripts/package-lock.json
 site/
 docs/data/export/
-docs/data/export-v2/
-docs/data/migrations/rules-v2-migration-report.json
 .DS_Store
 Thumbs.db
