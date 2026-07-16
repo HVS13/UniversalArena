@@ -35,50 +35,74 @@ Minimum viable character checklist:
 
 ### Power budgeting
 
-- Base Power targets: Energy cost x 10, Ultimate Meter cost x 1.5. Round down if you hit decimals.
-- Mixed-cost ultimates (Ultimate Meter + Energy): treat Ultimate Meter as 1 base per meter, then add the Energy base.
-- Variable Energy cost (X) on non-ultimates: if X can be 0, Base Power = 5 * (X + 1); otherwise use 10 * X.
-- Variable Energy on mixed-cost ultimates: use 10 * X even if X can be 0.
-- 0 Energy cards: if not created, Base Power = 5; if created, Base Power cannot exceed the Base Power of the card that creates it.
+Cost baselines:
+
+- Energy cost: Base Power = Energy cost x 10.
+- Ultimate Meter-only cost: Base Power = Ultimate Meter cost x 1.5.
+- Mixed-cost Ultimate (Ultimate Meter + Energy): Base Power = Ultimate Meter cost x 1, then add Energy cost x 10.
+- Variable Energy cost (X) on non-Ultimates: if X can be 0, Base Power = 5 x (X + 1); otherwise use 10 x X.
+- Variable Energy on mixed-cost Ultimates: use 10 x X even if X can be 0.
+- 0 Energy cards: if not Created, Base Power = 5. For a 0 Energy Created card, record the creating card's final budgeted Base Power before its Melee/Ranged range as a ceiling.
+- Special cards with `Power: -` do not receive a Power range or speed-based Power adjustment.
+
+Standard adjustments:
+
 - Melee Power range: Base Power +/- floor(Base Power x 0.20).
 - Ranged Power range: Base Power +/- floor(Base Power x 0.25).
-- If a card only deals Power damage or only grants Power Shield/HP, increase Base Power by 20% before applying the range.
-- Created cards and Fast speed: reduce Base Power by 10% each; penalties stack.
-- Bonuses and penalties stack; apply them to Base Power before the Melee/Ranged range.
-- If a card has high execution requirements or narrow conditions, you can add a 10-20% Base Power bonus.
+- If a card only deals Power damage or only grants Power Shield/HP, multiply Base Power by 1.20 before applying the range.
+- Created cards multiply Base Power by 0.90.
+- For non-Ultimate cards with Power, use the card form's printed Speed: Fast x 0.90, Normal x 1.00, Slow x 1.10.
+- Ultimate cards do not receive an automatic Fast or Slow Power modifier. Their Speed is considered together with their Meter cost, utility, restrictions, and overall finisher role.
+- Temporary Haste, Slow, Prepare, cost reduction, or other in-match modifiers do not recalculate printed Power. A transformed or replacement card form uses that form's own printed cost and printed Speed for authoring.
+- If a card has high execution requirements or narrow conditions, you can multiply Base Power by 1.10-1.20.
 - If a card adds meaningful utility (status, draw, resource gain, multi-target, strong tempo effects), bias toward the low end of the range or reduce Base Power.
 - If a card deals Power damage and also heals, treat healing as extra output and lower Base Power so total impact matches the target.
 - Single-target cards with Power are affected by Distance; if you use Close or Far, budget around the resulting peaks and valleys.
-- Character-specific exceptions are allowed but must be documented in this guide.
+
+Special costs and prerequisites:
+
+- Optional additional spending does not add its maximum possible amount to printed Base Power. Budget the per-spend effect separately because the player only receives it when the resource is actually spent.
+- A requirement that remains available after the card is used normally justifies the 10-20% execution bonus, not the requirement's full cost.
+- A setup or prerequisite that is consumed by the payoff card may contribute part of its own Power budget. Credit only the portion used exclusively by the payoff; do not count value already delivered by the setup card itself.
+- Crediting the full setup cost is exceptional and is only appropriate when the setup exists solely to enable the payoff and is fully consumed by it.
+- Character-specific exceptions must state the normal baseline, the prerequisite or limitation being credited, any standard modifier being overridden, and the final Base Power before the Melee/Ranged range.
 
 Calculation order:
 
 1. Calculate Base Power from the card's printed Energy and/or Ultimate Meter cost.
-2. For a Created card, its starting Base Power cannot exceed the creating card's Base Power.
-3. Apply percentage bonuses and penalties multiplicatively. Do not add the percentages together.
+2. If it is a 0 Energy Created card, record the creating card's final budgeted Base Power before range as the ceiling.
+3. Apply percentage bonuses and penalties multiplicatively. Do not add percentages together.
 4. Do not round between percentage modifiers.
-5. After all percentage modifiers, round the adjusted Base Power down.
+5. After all percentage modifiers, round adjusted Base Power down.
 6. Reduce that result for utility, healing, statuses, area effects, card access, resource generation, or other additional value.
-7. Apply any documented character-specific adjustment.
-8. Generate the final Melee or Ranged range from the resulting Base Power.
-9. Round range calculations down and clamp the minimum Power at 0.
+7. Apply any documented prerequisite allocation or character-specific adjustment.
+8. For a 0 Energy Created card, cap the result at the recorded creating-card ceiling.
+9. Generate the final Melee or Ranged range from the resulting Base Power.
+10. Round range calculations down and clamp minimum Power at 0.
 
 Worked examples:
 
-- Created, Melee, only damage, created by a card with Base Power 10: `10 x 1.20 x 0.90 = 10.8`, rounded down to Base Power 10, then `10 +/- floor(10 x 0.20)` = Power 8-12.
-- Created, Fast, Melee, only damage, created by a card with Base Power 10: `10 x 1.20 x 0.90 x 0.90 = 9.72`, rounded down to Base Power 9, then `9 +/- floor(9 x 0.20)` = Power 8-10.
+- Created, Melee, only damage, created by a card with final budgeted Base Power 10: `10 x 1.20 x 0.90 = 10.8`, rounded down to Base Power 10, then `10 +/- floor(10 x 0.20)` = Power 8-12.
+- Created, Fast, Melee, only damage, created by a card with final budgeted Base Power 10: `10 x 1.20 x 0.90 x 0.90 = 9.72`, rounded down to Base Power 9, then `9 +/- floor(9 x 0.20)` = Power 8-10.
+- Slow, non-Ultimate, 2 Energy, Melee, only damage: `20 x 1.20 x 1.10 = 26.4`, rounded down to Base Power 26, then `26 +/- floor(26 x 0.20)` = Power 21-31.
+- Slow, 30 Ultimate Meter, Ranged, only damage: Ultimate Speed has no automatic modifier, so `30 x 1.5 x 1.20 = 54`, then `54 +/- floor(54 x 0.25)` = Power 41-67.
 
 Examples:
+
 - 3 Energy, Ranged: Base Power 30 -> Power 23-37.
 - 60 Ultimate Meter, Melee: Base Power 90 -> Power 72-108.
 - 1 Energy, Melee, only damage: Base Power 12 -> Power 10-14.
-- X Energy (can be 0), Ranged: Base Power 5 * (X + 1) -> Power 4-6 + 4-6 times X.
+- X Energy (can be 0), Ranged: Base Power 5 x (X + 1) -> Power 4-6 + 4-6 times X.
 - 30 Ultimate Meter + X Energy, Melee: Base Power 30 + 10X -> Power 24-36 + 8-12 times X.
 - 20 Ultimate Meter, Ranged, damage + heal Power / 2: Target Base Power 30 -> set Base Power to 20 -> Power 15-25.
-- 0 Energy, created from a 1 Energy melee card: Base Power up to 10 -> Power 8-12.
+- 0 Energy, Created from a 1 Energy Melee card: Base Power up to the creating card's final budgeted Base Power, then Power range as normal.
 
-Exceptions (current roster):
-- DIO (Part 3) Ultimate: ROAD ROLLER DA! adds +30 Base Power for the 9 Energy prerequisite (The World: Time Stop).
+Exceptions and current-roster transition:
+
+- DIO (Part 3), ROAD ROLLER DA!: 40 Ultimate Meter gives Base Power 60. Allocate +30 Base Power from the 9 Energy The World: Time Stop setup because ROAD ROLLER DA! requires that status and sets its Count to 0 after use. Do not credit the full 90 setup Base Power because Time Stop already provides Stun, card-play denial, Strength, Haste, Follow-Up access, and Retain. Final Base Power is 90, producing Power 72-108. This final exception already accounts for the card's Fast Speed and other effects; do not apply additional Fast or pure-output modifiers. Optional Stolen Blood spending is budgeted separately and is not included in printed Power.
+- Existing non-Ultimate Slow cards with Power keep their current printed values until individual character review: Gomu Gomu no Gigant Pistol, Gomu Gomu no Gigant Bazooka, and Rasengan. This temporary preservation is not the benchmark for new cards.
+- Existing Slow Ultimates, including Spirit Bomb and Gomu Gomu no Gigant Rifle, receive no automatic Slow bonus under the Ultimate rule above.
+- Slow Special cards with `Power: -`, including Saitama's Bored forms and Death Note: Write the Name, are unaffected by Power speed adjustments.
 
 ### Basic naming
 
