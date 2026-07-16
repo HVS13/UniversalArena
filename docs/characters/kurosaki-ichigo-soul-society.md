@@ -122,7 +122,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 2 Energy</span>
-    <span><strong>Power:</strong> 16-24</span>
+    <span><strong>Power:</strong> 15-21</span>
     <span><strong>Type:</strong> Technique, Defense, Physical, Melee, Buff</span>
     <span><strong>Target:</strong> Self</span>
     <span><strong>Speed:</strong> Fast</span>
