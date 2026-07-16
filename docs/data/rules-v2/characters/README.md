@@ -28,4 +28,6 @@ Every file in this directory must have:
 
 ## Export status
 
-The Rules v2 exporter may be used as a structural validation tool against this directory. Until the source-interaction registry is included in the canonical Rules v2 package and the complete roster is audited, exports from this partial directory are deliberately non-publishable test artifacts.
+`npm run export:v2` validates and packages this directory, including `source-interactions.json`, when it is supplied through `--characters-dir`.
+
+Until every filename in the active Rules v1 roster has a reviewed counterpart here, the package wrapper marks the result with `partialRoster: true`, lists the missing character IDs, and forces `publishable: false`. `--require-publishable` blocks such a partial export before output is produced.
