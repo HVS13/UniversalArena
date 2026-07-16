@@ -1,0 +1,653 @@
+name: Apply universal printed Speed
+
+on:
+  push:
+    branches:
+      - agent/clarify-core-rules
+    paths:
+      - .github/workflows/apply-universal-speed.yml
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/clarify-core-rules
+          fetch-depth: 0
+      - name: Apply universal Speed calculations
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          def replace_once(path, old, new):
+              p = Path(path)
+              text = p.read_text()
+              count = text.count(old)
+              if count != 1:
+                  raise RuntimeError(f"{path}: expected one occurrence, found {count}: {old!r}")
+              p.write_text(text.replace(old, new, 1))
+
+          def replace_optional(path, old, new):
+              p = Path(path)
+              text = p.read_text()
+              if old in text:
+                  p.write_text(text.replace(old, new))
+
+          def replace_section(path, start, end, new_text):
+              p = Path(path)
+              text = p.read_text()
+              pattern = re.compile(r"^" + re.escape(start) + r"\n.*?(?=^" + re.escape(end) + r"\n)", re.M | re.S)
+              text, count = pattern.subn(new_text, text, count=1)
+              if count != 1:
+                  raise RuntimeError(f"{path}: could not replace section {start}")
+              p.write_text(text)
+
+          def replace_to_end(path, start, new_text):
+              p = Path(path)
+              text = p.read_text()
+              pattern = re.compile(r"^" + re.escape(start) + r"\n.*\Z", re.M | re.S)
+              text, count = pattern.subn(new_text, text, count=1)
+              if count != 1:
+                  raise RuntimeError(f"{path}: could not replace tail {start}")
+              p.write_text(text)
+
+          def set_yaml_power(path, card_name, old_power, new_power):
+              p = Path(path)
+              lines = p.read_text().splitlines()
+              found = False
+              for i, line in enumerate(lines):
+                  if line.strip().startswith("name:"):
+                      value = line.split(":", 1)[1].strip().strip('"')
+                      if value == card_name:
+                          for j in range(i + 1, min(i + 12, len(lines))):
+                              if lines[j].strip().startswith("power:"):
+                                  current = lines[j].split(":", 1)[1].strip().strip('"')
+                                  if current != old_power:
+                                      raise RuntimeError(f"{path} {card_name}: expected {old_power}, found {current}")
+                                  indent = lines[j][:len(lines[j]) - len(lines[j].lstrip())]
+                                  quote = '"' if ("times X" in new_power or "+" in new_power) else ""
+                                  lines[j] = f"{indent}power: {quote}{new_power}{quote}"
+                                  found = True
+                                  break
+                          break
+              if not found:
+                  raise RuntimeError(f"{path}: card not found or power not replaced: {card_name}")
+              p.write_text("\n".join(lines) + "\n")
+
+          def set_md_power(path, card_name, old_power, new_power):
+              p = Path(path)
+              lines = p.read_text().splitlines()
+              found = False
+              for i, line in enumerate(lines):
+                  if line.startswith("###") and line.rstrip().endswith(card_name):
+                      for j in range(i + 1, min(i + 18, len(lines))):
+                          marker = "<span><strong>Power:</strong> "
+                          if marker in lines[j]:
+                              current = lines[j].split(marker, 1)[1].split("</span>", 1)[0]
+                              if current != old_power:
+                                  raise RuntimeError(f"{path} {card_name}: expected {old_power}, found {current}")
+                              lines[j] = lines[j].replace(f"{marker}{old_power}</span>", f"{marker}{new_power}</span>")
+                              found = True
+                              break
+                      break
+              if not found:
+                  raise RuntimeError(f"{path}: heading not found or power not replaced: {card_name}")
+              p.write_text("\n".join(lines) + "\n")
+
+          formula = "docs/power-calculation.md"
+          replace_once(formula, "Prerequisite or family allocation:\nFinal Base Power:", "Prerequisite or family allocation:\nPre-Speed Base Power:\nFinal Base Power:")
+          replace_section(formula, "## Power stages", "## 1. Determine Cost Base Power", '''## Power stages
+
+Use these terms consistently:
+
+- **Cost Base Power**: Power produced directly by the authoring cost.
+- **Adjusted Base Power**: Cost Base Power after pure-output, Created, and execution multipliers, rounded down.
+- **Pre-Speed Base Power**: Adjusted Base Power after utility/output adjustments and documented allocations.
+- **Final Base Power**: Pre-Speed Base Power after the printed-speed multiplier, rounded down.
+- **Printed Power**: The final Melee or Ranged range shown on the card.
+
+For a fixed-value card:
+
+```text
+Adjusted Base Power = floor(Cost Base Power x pure-output x Created x execution)
+Pre-Speed Base Power = Adjusted Base Power - utility reduction + documented allocation
+Final Base Power = floor(Pre-Speed Base Power x printed-speed multiplier)
+```
+
+Clamp each post-adjustment stage at 0. Apply a Created-card ceiling to Final Base Power before generating the range.
+
+''')
+          replace_section(formula, "## 2. Apply percentage multipliers", "## 3. Round Adjusted Base Power", '''## 2. Apply non-speed percentage multipliers
+
+Apply pure-output, Created, and execution multipliers multiplicatively. Do not add percentages together and do not round between these multipliers.
+
+Printed Speed is applied later to the complete Pre-Speed Base Power. This ensures Speed also affects utility-adjusted budgets, prerequisite allocations, transformation budgets, progression budgets, and character-specific exceptions.
+
+### Pure-output multiplier
+
+Multiply by `1.20` only when the card's Power is exclusively one of:
+
+- Power damage;
+- Power Shield;
+- Power HP or healing when it is the card's only Power-scaled output.
+
+The bonus normally does not apply when the card also provides meaningful additional value, including statuses, resource gain, draw, card creation, extra healing, AoE/Splash/Bounce access, Evade, Counter, Reuse, or strong tempo effects.
+
+Multihit by itself only divides the same total Power and does not automatically remove this bonus. Per-hit riders and repeated On Hit effects are additional value.
+
+A minor or character-defining rider may be budget-neutral only when the Power Budget Record states that decision. Existing roster values are not automatic permission to make a new rider free.
+
+### Created multiplier
+
+Created cards multiply Base Power by `0.90`.
+
+Creation is an access advantage. Exhaust and Ethereal limit lifecycle but do not cancel the Created multiplier.
+
+### Execution modifier
+
+A narrow, costly, or difficult requirement may multiply Base Power by `1.10-1.20`.
+
+Do not grant this merely because a condition exists. It must materially reduce access, timing, target availability, or reliability.
+
+''')
+          replace_section(formula, "## 3. Round Adjusted Base Power", "## 4. Budget additional value", '''## 3. Round Adjusted Base Power
+
+After pure-output, Created, and execution multipliers:
+
+```text
+Adjusted Base Power = floor(unrounded adjusted value)
+```
+
+Do not round between those multipliers.
+
+Example:
+
+```text
+1 Energy, Created, Fast, pure Melee damage
+10 x 1.20 x 0.90 = 10.8
+Adjusted Base Power = 10
+Pre-Speed Base Power = 10
+Fast: floor(10 x 0.90) = 9 Final Base Power
+```
+
+''')
+          replace_once(formula, "Final Base Power = Cost Base Power / 1.5", "Pre-Speed Base Power = Cost Base Power / 1.5")
+          replace_once(formula, "30 / 1.5 = 20 Final Base Power", "30 / 1.5 = 20 Pre-Speed Base Power\nNormal: floor(20 x 1.00) = 20 Final Base Power")
+          replace_section(formula, "### Replacement and progression families", "## 6. Generate Printed Power", '''### Replacement and progression families
+
+A replacement form normally uses its own printed cost and effects.
+
+A documented family may share one **Pre-Speed Base Power** when a transformation card, status, threshold, consumed resource, limited duration, or drawback pays for the forms' different utility and access.
+
+Printed Speed is never shared or overridden. Every Power-bearing form applies its own printed Fast, Normal, or Slow multiplier to that shared Pre-Speed Base Power.
+
+''')
+          replace_section(formula, "## Calculation order", "## Worked examples", '''## Calculation order
+
+1. Determine Cost Base Power.
+2. For a 0 Energy Created card, record the creator's Final Base Power ceiling.
+3. Express variable costs as additive components.
+4. Apply pure-output, Created, and execution percentages multiplicatively.
+5. Round each fixed value or variable component down once to Adjusted Base Power.
+6. Reduce for additional output and utility.
+7. Apply documented prerequisite, recurring-cycle, family, or character-specific allocation to obtain Pre-Speed Base Power.
+8. Apply the card form's printed Speed to every Power-bearing card: Fast `x0.90`, Normal `x1.00`, Slow `x1.10`.
+9. Round down to Final Base Power.
+10. Apply the Created ceiling.
+11. Generate Melee or Ranged ranges.
+12. Verify the result against the Power Budget Record.
+
+''')
+          replace_section(formula, "## Worked examples", "## Current roster precedents", '''## Worked examples
+
+### Pure Melee damage
+
+```text
+1 Energy = 10
+Pure output: 10 x 1.20 = 12 Adjusted Base Power
+Pre-Speed Base Power = 12
+Normal: floor(12 x 1.00) = 12 Final Base Power
+Melee adjustment: floor(12 x 0.20) = 2
+Printed Power: 10-14
+```
+
+### Defense with Evade
+
+```text
+1 Energy = 10
+No pure-output bonus because Evade is utility
+Pre-Speed Base Power = 10
+Normal: floor(10 x 1.00) = 10 Final Base Power
+No separate Evade penalty
+Printed Power: 8-12
+```
+
+### Fast utility Defense
+
+```text
+2 Energy = 20
+No pure-output bonus
+Pre-Speed Base Power = 20
+Fast: floor(20 x 0.90) = 18 Final Base Power
+Printed Power: 15-21
+```
+
+### Slow pure damage
+
+```text
+2 Energy = 20
+Pure output: 20 x 1.20 = 24 Adjusted Base Power
+Pre-Speed Base Power = 24
+Slow: floor(24 x 1.10) = 26 Final Base Power
+Printed Power: 21-31
+```
+
+### Created Fast pure damage
+
+```text
+1 Energy = 10
+Pure and Created: 10 x 1.20 x 0.90 = 10.8
+Adjusted Base Power = 10
+Pre-Speed Base Power = 10
+Fast: floor(10 x 0.90) = 9 Final Base Power
+Printed Power: 8-10
+```
+
+### Fast Ultimate
+
+```text
+30 Ultimate Meter = 45
+Pre-Speed Base Power = 45
+Fast: floor(45 x 0.90) = 40 Final Base Power
+Ranged Power: 30-50
+```
+
+### Ranged damage plus healing
+
+```text
+20 Ultimate Meter = 30
+Damage plus Power / 2 healing: 30 / 1.5 = 20 Pre-Speed Base Power
+Normal: floor(20 x 1.00) = 20 Final Base Power
+Ranged Power: 15-25
+```
+
+### Recurring consumable Ultimate
+
+```text
+10 Ultimate Meter acquisition + 30 Ultimate Meter activation = 40
+40 x 1.5 = 60 Pre-Speed Base Power
+Normal: floor(60 x 1.00) = 60 Final Base Power
+Ranged Power: 45-75
+```
+
+''')
+          replace_section(formula, "## Current roster precedents", "## Final checklist", '''## Current roster precedents
+
+These explain existing families; they are not blanket permission for unrelated cards.
+
+- **DIO Basic and Technique cards** use a reconstructed expected-cost exception based on approximately 2 expected Blood Focus reduction. New cards require their own state assumptions.
+- **DIO Time Stop forms** share their parent forms' Pre-Speed Base Power, then apply their own printed Fast multiplier.
+- **ROAD ROLLER DA!** has Pre-Speed Base Power 90: 60 from 40 Ultimate Meter plus a partial 30 allocation from the consumed Time Stop setup. Fast `x0.90` produces Final Base Power 81 and printed Power `65-97`.
+- **Luffy Gear families** share Pre-Speed Base Power across replacement forms because Gear Transformation, limited duration, and Deflate pay for utility differences. Normal, Fast, and Slow forms still apply `x1.00`, `x0.90`, and `x1.10`.
+- **Ichigo Bankai and Hollow families** share parent Pre-Speed Base Power because transformation access, duration, and Strain pay for enhanced effects. Each form still applies its printed Speed.
+- **Naruto Rasengan forms** share Pre-Speed Base Power 30. Slow Rasengan becomes Final Base Power 33 and `27-39`; Normal Clone Assist remains Final Base Power 30 and `24-36`.
+- **Saitama State forms** use progression-family Pre-Speed budgets because State thresholds pay for enhanced effects. Their Fast forms still apply `x0.90`.
+- **Leon Rocket Launcher** uses the recurring 10 Meter acquisition plus 30 Meter activation cycle, then applies its Normal multiplier.
+
+''')
+          replace_to_end(formula, "## Final checklist", '''## Final checklist
+
+- The Power Budget Record is complete.
+- The original cost baseline is visible.
+- Every non-speed multiplier has a reason.
+- Utility and additional output are not double-counted.
+- Setup value is not counted twice.
+- Every Power-bearing card applies its own printed Speed with no card-type or family exemption.
+- `Power: -` cards do not receive Power calculations.
+- Variable coefficients use component ranging.
+- Melee/Ranged spread matches the printed type.
+- Markdown and YAML show the same Power.
+''')
+
+          guide = Path("docs/characters/character-creation-guide.md")
+          guide_text = guide.read_text()
+          guide_pattern = re.compile(r"^Safeguards:\n.*?(?=^### Basic naming\n)", re.M | re.S)
+          guide_text, count = guide_pattern.subn('''Safeguards:
+
+- Every Power-bearing card uses its own printed Speed: Fast `x0.90`, Normal `x1.00`, Slow `x1.10`.
+- Printed Speed applies after utility and family allocations to the complete Pre-Speed Base Power.
+- Ultimate, transformation, progression, Created, Basic, and Technique cards have no Speed exemption.
+- A family may share Pre-Speed Base Power, but forms with different printed Speeds must have different Final Base Power.
+- Evade normally removes eligibility for the pure Shield/HP bonus but has no second universal deduction.
+- Variable Power expressions use component ranging.
+- Current roster precedents explain existing families; they are not automatic templates for new cards.
+- Keep Markdown and YAML Power values identical.
+
+''', guide_text, count=1)
+          if count != 1:
+              raise RuntimeError("character guide: safeguards block not found")
+          guide.write_text(guide_text)
+
+          Path("docs/power-ledger.md").write_text('''# Current Roster Power Ledger
+
+This page records how every current Power-bearing card or card family reaches its printed value. It is a companion to [Power Calculation Reference](power-calculation.md).
+
+Use this ledger to preserve established character patterns. Do not copy an exception into a new kit without documenting why the same condition applies.
+
+Entries labeled **Exact** follow the canonical formula directly. Entries labeled **Reconstructed** reproduce current values from the kit and roster pattern where the original calculation note was not preserved. Entries labeled **Exception** intentionally override a standard non-speed adjustment and state what pays for it. Printed Speed is never exempt.
+
+Abbreviations:
+
+- **CBP**: Cost Base Power.
+- **ABP**: Adjusted Base Power after non-speed multipliers.
+- **PSBP**: Pre-Speed Base Power after utility and allocations.
+- **FBP**: Final Base Power after printed Speed.
+- **M**: Melee range.
+- **R**: Ranged range.
+
+## Goku — Saiyan Saga
+
+| Card or family | Reproducible calculation | Printed Power | Record |
+| --- | --- | --- | --- |
+| Strike | 1 Energy = 10 CBP; pure `x1.20` = 12 PSBP; Normal = 12 FBP; M | 10-14 | **Exact.** |
+| Defend | 1 Energy = 10 PSBP; Evade removes pure bonus; Normal = 10 FBP; M | 8-12 | **Exact.** |
+| Meteor Combination / Kaio-ken Attack | 2 Energy = 20; pure `x1.20` = 24 PSBP; both Normal = 24 FBP; M | 20-28 | **Exact.** Multihit only divides total Power. |
+| Kamehameha | 3 Energy = 30; pure `x1.20` = 36 PSBP; Normal = 36 FBP; R | 27-45 | **Reconstructed.** Follow-Up and its discount are budget-neutral identity riders for this family. |
+| Spirit Bomb | 30 Meter `x1.5` = 45; pure `x1.20` = 54 PSBP; Slow `x1.10` = 59 FBP; R | 45-73 | **Exact.** |
+
+## Monkey D. Luffy — Pre-Timeskip
+
+| Card or family | Reproducible calculation | Printed Power | Record |
+| --- | --- | --- | --- |
+| Strike | 1 Energy = 10; pure `x1.20` = 12 PSBP; Normal; M | 10-14 | **Exact.** |
+| Defend | 1 Energy = 10; pure `x1.20` = 12 PSBP; Normal; M | 10-14 | **Exact.** |
+| Gomu Gomu no Pistol | 2 Energy = 20; pure `x1.20` = 24 PSBP; Normal = 24 FBP; M | 20-28 | **Exact.** |
+| Gomu Gomu no Jet Pistol | Shared 24 PSBP; Fast `x0.90` = 21 FBP; M | 17-25 | **Exception.** Gear state pays for form utility, not Speed. |
+| Gomu Gomu no Gigant Pistol | Shared 24 PSBP; Slow `x1.10` = 26 FBP; M | 21-31 | **Exception.** Gear state pays for form utility, not Speed. |
+| Gomu Gomu no Bazooka | 3 Energy = 30; pure `x1.20` = 36 PSBP; Normal = 36 FBP; M | 29-43 | **Exact.** |
+| Gomu Gomu no Jet Bazooka | Shared 36 PSBP; Fast `x0.90` = 32 FBP; M | 26-38 | **Exception.** |
+| Gomu Gomu no Gigant Bazooka | Shared 36 PSBP; Slow `x1.10` = 39 FBP; M | 32-46 | **Exception.** |
+| Gomu Gomu no Jet Gatling | Mixed CBP `30 + 10X`; utility removes pure bonus; Fast gives `27 + 9X` FBP; component M | 22-32 + 8-10 times X | **Exact.** |
+| Gomu Gomu no Gigant Rifle | 30 Meter `x1.5` = 45 PSBP; Slow `x1.10` = 49 FBP; M | 40-58 | **Exact.** |
+
+## Naruto Uzumaki — Pre-Timeskip
+
+| Card or family | Reproducible calculation | Printed Power | Record |
+| --- | --- | --- | --- |
+| Strike | 1 Energy = 10 PSBP; utility removes pure bonus; Normal; M | 8-12 | **Exact.** |
+| Defend | 1 Energy = 10 PSBP; optional Evade removes pure bonus; Normal; M | 8-12 | **Exact.** |
+| Naruto Uzumaki Barrage | 2 Energy = 20 PSBP; utility removes pure bonus; Normal; M | 16-24 | **Exact.** |
+| Rasengan | Shared 30 PSBP; Slow `x1.10` = 33 FBP; M | 27-39 | **Reconstructed.** Clone-family budget is 30 before Speed. |
+| Rasengan: Clone Assist | Shared 30 PSBP; Normal = 30 FBP; M | 24-36 | **Reconstructed.** Clone spend, Vulnerable, and Follow-Up are paid by the family allocation. |
+| Shadow Clone: Strike | 1 Energy = 10; pure `x1.20`; Created `x0.90` = 10 ABP; Fast `x0.90` = 9 FBP; M | 8-10 | **Exact.** |
+| Gamabunta: Toad Smash | Fixed summon allocation = 10 PSBP; Normal; M | 8-12 | **Reconstructed.** |
+| Summoning Jutsu: Gamabunta | 30 Meter `x1.5` = 45 PSBP; Normal; R | 34-56 | **Exact.** |
+| One-Tail Rasengan | 30 Meter `x1.5` = 45 PSBP; Normal; M | 36-54 | **Exact.** |
+
+## Kurosaki Ichigo — Soul Society
+
+| Card or family | Reproducible calculation | Printed Power | Record |
+| --- | --- | --- | --- |
+| Strike | 1 Energy = 10; pure `x1.20` = 12 PSBP; Normal; M | 10-14 | **Reconstructed.** Reiatsu gain is a budget-neutral identity rider. |
+| Strike: Tensa Zangetsu / Strike: White | Shared 12 PSBP; Fast `x0.90` = 10 FBP; M | 8-12 | **Exception.** Transformation states pay for enhanced utility, not Speed. |
+| Defend | 1 Energy = 10; pure `x1.20` = 12 PSBP; Normal; M | 10-14 | **Reconstructed.** |
+| Shunpo | 2 Energy = 20 PSBP; Fast `x0.90` = 18 FBP; M | 15-21 | **Exact.** |
+| Getsuga Tensho | 3 Energy = 30 PSBP; Normal; R | 23-37 | **Exact.** |
+| Getsuga Tensho: Tensa Zangetsu | Shared 30 PSBP; Fast `x0.90` = 27 FBP; R | 21-33 | **Exception.** |
+| Getsuga Tensho — Bankai Finisher | 30 Meter `x1.5` = 45 PSBP; Fast `x0.90` = 40 FBP; R | 30-50 | **Exact.** |
+
+## Leon S. Kennedy — Resident Evil 4
+
+| Card or family | Reproducible calculation | Printed Power | Record |
+| --- | --- | --- | --- |
+| Strike | 1 Energy = 10 PSBP; utility removes pure bonus; Normal; M | 8-12 | **Exact.** |
+| Defend | 1 Energy = 10 PSBP; utility removes pure bonus; Normal; M | 8-12 | **Exact.** |
+| Shoot: Handgun | 1 Energy = 10 PSBP; Normal; R | 8-12 | **Exact.** |
+| Shoot: Riot Gun | 2 Energy = 20 PSBP; Normal; R | 15-25 | **Exact.** |
+| Shoot: Chicago Typewriter | Variable PSBP `5 + 5X`; Normal; component R | 4-6 + 4-6 times X | **Exact.** |
+| Suplex | 2 Energy = 20 PSBP; Normal; M | 16-24 | **Exact.** |
+| Shoot: Rocket Launcher | 10 Meter acquisition + 30 Meter activation = 40; `x1.5` = 60 PSBP; Normal; R | 45-75 | **Exception.** Recurring consumable cycle. |
+
+## Rover — Spectro
+
+| Card or family | Reproducible calculation | Printed Power | Record |
+| --- | --- | --- | --- |
+| Strike | 1 Energy = 10 PSBP; Normal; M | 8-12 | **Exact.** |
+| Defend | 1 Energy = 10 PSBP; Normal; M | 8-12 | **Exact.** |
+| Resonating Slashes | 2 Energy = 20 PSBP; Normal; M | 16-24 | **Exact.** |
+| Aftertune | 1 Energy = 10 PSBP; Normal; M | 8-12 | **Exact.** |
+| Echoing Orchestra | 20 Meter `x1.5` = 30 CBP; damage plus healing target gives 20 PSBP; Normal; R | 15-25 | **Reconstructed.** |
+
+## Saitama — Base
+
+| Card or family | Reproducible calculation | Printed Power | Record |
+| --- | --- | --- | --- |
+| Strike | 1 Energy = 10 PSBP; Normal; M | 8-12 | **Exact.** |
+| Defend | 1 Energy = 10 PSBP; Normal; M | 8-12 | **Exact.** |
+| Normal Punch family | 2 Energy = 20 PSBP; Normal; M | 16-24 | **Exact.** |
+| Serious Punch | State allocation gives 30 PSBP; Fast `x0.90` = 27 FBP; M | 22-32 | **Exception.** |
+| Serious Headbutt | State allocation gives 30 PSBP; Fast `x0.90` = 27 FBP; M | 22-32 | **Exception.** |
+| Consecutive Normal Punch | Variable PSBP `5 + 5X`; Normal; component M | 4-6 + 4-6 times X | **Exact.** |
+| Serious Consecutive Side Hops | State allocation gives 30 PSBP; Fast `x0.90` = 27 FBP; M | 22-32 | **Exception.** |
+| Serious Table Flip | 100 Meter `x1.5` = 150 PSBP; Fast `x0.90` = 135 FBP; M | 108-162 | **Exception.** Capstone utility is paid by access, but Speed still applies. |
+
+## Light Yagami — Kira
+
+| Card or family | Reproducible calculation | Printed Power | Record |
+| --- | --- | --- | --- |
+| Strike | 1 Energy = 10 PSBP; Normal; R | 8-12 | **Exact.** |
+| Defend | 1 Energy = 10 PSBP; Normal; R | 8-12 | **Exact.** |
+
+Death Note cards use non-Power resource conversion.
+
+## DIO — Part 3
+
+| Card or family | Reproducible calculation | Printed Power | Record |
+| --- | --- | --- | --- |
+| Strike | Expected cost 2 = 20; pure `x1.20` = 24 PSBP; Normal; M | 20-28 | **Reconstructed.** |
+| Strike: Muda Barrage | Shared 24 PSBP; Fast `x0.90` = 21 FBP; M | 17-25 | **Exception.** Time Stop pays for form utility, not Speed. |
+| Defend | Expected cost 2 = 20 PSBP; Normal; M | 16-24 | **Reconstructed.** |
+| Defend: The World | Shared 20 PSBP; Fast `x0.90` = 18 FBP; M | 15-21 | **Exception.** |
+| Vampiric Drain | Expected cost 3 = 30 PSBP; Normal; M | 24-36 | **Reconstructed.** |
+| Throwing Knives | Expected cost 5 = 50 ABP; utility `-8` = 42 PSBP; Normal; R | 32-52 | **Reconstructed.** |
+| Throwing Knives: Time Stop | Shared 42 PSBP; Fast `x0.90` = 37 FBP; R | 28-46 | **Exception.** |
+| ROAD ROLLER DA! | 40 Meter `x1.5` = 60 plus partial Time Stop allocation 30 = 90 PSBP; Fast `x0.90` = 81 FBP; M | 65-97 | **Exception.** |
+
+## Audit rules
+
+- Every Power-bearing card applies its own printed Speed. Ultimate, transformation, progression, Created, Basic, and Technique cards have no exemption.
+- A family may share Pre-Speed Base Power, but never Final Base Power across different printed Speeds.
+- A changed card must update this ledger when its calculation pattern changes.
+- A new character must add each Power-bearing family before merge.
+- A range that does not match the printed Melee/Ranged type is an arithmetic defect unless explicitly documented.
+- A structured effect broader than readable text is a data defect; remove it until the schema can represent the condition safely.
+- Run the calculator, then validate Markdown/YAML synchronization.
+''')
+
+          Path("docs/scripts/power-calculator.mjs").write_text('''#!/usr/bin/env node
+
+function fail(message) {
+  console.error(`Power calculator error: ${message}`);
+  process.exit(1);
+}
+
+function parseArgs(argv) {
+  const args = {};
+  for (let i = 0; i < argv.length; i += 1) {
+    const token = argv[i];
+    if (!token.startsWith("--")) fail(`unexpected argument ${token}`);
+    const key = token.slice(2);
+    if (["pure", "created", "help"].includes(key)) {
+      args[key] = true;
+      continue;
+    }
+    const value = argv[i + 1];
+    if (value === undefined || value.startsWith("--")) fail(`missing value for --${key}`);
+    args[key] = value;
+    i += 1;
+  }
+  return args;
+}
+
+function numberArg(args, key, fallback = undefined) {
+  if (args[key] === undefined) return fallback;
+  const value = Number(args[key]);
+  if (!Number.isFinite(value)) fail(`--${key} must be a finite number`);
+  return value;
+}
+
+function rangeFor(basePower, rangeType) {
+  const rate = rangeType === "melee" ? 0.2 : 0.25;
+  const adjustment = Math.floor(basePower * rate);
+  return {
+    minimum: Math.max(0, basePower - adjustment),
+    maximum: basePower + adjustment,
+  };
+}
+
+function printHelp() {
+  console.log(`Universal Arena Power calculator
+
+Usage:
+  npm run power -- --constant <base> --range <melee|ranged> [options]
+
+Required:
+  --constant <number>          Constant Cost Base Power component
+  --range <melee|ranged>       Printed range type
+
+Optional components:
+  --per-x <number>             Cost Base Power coefficient for X (default 0)
+  --pure                       Apply the x1.20 pure-output multiplier
+  --created                    Apply the x0.90 Created multiplier
+  --speed <fast|normal|slow>   Apply x0.90, x1.00, or x1.10 (default normal)
+  --execution <number>         Execution multiplier (default 1)
+  --utility-constant <number>  Subtract after non-speed multiplier rounding
+  --utility-per-x <number>     Subtract from the rounded X component
+  --allocation-constant <n>    Add before the printed-speed multiplier
+  --allocation-per-x <number>  Add to the X component before printed Speed
+  --ceiling <number>           Cap Final Base Power for a fixed card
+  --help                       Show this help
+
+Examples:
+  npm run power -- --constant 20 --range melee --pure --speed slow
+  npm run power -- --constant 10 --range melee --pure --created --speed fast
+  npm run power -- --constant 30 --per-x 10 --range melee --speed fast
+`);
+}
+
+const args = parseArgs(process.argv.slice(2));
+if (args.help) {
+  printHelp();
+  process.exit(0);
+}
+
+const constant = numberArg(args, "constant");
+if (constant === undefined) fail("--constant is required");
+if (constant < 0) fail("--constant cannot be negative");
+
+const perX = numberArg(args, "per-x", 0);
+if (perX < 0) fail("--per-x cannot be negative");
+
+const rangeType = args.range;
+if (!new Set(["melee", "ranged"]).has(rangeType)) fail("--range must be melee or ranged");
+
+const speed = args.speed ?? "normal";
+if (!new Set(["fast", "normal", "slow"]).has(speed)) fail("--speed must be fast, normal, or slow");
+
+const execution = numberArg(args, "execution", 1);
+if (execution <= 0) fail("--execution must be greater than 0");
+
+const speedMultipliers = { fast: 0.9, normal: 1, slow: 1.1 };
+const pureMultiplier = args.pure ? 1.2 : 1;
+const createdMultiplier = args.created ? 0.9 : 1;
+const nonSpeedMultiplier = pureMultiplier * createdMultiplier * execution;
+const speedMultiplier = speedMultipliers[speed];
+
+const utilityConstant = numberArg(args, "utility-constant", 0);
+const utilityPerX = numberArg(args, "utility-per-x", 0);
+const allocationConstant = numberArg(args, "allocation-constant", 0);
+const allocationPerX = numberArg(args, "allocation-per-x", 0);
+
+const adjustedConstant = Math.floor(constant * nonSpeedMultiplier);
+const adjustedPerX = Math.floor(perX * nonSpeedMultiplier);
+const preSpeedConstant = Math.max(0, adjustedConstant - utilityConstant + allocationConstant);
+const preSpeedPerX = Math.max(0, adjustedPerX - utilityPerX + allocationPerX);
+
+let finalConstant = Math.floor(preSpeedConstant * speedMultiplier);
+const finalPerX = Math.floor(preSpeedPerX * speedMultiplier);
+
+const ceiling = numberArg(args, "ceiling", undefined);
+if (ceiling !== undefined) {
+  if (perX !== 0) fail("--ceiling currently supports fixed cards only");
+  if (ceiling < 0) fail("--ceiling cannot be negative");
+  finalConstant = Math.min(finalConstant, ceiling);
+}
+
+const constantRange = rangeFor(finalConstant, rangeType);
+const perXRange = rangeFor(finalPerX, rangeType);
+const printedPower = finalPerX === 0
+  ? `${constantRange.minimum}-${constantRange.maximum}`
+  : `${constantRange.minimum}-${constantRange.maximum} + ${perXRange.minimum}-${perXRange.maximum} times X`;
+
+console.log("Power Budget Result");
+console.log(`Cost Base Power: ${perX === 0 ? constant : `${constant} + ${perX}X`}`);
+console.log(`Pure-output multiplier: ${pureMultiplier}`);
+console.log(`Created multiplier: ${createdMultiplier}`);
+console.log(`Execution multiplier: ${execution}`);
+console.log(`Combined non-speed multiplier: ${nonSpeedMultiplier}`);
+console.log(`Adjusted Base Power: ${adjustedPerX === 0 ? adjustedConstant : `${adjustedConstant} + ${adjustedPerX}X`}`);
+console.log(`Utility adjustment: -${utilityConstant}${utilityPerX === 0 ? "" : ` - ${utilityPerX}X`}`);
+console.log(`Allocation: +${allocationConstant}${allocationPerX === 0 ? "" : ` + ${allocationPerX}X`}`);
+console.log(`Pre-Speed Base Power: ${preSpeedPerX === 0 ? preSpeedConstant : `${preSpeedConstant} + ${preSpeedPerX}X`}`);
+console.log(`Printed-speed multiplier: ${speedMultiplier}`);
+if (ceiling !== undefined) console.log(`Ceiling: ${ceiling}`);
+console.log(`Final Base Power: ${finalPerX === 0 ? finalConstant : `${finalConstant} + ${finalPerX}X`}`);
+console.log(`Range type: ${rangeType}`);
+console.log(`Printed Power: ${printedPower}`);
+''')
+
+          updates = [
+              ("goku-saiyan-saga", "Spirit Bomb", "41-67", "45-73"),
+              ("monkey-d-luffy-pre-timeskip", "Gomu Gomu no Jet Pistol", "20-28", "17-25"),
+              ("monkey-d-luffy-pre-timeskip", "Gomu Gomu no Gigant Pistol", "20-28", "21-31"),
+              ("monkey-d-luffy-pre-timeskip", "Gomu Gomu no Jet Bazooka", "29-43", "26-38"),
+              ("monkey-d-luffy-pre-timeskip", "Gomu Gomu no Gigant Bazooka", "29-43", "32-46"),
+              ("monkey-d-luffy-pre-timeskip", "Gomu Gomu no Jet Gatling", "24-36 + 8-12 times X", "22-32 + 8-10 times X"),
+              ("monkey-d-luffy-pre-timeskip", "Gomu Gomu no Gigant Rifle", "36-54", "40-58"),
+              ("naruto-uzumaki-pre-timeskip", "Rasengan", "24-36", "27-39"),
+              ("kurosaki-ichigo-soul-society", "Strike: Tensa Zangetsu", "10-14", "8-12"),
+              ("kurosaki-ichigo-soul-society", "Strike: White", "10-14", "8-12"),
+              ("kurosaki-ichigo-soul-society", "Getsuga Tensho: Tensa Zangetsu", "23-37", "21-33"),
+              ("kurosaki-ichigo-soul-society", "Getsuga Tensho (Bankai Finisher)", "34-56", "30-50"),
+              ("dio-brando-part-3", "Strike: Muda Barrage", "20-28", "17-25"),
+              ("dio-brando-part-3", "Defend: The World", "16-24", "15-21"),
+              ("dio-brando-part-3", "Throwing Knives: Time Stop", "32-52", "28-46"),
+              ("dio-brando-part-3", "ROAD ROLLER DA!", "72-108", "65-97"),
+              ("saitama", "Serious Punch", "24-36", "22-32"),
+              ("saitama", "Serious Headbutt", "24-36", "22-32"),
+              ("saitama", "Serious Consecutive Side Hops", "24-36", "22-32"),
+              ("saitama", "Serious Table Flip", "120-180", "108-162"),
+          ]
+
+          for slug, name, old, new in updates:
+              set_yaml_power(f"docs/data/characters/{slug}.yml", name, old, new)
+              set_md_power(f"docs/characters/{slug}.md", name, old, new)
+
+          replace_optional("README.md", "npm run power -- --constant 30 --per-x 10 --range melee --ultimate", "npm run power -- --constant 30 --per-x 10 --range melee --speed fast")
+          Path(".github/workflows/apply-universal-speed.yml").unlink()
+          PY
+      - name: Commit universal Speed calculation
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --check
+          git commit -m "Apply printed Speed to all Power cards"
+          git push origin HEAD:agent/clarify-core-rules
