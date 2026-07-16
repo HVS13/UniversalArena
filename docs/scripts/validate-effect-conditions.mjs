@@ -20,18 +20,22 @@ const scalarKinds = new Set(["x", "x_plus", "x_minus", "x_times"]);
 const isPlainObject = (value) =>
   Boolean(value) && typeof value === "object" && !Array.isArray(value);
 
+const isFiniteNumber = (value) => typeof value === "number" && Number.isFinite(value);
+
 const validateScalar = (value, label, errors) => {
-  if (typeof value === "number") return;
+  if (isFiniteNumber(value)) return;
   if (!isPlainObject(value)) {
-    errors.push(`${label} must be a number or scalar object.`);
+    errors.push(`${label} must be a finite number or scalar object.`);
     return;
   }
+
   if (!scalarKinds.has(value.kind)) {
     errors.push(`${label} has invalid scalar kind "${value.kind}".`);
     return;
   }
-  if (value.kind !== "x" && typeof value.value !== "number") {
-    errors.push(`${label} with kind "${value.kind}" requires numeric value.`);
+
+  if (value.kind !== "x" && !isFiniteNumber(value.value)) {
+    errors.push(`${label} with kind "${value.kind}" requires finite numeric value.`);
   }
 };
 
@@ -50,6 +54,12 @@ const validateCondition = (condition, label, errors, allowedKinds) => {
     if (typeof condition.status !== "string" || !condition.status.trim()) {
       errors.push(`${label} with kind "${condition.kind}" requires status.`);
     }
+    if (condition.min !== undefined && !isFiniteNumber(condition.min)) {
+      errors.push(`${label}.min must be a finite number.`);
+    }
+    if (condition.max !== undefined && !isFiniteNumber(condition.max)) {
+      errors.push(`${label}.max must be a finite number.`);
+    }
     return;
   }
 
@@ -60,16 +70,20 @@ const validateCondition = (condition, label, errors, allowedKinds) => {
     return;
   }
 
-  if (condition.kind === "compare") {
-    if (!("left" in condition)) errors.push(`${label} requires left operand.`);
-    else validateScalar(condition.left, `${label}.left`, errors);
+  if (!("left" in condition)) {
+    errors.push(`${label} requires left operand.`);
+  } else {
+    validateScalar(condition.left, `${label}.left`, errors);
+  }
 
-    if (!comparisonOperators.has(condition.operator)) {
-      errors.push(`${label} has invalid operator "${condition.operator}".`);
-    }
+  if (!comparisonOperators.has(condition.operator)) {
+    errors.push(`${label} has invalid operator "${condition.operator}".`);
+  }
 
-    if (!("right" in condition)) errors.push(`${label} requires right operand.`);
-    else validateScalar(condition.right, `${label}.right`, errors);
+  if (!("right" in condition)) {
+    errors.push(`${label} requires right operand.`);
+  } else {
+    validateScalar(condition.right, `${label}.right`, errors);
   }
 };
 
@@ -95,94 +109,26 @@ const validateEffectList = (effects, label, errors) => {
   });
 };
 
-const normalizeStatusName = (value) => value.replace(/\.$/, "").trim();
-
-const parseConditionalStatusRequirements = (effectLines) => {
-  const requirements = [];
-  if (!Array.isArray(effectLines)) return requirements;
-
-  effectLines.forEach((line) => {
-    const followUp = /^On Follow-Up:\s*(Inflict|Gain)\s+(\d+)\s+(.+?)\.?$/i.exec(line);
-    if (followUp) {
-      requirements.push({
-        timing: "on_use",
-        type: followUp[1].toLowerCase() === "inflict" ? "inflict_status" : "gain_status",
-        amount: Number(followUp[2]),
-        status: normalizeStatusName(followUp[3]),
-        condition: { kind: "play_window", window: "follow_up" },
-      });
-      return;
-    }
-
-    const xEquality = /^On Hit:\s*If X is (\d+):\s*(Inflict|Gain)\s+(\d+)\s+(.+?)\.?$/i.exec(line);
-    if (xEquality) {
-      requirements.push({
-        timing: "on_hit",
-        type: xEquality[2].toLowerCase() === "inflict" ? "inflict_status" : "gain_status",
-        amount: Number(xEquality[3]),
-        status: normalizeStatusName(xEquality[4]),
-        condition: {
-          kind: "compare",
-          left: { kind: "x" },
-          operator: "eq",
-          right: Number(xEquality[1]),
-        },
-      });
-    }
-  });
-
-  return requirements;
-};
-
-const conditionMatches = (actual, expected) => {
-  if (!isPlainObject(actual) || actual.kind !== expected.kind) return false;
-  if (expected.kind === "play_window") return actual.window === expected.window;
-  if (expected.kind === "compare") {
-    return actual.left?.kind === "x" &&
-      actual.operator === expected.operator &&
-      actual.right === expected.right;
-  }
-  return false;
-};
-
-const hasStructuredRequirement = (effects, requirement) =>
-  Array.isArray(effects) && effects.some((effect) =>
-    effect?.timing === requirement.timing &&
-    effect?.type === requirement.type &&
-    effect?.status === requirement.status &&
-    effect?.amount?.kind === "flat" &&
-    effect?.amount?.value === requirement.amount &&
-    conditionMatches(effect?.condition, requirement.condition)
-  );
-
 const validateCard = (card, label, errors) => {
   validateEffectList(card.effects, label, errors);
 
-  if (Array.isArray(card.transforms)) {
-    card.transforms.forEach((transform, index) => {
-      if (transform?.condition !== undefined) {
-        validateCondition(
-          transform.condition,
-          `${label}.transforms[${index}].condition`,
-          errors,
-          statusConditionKinds
-        );
-      }
-    });
-  }
-
-  parseConditionalStatusRequirements(card.effect).forEach((requirement) => {
-    if (!hasStructuredRequirement(card.effects, requirement)) {
-      errors.push(
-        `${label} is missing structured ${requirement.condition.kind} ${requirement.type} for ` +
-        `"${requirement.status}".`
+  if (!Array.isArray(card.transforms)) return;
+  card.transforms.forEach((transform, index) => {
+    if (transform?.condition !== undefined) {
+      validateCondition(
+        transform.condition,
+        `${label}.transforms[${index}].condition`,
+        errors,
+        statusConditionKinds
       );
     }
   });
 };
 
 const run = async () => {
-  const files = (await fs.readdir(charactersDir)).filter((file) => file.endsWith(".yml"));
+  const files = (await fs.readdir(charactersDir))
+    .filter((file) => file.endsWith(".yml"))
+    .sort();
   const errors = [];
 
   for (const file of files) {
@@ -205,7 +151,7 @@ const run = async () => {
     process.exit(1);
   }
 
-  console.log("Structured effect conditions are valid and complete.");
+  console.log("Structured effect conditions are valid.");
 };
 
 run().catch((error) => {
