@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "export": "node export-game-data.mjs",
+    "power": "node power-calculator.mjs",
     "validate": "node validate-data-sync.mjs"
   },
   "dependencies": {
