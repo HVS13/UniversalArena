@@ -153,7 +153,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 1 Energy</span>
-    <span><strong>Power:</strong> 7-9</span>
+    <span><strong>Power:</strong> 8-10</span>
     <span><strong>Type:</strong> Technique, Attack, Physical, Melee, Blunt</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Fast</span>
@@ -212,4 +212,3 @@
   <p><a class="ua-keyword-link" data-keyword="keyword-follow-up" href="#">Follow-Up</a>.</p>
   <p>After Use: Reduce Kyuubi Chakra Count by 2.</p>
 </div>
-
