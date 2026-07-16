@@ -46,6 +46,10 @@ nav:
       - Rules v2 Audit Supplement: design/rules-v2-supplement.md
       - Rules v2 Global Reference: design/rules-v2-global-reference.md
       - Rules v2 Export Contract: design/rules-v2-export-contract.md
+      - Source Interaction Adjudications: data/source-interactions-v2.md
+      - Lore Audits:
+          - DIO — Stardust Crusaders: design/lore-audits/dio-brando-part-3.md
+          - Light Yagami — Kira: design/lore-audits/light-yagami-kira.md
       - Roster Audit Checklist: design/roster-audit-checklist.md
       - Schema v2 Specification: data/schema-v2.md
       - Migration v1 to v2: data/migrations/v1-to-v2.md
