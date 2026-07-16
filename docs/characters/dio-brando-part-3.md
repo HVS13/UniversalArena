@@ -98,7 +98,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 4 Energy</span>
-    <span><strong>Power:</strong> 20-28</span>
+    <span><strong>Power:</strong> 16-24</span>
     <span><strong>Type:</strong> Basic, Defense, Physical, Melee</span>
     <span><strong>Target:</strong> 1 Ally</span>
     <span><strong>Speed:</strong> Normal</span>
@@ -113,7 +113,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 4 Energy</span>
-    <span><strong>Power:</strong> 20-28</span>
+    <span><strong>Power:</strong> 16-24</span>
     <span><strong>Type:</strong> Basic, Defense, Physical, Melee, Buff</span>
     <span><strong>Target:</strong> Self</span>
     <span><strong>Speed:</strong> Fast</span>
@@ -147,7 +147,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 7 Energy</span>
-    <span><strong>Power:</strong> 34-50</span>
+    <span><strong>Power:</strong> 32-52</span>
     <span><strong>Type:</strong> Technique, Attack, Physical, Ranged, Pierce, Multihit, Debuff</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Normal</span>
@@ -163,7 +163,7 @@
 <div class="card-block">
   <div class="card-block__meta">
     <span><strong>Cost:</strong> 7 Energy</span>
-    <span><strong>Power:</strong> 34-50</span>
+    <span><strong>Power:</strong> 32-52</span>
     <span><strong>Type:</strong> Technique, Attack, Physical, Ranged, Pierce, Multihit, Debuff</span>
     <span><strong>Target:</strong> 1 Enemy</span>
     <span><strong>Speed:</strong> Fast</span>
@@ -208,4 +208,3 @@
   <p>Spend X Stolen Blood (0-10)? Deal 6 times X bonus damage and inflict X <a class="ua-status-link" data-status="status-bleed" href="#">Bleed</a>.</p>
   <p>After Use: Set this character's The World: Time Stop Count to 0.</p>
 </div>
-
