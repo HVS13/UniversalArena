@@ -1,123 +1,126 @@
-# Light Yagami — Kira Lore Audit
+# Light Yagami — Kira Lore and Design Audit
 
 ## Decision status
 
-- **Continuity:** Original *Death Note* manga continuity.
-- **Selected version:** Light as late-series Kira with his Death Note memories, demonstrated rule knowledge, and practical access to a notebook or concealed page fragment when performing a Death Note action.
-- **Primary canon window:** Manga chapters 1–108 plus the canonical `How to Use It` rules printed with the manga.
-- **Rules v2 status:** Approved character-specific interpretation for the parallel Rules v2 roster. It does not alter the active Rules v1 character.
+- **Continuity:** Original *Death Note* manga.
+- **Selected version:** Kira with Death Note ownership and memories, concealed page access, and no Shinigami Eyes.
+- **Rules v2 status:** Proposed parallel migration. It does not replace the active Rules v1 character until player-facing review and roster cutover.
 
-## Why this version
+## Why the original loop is preserved
 
-`Kira` is not a physical-combat form. It is Light with retained Kira memories, knowledge of the notebook's rules, practical access to a Death Note or concealed page fragment when using its power, and the strategic methods he demonstrates across the original manga. The selected baseline does **not** claim that one uninterrupted ownership arrangement persists across every arc; ownership, memory, and physical possession change several times in canon. It also does not borrow the Shinigami Eyes from Misa or Mikami or treat their independent abilities as Light's innate powers.
+The rejected first PR #5 draft converted all five regular cards into no-Power Specials. That was not a classification cleanup. It removed Light from normal clash participation because a Special normally allows both paired cards to resolve.
 
-## Primary-source basis
+The revised migration preserves the existing rhythm:
 
-| Topic | Primary canon reference | Design consequence |
-| --- | --- | --- |
-| The notebook kills a human whose name is written | `How to Use It: I`, Chapter 1 | Death Note eligibility is source-specific and human-only. It is not universal target legality. |
-| The writer must know the target's face | `How to Use It: I`, Chapter 1 | Identity acquisition must represent both true-name and face confirmation. Ordinary targeting or Reveal is insufficient. |
-| Cause may be written within 40 seconds; details within 6 minutes 40 seconds | `How to Use It: I` | Once access is established, the notebook's lethal result is rapid. Ultimate Meter must not make the notebook intrinsically kill faster. |
-| A page or page fragment has the notebook's full effect | `How to Use It: VII`, Chapter 7 | Light may use concealed scraps; separation from the main notebook does not invalidate a page fragment's effect. |
-| Conditions must be physically possible for the victim | `How to Use It: VI`, Chapter 6 | Light cannot command arbitrary impossible actions through the notebook. |
-| A specified death cannot directly cause additional unintended deaths | `How to Use It: X`, Chapter 14 | The notebook is not an unrestricted AoE kill engine. |
-| Once the victim's name is written, death cannot be avoided | `How to Use It: XI`, Chapter 17 | A successfully applied Name Written status is not removable by generic Cleanse, Dispel, or Purge. |
-| Ownership loss can remove Death Note memories; contact, ownership changes, and page access follow distinct manga rules | Memory-loss, Yotsuba, and Near arcs | The baseline requires Kira memories plus practical Death Note access, but does not flatten every arc into one ownership state. Memory-loss Light is excluded. |
-| Light refuses the Shinigami Eye deal | Chapter 5 and later offers | The kit cannot passively know true names or use Misa's or Mikami's Eyes. |
-| Light defeats opponents through surveillance, social engineering, staged alibis, proxies, and prepared contingencies | FBI-agent, Naomi Misora, surveillance-camera, Yotsuba, and Near arcs | The regular deck builds information and restricts choices. It should not contain a generic Mental-damage Strike. |
+1. Use cheap contestable Basics and Surveillance to build Stolen Information.
+2. Maintain the investigation before incomplete information decays.
+3. Use Blackmail and conditional Slow to restrict the target.
+4. Reach six information and write one eligible human name.
+5. Manage a visible three-step countdown.
+6. Spend Ultimate Meter to establish or accelerate Judgment.
 
-## Supported abilities
+## Contestable Basics
 
-### Information acquisition
+Light keeps one Basic Attack and one Basic Defense at deliberately low 8–12 Power.
 
-`Stolen Information` is an explicit gameplay abstraction for progress toward confirming the target's canonical true name and face.
+### Calculated Pressure
 
-- It is not ordinary knowledge shared by every effect.
-- It does not make a target legal for unrelated abilities.
-- It does not decay automatically; once Light learns a fact, the target cannot generically Cleanse that knowledge from him.
-- Six stacks mean the access requirement is complete. The number six is a visible game threshold, not a claim that canon requires exactly six clues.
-- It persists if Light is defeated, because his acquired knowledge is not erased by injury. Only Light or another explicitly authorized Death Note user can exploit it.
+This is not telepathy or a supernatural blast. Mental damage is an abstract game classification for psychological pressure, manipulation, distraction, and loss of operational effectiveness. The low number keeps Light contestable and clearly below actual combat specialists.
 
-### Death Note eligibility
+Its gameplay job is important:
 
-A target must satisfy `interaction-death-note-eligibility`:
+- It can lose an Attack clash.
+- Information gain requires a successful Hit.
+- It gives Light a low-Energy proactive floor.
+- It prevents his entire setup package from being unopposed Special effects.
 
-- `eligible`: a living human whose canonical true name and face can be established.
-- `ineligible`: clearly fails the notebook's human requirement, such as the selected undead-vampire DIO.
-- `uncertain`: hybrid, transformed, artificial, duplicated, or setting-specific cases requiring an explicit roster adjudication.
+### Perfect Alibi
 
-This avoids inventing a universal species taxonomy while still preserving the notebook's first rule.
+The Defense represents composure, misdirection, prepared explanations, and evasive positioning rather than supernatural armor.
 
-### Writing the name
+Its gameplay job is:
 
-`Death Note: Write the Name` requires:
+- Give Light a narrow personal survival option.
+- Participate in Attack-versus-Defense resolution.
+- Preserve the original Shield and Evade route without granting high combat parity.
 
-1. Death Note eligibility.
-2. Six Stolen Information.
-3. A legal target at play time.
+## Stolen Information
 
-On success it consumes the information route and applies `Name Written in the Death Note`.
+Stolen Information remains a six-stack public setup resource.
 
-### Name Written in the Death Note
+- At five or fewer stacks, Turn End reduces it by one.
+- At six, the completed identity profile is stable.
+- Generic Cleanse, Dispel, and Purge do not erase Light's learned information.
+- The source is tracked so multiple future information users do not share knowledge accidentally.
 
-- The status is public for game clarity even though the victim may not know in the source story.
-- It is scheduled to defeat the subject at the next declared Turn End window.
-- It persists independently of Light's defeat.
-- It cannot be removed by generic status-removal effects.
-- If the subject is already defeated when the scheduled death resolves, the status expires without creating an additional defeat event.
-- If the subject is resurrected before the scheduled window, the scheduled defeat still resolves.
-- Cross-setting defeat replacements remain a separate adjudication. The source proves the written death is unavoidable within *Death Note*, but does not directly test every external immortality or resurrection system.
+Decay is intentional. It represents incomplete leads, target conditions, and investigative momentum becoming less actionable. It also creates pressure to use retained Surveillance and keeps Light from passively banking partial progress forever.
 
-### Planning and action denial
+## Death Note eligibility
 
-Light's ordinary cards represent observation, misdirection, surveillance, and social engineering. They build access or slow the opponent's plan. They do not deal unsupported Mental damage merely because Light is intelligent.
+Ordinary target legality and Death Note eligibility are separate.
 
-### Ultimate pathway
+A valid write requires:
 
-The Ultimate represents a completed contingency or master plan that closes missing identification access. It may reduce the amount of Stolen Information required to write the name, but it does not strengthen the notebook, accelerate an existing countdown, or bypass human-only eligibility.
+- an explicitly eligible living human version,
+- six Stolen Information representing confirmed true-name-and-face access,
+- and a legal target under ordinary game rules.
 
-## Explicit exclusions
+This prevents nonhuman or otherwise ineligible crossover targets from dying merely because they accumulated six information stacks.
 
-| Excluded material | Reason |
-| --- | --- |
-| Shinigami Eyes | Light repeatedly refuses the deal and never possesses the Eyes. |
-| Misa, Mikami, or Takada as innate summons | They are independent people with their own agency and source conditions, not Light's inherent powers. Their strategic role may inform an Ultimate contingency without placing them on the board. |
-| Generic Mental-damage attacks | Light does not attack minds psychically. |
-| Meter-powered countdown reduction | Ultimate Meter has no canonical relationship to the notebook's timing. |
-| Multi-target Death Note AoE | The notebook requires individual names and faces; mass lethality still requires individual valid entries. |
-| Pilot-chapter Death Eraser | The serialized manga does not use the pilot's eraser mechanic. |
-| Netflix-film page-destruction cancellation | Different continuity. In the original manga, writing the name makes death unavoidable. |
+## Death by Death Note
 
-## Weaknesses and failure conditions
+A valid write creates a three-Value countdown.
 
-- Light is physically human and highly vulnerable when exposed.
-- He requires time and actions to acquire identity information.
-- He cannot use the Death Note on ineligible targets.
-- He requires practical notebook or page-fragment access when performing a Death Note action.
-- He does not begin with Shinigami Eyes or automatic true-name knowledge.
-- His arrogance, need for control, and willingness to take unnecessary risks are part of his personality boundary.
-- The notebook cannot force physically impossible behavior or collateral deaths outside its rules.
+- Turn End reduces Value by one.
+- At zero, the subject is defeated.
+- The countdown is immune to generic status removal.
+- It persists after Light's defeat because the written entry no longer requires Light to remain active.
+- It persists through a pre-resolution Resurrection; a later external resurrection after the completed defeat remains governed by that effect's own rules.
 
-## Crossover adjudications
+The three-step countdown is an intentional gameplay abstraction of Death Note timing and visible counterplay. It preserves the notebook as an alternate defeat rather than ordinary damage.
 
-- Each Rules v2 character records an `interaction-death-note-eligibility` result when migrated.
-- `uncertain` is not treated as eligible by default. A roster decision must resolve it.
-- Death Note defeat is an alternate defeat effect, not Mental, Magical, or Spiritual damage.
-- Standard game targeting defenses can prevent the card from being legally played or resolved before the name is successfully written. Once `Name Written` exists, generic status removal cannot erase it.
-- Resurrection after a completed Death Note defeat is not canonically tested. Rules v2 therefore does not automatically add permanent removal; an external Resurrection may work unless a future source-specific ruling says otherwise.
+## Meter acceleration
+
+`Death Note: Judgment` preserves the original 30 Meter base plus optional 10-Meter increments.
+
+It may:
+
+- establish the countdown when six information is complete,
+- reduce an existing countdown by one,
+- and reduce it further for additional Meter, without taking it below one during the Ultimate's immediate resolution.
+
+Meter acceleration represents prepared contingencies, delegated execution, timing control, and committing shared strategic resources. It does not increase damage or bypass Death Note eligibility.
+
+## Explicit non-changes
+
+The following are deliberately preserved:
+
+- A low-Power Mental Basic Attack.
+- A low-Power Mental Basic Defense with Shield and Evade.
+- Surveillance at 1 Energy with Fast and Retain.
+- Blackmail at 1 Energy with Stagnate and conditional Slow.
+- Stolen Information decay below six.
+- A three-Value Death Note countdown.
+- The 2-Energy regular write action.
+- Meter-based countdown acceleration through Judgment.
+- Meticulous Planner drawing once per turn from new information.
+
+These mechanics form Light's established setup–execution identity.
+
+## Required lore corrections
+
+- Death Note access now checks version-specific human eligibility.
+- Six information is explicitly interpreted as true-name-and-face confirmation.
+- The countdown persists independently after Light's defeat.
+- Shinigami Eyes remain excluded.
+- Collaborators are not treated as innate summons.
+- Mental Power is documented as a deliberate contestable abstraction rather than unsupported psychic ability.
 
 ## Mandatory feel points
 
-- Light wins through information and planning, not combat parity.
-- Human-only eligibility matters in actual deck construction and matchup planning.
-- True-name and face access are distinct from ordinary target selection.
-- Once a valid name is written, the payoff is decisive and difficult to interrupt.
-- Meter improves access and tempo, not the supernatural rule itself.
-
-## Forbidden outcomes
-
-- Light punching or psychically damaging opponents to build Death Note progress.
-- Six generic debuff stacks killing nonhuman targets.
-- Cleanse making Light forget a confirmed identity.
-- Light using Shinigami Eyes without paying the canonical price or borrowing another character's Eyes.
-- Ultimate Meter making a written Death Note entry intrinsically more lethal.
+- Light remains physically and statistically weak.
+- His cheap Basics let him participate without giving him duel parity.
+- His setup can be contested through clashes, pressure, decay, and target eligibility.
+- Completing the profile produces a real Death Note route.
+- Judgment creates a meaningful shared-Meter decision.
+- The notebook never becomes ordinary damage.
