@@ -2,11 +2,11 @@
 
 This page is the canonical authoring reference for printed card Power. Use it for every new card, replacement form, Created card, and Power correction.
 
-The formula produces an authoring budget. It does not replace playtesting, and temporary in-match effects never recalculate a card's printed Power.
+The formula produces an authoring budget. It does not replace playtesting, and temporary in-match effects never recalculate printed Power.
 
 ## Required Power Budget Record
 
-Before assigning a printed Power range, record the following:
+Before assigning a printed Power range, record:
 
 ```text
 Card or family:
@@ -15,7 +15,7 @@ Cost baseline used:
 Cost Base Power:
 Pure-output multiplier:
 Created multiplier:
-Fast multiplier:
+Printed-speed multiplier:
 Execution modifier:
 Utility/output adjustment:
 Prerequisite or family allocation:
@@ -25,13 +25,11 @@ Printed Power:
 Exception or precedent:
 ```
 
-Do not omit a line. Write `None` when a line does not apply. A value that cannot be reconstructed from this record is not ready to publish.
+Do not omit a line. Write `None` when it does not apply. A value that cannot be reconstructed from this record is not ready to publish.
 
 ## Power stages
 
-Use these terms consistently:
-
-- **Cost Base Power**: Power produced directly by the card's authoring cost.
+- **Cost Base Power**: Power produced directly by the authoring cost.
 - **Adjusted Base Power**: Cost Base Power after percentage multipliers and rounding.
 - **Final Base Power**: Adjusted Base Power after utility/output adjustments and documented allocations.
 - **Printed Power**: The final Melee or Ranged range shown on the card.
@@ -59,11 +57,9 @@ Cost Base Power = Energy cost x 10
 Cost Base Power = Ultimate Meter cost x 1.5
 ```
 
-Round down only after all applicable percentage multipliers, not immediately after the Meter conversion.
+Do not round the Meter conversion before other percentage multipliers.
 
 ### Mixed-cost Ultimates
-
-For an Ultimate with Ultimate Meter plus Energy:
 
 ```text
 Cost Base Power = Ultimate Meter cost x 1 + Energy cost x 10
@@ -95,7 +91,7 @@ For a mixed-cost Ultimate, each X Energy contributes 10X even when X may be 0.
 
 A non-Created 0 Energy card starts at 5 Cost Base Power.
 
-A 0 Energy Created card uses the creating source's Final Base Power as a ceiling. The Created card may use less than that ceiling when it has additional value or is produced repeatedly.
+A 0 Energy Created card uses the creating source's Final Base Power as a ceiling. It may use less when it has additional value or is produced repeatedly.
 
 ### Special cards
 
@@ -103,45 +99,51 @@ Cards with `Power: -` do not receive a range or Power multipliers.
 
 ## 2. Apply percentage multipliers
 
-Apply all applicable percentages multiplicatively. Do not add percentages together and do not round between multipliers.
+Apply all percentages multiplicatively. Do not add percentages together and do not round between multipliers.
 
 ### Pure-output multiplier
 
-Multiply by `1.20` only when the card's Power is exclusively one of the following:
+Multiply by `1.20` only when the card's Power is exclusively one of:
 
 - Power damage;
 - Power Shield;
-- Power HP or healing when that is the card's only Power output.
+- Power HP or healing when it is the card's only Power-scaled output.
 
 The bonus normally does not apply when the card also provides meaningful additional value, including statuses, resource gain, draw, card creation, extra healing, AoE/Splash/Bounce access, Evade, Counter, Reuse, or strong tempo effects.
 
-Multihit by itself only divides the same total Power and does not automatically remove the pure-output bonus. Per-hit riders and repeated On Hit effects are additional value.
+Multihit by itself only divides the same total Power and does not automatically remove this bonus. Per-hit riders and repeated On Hit effects are additional value.
 
-A minor or character-defining rider may be treated as budget-neutral only when the Power Budget Record states that decision. Existing roster values are not automatic permission to make a new rider free.
+A minor or character-defining rider may be budget-neutral only when the Power Budget Record states that decision. Existing roster values are not automatic permission to make a new rider free.
 
 ### Created multiplier
 
 Created cards multiply Base Power by `0.90`.
 
-Creation is an access advantage. Exhaust and Ethereal do not cancel the Created multiplier; they limit the Created card's lifecycle.
+Creation is an access advantage. Exhaust and Ethereal limit lifecycle but do not cancel the Created multiplier.
 
-### Printed Fast multiplier
+### Printed-speed multiplier
 
-A non-Ultimate card with printed Fast speed multiplies Base Power by `0.90`.
+For non-Ultimate cards with Power:
 
-Normal and Slow cards use `1.00`. Slow does **not** receive an automatic bonus. A genuinely restrictive delay may instead justify the normal `1.10-1.20` execution modifier, but only when the delay is meaningful and is not already paying for another benefit.
+```text
+Fast   x 0.90
+Normal x 1.00
+Slow   x 1.10
+```
+
+Slow is an intentional compensation for being restricted to the Slow Zone and being easier to interrupt. Do not add another execution bonus merely because the card is Slow; an additional execution modifier requires a separate material restriction.
 
 Temporary Haste, Slow, Prepare, cost changes, and other in-match effects do not recalculate printed Power.
 
 ### Ultimates and Speed
 
-Ultimates do not use an automatic Fast or Slow multiplier. Their speed is budgeted together with Meter cost, targeting, utility, restrictions, setup, and finisher role.
+Ultimates do not receive automatic Fast or Slow multipliers. Their speed is budgeted together with Meter cost, targeting, utility, restrictions, setup, and finisher role.
 
 ### Execution modifier
 
 A narrow, costly, or difficult requirement may multiply Base Power by `1.10-1.20`.
 
-Do not grant this bonus merely because a card has a condition. The condition must materially reduce access, timing, target availability, or reliability.
+Do not grant this merely because a condition exists. It must materially reduce access, timing, target availability, or reliability.
 
 ## 3. Round Adjusted Base Power
 
@@ -151,7 +153,7 @@ After all percentage multipliers:
 Adjusted Base Power = floor(unrounded adjusted value)
 ```
 
-Do not round after each individual multiplier.
+Do not round after each multiplier.
 
 Example:
 
@@ -165,7 +167,7 @@ Adjusted Base Power = 9
 
 After percentage rounding, reduce Base Power when total impact exceeds the intended budget.
 
-Common reasons include:
+Common reasons:
 
 - status application;
 - repeated On Hit effects;
@@ -176,7 +178,7 @@ Common reasons include:
 - Follow-Up, Assist Attack, Retain, Evade, Counter, or Reuse;
 - strong positioning or play-denial effects.
 
-There is no universal percentage for utility. Record the amount removed and the reason. Prefer a simple integer reduction from Adjusted Base Power.
+There is no universal utility percentage. Record the amount removed and why. Prefer a simple integer reduction from Adjusted Base Power.
 
 ### Evade
 
@@ -186,7 +188,7 @@ Evade has no second universal fixed penalty. Reduce further only for additional 
 
 ### Damage plus healing
 
-When a card deals Power damage and heals for `Power / 2`, total Power-scaled output is approximately `1.5 x Power`. A common target is therefore:
+When a card deals Power damage and heals for `Power / 2`, total Power-scaled output is approximately `1.5 x Power`. A common target is:
 
 ```text
 Final Base Power = Cost Base Power / 1.5
@@ -202,34 +204,27 @@ Ranged Power = 15-25
 
 ### Multihit
 
-Splitting Power across hits does not change the total Power budget by itself.
+Splitting Power across hits does not change total Power by itself.
 
-Budget these separately:
-
-- per-hit status applications;
-- per-hit resource gain;
-- interactions with flat mitigation;
-- minimum-damage or rounding behavior;
-- variable hit counts.
+Budget separately for per-hit riders, resource gain, flat-mitigation interactions, minimum-damage or rounding behavior, and variable hit counts.
 
 ## 5. Costs, prerequisites, and replacement families
 
 ### Printed cost is the default
 
-Use printed cost unless a documented exception below applies. Never use the maximum theoretical discount.
+Use printed cost unless a documented exception applies. Never use the maximum theoretical discount.
 
-### Effective-cost exceptions
+### Expected effective cost
 
-A deterministic or highly reliable character-defining cost engine may use an expected effective cost only as a documented exception.
+A deterministic or highly reliable character-defining cost engine may use expected effective cost as a documented exception.
 
-Record:
+```text
+Expected Effective Cost = sum(State probability x max(0, Printed cost - Reduction in that state))
+```
 
-- printed cost;
-- reliable expected reduction;
-- expected effective cost;
-- why the reduction is reliable during the card's normal use window.
+Record the printed cost, state assumptions, expected reliable reduction, expected effective cost, and why those states represent normal use.
 
-Random, enemy-dependent, rare, or once-per-game discounts normally do not change the cost baseline.
+Random, enemy-dependent, rare, or once-per-game reductions normally do not change the baseline. Different cards may use different expected costs when they are normally played at different engine stages.
 
 Actual in-match cost changes never recalculate printed Power.
 
@@ -245,27 +240,27 @@ A requirement that remains after use normally qualifies only for the execution m
 
 A prerequisite consumed by the payoff may contribute the portion of its budget used exclusively by that payoff.
 
-Do not count value already delivered by the setup itself. Full credit is exceptional and requires the setup to exist solely for the payoff.
+Do not count value already delivered by the setup. Full credit is exceptional and requires the setup to exist solely for the payoff.
 
 ### Recurring acquisition cycles
 
-When a payoff consumes an item that must be repurchased, the repeatable Cost Base Power may include:
+When a payoff consumes an item that must be repurchased:
 
 ```text
-Recurring acquisition cost + activation cost
+Recurring Cost Base Power = acquisition cost + activation cost
 ```
 
-Record any free starting copy separately; it changes the first use, not the repeatable cycle.
+Record a free starting copy separately; it changes the first use, not the repeatable cycle.
 
 ### Replacement and progression families
 
 A replacement form normally uses its own printed cost and printed speed.
 
-A documented family may share one Final Base Power when the transformation card, status, threshold, consumed resource, limited duration, or drawback already pays for the stronger form.
+A documented family may share one Final Base Power when a transformation card, status, threshold, consumed resource, limited duration, or drawback already pays for the stronger form.
 
-The Power Budget Record must name what pays for the difference. Do not apply the same benefit again as a Fast, utility, or execution adjustment.
+The record must name what pays for the difference. A shared family may override Fast or Slow multipliers only when that override is explicit; do not count the same benefit again as speed, utility, or execution value.
 
-## 6. Generate the printed range
+## 6. Generate Printed Power
 
 ### Melee
 
@@ -283,60 +278,53 @@ Minimum = Final Base Power - adjustment
 Maximum = Final Base Power + adjustment
 ```
 
-Clamp the minimum at 0.
-
-Use the card's printed Melee or Ranged type. Do not infer the range from its target or animation.
+Clamp the minimum at 0. Use the card's printed Melee or Ranged type.
 
 ## 7. Variable Power expressions
 
-For printable variable ranges, preserve each additive component instead of recomputing one total range for every possible X.
-
-If Final Base Power is:
+For a printable expression whose Final Base Power is:
 
 ```text
 A + BX
 ```
 
-then:
+use component ranging:
 
 1. apply percentage modifiers to A and B separately;
-2. round each adjusted component down separately;
-3. state whether utility reduction applies to A, B, or both;
-4. generate the Melee/Ranged range for A and B separately;
+2. round each component down separately;
+3. state whether utility adjustment applies to A, B, or both;
+4. generate the range for A and B separately;
 5. print `A-range + B-range times X`.
 
-This component method is canonical because range floors can make a single recomputed total differ at higher X values.
+This is canonical because range floors can make one recomputed total differ at higher X values.
 
 Examples:
 
 ```text
-5 + 5X, Melee or Ranged at these coefficients
--> 4-6 + 4-6 times X
-
-30 + 10X, Melee
--> 24-36 + 8-12 times X
+5 + 5X -> 4-6 + 4-6 times X
+30 + 10X, Melee -> 24-36 + 8-12 times X
 ```
 
-Do not silently switch between component ranging and total-value ranging.
+Do not silently switch between component and total-value ranging.
 
 ## 8. Runtime modifiers do not rewrite printed Power
 
 Distance, Close, Far, Strength, Dexterity, Fortified, Weak, Vulnerable, Haste, Slow, and other in-match effects modify the roll or game state at runtime. They do not change the printed authoring calculation.
 
-When a card has Close or Far, budget around its expected peaks and valleys, but keep the printed range based on Final Base Power.
+When a card has Close or Far, budget around expected peaks and valleys, but keep the printed range based on Final Base Power.
 
 ## Calculation order
 
 1. Determine Cost Base Power.
 2. For a 0 Energy Created card, record the creator's Final Base Power ceiling.
 3. Express variable costs as additive components.
-4. Apply pure-output, Created, Fast, and execution percentages multiplicatively.
+4. Apply pure-output, Created, printed-speed, and execution percentages multiplicatively.
 5. Round each fixed value or variable component down once.
 6. Reduce for additional output and utility.
 7. Apply documented prerequisite, recurring-cycle, family, or character-specific allocation.
 8. Apply the Created ceiling.
 9. Generate Melee or Ranged ranges.
-10. Check the printed result against the Power Budget Record.
+10. Verify the result against the Power Budget Record.
 
 ## Worked examples
 
@@ -369,6 +357,16 @@ Melee adjustment: floor(18 x 0.20) = 3
 Printed Power: 15-21
 ```
 
+### Slow pure damage
+
+```text
+2 Energy = 20
+20 x 1.20 x 1.10 = 26.4
+Adjusted Base Power: 26
+Melee adjustment: floor(26 x 0.20) = 5
+Printed Power: 21-31
+```
+
 ### Created Fast pure damage
 
 ```text
@@ -399,26 +397,24 @@ Printed Power: 45-75
 
 ## Current roster precedents
 
-These precedents explain existing families; they are not blanket permission for unrelated cards.
+These explain existing families; they are not blanket permission for unrelated cards.
 
-- **DIO Basic and Technique cards** use a reconstructed effective-cost exception based on approximately 2 expected Blood Focus reduction. New cards should not copy this without their own reliable engine record.
-- **DIO Time Stop forms** share their parent card's Power because the setup, access requirement, and drawback pay for their enhanced delivery.
-- **ROAD ROLLER DA!** uses Final Base Power 90: 60 from 40 Ultimate Meter plus a partial 30 allocation from the consumed Time Stop setup. The setup's other value is not counted again.
-- **Luffy Gear families** share Power across replacement forms because Gear Transformation, limited duration, Slow, and Deflate pay for the differences.
-- **Ichigo Bankai and Hollow families** share parent Power because transformation access, duration, and Strain pay for their enhanced forms.
-- **Naruto Rasengan forms** share Final Base Power 30 because Clone Assist consumes Shadow Clones and adds utility; Slow grants no automatic bonus.
-- **Saitama State forms** use progression-family budgets because State thresholds pay for the enhanced forms.
+- **DIO Basic and Technique cards** use a reconstructed expected-cost exception based on approximately 2 expected Blood Focus reduction. New cards require their own state assumptions.
+- **DIO Time Stop forms** share parent Power because setup, access, and drawback pay for enhanced delivery.
+- **ROAD ROLLER DA!** uses Final Base Power 90: 60 from 40 Ultimate Meter plus a partial 30 allocation from the consumed Time Stop setup. Other Time Stop value is not counted again.
+- **Luffy Gear families** share Power across replacement forms because Gear Transformation, limited duration, Slow, and Deflate pay for the differences. This documented family overrides individual Fast and Slow multipliers.
+- **Ichigo Bankai and Hollow families** share parent Power because transformation access, duration, and Strain pay for enhanced forms.
+- **Naruto Rasengan forms** use Final Base Power 30. The Slow base form reaches Adjusted Base Power 33, then the shared family's Clone Assist utility allocation reduces the family to 30; Clone Assist consumes Shadow Clones and adds Follow-Up and Vulnerable.
+- **Saitama State forms** use progression-family budgets because State thresholds pay for enhanced forms.
 - **Leon Rocket Launcher** uses the recurring 10 Meter acquisition plus 30 Meter activation cycle.
 
 ## Final checklist
 
-Before publishing:
-
 - The Power Budget Record is complete.
 - The original cost baseline is visible.
 - Every multiplier has a reason.
-- Fast is applied only where required.
-- Slow has no automatic bonus.
+- Fast and Slow use the correct printed-speed multiplier unless a family explicitly overrides it.
+- Ultimates have no automatic speed multiplier.
 - Evade has no invented second deduction.
 - Utility and additional output are not double-counted.
 - Setup value is not counted twice.
