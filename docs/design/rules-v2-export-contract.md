@@ -42,7 +42,7 @@ rulesVersion: 2
 
 A directory containing Rules v1, mixed-version, malformed, or unaudited Rules v2 character data is not a valid canonical Rules v2 export source.
 
-When any roster card requires a target-eligibility interaction, every character in that export directory must declare a reviewed non-default outcome for that interaction. Missing or unresolved target outcomes block the canonical package export.
+When any roster card requires a target-eligibility interaction, every character in that export directory must declare an explicit audited outcome for that interaction. `uncertain` is allowed when the source does not justify a stronger ruling, but it never satisfies an `eligible` requirement.
 
 ## Output package
 
@@ -55,7 +55,7 @@ The Rules v2 package contains:
 | `global-rules.json` | Approved shared Rules v2 mechanics and Rules v1 override mappings. |
 | `source-interactions.json` | Closed source-specific interaction definitions used by crossover eligibility and weakness checks. |
 | `aliases.json` | Temporary compatibility aliases used during migration. |
-| `manifest.json` | Compatibility identity, validation result, source metadata, and content hashes. |
+| `manifest.json` | Compatibility identity, validation result, source metadata, roster completeness, and content hashes. |
 | `assets/characters/` | Referenced character art unless asset copying is disabled. |
 
 The manifest is not included in its own `contentHash`. Every other JSON output has an individual SHA-256 hash under `files` and contributes to the package `contentHash`.
@@ -71,7 +71,9 @@ The manifest is not included in its own `contentHash`. Every other JSON output h
   "sourceCommit": "...",
   "generatedAt": "...",
   "sourceDirty": false,
-  "publishable": true,
+  "publishable": false,
+  "partialRoster": true,
+  "missingRosterCharacters": ["goku-saiyan-saga"],
   "contentHash": "sha256:...",
   "files": {
     "aliases.json": "sha256:...",
@@ -80,7 +82,7 @@ The manifest is not included in its own `contentHash`. Every other JSON output h
     "registries.json": "sha256:...",
     "source-interactions.json": "sha256:..."
   },
-  "rosterCount": 9,
+  "rosterCount": 2,
   "sourceInteractionCount": 4,
   "registryVersions": {},
   "migrationsApplied": ["v1-to-v2"],
@@ -92,7 +94,7 @@ The manifest is not included in its own `contentHash`. Every other JSON output h
 }
 ```
 
-`publishable` is false when canonical source data is dirty or the exporter cannot identify a source commit. Use `--require-publishable` in release or CI workflows to block such output.
+`publishable` is false when canonical source data is dirty, the exporter cannot identify a source commit, or the selected Rules v2 directory does not yet contain counterparts for every active roster filename. Use `--require-publishable` in release or CI workflows to block such output before it is written.
 
 ## Useful options
 
@@ -122,6 +124,7 @@ Explicit `--source-commit` and `--generated-at` values support deterministic CI 
 - `npm run export:v2` must never be pointed at Rules v1 data and cannot silently convert it.
 - `npm run export:v2` is the canonical package command once character data references source interactions.
 - `npm run export:v2:core` exists only for low-level exporter fixtures and structural diagnostics.
+- Partial parallel-roster exports are valid review artifacts but are always marked non-publishable.
 - The migration CLI performs conversion; the exporter only validates and packages already-migrated data.
 - Character research and lore review remain roster-PR responsibilities, not exporter responsibilities.
 - After every active character is audited and migrated, a later PR may make the Rules v2 exporter the default command.
@@ -144,6 +147,6 @@ The core exporter test uses a self-contained Rules v2 fixture and verifies:
 - Required core package files.
 - Explicit rejection of Rules v1 input.
 
-Character-specific roster tests additionally verify source-interaction definitions, reviewed target outcomes, lore invariants, and the final source-aware package artifact.
+Character-specific roster tests additionally verify source-interaction definitions, explicit target outcomes, lore invariants, partial-roster metadata, and the final source-aware package artifact.
 
 The fixture exists only to exercise the data contract. It is not a playable roster character and is never included in the canonical roster export.
