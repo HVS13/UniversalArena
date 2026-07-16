@@ -1,69 +1,65 @@
-# Rules v2 Implementation Checklist
+# Rules v2 Migration Foundation Checklist
 
-> **PR strategy:** Complete the full Rules v2 implementation in one long-lived draft pull request. Use separate commits and validation checkpoints. Do not mark the PR ready until every blocking item below passes.
+> **Scope:** This checklist applies only to the migration and validation foundation introduced by PR #2. Active roster conversion, global-rules migration, exporter conversion, lore audits, and final documentation synchronization belong to later pull requests.
 
-## Checkpoint 1 — Migration foundation
+## Included foundation
 
 - [x] Add consolidated Rules v2 content registries.
-- [x] Add deterministic roster migration overrides.
+- [x] Add deterministic per-character migration overrides.
 - [x] Add a dry-run and write-mode character migration CLI.
 - [x] Add a Rules v2 validator.
 - [x] Keep the existing Rules v1 validator available during transition.
-- [ ] Run `npm run migrate:v2:check` in a clean checkout.
-- [ ] Review the generated migration report.
-- [ ] Resolve migration-script runtime or parsing errors.
+- [x] Add npm commands for transitional validation, migration checking, write mode, and strict Rules v2 validation.
 
-## Checkpoint 2 — Generated roster conversion
+## Validation completed
 
-- [ ] Run `npm run migrate:v2`.
-- [ ] Commit all nine migrated character YAML files and the migration report.
-- [ ] Run `npm run validate:v2`.
-- [ ] Confirm exactly two starting Basics and three starting Techniques per character.
-- [ ] Confirm every Ultimate belongs to one pathway.
-- [ ] Confirm Electric is a Property, not a Damage Type.
-- [ ] Confirm explicit owner, provenance, target, lifecycle, effect ID, timing, and scope fields.
+Validated on branch `agent/rules-v2-implementation` at commit `9b3c239`:
 
-## Checkpoint 3 — Manual roster audit
+- [x] `npm install` completed.
+- [x] `npm run validate` passed.
+- [x] Transitional Rules v2 validation found 9 expected Rules/Schema v1 warnings and 0 errors.
+- [x] `npm run migrate:v2:check` completed deterministically.
+- [x] Migration dry-run checked all 9 character files.
+- [x] Migration report contained 27 review warnings and 0 fatal errors.
+- [x] `mkdocs build --strict` passed.
+- [x] Dependency audit result was reviewed and documented: 1 moderate-severity finding.
 
-- [ ] Replace every `review_required` source boundary field.
-- [ ] Complete thesis, weakness, power expression, mandatory feel points, and forbidden outcomes.
-- [ ] Convert every executable Unique-status display line into typed rules.
-- [ ] Resolve every migration warning and unmapped legacy classification.
-- [ ] Review effect scope on AoE and Multihit cards.
-- [ ] Review targeting for traps, delayed zones, movement-sensitive attacks, and unusual effects.
-- [ ] Review ownership and lifecycle of Created cards.
-- [ ] Review every Ultimate pathway and lifecycle.
-- [ ] Add source-basis and considered-but-omitted records.
+The migration warnings are expected inputs for later roster and global-rules work. They are not evidence that the roster has been migrated.
 
-## Checkpoint 4 — Global rules and exporter
+## Expected dry-run warnings
 
-- [ ] Update global registries and references for Roles, Archetypes, Capabilities, Properties, and Source-System Tags.
-- [ ] Migrate Electric references and mitigation filters.
-- [ ] Implement Rules v2 Exhaust, Stun, Taunt, Cover, Splash, Bounce, Reveal, Reposition, Defeat Reserve, and Resurrection data.
-- [ ] Update `export-game-data.mjs` to emit schemaVersion 2 and rulesVersion 2.
-- [ ] Export consolidated registries and migration metadata.
-- [ ] Update human-readable generation and Markdown/YAML synchronization for v2 display fields.
-- [ ] Preserve explicit compatibility aliases where required.
+The reviewed report identified:
 
-## Checkpoint 5 — Regression and documentation
+- 19 Unique statuses requiring typed-rule review.
+- 4 `self_missing_status` conditions requiring review.
+- 3 variable Power expressions requiring manual typed-expression design.
+- 1 missing generated Ultimate pathway for Monkey D. Luffy.
 
-- [ ] Add automated tests for clashes, Multihit erosion, target locking, area batches, statuses, lifecycle, economy, defeat, and Resurrection.
-- [ ] Add roster-specific regression cases for DIO, Light, Luffy, Leon, and other complex characters.
-- [ ] Run `npm run validate`.
-- [ ] Run `npm run validate:v2:strict`.
-- [ ] Run the exporter into a temporary directory and inspect its manifest.
-- [ ] Run `mkdocs build --strict`.
-- [ ] Check all internal links and rendered Rules v2/reference/character pages.
-- [ ] Run `npm audit` and document dependency findings without using `--force` blindly.
+These warnings must be resolved in later implementation PRs before Rules v2 can be declared implemented.
 
-## Merge gate
+## Explicitly not completed by this PR
 
-The PR may be marked ready only when:
+- Active character YAML migration.
+- Manual lore and character-feel audits.
+- Typed conversion of Unique-status executable behavior.
+- Global keyword, status, term, role, classification, and area migration.
+- Rules v2 exporter and manifest conversion.
+- Generated Markdown synchronization.
+- Rules engine or web-game implementation.
+- Final roster regression tests.
 
-- No Rules v1 character YAML remains active.
-- No blocking schema, semantic, or compatibility errors remain.
-- No `review_required`, `migrationStatus: review_required`, or untyped executable Unique-status behavior remains.
-- Every character has passed the roster audit checklist.
-- The exporter produces a clean Rules v2 manifest.
-- The strict v2 validator, legacy/display synchronizer, regression tests, and strict MkDocs build all pass.
-- The PR description accurately states any non-blocking dependency audit findings.
+Do not run `npm run migrate:v2` merely to validate this foundation PR.
+
+## Foundation merge gate
+
+PR #2 may be marked ready when:
+
+- [x] Legacy Markdown/YAML synchronization passes.
+- [x] Transitional Rules v2 validation passes with no errors.
+- [x] Migration dry-run completes deterministically.
+- [x] The report contains no fatal error or malformed output.
+- [x] Strict MkDocs build passes.
+- [x] Dependency findings are recorded without applying an uncontrolled forced fix.
+- [x] The PR description clearly states that active content remains Rules v1.
+
+After this PR merges, subsequent PRs should use the migration foundation without silently treating dry-run output as approved roster design.
