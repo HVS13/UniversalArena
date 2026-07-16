@@ -13,12 +13,14 @@ const argValue = (name, fallback = null) => {
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(scriptDir, "..", "..");
 const dataRoot = path.join(repoRoot, "docs", "data");
-const charactersDir = path.resolve(argValue("--characters-dir", path.join(dataRoot, "characters")));
+const activeRosterDir = path.join(dataRoot, "characters");
+const charactersDir = path.resolve(argValue("--characters-dir", activeRosterDir));
 const interactionsPath = path.resolve(
   argValue("--source-interactions", path.join(dataRoot, "rules-v2", "source-interactions.yml"))
 );
 const outDir = path.resolve(argValue("--out", path.join(dataRoot, "export-v2")));
 const coreExporter = path.join(scriptDir, "export-game-data-v2.mjs");
+const requirePublishable = process.argv.includes("--require-publishable");
 
 const readYaml = async (filename) => YAML.parse(await fs.readFile(filename, "utf8"));
 const serializeJson = (value) => `${JSON.stringify(value, null, 2)}\n`;
@@ -78,6 +80,8 @@ const validateInteractions = async () => {
   if (definitions.size === 0) errors.push("source-interactions.yml contains no interaction definitions.");
 
   const filenames = (await fs.readdir(charactersDir)).filter((entry) => /\.ya?ml$/i.test(entry)).sort();
+  const activeFilenames = (await fs.readdir(activeRosterDir)).filter((entry) => /\.ya?ml$/i.test(entry)).sort();
+  const missingActiveCharacters = activeFilenames.filter((filename) => !filenames.includes(filename));
   const characters = [];
   const requiredTargetInteractions = new Set();
   for (const filename of filenames) {
@@ -127,7 +131,12 @@ const validateInteractions = async () => {
     }
   }
 
-  return { registry, errors, characterCount: characters.length };
+  return {
+    registry,
+    errors,
+    characterCount: characters.length,
+    missingActiveCharacters,
+  };
 };
 
 const forwardedArgs = [];
@@ -140,10 +149,17 @@ for (let index = 2; index < process.argv.length; index += 1) {
 }
 
 const main = async () => {
-  const { registry, errors, characterCount } = await validateInteractions();
+  const { registry, errors, characterCount, missingActiveCharacters } = await validateInteractions();
   errors.forEach((error) => console.error(`Error: ${error}`));
   if (errors.length) {
     console.error(`Rules v2 package export blocked: ${errors.length} source-interaction error(s).`);
+    process.exitCode = 1;
+    return;
+  }
+  if (requirePublishable && missingActiveCharacters.length) {
+    console.error(
+      `Rules v2 package export blocked: partial roster is missing ${missingActiveCharacters.length} active character file(s).`
+    );
     process.exitCode = 1;
     return;
   }
@@ -178,11 +194,19 @@ const main = async () => {
   );
   manifest.contentHash = packageHash(packageFiles);
   manifest.sourceInteractionCount = registry.interactions.length;
+  manifest.partialRoster = missingActiveCharacters.length > 0;
+  manifest.missingRosterCharacters = missingActiveCharacters.map((filename) => filename.replace(/\.ya?ml$/i, ""));
+  if (manifest.partialRoster) manifest.publishable = false;
   await fs.writeFile(manifestPath, serializeJson(manifest), "utf8");
 
   console.log(
     `Exported Rules v2 package for ${characterCount} character(s) to ${outDir} (${manifest.contentHash}).`
   );
+  if (manifest.partialRoster) {
+    console.warn(
+      `Warning: export is marked publishable=false because ${missingActiveCharacters.length} active roster character(s) are missing.`
+    );
+  }
 };
 
 main().catch((error) => {
