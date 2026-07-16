@@ -3,181 +3,286 @@ rulesVersion: 2
 
 registries:
   actionTypes:
-    - { id: action-basic, name: Basic }
-    - { id: action-technique, name: Technique }
-    - { id: action-ultimate, name: Ultimate }
-    - { id: action-attack, name: Attack }
-    - { id: action-defense, name: Defense }
-    - { id: action-special, name: Special }
+    - id: action-basic
+      name: Basic
+      category: action
+      description: One of a character's two foundational starting regular-card slots.
+      rules: []
+      deprecated: false
+    - id: action-technique
+      name: Technique
+      category: action
+      description: One of a character's three non-Basic starting regular-card slots.
+      rules: []
+      deprecated: false
+    - id: action-ultimate
+      name: Ultimate
+      category: action
+      description: A card accessed through an Ultimate pathway and normally paid with Ultimate Meter.
+      rules: []
+      deprecated: false
+    - id: action-attack
+      name: Attack
+      category: action
+      description: A card that participates in Attack clashes and normally creates Hit and damage instances when Used.
+      rules: []
+      deprecated: false
+    - id: action-defense
+      name: Defense
+      category: action
+      description: A card that resolves first against a paired Attack and normally grants protection such as Power Shield.
+      rules: []
+      deprecated: false
+    - id: action-special
+      name: Special
+      category: action
+      description: A non-Attack, non-Defense action. It normally has no Power Roll unless explicit text supplies one.
+      rules: []
+      deprecated: false
 
   damageTypes:
-    - { id: damage-physical, name: Physical }
-    - { id: damage-energy, name: Energy }
-    - { id: damage-magical, name: Magical }
-    - { id: damage-mental, name: Mental }
-    - { id: damage-spiritual, name: Spiritual }
+    - id: damage-physical
+      name: Physical
+      category: damage_type
+      description: Bodily force, weapons, impacts, cuts, projectiles, or other primarily physical harm.
+      rules: []
+      deprecated: false
+    - id: damage-energy
+      name: Energy
+      category: damage_type
+      description: Broad projected or concentrated energy damage that is not better classified as Magical, Mental, or Spiritual.
+      rules: []
+      deprecated: false
+    - id: damage-magical
+      name: Magical
+      category: damage_type
+      description: Damage produced through magic, sorcery, curses, or equivalent supernatural spell systems.
+      rules: []
+      deprecated: false
+    - id: damage-mental
+      name: Mental
+      category: damage_type
+      description: Damage that directly attacks cognition, perception, emotion, or the mind.
+      rules: []
+      deprecated: false
+    - id: damage-spiritual
+      name: Spiritual
+      category: damage_type
+      description: Damage that directly affects souls, spirits, or explicitly spiritual bodies and structures.
+      rules: []
+      deprecated: false
 
   properties:
-    - { id: property-electric, name: Electric, category: phenomenon, rules: [] }
-    - { id: property-fire, name: Fire, category: element, rules: [] }
-    - { id: property-ice, name: Ice, category: element, rules: [] }
-    - { id: property-sonic, name: Sonic, category: phenomenon, rules: [] }
-    - { id: property-explosive, name: Explosive, category: phenomenon, rules: [] }
-    - { id: property-radiation, name: Radiation, category: phenomenon, rules: [] }
-    - { id: property-acid, name: Acid, category: substance, rules: [] }
+    - id: property-electric
+      name: Electric
+      category: phenomenon
+      description: Electricity or lightning. This has no inherent universal rule and is not a Damage Type.
+      rules: []
+      deprecated: false
+    - id: property-fire
+      name: Fire
+      category: element
+      description: Fire, flame, or heat-associated delivery.
+      rules: []
+      deprecated: false
+    - id: property-ice
+      name: Ice
+      category: element
+      description: Ice, freezing, or extreme-cold-associated delivery.
+      rules: []
+      deprecated: false
+    - id: property-sonic
+      name: Sonic
+      category: phenomenon
+      description: Sound, vibration, or pressure-wave-associated delivery.
+      rules: []
+      deprecated: false
+    - id: property-explosive
+      name: Explosive
+      category: phenomenon
+      description: Explosive, concussive, or blast-associated delivery.
+      rules: []
+      deprecated: false
+    - id: property-radiation
+      name: Radiation
+      category: phenomenon
+      description: Ionizing, radioactive, or source-equivalent radiative exposure.
+      rules: []
+      deprecated: false
+    - id: property-acid
+      name: Acid
+      category: substance
+      description: Acidic or corrosive chemical delivery.
+      rules: []
+      deprecated: false
 
   sourceSystemTags:
-    - { id: system-ki, name: Ki, rules: [] }
-    - { id: system-chakra, name: Chakra, rules: [] }
-    - { id: system-reiatsu, name: Reiatsu, rules: [] }
-    - { id: system-haki, name: Haki, rules: [] }
-    - { id: system-stand, name: Stand, rules: [] }
-    - { id: system-nen, name: Nen, rules: [] }
-    - { id: system-cursed-energy, name: Cursed Energy, rules: [] }
-    - { id: system-technology, name: Technology, rules: [] }
+    - { id: system-ki, name: Ki, category: source_system, description: Dragon Ball ki or explicitly equivalent use within that source, rules: [], deprecated: false }
+    - { id: system-chakra, name: Chakra, category: source_system, description: Naruto chakra and chakra-derived techniques, rules: [], deprecated: false }
+    - { id: system-reiatsu, name: Reiatsu, category: source_system, description: Bleach spiritual pressure and related spiritual power, rules: [], deprecated: false }
+    - { id: system-haki, name: Haki, category: source_system, description: One Piece Haki, rules: [], deprecated: false }
+    - { id: system-stand, name: Stand, category: source_system, description: JoJo's Bizarre Adventure Stand power, rules: [], deprecated: false }
+    - { id: system-nen, name: Nen, category: source_system, description: Hunter x Hunter Nen, rules: [], deprecated: false }
+    - { id: system-cursed-energy, name: Cursed Energy, category: source_system, description: Jujutsu Kaisen cursed energy, rules: [], deprecated: false }
+    - { id: system-technology, name: Technology, category: source_system, description: Equipment or abilities whose relevant interaction depends on technology, rules: [], deprecated: false }
 
   ranges:
-    - { id: range-melee, name: Melee }
-    - { id: range-ranged, name: Ranged }
+    - { id: range-melee, name: Melee, category: range, description: Close-range action whose Distance profile normally favors opposed or nearby targets, rules: [], deprecated: false }
+    - { id: range-ranged, name: Ranged, category: range, description: Distance-capable action whose Distance profile normally tolerates or favors separated targets, rules: [], deprecated: false }
 
   areas:
-    - { id: area-aoe, name: AoE }
-    - { id: area-splash, name: Splash }
-    - { id: area-bounce, name: Bounce }
-    - { id: area-chain, name: Chain }
-    - { id: area-line, name: Line }
-    - { id: area-cone, name: Cone }
-    - { id: area-ring, name: Ring }
-    - { id: area-random-enemies, name: Random Enemies }
-    - { id: area-source-radius, name: Source Radius }
+    - id: area-aoe
+      name: AoE
+      category: area
+      description: Affects every legal character in its explicitly stated area. Ordinary Redirect and Cover do not redirect the area.
+      rules: []
+      deprecated: false
+    - id: area-splash
+      name: Splash
+      category: area
+      description: Affects the final primary target and all occupied adjacent positions on that target's team line.
+      rules: []
+      deprecated: false
+    - id: area-bounce
+      name: Bounce
+      category: area
+      description: Applies X secondary target-facing applications to random eligible occupants adjacent to the locked primary position, with replacement by default.
+      rules: []
+      deprecated: false
+    - { id: area-chain, name: Chain, category: area, description: Reserved area pattern that moves from the most recent target; no default behavior until explicitly defined, rules: [], deprecated: false }
+    - { id: area-line, name: Line, category: area, description: Reserved line-shaped area; each card must define its legal positions and snapshot behavior, rules: [], deprecated: false }
+    - { id: area-cone, name: Cone, category: area, description: Reserved cone-shaped area; each card must define its legal positions and snapshot behavior, rules: [], deprecated: false }
+    - { id: area-ring, name: Ring, category: area, description: Reserved ring-shaped area; each card must define its legal positions and snapshot behavior, rules: [], deprecated: false }
+    - { id: area-random-enemies, name: Random Enemies, category: area, description: Reserved random-enemy area; each card must define count, replacement, and eligibility timing, rules: [], deprecated: false }
+    - { id: area-source-radius, name: Source Radius, category: area, description: Reserved source-centered area; each card must define radius, line, and snapshot behavior, rules: [], deprecated: false }
 
   attackTags:
-    - { id: attack-slash, name: Slash }
-    - { id: attack-pierce, name: Pierce }
-    - { id: attack-blunt, name: Blunt }
-    - { id: attack-multihit, name: Multihit }
+    - { id: attack-slash, name: Slash, category: attack_tag, description: Cutting or slashing delivery. It has no inherent defense bypass, rules: [], deprecated: false }
+    - { id: attack-pierce, name: Pierce, category: attack_tag, description: Piercing or thrusting delivery. It has no inherent defense bypass, rules: [], deprecated: false }
+    - { id: attack-blunt, name: Blunt, category: attack_tag, description: Impact, crushing, or blunt-force delivery, rules: [], deprecated: false }
+    - { id: attack-multihit, name: Multihit, category: attack_tag, description: Uses a mutable remaining Hit Count for clash erosion and repeated Hit resolution, rules: [], deprecated: false }
 
   effectTags:
-    - { id: effect-transformation, name: Transformation }
-    - { id: effect-recovery, name: Recovery }
-    - { id: effect-buff, name: Buff }
-    - { id: effect-debuff, name: Debuff }
-    - { id: effect-equipment, name: Equipment }
-    - { id: effect-summon, name: Summon }
-    - { id: effect-information, name: Information }
-    - { id: effect-alternate-defeat, name: Alternate Defeat }
+    - { id: effect-transformation, name: Transformation, category: effect_tag, description: Changes form, mode, state, or card definitions, rules: [], deprecated: false }
+    - { id: effect-recovery, name: Recovery, category: effect_tag, description: Restores HP, resources, cards, equipment, or participation state, rules: [], deprecated: false }
+    - { id: effect-buff, name: Buff, category: effect_tag, description: Applies beneficial modifiers or statuses, rules: [], deprecated: false }
+    - { id: effect-debuff, name: Debuff, category: effect_tag, description: Applies harmful modifiers or statuses, rules: [], deprecated: false }
+    - { id: effect-equipment, name: Equipment, category: effect_tag, description: Creates, equips, switches, reloads, consumes, or destroys equipment, rules: [], deprecated: false }
+    - { id: effect-summon, name: Summon, category: effect_tag, description: Creates or controls companions, constructs, clones, minions, or equivalent entities, rules: [], deprecated: false }
+    - { id: effect-information, name: Information, category: effect_tag, description: Reveals, records, verifies, or exploits information, rules: [], deprecated: false }
+    - { id: effect-alternate-defeat, name: Alternate Defeat, category: effect_tag, description: Advances or completes a defeat route other than ordinary HP reduction, rules: [], deprecated: false }
 
   roles:
-    - { id: role-vanguard, name: Vanguard }
-    - { id: role-guardian, name: Guardian }
-    - { id: role-striker, name: Striker }
-    - { id: role-eliminator, name: Eliminator }
-    - { id: role-controller, name: Controller }
-    - { id: role-support, name: Support }
-    - { id: role-specialist, name: Specialist }
+    - { id: role-vanguard, name: Vanguard, category: core_role, description: Applies frontline pressure and remains effective while exposed, rules: [], deprecated: false }
+    - { id: role-guardian, name: Guardian, category: core_role, description: Protects allies through Cover, mitigation, interception, control, or recovery, rules: [], deprecated: false }
+    - { id: role-striker, name: Striker, category: core_role, description: Converts actions and resources into sustained or explosive direct combat pressure, rules: [], deprecated: false }
+    - { id: role-eliminator, name: Eliminator, category: core_role, description: Builds or exploits a decisive condition to remove a priority target, rules: [], deprecated: false }
+    - { id: role-controller, name: Controller, category: core_role, description: Restricts enemy choices through statuses, timing, position, targeting, costs, or denial, rules: [], deprecated: false }
+    - { id: role-support, name: Support, category: core_role, description: Improves allied survival, access, resources, consistency, or execution, rules: [], deprecated: false }
+    - { id: role-specialist, name: Specialist, category: core_role, description: Wins through an unusual source-faithful plan not adequately described by the other Core Roles, rules: [], deprecated: false }
 
   combatArchetypes:
-    - { id: archetype-bruiser, name: Bruiser }
-    - { id: archetype-duelist, name: Duelist }
-    - { id: archetype-skirmisher, name: Skirmisher }
-    - { id: archetype-juggernaut, name: Juggernaut }
-    - { id: archetype-assassin, name: Assassin }
-    - { id: archetype-marksman, name: Marksman }
-    - { id: archetype-artillery, name: Artillery }
-    - { id: archetype-summoner, name: Summoner }
-    - { id: archetype-tactician, name: Tactician }
-    - { id: archetype-shapeshifter, name: Shapeshifter }
+    - { id: archetype-bruiser, name: Bruiser, category: combat_archetype, description: Durable close or midrange fighter that trades effectively over several exchanges, rules: [], deprecated: false }
+    - { id: archetype-duelist, name: Duelist, category: combat_archetype, description: Excels in focused one-target exchanges and repeated favorable clashes, rules: [], deprecated: false }
+    - { id: archetype-skirmisher, name: Skirmisher, category: combat_archetype, description: Uses Speed, movement, timing, or selective commitment to enter and leave exchanges, rules: [], deprecated: false }
+    - { id: archetype-juggernaut, name: Juggernaut, category: combat_archetype, description: Slow or committed but exceptionally difficult to stop once established, rules: [], deprecated: false }
+    - { id: archetype-assassin, name: Assassin, category: combat_archetype, description: Converts access, setup, or vulnerability into concentrated elimination pressure, rules: [], deprecated: false }
+    - { id: archetype-marksman, name: Marksman, category: combat_archetype, description: Relies on accurate ranged attacks, ammunition, targeting, or repeated projectile pressure, rules: [], deprecated: false }
+    - { id: archetype-artillery, name: Artillery, category: combat_archetype, description: Applies long-range, area, or delayed-zone pressure, rules: [], deprecated: false }
+    - { id: archetype-summoner, name: Summoner, category: combat_archetype, description: Uses companions, clones, constructs, or created entities as a major action engine, rules: [], deprecated: false }
+    - { id: archetype-tactician, name: Tactician, category: combat_archetype, description: Wins through planning, information, equipment, sequencing, or situational answers, rules: [], deprecated: false }
+    - { id: archetype-shapeshifter, name: Shapeshifter, category: combat_archetype, description: Changes forms or card definitions to access distinct tactical states, rules: [], deprecated: false }
 
   capabilities:
-    - { id: capability-burst, name: Burst }
-    - { id: capability-sustained, name: Sustained }
-    - { id: capability-execute, name: Execute }
-    - { id: capability-multihit, name: Multihit }
-    - { id: capability-area, name: Area }
-    - { id: capability-follow-up, name: Follow-Up }
-    - { id: capability-clash, name: Clash }
-    - { id: capability-durable, name: Durable }
-    - { id: capability-evade, name: Evade }
-    - { id: capability-counter, name: Counter }
-    - { id: capability-cover, name: Cover }
-    - { id: capability-recovery, name: Recovery }
-    - { id: capability-resurrection, name: Resurrection }
-    - { id: capability-disabler, name: Disabler }
-    - { id: capability-movement, name: Movement }
-    - { id: capability-targeting, name: Targeting }
-    - { id: capability-denial, name: Denial }
-    - { id: capability-debuffer, name: Debuffer }
-    - { id: capability-status, name: Status }
-    - { id: capability-healer, name: Healer }
-    - { id: capability-buffer, name: Buffer }
-    - { id: capability-card-access, name: Card Access }
-    - { id: capability-energy, name: Energy }
-    - { id: capability-meter, name: Meter }
-    - { id: capability-resource, name: Resource }
-    - { id: capability-ramp, name: Ramp }
-    - { id: capability-transformation, name: Transformation }
-    - { id: capability-equipment, name: Equipment }
-    - { id: capability-summon, name: Summon }
-    - { id: capability-created-cards, name: Created Cards }
-    - { id: capability-alternate-defeat, name: Alternate Defeat }
-    - { id: capability-information, name: Information }
+    - { id: capability-burst, name: Burst, category: offensive, description: Concentrated damage or decisive output in a short window, rules: [], deprecated: false }
+    - { id: capability-sustained, name: Sustained, category: offensive, description: Repeated reliable pressure across turns or exchanges, rules: [], deprecated: false }
+    - { id: capability-execute, name: Execute, category: offensive, description: Increased effectiveness against a target meeting a defeat or vulnerability condition, rules: [], deprecated: false }
+    - { id: capability-multihit, name: Multihit, category: offensive, description: Repeated Hit instances and mutable Multihit Count, rules: [], deprecated: false }
+    - { id: capability-area, name: Area, category: offensive, description: Regularly affects multiple targets or positions, rules: [], deprecated: false }
+    - { id: capability-follow-up, name: Follow-Up, category: offensive, description: Creates immediate action chains through Follow-Up, Assist, Counter, or equivalent windows, rules: [], deprecated: false }
+    - { id: capability-clash, name: Clash, category: offensive, description: Gains significant value through Attack-versus-Attack clash performance, rules: [], deprecated: false }
+    - { id: capability-durable, name: Durable, category: defensive, description: Remains effective under sustained enemy pressure, rules: [], deprecated: false }
+    - { id: capability-evade, name: Evade, category: defensive, description: Prevents Hits through Defense and Reuse patterns, rules: [], deprecated: false }
+    - { id: capability-counter, name: Counter, category: defensive, description: Converts successful protection into immediate retaliation, rules: [], deprecated: false }
+    - { id: capability-cover, name: Cover, category: defensive, description: Intercepts single-target Attacks aimed at allies, rules: [], deprecated: false }
+    - { id: capability-recovery, name: Recovery, category: defensive, description: Restores HP, resources, cards, equipment, or lost participation, rules: [], deprecated: false }
+    - { id: capability-resurrection, name: Resurrection, category: defensive, description: Returns defeated characters to play, rules: [], deprecated: false }
+    - { id: capability-disabler, name: Disabler, category: control, description: Applies Stun or comparable action-prevention effects, rules: [], deprecated: false }
+    - { id: capability-movement, name: Movement, category: control, description: Uses Reposition, Push, Pull, swaps, or movement restrictions, rules: [], deprecated: false }
+    - { id: capability-targeting, name: Targeting, category: control, description: Changes, restricts, protects, or exploits target selection, rules: [], deprecated: false }
+    - { id: capability-denial, name: Denial, category: control, description: Prevents cards, effects, resources, or planned sequences from being used, rules: [], deprecated: false }
+    - { id: capability-debuffer, name: Debuffer, category: control, description: Applies harmful modifiers or statuses as a central plan, rules: [], deprecated: false }
+    - { id: capability-status, name: Status, category: control, description: Builds, sustains, consumes, converts, or exploits status effects, rules: [], deprecated: false }
+    - { id: capability-healer, name: Healer, category: team_economy, description: Restores allied HP as a meaningful recurring contribution, rules: [], deprecated: false }
+    - { id: capability-buffer, name: Buffer, category: team_economy, description: Applies beneficial modifiers or statuses to allies, rules: [], deprecated: false }
+    - { id: capability-card-access, name: Card Access, category: team_economy, description: Improves Draw, Search, Seek, Scry, Retain, or Created-card access, rules: [], deprecated: false }
+    - { id: capability-energy, name: Energy, category: team_economy, description: Generates, preserves, redistributes, or reduces demand on shared Energy, rules: [], deprecated: false }
+    - { id: capability-meter, name: Meter, category: team_economy, description: Generates, preserves, spends, or manipulates shared Ultimate Meter, rules: [], deprecated: false }
+    - { id: capability-resource, name: Resource, category: team_economy, description: Uses a meaningful personal or team resource engine, rules: [], deprecated: false }
+    - { id: capability-ramp, name: Ramp, category: structural, description: Becomes stronger through accumulated state, resources, or progression, rules: [], deprecated: false }
+    - { id: capability-transformation, name: Transformation, category: structural, description: Uses forms or state-dependent card replacements as a central engine, rules: [], deprecated: false }
+    - { id: capability-equipment, name: Equipment, category: structural, description: Uses equipment state, ammunition, switching, or prepared items, rules: [], deprecated: false }
+    - { id: capability-summon, name: Summon, category: structural, description: Uses companions, clones, minions, or constructs, rules: [], deprecated: false }
+    - { id: capability-created-cards, name: Created Cards, category: structural, description: Relies on generated cards beyond the starting five, rules: [], deprecated: false }
+    - { id: capability-alternate-defeat, name: Alternate Defeat, category: structural, description: Uses a defeat route other than ordinary HP reduction, rules: [], deprecated: false }
+    - { id: capability-information, name: Information, category: structural, description: Records or exploits knowledge, identity, revealed objects, or hidden-state access, rules: [], deprecated: false }
 
   lineupArchetypes:
-    - { id: lineup-tempo, name: Tempo }
-    - { id: lineup-midrange, name: Midrange }
-    - { id: lineup-attrition, name: Attrition }
-    - { id: lineup-control, name: Control }
-    - { id: lineup-setup-execution, name: Setup–Execution }
-    - { id: lineup-status-engine, name: Status Engine }
-    - { id: lineup-formation, name: Formation }
-    - { id: lineup-ramp, name: Ramp }
-    - { id: lineup-chain, name: Chain }
+    - { id: lineup-tempo, name: Tempo, category: lineup_archetype, description: Wins before slower engines mature through early action advantage and pressure, rules: [], deprecated: false }
+    - { id: lineup-midrange, name: Midrange, category: lineup_archetype, description: Uses broadly playable actions and flexible routes between pressure, protection, and disruption, rules: [], deprecated: false }
+    - { id: lineup-attrition, name: Attrition, category: lineup_archetype, description: Wins through durability, recovery, persistent effects, and repeated favorable exchanges, rules: [], deprecated: false }
+    - { id: lineup-control, name: Control, category: lineup_archetype, description: Restricts enemy choices until the opposing plan cannot execute reliably, rules: [], deprecated: false }
+    - { id: lineup-setup-execution, name: Setup–Execution, category: lineup_archetype, description: Builds a visible condition and converts it into a decisive payoff, rules: [], deprecated: false }
+    - { id: lineup-status-engine, name: Status Engine, category: lineup_archetype, description: Coordinates building, sustaining, consuming, converting, or exploiting statuses, rules: [], deprecated: false }
+    - { id: lineup-formation, name: Formation, category: lineup_archetype, description: Uses position, Distance, adjacency, area anchors, Cover, Push, Pull, and Reposition, rules: [], deprecated: false }
+    - { id: lineup-ramp, name: Ramp, category: lineup_archetype, description: Invests early actions into transformations, summons, equipment, or progressive resources, rules: [], deprecated: false }
+    - { id: lineup-chain, name: Chain, category: lineup_archetype, description: Builds sequences through Follow-Up, Assist, Counter, Reuse, or immediate plays, rules: [], deprecated: false }
 
   speeds:
-    - { id: speed-fast, name: Fast }
-    - { id: speed-normal, name: Normal }
-    - { id: speed-slow, name: Slow }
+    - { id: speed-fast, name: Fast, category: speed, description: Resolves in a Fast response window and may interrupt a slower zone without cancelling it, rules: [], deprecated: false }
+    - { id: speed-normal, name: Normal, category: speed, description: Uses the normal response and commitment window, rules: [], deprecated: false }
+    - { id: speed-slow, name: Slow, category: speed, description: Represents preparation, commitment, or delayed execution, rules: [], deprecated: false }
 
   lifecycleDestinations:
-    - { id: destination-draw, name: Draw Pile }
-    - { id: destination-hand, name: Hand }
-    - { id: destination-discard, name: Discard Pile }
-    - { id: destination-exhaust, name: Exhausted Area }
-    - { id: destination-ultimate-area, name: Ultimate Area }
-    - { id: destination-defeat-reserve, name: Defeat Reserve }
-    - { id: destination-removed, name: Removed }
-    - { id: destination-created-reserve, name: Created Reserve }
+    - { id: destination-draw, name: Draw Pile, category: card_zone, description: Return or move the card to the Draw Pile, rules: [], deprecated: false }
+    - { id: destination-hand, name: Hand, category: card_zone, description: Move the card to the shared team hand, rules: [], deprecated: false }
+    - { id: destination-discard, name: Discard Pile, category: card_zone, description: Move the card to the shared Discard Pile, rules: [], deprecated: false }
+    - { id: destination-exhaust, name: Exhausted Area, category: card_zone, description: Remove the card from ordinary circulation for the rest of the match unless explicit text recovers it, rules: [], deprecated: false }
+    - { id: destination-ultimate-area, name: Ultimate Area, category: card_zone, description: Return an Ultimate to its pathway area and normal availability lifecycle, rules: [], deprecated: false }
+    - { id: destination-defeat-reserve, name: Defeat Reserve, category: card_zone, description: Public holding area for recoverable starting cards belonging to defeated characters, rules: [], deprecated: false }
+    - { id: destination-removed, name: Removed, category: card_zone, description: Remove an object with no default recovery route, rules: [], deprecated: false }
+    - { id: destination-created-reserve, name: Created Reserve, category: card_zone, description: Holding area for Created-card definitions or prepared generated objects, rules: [], deprecated: false }
 
   timings:
-    - { id: on_play, name: On Play }
-    - { id: before_clash, name: Before Clash }
-    - { id: clash, name: Clash }
-    - { id: after_clash, name: After Clash }
-    - { id: before_use, name: Before Use }
-    - { id: on_use, name: On Use }
-    - { id: on_hit, name: On Hit }
-    - { id: on_damage, name: On Damage }
-    - { id: on_hp_damage, name: On HP Damage }
-    - { id: after_use, name: After Use }
-    - { id: turn_start, name: Turn Start }
-    - { id: turn_end, name: Turn End }
-    - { id: on_gain, name: On Gain }
-    - { id: on_expire, name: On Expire }
-    - { id: on_heal, name: On Heal }
-    - { id: on_hp_restored, name: On HP Restored }
-    - { id: would_be_defeated, name: Would Be Defeated }
-    - { id: when_defeated, name: When Defeated }
-    - { id: when_sacrificed, name: When Sacrificed }
-    - { id: when_resurrected, name: When Resurrected }
+    - { id: on_play, name: On Play, category: timing, description: After cost payment, legal target selection, and placement, rules: [], deprecated: false }
+    - { id: before_clash, name: Before Clash, category: timing, description: Immediately before paired cards make clash decisions or rolls, rules: [], deprecated: false }
+    - { id: clash, name: Clash, category: timing, description: The Attack-versus-Attack comparison or other defined clash procedure, rules: [], deprecated: false }
+    - { id: after_clash, name: After Clash, category: timing, description: After the clash result is known and before surviving cards proceed to Use, rules: [], deprecated: false }
+    - { id: before_use, name: Before Use, category: timing, description: Immediately before a surviving scheduled card begins applying its effects, rules: [], deprecated: false }
+    - { id: on_use, name: On Use, category: timing, description: While the card's ordinary effects apply, rules: [], deprecated: false }
+    - { id: on_hit, name: On Hit, category: timing, description: Once per Hit instance unless a narrower scope is declared, rules: [], deprecated: false }
+    - { id: on_damage, name: On Damage, category: timing, description: When one positive damage instance affects Shield, Barrier, or HP, rules: [], deprecated: false }
+    - { id: on_hp_damage, name: On HP Damage, category: timing, description: When one damage instance reduces HP, rules: [], deprecated: false }
+    - { id: after_use, name: After Use, category: timing, description: After the complete card use, including all targets and hits, rules: [], deprecated: false }
+    - { id: turn_start, name: Turn Start, category: timing, description: At the start of a team turn before ordinary action play, rules: [], deprecated: false }
+    - { id: turn_end, name: Turn End, category: timing, description: At the end of a team turn after action resolution, rules: [], deprecated: false }
+    - { id: on_gain, name: On Gain, category: timing, description: Immediately when a status or resource is gained, rules: [], deprecated: false }
+    - { id: on_expire, name: On Expire, category: timing, description: When a status reaches its expiry condition before removal, rules: [], deprecated: false }
+    - { id: on_heal, name: On Heal, category: timing, description: When a healing effect resolves, including when actual HP restored may be zero if the rule says so, rules: [], deprecated: false }
+    - { id: on_hp_restored, name: On HP Restored, category: timing, description: Only when current HP actually increases, rules: [], deprecated: false }
+    - { id: would_be_defeated, name: Would Be Defeated, category: timing, description: Replacement window before a character becomes defeated, rules: [], deprecated: false }
+    - { id: when_defeated, name: When Defeated, category: timing, description: After defeat occurs and its immediate state changes are applied, rules: [], deprecated: false }
+    - { id: when_sacrificed, name: When Sacrificed, category: timing, description: When a voluntary Sacrifice successfully defeats its subject, rules: [], deprecated: false }
+    - { id: when_resurrected, name: When Resurrected, category: timing, description: After a defeated character returns to play through Resurrection, rules: [], deprecated: false }
 
   scopes:
-    - { id: once_per_play, name: Once per Play }
-    - { id: once_per_use, name: Once per Use }
-    - { id: once_per_turn, name: Once per Turn }
-    - { id: once_per_game, name: Once per Game }
-    - { id: per_target, name: Per Target }
-    - { id: per_hit, name: Per Hit }
-    - { id: per_hit_per_target, name: Per Hit per Target }
-    - { id: once_per_target_per_use, name: Once per Target per Use }
-    - { id: per_amount_spent, name: Per Amount Spent }
-    - { id: continuous, name: Continuous }
+    - { id: once_per_play, name: Once per Play, category: effect_scope, description: Resolves once for the act of playing the card, rules: [], deprecated: false }
+    - { id: once_per_use, name: Once per Use, category: effect_scope, description: Resolves once across the complete card use regardless of targets or hits, rules: [], deprecated: false }
+    - { id: once_per_turn, name: Once per Turn, category: effect_scope, description: Resolves at most once during the defined team or character turn, rules: [], deprecated: false }
+    - { id: once_per_game, name: Once per Game, category: effect_scope, description: Resolves at most once during the match and remains spent through defeat or Resurrection, rules: [], deprecated: false }
+    - { id: per_target, name: Per Target, category: effect_scope, description: Resolves once for each affected target, rules: [], deprecated: false }
+    - { id: per_hit, name: Per Hit, category: effect_scope, description: Resolves once for each hit independent of target count, rules: [], deprecated: false }
+    - { id: per_hit_per_target, name: Per Hit per Target, category: effect_scope, description: Resolves once for each Hit instance against each target, rules: [], deprecated: false }
+    - { id: once_per_target_per_use, name: Once per Target per Use, category: effect_scope, description: Resolves once for each target across the complete use even if hit repeatedly, rules: [], deprecated: false }
+    - { id: per_amount_spent, name: Per Amount Spent, category: effect_scope, description: Resolves or scales once for each unit successfully spent, rules: [], deprecated: false }
+    - { id: continuous, name: Continuous, category: effect_scope, description: Remains active while its condition is true and is reevaluated at defined rule boundaries, rules: [], deprecated: false }

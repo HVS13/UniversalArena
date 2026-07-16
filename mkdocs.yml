@@ -44,6 +44,7 @@ nav:
       - Character Authoring Framework: design/character-authoring-framework.md
       - Rules v2 Decision Record: design/rules-v2-decisions.md
       - Rules v2 Audit Supplement: design/rules-v2-supplement.md
+      - Rules v2 Global Reference: design/rules-v2-global-reference.md
       - Roster Audit Checklist: design/roster-audit-checklist.md
       - Schema v2 Specification: data/schema-v2.md
       - Migration v1 to v2: data/migrations/v1-to-v2.md
