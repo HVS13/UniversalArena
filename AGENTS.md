@@ -7,7 +7,16 @@ This repository is the MkDocs Material rules reference and canonical structured 
 When sources disagree, use this order:
 
 1. `docs/data/` structured data for currently implemented executable behavior.
-2. Approved Rules v2 specifications and parallel migration data for intended Rules v2 behavior:
+2. The original foundational rules and authoring references for behavior and numeric intent that have not been explicitly migrated:
+   - `docs/characters/character-creation-guide.md`
+   - `docs/faq.md`
+   - `docs/terminology.md`
+   - `docs/card-types.md`
+   - `docs/status-effects.md`
+   - Active character pages and `docs/data/characters/`
+3. Explicit Rules v2 corrections and compatibility doctrine:
+   - `docs/design/rules-v2-foundation-corrections.md`
+4. Approved Rules v2 specifications and isolated migration infrastructure:
    - `docs/design/design-principles.md`
    - `docs/design/character-authoring-framework.md`
    - `docs/design/rules-v2-decisions.md`
@@ -18,14 +27,29 @@ When sources disagree, use this order:
    - `docs/data/rules-v2/global-rules.yml`
    - `docs/data/migrations/v1-to-v2.md`
    - `docs/design/roster-audit-checklist.md`
-3. Human-readable Rules v1 pages and character pages.
-4. Generated exports and `site/` output.
+5. Generated exports and `site/` output.
 
-Rules v2 documents and parallel data are approved specifications but are not fully implemented until structured character data, exporter logic, migrations, generated pages, and tests are updated. Never claim Rules v1 content already behaves as Rules v2 merely because a specification or overlay exists.
+Rules v2 is an extension and correction of Universal Arena, not permission to replace established foundations without a specific reason. A Rules v2 document changes an original rule only when it names the old behavior, names the new behavior, explains why the change is needed, and identifies affected content.
 
-`docs/data/rules-v2/global-rules.yml` applies only to content explicitly declaring `rulesVersion: 2`. During staged migration, the legacy keyword, status, term, role, and card-type files remain canonical for Rules v1 exports.
+Rules v2 documents and parallel data are not fully implemented until structured character data, exporter logic, migrations, generated pages, and tests are updated. Never claim Rules v1 content already behaves as Rules v2 merely because a specification or overlay exists.
 
-When an initial Rules v2 document conflicts with an explicit correction in `rules-v2-supplement.md`, `rules-v2-global-reference.md`, or the corrected Schema v2 specification, use the correction.
+`docs/data/rules-v2/global-rules.yml` applies only to content explicitly declaring `rulesVersion: 2`. During staged migration, the legacy keyword, status, term, role, card-type, character, and budgeting references remain canonical for Rules v1 behavior and for unchanged design intent.
+
+When an initial Rules v2 document conflicts with `docs/design/rules-v2-foundation-corrections.md`, use the correction.
+
+## Progression doctrine
+
+Universal Arena should progress by:
+
+- Preserving established systems that already serve the intended vision.
+- Typing, clarifying, and making deterministic behavior that was previously implicit.
+- Expanding registries and schemas so new characters and mechanics can be represented.
+- Correcting genuine lore, timing, consistency, or implementation defects.
+- Changing an established mechanic only after its original purpose, dependencies, and player experience are understood.
+
+Do not treat a new schema, a cleaner abstraction, or a later source version as sufficient reason to redesign a character or foundational rule.
+
+For existing content, the default migration result is the same gameplay expressed more explicitly.
 
 ## Highest design priority
 
@@ -37,9 +61,10 @@ Prioritize, in order:
 2. Character feel and recognizable play pattern.
 3. Signature gimmicks, transformations, equipment, resources, and hax.
 4. Canonical requirements, weaknesses, limitations, and aftermaths.
-5. Clear, deterministic Universal Arena translation.
-6. Access, opportunity cost, counterplay, and team economy.
-7. Conventional balance.
+5. Established Universal Arena design intent and coherent gameplay engine.
+6. Clear, deterministic Universal Arena translation.
+7. Access, opportunity cost, counterplay, and team economy.
+8. Conventional balance.
 
 Do not flatten vastly different characters into equal duelists. A canonically overwhelming character should feel more powerful in ordinary play. A weak character should contribute through source-appropriate efficiency, utility, preparation, equipment, information, deception, survival, or narrow payoff—not unsupported statistics.
 
@@ -47,9 +72,26 @@ Do not reduce defining hax into ordinary damage or a minor status merely because
 
 Raw Power, HP, durability, and Speed do not grant automatic hax resistance. Use source-supported Damage Immunity, Status Immunity, Effect Immunity, targeting restrictions, or explicit text.
 
-## Required character workflow
+## Existing-character revision workflow
 
-Before creating or revising cards:
+Before changing an existing character:
+
+1. Read the active YAML, character page, original Character Creation Guide, relevant FAQ/terminology/card-type rules, Rules v2 specifications, migration notes, and source material.
+2. Record the current kit's complete loop: Innates, statuses, cards, variants, Ultimate, Energy curve, Meter route, clash roles, dependencies, failure state, and player expectation.
+3. Separate mandatory schema migration from actual gameplay change.
+4. Preserve names, costs, Power, Speed, action classifications, status numbers, and interactions by default.
+5. Calculate every proposed numeric change using the complete original budgeting rules.
+6. Analyze downstream dependencies before removing or changing a resource, status, classification, or timing rule.
+7. Produce a player-facing before/after changelog.
+8. Obtain explicit human direction on optional or disputed changes.
+9. Only then update executable data, tests, audits, and PR descriptions.
+10. Run the roster audit checklist and regression tests.
+
+A migration PR must not contain an unreviewed redesign.
+
+## New-character workflow
+
+Before creating a new character:
 
 1. Define continuity and source-period boundaries.
 2. Define baseline form, equipment, knowledge, and personality.
@@ -60,16 +102,46 @@ Before creating or revising cards:
 7. Select actions for distinct gameplay jobs, not fame alone.
 8. Design exactly two Basics and three Techniques.
 9. Define at least one Ultimate pathway.
-10. Add typed Innates, statuses, effects, restrictions, ownership, lifecycle, provenance, and source basis.
-11. Assign Roles, Combat Archetypes, Capability Tags, economy profile, and synergy metadata after the kit exists.
-12. Run `docs/design/roster-audit-checklist.md`.
+10. Apply the original Power and cost budgeting procedure.
+11. Add typed Innates, statuses, effects, restrictions, ownership, lifecycle, provenance, and source basis.
+12. Assign Roles, Combat Archetypes, Capability Tags, economy profile, and synergy metadata after the kit exists.
+13. Run `docs/design/roster-audit-checklist.md`.
+
+## Foundational Power and cost budgeting
+
+The original Character Creation Guide remains the default numeric authoring system unless a documented character-specific exception applies.
+
+- Base Power target for an Energy-only card: printed Energy cost × 10.
+- Base Power target for a pure Ultimate-Meter card: Ultimate Meter cost × 1.5, rounded down.
+- Mixed Ultimate Meter + Energy Ultimate: treat each Meter as 1 Base Power, then add the Energy Base Power.
+- Variable non-Ultimate Energy:
+  - if X can be 0, Base Power = 5 × (X + 1);
+  - otherwise Base Power = 10 × X.
+- Variable Energy on a mixed-cost Ultimate uses 10 × X even if X can be 0.
+- A non-created 0-Energy card begins at Base Power 5.
+- A Created card cannot exceed the Base Power of the card that creates it unless an explicit exception is documented.
+- A card that only deals Power damage or only grants Power Shield/HP may increase Base Power by 20%.
+- Fast reduces Base Power by 10%.
+- Created reduces Base Power by 10%.
+- Fast and Created penalties stack.
+- A high execution requirement or narrow condition may add 10–20%.
+- Meaningful utility, statuses, draw, resource gain, area, tempo, healing, future value, and engine acceleration reduce the available Power budget.
+- Damage plus healing must be budgeted as combined output.
+- Apply bonuses and penalties before generating the printed range.
+- Melee range: Base Power ± floor(Base Power × 0.20).
+- Ranged range: Base Power ± floor(Base Power × 0.25).
+- Round all decimals down.
+- Significant exceptions must be documented beside the character or in the guide.
+
+Use printed or locked play cost for authoring. In-match cost reductions do not recalculate printed Power unless explicit text says they do. When a personal engine reduces cost, audit the full set of reachable effective-cost breakpoints.
+
+Do not use “lore-first” or “benchmarks are not ceilings” as permission to skip the calculation. Lore may justify a documented exception; it does not eliminate the need to show the baseline and deviation.
 
 ## Character and card rules
 
 - Exactly two Basics and three Techniques.
-- Do not require Strike + Defend.
-- Do not require generic Basic names.
-- Prefer canonical names.
+- Rules v2 removes a universal requirement for Strike + Defend or generic Basic names; it does not automatically rename or reclassify existing Basics.
+- Prefer canonical names when a rename improves fidelity without damaging established clarity or references.
 - Basics establish the floor; Techniques create the ceiling.
 - Every card needs a canonical job and a gameplay job.
 - Innates are continuous truths, not hidden sixth Techniques.
@@ -79,10 +151,11 @@ Before creating or revising cards:
 - `Becomes` is automatic and state-dependent in deck, hand, and play.
 - Variants should change decisions, not only numbers.
 - Every character has one or more Ultimate pathways.
-- Power benchmarks are guides, not ceilings; document significant deviations.
 - Card Speed represents response window and commitment, not only movement-speed ranking.
-- Noncombat characters use source-supported indirect actions rather than invented brawling.
+- Noncombat characters use source-supported indirect actions and may retain low contestable Power abstractions when they serve the existing clash design and are explicitly justified.
 - Copy and adaptive mechanics require explicit boundaries, ownership, lifecycle, and recursion rules.
+
+Changing Attack, Defense, or Special changes clash behavior. Changing Damage Type changes mitigation behavior. Changing Speed changes legal response windows. None of these are cosmetic migrations.
 
 ## Crossover and classification rules
 
@@ -113,6 +186,16 @@ The team shares Draw Pile, Discard Pile, hand, Energy, and Ultimate Meter. Cards
 - Creation is not play.
 - Reveal is not Draw, Discard, Play, Use, or removal.
 - Defeat removes the owner's cards from active circulation under Rules v2 Defeat Reserve rules.
+
+When changing a printed cost, audit:
+
+- default five-Energy team access;
+- low-, normal-, and peak-investment turns;
+- personal cost reduction;
+- zero-cost breakpoints;
+- Meter lost through discounts;
+- Follow-Up and repeated-play chains;
+- the opportunity cost imposed on allies.
 
 Avoid named-pair and franchise bonuses. Prefer synergy through statuses, position, Speed, timing, targeting, card access, Energy, Meter, protection, and broad conditions.
 
@@ -145,21 +228,23 @@ Keep `schemaVersion` and `rulesVersion` separate.
 
 When changing old meaning:
 
-1. Add an ordered migration.
-2. Add temporary legacy aliases.
-3. Produce an affected-content report.
-4. Update structured data.
-5. Run roster-wide regression tests.
-6. Regenerate human-readable documentation.
-7. Record the change.
+1. State the exact Rules v1 behavior.
+2. State the exact Rules v2 behavior.
+3. Explain the logical or consistency defect being corrected.
+4. List affected cards, statuses, and tests.
+5. Add an ordered migration and temporary aliases when needed.
+6. Produce an affected-content report.
+7. Update structured data and human-readable references.
+8. Run roster-wide regression tests.
+9. Record the change.
 
 Never silently reinterpret Rules v1 exports as Rules v2.
 
 ## Initial Rules v2 migrations
 
-Required migrations include:
+Required structural migrations include:
 
-- Electric Damage Type to Electric Property.
+- Electric Damage Type to Electric Property, with a reviewed broad Damage Type.
 - Flat roles to Core Roles, Combat Archetypes, and Capability Tags.
 - Defender to Guardian alias.
 - Exhaust-on-play to Exhaust-after-resolution, with manual intent review.
@@ -169,15 +254,17 @@ Required migrations include:
 - Created provenance separated from Action Types.
 - Ultimates to Ultimate pathways.
 - Unique status prose to typed rules.
-- Team-turn Stun ambiguity to per-character Stun behavior.
+- Team-turn Stun ambiguity to per-character Stun behavior, except effects explicitly providing team-wide denial.
 - Defeated-owner cards to Defeat Reserve behavior.
 - Legacy source-system classifications to Source-System Tags.
+
+Structural migration does not itself authorize cost, Power, name, Speed, target, classification, status-duration, or engine changes.
 
 ## Validation behavior
 
 Block export for structural, semantic, and compatibility errors.
 
-Design and lore warnings require review but must not automatically nerf or reject a source-accurate design.
+Design and lore warnings require review but must not automatically change, nerf, reject, or redesign a source-accurate character.
 
 Warnings include:
 
@@ -194,12 +281,14 @@ Warnings include:
 - Strong character lacking baseline superiority.
 - Weak character receiving unsupported parity.
 
+A warning is a question to investigate, not a proposed patch.
+
 ## Existing project rules
 
 - Skills manifest lives in `SKILLS.md`.
 - Work in `docs/`; treat `site/` as generated output and do not edit it.
 - MkDocs theme overrides live in `docs/overrides/`; use them for site-wide UI tweaks.
-- Follow patterns in `docs/adding-content.md` for content types; use templates and shared link markup.
+- Follow patterns in `docs/adding-content.md` and `docs/characters/character-creation-guide.md`.
 - Keywords are tiered Core/Advanced in `docs/keywords.md`; keep `docs/data/keywords.yml` `tier` values in sync for Rules v1 content.
 - Status effect entries include a Mode line and explicit Turn End behavior.
 - Structured data lives in `docs/data/`; keep it in sync with reference pages.
@@ -219,7 +308,7 @@ Warnings include:
 - Shared link markup uses the `ua-*-link` classes so `docs/javascripts/guide.js` can rewrite links.
 - Only link global statuses from the global status reference; Unique statuses remain character-specific.
 - Ensure Potency, Count, Value, and Stack caps match reachable behavior.
-- Use the simplest coherent status mode; never create dummy Potency or Count.
+- Use the simplest coherent status mode, but preserve existing numeric meaning. Never add together unrelated Potency and Count values merely to collapse a status.
 - Do not add game pages or game assets to this repository unless explicitly requested.
 - Export actions live in `docs/overrides/main.html` and `docs/javascripts/print.js`; keep exports free of permalinks, URLs, and images as currently required.
 
@@ -239,6 +328,7 @@ Warnings include:
 - Run `npm run validate:v2:global:strict` when changing Rules v2 registries or global mechanics.
 - Run exporter and schema validation when changing structured data or schema behavior.
 - Run Rules v2 migration and roster regression tests before claiming migration completion.
+- For character revisions, verify the before/after changelog and numeric budget before running implementation validation.
 
 ## Response style
 

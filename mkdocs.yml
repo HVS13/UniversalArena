@@ -40,6 +40,7 @@ nav:
   - Roles: roles.md
   - FAQ: faq.md
   - Rules v2 Design:
+      - Compatibility Policy: design/rules-v2-foundation-corrections.md
       - Design Principles: design/design-principles.md
       - Character Authoring Framework: design/character-authoring-framework.md
       - Rules v2 Decision Record: design/rules-v2-decisions.md
