@@ -103,7 +103,13 @@ const main = async () => {
   assert.equal(dio.sourceInteractions["interaction-death-note-eligibility"].outcome, "ineligible");
   assert.equal(dio.sourceInteractions["interaction-vampire-sunlight"].outcome, "vulnerable");
   assert.equal(dio.sourceInteractions["interaction-vampire-ripple"].outcome, "vulnerable");
-  assert.doesNotMatch(JSON.stringify(dio), /Blood Focus/);
+  const executableDioNames = [
+    ...dio.cards.map((card) => card.name),
+    ...(dio.createdCards ?? []).map((card) => card.name),
+    ...(dio.statusEffects ?? []).map((status) => status.name),
+    ...(dio.innates ?? []).map((innate) => innate.name),
+  ];
+  assert.ok(!executableDioNames.some((name) => /Blood Focus/i.test(name)), "Blood Focus may be documented only as omitted material.");
   const dioTimeStop = statusById(dio, "unique-dio-time-stop");
   assert.equal(dioTimeStop.mode, "binary");
   assert.equal(dioTimeStop.persistence.duration, "combat_round");
