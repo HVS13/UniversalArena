@@ -60,7 +60,12 @@ cards:
     name: Strike
     cost: 1 Energy
     power: 8-12
-    types: [Basic, Attack, Physical, Melee, Blunt]
+    types:
+      - Basic
+      - Attack
+      - Physical
+      - Melee
+      - Blunt
     target: 1 Enemy
     speed: Normal
     effect:
@@ -69,17 +74,26 @@ cards:
     effects:
       - timing: on_use
         type: deal_damage
-        amount: { kind: power }
+        amount:
+          kind: power
       - timing: on_hit
         type: gain_status
         status: Shadow Clones
-        amount: { kind: flat, value: 1 }
-        condition: { kind: self_has_status, status: Kyuubi Chakra }
+        amount:
+          kind: flat
+          value: 1
+        condition:
+          kind: self_has_status
+          status: Kyuubi Chakra
   - slot: "2"
     name: Defend
     cost: 1 Energy
     power: 8-12
-    types: [Basic, Defense, Physical, Melee]
+    types:
+      - Basic
+      - Defense
+      - Physical
+      - Melee
     target: 1 Ally
     speed: Normal
     effect:
@@ -88,13 +102,17 @@ cards:
     effects:
       - timing: on_use
         type: gain_shield
-        amount: { kind: power }
+        amount:
+          kind: power
       - timing: before_clash
         type: spend_status
         status: Shadow Clones
-        amount: { kind: x }
+        amount:
+          kind: x
         allowPartial: true
-        condition: { kind: self_has_status, status: Shadow Clones }
+        condition:
+          kind: self_has_status
+          status: Shadow Clones
       - timing: before_clash
         type: grant_keyword
         keyword: Evade
@@ -104,7 +122,10 @@ cards:
     name: Shadow Clone Jutsu
     cost: 2 Energy
     power: "-"
-    types: [Technique, Special, Magical]
+    types:
+      - Technique
+      - Special
+      - Magical
     target: Self
     speed: Fast
     effect:
@@ -115,16 +136,26 @@ cards:
       - timing: on_use
         type: gain_status
         status: Shadow Clones
-        amount: { kind: flat, value: 2 }
+        amount:
+          kind: flat
+          value: 2
       - timing: on_use
         type: create_card
         cardName: "Shadow Clone: Strike"
-        count: { kind: flat, value: 2 }
+        count:
+          kind: flat
+          value: 2
   - slot: "4"
     name: Naruto Uzumaki Barrage
     cost: 2 Energy
     power: 16-24
-    types: [Technique, Attack, Physical, Melee, Blunt, Multihit]
+    types:
+      - Technique
+      - Attack
+      - Physical
+      - Melee
+      - Blunt
+      - Multihit
     target: 1 Enemy
     speed: Normal
     effect:
@@ -135,19 +166,29 @@ cards:
       - timing: on_use
         type: spend_status
         status: Shadow Clones
-        amount: { kind: x }
+        amount:
+          kind: x
         gateAll: true
       - timing: on_use
         type: deal_damage
         amount:
           kind: power_div
-          divisor: { kind: x_plus, value: 2 }
-        hits: { kind: x_plus, value: 2 }
+          divisor:
+            kind: x_plus
+            value: 2
+        hits:
+          kind: x_plus
+          value: 2
   - slot: "5-1"
     name: Rasengan
     cost: 3 Energy
     power: 24-36
-    types: [Technique, Attack, Magical, Melee, Blunt]
+    types:
+      - Technique
+      - Attack
+      - Magical
+      - Melee
+      - Blunt
     target: 1 Enemy
     speed: Slow
     effect:
@@ -156,15 +197,24 @@ cards:
     effects:
       - timing: on_use
         type: deal_damage
-        amount: { kind: power }
+        amount:
+          kind: power
     transforms:
-      - condition: { kind: self_has_status, status: Shadow Clones, min: 2 }
+      - condition:
+          kind: self_has_status
+          status: Shadow Clones
+          min: 2
         cardSlot: "5-2"
   - slot: "5-2"
     name: "Rasengan: Clone Assist"
     cost: 3 Energy
     power: 24-36
-    types: [Technique, Attack, Magical, Melee, Blunt]
+    types:
+      - Technique
+      - Attack
+      - Magical
+      - Melee
+      - Blunt
     target: 1 Enemy
     speed: Normal
     effect:
@@ -175,29 +225,55 @@ cards:
       - timing: on_use
         type: spend_status
         status: Shadow Clones
-        amount: { kind: flat, value: 2 }
+        amount:
+          kind: flat
+          value: 2
         gateAll: true
-        condition: { kind: self_has_status, status: Shadow Clones, min: 2 }
+        condition:
+          kind: self_has_status
+          status: Shadow Clones
+          min: 2
       - timing: on_use
         type: deal_damage
-        amount: { kind: power }
-        condition: { kind: self_has_status, status: Shadow Clones, min: 2 }
+        amount:
+          kind: power
+        condition:
+          kind: self_has_status
+          status: Shadow Clones
+          min: 2
       - timing: on_hit
         type: inflict_status
         status: Vulnerable
-        amount: { kind: flat, value: 2 }
-        condition: { kind: self_has_status, status: Shadow Clones, min: 2 }
+        amount:
+          kind: flat
+          value: 2
+        condition:
+          kind: self_has_status
+          status: Shadow Clones
+          min: 2
       - timing: on_hit
         type: inflict_status
         status: Vulnerable
         stat: count
-        amount: { kind: flat, value: 2 }
-        condition: { kind: self_has_status, status: Shadow Clones, min: 2 }
+        amount:
+          kind: flat
+          value: 2
+        condition:
+          kind: self_has_status
+          status: Shadow Clones
+          min: 2
   - slot: "ultimate-1"
     name: "Summoning Jutsu: Gamabunta"
     cost: 30 Ultimate Meter
     power: 34-56
-    types: [Ultimate, Attack, Magical, Ranged, AoE, Blunt, Debuff]
+    types:
+      - Ultimate
+      - Attack
+      - Magical
+      - Ranged
+      - AoE
+      - Blunt
+      - Debuff
     target: All Enemies
     speed: Normal
     effect:
@@ -208,28 +284,43 @@ cards:
     effects:
       - timing: on_use
         type: deal_damage
-        amount: { kind: power }
+        amount:
+          kind: power
       - timing: on_use
         type: inflict_status
         status: Slow
-        amount: { kind: flat, value: 1 }
+        amount:
+          kind: flat
+          value: 1
       - timing: on_use
         type: inflict_status
         status: Slow
         stat: count
-        amount: { kind: flat, value: 1 }
+        amount:
+          kind: flat
+          value: 1
       - timing: on_use
         type: gain_status
         status: "Summoned: Gamabunta"
-        amount: { kind: flat, value: 2 }
+        amount:
+          kind: flat
+          value: 2
     transforms:
-      - condition: { kind: self_has_status, status: One-Tail Cloak }
+      - condition:
+          kind: self_has_status
+          status: One-Tail Cloak
         cardSlot: "ultimate-2"
   - slot: "ultimate-2"
     name: One-Tail Rasengan
     cost: 30 Ultimate Meter
     power: 36-54
-    types: [Ultimate, Attack, Magical, Melee, Blunt, Debuff]
+    types:
+      - Ultimate
+      - Attack
+      - Magical
+      - Melee
+      - Blunt
+      - Debuff
     target: 1 Enemy
     speed: Normal
     effect:
@@ -249,45 +340,73 @@ cards:
       - timing: on_use
         type: spend_status
         status: Shadow Clones
-        amount: { kind: flat, value: 2 }
+        amount:
+          kind: flat
+          value: 2
         gateAll: true
       - timing: on_use
         type: deal_damage
-        amount: { kind: power }
-        condition: { kind: self_has_status, status: One-Tail Cloak }
+        amount:
+          kind: power
+        condition:
+          kind: self_has_status
+          status: One-Tail Cloak
       - timing: on_hit
         type: inflict_status
         status: Vulnerable
-        amount: { kind: flat, value: 2 }
-        condition: { kind: self_has_status, status: One-Tail Cloak }
+        amount:
+          kind: flat
+          value: 2
+        condition:
+          kind: self_has_status
+          status: One-Tail Cloak
       - timing: on_hit
         type: inflict_status
         status: Vulnerable
         stat: count
-        amount: { kind: flat, value: 2 }
-        condition: { kind: self_has_status, status: One-Tail Cloak }
+        amount:
+          kind: flat
+          value: 2
+        condition:
+          kind: self_has_status
+          status: One-Tail Cloak
       - timing: on_hit
         type: inflict_status
         status: Slow
-        amount: { kind: flat, value: 1 }
-        condition: { kind: self_has_status, status: One-Tail Cloak }
+        amount:
+          kind: flat
+          value: 1
+        condition:
+          kind: self_has_status
+          status: One-Tail Cloak
       - timing: on_hit
         type: inflict_status
         status: Slow
         stat: count
-        amount: { kind: flat, value: 1 }
-        condition: { kind: self_has_status, status: One-Tail Cloak }
+        amount:
+          kind: flat
+          value: 1
+        condition:
+          kind: self_has_status
+          status: One-Tail Cloak
       - timing: after_use
         type: reduce_status
         status: Kyuubi Chakra
         stat: count
-        amount: { kind: flat, value: 2 }
+        amount:
+          kind: flat
+          value: 2
 createdCards:
   - slot: "created-1"
     name: "Shadow Clone: Strike"
     cost: 1 Energy
     power: 8-10
-    types: [Technique, Attack, Physical, Melee, Blunt]
+    types:
+      - Technique
+      - Attack
+      - Physical
+      - Melee
+      - Blunt
     target: 1 Enemy
     speed: Fast
     effect:
@@ -296,12 +415,19 @@ createdCards:
     effects:
       - timing: on_use
         type: deal_damage
-        amount: { kind: power }
+        amount:
+          kind: power
   - slot: "created-2"
     name: "Gamabunta: Toad Smash"
     cost: 0 Energy
     power: 8-12
-    types: [Technique, Attack, Physical, Melee, Blunt, Splash]
+    types:
+      - Technique
+      - Attack
+      - Physical
+      - Melee
+      - Blunt
+      - Splash
     target: 1 Enemy
     speed: Normal
     effect:
@@ -312,8 +438,12 @@ createdCards:
     effects:
       - timing: on_use
         type: deal_damage
-        amount: { kind: power }
+        amount:
+          kind: power
       - timing: on_hit
         type: inflict_status
         status: Slow
-        amount: { kind: flat, value: 1 }
+        amount:
+          kind: flat
+          value: 1
+
