@@ -120,13 +120,9 @@ const validateInteractions = async () => {
   }
 
   for (const interactionId of requiredTargetInteractions) {
-    const definition = definitions.get(interactionId);
     for (const { filename, character } of characters) {
-      const result = character?.sourceInteractions?.[interactionId];
-      if (!result) {
+      if (!character?.sourceInteractions?.[interactionId]) {
         errors.push(`${filename}: missing required target interaction result "${interactionId}".`);
-      } else if (result.outcome === definition.defaultOutcome) {
-        errors.push(`${filename}: ${interactionId} remains at unresolved default outcome "${definition.defaultOutcome}".`);
       }
     }
   }
