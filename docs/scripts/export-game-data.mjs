@@ -32,7 +32,7 @@ const assetsOutDir = getArg("--assets-out")
   ? path.resolve(process.cwd(), getArg("--assets-out"))
   : path.join(outDir, "assets", "characters");
 
-const schemaVersion = 1;
+const schemaVersion = 2;
 const sourceRepository =
   getArg("--source-repository") || process.env.UA_SOURCE_REPOSITORY || "HVS13/UniversalArena";
 
