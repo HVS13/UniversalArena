@@ -179,6 +179,18 @@ cards:
         hits:
           kind: x_plus
           value: 2
+      - timing: on_hit
+        type: inflict_status
+        status: Stun
+        amount:
+          kind: flat
+          value: 1
+        condition:
+          kind: compare
+          left:
+            kind: x
+          operator: eq
+          right: 3
   - slot: "5-1"
     name: Rasengan
     cost: 3 Energy
@@ -446,4 +458,3 @@ createdCards:
         amount:
           kind: flat
           value: 1
-
