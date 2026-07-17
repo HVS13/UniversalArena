@@ -13,5 +13,6 @@
 - Enforce template sections and timing label phrasing for all characters.
 - Standardize card type tag order for data/UI filtering.
 - Enforce power budgeting targets unless exceptions are documented.
-- DONE: Configured the export workflow repo variable `UA_GAME_REPO` and secret `UA_SYNC_TOKEN`.
-- DONE: Verified `Export Game Data` pushes a `chore: sync game data` commit after docs changes.
+- Rotate or replace `UA_SYNC_TOKEN` with a fine-grained token limited to the Web repository, or configure the repository-scoped GitHub App secrets.
+- Protect `UniversalArena-Web/main` with required Friend Alpha Checks and at least one approving review.
+- Verify the validated export workflow opens a draft Web PR and triggers Friend Alpha Checks after the replacement workflow lands.

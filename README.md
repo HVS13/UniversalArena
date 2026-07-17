@@ -43,17 +43,22 @@ node export-game-data.mjs --out C:\Git\UniversalArena-Web\packages\data\src --as
 2. Run `npm run power -- ...` for changed Power calculations and update `docs/power-ledger.md` when a pattern changes.
 3. Export into the game repo (`node export-game-data.mjs --out ... --assets-out ...`).
 4. Commit/push the docs repo.
-5. Commit/push the game repo export output, or let CI do it.
+5. Commit/push the game repo export output, or review the draft PR opened by CI.
 
 ## CI export workflow (docs -> game repo)
 
 Workflow: `.github/workflows/export-game-data.yml`
 
 Required repo settings:
-- Repo variable: `UA_GAME_REPO` = `Owner/UniversalArena-Web`
-- Repo secret: `UA_SYNC_TOKEN` (token with write access to the game repo)
+- Configure one credential mode:
+  - fine-grained PAT: repo secret `UA_SYNC_TOKEN`, restricted to `HVS13/UniversalArena-Web` with Contents and Pull requests read/write access; or
+  - GitHub App: repo secrets `UA_SYNC_APP_ID` and `UA_SYNC_APP_PRIVATE_KEY`. Install the App only on `HVS13/UniversalArena-Web` with Contents and Pull requests read/write access. The workflow mints its short-lived installation token at runtime.
 
-Without these, the workflow will not push and manual export remains required.
+The workflow is restricted to canonical `main` and the fixed target `HVS13/UniversalArena-Web`. It validates canonical data, exports an exact commit-identified artifact, verifies the manifest and generated-only path allowlist, pushes a dedicated sync branch, and opens a draft Web PR. The Web PR triggers Friend Alpha Checks and must receive independent review. The workflow never merges the PR.
+
+If the credential is missing, partially configured, or cannot access the Web repository, the workflow fails without pushing. Secret creation and rotation belong in GitHub settings and must never be committed.
+
+Web repository settings must separately protect `main`, require Friend Alpha Checks, and require at least one approving review. The canonical workflow cannot grant itself permission to merge or substitute for that repository-level policy.
 
 ## Current state
 
