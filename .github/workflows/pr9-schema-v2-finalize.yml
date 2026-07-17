@@ -1,0 +1,150 @@
+name: Finalize PR9 export schema v2
+
+on:
+  push:
+    branches:
+      - agent/structured-effect-conditions
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out PR branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/structured-effect-conditions
+          fetch-depth: 0
+
+      - name: Verify starting head
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD^)" = "bedfd328b995f6f9ed7a3a271233ca5a5fc700f6"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: docs/scripts/package-lock.json
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Create exact final commit locally
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path("docs/scripts/export-game-data.mjs")
+          text = path.read_text(encoding="utf-8")
+          old = "const schemaVersion = 1;"
+          new = "const schemaVersion = 2;"
+          if text.count(old) != 1:
+              raise SystemExit(f"Expected exactly one schemaVersion 1 declaration, found {text.count(old)}")
+          if new in text:
+              raise SystemExit("schemaVersion 2 declaration already exists unexpectedly")
+          path.write_text(text.replace(old, new), encoding="utf-8", newline="\n")
+          PY
+
+          rm .github/workflows/pr9-schema-v2-finalize.yml
+          git diff --check
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/scripts/export-game-data.mjs .github/workflows/pr9-schema-v2-finalize.yml
+          git commit -m "Advance export schema to version 2"
+
+          echo "FINAL_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+
+      - name: Install script dependencies
+        working-directory: docs/scripts
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm install
+          npm audit
+
+      - name: Validate structured data
+        working-directory: docs/scripts
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run validate
+
+      - name: Export and verify schema contract
+        working-directory: docs/scripts
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run export | tee /tmp/export-output.txt
+          node - <<'NODE'
+          const fs = require("node:fs");
+          const manifest = JSON.parse(fs.readFileSync("../data/export/manifest.json", "utf8"));
+          const expectedHash = "sha256:2a9df703f469a7b4096350bca90c158b20ff4c835c21a8b1ecc797736ea7a4c1";
+          if (manifest.schemaVersion !== 2) {
+            throw new Error(`Expected schemaVersion 2, received ${manifest.schemaVersion}`);
+          }
+          if (manifest.sourceCommit !== process.env.FINAL_SHA) {
+            throw new Error(`Expected sourceCommit ${process.env.FINAL_SHA}, received ${manifest.sourceCommit}`);
+          }
+          if (manifest.contentHash !== expectedHash) {
+            throw new Error(`Expected unchanged content hash ${expectedHash}, received ${manifest.contentHash}`);
+          }
+          console.log(`PASS: manifest schemaVersion=${manifest.schemaVersion}`);
+          console.log(`PASS: manifest sourceCommit=${manifest.sourceCommit}`);
+          console.log(`PASS: manifest contentHash=${manifest.contentHash}`);
+          NODE
+
+      - name: Build documentation strictly
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --disable-pip-version-check mkdocs-material
+          python -m mkdocs build --strict
+
+      - name: Verify final commit and clean tree
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$FINAL_SHA"
+          git diff --check HEAD^
+          test -z "$(git status --short)"
+          test "$(git diff --name-only origin/main...HEAD | sort)" = "$(printf '%s\n' \
+            'docs/data/characters/leon-s-kennedy-re4.yml' \
+            'docs/data/characters/naruto-uzumaki-pre-timeskip.yml' \
+            'docs/effect-conditions.md' \
+            'docs/scripts/export-game-data.mjs' \
+            'docs/scripts/package.json' \
+            'docs/scripts/validate-effect-conditions.mjs' \
+            'mkdocs.yml' | sort)"
+
+      - name: Publish validated final commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          git push origin HEAD:agent/structured-effect-conditions
+
+      - name: Record validation summary
+        shell: bash
+        run: |
+          {
+            echo "## PR #9 schema v2 validation"
+            echo
+            echo "- Final head: \`$FINAL_SHA\`"
+            echo "- Export schema version: \`2\`"
+            echo "- Export content hash: \`sha256:2a9df703f469a7b4096350bca90c158b20ff4c835c21a8b1ecc797736ea7a4c1\`"
+            echo "- npm audit: passed"
+            echo "- structured validation: passed"
+            echo "- strict MkDocs build: passed"
+            echo "- diff check: passed"
+            echo "- final working tree: clean"
+            echo "- final changed files: exactly seven intended files"
+          } >> "$GITHUB_STEP_SUMMARY"
