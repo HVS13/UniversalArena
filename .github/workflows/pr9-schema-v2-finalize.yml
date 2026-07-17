@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - agent/structured-effect-conditions
+  pull_request:
+    types:
+      - synchronize
 
 permissions:
   contents: write
@@ -22,7 +25,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          test "$(git rev-parse HEAD^)" = "bedfd328b995f6f9ed7a3a271233ca5a5fc700f6"
+          test "$(git rev-parse HEAD^)" = "fa97b994b81512a7b41d0264d8df659041f9e809"
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
