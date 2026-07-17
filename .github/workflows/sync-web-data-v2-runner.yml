@@ -1,0 +1,179 @@
+name: Sync canonical data v2 to Web branch
+
+on:
+  push:
+    branches:
+      - agent/sync-web-data-v2-runner
+
+permissions:
+  contents: read
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out canonical runner branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/sync-web-data-v2-runner
+          fetch-depth: 0
+
+      - name: Verify canonical baseline and token
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD^)" = "def16b684d509001f2c165be08bdac1c91d75e30"
+          if [ -z "${{ secrets.UA_SYNC_TOKEN }}" ]; then
+            echo "Missing UA_SYNC_TOKEN secret." >&2
+            exit 1
+          fi
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install canonical exporter dependencies
+        working-directory: docs/scripts
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm install
+          npm audit
+
+      - name: Check out exact Web baseline
+        uses: actions/checkout@v4
+        with:
+          repository: HVS13/UniversalArena-Web
+          token: ${{ secrets.UA_SYNC_TOKEN }}
+          ref: main
+          path: web
+          fetch-depth: 0
+
+      - name: Create isolated Web sync branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git -C web rev-parse HEAD)" = "b297fbb5d05888e69e739dad3ec2e053327c900f"
+          git -C web switch -c agent/sync-canonical-data-v2
+
+      - name: Export canonical data into Web
+        shell: bash
+        run: |
+          set -euo pipefail
+          node docs/scripts/export-game-data.mjs \
+            --source-repository HVS13/UniversalArena \
+            --source-commit def16b684d509001f2c165be08bdac1c91d75e30 \
+            --out web/packages/data/src \
+            --assets-out web/apps/client/public/assets/characters
+
+      - name: Verify manifest and generated-only scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          node - <<'NODE'
+          const fs = require("node:fs");
+          const manifest = JSON.parse(fs.readFileSync("web/packages/data/src/manifest.json", "utf8"));
+          const expected = {
+            schemaVersion: 2,
+            sourceRepository: "HVS13/UniversalArena",
+            sourceCommit: "def16b684d509001f2c165be08bdac1c91d75e30",
+            contentHash: "sha256:2a9df703f469a7b4096350bca90c158b20ff4c835c21a8b1ecc797736ea7a4c1",
+            rosterCount: 9,
+          };
+          for (const [key, value] of Object.entries(expected)) {
+            if (manifest[key] !== value) {
+              throw new Error(`Expected ${key}=${value}, received ${manifest[key]}`);
+            }
+          }
+          console.log("PASS: canonical schema-v2 manifest verified");
+          NODE
+
+          git -C web diff --check
+          changed="$(git -C web status --porcelain | cut -c4-)"
+          test -n "$changed"
+          echo "$changed" | grep -Fxq "packages/data/src/manifest.json"
+          echo "$changed" | grep -Fxq "packages/data/src/characters.json"
+          while IFS= read -r file; do
+            case "$file" in
+              packages/data/src/*.json|apps/client/public/assets/characters/*) ;;
+              *) echo "Unexpected generated diff path: $file" >&2; exit 1 ;;
+            esac
+          done <<< "$changed"
+
+      - name: Create exact Web sync commit locally
+        shell: bash
+        run: |
+          set -euo pipefail
+          git -C web config user.name "ua-bot"
+          git -C web config user.email "ua-bot@users.noreply.github.com"
+          git -C web add packages/data/src apps/client/public/assets/characters
+          git -C web commit -m "chore: sync canonical game data"
+          echo "WEB_FINAL_SHA=$(git -C web rev-parse HEAD)" >> "$GITHUB_ENV"
+
+      - name: Set up pnpm
+        shell: bash
+        run: |
+          set -euo pipefail
+          corepack enable
+          corepack prepare pnpm@9.12.3 --activate
+          pnpm --version
+
+      - name: Install Web dependencies
+        working-directory: web
+        shell: bash
+        run: |
+          set -euo pipefail
+          pnpm install --frozen-lockfile
+          npm --prefix server ci
+          npm --prefix server audit --audit-level=high
+
+      - name: Run Web validation suite
+        working-directory: web
+        shell: bash
+        run: |
+          set -euo pipefail
+          pnpm golden
+          pnpm harness
+          pnpm build
+          pnpm --dir server test
+          pnpm release:check
+
+      - name: Verify exact final Web commit and clean tree
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git -C web rev-parse HEAD)" = "$WEB_FINAL_SHA"
+          test -z "$(git -C web status --short)"
+          git -C web diff-tree --no-commit-id --name-only -r HEAD | while IFS= read -r file; do
+            case "$file" in
+              packages/data/src/*.json|apps/client/public/assets/characters/*) ;;
+              *) echo "Unexpected committed path: $file" >&2; exit 1 ;;
+            esac
+          done
+
+      - name: Push validated Web sync branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git -C web push origin HEAD:agent/sync-canonical-data-v2
+
+      - name: Record validation summary
+        shell: bash
+        run: |
+          {
+            echo "## Canonical data v2 Web synchronization"
+            echo
+            echo "- Canonical source: \`def16b684d509001f2c165be08bdac1c91d75e30\`"
+            echo "- Web baseline: \`b297fbb5d05888e69e739dad3ec2e053327c900f\`"
+            echo "- Web sync head: \`$WEB_FINAL_SHA\`"
+            echo "- Schema version: \`2\`"
+            echo "- Content hash: \`sha256:2a9df703f469a7b4096350bca90c158b20ff4c835c21a8b1ecc797736ea7a4c1\`"
+            echo "- Generated-only scope: passed"
+            echo "- pnpm golden: passed"
+            echo "- pnpm harness: passed"
+            echo "- pnpm build: passed"
+            echo "- server tests and audit: passed"
+            echo "- pnpm release:check: passed"
+            echo "- final working tree: clean"
+          } >> "$GITHUB_STEP_SUMMARY"
