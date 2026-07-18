@@ -1,12 +1,7 @@
-name: Export Game Data
+name: Sync Game Data to Draft Web PR
 
 on:
   workflow_dispatch:
-    inputs:
-      game_repo:
-        description: "Target game repo (owner/name). Overrides UA_GAME_REPO."
-        required: false
-        type: string
   push:
     branches:
       - main
@@ -14,37 +9,88 @@ on:
       - "docs/data/**"
       - "docs/assets/characters/**"
       - "docs/scripts/export-game-data.mjs"
+      - "docs/scripts/publish-web-sync.mjs"
+      - "docs/scripts/publish-web-sync.test.mjs"
+      - "docs/scripts/validate-web-sync.mjs"
+      - "docs/scripts/package.json"
       - ".github/workflows/export-game-data.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: canonical-web-sync
+  cancel-in-progress: true
+
+env:
+  GAME_REPO: HVS13/UniversalArena-Web
+  GAME_BASE_BRANCH: main
+  EXPECTED_SCHEMA_VERSION: "2"
+  EXPECTED_ROSTER_COUNT: "9"
 
 jobs:
   export:
+    name: Validate and open draft Web sync PR
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
-      - name: Checkout docs repo
-        uses: actions/checkout@v4
-
-      - name: Resolve target repo
-        shell: bash
-        run: |
-          if [ -n "${{ inputs.game_repo }}" ]; then
-            echo "GAME_REPO=${{ inputs.game_repo }}" >> "$GITHUB_ENV"
-          elif [ -n "${{ vars.UA_GAME_REPO }}" ]; then
-            echo "GAME_REPO=${{ vars.UA_GAME_REPO }}" >> "$GITHUB_ENV"
-          else
-            echo "Set workflow input game_repo or repo variable UA_GAME_REPO." >&2
-            exit 1
-          fi
-          if [ -z "${{ secrets.UA_SYNC_TOKEN }}" ]; then
-            echo "Missing UA_SYNC_TOKEN secret (needs write access to game repo)." >&2
-            exit 1
-          fi
-
-      - name: Checkout game repo
+      - name: Checkout exact canonical commit
         uses: actions/checkout@v4
         with:
-          repository: ${{ env.GAME_REPO }}
-          token: ${{ secrets.UA_SYNC_TOKEN }}
-          path: game
+          fetch-depth: 0
+
+      - name: Verify exact canonical source
+        id: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ "$GITHUB_REF" != "refs/heads/main" ]]; then
+            echo "Synchronization is restricted to canonical main." >&2
+            exit 1
+          fi
+          source_commit="$(git rev-parse HEAD)"
+          if [[ "$source_commit" != "$GITHUB_SHA" ]]; then
+            echo "Checkout mismatch: expected $GITHUB_SHA, received $source_commit." >&2
+            exit 1
+          fi
+          if [[ -n "$(git status --porcelain)" ]]; then
+            echo "Canonical checkout is dirty before export." >&2
+            exit 1
+          fi
+          echo "commit=$source_commit" >> "$GITHUB_OUTPUT"
+          echo "short_commit=${source_commit:0:12}" >> "$GITHUB_OUTPUT"
+
+      - name: Resolve scoped Web credential mode
+        id: auth
+        shell: bash
+        env:
+          UA_SYNC_TOKEN: ${{ secrets.UA_SYNC_TOKEN }}
+          UA_SYNC_APP_ID: ${{ secrets.UA_SYNC_APP_ID }}
+          UA_SYNC_APP_PRIVATE_KEY: ${{ secrets.UA_SYNC_APP_PRIVATE_KEY }}
+        run: |
+          set -euo pipefail
+          if [[ -n "$UA_SYNC_APP_ID" || -n "$UA_SYNC_APP_PRIVATE_KEY" ]]; then
+            if [[ -z "$UA_SYNC_APP_ID" || -z "$UA_SYNC_APP_PRIVATE_KEY" ]]; then
+              echo "GitHub App authentication is partially configured. Set both UA_SYNC_APP_ID and UA_SYNC_APP_PRIVATE_KEY." >&2
+              exit 1
+            fi
+            echo "mode=app" >> "$GITHUB_OUTPUT"
+          elif [[ -n "$UA_SYNC_TOKEN" ]]; then
+            echo "mode=pat" >> "$GITHUB_OUTPUT"
+          else
+            echo "Missing Web credential. Configure a fine-grained UA_SYNC_TOKEN or both GitHub App secrets." >&2
+            exit 1
+          fi
+
+      - name: Mint repository-scoped GitHub App token
+        if: steps.auth.outputs.mode == 'app'
+        id: app-token
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ secrets.UA_SYNC_APP_ID }}
+          private-key: ${{ secrets.UA_SYNC_APP_PRIVATE_KEY }}
+          owner: HVS13
+          repositories: UniversalArena-Web
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -52,24 +98,103 @@ jobs:
           node-version: "20"
 
       - name: Install exporter dependencies
-        run: |
-          cd docs/scripts
-          npm install
+        working-directory: docs/scripts
+        run: npm install --ignore-scripts --no-audit --no-fund
 
-      - name: Export data and assets
-        run: |
-          node docs/scripts/export-game-data.mjs --out game/packages/data/src --assets-out game/apps/client/public/assets/characters
+      - name: Validate canonical data
+        working-directory: docs/scripts
+        run: npm run validate
 
-      - name: Commit and push
+      - name: Test ready-PR mutation guard
+        working-directory: docs/scripts
+        run: npm run test:web-sync-guard
+
+      - name: Checkout Web main
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.GAME_REPO }}
+          token: ${{ steps.app-token.outputs.token || secrets.UA_SYNC_TOKEN }}
+          ref: ${{ env.GAME_BASE_BRANCH }}
+          path: game
+          fetch-depth: 1
+
+      - name: Verify clean Web base
         shell: bash
         run: |
-          cd game
-          if git status --porcelain | grep -q .; then
-            git config user.name "ua-bot"
-            git config user.email "ua-bot@users.noreply.github.com"
-            git add packages/data/src apps/client/public/assets/characters
-            git commit -m "chore: sync game data"
-            git push
-          else
-            echo "No changes to commit."
+          set -euo pipefail
+          if [[ -n "$(git -C game status --porcelain)" ]]; then
+            echo "Web checkout is dirty before export." >&2
+            exit 1
           fi
+          echo "WEB_BASE_COMMIT=$(git -C game rev-parse HEAD)" >> "$GITHUB_ENV"
+
+      - name: Export exact canonical artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          node docs/scripts/export-game-data.mjs \
+            --out game/packages/data/src \
+            --assets-out game/apps/client/public/assets/characters \
+            --source-repository "$GITHUB_REPOSITORY" \
+            --source-commit "${{ steps.source.outputs.commit }}"
+
+      - name: Validate manifest and generated-only scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          node docs/scripts/validate-web-sync.mjs \
+            --web-root game \
+            --source-repository "$GITHUB_REPOSITORY" \
+            --source-commit "${{ steps.source.outputs.commit }}" \
+            --schema-version "$EXPECTED_SCHEMA_VERSION" \
+            --roster-count "$EXPECTED_ROSTER_COUNT"
+          node game/packages/data/validate-manifest.mjs
+
+      - name: Stage and verify exact generated diff
+        id: changes
+        shell: bash
+        run: |
+          set -euo pipefail
+          git -C game add -- packages/data/src apps/client/public/assets/characters
+          git -C game diff --cached --check
+          if [[ -n "$(git -C game diff --name-only)" ]]; then
+            echo "Unstaged changes remain after staging generated outputs." >&2
+            git -C game status --short >&2
+            exit 1
+          fi
+          if [[ -n "$(git -C game ls-files --others --exclude-standard)" ]]; then
+            echo "Untracked files remain outside the staged generated outputs." >&2
+            git -C game status --short >&2
+            exit 1
+          fi
+          if git -C game diff --cached --quiet; then
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+            echo "Canonical export already matches Web main."
+          else
+            echo "has_changes=true" >> "$GITHUB_OUTPUT"
+            git -C game diff --cached --name-only
+          fi
+
+      - name: Upload exact generated artifact
+        if: steps.changes.outputs.has_changes == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: canonical-web-sync-${{ steps.source.outputs.commit }}
+          path: |
+            game/packages/data/src/*.json
+            game/apps/client/public/assets/characters/*
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Preflight, push, and open draft Web pull request
+        if: steps.changes.outputs.has_changes == 'true'
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token || secrets.UA_SYNC_TOKEN }}
+        run: >-
+          node docs/scripts/publish-web-sync.mjs
+          --web-root game
+          --repository "$GAME_REPO"
+          --base-branch "$GAME_BASE_BRANCH"
+          --source-repository "$GITHUB_REPOSITORY"
+          --source-commit "${{ steps.source.outputs.commit }}"
+          --run-url "https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
