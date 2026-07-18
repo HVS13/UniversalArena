@@ -51,14 +51,14 @@ Workflow: `.github/workflows/export-game-data.yml`
 
 Required repo settings:
 - Configure one credential mode:
-  - fine-grained PAT: repo secret `UA_SYNC_TOKEN`, restricted to `HVS13/UniversalArena-Web` with Contents and Pull requests read/write access; or
-  - GitHub App: repo secrets `UA_SYNC_APP_ID` and `UA_SYNC_APP_PRIVATE_KEY`. Install the App only on `HVS13/UniversalArena-Web` with Contents and Pull requests read/write access. The workflow mints its short-lived installation token at runtime.
+  - Recommended, GitHub App: repo secrets `UA_SYNC_APP_ID` and `UA_SYNC_APP_PRIVATE_KEY`. Install the App only on `HVS13/UniversalArena-Web` with Contents and Pull requests read/write access. Do not grant Actions, Administration, Secrets, Workflows, ruleset bypass, or other permissions. The workflow mints its short-lived installation token at runtime, and the App bot is the generated PR author.
+  - Fallback, fine-grained PAT: repo secret `UA_SYNC_TOKEN`, restricted to `HVS13/UniversalArena-Web` with Contents and Pull requests read/write access. A PAT creates the generated PR as its human owner. Use this mode only when another human account can provide the required independent approval; a pull-request author cannot approve their own PR.
 
 The workflow is restricted to canonical `main` and the fixed target `HVS13/UniversalArena-Web`. It validates canonical data, exports an exact commit-identified artifact, verifies the manifest and generated-only path allowlist, pushes a dedicated sync branch, and opens a draft Web PR. The Web PR triggers Friend Alpha Checks and must receive independent review. The workflow never merges the PR.
 
 If the credential is missing, partially configured, or cannot access the Web repository, the workflow fails without pushing. Secret creation and rotation belong in GitHub settings and must never be committed.
 
-Web repository settings must separately protect `main`, require Friend Alpha Checks, and require at least one approving review. The canonical workflow cannot grant itself permission to merge or substitute for that repository-level policy.
+Before this workflow is merged, Web repository settings must protect `main`: require a pull request, require at least one approval, dismiss stale approvals, require conversation resolution, require the successful Friend Alpha check from PR #4, require the branch to be up to date, and block force pushes and deletion. Select the existing successful check from GitHub's required-check list instead of typing its context manually. Do not grant the sync App a ruleset bypass. The canonical workflow cannot grant itself permission to merge or substitute for that repository-level policy.
 
 ## Current state
 

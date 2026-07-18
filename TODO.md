@@ -13,6 +13,6 @@
 - Enforce template sections and timing label phrasing for all characters.
 - Standardize card type tag order for data/UI filtering.
 - Enforce power budgeting targets unless exceptions are documented.
-- Rotate or replace `UA_SYNC_TOKEN` with a fine-grained token limited to the Web repository, or configure the repository-scoped GitHub App secrets.
-- Protect `UniversalArena-Web/main` with required Friend Alpha Checks and at least one approving review.
+- Configure the repository-scoped GitHub App secrets before merging the replacement workflow; keep the fine-grained PAT path as a fallback only when a separate human reviewer is available.
+- Protect `UniversalArena-Web/main` with required Friend Alpha Checks, at least one approving review, stale-approval dismissal, conversation resolution, up-to-date branches, and force-push/deletion blocking.
 - Verify the validated export workflow opens a draft Web PR and triggers Friend Alpha Checks after the replacement workflow lands.

@@ -9,6 +9,8 @@ on:
       - "docs/data/**"
       - "docs/assets/characters/**"
       - "docs/scripts/export-game-data.mjs"
+      - "docs/scripts/publish-web-sync.mjs"
+      - "docs/scripts/publish-web-sync.test.mjs"
       - "docs/scripts/validate-web-sync.mjs"
       - "docs/scripts/package.json"
       - ".github/workflows/export-game-data.yml"
@@ -103,6 +105,10 @@ jobs:
         working-directory: docs/scripts
         run: npm run validate
 
+      - name: Test ready-PR mutation guard
+        working-directory: docs/scripts
+        run: npm run test:web-sync-guard
+
       - name: Checkout Web main
         uses: actions/checkout@v4
         with:
@@ -180,78 +186,15 @@ jobs:
           if-no-files-found: error
           retention-days: 14
 
-      - name: Commit and push dedicated Web sync branch
+      - name: Preflight, push, and open draft Web pull request
         if: steps.changes.outputs.has_changes == 'true'
-        id: branch
-        shell: bash
-        run: |
-          set -euo pipefail
-          cd game
-          sync_branch="automation/canonical-sync-${{ steps.source.outputs.commit }}"
-          remote_sha="$(git ls-remote --heads origin "refs/heads/$sync_branch" | cut -f1)"
-          if [[ -n "$remote_sha" ]]; then
-            git fetch origin "$sync_branch:refs/remotes/origin/$sync_branch"
-          fi
-          git switch -c "$sync_branch"
-          git config user.name "ua-sync-bot"
-          git config user.email "ua-sync-bot@users.noreply.github.com"
-          git commit -m "chore: sync canonical data ${{ steps.source.outputs.short_commit }}"
-          if [[ -n "$remote_sha" ]]; then
-            git push \
-              --force-with-lease="refs/heads/$sync_branch:$remote_sha" \
-              origin "HEAD:refs/heads/$sync_branch"
-          else
-            git push origin "HEAD:refs/heads/$sync_branch"
-          fi
-          echo "name=$sync_branch" >> "$GITHUB_OUTPUT"
-
-      - name: Open draft Web pull request
-        if: steps.changes.outputs.has_changes == 'true'
-        shell: bash
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token || secrets.UA_SYNC_TOKEN }}
-          SYNC_BRANCH: ${{ steps.branch.outputs.name }}
-          SOURCE_COMMIT: ${{ steps.source.outputs.commit }}
-        run: |
-          set -euo pipefail
-          existing_pr="$(gh pr list \
-            --repo "$GAME_REPO" \
-            --state open \
-            --head "$SYNC_BRANCH" \
-            --json url,isDraft \
-            --jq '.[0] // empty')"
-          if [[ -n "$existing_pr" ]]; then
-            if [[ "$(jq -r '.isDraft' <<< "$existing_pr")" != "true" ]]; then
-              echo "Existing sync PR is not a draft; refusing to update it." >&2
-              exit 1
-            fi
-            jq -r '.url' <<< "$existing_pr"
-            exit 0
-          fi
-
-          cat > "$RUNNER_TEMP/web-sync-pr.md" <<EOF
-          ## What changed
-
-          Synchronizes generated Universal Arena data and character assets from canonical commit [$SOURCE_COMMIT](https://github.com/$GITHUB_REPOSITORY/commit/$SOURCE_COMMIT).
-
-          ## Safety checks
-
-          - Canonical validation passed before export.
-          - Manifest schema, source repository, exact source commit, content hash, and nine-character roster were verified.
-          - Only generated data and character asset paths are allowed.
-          - \`git diff --check\` passed.
-          - The exact generated artifact is attached to canonical workflow run [$GITHUB_RUN_ID](https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID).
-          - Friend Alpha Checks must pass on this Web PR.
-
-          ## Review requirement
-
-          This PR is intentionally a draft. It requires independent review and must never be merged automatically.
-          EOF
-
-          gh pr create \
-            --repo "$GAME_REPO" \
-            --base "$GAME_BASE_BRANCH" \
-            --head "$SYNC_BRANCH" \
-            --title "Sync canonical data ${{ steps.source.outputs.short_commit }}" \
-            --body-file "$RUNNER_TEMP/web-sync-pr.md" \
-            --draft
+        run: >-
+          node docs/scripts/publish-web-sync.mjs
+          --web-root game
+          --repository "$GAME_REPO"
+          --base-branch "$GAME_BASE_BRANCH"
+          --source-repository "$GITHUB_REPOSITORY"
+          --source-commit "${{ steps.source.outputs.commit }}"
+          --run-url "https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
